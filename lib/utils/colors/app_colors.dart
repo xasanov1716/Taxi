@@ -30,52 +30,52 @@ class AppColors {
 
   //----------------- GRADIENTS -------------------------
 
-  static Gradient gradientOrangeYellow = LinearGradient(
-      begin: Alignment.centerLeft,
-      end: Alignment.centerRight,
+  static const Gradient gradientOrangeYellow = LinearGradient(
+      begin: Alignment.centerRight,
+      end: Alignment.centerLeft,
       colors: [
-        const Color(0xFFFEBB1B).withOpacity(0),
-        const Color(0xFFFFC740),
+         Color(0xFFFEBB1B),
+         Color(0xFFFFC740),
       ]);
 
-  static Gradient gradientBlue = LinearGradient(
-      begin: Alignment.centerLeft,
-      end: Alignment.centerRight,
+  static const Gradient gradientBlue = LinearGradient(
+      begin: Alignment.centerRight,
+      end: Alignment.centerLeft,
       colors: [
-        const Color(0xFF335EF7).withOpacity(0),
-        const Color(0xFF5F82FF),
+         Color(0xFF335EF7),
+         Color(0xFF5F82FF),
       ]);
 
-  static Gradient gradientPurple = LinearGradient(
-      begin: Alignment.centerLeft,
-      end: Alignment.centerRight,
+  static const Gradient gradientPurple = LinearGradient(
+      begin: Alignment.centerRight,
+      end: Alignment.centerLeft,
       colors: [
-        const Color(0xFF7210FF).withOpacity(0),
-        const Color(0xFF9D59FF),
+         Color(0xFF7210FF),
+         Color(0xFF9D59FF),
       ]);
 
-  static Gradient gradientYellow = LinearGradient(
-      begin: Alignment.centerLeft,
-      end: Alignment.centerRight,
+  static const Gradient gradientYellow = LinearGradient(
+      begin: Alignment.centerRight,
+      end: Alignment.centerLeft,
       colors: [
-        const Color(0xFFFACC15).withOpacity(0),
-        const Color(0xFFFFE580),
+         Color(0xFFFACC15),
+         Color(0xFFFFE580),
       ]);
 
-  static Gradient gradientGreen = LinearGradient(
-      begin: Alignment.centerLeft,
-      end: Alignment.centerRight,
+  static const Gradient gradientGreen = LinearGradient(
+      begin: Alignment.centerRight,
+      end: Alignment.centerLeft,
       colors: [
-        const Color(0xFF22BB9C).withOpacity(0),
-        const Color(0xFF35DEBC),
+         Color(0xFF22BB9C),
+         Color(0xFF35DEBC),
       ]);
 
-  static Gradient gradientRed = LinearGradient(
-      begin: Alignment.centerLeft,
-      end: Alignment.centerRight,
+  static const Gradient gradientRed = LinearGradient(
+      begin: Alignment.centerRight,
+      end: Alignment.centerLeft,
       colors: [
-        const Color(0xFFFF4D67).withOpacity(0),
-        const Color(0xFFFF8A9B),
+         Color(0xFFFF4D67),
+         Color(0xFFFF8A9B),
       ]);
 
   //----------------- DARK COLORS -------------------------
