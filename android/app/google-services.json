@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "804885756836",
+    "project_id": "dastyor-taxi",
+    "storage_bucket": "dastyor-taxi.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:804885756836:android:a8ca2e788c2ded1654df31",
+        "android_client_info": {
+          "package_name": "uz.dastyor.taxi"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxS8AE12qyXZEhSqiEbwAVIZd-FlFfWkY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
