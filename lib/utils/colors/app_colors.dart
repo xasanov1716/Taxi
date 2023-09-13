@@ -84,6 +84,48 @@ class AppColors {
   static const Color dark2 = Color(0xFF1F222A);
   static const Color dark3 = Color(0xFF35383F);
 
-  //----------------- OTHERS COLOR ------------------------
+  //----------------- OTHERS COLORS ------------------------
+
+  static const Color white = Color(0xFFFFFFFF);
+  static const Color black = Color(0xFF000000);
+  static const Color red = Color(0xFFF44336);
+  static const Color pink = Color(0xFFE91E63);
+  static const Color purple = Color(0xFF9C27B0);
+  static const Color deepPurple = Color(0xFF673AB7);
+  static const Color indigo = Color(0xFF3F51B5);
+  static const Color blue = Color(0xFF2196F3);
+  static const Color lightBlue = Color(0xFF03A9F4);
+  static const Color cyan = Color(0xFF00BCD4);
+  static const Color teal = Color(0xFF009688);
+  static const Color green = Color(0xFF4CAF50);
+  static const Color lightGreen = Color(0xFF8BC34A);
+  static const Color lime = Color(0xFFCDDC39);
+  static const Color yellow = Color(0xFFFFEB3B);
+  static const Color amber = Color(0xFFFFC107);
+  static const Color orange = Color(0xFFFF9800);
+  static const Color deepOrange = Color(0xFFFF5722);
+  static const Color brown = Color(0xFF795548);
+  static const Color blueGrey = Color(0xFF607D8B);
+
+  //----------------- BACKGROUND COLORS ------------------------
+
+  static const Color primaryBackground = Color(0xFFFEBB1B);
+  static const Color purpleBackground = Color(0xFFF4ECFF);
+  static const Color blueBackground = Color(0xFFF6FAFD);
+  static const Color greenBackground = Color(0xFFF2FFFC);
+  static const Color orangeBackground = Color(0xFFFFF8ED);
+  static const Color pinkBackground = Color(0xFFFFF5F5);
+  static const Color yellowBackground = Color(0xFFFFFEE0);
+
+  //----------------- TRANSPARENT COLORS ------------------------
+
+  static const Color primaryTransparent = Color(0xFFFEBB1B);
+  static const Color purpleTransparent = Color(0xFF7210FF);
+  static const Color blueTransparent = Color(0xFF335EF7);
+  static const Color orangeTransparent = Color(0xFFFF9800);
+  static const Color yellowTransparent = Color(0xFFFACC15);
+  static const Color redTransparent = Color(0xFFF75555);
+  static const Color greenTransparent = Color(0xFF4CAF50);
+  static const Color cyanTransparent = Color(0xFF00BCD4);
 
 }
