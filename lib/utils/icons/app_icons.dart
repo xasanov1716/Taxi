@@ -41,6 +41,7 @@ class AppIcons {
   static const String womanAvatar3="assets/images/woman_avatar3.png";
 
 
+  // svg
   static IconType it = IconType.bold;
   static final String search = "assets/svg/${it.name}/search.svg";
 }
