@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:taxi_app/ui/app_routes.dart';
+import 'package:taxi_app/utils/theme/app_theme.dart';
+
+
 
 
 void main() {
@@ -17,18 +21,13 @@ class MainApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
-        return const MaterialApp(
-          home: Scaffold(
-            body: Center(
-              child: Text(
-                'Привет мир',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontFamily: "Urbanist",
-                  fontWeight: FontWeight.w500,),
-              ),
-            ),
-          ),
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: AppTheme.lightTheme,
+          darkTheme: AppTheme.darkTheme,
+          themeMode: ThemeMode.light,
+          initialRoute: RouteNames.homeScreen,
+          onGenerateRoute: AppRoutes.generateRoute,
         );
       },
     );
