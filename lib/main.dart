@@ -23,7 +23,7 @@ class MainApp extends StatelessWidget {
                 style: TextStyle(
                     fontSize: 16,
                     fontFamily: "Urbanist",
-                    fontWeight: FontWeight.w500),
+                    fontWeight: FontWeight.w500,),
               ),
             ),
           ),
