@@ -26,7 +26,7 @@ class _GlobalTextFieldState extends State<GlobalTextField> {
   bool _isPasswordVisible = false;
 
   bool isFocus = false;
-  FocusNode _textFieldFocus = FocusNode();
+  final FocusNode _textFieldFocus = FocusNode();
   Color _color = Colors.white;
   Color _iconColor = Colors.grey;
 
@@ -58,13 +58,13 @@ class _GlobalTextFieldState extends State<GlobalTextField> {
             padding: const EdgeInsets.only(top: 4.0),
             child: Text(
               widget.caption,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 14,
                 color: Colors.black,
               ),
             ),
           ),
-        SizedBox(
+        const SizedBox(
           height: 5,
         ),
         TextField(
@@ -92,19 +92,19 @@ class _GlobalTextFieldState extends State<GlobalTextField> {
                   )
                 : null,
             enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey, width: 1),
+              borderSide: const BorderSide(color: Colors.grey, width: 1),
               borderRadius: BorderRadius.circular(10),
             ),
             focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.amber, width: 1),
+              borderSide: const BorderSide(color: Colors.amber, width: 1),
               borderRadius: BorderRadius.circular(10),
             ),
             errorBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.red, width: 1),
+              borderSide: const BorderSide(color: Colors.red, width: 1),
               borderRadius: BorderRadius.circular(10),
             ),
             border: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey, width: 1),
+              borderSide: const BorderSide(color: Colors.grey, width: 1),
               borderRadius: BorderRadius.circular(10),
             ),
             fillColor: _color,

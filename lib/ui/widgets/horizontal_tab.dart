@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-
 class HorizontalTab extends StatelessWidget {
-  const HorizontalTab({Key? key, required this.title, required this.color,this.leftImage = '',this.rightImage = '', required this.height}) : super(key: key);
+  const HorizontalTab(
+      {Key? key,
+      required this.title,
+      required this.color,
+      this.leftImage = '',
+      this.rightImage = '',
+      required this.height})
+      : super(key: key);
 
   final String title;
   final Color color;
@@ -17,16 +24,26 @@ class HorizontalTab extends StatelessWidget {
       children: [
         Row(
           children: [
-           const Spacer(),
+            const Spacer(),
             SvgPicture.asset(leftImage),
-           const SizedBox(width: 8,),
-        Text(title,style: Theme.of(context).textTheme.titleMedium!.copyWith(color: color)),
-           const SizedBox(width: 8,),
+            SizedBox(
+              width: 8.w,
+            ),
+            Text(title,
+                style: Theme.of(context)
+                    .textTheme
+                    .titleMedium!
+                    .copyWith(color: color)),
+            SizedBox(
+              width: 8.w,
+            ),
             SvgPicture.asset(rightImage),
-           const Spacer(),
+            const Spacer(),
           ],
         ),
-       const SizedBox(height: 12,),
+        const SizedBox(
+          height: 12,
+        ),
         Container(
           width: 160,
           height: height,
