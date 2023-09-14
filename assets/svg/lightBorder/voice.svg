@@ -1,5 +1,10 @@
-<svg width="24" height="24" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M8.9997 21V17.839" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    <path fill-rule="evenodd" clip-rule="evenodd" d="M8.99982 13.8481V13.8481C6.75662 13.8481 4.93774 12.0218 4.93774 9.76819V5.08095C4.93774 2.82732 6.75662 1 8.99982 1C11.2441 1 13.0619 2.82732 13.0619 5.08095V9.76819C13.0619 12.0218 11.2441 13.8481 8.99982 13.8481Z" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M17 9.80066C17 14.2395 13.4188 17.8383 8.99948 17.8383C4.58117 17.8383 1 14.2395 1 9.80066" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g id="Iconly/Light/Voice">
+        <g id="Voice">
+            <path id="Stroke 1" d="M11.9997 22V18.839" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path id="Stroke 3" fill-rule="evenodd" clip-rule="evenodd" d="M11.9998 14.8481V14.8481C9.75662 14.8481 7.93774 13.0218 7.93774 10.7682V6.08095C7.93774 3.82732 9.75662 2 11.9998 2C14.2441 2 16.0619 3.82732 16.0619 6.08095V10.7682C16.0619 13.0218 14.2441 14.8481 11.9998 14.8481Z" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path id="Stroke 5" d="M20 10.8007C20 15.2395 16.4188 18.8383 11.9995 18.8383C7.58117 18.8383 4 15.2395 4 10.8007" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+    </g>
 </svg>
+

@@ -1,6 +1,11 @@
-<svg width="24" height="24" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path fill-rule="evenodd" clip-rule="evenodd" d="M11.7377 0.761748H5.08468C3.00468 0.753748 1.29968 2.41175 1.25068 4.49075V15.2037C1.20468 17.3167 2.87968 19.0677 4.99268 19.1147C5.02368 19.1147 5.05368 19.1157 5.08468 19.1147H13.0737C15.1677 19.0297 16.8177 17.2997 16.8027 15.2037V6.03775L11.7377 0.761748Z" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M11.4751 0.75V3.659C11.4751 5.079 12.6231 6.23 14.0431 6.234H16.7981" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M11.2879 13.3585H5.88794" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M9.24296 9.60596H5.88696" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g id="Iconly/Light/Paper">
+        <g id="Paper">
+            <path id="Stroke 1" fill-rule="evenodd" clip-rule="evenodd" d="M14.7377 2.76175H8.08468C6.00468 2.75375 4.29968 4.41175 4.25068 6.49075V17.2037C4.20468 19.3167 5.87968 21.0677 7.99268 21.1147C8.02368 21.1147 8.05368 21.1157 8.08468 21.1147H16.0737C18.1677 21.0297 19.8177 19.2997 19.8027 17.2037V8.03775L14.7377 2.76175Z" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path id="Stroke 3" d="M14.4751 2.75V5.659C14.4751 7.079 15.6231 8.23 17.0431 8.234H19.7981" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path id="Stroke 5" d="M14.2879 15.3585H8.88794" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path id="Stroke 7" d="M12.243 11.606H8.88696" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+    </g>
 </svg>
+
