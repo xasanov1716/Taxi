@@ -8,11 +8,11 @@ class GlobalTextField extends StatefulWidget {
   final TextInputType keyboardType;
   final TextInputAction textInputAction;
   final IconData? prefixIcon;
-  final String? caption;
+  final String caption;
   final IconData? suffixIcon;
   final ValueChanged? onChanged;
   final FocusNode? focusNode;
-  final MaskTextInputFormatter? maskFormaters;
+  final MaskTextInputFormatter? maskFormatter;
   final TextEditingController controller;
 
   const GlobalTextField({
@@ -21,11 +21,11 @@ class GlobalTextField extends StatefulWidget {
     required this.keyboardType,
     required this.textInputAction,
      this.prefixIcon,
-     this.maskFormaters,
+     this.maskFormatter,
      this.suffixIcon,
      this.focusNode,
      this.onChanged,
-     this.caption,
+     this.caption = '',
     required this.controller,
   }) : super(key: key);
 
@@ -47,7 +47,6 @@ class _GlobalTextFieldState extends State<GlobalTextField> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        widget.caption != null ?
           Padding(
             padding: const EdgeInsets.only(top: 4.0),
             child: Text(
@@ -57,7 +56,7 @@ class _GlobalTextFieldState extends State<GlobalTextField> {
                 color: Colors.black,
               ),
             ),
-          ) : const  SizedBox(),
+          ),
          SizedBox(
           height: 5.h,
         ),
@@ -65,7 +64,7 @@ class _GlobalTextFieldState extends State<GlobalTextField> {
           controller: widget.controller,
           focusNode: widget.focusNode,
           onChanged: widget.onChanged,
-          inputFormatters: widget.maskFormaters != null ? [widget.maskFormaters!]: null,
+          inputFormatters: widget.maskFormatter != null ? [widget.maskFormatter!]: null,
           decoration: InputDecoration(
             hintText: widget.hintText,
             prefixIcon:  widget.prefixIcon != null? Icon(widget.prefixIcon, color: iconColor) : null,

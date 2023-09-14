@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lottie/lottie.dart';
-import 'package:taxi_app/ui/welcome/welcome_screen.dart';
+import 'package:taxi_app/ui/acount_setup/subscreen/fill_profile.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 
 
@@ -19,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
         context,
         MaterialPageRoute(
           builder: (BuildContext context) {
-            return const WelcomeScreen();
+            return const ProfileScreen();
           },
         ),
       );

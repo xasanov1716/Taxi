@@ -4,6 +4,7 @@ import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/ui/widgets/global_button.dart';
 import 'package:taxi_app/ui/widgets/global_input.dart';
+import 'package:taxi_app/ui/widgets/global_search_input.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -30,7 +31,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       type: MaskAutoCompletionType.lazy);
 
   var phoneFormatter = MaskTextInputFormatter(
-      mask: '998 ## ### ## ##',
+      mask: '+998 ## ### ## ##',
       filter: {"#": RegExp(r'[0-9]')},
       type: MaskAutoCompletionType.lazy);
 
@@ -87,22 +88,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 physics: const BouncingScrollPhysics(),
                 children: [
                    SizedBox(height: 24.h),
-                  GlobalTextField(
+                  GlobalSearchTextField(
                     hintText: 'Full Name',
                     keyboardType: TextInputType.text,
                     textInputAction: TextInputAction.next,
                     controller: fullName,
                   ),
                    SizedBox(height: 24.h),
-                  GlobalTextField(
+                  GlobalSearchTextField(
                     hintText: 'Nickname',
                     keyboardType: TextInputType.text,
                     textInputAction: TextInputAction.next,
                     controller: nickName,
                   ),
                    SizedBox(height: 24.h),
-                  GlobalTextField(
-                    maskFormaters: maskFormatter,
+                  GlobalSearchTextField(
+                    maskFormatter: maskFormatter,
                     hintText: 'Date of Birth',
                     focusNode: focusNode,
                     onChanged: (v) {
@@ -115,18 +116,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     controller: date,
                   ),
                    SizedBox(height: 24.h),
-                  GlobalTextField(
+                  GlobalSearchTextField(
                     hintText: 'Email',
                     keyboardType: TextInputType.emailAddress,
                     textInputAction: TextInputAction.next,
                     controller: emil,
                   ),
                    SizedBox(height: 22.h),
-                  GlobalTextField(
+                  GlobalSearchTextField(
                     hintText: 'Phone Number',
                     keyboardType: TextInputType.phone,
                     focusNode: phoneFocusNode,
-                    maskFormaters: phoneFormatter,
+                    maskFormatter: phoneFormatter,
                     onChanged: (value) {
                       if (value.length == 16) {
                         phoneFocusNode.unfocus();
@@ -136,7 +137,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     controller: phone,
                   ),
                   SizedBox(height: 24.h),
-                  GlobalTextField(
+                  GlobalSearchTextField(
                     hintText: 'Gender',
                     keyboardType: TextInputType.text,
                     textInputAction: TextInputAction.done,
