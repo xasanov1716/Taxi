@@ -57,12 +57,13 @@ dependencies:
   adaptive_theme: ^3.4.0
   flutter_rating_bar: ^4.0.1
   zoom_tap_animation: ^1.1.0
+  local_auth: ^2.1.7
 
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
+  flutter_lints: ^2.0.3
 
 flutter:
 
