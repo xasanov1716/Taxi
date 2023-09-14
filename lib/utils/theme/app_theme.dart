@@ -32,7 +32,7 @@ class AppTheme {
             color: AppColors.c_900,
             fontSize: 45.sp,
             fontWeight: FontWeight.w700,
-            fontFamily: 'Capriola'),
+            fontFamily: 'Urbanist'),
         displaySmall: TextStyle(
             color: AppColors.c_900,
             fontSize: 36.sp,
@@ -170,7 +170,7 @@ class AppTheme {
             color: AppColors.white,
             fontSize: 45.sp,
             fontWeight: FontWeight.w700,
-            fontFamily: 'Capriola'),
+            fontFamily: 'Urbanist'),
         displaySmall: TextStyle(
             color: AppColors.white,
             fontSize: 36.sp,

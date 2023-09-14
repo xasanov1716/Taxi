@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:taxi_app/ui/splash/splash_screen.dart';
+import 'package:taxi_app/ui/app_routes.dart';
+import 'package:taxi_app/utils/theme/app_theme.dart';
+
+
 
 
 void main() {
@@ -17,9 +20,13 @@ class MainApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
-        return const MaterialApp(
+        return MaterialApp(
           debugShowCheckedModeBanner: false,
-          home: SplashScreen(),
+          theme: AppTheme.lightTheme,
+          darkTheme: AppTheme.darkTheme,
+          themeMode: ThemeMode.light,
+          initialRoute: RouteNames.homeScreen,
+          onGenerateRoute: AppRoutes.generateRoute,
         );
       },
     );
