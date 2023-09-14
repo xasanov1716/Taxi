@@ -40,6 +40,18 @@ class AppIcons {
   static const String womanAvatar2="assets/images/woman_avatar2.png";
   static const String womanAvatar3="assets/images/woman_avatar3.png";
 
+  // smile images
+  static const String smileAngry="assets/images/smile_angry.png";
+  static const String smileCry="assets/images/smile_cry.png";
+  static const String smileExcited="assets/images/smile_excited.png";
+  static const String smileEyeGlass="assets/images/smile_eye_glass.png";
+  static const String smileHappy="assets/images/smile_happy.png";
+  static const String smileQuiet="assets/images/smile_quiet.png";
+  static const String smileTired="assets/images/smile_tired.png";
+  static const String smileUnhappy="assets/images/smile_unhappy.png";
+  static const String smileVeryHappy="assets/images/smile_very_happy.png";
+
+
 
   // svg
   static IconType it = IconType.bold;
