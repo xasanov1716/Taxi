@@ -10,6 +10,16 @@ dependencies:
   flutter:
     sdk: flutter
 
+  cupertino_icons: ^1.0.6
+  change_app_package_name: ^1.1.0
+  flutter_local_notifications: ^15.1.1
+  firebase_core: ^2.15.1
+  firebase_messaging: ^14.6.7
+  firebase_analytics: ^10.4.5
+  firebase_remote_config: ^4.2.2
+  flutter_advanced_switch: ^3.0.1
+  flutter_svg: ^2.0.7
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -17,3 +27,30 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/svg/
+    - assets/fonts/
+
+  fonts:
+    - family: Urbanist
+      fonts:
+        - asset: assets/fonts/Urbanist-Regular.ttf
+        - asset: assets/fonts/Urbanist-BlackItalic.ttf
+        - asset: assets/fonts/Urbanist-Black.ttf
+        - asset: assets/fonts/Urbanist-Bold.ttf
+        - asset: assets/fonts/Urbanist-BoldItalic.ttf
+        - asset: assets/fonts/Urbanist-ExtraBold.ttf
+        - asset: assets/fonts/Urbanist-ExtraBoldItalic.ttf
+        - asset: assets/fonts/Urbanist-ExtraLight.ttf
+        - asset: assets/fonts/Urbanist-ExtraLightItalic.ttf
+        - asset: assets/fonts/Urbanist-Italic.ttf
+        - asset: assets/fonts/Urbanist-Light.ttf
+        - asset: assets/fonts/Urbanist-LightItalic.ttf
+        - asset: assets/fonts/Urbanist-Medium.ttf
+        - asset: assets/fonts/Urbanist-MediumItalic.ttf
+        - asset: assets/fonts/Urbanist-SemiBold.ttf
+        - asset: assets/fonts/Urbanist-SemiBoldItalic.ttf
+        - asset: assets/fonts/Urbanist-Thin.ttf
+        - asset: assets/fonts/Urbanist-ThinItalic.ttf
