@@ -38,27 +38,9 @@ class _GlobalTextFieldState extends State<GlobalTextField> {
   bool _isPasswordVisible = false;
 
   bool isFocus = false;
-  // final FocusNode _textFieldFocus = FocusNode();
-  Color _color = Colors.white;
-  Color _iconColor = AppColors.c_50;
+  Color iconColor = AppColors.c_50;
 
-  // @override
-  // void initState() {
-  //   _textFieldFocus.addListener(() {
-  //     if (_textFieldFocus.hasFocus) {
-  //       setState(() {
-  //         _color = Colors.yellow;
-  //         _iconColor = Colors.amber;
-  //       });
-  //     } else {
-  //       setState(() {
-  //         _color = Colors.white;
-  //         _iconColor = AppColors.c_50;
-  //       });
-  //     }
-  //   });
-  //   super.initState();
-  // }
+
 
   @override
   Widget build(BuildContext context) {
@@ -86,7 +68,7 @@ class _GlobalTextFieldState extends State<GlobalTextField> {
           inputFormatters: widget.maskFormaters != null ? [widget.maskFormaters!]: null,
           decoration: InputDecoration(
             hintText: widget.hintText,
-            prefixIcon:  widget.prefixIcon != null? Icon(widget.prefixIcon, color: _iconColor) : null,
+            prefixIcon:  widget.prefixIcon != null? Icon(widget.prefixIcon, color: iconColor) : null,
             suffixIcon: widget.keyboardType == TextInputType.visiblePassword
                 ? IconButton(
                     splashRadius: 1,
@@ -94,7 +76,7 @@ class _GlobalTextFieldState extends State<GlobalTextField> {
                       _isPasswordVisible
                           ? Icons.visibility
                           : Icons.visibility_off,
-                      color: _iconColor,
+                      color: iconColor,
                     ),
                     onPressed: () {
                       setState(() {
