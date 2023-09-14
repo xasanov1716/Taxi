@@ -9,12 +9,10 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
+    return  MaterialApp(
+      home: Scaffold(appBar: AppBar(), body: Center(
           child: Text('Привет мир',style: TextStyle(fontSize: 16,fontFamily: "Urbanist",fontWeight: FontWeight.w500),),
-        ),
-      ),
-    );
+        ),),
+      );
   }
 }
