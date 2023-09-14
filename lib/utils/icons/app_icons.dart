@@ -19,15 +19,15 @@ class AppIcons {
 
 
   // smile images
-  static const String smileAngry = "assets/images/smile_angry.png";
-  static const String smileCry = "assets/images/smile_cry.png";
-  static const String smileExcited = "assets/images/smile_excited.png";
-  static const String smileEyeGlass = "assets/images/smile_eye_glass.png";
-  static const String smileHappy = "assets/images/smile_happy.png";
-  static const String smileQuiet = "assets/images/smile_quiet.png";
-  static const String smileTired = "assets/images/smile_tired.png";
-  static const String smileUnhappy = "assets/images/smile_unhappy.png";
-  static const String smileVeryHappy = "assets/images/smile_very_happy.png";
+  static const String smileAngry = "assets/images/mood/smile_angry.png";
+  static const String smileCry = "assets/images/mood/smile_cry.png";
+  static const String smileExcited = "assets/images/mood/smile_excited.png";
+  static const String smileEyeGlass = "assets/images/mood/smile_eye_glass.png";
+  static const String smileHappy = "assets/images/mood/smile_happy.png";
+  static const String smileQuiet = "assets/images/mood/smile_quiet.png";
+  static const String smileTired = "assets/images/mood/smile_tired.png";
+  static const String smileUnhappy = "assets/images/mood/smile_unhappy.png";
+  static const String smileVeryHappy = "assets/images/mood/smile_very_happy.png";
 
   // svg
   static IconType it = IconType.bold;
