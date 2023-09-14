@@ -24,4 +24,35 @@ dev_dependencies:
   flutter_lints: ^2.0.0
 
 flutter:
+
   uses-material-design: true
+
+
+  assets:
+#    - assets/images/
+    - assets/svg/
+#    - assets/translations/
+
+
+  fonts:
+    - family: Urbanist
+      fonts:
+        - asset: assets/fonts/Urbanist/Urbanist-Black.ttf
+        - asset: assets/fonts/Urbanist/Urbanist-BlackItalic.ttf
+        - asset: assets/fonts/Urbanist/Urbanist-Bold.ttf
+        - asset: assets/fonts/Urbanist/Urbanist-BoldItalic.ttf
+        - asset: assets/fonts/Urbanist/Urbanist-ExtraBold.ttf
+        - asset: assets/fonts/Urbanist/Urbanist-ExtraBoldItalic.ttf
+        - asset: assets/fonts/Urbanist/Urbanist-ExtraLight.ttf
+        - asset: assets/fonts/Urbanist/Urbanist-ExtraLightItalic.ttf
+        - asset: assets/fonts/Urbanist/Urbanist-Italic.ttf
+        - asset: assets/fonts/Urbanist/Urbanist-Light.ttf
+        - asset: assets/fonts/Urbanist/Urbanist-LightItalic.ttf
+        - asset: assets/fonts/Urbanist/Urbanist-Medium.ttf
+        - asset: assets/fonts/Urbanist/Urbanist-MediumItalic.ttf
+        - asset: assets/fonts/Urbanist/Urbanist-Regular.ttf
+        - asset: assets/fonts/Urbanist/Urbanist-SemiBold.ttf
+        - asset: assets/fonts/Urbanist/Urbanist-SemiBoldItalic.ttf
+        - asset: assets/fonts/Urbanist/Urbanist-Thin.ttf
+        - asset: assets/fonts/Urbanist/Urbanist-ThinItalic.ttf
+          style: italic
