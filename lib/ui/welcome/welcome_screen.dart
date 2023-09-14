@@ -14,7 +14,7 @@ class WelcomeScreen extends StatefulWidget {
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
   Future<void> _init() async {
-    await Future.delayed(const Duration(seconds: 2), () {
+    await Future.delayed(const Duration(seconds: 4), () {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
@@ -54,20 +54,20 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Text("Welcome to 👋", style: Theme.of(context).textTheme.displayMedium?.copyWith(fontSize: 34.sp, fontWeight: FontWeight.w700, color: Colors.white),),
+                Text("Xush kelibsiz 👋", style: Theme.of(context).textTheme.displayMedium?.copyWith(fontSize: 30.sp, fontWeight: FontWeight.w700, color: Colors.white),),
                 SizedBox(height: 12.h,),
                 Text(
-                  "Taxio",
+                  "Dastyor Taxi",
                   style: Theme.of(context)
                       .textTheme
                       .displayLarge
-                      ?.copyWith(fontSize: 96.sp, fontWeight: FontWeight.w900,color: AppColors.yellowTransparent),
+                      ?.copyWith(fontSize: 60.sp, fontWeight: FontWeight.w900,color: AppColors.yellowTransparent),
                 ),
                 SizedBox(
                   height: 24 * height / 926,
                 ),
                 Text(
-                  "The best taxi booking app of the century to make your day great!",
+                  "Kuningizni ajoyib qilish uchun asrning eng yaxshi taksi bron qilish ilovasi!",
                   style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                       fontWeight: FontWeight.w600,
                       color: Colors.white,
