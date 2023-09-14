@@ -4,6 +4,7 @@ import 'package:lottie/lottie.dart';
 import 'package:taxi_app/data/local/storage_repository/storage_repository.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 
+import '../../utils/size/screen_size.dart';
 import '../welcome/welcome_screen.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -15,7 +16,6 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   Future<void> _init() async {
-    print("Farruxxxx ${StorageRepository.getBool("isFirst")}");
     await Future.delayed(const Duration(seconds: 2), () {
       Navigator.pushReplacement(
         context,
@@ -30,6 +30,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   void initState() {
+
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: [SystemUiOverlay.top]);
     _init();
     super.initState();
@@ -37,8 +38,8 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
+    width = MediaQuery.of(context).size.width;
+    height = MediaQuery.of(context).size.height;
     return Scaffold(
       body: Column(
         children: [
