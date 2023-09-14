@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lottie/lottie.dart';
+import 'package:taxi_app/data/local/storage_repository/storage_repository.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 
 import '../welcome/welcome_screen.dart';
@@ -14,12 +15,13 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   Future<void> _init() async {
+    print("Farruxxxx ${StorageRepository.getBool("isFirst")}");
     await Future.delayed(const Duration(seconds: 2), () {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
           builder: (BuildContext context) {
-            return const WelcomeScreen();
+            return !StorageRepository.getBool("isFirst")? const WelcomeScreen():Scaffold(appBar: AppBar(title:const Text("Home Screen"),),);
           },
         ),
       );
