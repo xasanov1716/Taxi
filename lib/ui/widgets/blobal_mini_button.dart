@@ -8,7 +8,9 @@ class GlobalMiniButton extends StatelessWidget {
       required this.width,
       required this.icon,
       required this.radius,
-      required this.color, required this.onTap});
+      required this.color,
+      required this.onTap,
+      this.borderColor = Colors.transparent});
 
   final double height;
   final double width;
@@ -16,10 +18,14 @@ class GlobalMiniButton extends StatelessWidget {
   final Color color;
   final double radius;
   final VoidCallback onTap;
+  final Color borderColor;
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(radius),
+          border: Border.all(width: 2, color: borderColor)),
       height: height,
       width: width,
       child: Material(
