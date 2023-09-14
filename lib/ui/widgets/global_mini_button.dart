@@ -1,34 +1,36 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class GlobalMiniButton extends StatelessWidget {
   const GlobalMiniButton(
       {super.key,
-      required this.height,
-      required this.width,
-      required this.icon,
+      required this.child,
       required this.radius,
-      required this.color, required this.onTap});
+      required this.color,
+      required this.onTap,
+      this.borderColor = Colors.transparent, required this.size});
 
-  final double height;
-  final double width;
-  final String icon;
+  final Widget child;
   final Color color;
   final double radius;
   final VoidCallback onTap;
+  final Color borderColor;
+  final double size;
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: height,
-      width: width,
+    return Container(
+      height: size,
+      width: size,
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(radius),
+          border: Border.all(width: 2, color: borderColor)),
       child: Material(
         borderRadius: BorderRadius.circular(radius),
         color: color,
         child: InkWell(
           onTap: onTap,
           borderRadius: BorderRadius.circular(radius),
-          child: Center(child: SvgPicture.asset(icon)),
+          child: child,
         ),
       ),
     );
