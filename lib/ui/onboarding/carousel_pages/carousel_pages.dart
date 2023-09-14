@@ -59,8 +59,7 @@ Widget build(BuildContext context) {
                 ],
               ),
               Positioned(
-                  left: 190,
-                  bottom: 50,
+                  bottom: 50*height/926,
                   child: PageIndexItem(activePageIndex: pageIndex)),
             ],
           ),
