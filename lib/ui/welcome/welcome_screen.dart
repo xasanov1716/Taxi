@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:taxi_app/ui/onboarding/carousel_pages/carousel_pages.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 
@@ -13,12 +14,12 @@ class WelcomeScreen extends StatefulWidget {
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
   Future<void> _init() async {
-    await Future.delayed(const Duration(seconds: 100), () {
+    await Future.delayed(const Duration(seconds: 2), () {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
           builder: (BuildContext context) {
-            return const WelcomeScreen();
+            return const CarouselPages();
           },
         ),
       );
