@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 
-class GlobalSeachTextField extends StatefulWidget {
+class GlobalSearchTextField extends StatefulWidget {
   final String hintText;
   final TextInputType keyboardType;
   final TextInputAction textInputAction;
@@ -10,7 +10,7 @@ class GlobalSeachTextField extends StatefulWidget {
   final String caption;
   final TextEditingController controller;
 
-  const GlobalSeachTextField({
+  const GlobalSearchTextField({
     Key? key,
     required this.hintText,
     required this.keyboardType,
@@ -20,14 +20,14 @@ class GlobalSeachTextField extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _GlobalSeachTextField createState() => _GlobalSeachTextField();
+  _GlobalSearchTextField createState() => _GlobalSearchTextField();
 }
 
-class _GlobalSeachTextField extends State<GlobalSeachTextField> {
-  bool _isPasswordVisible = false;
+class _GlobalSearchTextField extends State<GlobalSearchTextField> {
+  final bool _isPasswordVisible = false;
 
   bool isFocus = false;
-  FocusNode _textFieldFocus = FocusNode();
+  final FocusNode _textFieldFocus = FocusNode();
   Color _color = Colors.white;
   Color _iconColor = Colors.grey;
 
@@ -84,19 +84,19 @@ class _GlobalSeachTextField extends State<GlobalSeachTextField> {
               onPressed: () {},
             ),
             enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey, width: 1),
+              borderSide: const BorderSide(color: Colors.grey, width: 1),
               borderRadius: BorderRadius.circular(10),
             ),
             focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.amber, width: 1),
+              borderSide: const BorderSide(color: Colors.amber, width: 1),
               borderRadius: BorderRadius.circular(10),
             ),
             errorBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.red, width: 1),
+              borderSide: const BorderSide(color: Colors.red, width: 1),
               borderRadius: BorderRadius.circular(10),
             ),
             border: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey, width: 1),
+              borderSide: const BorderSide(color: Colors.grey, width: 1),
               borderRadius: BorderRadius.circular(10),
             ),
             fillColor: _color,
