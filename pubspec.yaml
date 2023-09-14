@@ -20,7 +20,7 @@ dependencies:
   firebase_core: ^2.15.1
   firebase_messaging: ^14.6.7
   firebase_analytics: ^10.4.5
-  firebase_remote_config: ^4.2.2
+  firebase_remote_config: ^4.2.5
   flutter_advanced_switch: ^3.0.1
   flutter_svg: ^2.0.7
 
@@ -31,6 +31,7 @@ dependencies:
   flutter_login_facebook: ^1.8.0
   sign_in_with_apple: ^5.0.0
   pinput: ^3.0.1
+
 
   flutter_native_splash: ^2.3.2
   flutter_local_notifications: ^15.1.1
@@ -56,12 +57,13 @@ dependencies:
   adaptive_theme: ^3.4.0
   flutter_rating_bar: ^4.0.1
   zoom_tap_animation: ^1.1.0
+  local_auth: ^2.1.7
 
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
+  flutter_lints: ^2.0.3
 
 flutter:
 
@@ -71,6 +73,7 @@ flutter:
     - assets/images/
     - assets/svg/
     - assets/fonts/
+    - assets/lottie/
 
 
   fonts:
