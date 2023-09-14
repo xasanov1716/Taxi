@@ -3,109 +3,104 @@ import 'package:taxi_app/data/models/icons/icon_type.dart';
 class AppIcons {
   static IconType it = IconType.bold;
   static final String search = "assets/svg/${it.name}/search.svg";
-
-
-
-
-
-  2_user.svg
-  3_user.svg
-  activity.svg
-  add_user.svg
-  arrow_down.svg
-  arrow_down_2.svg
-  arrow_down_3.svg
-  arrow_down_circle.svg
-  arrow_down_square.svg
-  arrow_left.svg
-  arrow_left_2.svg
-  arrow_left_3.svg
-  arrow_left_circle.svg
-  arrow_left_square.svg
-  arrow_right.svg
-  arrow_right_2.svg
-  arrow_right_3.svg
-  arrow_right_circle.svg
-  arrow_right_square.svg
-  arrow_up.svg
-  arrow_up_2.svg
-  arrow_up_3.svg
-  arrow_up_circle.svg
-  arrow_up_square.svg
-  bag.svg
-  bag_2.svg
-  bookmark.svg
-  buy.svg
-  calendar.svg
-  call.svg
-  call_missed.svg
-  call_silent.svg
-  calling.svg
-  camera.svg
-  category.svg
-  chart.svg
-  chat.svg
-  close_square.svg
-  danger_triangle.svg
-  delete.svg
-  discount.svg
-  discovery.svg
-  document.svg
-  download.svg
-  edit.svg
-  edit_square.svg
-  filter.svg
-  filter_3.svg
-  folder.svg
-  game.svg
-  graph.svg
-  heart.svg
-  hide.svg
-  home.svg
-  image.svg
-  image_2.svg
-  info_circle.svg
-  info_square.svg
-  location.svg
-  lock.svg
-  log_out.svg
-  login.svg
-  message.svg
-  more_circle.svg
-  more_square.svg
-  notification.svg
-  paper.svg
-  paper_download.svg
-  paper_fail.svg
-  paper_negative.svg
-  paper_plus.svg
-  paper_upload.svg
-  password.svg
-  play.svg
-  plus.svg
-  profile.svg
-  scan.svg
-  search.svg
-  send.svg
-  setting.svg
-  shield_done.svg
-  shield_fail.svg
-  show.svg
-  star.svg
-  swap.svg
-  tick_square.svg
-  ticket.svg
-  ticket_star.svg
-  time_circle.svg
-  time_square.svg
-  unlock.svg
-  upload.svg
-  video.svg
-  voice.svg
-  voice_2.svg
-  volume_down.svg
-  volume_off.svg
-  volume_up.svg
-  wallet.svg
-  work.svg
+  static final String user2 = "assets/svg/${it.name}/2_user.svg";
+  static final String user3 = "assets/svg/${it.name}/3_user.svg";
+  static final String activity = "assets/svg/${it.name}/activity.svg";
+  static final String addUser = "assets/svg/${it.name}/add_user.svg";
+  static final String arrowDown = "assets/svg/${it.name}/arrow_down.svg";
+  static final String arrowDown2 = "assets/svg/${it.name}/arrow_down_2.svg";
+  static final String arrowDown3 = "assets/svg/${it.name}/arrow_down_3.svg";
+  static final String arrowDownCircle = "assets/svg/${it.name}/arrow_down_circle.svg";
+  static final String arrowDownSquare = "assets/svg/${it.name}/arrow_down_square.svg";
+  static final String arrowLeft = "assets/svg/${it.name}/arrow_left.svg";
+  static final String arrowLeft2 = "assets/svg/${it.name}/arrow_left_2.svg";
+  static final String arrowLeft3 = "assets/svg/${it.name}/arrow_left_3.svg";
+  static final String arrowLeftCircle = "assets/svg/${it.name}/arrow_left_circle.svg";
+  static final String arrowLeftSquare = "assets/svg/${it.name}/arrow_left_square.svg";
+  static final String arrowRight = "assets/svg/${it.name}/arrow_right.svg";
+  static final String arrowRight2 = "assets/svg/${it.name}/arrow_right_2.svg";
+  static final String arrowRight3 = "assets/svg/${it.name}/arrow_right_3.svg";
+  static final String arrowRightCircle = "assets/svg/${it.name}/arrow_right_circle.svg";
+  static final String arrowRightSquare = "assets/svg/${it.name}/arrow_right_square.svg";
+  static final String arrowUp = "assets/svg/${it.name}/arrow_up.svg";
+  static final String arrowUp2 = "assets/svg/${it.name}/arrow_up_2.svg";
+  static final String arrowUp3 = "assets/svg/${it.name}/arrow_up_3.svg";
+  static final String arrowUpCircle = "assets/svg/${it.name}/arrow_up_circle.svg";
+  static final String arrowUpSquare = "assets/svg/${it.name}/arrow_up_square.svg";
+  static final String bag = "assets/svg/${it.name}/bag.svg";
+  static final String bag2 = "assets/svg/${it.name}/bag_2.svg";
+  static final String bookmark = "assets/svg/${it.name}/bookmark.svg";
+  static final String buy = "assets/svg/${it.name}/buy.svg";
+  static final String calendar = "assets/svg/${it.name}/calendar.svg";
+  static final String call = "assets/svg/${it.name}/call.svg";
+  static final String callMissed = "assets/svg/${it.name}/call_missed.svg";
+  static final String callSilent = "assets/svg/${it.name}/call_silent.svg";
+  static final String calling = "assets/svg/${it.name}/calling.svg";
+  static final String camera = "assets/svg/${it.name}/camera.svg";
+  static final String category = "assets/svg/${it.name}/category.svg";
+  static final String chart = "assets/svg/${it.name}/chart.svg";
+  static final String chat = "assets/svg/${it.name}/chat.svg";
+  static final String closeSquare = "assets/svg/${it.name}/close_square.svg";
+  static final String dangerTriangle = "assets/svg/${it.name}/danger_triangle.svg";
+  static final String delete = "assets/svg/${it.name}/delete.svg";
+  static final String discount = "assets/svg/${it.name}/discount.svg";
+  static final String discovery = "assets/svg/${it.name}/discovery.svg";
+  static final String document = "assets/svg/${it.name}/document.svg";
+  static final String download = "assets/svg/${it.name}/download.svg";
+  static final String edit = "assets/svg/${it.name}/edit.svg";
+  static final String editSquare = "assets/svg/${it.name}/edit_square.svg";
+  static final String filter = "assets/svg/${it.name}/filter.svg";
+  static final String filter3 = "assets/svg/${it.name}/filter_3.svg";
+  static final String folder = "assets/svg/${it.name}/folder.svg";
+  static final String game = "assets/svg/${it.name}/game.svg";
+  static final String graph = "assets/svg/${it.name}/graph.svg";
+  static final String heart = "assets/svg/${it.name}/heart.svg";
+  static final String hide = "assets/svg/${it.name}/hide.svg";
+  static final String home = "assets/svg/${it.name}/home.svg";
+  static final String image = "assets/svg/${it.name}/image.svg";
+  static final String image2 = "assets/svg/${it.name}/image_2.svg";
+  static final String infoCircle = "assets/svg/${it.name}/info_circle.svg";
+  static final String dangerCircle = "assets/svg/${it.name}/danger_circle.svg";
+  static final String infoSquare = "assets/svg/${it.name}/info_square.svg";
+  static final String location = "assets/svg/${it.name}/location.svg";
+  static final String lock = "assets/svg/${it.name}/lock.svg";
+  static final String logOut = "assets/svg/${it.name}/log_out.svg";
+  static final String login = "assets/svg/${it.name}/login.svg";
+  static final String message = "assets/svg/${it.name}/message.svg";
+  static final String moreCircle = "assets/svg/${it.name}/more_circle.svg";
+  static final String moreSquare = "assets/svg/${it.name}/more_square.svg";
+  static final String notification = "assets/svg/${it.name}/notification.svg";
+  static final String paper = "assets/svg/${it.name}/paper.svg";
+  static final String paperDownload = "assets/svg/${it.name}/paper_download.svg";
+  static final String paperFail = "assets/svg/${it.name}/paper_fail.svg";
+  static final String paperNegative = "assets/svg/${it.name}/paper_negative.svg";
+  static final String paperPlus = "assets/svg/${it.name}/paper_plus.svg";
+  static final String paperUpload = "assets/svg/${it.name}/paper_upload.svg";
+  static final String password = "assets/svg/${it.name}/password.svg";
+  static final String play = "assets/svg/${it.name}/play.svg";
+  static final String plus = "assets/svg/${it.name}/plus.svg";
+  static final String profile = "assets/svg/${it.name}/profile.svg";
+  static final String scan = "assets/svg/${it.name}/scan.svg";
+  static final String send = "assets/svg/${it.name}/send.svg";
+  static final String setting = "assets/svg/${it.name}/setting.svg";
+  static final String shieldDone = "assets/svg/${it.name}/shield_done.svg";
+  static final String shieldFail = "assets/svg/${it.name}/shield_fail.svg";
+  static final String show = "assets/svg/${it.name}/show.svg";
+  static final String star = "assets/svg/${it.name}/star.svg";
+  static final String swap = "assets/svg/${it.name}/swap.svg";
+  static final String tickSquare = "assets/svg/${it.name}/tick_square.svg";
+  static final String ticket = "assets/svg/${it.name}/ticket.svg";
+  static final String ticketStar = "assets/svg/${it.name}/ticket_star.svg";
+  static final String timeCircle = "assets/svg/${it.name}/time_circle.svg";
+  static final String timeSquare = "assets/svg/${it.name}/time_square.svg";
+  static final String unlock = "assets/svg/${it.name}/unlock.svg";
+  static final String upload = "assets/svg/${it.name}/upload.svg";
+  static final String video = "assets/svg/${it.name}/video.svg";
+  static final String voice = "assets/svg/${it.name}/voice.svg";
+  static final String voice2 = "assets/svg/${it.name}/voice_2.svg";
+  static final String volumeDown = "assets/svg/${it.name}/volume_down.svg";
+  static final String volumeOff = "assets/svg/${it.name}/volume_off.svg";
+  static final String volumeUp = "assets/svg/${it.name}/volume_up.svg";
+  static final String wallet = "assets/svg/${it.name}/wallet.svg";
+  static final String work = "assets/svg/${it.name}/work.svg";
 }
