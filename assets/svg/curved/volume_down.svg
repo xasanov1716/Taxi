@@ -1,4 +1,8 @@
-<svg width="24" height="24" viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path fill-rule="evenodd" clip-rule="evenodd" d="M1.00185 8.00014C0.999065 9.22979 0.944194 10.907 1.70494 11.5339C2.41453 12.1187 2.91395 11.968 4.20945 12.0631C5.50587 12.1591 8.24195 15.97 10.3512 14.7646C11.4393 13.9089 11.5202 12.1151 11.5202 8.00014C11.5202 3.88515 11.4393 2.09135 10.3512 1.23571C8.24195 0.0293753 5.50587 3.84121 4.20945 3.93717C2.91395 4.03225 2.41453 3.88157 1.70494 4.46635C0.944194 5.09328 0.999065 6.77049 1.00185 8.00014Z" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M15.5813 4.31445C16.8926 6.60514 16.8926 9.40257 15.5813 11.6861" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g id="Iconly/Curved/Volume Down">
+        <g id="Volume Down">
+            <path id="Stroke 1" d="M18.6558 8.63452C19.9091 10.9056 19.9091 13.6772 18.6558 15.9403" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path id="Stroke 3" fill-rule="evenodd" clip-rule="evenodd" d="M4.66711 12.2873C4.66355 13.506 4.66711 14.9353 5.67333 15.7896C6.67955 16.6447 7.47866 16.2918 8.78088 16.7202C10.084 17.1496 11.9089 19.7967 13.9249 18.6011C15.0147 17.8269 15.5284 16.3656 15.5284 12.2873C15.5284 8.20912 15.0378 6.76379 13.9249 5.97357C11.9089 4.7789 10.084 7.42601 8.78088 7.85445C7.47866 8.28379 6.67955 7.9309 5.67333 8.78512C4.66711 9.63934 4.66355 11.0687 4.66711 12.2873Z" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+    </g>
 </svg>

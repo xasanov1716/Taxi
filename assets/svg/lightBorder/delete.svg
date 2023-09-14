@@ -1,5 +1,9 @@
-<svg width="24" height="24" viewBox="0 0 19 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M16.325 7.46826C16.325 7.46826 15.782 14.2033 15.467 17.0403C15.317 18.3953 14.48 19.1893 13.109 19.2143C10.5 19.2613 7.88803 19.2643 5.28003 19.2093C3.96103 19.1823 3.13803 18.3783 2.99103 17.0473C2.67403 14.1853 2.13403 7.46826 2.13403 7.46826" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M17.7082 4.23975H0.750244" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M14.4406 4.23973C13.6556 4.23973 12.9796 3.68473 12.8256 2.91573L12.5826 1.69973C12.4326 1.13873 11.9246 0.750732 11.3456 0.750732H7.11258C6.53358 0.750732 6.02558 1.13873 5.87558 1.69973L5.63258 2.91573C5.47858 3.68473 4.80258 4.23973 4.01758 4.23973" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g id="Iconly/Light/Delete">
+        <g id="Delete">
+            <path id="Stroke 1" d="M19.325 9.46826C19.325 9.46826 18.782 16.2033 18.467 19.0403C18.317 20.3953 17.48 21.1893 16.109 21.2143C13.5 21.2613 10.888 21.2643 8.28003 21.2093C6.96103 21.1823 6.13803 20.3783 5.99103 19.0473C5.67403 16.1853 5.13403 9.46826 5.13403 9.46826" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path id="Stroke 3" d="M20.7082 6.23975H3.75024" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path id="Stroke 5" d="M17.4406 6.23973C16.6556 6.23973 15.9796 5.68473 15.8256 4.91573L15.5826 3.69973C15.4326 3.13873 14.9246 2.75073 14.3456 2.75073H10.1126C9.53358 2.75073 9.02558 3.13873 8.87558 3.69973L8.63258 4.91573C8.47858 5.68473 7.80258 6.23973 7.01758 6.23973" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+    </g>
 </svg>

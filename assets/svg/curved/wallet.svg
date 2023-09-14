@@ -1,6 +1,10 @@
-<svg width="24" height="24" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M20.6389 12.3957H16.5906C15.1042 12.3948 13.8993 11.1909 13.8984 9.70446C13.8984 8.21801 15.1042 7.01409 16.5906 7.01318H20.6389" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M17.0485 9.64294H16.7369" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    <path fill-rule="evenodd" clip-rule="evenodd" d="M6.74766 1H15.3911C18.2892 1 20.6388 3.34951 20.6388 6.24766V13.4247C20.6388 16.3229 18.2892 18.6724 15.3911 18.6724H6.74766C3.84951 18.6724 1.5 16.3229 1.5 13.4247V6.24766C1.5 3.34951 3.84951 1 6.74766 1Z" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M6.03564 5.5382H11.4346" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g id="Iconly/Curved/Wallet">
+        <g id="Wallet">
+            <path id="Stroke 1" d="M21.1712 14.6755H17.2845C15.8693 14.6755 14.7217 13.5279 14.7217 12.1117C14.7217 10.6964 15.8693 9.54883 17.2845 9.54883H21.1407" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path id="Stroke 3" d="M17.7219 12.0531H17.4248" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path id="Stroke 5" d="M7.6062 8.14367H11.6662" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path id="Stroke 7" fill-rule="evenodd" clip-rule="evenodd" d="M2.71411 12.2532C2.71411 5.8484 5.03887 3.71411 12.0151 3.71411C18.9903 3.71411 21.3151 5.8484 21.3151 12.2532C21.3151 18.657 18.9903 20.7922 12.0151 20.7922C5.03887 20.7922 2.71411 18.657 2.71411 12.2532Z" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+    </g>
 </svg>

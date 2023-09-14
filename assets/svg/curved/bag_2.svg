@@ -1,4 +1,8 @@
-<svg width="24" height="24" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M13.7729 8.30504V5.27304C13.7729 3.18904 12.0839 1.50004 10.0009 1.50004C7.91694 1.49104 6.21994 3.17204 6.21094 5.25604V5.27304V8.30504" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    <path fill-rule="evenodd" clip-rule="evenodd" d="M14.7422 20.0004H5.25778C2.90569 20.0004 1 18.0954 1 15.7454V10.2294C1 7.87937 2.90569 5.97437 5.25778 5.97437H14.7422C17.0943 5.97437 19 7.87937 19 10.2294V15.7454C19 18.0954 17.0943 20.0004 14.7422 20.0004Z" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g id="Iconly/Curved/Bag 2">
+        <g id="Bag 2">
+            <path id="Stroke 1" d="M15.7497 9.47167V6.43967C15.7547 4.35167 14.0657 2.65467 11.9777 2.64967C9.88874 2.64567 8.19274 4.33467 8.18774 6.42267V9.47167" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path id="Stroke 3" fill-rule="evenodd" clip-rule="evenodd" d="M2.94995 14.2074C2.94995 8.91344 5.20495 7.14844 11.969 7.14844C18.733 7.14844 20.988 8.91344 20.988 14.2074C20.988 19.5004 18.733 21.2654 11.969 21.2654C5.20495 21.2654 2.94995 19.5004 2.94995 14.2074Z" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+    </g>
 </svg>

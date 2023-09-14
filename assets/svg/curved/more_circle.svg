@@ -1,6 +1,10 @@
-<svg width="24" height="24" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path fill-rule="evenodd" clip-rule="evenodd" d="M10.0002 0.750122C15.1082 0.750122 19.2502 4.89112 19.2502 10.0001C19.2502 15.1081 15.1082 19.2501 10.0002 19.2501C4.89124 19.2501 0.750244 15.1081 0.750244 10.0001C0.750244 4.89212 4.89224 0.750122 10.0002 0.750122Z" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M13.9393 10.0131H13.9483" stroke="#212121" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M9.93056 10.0131H9.93956" stroke="#212121" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M5.92153 10.0131H5.93053" stroke="#212121" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g id="Iconly/Curved/More Circle">
+        <g id="More Circle">
+            <path id="Stroke 4" fill-rule="evenodd" clip-rule="evenodd" d="M2.75024 12C2.75024 5.063 5.06324 2.75 12.0002 2.75C18.9372 2.75 21.2502 5.063 21.2502 12C21.2502 18.937 18.9372 21.25 12.0002 21.25C5.06324 21.25 2.75024 18.937 2.75024 12Z" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path id="Stroke 11" d="M15.2045 13.8999H15.2135" stroke="#212121" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path id="Stroke 13" d="M12.2045 9.8999H12.2135" stroke="#212121" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path id="Stroke 15" d="M9.19545 13.8999H9.20445" stroke="#212121" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+    </g>
 </svg>

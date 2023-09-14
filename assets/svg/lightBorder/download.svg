@@ -1,5 +1,10 @@
-<svg width="24" height="24" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M10.1223 13.4361L10.1223 1.39514" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M13.0383 10.5084L10.1223 13.4364L7.20633 10.5084" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M14.7551 6.12805H15.6881C17.7231 6.12805 19.3721 7.77705 19.3721 9.81305V14.6971C19.3721 16.7271 17.7271 18.3721 15.6971 18.3721L4.55707 18.3721C2.52207 18.3721 0.87207 16.7221 0.87207 14.6871V9.80205C0.87207 7.77305 2.51807 6.12805 4.54707 6.12805H5.48907" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g id="Iconly/Light/Download">
+        <g id="Downlaod">
+            <path id="Stroke 1" d="M12.1223 15.4361L12.1223 3.39514" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path id="Stroke 3" d="M15.0383 12.5084L12.1223 15.4364L9.20633 12.5084" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path id="Stroke 4" d="M16.7551 8.12805H17.6881C19.7231 8.12805 21.3721 9.77705 21.3721 11.8131V16.6971C21.3721 18.7271 19.7271 20.3721 17.6971 20.3721L6.55707 20.3721C4.52207 20.3721 2.87207 18.7221 2.87207 16.6871V11.8021C2.87207 9.77305 4.51807 8.12805 6.54707 8.12805L7.48907 8.12805" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+    </g>
 </svg>
+

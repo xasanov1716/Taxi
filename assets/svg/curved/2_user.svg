@@ -1,6 +1,10 @@
-<svg width="24" height="24" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path fill-rule="evenodd" clip-rule="evenodd" d="M7.59151 13.2068C11.2805 13.2068 14.4335 13.7658 14.4335 15.9988C14.4335 18.2318 11.3015 18.8068 7.59151 18.8068C3.90151 18.8068 0.749512 18.2528 0.749512 16.0188C0.749512 13.7848 3.88051 13.2068 7.59151 13.2068Z" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    <path fill-rule="evenodd" clip-rule="evenodd" d="M7.59157 10.0198C5.16957 10.0198 3.20557 8.05676 3.20557 5.63476C3.20557 3.21276 5.16957 1.24976 7.59157 1.24976C10.0126 1.24976 11.9766 3.21276 11.9766 5.63476C11.9856 8.04776 10.0356 10.0108 7.62257 10.0198H7.59157Z" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M14.4832 8.88153C16.0842 8.65653 17.3172 7.28253 17.3202 5.61953C17.3202 3.98053 16.1252 2.62053 14.5582 2.36353" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M16.5955 12.7322C18.1465 12.9632 19.2295 13.5072 19.2295 14.6272C19.2295 15.3982 18.7195 15.8982 17.8955 16.2112" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g id="Iconly/Curved/2 User">
+        <g id="2 User">
+            <path id="Stroke 1" fill-rule="evenodd" clip-rule="evenodd" d="M9.55851 21.4562C5.88651 21.4562 2.74951 20.9012 2.74951 18.6772C2.74951 16.4532 5.86651 14.4492 9.55851 14.4492C13.2305 14.4492 16.3665 16.4342 16.3665 18.6572C16.3665 20.8802 13.2505 21.4562 9.55851 21.4562Z" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path id="Stroke 3" fill-rule="evenodd" clip-rule="evenodd" d="M9.55861 11.2776C11.9686 11.2776 13.9226 9.32356 13.9226 6.91356C13.9226 4.50356 11.9686 2.54956 9.55861 2.54956C7.14861 2.54956 5.19461 4.50356 5.19461 6.91356C5.18561 9.31556 7.12661 11.2696 9.52761 11.2776H9.55861Z" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path id="Stroke 5" d="M16.8013 10.0789C18.2043 9.70388 19.2383 8.42488 19.2383 6.90288C19.2393 5.31488 18.1123 3.98888 16.6143 3.68188" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path id="Stroke 7" d="M17.4607 13.6536C19.4487 13.6536 21.1467 15.0016 21.1467 16.2046C21.1467 16.9136 20.5617 17.6416 19.6717 17.8506" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+    </g>
 </svg>

@@ -1,3 +1,8 @@
-<svg width="24" height="24" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M13.8325 6.17463L8.10904 11.9592L1.59944 7.88767C0.66675 7.30414 0.860765 5.88744 1.91572 5.57893L17.3712 1.05277C18.3373 0.769629 19.2326 1.67283 18.9456 2.642L14.3731 18.0868C14.0598 19.1432 12.6512 19.332 12.0732 18.3953L8.10601 11.9602" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g id="Iconly/Curved/Send">
+        <g id="Send">
+            <path id="Stroke 1" fill-rule="evenodd" clip-rule="evenodd" d="M11.4933 12.4382C11.4933 12.4382 -0.483351 9.96062 3.6786 7.55807C7.19075 5.53077 19.2947 2.04522 20.9857 2.94582C21.8863 4.63682 18.4007 16.7408 16.3734 20.2529C13.9709 24.4149 11.4933 12.4382 11.4933 12.4382Z" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path id="Stroke 3" d="M11.4934 12.4382L20.9858 2.9458" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+    </g>
 </svg>
