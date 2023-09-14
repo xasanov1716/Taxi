@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:taxi_app/ui/widgets/horizontal_tab.dart';
-import 'package:taxi_app/utils/colors/app_colors.dart';
-import 'package:taxi_app/utils/icons/app_icons.dart';
 
 
 void main() {
@@ -26,9 +23,9 @@ class MainApp extends StatelessWidget {
               child: Text(
                 'Привет мир',
                 style: TextStyle(
-                    fontSize: 16,
-                    fontFamily: "Urbanist",
-                    fontWeight: FontWeight.w500,),
+                  fontSize: 16,
+                  fontFamily: "Urbanist",
+                  fontWeight: FontWeight.w500,),
               ),
             ),
           ),
