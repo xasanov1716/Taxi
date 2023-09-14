@@ -4,7 +4,7 @@ publish_to: 'none'
 version: 0.1.0
 
 environment:
-  sdk: '>=3.1.0 <4.0.0'
+  sdk: '>=3.1.2 <4.0.0'
 
 dependencies:
   flutter:
@@ -56,6 +56,7 @@ dependencies:
   flutter_rating_bar: ^4.0.1
   zoom_tap_animation: ^1.1.0
 
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -78,13 +79,7 @@ flutter:
         - asset: assets/fonts/Urbanist/Urbanist-BlackItalic.ttf
         - asset: assets/fonts/Urbanist/Urbanist-Bold.ttf
         - asset: assets/fonts/Urbanist/Urbanist-BoldItalic.ttf
-        - asset: assets/fonts/Urbanist/Urbanist-ExtraBold.ttf
-        - asset: assets/fonts/Urbanist/Urbanist-ExtraBoldItalic.ttf
-        - asset: assets/fonts/Urbanist/Urbanist-ExtraLight.ttf
-        - asset: assets/fonts/Urbanist/Urbanist-ExtraLightItalic.ttf
         - asset: assets/fonts/Urbanist/Urbanist-Italic.ttf
-        - asset: assets/fonts/Urbanist/Urbanist-Light.ttf
-        - asset: assets/fonts/Urbanist/Urbanist-LightItalic.ttf
         - asset: assets/fonts/Urbanist/Urbanist-Medium.ttf
         - asset: assets/fonts/Urbanist/Urbanist-MediumItalic.ttf
         - asset: assets/fonts/Urbanist/Urbanist-Regular.ttf
