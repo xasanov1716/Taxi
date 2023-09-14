@@ -156,4 +156,8 @@ class AppIcons {
   static final String volumeUp = "assets/svg/${it.name}/volume_up.svg";
   static final String wallet = "assets/svg/${it.name}/wallet.svg";
   static final String work = "assets/svg/${it.name}/work.svg";
+
+  // lottie
+  static const String splashCircular = "assets/lottie/splash_circular.json";
+
 }
