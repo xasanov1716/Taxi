@@ -1,5 +1,11 @@
-<svg width="24" height="24" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path fill-rule="evenodd" clip-rule="evenodd" d="M13.0402 1.05126C14.0502 1.45326 14.3592 2.85326 14.7722 3.30326C15.1852 3.75326 15.7762 3.90626 16.1032 3.90626C17.8412 3.90626 19.2502 5.31526 19.2502 7.05226V12.8473C19.2502 15.1773 17.3602 17.0673 15.0302 17.0673H4.97024C2.63924 17.0673 0.750244 15.1773 0.750244 12.8473V7.05226C0.750244 5.31526 2.15924 3.90626 3.89724 3.90626C4.22324 3.90626 4.81424 3.75326 5.22824 3.30326C5.64124 2.85326 5.94924 1.45326 6.95924 1.05126C7.97024 0.649256 12.0302 0.649256 13.0402 1.05126Z" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M15.4955 6.5H15.5045" stroke="#212121" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    <path fill-rule="evenodd" clip-rule="evenodd" d="M13.179 10.128C13.179 8.37197 11.756 6.94897 10 6.94897C8.24404 6.94897 6.82104 8.37197 6.82104 10.128C6.82104 11.884 8.24404 13.307 10 13.307C11.756 13.307 13.179 11.884 13.179 10.128Z" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g id="Iconly/Two-tone/Camera">
+        <g id="Camera">
+            <path id="Stroke 1" fill-rule="evenodd" clip-rule="evenodd" d="M15.0402 4.0515C16.0502 4.4535 16.3592 5.8535 16.7722 6.3035C17.1852 6.7535 17.7762 6.9065 18.1032 6.9065C19.8412 6.9065 21.2502 8.3155 21.2502 10.0525V15.8475C21.2502 18.1775 19.3602 20.0675 17.0302 20.0675H6.97024C4.63924 20.0675 2.75024 18.1775 2.75024 15.8475V10.0525C2.75024 8.3155 4.15924 6.9065 5.89724 6.9065C6.22324 6.9065 6.81424 6.7535 7.22824 6.3035C7.64124 5.8535 7.94924 4.4535 8.95924 4.0515C9.97024 3.6495 14.0302 3.6495 15.0402 4.0515Z" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <g id="Group">
+                <path id="Stroke 13" opacity="0.4" d="M17.4957 9.7002H17.5047" stroke="#212121" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path id="Stroke 5" opacity="0.4" fill-rule="evenodd" clip-rule="evenodd" d="M15.179 13.3284C15.179 11.5724 13.756 10.1494 12 10.1494C10.244 10.1494 8.82104 11.5724 8.82104 13.3284C8.82104 15.0844 10.244 16.5074 12 16.5074C13.756 16.5074 15.179 15.0844 15.179 13.3284Z" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+        </g>
+    </g>
 </svg>

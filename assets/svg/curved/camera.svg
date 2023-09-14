@@ -1,5 +1,9 @@
-<svg width="24" height="24" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path fill-rule="evenodd" clip-rule="evenodd" d="M13.0402 1.05126C14.0502 1.45326 14.3592 2.85326 14.7722 3.30326C15.1852 3.75326 15.7762 3.90626 16.1032 3.90626C17.8412 3.90626 19.2502 5.31526 19.2502 7.05226V12.8473C19.2502 15.1773 17.3602 17.0673 15.0302 17.0673H4.97024C2.63924 17.0673 0.750244 15.1773 0.750244 12.8473V7.05226C0.750244 5.31526 2.15924 3.90626 3.89724 3.90626C4.22324 3.90626 4.81424 3.75326 5.22824 3.30326C5.64124 2.85326 5.94924 1.45326 6.95924 1.05126C7.97024 0.649256 12.0302 0.649256 13.0402 1.05126Z" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M15.4955 6.5H15.5045" stroke="#212121" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    <path fill-rule="evenodd" clip-rule="evenodd" d="M13.179 10.128C13.179 8.37197 11.756 6.94897 10 6.94897C8.24404 6.94897 6.82104 8.37197 6.82104 10.128C6.82104 11.884 8.24404 13.307 10 13.307C11.756 13.307 13.179 11.884 13.179 10.128Z" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g id="Iconly/Curved/Camera">
+        <g id="Camera">
+            <path id="Stroke 2" fill-rule="evenodd" clip-rule="evenodd" d="M15.438 12.4983C15.438 10.7614 14.0296 9.35303 12.2927 9.35303C10.5559 9.35303 9.14746 10.7614 9.14746 12.4983C9.14746 14.2351 10.5559 15.6436 12.2927 15.6436C14.0296 15.6436 15.438 14.2351 15.438 12.4983Z" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path id="Stroke 4" fill-rule="evenodd" clip-rule="evenodd" d="M12.2925 20.2002C20.3377 20.2002 21.2956 17.7897 21.2956 12.5665C21.2956 8.90545 20.8114 6.94651 17.7619 6.1044C17.4819 6.01598 17.1714 5.84756 16.9198 5.57072C16.5135 5.12545 16.2167 3.75809 15.2356 3.3444C14.2546 2.93177 10.3146 2.95072 9.34931 3.3444C8.3851 3.73914 8.07141 5.12545 7.6651 5.57072C7.41352 5.84756 7.10404 6.01598 6.82299 6.1044C3.77352 6.94651 3.28931 8.90545 3.28931 12.5665C3.28931 17.7897 4.2472 20.2002 12.2925 20.2002Z" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path id="Stroke 11" d="M17.2045 9H17.2135" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+    </g>
 </svg>

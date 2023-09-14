@@ -1,6 +1,10 @@
-<svg width="24" height="24" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path fill-rule="evenodd" clip-rule="evenodd" d="M18.0714 18.0699C15.0152 21.1263 10.4898 21.7867 6.78642 20.074C6.23971 19.8539 5.79148 19.676 5.36537 19.676C4.17849 19.683 2.70117 20.8339 1.93336 20.067C1.16555 19.2991 2.31726 17.8206 2.31726 16.6266C2.31726 16.2004 2.14642 15.7602 1.92632 15.2124C0.212831 11.5096 0.874109 6.98269 3.93026 3.92721C7.8316 0.0244319 14.17 0.0244322 18.0714 3.9262C21.9797 7.83501 21.9727 14.1681 18.0714 18.0699Z" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M14.9393 11.413H14.9483" stroke="#212121" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M10.9303 11.413H10.9393" stroke="#212121" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M6.92128 11.413H6.93028" stroke="#212121" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g id="Iconly/Two-tone/Chat">
+        <g id="Chat">
+            <path id="Stroke 4" fill-rule="evenodd" clip-rule="evenodd" d="M19.0714 19.0699C16.0152 22.1263 11.4898 22.7867 7.78642 21.074C7.23971 20.8539 6.79148 20.676 6.36537 20.676C5.17849 20.683 3.70117 21.8339 2.93336 21.067C2.16555 20.2991 3.31726 18.8206 3.31726 17.6266C3.31726 17.2004 3.14642 16.7602 2.92632 16.2124C1.21283 12.5096 1.87411 7.98269 4.93026 4.92721C8.8316 1.02443 15.17 1.02443 19.0714 4.9262C22.9797 8.83501 22.9727 15.1681 19.0714 19.0699Z" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path id="Stroke 11" opacity="0.4" d="M15.9393 12.4131H15.9483" stroke="#212121" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path id="Stroke 13" opacity="0.4" d="M11.9303 12.4131H11.9393" stroke="#212121" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path id="Stroke 15" opacity="0.4" d="M7.92128 12.4131H7.93028" stroke="#212121" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+    </g>
 </svg>

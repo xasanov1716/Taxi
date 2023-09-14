@@ -1,5 +1,9 @@
-<svg width="24" height="24" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M10.1223 13.4361L10.1223 1.39514" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M13.0383 10.5084L10.1223 13.4364L7.20633 10.5084" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M14.7551 6.12805H15.6881C17.7231 6.12805 19.3721 7.77705 19.3721 9.81305V14.6971C19.3721 16.7271 17.7271 18.3721 15.6971 18.3721L4.55707 18.3721C2.52207 18.3721 0.87207 16.7221 0.87207 14.6871V9.80205C0.87207 7.77305 2.51807 6.12805 4.54707 6.12805H5.48907" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g id="Iconly/Curved/Download">
+        <g id="Download">
+            <path id="Stroke 1" d="M11.8792 14.791V2.75" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path id="Stroke 3" d="M14.7951 11.8643L11.8791 14.7923L8.96313 11.8643" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path id="Stroke 4" d="M16.3702 7.25879C19.9492 7.58879 21.2502 8.92879 21.2502 14.2588C21.2502 21.3588 18.9392 21.3588 12.0002 21.3588C5.05924 21.3588 2.75024 21.3588 2.75024 14.2588C2.75024 8.92879 4.05024 7.58879 7.63024 7.25879" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+    </g>
 </svg>

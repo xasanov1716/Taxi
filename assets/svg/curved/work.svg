@@ -1,6 +1,10 @@
-<svg width="24" height="24" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M9.99512 14.6768V12.1398" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    <path fill-rule="evenodd" clip-rule="evenodd" d="M16.19 3.3302C17.88 3.3302 19.24 4.7002 19.24 6.3902V9.8302C16.78 11.2702 13.53 12.1402 9.99 12.1402C6.45 12.1402 3.21 11.2702 0.75 9.8302V6.3802C0.75 4.6902 2.12 3.3302 3.81 3.3302H16.19Z" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M13.4951 3.32576V2.95976C13.4951 1.73976 12.5051 0.749756 11.2851 0.749756H8.70512C7.48512 0.749756 6.49512 1.73976 6.49512 2.95976V3.32576" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M0.774414 13.4829L0.963414 15.9919C1.09141 17.6829 2.50041 18.9899 4.19541 18.9899H15.7944C17.4894 18.9899 18.8984 17.6829 19.0264 15.9919L19.2154 13.4829" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g id="Iconly/Curved/Work">
+        <g id="Work">
+            <path id="Stroke 1" d="M11.9612 16.5167V13.8887" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path id="Stroke 2" d="M21.0895 11.4775L21.0605 11.4985C18.6385 12.9905 15.4405 13.8915 11.9565 13.8915C8.47252 13.8915 5.28352 12.9905 2.86252 11.4985L2.83252 11.4775" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path id="Stroke 4" fill-rule="evenodd" clip-rule="evenodd" d="M2.75024 13.3507C2.75024 7.19871 5.05324 5.14771 11.9612 5.14771C18.8702 5.14771 21.1722 7.19871 21.1722 13.3507C21.1722 19.5027 18.8702 21.5537 11.9612 21.5537C5.05324 21.5537 2.75024 19.5027 2.75024 13.3507Z" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path id="Stroke 6" d="M15.2237 5.3692V4.7392C15.2237 3.4752 14.3007 2.4502 13.1637 2.4502H10.7587C9.62173 2.4502 8.69873 3.4752 8.69873 4.7392V5.3692" stroke="#212121" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+    </g>
 </svg>
