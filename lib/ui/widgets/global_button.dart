@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class GlobalButton extends StatelessWidget {
@@ -11,8 +12,6 @@ class GlobalButton extends StatelessWidget {
     this.leftIcon = "",
     this.rightIcon = "",
     this.borderColor = Colors.transparent,
-    this.width = 380.0,
-    this.height = 58.0,
     required this.onTap,
   });
 
@@ -25,8 +24,6 @@ class GlobalButton extends StatelessWidget {
   final String rightIcon;
   final String leftIcon;
   final Color borderColor;
-  final double height;
-  final double width;
   final VoidCallback onTap;
 
   @override
@@ -35,8 +32,6 @@ class GlobalButton extends StatelessWidget {
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(radius),
           border: Border.all(width: 1, color: borderColor)),
-      height: height,
-      width: width,
       child: Material(
         borderRadius: BorderRadius.circular(radius),
         color: color,
@@ -48,19 +43,21 @@ class GlobalButton extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 leftIcon.isEmpty ? const Text("") : SvgPicture.asset(leftIcon),
-                const SizedBox(width: 16),
-                Text(
-                  title,
-                  style: TextStyle(
-                    fontFamily: "Urbanist",
-                    fontSize: 16,
-                    fontWeight: FontWeight.w700,
-                    color: textColor,
-                    height: 22 / 16,
+                SizedBox(width: 16.w),
+                Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Text(
+                    title,
+                    style: TextStyle(
+                      fontFamily: "Urbanist",
+                      fontSize: 16.sp,
+                      fontWeight: FontWeight.w700,
+                      color: textColor,
+                    ),
+                    textAlign: TextAlign.center,
                   ),
-                  textAlign: TextAlign.center,
                 ),
-                const SizedBox(width: 16),
+                SizedBox(width: 16.w),
                 rightIcon.isEmpty
                     ? const Text("")
                     : SvgPicture.asset(rightIcon),
