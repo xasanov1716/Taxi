@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:taxi_app/ui/onboarding/carousel_pages/carousel_pages.dart';
 
 void main() {
   runApp(const MainApp());
@@ -10,11 +11,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Привет мир',style: TextStyle(fontSize: 16,fontFamily: "Urbanist",fontWeight: FontWeight.w500),),
-        ),
-      ),
+      home: CarouselPages(),
     );
   }
 }
