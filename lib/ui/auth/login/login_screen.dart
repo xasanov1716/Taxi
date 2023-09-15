@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taxi_app/ui/app_routes.dart';
@@ -95,3 +96,4 @@ class LoginScreen extends StatelessWidget {
     ));
   }
 }
+
