@@ -87,7 +87,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     style: Theme.of(context)
                         .textTheme
                         .displayLarge
-                        ?.copyWith(fontSize: 60.sp, fontWeight: FontWeight.w900, color: AppColors.yellowTransparent),
+                        ?.copyWith(fontSize: 60.sp, fontWeight: FontWeight.w900, color: AppColors.orange),
                   ),
                   SizedBox(
                     height: 24 * height / 926,

@@ -25,7 +25,6 @@ class _CarouselPagesState extends State<CarouselPages> {
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: AppColors.white,
         actions: [
           Padding(
             padding: EdgeInsets.symmetric(
@@ -39,11 +38,7 @@ class _CarouselPagesState extends State<CarouselPages> {
               },
               child: Text(
                 "O'tkazib yuborish",
-                style: TextStyle(
-                  color: AppColors.black,
-                  fontSize: 16.sp,
-                  decoration: TextDecoration.underline,
-                ),
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(decoration: TextDecoration.underline),
               ),
             ),
           )
