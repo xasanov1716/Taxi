@@ -143,6 +143,11 @@ class AppIcons {
   static final String wallet = "assets/svg/${it.name}/wallet.svg";
   static final String work = "assets/svg/${it.name}/work.svg";
 
+  //auth svg
+  static const String facebook = "assets/svg/auth_svg/facebook.svg";
+  static const String google = "assets/svg/auth_svg/google.svg";
+  static const String apple = "assets/svg/auth_svg/apple.svg";
+
   // lottie
   static const String splashCircular = "assets/lottie/splash_circular.json";
 
