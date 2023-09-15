@@ -119,14 +119,13 @@ class AppColors {
 
   //----------------- TRANSPARENT COLORS ------------------------
 
-  static const Color primaryTransparent = Color(0xFFFEBB1B);
-  static const Color purpleTransparent = Color(0xFF7210FF);
-  static const Color blueTransparent = Color(0xFF335EF7);
-  static const Color orangeTransparent = Color(0xFFFF9800);
-  static const Color yellowTransparent = Color(0xFFFACC15);
-  static const Color redTransparent = Color(0xFFF75555);
-  static const Color greenTransparent = Color(0xFF4CAF50);
-  static const Color cyanTransparent = Color(0xFF00BCD4);
-
+  static const Color primaryTransparent = Color(0x14febb1b);
+  static const Color purpleTransparent = Color(0x147210ff);
+  static const Color blueTransparent = Color(0x14335ef7);
+  static const Color orangeTransparent = Color(0x14ff9800);
+  static const Color yellowTransparent = Color(0x14facc15);
+  static const Color redTransparent = Color(0x14f75555);
+  static const Color greenTransparent = Color(0x144caf50);
+  static const Color cyanTransparent = Color(0x1400bcd4);
 
 }
