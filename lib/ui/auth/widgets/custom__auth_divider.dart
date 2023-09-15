@@ -4,7 +4,7 @@ import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 
 class CustomAuthDividerWidget extends StatelessWidget {
-  const CustomAuthDividerWidget({
+  const CustomAuthDividerWidget( {
     super.key,
     required this.label,
   });
