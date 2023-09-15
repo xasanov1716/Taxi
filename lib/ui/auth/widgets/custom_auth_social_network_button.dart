@@ -20,16 +20,25 @@ class CustomAuthButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
         style: ButtonStyle(
-            backgroundColor: MaterialStatePropertyAll(AppColors.white),
-            shape: MaterialStatePropertyAll(
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)))),
+            backgroundColor: const MaterialStatePropertyAll(AppColors.white),
+            shape: MaterialStatePropertyAll(RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16),
+                side: BorderSide(color: AppColors.c_200)))),
         onPressed: onTap,
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 18.h),
           child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SvgPicture.asset(imageUrl),
-              if (label != null) ...[12.pw, Text(label!)],
+              if (label != null) ...[
+                12.pw,
+                Text(
+                  label!,
+                  style:
+                      Theme.of(context).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w600),
+                )
+              ],
             ],
           ),
         ));

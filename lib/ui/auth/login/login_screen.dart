@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:taxi_app/ui/auth/widgets/custom__auth_divider.dart';
 import 'package:taxi_app/ui/auth/widgets/custom_auth_social_network_button.dart';
+import 'package:taxi_app/ui/widgets/global_button.dart';
 import 'package:taxi_app/ui/widgets/global_input.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
@@ -19,8 +20,18 @@ class LoginScreen extends StatelessWidget {
         padding: EdgeInsets.only(bottom: 48.h, left: 24.w, right: 24.w, top: 24.h),
         child: Column(
           children: [
-            Text('Create your Account'),
-            Column(),
+            const Text('Create your Account'),
+            Column(
+              children: [
+                CustomCheckbox(),
+                GlobalButton(
+                    color: AppColors.primary,
+                    title: 'Sign up',
+                    radius: 100,
+                    textColor: AppColors.dark3,
+                    onTap: () {})
+              ],
+            ),
             Column(
               children: [
                 CustomAuthDividerWidget(label: 'or continue with'),
@@ -57,6 +68,46 @@ class LoginScreen extends StatelessWidget {
           ],
         ),
       )),
+    );
+  }
+}
+
+class CustomCheckbox extends StatefulWidget {
+  const CustomCheckbox({
+    super.key,
+  });
+
+  @override
+  State<CustomCheckbox> createState() => _CustomCheckboxState();
+}
+
+class _CustomCheckboxState extends State<CustomCheckbox> {
+  bool isChecked = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        SizedBox(
+          height: 24,
+          width: 24,
+          child: Checkbox(
+            value: isChecked,
+            side: BorderSide(width: 3, color: AppColors.primary),
+            activeColor: AppColors.primary,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8),
+                side: BorderSide(
+                  color: AppColors.primary,
+                  width: 3,
+                )),
+            onChanged: (value) {
+              isChecked = value!;
+              setState(() {});
+            },
+          ),
+        )
+      ],
     );
   }
 }
