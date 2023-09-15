@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taxi_app/blocs/home/home_bloc.dart';
 import 'package:taxi_app/cubits/code_input_cubit/code_input_cubit.dart';
 import 'package:taxi_app/cubits/home/home_cubit.dart';
 import 'package:taxi_app/data/local/storage_repository/storage_repository.dart';
 import 'package:taxi_app/data/repositories/auth_repository.dart';
+
 import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/ui/forget_create_paswords/forget_screen/confirm_code_screen.dart';
 import 'package:taxi_app/ui/forget_create_paswords/forget_screen/forget_password_screen.dart';
@@ -65,9 +65,8 @@ class MyApp extends StatelessWidget {
           theme: AppTheme.lightTheme,
           darkTheme: AppTheme.darkTheme,
           themeMode: ThemeMode.light,
-          home: ConfirmCodeScreen(),
-          // initialRoute: RouteNames.splashScreen,
-          // onGenerateRoute: AppRoutes.generateRoute,
+          initialRoute: RouteNames.conFirmCodeScreen,
+          onGenerateRoute: AppRoutes.generateRoute,
         );
       },
     );
