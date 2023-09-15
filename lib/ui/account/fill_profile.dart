@@ -5,6 +5,7 @@ import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/ui/widgets/global_button.dart';
 import 'package:taxi_app/ui/widgets/global_search_input.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
+import 'package:taxi_app/utils/icons/app_icons.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
@@ -104,6 +105,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     maskFormatter: maskFormatter,
                     hintText: 'Date of Birth',
                     focusNode: focusNode,
+                    rightImage: AppIcons.calendar,
                     onChanged: (v) {
                       if (v.length == 10) {
                         focusNode.unfocus();
@@ -119,6 +121,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     keyboardType: TextInputType.emailAddress,
                     textInputAction: TextInputAction.next,
                     controller: emil,
+                    rightImage: AppIcons.message,
+
                   ),
                    SizedBox(height: 22.h),
                   GlobalSearchTextField(
@@ -140,6 +144,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     keyboardType: TextInputType.text,
                     textInputAction: TextInputAction.done,
                     controller: gender,
+                    rightImage: AppIcons.arrowDown2,
+
                   ),
                   SizedBox(height: 60.h),
                 ],
