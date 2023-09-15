@@ -39,7 +39,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   20.ph,
                   AuthTextField(hintText: 'Parol', prefixIcon: AppIcons.lock, isPassword: true),
                   20.ph,
-                  CustomCheckbox(
+                  RememberCheckBox(
                     label: 'Meni eslab qol',
                     value: isChecked,
                     onChanged: (value) {
@@ -100,12 +100,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
   }
 }
 
-class CustomCheckbox extends StatelessWidget {
+class RememberCheckBox extends StatelessWidget {
   final bool value;
   final ValueChanged<bool> onChanged;
   final String? label;
 
-  CustomCheckbox({required this.value, required this.onChanged, this.label});
+  const RememberCheckBox({super.key, required this.value, required this.onChanged, this.label});
 
   @override
   Widget build(BuildContext context) {
