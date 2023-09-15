@@ -13,33 +13,34 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final bool response = true;
 
 
-   loginWithFacebook(AuthEvent productsEvent,Emitter<AuthState> emit) async {
+   loginWithFacebook(LoginWithFacebook productsEvent,Emitter<AuthState> emit) async {
     emit(AuthLoading());
-    Future.delayed(const Duration(seconds: 4));
+   await Future.delayed(const Duration(seconds: 4));
     if(response == true) {
-      emit(AuthSuccess());
+      emit(AuthSuccess(productsEvent.successText));
     }else if(response == false) {
-      emit(const AuthError(errorText: "handling error for loginWithFacebook"));
+      emit(const AuthError(errorText: "Facebook orqali kirish xato"));
     }
   }
 
-   loginWithGoogle(AuthEvent productsEvent, Emitter<AuthState> emit) async {
+   loginWithGoogle(LoginWithGoogle productsEvent, Emitter<AuthState> emit) async {
     emit(AuthLoading());
+    await Future.delayed(const Duration(seconds: 4));
     if(response == true) {
-      emit(AuthSuccess());
+      emit(AuthSuccess(productsEvent.successText));
     }else if(response == false) {
-      emit(const AuthError(errorText: "handling error for loginWithGoogle"));
+      emit(const AuthError(errorText: "Google orqali kirish xato"));
     }
   }
 
-  loginWithApple(AuthEvent productsEvent, Emitter<AuthState> emit) async {
+  loginWithApple(LoginWithApple productsEvent, Emitter<AuthState> emit) async {
     emit(AuthLoading());
-    Future.delayed(const Duration(seconds: 3));
+    await Future.delayed(const Duration(seconds: 4));
     if(response == true) {
       Future.delayed(const Duration(seconds: 3));
-      emit(AuthSuccess());
+      emit(AuthSuccess(productsEvent.successText));
     }else if(response == false) {
-      emit(const AuthError(errorText: "handling error for loginWithApple"));
+      emit(const AuthError(errorText: "Apple orqali kirish xato"));
     }
   }
 }

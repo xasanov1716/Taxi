@@ -2,7 +2,7 @@ import 'package:taxi_app/data/models/icons/icon_type.dart';
 
 class AppIcons {
   // images
-
+  
   static const String testAvatar="assets/images/test_avatar.png";
   static const String barcode="assets/images/barcode.png";
   static const String emptyProfile="assets/images/empty_profile.png";
@@ -19,6 +19,7 @@ class AppIcons {
   static const String splashScreen="assets/images/splash_screen.png";
   static const String successPassword="assets/images/success_password.png";
   static const String taxiLogo="assets/images/taxi_logo.png";
+  static const String createNewPasswordDialog = "assets/images/create_new_password_dialog.png";
 
 
   // smile images
@@ -30,7 +31,7 @@ class AppIcons {
   static const String smileQuiet = "assets/images/mood/smile_quiet.png";
   static const String smileTired = "assets/images/mood/smile_tired.png";
   static const String smileUnhappy = "assets/images/mood/smile_unhappy.png";
-  static const String smileVeryHappy = "assets/images/mood/smile_very_happy.png";
+  static const String smileVeryHappy =  "assets/images/mood/smile_very_happy.png";
 
   // svg
   static IconType it = IconType.lightOutline;
@@ -153,5 +154,4 @@ class AppIcons {
 
   // lottie
   static const String splashCircular = "assets/lottie/splash_circular.json";
-
 }
