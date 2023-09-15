@@ -37,6 +37,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         AppIcons.emptyProfile,
                         height: 100.h,
                         width: 100.h,
+
                       ),
                       Positioned(
                           bottom: 0,
