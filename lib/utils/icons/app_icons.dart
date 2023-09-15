@@ -11,6 +11,9 @@ class AppIcons {
   static const String onBoarding1="assets/images/on_boarding1.png";
   static const String onBoarding2="assets/images/on_boarding2.png";
   static const String onBoarding3="assets/images/on_boarding3.png";
+  static const String onBoardingDark1="assets/images/on_boarding_dark1.png";
+  static const String onBoardingDark2="assets/images/on_boarding_dark2.png";
+  static const String onBoardingDark3="assets/images/on_boarding_dark3.png";
   static const String searchNotFound="assets/images/search_not_found.png";
   static const String signIn="assets/images/sign_in.png";
   static const String splashScreen="assets/images/splash_screen.png";

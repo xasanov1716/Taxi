@@ -15,7 +15,8 @@ class LoginScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
           child: SingleChildScrollView(
-        padding: EdgeInsets.only(bottom: 48.h, left: 24.w, right: 24.w, top: 24.h),
+        padding:
+            EdgeInsets.only(bottom: 48.h, left: 24.w, right: 24.w, top: 24.h),
         child: Column(
           children: [
             const Text('Create your Account'),
@@ -49,17 +50,19 @@ class LoginScreen extends StatelessWidget {
               children: [
                 Text(
                   'Already have an account?',
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: AppColors.c_500),
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyMedium
+                      ?.copyWith(color: AppColors.c_500),
                 ),
                 8.pw,
                 TextButton(
                     onPressed: () {},
                     child: Text(
                       'Sign in',
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyMedium
-                          ?.copyWith(color: AppColors.primary, fontWeight: FontWeight.w600),
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          color: AppColors.primary,
+                          fontWeight: FontWeight.w600),
                     ))
               ],
             ),
