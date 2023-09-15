@@ -10,7 +10,6 @@ class GlobalTextField extends StatelessWidget {
   final TextInputAction textInputAction;
   final String prefixIcon;
   final String caption;
-  final IconData? suffixIcon;
   final ValueChanged? onChanged;
   final FocusNode? focusNode;
   final MaskTextInputFormatter? maskFormatter;
@@ -26,6 +25,9 @@ class GlobalTextField extends StatelessWidget {
     this.caption = "",
     this.suffixIcon = "",
     required this.controller,
+    this.onChanged,
+    this.focusNode,
+    this.maskFormatter,
   }) : super(key: key);
 
   final FocusNode _textFieldFocus = FocusNode();

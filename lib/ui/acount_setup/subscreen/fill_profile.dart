@@ -3,18 +3,17 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/ui/widgets/global_button.dart';
-import 'package:taxi_app/ui/widgets/global_input.dart';
 import 'package:taxi_app/ui/widgets/global_search_input.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 
-class ProfileScreen extends StatefulWidget {
-  const ProfileScreen({Key? key}) : super(key: key);
+class FillProfileScreen extends StatefulWidget {
+  const FillProfileScreen({Key? key}) : super(key: key);
 
   @override
-  State<ProfileScreen> createState() => _ProfileScreenState();
+  State<FillProfileScreen> createState() => _FillProfileScreenState();
 }
 
-class _ProfileScreenState extends State<ProfileScreen> {
+class _FillProfileScreenState extends State<FillProfileScreen> {
   final TextEditingController fullName = TextEditingController();
   final TextEditingController nickName = TextEditingController();
   final TextEditingController date = TextEditingController();
