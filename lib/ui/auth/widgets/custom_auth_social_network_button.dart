@@ -19,11 +19,7 @@ class CustomAuthButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-        style: ButtonStyle(
-            backgroundColor: const MaterialStatePropertyAll(AppColors.white),
-            shape: MaterialStatePropertyAll(RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(16),
-                side:const BorderSide(color: AppColors.c_200)))),
+        style: Theme.of(context).elevatedButtonTheme.style,
         onPressed: onTap,
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 18.h),

@@ -83,19 +83,39 @@ class _CodeInputFieldState extends State<CodeInputField> {
         ),
         BlocBuilder<CodeInputCubit, CodeInputState>(
           builder: (context, state) {
+            final defaultTextStyle = Theme.of(context).textTheme.titleMedium;
+
             if (state is CodeInputCountdown) {
-              return Text(
-                "Resend code in ${state.remainingTime} s",
-                style: Theme.of(context).textTheme.titleMedium,
+              final remainingTime = "${state.remainingTime}";
+
+              return RichText(
+                text: TextSpan(
+                  children: [
+                    TextSpan(
+                      text: "Resend code in ",
+                      style: defaultTextStyle,
+                    ),
+                    TextSpan(
+                      text: remainingTime,
+                      style: const TextStyle(
+                          color: AppColors.primary,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    TextSpan(
+                      text: " s",
+                      style: defaultTextStyle,
+                    ),
+                  ],
+                ),
               );
             } else {
               return Text(
                 "Resend code in 60 s",
-                style: Theme.of(context).textTheme.titleMedium,
+                style: defaultTextStyle,
               );
             }
           },
-        ),
+        )
       ],
     );
   }

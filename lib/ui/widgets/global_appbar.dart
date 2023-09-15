@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:taxi_app/utils/icons/app_icons.dart';
 class GlobalAppBar extends StatelessWidget implements PreferredSize {
   const GlobalAppBar({
     Key? key,
@@ -26,12 +24,6 @@ class GlobalAppBar extends StatelessWidget implements PreferredSize {
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                GestureDetector(
-                  onTap: onTap,
-                  child: Center(
-                    child: SvgPicture.asset(AppIcons.arrowLeftCircle),
-                  ),
-                ),
                 SizedBox(width: 16.w),
                 Text(
                   title,
