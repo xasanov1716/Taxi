@@ -1,7 +1,6 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taxi_app/blocs/auth_bloc/auth_bloc.dart';
 import 'package:taxi_app/blocs/home/home_bloc.dart';
@@ -49,9 +48,6 @@ class App extends StatelessWidget {
           BlocProvider(
             create: (context) => HomeBloc(),
           ),
-          BlocProvider(
-            create: (context) => AuthBloc(),
-          ),
         ],
         child: const MyApp(),
       ),
@@ -73,7 +69,7 @@ class MyApp extends StatelessWidget {
           light: AppTheme.lightTheme,
           dark: AppTheme.darkTheme,
           initial: AdaptiveThemeMode.system,
-          builder: (theme, darkTheme){
+          builder: (theme, darkTheme) {
             return MaterialApp(
               debugShowCheckedModeBanner: false,
               theme: theme,
