@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
+import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 
 class CustomAuthDividerWidget extends StatelessWidget {
@@ -31,7 +32,7 @@ class CustomAuthDividerWidget extends StatelessWidget {
               style: Theme.of(context)
                   .textTheme
                   .titleMedium!
-                  .copyWith(color: AppColors.c_700, fontSize: 18),
+                  .copyWith(color: AppColors.c_700, fontSize: width>450?18.sp:14.sp),
             ),
           ),
           9.pw,
