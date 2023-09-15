@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:taxi_app/ui/app_routes.dart';
+import 'package:taxi_app/ui/auth/widgets/auth_navigator_button.dart';
 import 'package:taxi_app/ui/auth/widgets/auth_text_field.dart';
 import 'package:taxi_app/ui/auth/widgets/custom__auth_divider.dart';
 import 'package:taxi_app/ui/auth/widgets/custom_auth_social_network_button.dart';
@@ -73,25 +75,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ],
               ),
               60.ph,
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'Hisobingiz bormi?',
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: AppColors.c_500),
-                  ),
-                  8.pw,
-                  TextButton(
-                      onPressed: () {},
-                      child: Text(
-                        'Kirish',
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyMedium
-                            ?.copyWith(color: AppColors.primary, fontWeight: FontWeight.w600),
-                      ))
-                ],
-              ),
+              AuthNavigatorButton(
+                title: "Hisobingiz bormi?",
+                onTapTitle: "Kirish",
+                onTap: () {
+                  Navigator.pushReplacementNamed(context, RouteNames.login);
+                },
+              )
             ],
           ),
         ),
