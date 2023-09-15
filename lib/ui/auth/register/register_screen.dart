@@ -29,7 +29,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Text(
-                'O\'zingizni yarating Hisob',
+                'Ro`yxatdan o`ting',
                 style: Theme.of(context).textTheme.displayMedium,
               ),
               60.ph,
@@ -84,7 +84,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   TextButton(
                       onPressed: () {},
                       child: Text(
-                        'Tizimga kirish',
+                        'Kirish',
                         style: Theme.of(context)
                             .textTheme
                             .bodyMedium

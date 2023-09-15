@@ -88,8 +88,7 @@ class _AuthTextFieldState extends State<AuthTextField> {
           .labelLarge
           ?.copyWith(fontWeight: FontWeight.w600, letterSpacing: 0.2),
       decoration: InputDecoration(
-          contentPadding:
-              EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
+          contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
           hintText: widget.hintText,
           hintStyle: Theme.of(context)
               .textTheme
@@ -110,7 +109,7 @@ class _AuthTextFieldState extends State<AuthTextField> {
                     });
                   },
                   icon: SvgPicture.asset(
-                    _isObscured?AppIcons.hide:AppIcons.show,
+                    _isObscured ? AppIcons.hide : AppIcons.show,
                     colorFilter: ColorFilter.mode(_iconColor, BlendMode.srcIn),
                   ))
               : const SizedBox(),
@@ -123,7 +122,7 @@ class _AuthTextFieldState extends State<AuthTextField> {
           focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12.r),
               borderSide: BorderSide(width: 1.w, color: AppColors.primary)),
-          fillColor: _backgroundColor,
+          fillColor: _focusNode.hasFocus ? AppColors.orangeTransparent : null,
           filled: true),
     );
   }

@@ -18,10 +18,7 @@ class CustomAuthDividerWidget extends StatelessWidget {
       child: Row(
         children: [
           Expanded(
-            child: Divider(
-              color: AppColors.c_200,
-              height: 2.h,
-            ),
+            child: Divider(),
           ),
           9.pw,
           Padding(
@@ -36,10 +33,7 @@ class CustomAuthDividerWidget extends StatelessWidget {
           ),
           9.pw,
           Expanded(
-            child: Divider(
-              color: AppColors.c_200,
-              height: 2.h,
-            ),
+            child: Divider(),
           ),
         ],
       ),

@@ -5,6 +5,15 @@ import '../colors/app_colors.dart';
 
 class AppTheme {
   static ThemeData lightTheme = ThemeData(
+    elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ButtonStyle(
+      backgroundColor: const MaterialStatePropertyAll(AppColors.white),
+      overlayColor: MaterialStatePropertyAll(AppColors.c_200),
+      shape: MaterialStatePropertyAll(RoundedRectangleBorder(
+        side: const BorderSide(color: AppColors.c_200),
+        borderRadius: BorderRadius.circular(16),
+      )),
+    )),
     scaffoldBackgroundColor: AppColors.white,
     iconTheme: const IconThemeData(color: AppColors.disabledButton),
     appBarTheme: AppBarTheme(
@@ -140,19 +149,32 @@ class AppTheme {
             fontFamily: "Urbanist",
             fontWeight: FontWeight.w400,
             letterSpacing: 0.2)),
+    dividerTheme: DividerThemeData(color: AppColors.c_200),
+    inputDecorationTheme: InputDecorationTheme(),
   );
 
   static ThemeData darkTheme = ThemeData(
+    inputDecorationTheme: InputDecorationTheme(
+      fillColor: AppColors.dark2,
+    ),
+    dividerTheme: DividerThemeData(color: AppColors.dark3),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ButtonStyle(
+      backgroundColor: const MaterialStatePropertyAll(AppColors.dark2),
+      shape: MaterialStatePropertyAll(RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16),
+        side: const BorderSide(color: AppColors.dark2),
+      )),
+    )),
     scaffoldBackgroundColor: AppColors.dark1,
     iconTheme: const IconThemeData(color: AppColors.disabledButton),
     appBarTheme: AppBarTheme(
         titleTextStyle: TextStyle(
-          color: AppColors.white,
-          fontSize: 24.sp,
-          fontFamily: 'Urbanist',
-          fontWeight: FontWeight.w700,
-          fontStyle: FontStyle.normal
-        ),
+            color: AppColors.white,
+            fontSize: 24.sp,
+            fontFamily: 'Urbanist',
+            fontWeight: FontWeight.w700,
+            fontStyle: FontStyle.normal),
         backgroundColor: AppColors.dark1,
         iconTheme: const IconThemeData(color: AppColors.primary),
         systemOverlayStyle: const SystemUiOverlayStyle(
