@@ -10,7 +10,6 @@ class PageViewItems extends StatelessWidget {
   });
 
   final String title;
-
   final String img;
 
   @override
@@ -19,15 +18,15 @@ class PageViewItems extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
     return Column(
       children: <Widget>[
-        SizedBox(height: height*130/926),
+        SizedBox(height: height * 100 / 926),
         Image.asset(
           img,
-          height: height*260 /926,
-          width: width *330 /428 ,
+          height: height * 260 / 926,
+          width: width * 330 / 428,
         ),
         SizedBox(height: height / 15),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 36),
+          padding: EdgeInsets.symmetric(horizontal: width * 36 / 428),
           child: Text(
             title,
             textAlign: TextAlign.center,
