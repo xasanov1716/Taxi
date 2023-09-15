@@ -52,12 +52,12 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
-        return MaterialApp(
+        return  MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: AppTheme.lightTheme,
           darkTheme: AppTheme.darkTheme,
           themeMode: ThemeMode.light,
-          initialRoute: RouteNames.splashScreen,
+          initialRoute: RouteNames.profileScreen,
           onGenerateRoute: AppRoutes.generateRoute,
         );
       },
