@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import 'package:taxi_app/utils/colors/app_colors.dart';
 
 class GlobalTextField extends StatefulWidget {
   final String hintText;
   final TextInputType keyboardType;
   final TextInputAction textInputAction;
-  final IconData prefixIcon;
+  final IconData? prefixIcon;
   final String caption;
+  final IconData? suffixIcon;
+  final ValueChanged? onChanged;
+  final FocusNode? focusNode;
+  final MaskTextInputFormatter? maskFormatter;
   final TextEditingController controller;
 
   const GlobalTextField({
@@ -13,12 +20,17 @@ class GlobalTextField extends StatefulWidget {
     required this.hintText,
     required this.keyboardType,
     required this.textInputAction,
-    required this.prefixIcon,
-    required this.caption,
+     this.prefixIcon,
+     this.maskFormatter,
+     this.suffixIcon,
+     this.focusNode,
+     this.onChanged,
+     this.caption = '',
     required this.controller,
   }) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _GlobalTextFieldState createState() => _GlobalTextFieldState();
 }
 
@@ -26,55 +38,36 @@ class _GlobalTextFieldState extends State<GlobalTextField> {
   bool _isPasswordVisible = false;
 
   bool isFocus = false;
-  final FocusNode _textFieldFocus = FocusNode();
-  Color _color = Colors.white;
-  Color _iconColor = Colors.grey;
+  Color iconColor = AppColors.c_50;
 
-  @override
-  void initState() {
-    _textFieldFocus.addListener(() {
-      if (_textFieldFocus.hasFocus) {
-        setState(() {
-          _color = Colors.yellow;
-          _iconColor = Colors.amber;
-        });
-      } else {
-        setState(() {
-          _color = Colors.white;
-          _iconColor = Colors.grey;
-        });
-      }
-    });
-    super.initState();
-  }
+
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        if (widget.caption.isNotEmpty)
           Padding(
             padding: const EdgeInsets.only(top: 4.0),
             child: Text(
-              widget.caption,
+              widget.caption!,
               style: const TextStyle(
                 fontSize: 14,
                 color: Colors.black,
               ),
             ),
           ),
-        const SizedBox(
-          height: 5,
+         SizedBox(
+          height: 5.h,
         ),
         TextField(
           controller: widget.controller,
-          focusNode: _textFieldFocus,
+          focusNode: widget.focusNode,
+          onChanged: widget.onChanged,
+          inputFormatters: widget.maskFormatter != null ? [widget.maskFormatter!]: null,
           decoration: InputDecoration(
-            // contentPadding:
-            //     EdgeInsets.only(left: 16, top: 12, right: 20, bottom: 60),
             hintText: widget.hintText,
-            prefixIcon: Icon(widget.prefixIcon, color: _iconColor),
+            prefixIcon:  widget.prefixIcon != null? Icon(widget.prefixIcon, color: iconColor) : null,
             suffixIcon: widget.keyboardType == TextInputType.visiblePassword
                 ? IconButton(
                     splashRadius: 1,
@@ -82,7 +75,7 @@ class _GlobalTextFieldState extends State<GlobalTextField> {
                       _isPasswordVisible
                           ? Icons.visibility
                           : Icons.visibility_off,
-                      color: _iconColor,
+                      color: iconColor,
                     ),
                     onPressed: () {
                       setState(() {
@@ -92,22 +85,22 @@ class _GlobalTextFieldState extends State<GlobalTextField> {
                   )
                 : null,
             enabledBorder: OutlineInputBorder(
-              borderSide: const BorderSide(color: Colors.grey, width: 1),
+              borderSide: const BorderSide(color: AppColors.c_50, width: 1),
               borderRadius: BorderRadius.circular(10),
             ),
             focusedBorder: OutlineInputBorder(
-              borderSide: const BorderSide(color: Colors.amber, width: 1),
+              borderSide: const BorderSide(color: AppColors.c_50, width: 1),
               borderRadius: BorderRadius.circular(10),
             ),
             errorBorder: OutlineInputBorder(
-              borderSide: const BorderSide(color: Colors.red, width: 1),
+              borderSide: const BorderSide(color: AppColors.c_50, width: 1),
               borderRadius: BorderRadius.circular(10),
             ),
             border: OutlineInputBorder(
-              borderSide: const BorderSide(color: Colors.grey, width: 1),
+              borderSide: const BorderSide(color: AppColors.c_50, width: 1),
               borderRadius: BorderRadius.circular(10),
             ),
-            fillColor: _color,
+            fillColor: AppColors.c_50,
             filled: true,
           ),
           keyboardType: widget.keyboardType,
