@@ -104,8 +104,11 @@ class CreatePasswordScreen extends StatelessWidget {
                       context: context,
                       builder: (BuildContext context) {
                         return AlertDialog(
-
-                          contentPadding: EdgeInsets.only(top:32.h,left: 32.w,right: 32.w,),
+                          contentPadding: EdgeInsets.only(
+                            top: 32.h,
+                            left: 32.w,
+                            right: 32.w,
+                          ),
                           content: Container(
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(32.h),
@@ -119,15 +122,15 @@ class CreatePasswordScreen extends StatelessWidget {
                                 SizedBox(
                                   height: 32.h,
                                 ),
-                                 Text(
+                                Text(
                                   'Congratulations!',
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 24.sp,
                                   ),
                                 ),
-                                 SizedBox(height: 16.h),
-                                 Center(
+                                SizedBox(height: 16.h),
+                                Center(
                                   child: Text(
                                     'Your account is ready to use. You will be redirected to the Home page in a few seconds..!',
                                     style: TextStyle(
@@ -142,7 +145,6 @@ class CreatePasswordScreen extends StatelessWidget {
                                   height: 32.h,
                                 ),
                                 SizedBox(
-
                                   height: 120.h,
                                   child: LottieBuilder.asset(
                                       AppIcons.splashCircular),

@@ -68,7 +68,7 @@ class MyApp extends StatelessWidget {
           themeMode: ThemeMode.light,
           // initialRoute: RouteNames.splashScreen,
           // onGenerateRoute: AppRoutes.generateRoute,
-          home: CreatePasswordScreen(),
+          home: ConfirmCodeScreen(),
         );
       },
     );

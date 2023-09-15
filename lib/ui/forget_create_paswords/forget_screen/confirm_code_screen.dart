@@ -19,7 +19,7 @@ class ConfirmCodeScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 24.h, horizontal: 24.w),
+          padding: EdgeInsets.only(left: 24.h,right: 24.h, top: 24.w,bottom: 48.h),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -45,7 +45,7 @@ class ConfirmCodeScreen extends StatelessWidget {
                   Navigator.pushNamed(context, RouteNames.createPassword);
                 },
               ),
-              SizedBox(height: 24.h),
+
             ],
           ),
         ),
