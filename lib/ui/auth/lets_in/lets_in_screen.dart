@@ -20,15 +20,19 @@ class LestInScreen extends StatelessWidget {
       body: BlocListener<AuthBloc, AuthState>(
         listener: (context, state) {
           if (state is AuthLoading) {
-            CircularProgressIndicator();
+            showDialog(context: context, builder: (context){
+              return const  Dialog(child: Text("Kutmoqda"));
+            });
           }
           if (state is AuthSuccess) {
-            ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text("Authentication success for Facebook")));
+            showDialog(context: context, builder: (context){
+              return Dialog(child: Text(state.successText),);
+            });
           }
           if (state is AuthError) {
-            ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text("Authentication error for Facebook")));
+            showDialog(context: context, builder: (context){
+              return Dialog(child: Text(state.errorText),);
+            });
           }
         },
         child: SafeArea(
@@ -44,29 +48,42 @@ class LestInScreen extends StatelessWidget {
                 ),
                 child: Image.asset(AppIcons.signIn),
               ),
-              Text("Let’s you in",
+              Text("Dastyorga Kirish",
                   style: Theme.of(context)
                       .textTheme
                       .displayMedium!
                       .copyWith(fontSize: 48)),
               Column(
                 children: [
-                  CustomAuthButton(imageUrl: AppIcons.facebook,label: "Continue with Facebook", onTap: () {  }),
+                  CustomAuthButton(imageUrl: AppIcons.facebook,label: "Facebook bilan davom eting", onTap: () {
+                    context
+                        .read<AuthBloc>()
+                        .add(LoginWithFacebook());
+                  }),
                   16.ph,
-                  CustomAuthButton(imageUrl: AppIcons.google,label: "Continue with Google", onTap: () {  }),
+                  CustomAuthButton(imageUrl: AppIcons.google,label: "Google bilan davom eting", onTap: () {
+                    context
+                        .read<AuthBloc>()
+                        .add(LoginWithGoogle());
+                  }),
                   16.ph,
 
-                  CustomAuthButton(imageUrl: AppIcons.apple,label: "Continue with Apple", onTap: () {  }),
+                  CustomAuthButton(imageUrl: AppIcons.apple,label: "Apple bilan davom eting", onTap: () {
+                    context
+                        .read<AuthBloc>()
+                        .add(LoginWithApple());
+                  }),
                   24.ph,
-                const  CustomAuthDividerWidget(label: "or"),
+                const  CustomAuthDividerWidget(label: "yoki"),
                   24.ph,
                   GlobalButton(
                       color: AppColors.primary,
-                      title: "Sign in with password",
+                      title: "Parol bilan tizimga kiring",
                       radius: 100,
                       textColor: AppColors.dark3,
-                      rightIcon: AppIcons.apple,
-                      onTap: () {}),
+                      onTap: () {
+
+                      }),
                 ],
               ),
               AuthSignWidget(title: "Don’t have an account?",onTapTitle: "Sign up",onTap: (){}),

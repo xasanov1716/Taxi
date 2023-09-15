@@ -23,12 +23,12 @@ class AppRoutes {
     switch (settings.name) {
       case RouteNames.splashScreen:
         return MaterialPageRoute(
+          builder: (context) => const SplashScreen(),
+        );
+      case RouteNames.letsIn:
+        return MaterialPageRoute(
           builder: (context) => const LestInScreen(),
         );
-      // case RouteNames.letsIn:
-      //   return MaterialPageRoute(
-      //     builder: (context) => const LestInScreen(),
-      //   );
       // case RouteNames.login:
       //   return MaterialPageRoute(builder: (context) => LoginScreen());
       case RouteNames.tabBox:
