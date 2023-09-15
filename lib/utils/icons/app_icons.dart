@@ -34,7 +34,7 @@ class AppIcons {
   static const String smileVeryHappy =  "assets/images/mood/smile_very_happy.png";
 
   // svg
-  static IconType it = IconType.bold;
+  static IconType it = IconType.lightOutline;
   static final String search = "assets/svg/${it.name}/search.svg";
   static final String user2 = "assets/svg/${it.name}/two_users.svg";
   static final String user3 = "assets/svg/${it.name}/three_users.svg";

@@ -79,7 +79,9 @@ class _LoginScreenState extends State<LoginScreen> {
               24.ph,
               Center(
                 child: TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushReplacementNamed(context, RouteNames.forgotPassword);
+                    },
                     child: Text(
                       "Parolni unutdingizmi?",
                       textAlign: TextAlign.center,
