@@ -18,7 +18,7 @@ class ConfirmCodeScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding:  EdgeInsets.symmetric(vertical: 24.h,horizontal: 24.w),
+          padding: EdgeInsets.symmetric(vertical: 24.h, horizontal: 24.w),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -36,11 +36,13 @@ class ConfirmCodeScreen extends StatelessWidget {
               ),
               const CodeInputField(),
               GlobalButton(
-                  color: AppColors.primary,
-                  title: "Verify",
-                  radius: 100,
-                  textColor: AppColors.dark3,
-                  onTap: () {})
+                color: AppColors.primary,
+                title: "Verify",
+                radius: 100,
+                textColor: AppColors.dark3,
+                onTap: () {},
+              ),
+              SizedBox(height: 24.h),
             ],
           ),
         ),
