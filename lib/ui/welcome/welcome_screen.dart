@@ -72,12 +72,17 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Text(
-                    "Xush kelibsiz 👋",
-                    style: Theme.of(context)
-                        .textTheme
-                        .displayMedium
-                        ?.copyWith(fontSize: 30.sp, fontWeight: FontWeight.w700, color: Colors.white),
+                  ShaderMask(
+                    shaderCallback: (Rect bounds) {
+                      return AppColors.gradientOrangeYellow.createShader(bounds);
+                    },
+                    child: Text(
+                      "Xush kelibsiz 👋",
+                      style: Theme.of(context)
+                          .textTheme
+                          .displayMedium
+                          ?.copyWith(fontSize: 30.sp, fontWeight: FontWeight.w700, color: Colors.white),
+                    ),
                   ),
                   SizedBox(
                     height: 12.h
