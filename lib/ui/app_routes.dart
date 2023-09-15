@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:taxi_app/ui/auth/login/login_screen.dart';
 import 'package:taxi_app/ui/account/profile_screen.dart';
 import 'package:taxi_app/ui/acount_setup/subscreen/code_screen.dart';
 import 'package:taxi_app/ui/acount_setup/subscreen/fill_profile.dart';
@@ -24,14 +23,14 @@ class AppRoutes {
     switch (settings.name) {
       case RouteNames.splashScreen:
         return MaterialPageRoute(
-          builder: (context) => const SplashScreen(),
-        );
-      case RouteNames.letsIn:
-        return MaterialPageRoute(
           builder: (context) => const LestInScreen(),
         );
-      case RouteNames.login:
-        return MaterialPageRoute(builder: (context) => const LoginScreen());
+      // case RouteNames.letsIn:
+      //   return MaterialPageRoute(
+      //     builder: (context) => const LestInScreen(),
+      //   );
+      // case RouteNames.login:
+      //   return MaterialPageRoute(builder: (context) => LoginScreen());
       case RouteNames.tabBox:
         return MaterialPageRoute(
           builder: (context) => const TabBox(),

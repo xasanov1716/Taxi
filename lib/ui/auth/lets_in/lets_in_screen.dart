@@ -7,6 +7,9 @@ import 'package:taxi_app/utils/size/size_extension.dart';
 
 import '../../../utils/colors/app_colors.dart';
 import '../../../utils/icons/app_icons.dart';
+import '../widgets/auth_sign_widget.dart';
+import '../widgets/custom__auth_divider.dart';
+import '../widgets/custom_auth_social_network_button.dart';
 
 class LestInScreen extends StatelessWidget {
   const LestInScreen({Key? key}) : super(key: key);
@@ -48,64 +51,14 @@ class LestInScreen extends StatelessWidget {
                       .copyWith(fontSize: 48)),
               Column(
                 children: [
-                  GlobalButton(
-                      color: AppColors.c_200,
-                      title: "Continue with Facebook",
-                      radius: 16,
-                      textColor: AppColors.c_900,
-                      rightIcon: AppIcons.facebook,
-                      onTap: () {
-                        context.read<AuthBloc>().add(LoginWithFacebook());
-                      }),
+                  CustomAuthButton(imageUrl: AppIcons.facebook,label: "Continue with Facebook", onTap: () {  }),
                   16.ph,
-                  GlobalButton(
-                      color: AppColors.c_200,
-                      title: "Continue with Google",
-                      radius: 16,
-                      textColor: AppColors.c_900,
-                      rightIcon: AppIcons.google,
-                      onTap: () {
-                        context.read<AuthBloc>().add(LoginWithGoogle());
-                      }),
+                  CustomAuthButton(imageUrl: AppIcons.google,label: "Continue with Google", onTap: () {  }),
                   16.ph,
-                  GlobalButton(
-                      color: AppColors.c_200,
-                      title: "Continue with Apple",
-                      radius: 16,
-                      textColor: AppColors.c_900,
-                      rightIcon: AppIcons.apple,
-                      onTap: () {
-                        context.read<AuthBloc>().add(LoginWithApple());
-                      }),
+
+                  CustomAuthButton(imageUrl: AppIcons.apple,label: "Continue with Apple", onTap: () {  }),
                   24.ph,
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Divider(
-                          color: AppColors.c_200,
-                          height: 2.h,
-                        ),
-                      ),
-                      9.pw,
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 16.0.w),
-                        child: Text(
-                          "or",
-                          style: Theme.of(context)
-                              .textTheme
-                              .titleMedium!
-                              .copyWith(color: AppColors.c_700, fontSize: 18),
-                        ),
-                      ),
-                      9.pw,
-                      Expanded(
-                        child: Divider(
-                          color: AppColors.c_200,
-                          height: 2.h,
-                        ),
-                      ),
-                    ],
-                  ),
+                const  CustomAuthDividerWidget(label: "or"),
                   24.ph,
                   GlobalButton(
                       color: AppColors.primary,
@@ -116,24 +69,7 @@ class LestInScreen extends StatelessWidget {
                       onTap: () {}),
                 ],
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "Don’t have an account?",
-                    style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                        color: AppColors.c_500, fontWeight: FontWeight.w400),
-                  ),
-                  TextButton(
-                      onPressed: () {},
-                      child: Text(
-                        "Sign up",
-                        style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                            color: AppColors.primary,
-                            fontWeight: FontWeight.w600),
-                      ))
-                ],
-              ),
+              AuthSignWidget(title: "Don’t have an account?",onTapTitle: "Sign up",onTap: (){}),
             ],
           ),
         )),
