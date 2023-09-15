@@ -24,7 +24,10 @@ class GlobalTextField extends StatefulWidget {
     this.prefixIcon = "",
     this.caption = "",
     this.suffixIcon = "",
-    required this.controller, this.onChanged, this.focusNode, this.maskFormatter,
+    required this.controller,
+    this.onChanged,
+    this.focusNode,
+    this.maskFormatter,
   }) : super(key: key);
 
   @override
@@ -34,9 +37,8 @@ class GlobalTextField extends StatefulWidget {
 class _GlobalTextFieldState extends State<GlobalTextField> {
   final FocusNode _textFieldFocus = FocusNode();
   Color color = const Color(0xFFFAFAFA);
-  focusColor(){
 
-  }
+  focusColor() {}
 
   @override
   Widget build(BuildContext context) {

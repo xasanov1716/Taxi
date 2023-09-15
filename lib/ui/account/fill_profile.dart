@@ -7,14 +7,14 @@ import 'package:taxi_app/ui/widgets/global_search_input.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 
-class ProfileScreen extends StatefulWidget {
-  const ProfileScreen({Key? key}) : super(key: key);
+class FillProfileScreen extends StatefulWidget {
+  const FillProfileScreen({Key? key}) : super(key: key);
 
   @override
-  State<ProfileScreen> createState() => _ProfileScreenState();
+  State<FillProfileScreen> createState() => _FillProfileScreenState();
 }
 
-class _ProfileScreenState extends State<ProfileScreen> {
+class _FillProfileScreenState extends State<FillProfileScreen> {
   final TextEditingController fullName = TextEditingController();
   final TextEditingController nickName = TextEditingController();
   final TextEditingController date = TextEditingController();

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lottie/lottie.dart';
-import 'package:taxi_app/ui/account/fill_profile.dart';
+import 'package:taxi_app/data/local/storage_repository/storage_repository.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 
+import '../../utils/size/screen_size.dart';
+import '../welcome/welcome_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -14,43 +16,60 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   Future<void> _init() async {
-    await Future.delayed(const Duration(seconds: 2), () {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (BuildContext context) {
-            return const ProfileScreen();
-          },
-        ),
-      );
-    });
+    await Future.delayed(
+      const Duration(seconds: 4),
+      () {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (BuildContext context) {
+              return !StorageRepository.getBool("isFirst")
+                  ? const WelcomeScreen()
+                  : Scaffold(appBar: AppBar(title: const Text("Home Screen")));
+            },
+          ),
+        );
+      },
+    );
   }
 
   @override
   void initState() {
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: [SystemUiOverlay.top]);
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+        overlays: [SystemUiOverlay.top]);
     _init();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
+    width = MediaQuery.of(context).size.width;
+    height = MediaQuery.of(context).size.height;
     return Scaffold(
       body: Column(
         children: [
-          SizedBox(height: 213*height/926,),
+          SizedBox(
+            height: 213 * height / 926,
+          ),
           Container(
-            margin: EdgeInsets.symmetric(horizontal: 30*width/428),
-            height: 419*height/926,
-            width: 367*width/428,
+            margin: EdgeInsets.symmetric(horizontal: 30 * width / 428),
+            height: 419 * height / 926,
+            width: 367 * width / 428,
             child: Image.asset(AppIcons.taxiLogo),
           ),
-          SizedBox(height: 114*height/812,),
-          SizedBox(height: 104*width/428, width: 104*width/428, child: Lottie.asset(AppIcons.splashCircular, fit: BoxFit.cover),)
+          SizedBox(
+            height: 114 * height / 812,
+          ),
+          SizedBox(
+            height: 145 * width / 428,
+            width: 145 * width / 428,
+            child: Lottie.asset(
+              AppIcons.splashCircular,
+              fit: BoxFit.cover,
+            ),
+          )
         ],
-      )
+      ),
     );
   }
 }
