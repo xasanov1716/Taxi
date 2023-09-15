@@ -51,18 +51,16 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
-              height: height/2,
+              height: height / 2,
               width: double.infinity,
               decoration: BoxDecoration(
                   gradient: LinearGradient(
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
                       colors: [
-                        Colors.transparent,
-                        AppColors.black.withOpacity(0.9)
-                      ]
-                  )
-              ),
+                    Colors.transparent,
+                    AppColors.black.withOpacity(0.9)
+                  ])),
             ),
           ),
           Positioned(
@@ -72,41 +70,36 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
+                  Text(
+                    "Xush kelibsiz 👋",
+                    style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                        fontSize: 30.sp,
+                        fontWeight: FontWeight.w700,
+                        color: Colors.white),
+                  ),
+                  SizedBox(height: 12.h),
                   ShaderMask(
                     shaderCallback: (Rect bounds) {
-                      return AppColors.gradientOrangeYellow.createShader(bounds);
+                      return AppColors.gradientOrangeYellow
+                          .createShader(bounds);
                     },
                     child: Text(
-                      "Xush kelibsiz 👋",
-                      style: Theme.of(context)
-                          .textTheme
-                          .displayMedium
-                          ?.copyWith(fontSize: 30.sp, fontWeight: FontWeight.w700, color: Colors.white),
+                      "Dastyor Taxi",
+                      style: Theme.of(context).textTheme.displayLarge?.copyWith(
+                          fontSize: 60.sp,
+                          fontWeight: FontWeight.w900,
+                          color: AppColors.orange),
                     ),
                   ),
-                  SizedBox(
-                    height: 12.h
-                  ),
-                  Text(
-                    "Dastyor Taxi",
-                    style: Theme.of(context)
-                        .textTheme
-                        .displayLarge
-                        ?.copyWith(fontSize: 60.sp, fontWeight: FontWeight.w900, color: AppColors.orange),
-                  ),
-                  SizedBox(
-                    height: 24 * height / 926,
-                  ),
+                  SizedBox(height: 24 * height / 926),
                   Text(
                     "Kuningizni ajoyib qilish uchun asrning eng yaxshi taksi bron qilish ilovasi!",
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodyLarge
-                        ?.copyWith(fontWeight: FontWeight.w600, color: Colors.white, fontSize: 16.sp),
+                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white,
+                        fontSize: 16.sp),
                   ),
-                  SizedBox(
-                    height: 48 * height / 926,
-                  )
+                  SizedBox(height: 48 * height / 926)
                 ],
               ),
             ),
@@ -118,7 +111,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
 
   @override
   void dispose() {
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: SystemUiOverlay.values);
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+        overlays: SystemUiOverlay.values);
     super.dispose();
   }
 }
