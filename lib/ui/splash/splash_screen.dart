@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lottie/lottie.dart';
-import 'package:taxi_app/ui/acount_setup/subscreen/fill_profile.dart';
+import 'package:taxi_app/ui/account/fill_profile.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 
 
