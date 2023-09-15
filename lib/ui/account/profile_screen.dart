@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:taxi_app/ui/widgets/global_appbar.dart';
+import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/ui/widgets/global_button.dart';
 import 'package:taxi_app/ui/widgets/global_input.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
@@ -19,7 +19,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: GlobalAppBar(onTap: () {}, title: "Fill Your Profile"),
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: AppColors.white,
+        title: const Text(
+          "Fill Your Profile",
+          style: TextStyle(
+            fontFamily: "Urbanist",
+            fontSize: 24,
+            fontWeight: FontWeight.w700,
+            color: Color(0xff212121),
+            height: 29/24,
+          ),
+        ),
+      ),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: Padding(
@@ -37,7 +50,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         AppIcons.emptyProfile,
                         height: 100.h,
                         width: 100.h,
-
                       ),
                       Positioned(
                           bottom: 0,
@@ -115,7 +127,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   title: "Continue",
                   radius: 100,
                   textColor: AppColors.black,
-                  onTap: () {}),
+                  onTap: () {
+                    Navigator.pushNamed(context, RouteNames.codeScreen);
+                  }),
               SizedBox(height: 48.h),
             ],
           ),
