@@ -7,7 +7,7 @@ import 'package:taxi_app/utils/size/size_extension.dart';
 
 import '../../../utils/colors/app_colors.dart';
 import '../../../utils/icons/app_icons.dart';
-import '../widgets/auth_sign_widget.dart';
+import '../widgets/auth_navigator_button.dart';
 import '../widgets/custom__auth_divider.dart';
 import '../widgets/custom_auth_social_network_button.dart';
 
@@ -69,7 +69,7 @@ class LestInScreen extends StatelessWidget {
                       onTap: () {}),
                 ],
               ),
-              AuthSignWidget(title: "Don’t have an account?",onTapTitle: "Sign up",onTap: (){}),
+              AuthNavigatorButton(title: "Don’t have an account?",onTapTitle: "Sign up",onTap: (){}),
             ],
           ),
         )),

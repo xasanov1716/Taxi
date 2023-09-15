@@ -1,7 +1,7 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taxi_app/ui/app_routes.dart';
+import 'package:taxi_app/ui/auth/register/register_screen.dart';
 import 'package:taxi_app/ui/auth/widgets/auth_navigator_button.dart';
 import 'package:taxi_app/ui/auth/widgets/custom__auth_divider.dart';
 import 'package:taxi_app/ui/auth/widgets/custom_auth_social_network_button.dart';
@@ -13,8 +13,15 @@ import '../../../utils/colors/app_colors.dart';
 import '../../widgets/global_button.dart';
 import '../widgets/auth_text_field.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  bool isChecked = false;
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +36,7 @@ class LoginScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
+              45.ph,
               Text("Xush kelibsiz! Akkauntga kirish",
                   textAlign: TextAlign.left,
                   style: Theme.of(context)
@@ -46,6 +54,14 @@ class LoginScreen extends StatelessWidget {
                 prefixIcon: AppIcons.lock,
                 isPassword: true,
               ),
+              24.ph,
+              RememberCheckBox(
+                  label: "Meni eslab qol",
+                  value: isChecked, onChanged: (v){
+                setState(() {
+                  isChecked=v;
+                });
+              }),
               24.ph,
               GlobalButton(
                   color: AppColors.primary,
@@ -84,11 +100,12 @@ class LoginScreen extends StatelessWidget {
               ),
               45.ph,
               AuthNavigatorButton(
-                  desc: "Akkauntingiz yo'qmi?",
-                  action: "Ro'yxatdan o'ting",
-                  onTap: () {
-                    Navigator.pushReplacementNamed(context, RouteNames.signUp);
-                  })
+                title: "Akkauntingiz yo'qmi?",
+                onTapTitle: "Ro'yxatdan o'ting",
+                onTap: () {
+                  Navigator.pushReplacementNamed(context, RouteNames.signUp);
+                },
+              )
             ],
           ),
         ),
@@ -96,4 +113,3 @@ class LoginScreen extends StatelessWidget {
     ));
   }
 }
-

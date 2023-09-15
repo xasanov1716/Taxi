@@ -1,31 +1,34 @@
 import 'package:flutter/material.dart';
-import 'package:taxi_app/utils/colors/app_colors.dart';
+
+import '../../../utils/colors/app_colors.dart';
 
 class AuthNavigatorButton extends StatelessWidget {
-  const AuthNavigatorButton({
-    super.key,
-    required this.desc,
-    required this.action,
-    required this.onTap,
-  });
+  const AuthNavigatorButton({Key? key,required this.title,required this.onTap,required this.onTapTitle}) : super(key: key);
 
-  final String desc;
-  final String action;
+  final String title;
+  final String onTapTitle;
   final VoidCallback onTap;
-
   @override
   Widget build(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
+    return   Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text(desc,style: Theme.of(context).textTheme.labelLarge?.copyWith(
-          fontWeight: FontWeight.w400, letterSpacing: 0.2, color: AppColors.c_500
-        ),),
-        TextButton(onPressed: onTap, child: Text(action,style: Theme.of(context).textTheme.labelLarge?.copyWith(
-          color: AppColors.primary
-        ),))
+        Text(
+    title,
+          style: Theme.of(context).textTheme.titleSmall!.copyWith(
+              color: AppColors.c_500, fontWeight: FontWeight.w400),
+        ),
+        TextButton(
+            onPressed: () {},
+            child: Text(
+    onTapTitle,
+              style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                  color: AppColors.primary,
+                  fontWeight: FontWeight.w600),
+            ))
       ],
     );
   }
 }
+
+
