@@ -47,7 +47,7 @@ class App extends StatelessWidget {
             create: (context) => CodeInputCubit(),
           ),
           BlocProvider(
-                  create: (context) => AuthCubit(),
+            create: (context) => AuthCubit(),
           ),
           BlocProvider(
             create: (context) => HomeBloc(),
