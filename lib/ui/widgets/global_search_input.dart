@@ -1,22 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 
 class GlobalSearchTextField extends StatefulWidget {
   final String hintText;
   final TextInputType keyboardType;
   final TextInputAction textInputAction;
-
   final String caption;
   final TextEditingController controller;
-
+  final String? rightImage;
+  final ValueChanged? onChanged;
+  final FocusNode? focusNode;
+  final String? leftImage;
+  final MaskTextInputFormatter? maskFormatter;
   const GlobalSearchTextField({
     Key? key,
     required this.hintText,
     required this.keyboardType,
     required this.textInputAction,
-    required this.caption,
+    this.caption = '',
     required this.controller,
+    this.rightImage,
+    this.maskFormatter,
+    this.leftImage,
+    this.focusNode,
+    this.onChanged,
   }) : super(key: key);
 
   @override
@@ -70,36 +80,30 @@ class _GlobalSearchTextField extends State<GlobalSearchTextField> {
         ),
         TextField(
           controller: widget.controller,
-          focusNode: _textFieldFocus,
+          onChanged: widget.onChanged,
+          focusNode: widget.focusNode ?? _textFieldFocus,
+          inputFormatters: widget.maskFormatter != null ? [widget.maskFormatter!] : null,
           decoration: InputDecoration(
             hintText: widget.hintText,
-            prefixIcon: IconButton(
-              splashRadius: 1,
-              icon: SvgPicture.asset(AppIcons.search, color: _iconColor),
-              onPressed: () {},
-            ),
-            suffixIcon: IconButton(
-              splashRadius: 1,
-              icon: SvgPicture.asset(AppIcons.filter, color: _iconColor),
-              onPressed: () {},
-            ),
+            prefixIcon: widget.leftImage != null ? SvgPicture.asset(widget.leftImage!) : null,
+            suffixIcon: widget.rightImage != null ? SvgPicture.asset(widget.rightImage!) : null,
             enabledBorder: OutlineInputBorder(
-              borderSide: const BorderSide(color: Colors.grey, width: 1),
+              borderSide: const BorderSide(color: AppColors.c_50, width: 1),
               borderRadius: BorderRadius.circular(10),
             ),
             focusedBorder: OutlineInputBorder(
-              borderSide: const BorderSide(color: Colors.amber, width: 1),
+              borderSide: const BorderSide(color: AppColors.c_50, width: 1),
               borderRadius: BorderRadius.circular(10),
             ),
             errorBorder: OutlineInputBorder(
-              borderSide: const BorderSide(color: Colors.red, width: 1),
+              borderSide: const BorderSide(color: AppColors.c_50, width: 1),
               borderRadius: BorderRadius.circular(10),
             ),
             border: OutlineInputBorder(
-              borderSide: const BorderSide(color: Colors.grey, width: 1),
+              borderSide: const BorderSide(color: AppColors.c_50, width: 1),
               borderRadius: BorderRadius.circular(10),
             ),
-            fillColor: _color,
+            fillColor: AppColors.c_50,
             filled: true,
           ),
           keyboardType: widget.keyboardType,
