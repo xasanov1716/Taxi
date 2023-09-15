@@ -1,122 +1,86 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import 'package:taxi_app/utils/colors/app_colors.dart';
 
-class GlobalTextField extends StatefulWidget {
+class GlobalTextField extends StatelessWidget {
   final String hintText;
   final TextInputType keyboardType;
   final TextInputAction textInputAction;
-  final IconData prefixIcon;
+  final String prefixIcon;
   final String caption;
+  final ValueChanged? onChanged;
+  final FocusNode? focusNode;
+  final MaskTextInputFormatter? maskFormatter;
   final TextEditingController controller;
+  final String suffixIcon;
 
-  const GlobalTextField({
+  GlobalTextField({
     Key? key,
     required this.hintText,
-    required this.keyboardType,
-    required this.textInputAction,
-    required this.prefixIcon,
-    required this.caption,
+    this.keyboardType = TextInputType.text,
+    this.textInputAction = TextInputAction.next,
+    this.prefixIcon = "",
+    this.caption = "",
+    this.suffixIcon = "",
     required this.controller,
+    this.onChanged,
+    this.focusNode,
+    this.maskFormatter,
   }) : super(key: key);
 
-  @override
-  _GlobalTextFieldState createState() => _GlobalTextFieldState();
-}
-
-class _GlobalTextFieldState extends State<GlobalTextField> {
-  bool _isPasswordVisible = false;
-
-  bool isFocus = false;
   final FocusNode _textFieldFocus = FocusNode();
-  Color _color = Colors.white;
-  Color _iconColor = Colors.grey;
-
-  @override
-  void initState() {
-    _textFieldFocus.addListener(() {
-      if (_textFieldFocus.hasFocus) {
-        setState(() {
-          _color = Colors.yellow;
-          _iconColor = Colors.amber;
-        });
-      } else {
-        setState(() {
-          _color = Colors.white;
-          _iconColor = Colors.grey;
-        });
-      }
-    });
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        if (widget.caption.isNotEmpty)
-          Padding(
-            padding: const EdgeInsets.only(top: 4.0),
-            child: Text(
-              widget.caption,
-              style: const TextStyle(
-                fontSize: 14,
-                color: Colors.black,
+    return TextField(
+      controller: controller,
+      focusNode: _textFieldFocus,
+      decoration: InputDecoration(
+        hintStyle: const TextStyle(
+          fontFamily: "Urbanist",
+          fontSize: 14,
+          fontWeight: FontWeight.w400,
+          color: Color(0xff9e9e9e),
+          height: 20 / 14,
+        ),
+        hintText: hintText,
+        prefixIcon: prefixIcon.isEmpty
+            ? null
+            : Padding(
+                padding: EdgeInsets.only(left: 20.w, right: 12.w),
+                child: SvgPicture.asset(prefixIcon),
               ),
-            ),
-          ),
-        const SizedBox(
-          height: 5,
+        suffixIcon: suffixIcon.isEmpty
+            ? null
+            : Padding(
+                padding: EdgeInsets.only(left: 12.w, right: 20.w),
+                child: SvgPicture.asset(suffixIcon),
+              ),
+        enabledBorder: OutlineInputBorder(
+          borderSide: const BorderSide(color: Color(0xFFFAFAFA), width: 1),
+          borderRadius: BorderRadius.circular(10),
         ),
-        TextField(
-          controller: widget.controller,
-          focusNode: _textFieldFocus,
-          decoration: InputDecoration(
-            // contentPadding:
-            //     EdgeInsets.only(left: 16, top: 12, right: 20, bottom: 60),
-            hintText: widget.hintText,
-            prefixIcon: Icon(widget.prefixIcon, color: _iconColor),
-            suffixIcon: widget.keyboardType == TextInputType.visiblePassword
-                ? IconButton(
-                    splashRadius: 1,
-                    icon: Icon(
-                      _isPasswordVisible
-                          ? Icons.visibility
-                          : Icons.visibility_off,
-                      color: _iconColor,
-                    ),
-                    onPressed: () {
-                      setState(() {
-                        _isPasswordVisible = !_isPasswordVisible;
-                      });
-                    },
-                  )
-                : null,
-            enabledBorder: OutlineInputBorder(
-              borderSide: const BorderSide(color: Colors.grey, width: 1),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderSide: const BorderSide(color: Colors.amber, width: 1),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            errorBorder: OutlineInputBorder(
-              borderSide: const BorderSide(color: Colors.red, width: 1),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            border: OutlineInputBorder(
-              borderSide: const BorderSide(color: Colors.grey, width: 1),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            fillColor: _color,
-            filled: true,
-          ),
-          keyboardType: widget.keyboardType,
-          textInputAction: widget.textInputAction,
-          obscureText: widget.keyboardType == TextInputType.visiblePassword
-              ? !_isPasswordVisible
-              : false,
+        focusedBorder: OutlineInputBorder(
+          borderSide: const BorderSide(color: AppColors.primary, width: 1),
+          borderRadius: BorderRadius.circular(10),
         ),
-      ],
+        errorBorder: OutlineInputBorder(
+          borderSide: const BorderSide(color: Colors.red, width: 1),
+          borderRadius: BorderRadius.circular(10),
+        ),
+        border: OutlineInputBorder(
+          borderSide: const BorderSide(color: Color(0xFFFAFAFA), width: 1),
+          borderRadius: BorderRadius.circular(10),
+        ),
+        fillColor: _textFieldFocus.hasFocus
+            ? AppColors.yellowBackground
+            : const Color(0xFFFAFAFA),
+        filled: true,
+      ),
+      keyboardType: keyboardType,
+      textInputAction: textInputAction,
     );
   }
 }

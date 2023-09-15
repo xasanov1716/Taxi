@@ -1,8 +1,11 @@
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:taxi_app/blocs/auth_bloc/auth_bloc.dart';
 import 'package:taxi_app/blocs/home/home_bloc.dart';
 import 'package:taxi_app/cubits/code_input_cubit/code_input_cubit.dart';
+import 'package:taxi_app/cubits/auth_cubit/auth_cubit.dart';
 import 'package:taxi_app/cubits/home/home_cubit.dart';
 import 'package:taxi_app/data/local/storage_repository/storage_repository.dart';
 import 'package:taxi_app/data/repositories/auth_repository.dart';
@@ -42,6 +45,9 @@ class App extends StatelessWidget {
             create: (context) => CodeInputCubit(),
           ),
           BlocProvider(
+                  create: (context) => AuthCubit(),
+          ),
+          BlocProvider(
             create: (context) => HomeBloc(),
           ),
         ],
@@ -61,13 +67,19 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
-        return MaterialApp(
-          debugShowCheckedModeBanner: false,
-          theme: AppTheme.lightTheme,
-          darkTheme: AppTheme.darkTheme,
-          themeMode: ThemeMode.light,
-          initialRoute: RouteNames.splashScreen,
-          onGenerateRoute: AppRoutes.generateRoute,
+        return AdaptiveTheme(
+          light: AppTheme.lightTheme,
+          dark: AppTheme.darkTheme,
+          initial: AdaptiveThemeMode.system,
+          builder: (theme, darkTheme) {
+            return MaterialApp(
+              debugShowCheckedModeBanner: false,
+              theme: theme,
+              darkTheme: darkTheme,
+              initialRoute: RouteNames.splashScreen,
+              onGenerateRoute: AppRoutes.generateRoute,
+            );
+          },
         );
       },
     );
