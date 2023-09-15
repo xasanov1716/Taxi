@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:taxi_app/cubits/code_input_cubit/code_input_cubit.dart';
+import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/ui/widgets/code_input_field.dart';
 import 'package:taxi_app/ui/widgets/global_button.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
@@ -40,7 +41,9 @@ class ConfirmCodeScreen extends StatelessWidget {
                 title: "Verify",
                 radius: 100,
                 textColor: AppColors.dark3,
-                onTap: () {},
+                onTap: () {
+                  Navigator.pushNamed(context, RouteNames.createPassword);
+                },
               ),
               SizedBox(height: 24.h),
             ],

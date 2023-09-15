@@ -8,6 +8,7 @@ import 'package:taxi_app/data/local/storage_repository/storage_repository.dart';
 import 'package:taxi_app/data/repositories/auth_repository.dart';
 
 import 'package:taxi_app/ui/app_routes.dart';
+import 'package:taxi_app/ui/forget_create_paswords/create_screen/create_password_screen.dart';
 import 'package:taxi_app/ui/forget_create_paswords/forget_screen/confirm_code_screen.dart';
 import 'package:taxi_app/ui/forget_create_paswords/forget_screen/forget_password_screen.dart';
 import 'package:taxi_app/utils/theme/app_theme.dart';
@@ -65,8 +66,9 @@ class MyApp extends StatelessWidget {
           theme: AppTheme.lightTheme,
           darkTheme: AppTheme.darkTheme,
           themeMode: ThemeMode.light,
-          initialRoute: RouteNames.conFirmCodeScreen,
-          onGenerateRoute: AppRoutes.generateRoute,
+          // initialRoute: RouteNames.splashScreen,
+          // onGenerateRoute: AppRoutes.generateRoute,
+          home: CreatePasswordScreen(),
         );
       },
     );

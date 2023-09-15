@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/ui/widgets/global_button.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
@@ -118,7 +119,9 @@ class _ForgotPassWordState extends State<ForgotPassWord> {
                                   AppColors.disabledButton, BlendMode.srcIn),
                             ),
                           )),
-                      SizedBox(width: 20.w,),
+                      SizedBox(
+                        width: 20.w,
+                      ),
                       RichText(
                         text: TextSpan(
                           text: 'via SMS:',
@@ -127,17 +130,17 @@ class _ForgotPassWordState extends State<ForgotPassWord> {
                               fontStyle: FontStyle.normal,
                               fontSize: 14.sp,
                               fontFamily: 'Urbanist',
-                              letterSpacing:0.2.w ,
+                              letterSpacing: 0.2.w,
                               color: AppColors.c_600),
-                          children:  <TextSpan>[
+                          children: <TextSpan>[
                             TextSpan(
                               text: '\n+1 111 ******99',
-                              style:  TextStyle(
+                              style: TextStyle(
                                   fontWeight: FontWeight.w500,
                                   fontStyle: FontStyle.normal,
                                   fontSize: 16,
                                   fontFamily: 'Urbanist',
-                                  letterSpacing:0.2.w ,
+                                  letterSpacing: 0.2.w,
                                   color: AppColors.black),
                             ),
                           ],
@@ -196,7 +199,9 @@ class _ForgotPassWordState extends State<ForgotPassWord> {
                                   AppColors.disabledButton, BlendMode.srcIn),
                             ),
                           )),
-                      SizedBox(width: 20.w,),
+                      SizedBox(
+                        width: 20.w,
+                      ),
                       RichText(
                         text: TextSpan(
                           text: 'via Email:',
@@ -205,17 +210,17 @@ class _ForgotPassWordState extends State<ForgotPassWord> {
                               fontStyle: FontStyle.normal,
                               fontSize: 14.sp,
                               fontFamily: 'Urbanist',
-                              letterSpacing:0.2.w ,
+                              letterSpacing: 0.2.w,
                               color: AppColors.c_600),
-                          children:  <TextSpan>[
+                          children: <TextSpan>[
                             TextSpan(
                               text: '\nand***ley@yourdomain.com',
-                              style:  TextStyle(
+                              style: TextStyle(
                                   fontWeight: FontWeight.w500,
                                   fontStyle: FontStyle.normal,
                                   fontSize: 16,
                                   fontFamily: 'Urbanist',
-                                  letterSpacing:0.2.w ,
+                                  letterSpacing: 0.2.w,
                                   color: AppColors.black),
                             ),
                           ],
@@ -240,7 +245,9 @@ class _ForgotPassWordState extends State<ForgotPassWord> {
               title: 'Continue',
               radius: 29.r,
               textColor: AppColors.dark3,
-              onTap: () {},
+              onTap: () {
+                Navigator.pushNamed(context, RouteNames.conFirmCodeScreen);
+              },
             ),
           ),
         ],
