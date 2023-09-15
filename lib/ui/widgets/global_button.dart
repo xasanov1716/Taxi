@@ -5,10 +5,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 class GlobalButton extends StatelessWidget {
   const GlobalButton({
     super.key,
-    required this.color,
+    this.color = Colors.blue,
     required this.title,
-    required this.radius,
-    required this.textColor,
+    this.radius = 16,
+    this.textColor = Colors.white,
     this.leftIcon = "",
     this.rightIcon = "",
     this.borderColor = Colors.transparent,

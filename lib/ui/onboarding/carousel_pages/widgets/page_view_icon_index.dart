@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../utils/colors/app_colors.dart';
 
 class PageIndexItem extends StatelessWidget {
@@ -13,56 +13,61 @@ class PageIndexItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         activePageIndex == 0
             ? Container(
-                height: 8,
-                width: 32,
+                height: 8.w,
+                width: 32.w,
                 decoration: BoxDecoration(
-                    gradient: AppColors.gradientYellow,
-                    borderRadius: BorderRadius.circular(100)),
+                  gradient: AppColors.gradientYellow,
+                  borderRadius: BorderRadius.circular(100),
+                ),
               )
             : Container(
-                height: 8,
-                width: 8,
+                height: 8.w,
+                width: 8.w,
                 decoration: BoxDecoration(
-                    color: AppColors.c_300,
-                    borderRadius: BorderRadius.circular(100)),
+                  color: AppColors.c_300,
+                  borderRadius: BorderRadius.circular(100),
+                ),
               ),
         SizedBox(width: width / 80),
         activePageIndex == 1
             ? Container(
-                height: 8,
-                width: 32,
+                height: 8.w,
+                width: 32.w,
                 decoration: BoxDecoration(
-                    gradient: AppColors.gradientYellow,
-                    borderRadius: BorderRadius.circular(100)),
+                  gradient: AppColors.gradientYellow,
+                  borderRadius: BorderRadius.circular(100.r),
+                ),
               )
             : Container(
-                height: 8,
-                width: 8,
+                height: 8.w,
+                width: 8.w,
                 decoration: BoxDecoration(
-                    color: AppColors.c_300,
-                    borderRadius: BorderRadius.circular(100)),
+                  color: AppColors.c_300,
+                  borderRadius: BorderRadius.circular(100.r),
+                ),
               ),
         SizedBox(width: width / 80),
         activePageIndex == 2
             ? Container(
-                height: 8,
-                width: 32,
+                height: 8.w,
+                width: 32.w,
                 decoration: BoxDecoration(
-                    gradient: AppColors.gradientYellow,
-                    borderRadius: BorderRadius.circular(100)),
+                  gradient: AppColors.gradientYellow,
+                  borderRadius: BorderRadius.circular(100.r),
+                ),
               )
             : Container(
-                height: 8,
-                width: 8,
+                height: 8.w,
+                width: 8.w,
                 decoration: BoxDecoration(
-                    color: AppColors.c_300,
-                    borderRadius: BorderRadius.circular(100)),
+                  color: AppColors.c_300,
+                  borderRadius: BorderRadius.circular(100.r),
+                ),
               ),
       ],
     );
