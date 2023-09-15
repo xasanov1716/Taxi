@@ -67,8 +67,8 @@ class _SplashScreenState extends State<SplashScreen> {
             height: 114 * height / 812,
           ),
           SizedBox(
-            height: 145 * width / 428,
-            width: 145 * width / 428,
+            height: 125 * width / 428,
+            width: 125 * width / 428,
             child: Lottie.asset(
               AppIcons.splashCircular,
               fit: BoxFit.cover,
