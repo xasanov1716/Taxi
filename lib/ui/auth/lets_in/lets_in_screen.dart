@@ -48,7 +48,8 @@ class LetsInScreen extends StatelessWidget {
         },
         child: SafeArea(
             child: Padding(
-          padding: const EdgeInsets.only(left: 24.0, right: 24.0, bottom: 48.0, top: 24),
+          padding: const EdgeInsets.only(
+              left: 24.0, right: 24.0, bottom: 48.0, top: 24),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
@@ -59,7 +60,11 @@ class LetsInScreen extends StatelessWidget {
                 child: Image.asset(AppIcons.signIn),
               ),
               Text("Dastyorga Kirish",
-                  style: Theme.of(context).textTheme.displayMedium!.copyWith(fontSize: 48)),
+                  style: Theme.of(context)
+                      .textTheme
+                      .displayMedium!
+                      .copyWith(fontSize: 42.sp)),
+              30.ph,
               Column(
                 children: [
                   CustomAuthButton(

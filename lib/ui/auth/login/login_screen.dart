@@ -14,7 +14,6 @@ import '../../../utils/colors/app_colors.dart';
 import '../../widgets/global_button.dart';
 import '../widgets/auth_text_field.dart';
 
-
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
@@ -59,18 +58,24 @@ class _LoginScreenState extends State<LoginScreen> {
               24.ph,
               RememberCheckBox(
                   label: "Meni eslab qol",
-                  value: isChecked, onChanged: (v){
-                setState(() {
-                  isChecked=v;
-                });
-              }),
+                  value: isChecked,
+                  onChanged: (v) {
+                    setState(() {
+                      isChecked = v;
+                    });
+                  }),
               24.ph,
               GlobalButton(
                   color: AppColors.primary,
                   radius: 100.r,
                   textColor: AppColors.dark3,
                   title: "Kirish",
-                  onTap: () {}),
+                  onTap: () {
+                    Navigator.pushReplacementNamed(
+                      context,
+                      RouteNames.fillProfile,
+                    );
+                  }),
               24.ph,
               Center(
                 child: TextButton(
