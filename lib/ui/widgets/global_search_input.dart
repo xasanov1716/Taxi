@@ -85,8 +85,14 @@ class _GlobalSearchTextField extends State<GlobalSearchTextField> {
           inputFormatters: widget.maskFormatter != null ? [widget.maskFormatter!] : null,
           decoration: InputDecoration(
             hintText: widget.hintText,
-            prefixIcon: widget.leftImage != null ? SvgPicture.asset(widget.leftImage!) : null,
-            suffixIcon: widget.rightImage != null ? SvgPicture.asset(widget.rightImage!) : null,
+            prefixIcon: widget.leftImage != null ? Padding(
+              padding: const EdgeInsets.all(20),
+              child: SvgPicture.asset(widget.leftImage!,colorFilter: const ColorFilter.mode(AppColors.c_400, BlendMode.srcIn),),
+            ) : null,
+            suffixIcon: widget.rightImage != null ? Padding(
+              padding: const EdgeInsets.all(20),
+              child: SvgPicture.asset(widget.rightImage!,colorFilter: const ColorFilter.mode(AppColors.c_400, BlendMode.srcIn),)
+            ) : null,
             enabledBorder: OutlineInputBorder(
               borderSide: const BorderSide(color: AppColors.c_50, width: 1),
               borderRadius: BorderRadius.circular(10),

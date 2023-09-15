@@ -5,6 +5,7 @@ import 'package:taxi_app/ui/auth/register/register_screen.dart';
 import 'package:taxi_app/ui/auth/widgets/auth_navigator_button.dart';
 import 'package:taxi_app/ui/auth/widgets/custom__auth_divider.dart';
 import 'package:taxi_app/ui/auth/widgets/custom_auth_social_network_button.dart';
+
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
@@ -25,8 +26,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    width = MediaQuery.of(context).size.width;
-    height = MediaQuery.of(context).size.height;
     return Scaffold(
         body: SafeArea(
       child: Padding(
@@ -57,22 +56,30 @@ class _LoginScreenState extends State<LoginScreen> {
               24.ph,
               RememberCheckBox(
                   label: "Meni eslab qol",
-                  value: isChecked, onChanged: (v){
-                setState(() {
-                  isChecked=v;
-                });
-              }),
+                  value: isChecked,
+                  onChanged: (v) {
+                    setState(() {
+                      isChecked = v;
+                    });
+                  }),
               24.ph,
               GlobalButton(
                   color: AppColors.primary,
                   radius: 100.r,
                   textColor: AppColors.dark3,
                   title: "Kirish",
-                  onTap: () {}),
+                  onTap: () {
+                    Navigator.pushReplacementNamed(
+                      context,
+                      RouteNames.fillProfile,
+                    );
+                  }),
               24.ph,
               Center(
                 child: TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushReplacementNamed(context, RouteNames.forgotPassword);
+                    },
                     child: Text(
                       "Parolni unutdingizmi?",
                       textAlign: TextAlign.center,
