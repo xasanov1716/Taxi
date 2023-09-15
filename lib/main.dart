@@ -4,11 +4,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taxi_app/blocs/auth_bloc/auth_bloc.dart';
 import 'package:taxi_app/blocs/home/home_bloc.dart';
+import 'package:taxi_app/cubits/code_input_cubit/code_input_cubit.dart';
 import 'package:taxi_app/cubits/auth_cubit/auth_cubit.dart';
 import 'package:taxi_app/cubits/home/home_cubit.dart';
 import 'package:taxi_app/data/local/storage_repository/storage_repository.dart';
 import 'package:taxi_app/data/repositories/auth_repository.dart';
 import 'package:taxi_app/ui/app_routes.dart';
+import 'package:taxi_app/ui/forget_create_paswords/forget_screen/confirm_code_screen.dart';
+import 'package:taxi_app/ui/forget_create_paswords/forget_screen/forget_password_screen.dart';
 import 'package:taxi_app/utils/theme/app_theme.dart';
 
 Future<void> main() async {
@@ -37,10 +40,10 @@ class App extends StatelessWidget {
             create: (context) => HomeCubit(),
           ),
           BlocProvider(
-            create: (context) => AuthBloc(),
+            create: (context) => CodeInputCubit(),
           ),
           BlocProvider(
-            create: (context) => AuthCubit(),
+                  create: (context) => AuthCubit(),
           ),
           BlocProvider(
             create: (context) => HomeBloc(),

@@ -5,6 +5,7 @@ import 'package:taxi_app/ui/auth/register/register_screen.dart';
 import 'package:taxi_app/ui/auth/widgets/auth_navigator_button.dart';
 import 'package:taxi_app/ui/auth/widgets/custom__auth_divider.dart';
 import 'package:taxi_app/ui/auth/widgets/custom_auth_social_network_button.dart';
+
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
