@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taxi_app/blocs/home/home_bloc.dart';
 import 'package:taxi_app/cubits/home/home_cubit.dart';
 import 'package:taxi_app/data/local/storage_repository/storage_repository.dart';
 import 'package:taxi_app/data/repositories/auth_repository.dart';
-import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/utils/theme/app_theme.dart';
-
-
+import 'ui/app_routes.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await StorageRepository.getInstance();
@@ -57,7 +54,7 @@ class MyApp extends StatelessWidget {
           theme: AppTheme.lightTheme,
           darkTheme: AppTheme.darkTheme,
           themeMode: ThemeMode.light,
-          initialRoute: RouteNames.splashScreen,
+          initialRoute: RouteNames.conFirmCodeScreen,
           onGenerateRoute: AppRoutes.generateRoute,
         );
       },

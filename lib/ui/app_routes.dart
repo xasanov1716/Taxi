@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:taxi_app/ui/home/home_screen.dart';
 import 'package:taxi_app/ui/splash/splash_screen.dart';
 
 class RouteNames {
   static const String splashScreen = "/";
+  static const String conFirmCodeScreen="/conFirmCodeScreen";
 }
 
 class AppRoutes {

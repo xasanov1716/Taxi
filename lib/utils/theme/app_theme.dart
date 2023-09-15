@@ -279,4 +279,5 @@ class AppTheme {
             fontWeight: FontWeight.w400,
             letterSpacing: 0.2)),
   );
+
 }

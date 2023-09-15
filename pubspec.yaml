@@ -71,7 +71,13 @@ flutter:
   
   assets:
     - assets/images/
-    - assets/svg/
+    - assets/svg/bold/
+    - assets/svg/broken/
+    - assets/svg/bulk/
+    - assets/svg/curved/
+    - assets/svg/lightBorder/
+    - assets/svg/lightOutline/
+    - assets/svg/twoTone/
     - assets/fonts/
     - assets/lottie/
 
