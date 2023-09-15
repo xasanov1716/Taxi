@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 
 class GlobalTextField extends StatelessWidget {
@@ -9,6 +10,10 @@ class GlobalTextField extends StatelessWidget {
   final TextInputAction textInputAction;
   final String prefixIcon;
   final String caption;
+  final IconData? suffixIcon;
+  final ValueChanged? onChanged;
+  final FocusNode? focusNode;
+  final MaskTextInputFormatter? maskFormatter;
   final TextEditingController controller;
   final String suffixIcon;
 
