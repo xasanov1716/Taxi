@@ -6,6 +6,7 @@ import 'auth/lets_in/lets_in_screen.dart';
 
 class RouteNames {
   static const String splashScreen = "/";
+  static const String lestIn = "lest_in_screen";
 }
 
 class AppRoutes {
@@ -13,7 +14,11 @@ class AppRoutes {
     switch (settings.name) {
       case RouteNames.splashScreen:
         return MaterialPageRoute(
-          builder: (context) => const LestInPage(),
+          builder: (context) => const SplashScreen(),
+        );
+      case RouteNames.lestIn:
+        return MaterialPageRoute(
+          builder: (context) =>const LestInScreen (),
         );
       default:
         return MaterialPageRoute(
