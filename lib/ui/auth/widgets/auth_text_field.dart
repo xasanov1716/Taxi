@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 
@@ -28,6 +30,8 @@ class _AuthTextFieldState extends State<AuthTextField> {
   bool isFocused = false;
   Color _backgroundColor = AppColors.white;
   Color _iconColor = AppColors.c_500;
+  var maskFormatter = MaskTextInputFormatter(
+      mask: '## ### ## ##', filter: {"#": RegExp(r'[0-9]')});
 
   @override
   void initState() {
@@ -80,9 +84,12 @@ class _AuthTextFieldState extends State<AuthTextField> {
   @override
   Widget build(BuildContext context) {
     return TextField(
+      keyboardType: widget.isPassword?TextInputType.text:TextInputType.phone,
+      textInputAction: widget.isPassword?TextInputAction.done:TextInputAction.go,
       focusNode: _focusNode,
       controller: _controller,
       obscureText: _isObscured,
+      inputFormatters: [if(!widget.isPassword)maskFormatter],
       style: Theme.of(context)
           .textTheme
           .labelLarge
