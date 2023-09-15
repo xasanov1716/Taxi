@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/ui/widgets/global_button.dart';
-import 'package:taxi_app/ui/widgets/global_input.dart';
 import 'package:taxi_app/ui/widgets/global_search_input.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 
@@ -22,8 +21,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   final TextEditingController phone = TextEditingController();
   final TextEditingController gender = TextEditingController();
 
-  String? selectedGender;
-  List<String> genderOptions = ['Male', 'Female', 'Other'];
+
 
   var maskFormatter = MaskTextInputFormatter(
       mask: '00/00/0000',
@@ -129,7 +127,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     focusNode: phoneFocusNode,
                     maskFormatter: phoneFormatter,
                     onChanged: (value) {
-                      if (value.length == 16) {
+                      if (value.length == 17) {
                         phoneFocusNode.unfocus();
                       }
                     },
@@ -149,18 +147,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
             //  SizedBox(height: 30.h,),
             GlobalButton(
-                color: AppColors.amber,
-                title: 'Continue',
-                radius: 12,
-                textColor: AppColors.white,
+                color: AppColors.disabledButton,
+                title: "Continue",
+                radius: 100,
+                textColor: AppColors.black,
                 onTap: () {
-                  if (fullName.text.isNotEmpty &&
-                      phone.text.isNotEmpty &&
-                      date.text.isNotEmpty &&
-                      emil.text.isNotEmpty &&
-                      nickName.text.isNotEmpty) {
-                    Navigator.pushNamed(context, RouteNames.code);
-                  }
+                  Navigator.pushNamed(context, RouteNames.codeScreen);
                 }),
             SizedBox(height: 48.h),
           ],

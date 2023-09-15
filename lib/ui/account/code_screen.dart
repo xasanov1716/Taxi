@@ -1,3 +1,4 @@
+// ignore: unused_import
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pinput/pinput.dart';
@@ -6,6 +7,7 @@ import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/ui/widgets/global_button.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 
+
 class CodeScreen extends StatefulWidget {
   const CodeScreen({super.key});
 
@@ -13,28 +15,34 @@ class CodeScreen extends StatefulWidget {
   State<CodeScreen> createState() => _CodeScreenState();
 }
 
+
+
+
 class _CodeScreenState extends State<CodeScreen> {
+
   TextEditingController codeController = TextEditingController();
+
 
   @override
   Widget build(BuildContext context) {
+
     FocusNode focusNode = FocusNode();
 
     const focusedBorderColor = Colors.blue;
     const fillColor = AppColors.c_50;
-    const borderColor = AppColors.c_200;
+
 
     final defaultPinTheme = PinTheme(
-      width: 56,
-      height: 56,
-      textStyle: const TextStyle(
-        fontSize: 24,
-        color: AppColors.black,
+      height: 61,
+      textStyle:  TextStyle(
+          fontSize: 24.sp,
+          color: AppColors.c_900,
+          fontWeight: FontWeight.w700
       ),
-      padding: const EdgeInsets.only(left: 32, right: 32, top: 16, bottom: 16),
+      padding:  EdgeInsets.only(left: 32.w,right: 32.w,top: 16.h,bottom: 16.h),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: borderColor, width: 2),
+        borderRadius: BorderRadius.circular(12.r),
+        border: Border.all(color: AppColors.c_200,width: 2),
       ),
     );
 
@@ -44,23 +52,13 @@ class _CodeScreenState extends State<CodeScreen> {
         appBar: AppBar(
           elevation: 0,
           backgroundColor: AppColors.white,
-          title: const Text(
-            "Создать новый PIN-код",
-            style: TextStyle(
-              fontFamily: "Urbanist",
-              fontSize: 24,
-              fontWeight: FontWeight.w700,
-              color: Color(0xff212121),
-              height: 29/24,
-            ),
-          ),
+          title: const Text("Создать новый PIN-код",style: TextStyle(fontSize: 18),),
         ),
         body: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 24),
+          padding: EdgeInsets.only(left: 24.w,right: 24.w,bottom: 48.h),
           child: Column(
             children: [
-              Expanded(
-                  child: ListView(
+              Expanded(child: ListView(
                 children: [
                   const SizedBox(
                     height: 115,
@@ -68,41 +66,34 @@ class _CodeScreenState extends State<CodeScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
-                        'Add a PIN number to make your account\n                    more secure.',
-                        style: TextStyle(fontSize: 18.sp),
-                      ),
+                      Text('Add a PIN number to make your account\n                    more secure.',style: TextStyle(fontSize: 18.sp),),
                     ],
                   ),
-                  const SizedBox(
-                    height: 80,
-                  ),
+                  SizedBox(height: 80.h,),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.all(28.0),
+                        padding: const EdgeInsets.all(10),
                         child: Directionality(
-                          // Specify direction if desired
                           textDirection: TextDirection.ltr,
                           child: Pinput(
                             length: 4,
                             controller: codeController,
                             focusNode: focusNode,
                             androidSmsAutofillMethod:
-                                AndroidSmsAutofillMethod.smsUserConsentApi,
+                            AndroidSmsAutofillMethod.smsUserConsentApi,
                             listenForMultipleSmsOnAndroid: true,
                             defaultPinTheme: defaultPinTheme,
-                            separatorBuilder: (index) =>
-                                const SizedBox(width: 8),
+                            separatorBuilder: (index) =>  SizedBox(width: 4.w),
                             hapticFeedbackType: HapticFeedbackType.lightImpact,
                             cursor: Column(
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
                                 Container(
                                   margin: const EdgeInsets.only(bottom: 9),
-                                  width: 22,
-                                  height: 1,
+                                  width: 10.w,
+                                  height: 1.h,
                                   color: focusedBorderColor,
                                 ),
                               ],
@@ -130,22 +121,13 @@ class _CodeScreenState extends State<CodeScreen> {
                   ),
                 ],
               )),
-              Padding(
-                padding: const EdgeInsets.all(24),
-                child: GlobalButton(
-                    color: AppColors.primary,
-                    title: 'Continue',
-                    radius: 100,
-                    textColor: AppColors.white,
-                    onTap: () {
-                      if (codeController.text.isNotEmpty) {
-                        StorageRepository.putString('code', codeController.text);
-                      }
-                      Navigator.pushNamed(context, RouteNames.fingerprintScreen);
-                    }),
-              ),
+              GlobalButton(color: AppColors.primary, title: 'Continue', radius: 100, textColor: AppColors.black, onTap: (){
+                if(codeController.text.isNotEmpty){
+                  StorageRepository.putString('code', codeController.text);
+                }
+                Navigator.pushNamed(context, RouteNames.fingerprintScreen);
+              }),
             ],
           ),
         ));
-  }
-}
+  }}

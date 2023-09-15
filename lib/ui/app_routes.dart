@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:taxi_app/ui/account/code_screen.dart';
 import 'package:taxi_app/ui/account/fingerprint_screen.dart';
-import 'package:taxi_app/ui/account/profile_screen.dart';
-import 'package:taxi_app/ui/home/home_screen.dart';
+import 'package:taxi_app/ui/account/fill_profile.dart';
 import 'package:taxi_app/ui/splash/splash_screen.dart';
 import 'package:taxi_app/ui/tab_box/tab_box.dart';
 
@@ -11,7 +10,7 @@ class RouteNames {
   static const String tabBox = "tab_box";
   static const String profileScreen = "profile_screen";
   static const String codeScreen = "code_screen";
-  static const String fingerprintScreen = "fingerprintScreen";
+  static const String fingerprintScreen = "fingerprint_creen";
 }
 
 class AppRoutes {
@@ -28,15 +27,8 @@ class AppRoutes {
       case RouteNames.profileScreen:
         return MaterialPageRoute(
           builder: (context) => const ProfileScreen(),
-      case RouteNames.fillProfile:
-        return MaterialPageRoute(
-          builder: (context) => const ProfileScreen(),
         );
-      case RouteNames.code:
-        return MaterialPageRoute(
-          builder: (context) => const CodeScreen(),
-        );
-        case RouteNames.codeScreen:
+      case RouteNames.codeScreen:
         return MaterialPageRoute(
           builder: (context) => const CodeScreen(),
         );
