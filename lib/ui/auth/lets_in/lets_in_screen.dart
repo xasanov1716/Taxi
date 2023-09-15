@@ -12,8 +12,8 @@ import '../widgets/auth_navigator_button.dart';
 import '../widgets/custom__auth_divider.dart';
 import '../widgets/custom_auth_social_network_button.dart';
 
-class LestInScreen extends StatelessWidget {
-  const LestInScreen({Key? key}) : super(key: key);
+class LetsInScreen extends StatelessWidget {
+  const LetsInScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
