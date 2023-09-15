@@ -6,6 +6,7 @@ import 'package:taxi_app/ui/splash/splash_screen.dart';
 import 'package:taxi_app/ui/tab_box/tab_box.dart';
 
 import 'auth/lets_in/lets_in_screen.dart';
+import 'auth/login/login_screen.dart';
 
 class RouteNames {
   static const String splashScreen = "/";
@@ -23,14 +24,14 @@ class AppRoutes {
     switch (settings.name) {
       case RouteNames.splashScreen:
         return MaterialPageRoute(
-          builder: (context) => const SplashScreen(),
+          builder: (context) => const LestInScreen(),
         );
       case RouteNames.letsIn:
         return MaterialPageRoute(
           builder: (context) => const LestInScreen(),
         );
-      // case RouteNames.login:
-      //   return MaterialPageRoute(builder: (context) => LoginScreen());
+      case RouteNames.login:
+        return MaterialPageRoute(builder: (context) =>const LoginScreen());
       case RouteNames.tabBox:
         return MaterialPageRoute(
           builder: (context) => const TabBox(),

@@ -32,10 +32,12 @@ class GlobalTextField extends StatelessWidget {
 
   final FocusNode _textFieldFocus = FocusNode();
 
+
   @override
   Widget build(BuildContext context) {
     return TextField(
       controller: controller,
+
       focusNode: _textFieldFocus,
       decoration: InputDecoration(
         hintStyle: const TextStyle(
