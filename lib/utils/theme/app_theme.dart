@@ -114,6 +114,22 @@ class AppTheme {
       border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
     ),
     useMaterial3: true,
+    switchTheme: const SwitchThemeData(
+      thumbColor: MaterialStatePropertyAll(AppColors.white),
+    ),
+    colorScheme: const ColorScheme(
+      primary: AppColors.primary,
+      secondary: AppColors.secondary,
+      surface: Color(0xFF1F222A),
+      background: Color(0xFF1F222A),
+      error: AppColors.error,
+      onPrimary: Color(0xFFFFFFFF),
+      onSecondary: Color(0xFFFFFFFF),
+      onSurface: Color(0xffff3b2948),
+      onBackground: AppColors.dark3,
+      onError: Color(0xffff690005),
+      brightness: Brightness.dark,
+    ),
   );
 
   static ThemeData darkTheme = ThemeData(
