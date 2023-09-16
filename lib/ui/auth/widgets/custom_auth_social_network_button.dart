@@ -19,7 +19,6 @@ class CustomAuthButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-        style: Theme.of(context).elevatedButtonTheme.style,
         onPressed: onTap,
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 18.h),

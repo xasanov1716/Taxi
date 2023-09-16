@@ -5,6 +5,9 @@ import 'package:taxi_app/ui/auth/register/register_screen.dart';
 import 'package:taxi_app/ui/auth/widgets/auth_navigator_button.dart';
 import 'package:taxi_app/ui/auth/widgets/custom__auth_divider.dart';
 import 'package:taxi_app/ui/auth/widgets/custom_auth_social_network_button.dart';
+
+import 'package:taxi_app/ui/auth/widgets/remember_me.dart';
+
 import 'package:taxi_app/ui/widgets/global_appbar.dart';
 
 import 'package:taxi_app/utils/icons/app_icons.dart';
@@ -30,6 +33,8 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
+
       appBar: GlobalAppBar(onTap: (){
         Navigator.pop(context);
       }, title: ""),
