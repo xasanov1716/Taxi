@@ -16,6 +16,8 @@ class AppTheme {
     )),
     scaffoldBackgroundColor: AppColors.white,
     iconTheme: const IconThemeData(color: AppColors.disabledButton),
+    primaryColor: AppColors.primary,
+    hintColor: AppColors.c_500,
     appBarTheme: AppBarTheme(
         titleTextStyle: TextStyle(
           color: AppColors.c_900,
@@ -150,10 +152,11 @@ class AppTheme {
             fontWeight: FontWeight.w400,
             letterSpacing: 0.2)),
     dividerTheme: const DividerThemeData(color: AppColors.c_200),
-    inputDecorationTheme: const InputDecorationTheme(),
+    inputDecorationTheme: InputDecorationTheme(fillColor: AppColors.c_50),
   );
 
   static ThemeData darkTheme = ThemeData(
+    hintColor: AppColors.c_500,
     inputDecorationTheme: const InputDecorationTheme(
       fillColor: AppColors.dark2,
     ),
@@ -301,5 +304,4 @@ class AppTheme {
             fontWeight: FontWeight.w400,
             letterSpacing: 0.2)),
   );
-
 }

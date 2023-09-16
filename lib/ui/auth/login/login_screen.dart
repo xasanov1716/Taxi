@@ -5,6 +5,7 @@ import 'package:taxi_app/ui/auth/register/register_screen.dart';
 import 'package:taxi_app/ui/auth/widgets/auth_navigator_button.dart';
 import 'package:taxi_app/ui/auth/widgets/custom__auth_divider.dart';
 import 'package:taxi_app/ui/auth/widgets/custom_auth_social_network_button.dart';
+import 'package:taxi_app/ui/auth/widgets/remember_me.dart';
 
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/screen_size.dart';
@@ -83,9 +84,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: Text(
                       "Parolni unutdingizmi?",
                       textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                          fontWeight: FontWeight.w600,
-                          color: AppColors.primary),
+                      style: Theme.of(context)
+                          .textTheme
+                          .labelLarge
+                          ?.copyWith(fontWeight: FontWeight.w600, color: AppColors.primary),
                     )),
               ),
               45.ph,
@@ -97,8 +99,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      CustomAuthButton(
-                          imageUrl: AppIcons.facebook, onTap: () {}),
+                      CustomAuthButton(imageUrl: AppIcons.facebook, onTap: () {}),
                       CustomAuthButton(imageUrl: AppIcons.google, onTap: () {}),
                       CustomAuthButton(imageUrl: AppIcons.apple, onTap: () {}),
                     ],

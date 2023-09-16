@@ -5,7 +5,7 @@ import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 
 class CustomAuthDividerWidget extends StatelessWidget {
-  const CustomAuthDividerWidget( {
+  const CustomAuthDividerWidget({
     super.key,
     required this.label,
   });
@@ -18,7 +18,7 @@ class CustomAuthDividerWidget extends StatelessWidget {
       padding: const EdgeInsets.all(10.0),
       child: Row(
         children: [
-          Expanded(
+          const Expanded(
             child: Divider(),
           ),
           9.pw,
@@ -29,11 +29,11 @@ class CustomAuthDividerWidget extends StatelessWidget {
               style: Theme.of(context)
                   .textTheme
                   .titleMedium!
-                  .copyWith(color: AppColors.c_700, fontSize: width>450?18.sp:14.sp),
+                  .copyWith(color: AppColors.c_700, fontSize: width > 450 ? 18.sp : 14.sp),
             ),
           ),
           9.pw,
-          Expanded(
+          const Expanded(
             child: Divider(),
           ),
         ],
