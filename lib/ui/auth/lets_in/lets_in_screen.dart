@@ -4,6 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taxi_app/blocs/social_auth_bloc/social_auth_bloc.dart';
 import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/ui/widgets/global_appbar.dart';
+import 'package:taxi_app/blocs/auth_bloc/auth_bloc.dart';
+
 import 'package:taxi_app/ui/widgets/global_button.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 
@@ -23,19 +25,29 @@ class LestInScreen extends StatelessWidget {
       body: BlocListener<AuthBloc, AuthState>(
         listener: (context, state) {
           if (state is AuthLoading) {
-            showDialog(context: context, builder: (context){
-              return const  Dialog(child: Text("Kutmoqda"));
-            });
+            showDialog(
+                context: context,
+                builder: (context) {
+                  return const Dialog(child: Text("Kutmoqda"));
+                });
           }
           if (state is AuthSuccess) {
-            showDialog(context: context, builder: (context){
-              return Dialog(child: Text(state.successText),);
-            });
+            showDialog(
+                context: context,
+                builder: (context) {
+                  return Dialog(
+                    child: Text(state.successText),
+                  );
+                });
           }
           if (state is AuthError) {
-            showDialog(context: context, builder: (context){
-              return Dialog(child: Text(state.errorText),);
-            });
+            showDialog(
+                context: context,
+                builder: (context) {
+                  return Dialog(
+                    child: Text(state.errorText),
+                  );
+                });
           }
         },
         child:  Padding(
@@ -52,33 +64,49 @@ class LestInScreen extends StatelessWidget {
               30.25.ph,
               Text("Dastyorga Kirish",
                   style: Theme.of(context).textTheme.displayMedium!.copyWith(fontSize: 48)),
-              30.25.ph,
               Column(
                 children: [
-                  CustomAuthButton(imageUrl: AppIcons.facebook,label: "Facebook bilan davom eting", onTap: () {
-                    context.read<AuthBloc>().add(LoginWithFacebook());
-                  }),
+                  CustomAuthButton(
+                      imageUrl: AppIcons.facebook,
+                      label: "Facebook bilan davom eting",
+                      onTap: () {
+                        context.read<AuthBloc>().add(LoginWithFacebook());
+                      }),
                   16.ph,
-                  CustomAuthButton(imageUrl: AppIcons.google,label: "Google bilan davom eting", onTap: () {
-                    context
-                        .read<AuthBloc>().add(LoginWithGoogle());}),
+                  CustomAuthButton(
+                      imageUrl: AppIcons.google,
+                      label: "Google bilan davom eting",
+                      onTap: () {
+                        context.read<AuthBloc>().add(LoginWithGoogle());
+                      }),
                   16.ph,
-                  CustomAuthButton(imageUrl: AppIcons.apple,label: "Apple bilan davom eting", onTap: () {
-                    context.read<AuthBloc>().add(LoginWithApple());
-                  }),
+                  CustomAuthButton(
+                      imageUrl: AppIcons.apple,
+                      label: "Apple bilan davom eting",
+                      onTap: () {
+                        context.read<AuthBloc>().add(LoginWithApple());
+                      }),
                   24.ph,
-                const  CustomAuthDividerWidget(label: "yoki"),
+                  const CustomAuthDividerWidget(label: "yoki"),
                   24.ph,
                   GlobalButton(
                       color: AppColors.primary,
                       title: "Parol bilan tizimga kiring",
                       radius: 100,
                       textColor: AppColors.dark3,
-                      onTap: () {Navigator.pushNamed(context, RouteNames.login);
+                      onTap: () {
+                        Navigator.pushNamed(context, RouteNames.login);
                       }),
-                ]),30.25.ph,
-              AuthNavigatorButton(title: "Hisobingiz yo'qmi?",onTapTitle: "Ro'yxatdan o'tish",onTap: (){}),
-            ]),
+                ],
+              ),
+              AuthNavigatorButton(
+                  title: "Don’t have an account?",
+                  onTapTitle: "Sign up",
+                  onTap: () {
+                    Navigator.pushNamed(context, RouteNames.signUp);
+                  }),
+            ],
+          ),
         )),
     );
   }

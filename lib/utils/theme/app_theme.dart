@@ -8,7 +8,7 @@ class AppTheme {
     elevatedButtonTheme: ElevatedButtonThemeData(
         style: ButtonStyle(
       backgroundColor: const MaterialStatePropertyAll(AppColors.white),
-      overlayColor: MaterialStatePropertyAll(AppColors.c_200),
+      overlayColor: const MaterialStatePropertyAll(AppColors.c_200),
       shape: MaterialStatePropertyAll(RoundedRectangleBorder(
         side: const BorderSide(color: AppColors.c_200),
         borderRadius: BorderRadius.circular(16),
@@ -149,15 +149,15 @@ class AppTheme {
             fontFamily: "Urbanist",
             fontWeight: FontWeight.w400,
             letterSpacing: 0.2)),
-    dividerTheme: DividerThemeData(color: AppColors.c_200),
-    inputDecorationTheme: InputDecorationTheme(),
+    dividerTheme: const DividerThemeData(color: AppColors.c_200),
+    inputDecorationTheme: const InputDecorationTheme(),
   );
 
   static ThemeData darkTheme = ThemeData(
-    inputDecorationTheme: InputDecorationTheme(
+    inputDecorationTheme: const InputDecorationTheme(
       fillColor: AppColors.dark2,
     ),
-    dividerTheme: DividerThemeData(color: AppColors.dark3),
+    dividerTheme: const DividerThemeData(color: AppColors.dark3),
     elevatedButtonTheme: ElevatedButtonThemeData(
         style: ButtonStyle(
       backgroundColor: const MaterialStatePropertyAll(AppColors.dark2),
