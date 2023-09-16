@@ -1,3 +1,4 @@
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -41,6 +42,7 @@ class _GlobalTextFieldState extends State<GlobalTextField> {
   final FocusNode _textFieldFocus = FocusNode();
   Color color = const Color(0xFFFAFAFA);
 
+
   @override
   void initState() {
     super.initState();
@@ -66,7 +68,15 @@ class _GlobalTextFieldState extends State<GlobalTextField> {
             ? null
             : Padding(
                 padding: EdgeInsets.only(left: 20.w, right: 12.w),
-                child: SvgPicture.asset(widget.prefixIcon),
+                child: SvgPicture.asset(
+                  widget.prefixIcon,
+                  colorFilter: ColorFilter.mode(
+                      AdaptiveTheme.of(context).theme ==
+                              AdaptiveTheme.of(context).darkTheme
+                          ? AppColors.white
+                          : AppColors.c_900,
+                      BlendMode.srcIn),
+                ),
               ),
         suffixIcon: widget.suffixIcon,
         enabledBorder: OutlineInputBorder(
@@ -85,12 +95,17 @@ class _GlobalTextFieldState extends State<GlobalTextField> {
           borderSide: const BorderSide(color: Color(0xFFFAFAFA), width: 1),
           borderRadius: BorderRadius.circular(10),
         ),
-        fillColor: _textFieldFocus.hasFocus
-            ? const Color(0xFFFFFAED)
-            : const Color(0xFFFAFAFA),
+        fillColor: AdaptiveTheme.of(context).theme ==
+                AdaptiveTheme.of(context).darkTheme
+            ? _textFieldFocus.hasFocus
+                ? AppColors.yellowTransparent
+                : AppColors.dark2
+            : _textFieldFocus.hasFocus
+                ? const Color(0xFFFFFAED)
+                : const Color(0xFFFAFAFA),
         filled: true,
       ),
-      style: TextStyle(color: AppColors.dark3, fontSize: 16.sp),
+      // style: TextStyle(color: AppColors.dark3, fontSize: 16.sp),
       keyboardType: widget.keyboardType,
       textInputAction: widget.textInputAction,
     );

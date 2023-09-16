@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
+
 
 class AuthTextField extends StatefulWidget {
   const AuthTextField({
@@ -42,9 +42,15 @@ class _AuthTextFieldState extends State<AuthTextField> {
             _iconColor = AppColors.primary;
           });
         } else {
-          setState(() {
-            _iconColor = AppColors.c_900;
-          });
+          if(MediaQuery.of(context).platformBrightness==Brightness.dark){
+            setState(() {
+              _iconColor = AppColors.white;
+            });
+          }else{
+            setState(() {
+              _iconColor = AppColors.c_900;
+            });
+          }
         }
       } else {
         if (_focusNode.hasFocus) {
@@ -95,13 +101,30 @@ class _AuthTextFieldState extends State<AuthTextField> {
           .labelLarge
           ?.copyWith(fontWeight: FontWeight.w600, letterSpacing: 0.2),
       decoration: InputDecoration(
-          contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
+          contentPadding: EdgeInsets.only(left: 20.w, right: 20.w, top: 20.h, bottom: 20.h),
           hintText: widget.hintText,
           hintStyle: Theme.of(context)
               .textTheme
               .labelLarge
               ?.copyWith(fontWeight: FontWeight.w400, color: AppColors.c_500),
-          prefixIcon: IconButton(
+          prefixIcon: !widget.isPassword?SizedBox(
+            width: 90.w,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                IconButton(
+                    onPressed: () {},
+                    icon: SvgPicture.asset(
+                      widget.prefixIcon,
+                      colorFilter: ColorFilter.mode(_iconColor, BlendMode.srcIn),
+                      semanticsLabel: "A grey color mode",
+                    )),
+                Text("+998", style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                  fontWeight: FontWeight.w400
+                ),)
+              ],
+            ),
+          ):IconButton(
               onPressed: () {},
               icon: SvgPicture.asset(
                 widget.prefixIcon,

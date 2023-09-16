@@ -1,3 +1,4 @@
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taxi_app/ui/app_routes.dart';
@@ -36,7 +37,10 @@ class _ForgotPassWordState extends State<ForgotPassWord> {
                 children: [
                   33.ph,
                   Image.asset(
-                    AppIcons.enterPassword,
+                    AdaptiveTheme.of(context).theme ==
+                            AdaptiveTheme.of(context).darkTheme
+                        ? AppIcons.forgotPasswordDarkImage
+                        : AppIcons.enterPassword,
                     height: height * 0.285,
                     width: width * 0.64,
                   ),

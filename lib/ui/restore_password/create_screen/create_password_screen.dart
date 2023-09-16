@@ -1,4 +1,4 @@
-
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -46,7 +46,10 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
         children: [
           70.ph,
           Image.asset(
-            AppIcons.successPassword,
+            AdaptiveTheme.of(context).theme ==
+                    AdaptiveTheme.of(context).darkTheme
+                ? AppIcons.createNewPasswordDarkImage
+                : AppIcons.successPassword,
             height: height * (250 / figmaHeight),
             width: width * (329 / figmaWidth),
           ),
@@ -57,15 +60,23 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
           24.ph,
           GlobalTextField(
             suffixIcon: IconButton(
-                splashColor: null,
-                splashRadius: 2,
-                onPressed: () {
-                  setState(() {
-                    isPressed = !isPressed;
-                  });
-                },
-                icon: SvgPicture.asset(
-                    isPressed ? AppIcons.show : AppIcons.hide)),
+              splashColor: null,
+              splashRadius: 2,
+              onPressed: () {
+                setState(() {
+                  isPressed = !isPressed;
+                });
+              },
+              icon: SvgPicture.asset(
+                isPressed ? AppIcons.show : AppIcons.hide,
+                colorFilter: ColorFilter.mode(
+                    AdaptiveTheme.of(context).theme ==
+                            AdaptiveTheme.of(context).darkTheme
+                        ? AppColors.white
+                        : AppColors.c_900,
+                    BlendMode.srcIn),
+              ),
+            ),
             hintText: 'Password',
             obscureText: isPressed,
             keyboardType: TextInputType.visiblePassword,
@@ -85,7 +96,14 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
                   });
                 },
                 icon: SvgPicture.asset(
-                    isPressed2 ? AppIcons.show : AppIcons.hide)),
+                  isPressed2 ? AppIcons.show : AppIcons.hide,
+                  colorFilter: ColorFilter.mode(
+                      AdaptiveTheme.of(context).theme ==
+                              AdaptiveTheme.of(context).darkTheme
+                          ? AppColors.white
+                          : AppColors.c_900,
+                      BlendMode.srcIn),
+                )),
             hintText: 'Repeat password',
             obscureText: isPressed2,
             keyboardType: TextInputType.visiblePassword,
@@ -118,4 +136,3 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
     );
   }
 }
-
