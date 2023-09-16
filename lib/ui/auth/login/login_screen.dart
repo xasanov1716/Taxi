@@ -44,7 +44,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ?.copyWith(fontSize: width > 450 ? 48.sp : 30.sp)),
               45.ph,
               AuthTextField(
-                hintText: "Telefon raqam",
+                hintText: "_ _  _ _ _  _ _  _ _",
                 prefixIcon: AppIcons.call,
               ),
               24.ph,
