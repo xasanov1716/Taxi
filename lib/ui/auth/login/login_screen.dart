@@ -1,111 +1,122 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:taxi_app/ui/app_routes.dart';
+import 'package:taxi_app/ui/auth/register/register_screen.dart';
+import 'package:taxi_app/ui/auth/widgets/auth_navigator_button.dart';
 import 'package:taxi_app/ui/auth/widgets/custom__auth_divider.dart';
 import 'package:taxi_app/ui/auth/widgets/custom_auth_social_network_button.dart';
-import 'package:taxi_app/ui/widgets/global_button.dart';
-import 'package:taxi_app/utils/colors/app_colors.dart';
+
 import 'package:taxi_app/utils/icons/app_icons.dart';
+import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+import '../../../utils/colors/app_colors.dart';
+import '../../widgets/global_button.dart';
+import '../widgets/auth_text_field.dart';
+
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-          child: SingleChildScrollView(
-        padding: EdgeInsets.only(bottom: 48.h, left: 24.w, right: 24.w, top: 24.h),
-        child: Column(
-          children: [
-            const Text('Create your Account'),
-            Column(
-              children: [
-                CustomCheckbox(),
-                GlobalButton(
-                    color: AppColors.primary,
-                    title: 'Sign up',
-                    radius: 100,
-                    textColor: AppColors.dark3,
-                    onTap: () {})
-              ],
-            ),
-            Column(
-              children: [
-                CustomAuthDividerWidget(label: 'or continue with'),
-                20.ph,
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    CustomAuthButton(imageUrl: AppIcons.facebook, onTap: () {}),
-                    CustomAuthButton(imageUrl: AppIcons.google, onTap: () {}),
-                    CustomAuthButton(imageUrl: AppIcons.apple, onTap: () {}),
-                  ],
-                )
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Already have an account?',
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: AppColors.c_500),
-                ),
-                8.pw,
-                TextButton(
-                    onPressed: () {},
-                    child: Text(
-                      'Sign in',
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyMedium
-                          ?.copyWith(color: AppColors.primary, fontWeight: FontWeight.w600),
-                    ))
-              ],
-            ),
-          ],
-        ),
-      )),
-    );
-  }
+  State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class CustomCheckbox extends StatefulWidget {
-  const CustomCheckbox({
-    super.key,
-  });
-
-  @override
-  State<CustomCheckbox> createState() => _CustomCheckboxState();
-}
-
-class _CustomCheckboxState extends State<CustomCheckbox> {
+class _LoginScreenState extends State<LoginScreen> {
   bool isChecked = false;
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        SizedBox(
-          height: 24,
-          width: 24,
-          child: Checkbox(
-            value: isChecked,
-            side: BorderSide(width: 3, color: AppColors.primary),
-            activeColor: AppColors.primary,
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8),
-                side: BorderSide(
+    return Scaffold(
+        body: SafeArea(
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 24.w),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              45.ph,
+              Text("Xush kelibsiz! Akkauntga kirish",
+                  textAlign: TextAlign.left,
+                  style: Theme.of(context)
+                      .textTheme
+                      .displayMedium
+                      ?.copyWith(fontSize: width > 450 ? 48.sp : 30.sp)),
+              45.ph,
+              AuthTextField(
+                hintText: "Telefon raqam",
+                prefixIcon: AppIcons.call,
+              ),
+              24.ph,
+              AuthTextField(
+                hintText: "Parol",
+                prefixIcon: AppIcons.lock,
+                isPassword: true,
+              ),
+              24.ph,
+              RememberCheckBox(
+                  label: "Meni eslab qol",
+                  value: isChecked,
+                  onChanged: (v) {
+                    setState(() {
+                      isChecked = v;
+                    });
+                  }),
+              24.ph,
+              GlobalButton(
                   color: AppColors.primary,
-                  width: 3,
-                )),
-            onChanged: (value) {
-              isChecked = value!;
-              setState(() {});
-            },
+                  radius: 100.r,
+                  textColor: AppColors.dark3,
+                  title: "Kirish",
+                  onTap: () {
+                    Navigator.pushReplacementNamed(
+                      context,
+                      RouteNames.fillProfile,
+                    );
+                  }),
+              24.ph,
+              Center(
+                child: TextButton(
+                    onPressed: () {
+                      Navigator.pushReplacementNamed(context, RouteNames.forgotPassword);
+                    },
+                    child: Text(
+                      "Parolni unutdingizmi?",
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                          fontWeight: FontWeight.w600,
+                          color: AppColors.primary),
+                    )),
+              ),
+              45.ph,
+              Column(
+                children: [
+                  CustomAuthDividerWidget(label: "yoki davom eting"),
+                  20.ph,
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      CustomAuthButton(
+                          imageUrl: AppIcons.facebook, onTap: () {}),
+                      CustomAuthButton(imageUrl: AppIcons.google, onTap: () {}),
+                      CustomAuthButton(imageUrl: AppIcons.apple, onTap: () {}),
+                    ],
+                  )
+                ],
+              ),
+              45.ph,
+              AuthNavigatorButton(
+                title: "Akkauntingiz yo'qmi?",
+                onTapTitle: "Ro'yxatdan o'ting",
+                onTap: () {
+                  Navigator.pushReplacementNamed(context, RouteNames.signUp);
+                },
+              )
+            ],
           ),
-        )
-      ],
-    );
+        ),
+      ),
+    ));
   }
 }

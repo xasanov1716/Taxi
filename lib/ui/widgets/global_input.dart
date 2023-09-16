@@ -4,7 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 
-class GlobalTextField extends StatelessWidget {
+class GlobalTextField extends StatefulWidget {
   final String hintText;
   final TextInputType keyboardType;
   final TextInputAction textInputAction;
@@ -16,7 +16,7 @@ class GlobalTextField extends StatelessWidget {
   final TextEditingController controller;
   final String suffixIcon;
 
-  GlobalTextField({
+  const GlobalTextField({
     Key? key,
     required this.hintText,
     this.keyboardType = TextInputType.text,
@@ -30,12 +30,21 @@ class GlobalTextField extends StatelessWidget {
     this.maskFormatter,
   }) : super(key: key);
 
+  @override
+  State<GlobalTextField> createState() => _GlobalTextFieldState();
+}
+
+class _GlobalTextFieldState extends State<GlobalTextField> {
   final FocusNode _textFieldFocus = FocusNode();
+  Color color = const Color(0xFFFAFAFA);
+
+  focusColor() {}
+
 
   @override
   Widget build(BuildContext context) {
     return TextField(
-      controller: controller,
+      controller: widget.controller,
       focusNode: _textFieldFocus,
       decoration: InputDecoration(
         hintStyle: const TextStyle(
@@ -45,18 +54,18 @@ class GlobalTextField extends StatelessWidget {
           color: Color(0xff9e9e9e),
           height: 20 / 14,
         ),
-        hintText: hintText,
-        prefixIcon: prefixIcon.isEmpty
+        hintText: widget.hintText,
+        prefixIcon: widget.prefixIcon.isEmpty
             ? null
             : Padding(
                 padding: EdgeInsets.only(left: 20.w, right: 12.w),
-                child: SvgPicture.asset(prefixIcon),
+                child: SvgPicture.asset(widget.prefixIcon),
               ),
-        suffixIcon: suffixIcon.isEmpty
+        suffixIcon: widget.suffixIcon.isEmpty
             ? null
             : Padding(
                 padding: EdgeInsets.only(left: 12.w, right: 20.w),
-                child: SvgPicture.asset(suffixIcon),
+                child: SvgPicture.asset(widget.suffixIcon),
               ),
         enabledBorder: OutlineInputBorder(
           borderSide: const BorderSide(color: Color(0xFFFAFAFA), width: 1),
@@ -75,12 +84,12 @@ class GlobalTextField extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
         ),
         fillColor: _textFieldFocus.hasFocus
-            ? AppColors.yellowBackground
+            ? const Color(0xFFFFFAED)
             : const Color(0xFFFAFAFA),
         filled: true,
       ),
-      keyboardType: keyboardType,
-      textInputAction: textInputAction,
+      keyboardType: widget.keyboardType,
+      textInputAction: widget.textInputAction,
     );
   }
 }

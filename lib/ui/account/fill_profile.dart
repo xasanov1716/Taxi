@@ -5,6 +5,8 @@ import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/ui/widgets/global_button.dart';
 import 'package:taxi_app/ui/widgets/global_search_input.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
+import 'package:taxi_app/utils/icons/app_icons.dart';
+import 'package:taxi_app/utils/size/screen_size.dart';
 
 class FillProfileScreen extends StatefulWidget {
   const FillProfileScreen({Key? key}) : super(key: key);
@@ -21,8 +23,7 @@ class _FillProfileScreenState extends State<FillProfileScreen> {
   final TextEditingController phone = TextEditingController();
   final TextEditingController gender = TextEditingController();
 
-  String? selectedGender;
-  List<String> genderOptions = ['Male', 'Female', 'Other'];
+
 
   var maskFormatter = MaskTextInputFormatter(
       mask: '00/00/0000',
@@ -58,10 +59,10 @@ class _FillProfileScreenState extends State<FillProfileScreen> {
               ),
               child: Stack(
                 children: [
-                  const Center(
+                   Center(
                       child: Icon(
                     Icons.person,
-                    size: 140,
+                    size: 140*height/figmaHeight,
                     color: AppColors.c_400,
                   )),
                   Positioned(
@@ -105,6 +106,7 @@ class _FillProfileScreenState extends State<FillProfileScreen> {
                     maskFormatter: maskFormatter,
                     hintText: 'Date of Birth',
                     focusNode: focusNode,
+                    rightImage: AppIcons.calendar,
                     onChanged: (v) {
                       if (v.length == 10) {
                         focusNode.unfocus();
@@ -120,6 +122,8 @@ class _FillProfileScreenState extends State<FillProfileScreen> {
                     keyboardType: TextInputType.emailAddress,
                     textInputAction: TextInputAction.next,
                     controller: emil,
+                    rightImage: AppIcons.message,
+
                   ),
                    SizedBox(height: 22.h),
                   GlobalSearchTextField(
@@ -128,7 +132,7 @@ class _FillProfileScreenState extends State<FillProfileScreen> {
                     focusNode: phoneFocusNode,
                     maskFormatter: phoneFormatter,
                     onChanged: (value) {
-                      if (value.length == 16) {
+                      if (value.length == 17) {
                         phoneFocusNode.unfocus();
                       }
                     },
@@ -141,6 +145,8 @@ class _FillProfileScreenState extends State<FillProfileScreen> {
                     keyboardType: TextInputType.text,
                     textInputAction: TextInputAction.done,
                     controller: gender,
+                    rightImage: AppIcons.arrowDown2,
+
                   ),
                   SizedBox(height: 60.h),
                 ],
@@ -148,18 +154,12 @@ class _FillProfileScreenState extends State<FillProfileScreen> {
             ),
             //  SizedBox(height: 30.h,),
             GlobalButton(
-                color: AppColors.amber,
-                title: 'Continue',
-                radius: 12,
-                textColor: AppColors.white,
+                color: AppColors.disabledButton,
+                title: "Continue",
+                radius: 100,
+                textColor: AppColors.black,
                 onTap: () {
-                  if (fullName.text.isNotEmpty &&
-                      phone.text.isNotEmpty &&
-                      date.text.isNotEmpty &&
-                      emil.text.isNotEmpty &&
-                      nickName.text.isNotEmpty) {
-                    Navigator.pushNamed(context, RouteNames.code);
-                  }
+                  Navigator.pushNamed(context, RouteNames.codeScreen);
                 }),
             SizedBox(height: 48.h),
           ],
