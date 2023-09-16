@@ -12,11 +12,13 @@ class AuthTextField extends StatefulWidget {
     required this.hintText,
     required this.prefixIcon,
     this.isPassword = false,
+    required this.onNext,
   });
 
   final String hintText;
   final String prefixIcon;
   final bool isPassword;
+  final VoidCallback onNext;
 
   @override
   State<AuthTextField> createState() => _AuthTextFieldState();
@@ -53,14 +55,18 @@ class _AuthTextFieldState extends State<AuthTextField> {
           }
         }
       } else {
-        if (_focusNode.hasFocus) {
-          setState(() {
-            _iconColor = AppColors.primary;
-          });
-        } else {
-          setState(() {
-            _iconColor = AppColors.c_500;
-          });
+        if(!widget.isPassword&&_controller.text.length==9){
+          widget.onNext.call();
+        }else{
+          if (_focusNode.hasFocus) {
+            setState(() {
+              _iconColor = AppColors.primary;
+            });
+          } else {
+            setState(() {
+              _iconColor = AppColors.c_500;
+            });
+          }
         }
       }
     });
@@ -95,12 +101,14 @@ class _AuthTextFieldState extends State<AuthTextField> {
       focusNode: _focusNode,
       controller: _controller,
       obscureText: _isObscured,
+      maxLength: widget.isPassword?20:12,
       inputFormatters: [if(!widget.isPassword)maskFormatter],
       style: Theme.of(context)
           .textTheme
           .labelLarge
           ?.copyWith(fontWeight: FontWeight.w600, letterSpacing: 0.2),
       decoration: InputDecoration(
+        counterText: "",
           contentPadding: EdgeInsets.only(left: 20.w, right: 20.w, top: 20.h, bottom: 20.h),
           hintText: widget.hintText,
           hintStyle: Theme.of(context)
