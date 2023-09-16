@@ -6,14 +6,17 @@ import '../colors/app_colors.dart';
 class AppTheme {
   static ThemeData lightTheme = ThemeData(
     elevatedButtonTheme: ElevatedButtonThemeData(
-        style: ButtonStyle(
-      backgroundColor: const MaterialStatePropertyAll(AppColors.white),
-      overlayColor: const MaterialStatePropertyAll(AppColors.c_200),
-      shape: MaterialStatePropertyAll(RoundedRectangleBorder(
-        side: const BorderSide(color: AppColors.c_200),
-        borderRadius: BorderRadius.circular(16),
-      )),
-    )),
+      style: ButtonStyle(
+        backgroundColor: const MaterialStatePropertyAll(AppColors.white),
+        overlayColor: const MaterialStatePropertyAll(AppColors.c_200),
+        shape: MaterialStatePropertyAll(
+          RoundedRectangleBorder(
+            side: const BorderSide(color: AppColors.c_200),
+            borderRadius: BorderRadius.circular(16),
+          ),
+        ),
+      ),
+    ),
     scaffoldBackgroundColor: AppColors.white,
     iconTheme: const IconThemeData(color: AppColors.disabledButton),
     primaryColor: AppColors.primary,

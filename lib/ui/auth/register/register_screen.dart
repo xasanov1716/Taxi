@@ -5,6 +5,7 @@ import 'package:taxi_app/ui/auth/widgets/auth_navigator_button.dart';
 import 'package:taxi_app/ui/auth/widgets/auth_text_field.dart';
 import 'package:taxi_app/ui/auth/widgets/custom__auth_divider.dart';
 import 'package:taxi_app/ui/auth/widgets/custom_auth_social_network_button.dart';
+import 'package:taxi_app/ui/widgets/global_appbar.dart';
 import 'package:taxi_app/ui/widgets/global_button.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
@@ -25,8 +26,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-          child: Center(
+      appBar: GlobalAppBar(onTap: (){Navigator.pop(context);}, title: ""),
+      body: Center(
         child: SingleChildScrollView(
           padding: EdgeInsets.only(bottom: 48.h, left: 24.w, right: 24.w, top: 24.h),
           child: Column(
@@ -39,9 +40,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
               60.ph,
               Column(
                 children: [
-                  AuthTextField(hintText: 'Telefon Raqami', prefixIcon: AppIcons.call),
+                  AuthTextField(hintText: 'Telefon Raqami', prefixIcon: AppIcons.call, onChanged: (v) {  },),
                   20.ph,
-                  AuthTextField(hintText: 'Parol', prefixIcon: AppIcons.lock, isPassword: true),
+                  AuthTextField(hintText: 'Parol', prefixIcon: AppIcons.lock, isPassword: true, onChanged: (v) {  },),
                   20.ph,
                   RememberCheckBox(
                     label: 'Meni eslab qol',
@@ -92,7 +93,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             ],
           ),
         ),
-      )),
+      )
     );
   }
 }
