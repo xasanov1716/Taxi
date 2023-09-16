@@ -1,0 +1,76 @@
+// ignore_for_file: library_private_types_in_public_api
+
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:taxi_app/ui/widgets/global_input.dart';
+import 'package:taxi_app/utils/icons/app_icons.dart';
+
+import '../../../utils/colors/app_colors.dart';
+
+
+
+class BottomModalSheet extends StatefulWidget {
+  const BottomModalSheet({super.key,});
+
+  @override
+  _BottomModalSheetState createState() => _BottomModalSheetState();
+}
+
+class _BottomModalSheetState extends State<BottomModalSheet> {
+
+  TextEditingController targetController = TextEditingController();
+  TextEditingController entranceController = TextEditingController();
+  TextEditingController floorController = TextEditingController();
+  TextEditingController apartmentController = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      child: Container(
+        decoration: const BoxDecoration(
+          borderRadius: BorderRadius.only(topLeft: Radius.circular(40),topRight: Radius.circular(40)),
+          color: Colors.white,
+        ),
+        padding: EdgeInsets.only(
+          bottom: MediaQuery
+              .of(context)
+              .viewInsets
+              .bottom,
+        ),
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(top: 8,bottom: 24),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Column(
+                    children: [
+                      Container(
+                          width: 38 ,
+                          height: 3 ,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(100.r),
+                              color: AppColors.c_300)
+                      )
+                    ],
+                  )
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 16,right:16,bottom: 30 ),
+              child: GlobalTextField(
+                suffixIcon: AppIcons.location,
+                hintText: 'Where would you go?',
+                controller: targetController,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
