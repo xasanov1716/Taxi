@@ -54,7 +54,7 @@ class _ForgotPasswordSelectorState extends State<ForgotPasswordSelector> {
                   height: 80.h,
                   width: 80.w,
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(40.r),
+                      borderRadius: BorderRadius.circular(150.r),
                       color: AppColors.yellowBackground),
                   child: IconButton(
                     onPressed: null,
