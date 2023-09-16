@@ -1,3 +1,4 @@
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -13,8 +14,9 @@ class GlobalTextField extends StatefulWidget {
   final ValueChanged? onChanged;
   final FocusNode? focusNode;
   final MaskTextInputFormatter? maskFormatter;
-  final TextEditingController controller;
-  final String suffixIcon;
+  final TextEditingController? controller;
+  final Widget? suffixIcon;
+  final bool? obscureText;
 
   const GlobalTextField({
     Key? key,
@@ -23,11 +25,12 @@ class GlobalTextField extends StatefulWidget {
     this.textInputAction = TextInputAction.next,
     this.prefixIcon = "",
     this.caption = "",
-    this.suffixIcon = "",
-    required this.controller,
+    this.suffixIcon,
+    this.controller,
     this.onChanged,
     this.focusNode,
     this.maskFormatter,
+    this.obscureText,
   }) : super(key: key);
 
   @override
@@ -35,16 +38,23 @@ class GlobalTextField extends StatefulWidget {
 }
 
 class _GlobalTextFieldState extends State<GlobalTextField> {
+  late TextEditingController _internalController;
   final FocusNode _textFieldFocus = FocusNode();
   Color color = const Color(0xFFFAFAFA);
 
-  focusColor() {}
+
+  @override
+  void initState() {
+    super.initState();
+    _internalController = widget.controller ?? TextEditingController();
+  }
 
   @override
   Widget build(BuildContext context) {
     return TextField(
-      controller: widget.controller,
+      controller: _internalController,
       focusNode: _textFieldFocus,
+      obscureText: !widget.obscureText!,
       decoration: InputDecoration(
         hintStyle: const TextStyle(
           fontFamily: "Urbanist",
@@ -58,14 +68,17 @@ class _GlobalTextFieldState extends State<GlobalTextField> {
             ? null
             : Padding(
                 padding: EdgeInsets.only(left: 20.w, right: 12.w),
-                child: SvgPicture.asset(widget.prefixIcon),
+                child: SvgPicture.asset(
+                  widget.prefixIcon,
+                  colorFilter: ColorFilter.mode(
+                      AdaptiveTheme.of(context).theme ==
+                              AdaptiveTheme.of(context).darkTheme
+                          ? AppColors.white
+                          : AppColors.c_900,
+                      BlendMode.srcIn),
+                ),
               ),
-        suffixIcon: widget.suffixIcon.isEmpty
-            ? null
-            : Padding(
-                padding: EdgeInsets.only(left: 12.w, right: 20.w),
-                child: SvgPicture.asset(widget.suffixIcon),
-              ),
+        suffixIcon: widget.suffixIcon,
         enabledBorder: OutlineInputBorder(
           borderSide: const BorderSide(color: Color(0xFFFAFAFA), width: 1),
           borderRadius: BorderRadius.circular(10),
@@ -82,11 +95,17 @@ class _GlobalTextFieldState extends State<GlobalTextField> {
           borderSide: const BorderSide(color: Color(0xFFFAFAFA), width: 1),
           borderRadius: BorderRadius.circular(10),
         ),
-        fillColor: _textFieldFocus.hasFocus
-            ? const Color(0xFFFFFAED)
-            : const Color(0xFFFAFAFA),
+        fillColor: AdaptiveTheme.of(context).theme ==
+                AdaptiveTheme.of(context).darkTheme
+            ? _textFieldFocus.hasFocus
+                ? AppColors.yellowTransparent
+                : AppColors.dark2
+            : _textFieldFocus.hasFocus
+                ? const Color(0xFFFFFAED)
+                : const Color(0xFFFAFAFA),
         filled: true,
       ),
+      // style: TextStyle(color: AppColors.dark3, fontSize: 16.sp),
       keyboardType: widget.keyboardType,
       textInputAction: widget.textInputAction,
     );

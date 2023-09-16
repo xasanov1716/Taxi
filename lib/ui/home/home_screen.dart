@@ -1,5 +1,3 @@
-// ignore_for_file: empty_catches
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';

@@ -1,4 +1,5 @@
-import 'package:taxi_app/data/models/icons/icon_type.dart';
+
+import '../../data/models/icon/icon_type.dart';
 
 class AppIcons {
   // images
@@ -20,6 +21,8 @@ class AppIcons {
   static const String successPassword="assets/images/success_password.png";
   static const String taxiLogo="assets/images/taxi_logo.png";
   static const String createNewPasswordDialog = "assets/images/create_new_password_dialog.png";
+  static const String forgotPasswordDarkImage = "assets/images/forgot_password_dark.png";
+  static const String createNewPasswordDarkImage = "assets/images/create_new_password_dark.png";
 
 
   // smile images
@@ -32,6 +35,11 @@ class AppIcons {
   static const String smileTired = "assets/images/mood/smile_tired.png";
   static const String smileUnhappy = "assets/images/mood/smile_unhappy.png";
   static const String smileVeryHappy =  "assets/images/mood/smile_very_happy.png";
+
+  static String getSvg({required String name, IconType? iconType}) {
+    if (iconType != null) return "assets/svg/${iconType.name}/$name.svg";
+    return "assets/svg/${it.name}/$name.svg";
+  }
 
   // svg
   static IconType it = IconType.lightOutline;

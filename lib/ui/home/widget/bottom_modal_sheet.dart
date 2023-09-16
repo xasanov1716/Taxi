@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:taxi_app/ui/widgets/global_input.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 
@@ -63,7 +64,7 @@ class _BottomModalSheetState extends State<BottomModalSheet> {
             Padding(
               padding: const EdgeInsets.only(left: 16,right:16,bottom: 30 ),
               child: GlobalTextField(
-                suffixIcon: AppIcons.location,
+                suffixIcon: SvgPicture.asset(AppIcons.location),
                 hintText: 'Where would you go?',
                 controller: targetController,
               ),

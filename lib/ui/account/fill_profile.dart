@@ -1,12 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import 'package:taxi_app/cubits/user/user_cubit.dart';
+import 'package:taxi_app/data/models/user/user_field_keys.dart';
+import 'package:taxi_app/main.dart';
+import 'package:taxi_app/ui/account/widgets/pop_up.dart';
+import 'package:taxi_app/ui/account/widgets/user_image.dart';
 import 'package:taxi_app/ui/app_routes.dart';
+import 'package:taxi_app/ui/widgets/global_appbar.dart';
 import 'package:taxi_app/ui/widgets/global_button.dart';
 import 'package:taxi_app/ui/widgets/global_search_input.dart';
+import 'package:taxi_app/ui/widgets/phone_number_text_field.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/screen_size.dart';
+import 'package:taxi_app/utils/size/size_extension.dart';
 
 class FillProfileScreen extends StatefulWidget {
   const FillProfileScreen({Key? key}) : super(key: key);
@@ -16,143 +25,146 @@ class FillProfileScreen extends StatefulWidget {
 }
 
 class _FillProfileScreenState extends State<FillProfileScreen> {
-  final TextEditingController fullName = TextEditingController();
-  final TextEditingController nickName = TextEditingController();
-  final TextEditingController date = TextEditingController();
-  final TextEditingController emil = TextEditingController();
-  final TextEditingController phone = TextEditingController();
-  final TextEditingController gender = TextEditingController();
+  DateTime selectedDate = DateTime.now();
 
-
-
+  TextEditingController dateController = TextEditingController();
+  TextEditingController gender = TextEditingController();
   var maskFormatter = MaskTextInputFormatter(
-      mask: '00/00/0000',
+      mask: '00-00-0000',
       filter: {"0": RegExp(r'[0-9]')},
       type: MaskAutoCompletionType.lazy);
 
   var phoneFormatter = MaskTextInputFormatter(
-      mask: '+998 ## ### ## ##',
+      mask: '## ### ## ##',
       filter: {"#": RegExp(r'[0-9]')},
       type: MaskAutoCompletionType.lazy);
 
+  int selectedMenu = 1;
+
   final FocusNode focusNode = FocusNode();
   final FocusNode phoneFocusNode = FocusNode();
+  final FocusNode fullNameFocusNode = FocusNode();
+  final FocusNode emailFocusNode = FocusNode();
+  final FocusNode nickNameFocusNode = FocusNode();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        title: const Text('Заполните свой профиль'),
-      ),
+      appBar: GlobalAppBar(onTap: () {}, title: 'Fill Your Profile'),
       body: Padding(
         padding:
             EdgeInsets.only(left: 24.w, right: 24.w, bottom: 12.h, top: 12.h),
         child: Column(
           children: [
-            Container(
-              height: 142,
-              width: 175,
-              decoration: const BoxDecoration(
-                shape: BoxShape.circle,
-                color: AppColors.c_50,
-              ),
-              child: Stack(
-                children: [
-                   Center(
-                      child: Icon(
-                    Icons.person,
-                    size: 140*height/figmaHeight,
-                    color: AppColors.c_400,
-                  )),
-                  Positioned(
-                    bottom: 0,
-                    right: 1.w,
-                    child: Container(
-                      padding: const EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10.r),
-                          color: AppColors.primary),
-                      child: const Icon(
-                        Icons.edit,
-                        size: 29,
-                        color: AppColors.white,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
             Expanded(
               child: ListView(
                 physics: const BouncingScrollPhysics(),
                 children: [
-                   SizedBox(height: 24.h),
+                  UserImage(
+                      userImage: AppIcons.emptyProfile,
+                      edit: AppIcons.editSquare),
+                  24.ph,
                   GlobalSearchTextField(
+                    focusNode: fullNameFocusNode,
                     hintText: 'Full Name',
                     keyboardType: TextInputType.text,
                     textInputAction: TextInputAction.next,
-                    controller: fullName,
+                    onChanged: (value) {
+                      context.read<UserCubit>().updateCurrentUserField(
+                          fieldKey: UserFieldKeys.fullName, value: value);
+                    },
                   ),
-                   SizedBox(height: 24.h),
+                  24.ph,
                   GlobalSearchTextField(
+                    focusNode: nickNameFocusNode,
                     hintText: 'Nickname',
                     keyboardType: TextInputType.text,
                     textInputAction: TextInputAction.next,
-                    controller: nickName,
+                    onChanged: (value) {
+                      context.read<UserCubit>().updateCurrentUserField(
+                          fieldKey: UserFieldKeys.nickName, value: value);
+                    },
                   ),
-                   SizedBox(height: 24.h),
+                  24.ph,
                   GlobalSearchTextField(
                     maskFormatter: maskFormatter,
+                    readOnly: true,
                     hintText: 'Date of Birth',
                     focusNode: focusNode,
+                    onTap: () {
+                      _selecDate(context);
+                    },
                     rightImage: AppIcons.calendar,
-                    onChanged: (v) {
-                      if (v.length == 10) {
+                    controller: dateController,
+                    onChanged: (value) {
+                      if (value.length == 10) {
                         focusNode.unfocus();
                       }
                     },
                     keyboardType: TextInputType.number,
                     textInputAction: TextInputAction.next,
-                    controller: date,
                   ),
-                   SizedBox(height: 24.h),
+                  24.ph,
                   GlobalSearchTextField(
                     hintText: 'Email',
+                    focusNode: emailFocusNode,
                     keyboardType: TextInputType.emailAddress,
                     textInputAction: TextInputAction.next,
-                    controller: emil,
+                    onChanged: (value) {
+                      context.read<UserCubit>().updateCurrentUserField(
+                          fieldKey: UserFieldKeys.emailAddress, value: value);
+                    },
                     rightImage: AppIcons.message,
-
                   ),
-                   SizedBox(height: 22.h),
-                  GlobalSearchTextField(
+                  22.ph,
+                  PhoneNumberInput(
                     hintText: 'Phone Number',
                     keyboardType: TextInputType.phone,
                     focusNode: phoneFocusNode,
                     maskFormatter: phoneFormatter,
                     onChanged: (value) {
-                      if (value.length == 17) {
+                      context.read<UserCubit>().updateCurrentUserField(
+                          fieldKey: UserFieldKeys.phone, value: value);
+                      if (value.length == 12) {
                         phoneFocusNode.unfocus();
                       }
                     },
                     textInputAction: TextInputAction.next,
-                    controller: phone,
                   ),
-                  SizedBox(height: 24.h),
+                  24.ph,
                   GlobalSearchTextField(
+                    readOnly: true,
                     hintText: 'Gender',
+                    onTap: () {
+                      PopUp(
+                        onMoreTap: (int item) {
+                          setState(() {
+                            selectedMenu = item;
+                          });
+                          if (selectedMenu == 1) {
+                            gender.text = 'Male';
+                          } else {
+                            gender.text = 'Female';
+                          }
+                        },
+                      );
+                    },
                     keyboardType: TextInputType.text,
                     textInputAction: TextInputAction.done,
                     controller: gender,
+                    onChanged: (value) {
+                      // context.read<UserCubit>().updateCurrentUserField(fieldKey: UserFieldKeys.fullName, value: value);
+                    },
                     rightImage: AppIcons.arrowDown2,
-
                   ),
-                  SizedBox(height: 60.h),
+                  30.ph,
                 ],
               ),
             ),
-            //  SizedBox(height: 30.h,),
+            30.ph,
+            SizedBox(
+              height: 15.h,
+            ),
             GlobalButton(
                 color: AppColors.disabledButton,
                 title: "Continue",
@@ -166,5 +178,20 @@ class _FillProfileScreenState extends State<FillProfileScreen> {
         ),
       ),
     );
+  }
+
+  Future<void> _selecDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: selectedDate,
+      firstDate: DateTime(1900),
+      lastDate: DateTime(2101),
+    );
+    if (picked != null && picked != selectedDate) {
+      setState(() {
+        selectedDate = picked;
+        dateController.text = selectedDate.toString().split(' ')[0];
+      });
+    }
   }
 }
