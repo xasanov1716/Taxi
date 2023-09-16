@@ -7,7 +7,6 @@ import 'package:taxi_app/ui/onboarding/carousel_pages/widgets/page_view_items.da
 import 'package:taxi_app/ui/widgets/global_button.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 
-import '../../../utils/colors/app_colors.dart';
 
 class CarouselPages extends StatefulWidget {
   const CarouselPages({super.key});
