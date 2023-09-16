@@ -43,10 +43,10 @@ class _ForgotPasswordSelectorState extends State<ForgotPasswordSelector> {
         ),
         child: Padding(
           padding: EdgeInsets.only(
-            top: height * 0.0272,
+            top: height * 0.02,
             left: width * 0.05,
             right: width * 0.05,
-            bottom: height * 0.0272,
+            bottom: height * 0.02,
           ),
           child: Row(
             children: [
@@ -54,7 +54,7 @@ class _ForgotPasswordSelectorState extends State<ForgotPasswordSelector> {
                   height: 80 * height / figmaHeight,
                   width: 80 * width / figmaWidth,
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(40.r),
+                      borderRadius: BorderRadius.circular(150.r),
                       color: AppColors.yellowBackground),
                   child: IconButton(
                     onPressed: null,
