@@ -53,6 +53,7 @@ class App extends StatelessWidget {
           BlocProvider(create: (context) => AuthCubit()),
           BlocProvider(create: (context) => HomeBloc()),
           BlocProvider(create: (context) => SocialAuthBloc()),
+          BlocProvider(create: (context) => UserCubit()),
         ],
         child: const MyApp(),
       ),
