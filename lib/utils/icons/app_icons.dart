@@ -21,6 +21,8 @@ class AppIcons {
   static const String successPassword="assets/images/success_password.png";
   static const String taxiLogo="assets/images/taxi_logo.png";
   static const String createNewPasswordDialog = "assets/images/create_new_password_dialog.png";
+  static const String forgotPasswordDarkImage = "assets/images/forgot_password_dark.png";
+  static const String createNewPasswordDarkImage = "assets/images/create_new_password_dark.png";
 
 
   // smile images
@@ -152,6 +154,7 @@ class AppIcons {
   static final String volumeUp = "assets/svg/${it.name}/volume_up.svg";
   static final String wallet = "assets/svg/${it.name}/wallet.svg";
   static final String work = "assets/svg/${it.name}/work.svg";
+  static const String gps = "assets/svg/bold/gps.svg";
 
   //auth svg
   static const String facebook = "assets/svg/auth_svg/facebook.svg";
@@ -160,4 +163,9 @@ class AppIcons {
 
   // lottie
   static const String splashCircular = "assets/lottie/splash_circular.json";
+  //others
+  static const String checked = "assets/svg/others/checked.svg";
+  static const String unchecked = "assets/svg/others/unchecked.svg";
+
+
 }
