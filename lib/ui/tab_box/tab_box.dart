@@ -24,7 +24,7 @@ class _TabBoxState extends State<TabBox> {
   @override
   void initState() {
     screens = [
-      const HomeScreen(),
+      const MapScreen(),
       const BookingsScreen(),
       const InboxScreen(),
       const WalletScreen(),

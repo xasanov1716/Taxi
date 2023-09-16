@@ -90,6 +90,7 @@ flutter:
     - assets/svg/lightBorder/
     - assets/svg/lightOutline/
     - assets/svg/twoTone/
+    - assets/map_style.json
 
 
   fonts:
