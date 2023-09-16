@@ -1,21 +1,21 @@
 part of 'social_auth_bloc.dart';
 
-abstract class AuthState extends Equatable {
-  const AuthState();
+abstract class SocialAuthState extends Equatable {
+  const SocialAuthState();
 }
 
-class AuthInitial extends AuthState {
+class AuthInitial extends SocialAuthState {
   @override
   List<Object> get props => [];
 }
 
-class AuthLoading extends AuthState{
+class AuthLoading extends SocialAuthState{
 
   @override
   List<Object> get props => [];
 }
 
-class AuthSuccess extends AuthState {
+class AuthSuccess extends SocialAuthState {
   final String successText;
  const  AuthSuccess(this.successText);
 
@@ -23,7 +23,7 @@ class AuthSuccess extends AuthState {
   List<Object> get props => [];
 }
 
-class AuthError extends AuthState {
+class AuthError extends SocialAuthState {
  const AuthError({this.errorText=''});
   final String errorText;
   @override

@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:taxi_app/blocs/auth_bloc/auth_bloc.dart';
 import 'package:taxi_app/blocs/home/home_bloc.dart';
+import 'package:taxi_app/blocs/social_auth_bloc/social_auth_bloc.dart';
 import 'package:taxi_app/cubits/code_input_cubit/code_input_cubit.dart';
 import 'package:taxi_app/cubits/auth_cubit/auth_cubit.dart';
 import 'package:taxi_app/data/local/storage_repository/storage_repository.dart';
@@ -40,7 +40,7 @@ class App extends StatelessWidget {
           BlocProvider(create: (context) => CodeInputCubit()),
           BlocProvider(create: (context) => AuthCubit()),
           BlocProvider(create: (context) => HomeBloc()),
-          BlocProvider(create: (context) => AuthBloc()),
+          BlocProvider(create: (context) => SocialAuthBloc()),
         ],
         child: const MyApp(),
       ),
