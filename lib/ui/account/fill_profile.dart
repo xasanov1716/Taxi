@@ -41,6 +41,9 @@ class _FillProfileScreenState extends State<FillProfileScreen> {
 
   int selectedMenu = 1;
 
+  List<String> item = ['Male', 'Female'];
+
+  String selectItem = '';
   final FocusNode focusNode = FocusNode();
   final FocusNode phoneFocusNode = FocusNode();
   final FocusNode fullNameFocusNode = FocusNode();
@@ -53,7 +56,7 @@ class _FillProfileScreenState extends State<FillProfileScreen> {
       appBar: GlobalAppBar(onTap: () {}, title: 'Fill Your Profile'),
       body: Padding(
         padding:
-            EdgeInsets.only(left: 24.w, right: 24.w, bottom: 12.h, top: 12.h),
+        EdgeInsets.only(left: 24.w, right: 24.w, bottom: 12.h, top: 12.h),
         child: Column(
           children: [
             Expanded(
@@ -70,7 +73,8 @@ class _FillProfileScreenState extends State<FillProfileScreen> {
                     keyboardType: TextInputType.text,
                     textInputAction: TextInputAction.next,
                     onChanged: (value) {
-                      context.read<UserCubit>().updateCurrentUserField(fieldKey: UserFieldKeys.fullName, value: value);
+                      context.read<UserCubit>().updateCurrentUserField(
+                          fieldKey: UserFieldKeys.fullName, value: value);
                     },
                   ),
                   24.ph,
@@ -86,26 +90,27 @@ class _FillProfileScreenState extends State<FillProfileScreen> {
                   ),
                   24.ph,
                   GestureDetector(
-                    onTap: (){
+                    onTap: () {
                       _selecDate(context);
                     },
-                    child: GlobalSearchTextField(
-                      maskFormatter: maskFormatter,
-                      readOnly: true,
-                      hintText: 'Date of Birth',
-                      focusNode: focusNode,
-                      // onTap: () {
-                      //   _selecDate(context);
-                      // },
-                      rightImage: AppIcons.calendar,
-                      controller: dateController,
-                      onChanged: (value) {
-                        if (value.length == 10) {
-                          focusNode.unfocus();
-                        }
-                      },
-                      keyboardType: TextInputType.number,
-                      textInputAction: TextInputAction.next,
+                    child: AbsorbPointer(
+                      child: GlobalSearchTextField(
+                        maskFormatter: maskFormatter,
+                        readOnly: true,
+                        hintText: 'Date of Birth',
+                        focusNode: focusNode,
+                        onTap: () {
+                          _selecDate(context);
+                        },
+                        rightImage: AppIcons.calendar,
+                        controller: dateController,
+                        onChanged: (value) {
+                          if (value.length == 10) {
+                            focusNode.unfocus();
+                          }
+                        },
+                        keyboardType: TextInputType.number,
+                        textInputAction: TextInputAction.next,),
                     ),
                   ),
                   24.ph,
