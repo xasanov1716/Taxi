@@ -7,16 +7,15 @@ import '../../../../utils/icons/app_icons.dart';
 import '../../../../utils/size/screen_size.dart';
 
 dialog(BuildContext context) {
-  print({width, height});
   showDialog(
     context: context,
     builder: (BuildContext context) {
       return Padding(
         padding: EdgeInsets.only(
-          top: 214 * height / figmaHeight,
+          top: 210 * height / figmaHeight,
           left: 44 * width / figmaWidth,
           right: 44 * width / figmaWidth,
-          bottom: 204 * height / figmaHeight,
+          bottom: 200 * height / figmaHeight,
         ),
         child: Container(
           padding: EdgeInsets.only(
@@ -50,7 +49,7 @@ dialog(BuildContext context) {
                 ),
               ),
               SizedBox(
-                height: 120 * height / figmaHeight,
+                height: 99 * height / figmaHeight,
                 child: LottieBuilder.asset(AppIcons.splashCircular),
               ),
             ],

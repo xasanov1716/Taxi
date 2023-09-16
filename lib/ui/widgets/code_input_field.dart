@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taxi_app/cubits/code_input_cubit/code_input_cubit.dart';
@@ -48,9 +49,11 @@ class _CodeInputFieldState extends State<CodeInputField> {
                 controller: codeInputCubit.pinControllers[index],
                 maxLength: 1,
                 keyboardType: TextInputType.number,
+                inputFormatters: [
+                  FilteringTextInputFormatter.digitsOnly, // Allow only numeric input
+                ],
                 decoration: InputDecoration(
                   counterText: "",
-                  
                   contentPadding: EdgeInsets.symmetric(
                       vertical: 16.0.h, horizontal: 32.0.w),
                   focusedBorder: OutlineInputBorder(
@@ -73,7 +76,8 @@ class _CodeInputFieldState extends State<CodeInputField> {
                     codeInputCubit.handleCodeInput(index, value);
                   });
                 },
-              ),
+              )
+              ,
             );
           }),
         ),
