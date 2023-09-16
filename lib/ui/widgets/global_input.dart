@@ -40,6 +40,7 @@ class _GlobalTextFieldState extends State<GlobalTextField> {
 
   focusColor() {}
 
+
   @override
   Widget build(BuildContext context) {
     return TextField(
