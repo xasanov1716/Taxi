@@ -22,7 +22,9 @@ class _ForgotPassWordState extends State<ForgotPassWord> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
           icon: SvgPicture.asset(
             AppIcons.arrowLeft,
             colorFilter: const ColorFilter.mode(Colors.black, BlendMode.srcIn),
