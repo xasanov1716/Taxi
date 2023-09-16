@@ -7,9 +7,9 @@ import 'package:taxi_app/blocs/home/home_bloc.dart';
 import 'package:taxi_app/blocs/social_auth_bloc/social_auth_bloc.dart';
 import 'package:taxi_app/cubits/code_input_cubit/code_input_cubit.dart';
 import 'package:taxi_app/cubits/auth_cubit/auth_cubit.dart';
+import 'package:taxi_app/cubits/user/user_cubit.dart';
 import 'package:taxi_app/data/local/storage_repository/storage_repository.dart';
 import 'package:taxi_app/data/repositories/auth_repository.dart';
-
 import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/theme/app_theme.dart';
@@ -39,6 +39,7 @@ class App extends StatelessWidget {
         providers: [
           BlocProvider(create: (context) => CodeInputCubit()),
           BlocProvider(create: (context) => AuthCubit()),
+          BlocProvider(create: (context) => UserCubit()),
           BlocProvider(create: (context) => HomeBloc()),
           BlocProvider(create: (context) => SocialAuthBloc()),
         ],

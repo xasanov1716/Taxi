@@ -1,4 +1,5 @@
-import 'package:taxi_app/data/models/icons/icon_type.dart';
+
+import '../../data/models/icon/icon_type.dart';
 
 class AppIcons {
   // images
