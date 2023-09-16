@@ -7,9 +7,8 @@ import 'package:taxi_app/ui/widgets/global_button.dart';
 import 'package:taxi_app/ui/widgets/global_input.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
+import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
-
-// ignore: must_be_immutable
 class CreatePasswordScreen extends StatelessWidget {
   CreatePasswordScreen({super.key});
 
@@ -20,6 +19,8 @@ class CreatePasswordScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double height=MediaQuery.of(context).size.height;
+    double width=MediaQuery.of(context).size.width;
     return Scaffold(
       resizeToAvoidBottomInset: true,
       appBar: GlobalAppBar(
@@ -29,13 +30,13 @@ class CreatePasswordScreen extends StatelessWidget {
         title: "Create New Password",
       ),
       body: ListView(
-        padding: EdgeInsets.all(24.w),
+        padding: EdgeInsets.only(left: width*24/figmaWidth,right:width*24/figmaWidth ),
         children: [
           70.ph,
           Image.asset(
             AppIcons.successPassword,
-            height: MediaQuery.of(context).size.height * (250 / 882),
-            width: MediaQuery.of(context).size.width * (329 / 428),
+            height: height * (250 / figmaHeight),
+            width: width * (329 / figmaWidth),
           ),
           Text(
             "Create Your New Password",
@@ -47,7 +48,7 @@ class CreatePasswordScreen extends StatelessWidget {
               letterSpacing: 0.2.sp,
             ),
           ),
-          SizedBox(height: 24.h),
+           24.ph,
           GlobalTextField(
             hintText: 'Password',
             keyboardType: TextInputType.visiblePassword,
@@ -56,8 +57,7 @@ class CreatePasswordScreen extends StatelessWidget {
             caption: '',
             controller: passwordController,
           ),
-
-          SizedBox(height: 24.h),
+          24.ph,
           GlobalTextField(
             hintText: 'Repeat password',
             keyboardType: TextInputType.visiblePassword,
@@ -66,8 +66,7 @@ class CreatePasswordScreen extends StatelessWidget {
             caption: '',
             controller: repeatPasswordController,
           ),
-
-          SizedBox(height: 24.h),
+          24.ph,
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -78,11 +77,11 @@ class CreatePasswordScreen extends StatelessWidget {
 
             ],
           ),
-          SizedBox(height: 71.h,),
+           71.ph,
           GlobalButton(
             color: AppColors.primary,
             title: 'Continue',
-            radius: 100,
+            radius: 50.r,
             textColor: AppColors.dark3,
             onTap: () {
               showDialog(
@@ -90,9 +89,9 @@ class CreatePasswordScreen extends StatelessWidget {
                 builder: (BuildContext context) {
                   return AlertDialog(
                     contentPadding: EdgeInsets.only(
-                      top: 32.h,
-                      left: 32.w,
-                      right: 32.w,
+                      top: 32*height/figmaHeight,
+                      left: 32*width/figmaWidth,
+                      right: 32*width/figmaWidth,
                     ),
                     content: Container(
                       decoration: BoxDecoration(
@@ -104,9 +103,7 @@ class CreatePasswordScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Image.asset(AppIcons.createNewPasswordDialog),
-                          SizedBox(
-                            height: 32.h,
-                          ),
+                          32.ph,
                           Text(
                             'Congratulations!',
                             style: TextStyle(
@@ -114,23 +111,21 @@ class CreatePasswordScreen extends StatelessWidget {
                               fontSize: 24.sp,
                             ),
                           ),
-                          SizedBox(height: 16.h),
+                            16.ph,
                           Center(
                             child: Text(
                               'Your account is ready to use. You will be redirected to the Home page in a few seconds..!',
                               style: TextStyle(
                                 fontSize: 16.sp,
-                                letterSpacing: 0.2,
+                                letterSpacing: 0.2.w,
                                 fontFamily: "Urbanist",
                               ),
                               textAlign: TextAlign.center,
                             ),
                           ),
+                          32.ph,
                           SizedBox(
-                            height: 32.h,
-                          ),
-                          SizedBox(
-                            height: 120.h,
+                            height: 120*height/figmaHeight,
                             child: LottieBuilder.asset(
                                 AppIcons.splashCircular),
                           ),
