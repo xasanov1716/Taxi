@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
-import 'package:taxi_app/ui/restore_password/create_screen/widgets/checkbox.dart';
+import 'package:taxi_app/ui/restore_password/widgets/checkbox.dart';
 import 'package:taxi_app/ui/widgets/global_appbar.dart';
 import 'package:taxi_app/ui/widgets/global_button.dart';
 import 'package:taxi_app/ui/widgets/global_input.dart';
@@ -9,6 +9,7 @@ import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
+// ignore: must_be_immutable
 class CreatePasswordScreen extends StatelessWidget {
   CreatePasswordScreen({super.key});
 
