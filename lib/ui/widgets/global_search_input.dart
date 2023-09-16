@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
-import 'package:taxi_app/utils/icons/app_icons.dart';
-
 class GlobalSearchTextField extends StatefulWidget {
   final String hintText;
   final TextInputType keyboardType;

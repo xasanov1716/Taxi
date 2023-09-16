@@ -5,20 +5,20 @@ import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/ui/widgets/global_button.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
+import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 
 class ForgotPassWord extends StatefulWidget {
   const ForgotPassWord({super.key});
-
   @override
   State<ForgotPassWord> createState() => _ForgotPassWordState();
 }
-
 class _ForgotPassWordState extends State<ForgotPassWord> {
   bool pressed = false;
-
   @override
   Widget build(BuildContext context) {
+    double height=MediaQuery.of(context).size.height;
+    double width=MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -54,8 +54,8 @@ class _ForgotPassWordState extends State<ForgotPassWord> {
                 children: [
                   Image.asset(
                     AppIcons.enterPassword,
-                    height: MediaQuery.of(context).size.height * 0.285,
-                    width: MediaQuery.of(context).size.width * 0.64,
+                    height: height * 0.285,
+                    width: width * 0.64,
                   ),
                   24.ph,
                   Text(
@@ -89,16 +89,16 @@ class _ForgotPassWordState extends State<ForgotPassWord> {
                       ),
                       child: Padding(
                         padding: EdgeInsets.only(
-                          top: MediaQuery.of(context).size.height * 0.0272,
-                          left: MediaQuery.of(context).size.width * 0.05,
-                          right: MediaQuery.of(context).size.width * 0.05,
-                          bottom: MediaQuery.of(context).size.height * 0.0272,
+                          top: height * 0.0272,
+                          left: width * 0.05,
+                          right: width * 0.05,
+                          bottom: height * 0.0272,
                         ),
                         child: Row(
                           children: [
                             Container(
-                                height: 80.h,
-                                width: 80.w,
+                                height: 80*height/figmaHeight,
+                                width: 80*width/figmaWidth,
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(40.r),
                                     color: AppColors.yellowBackground),
@@ -111,9 +111,7 @@ class _ForgotPassWordState extends State<ForgotPassWord> {
                                         BlendMode.srcIn),
                                   ),
                                 )),
-                            SizedBox(
-                              width: 20.w,
-                            ),
+                             20.pw,
                             RichText(
                               text: TextSpan(
                                 text: 'via SMS:',
@@ -163,16 +161,16 @@ class _ForgotPassWordState extends State<ForgotPassWord> {
                       ),
                       child: Padding(
                         padding: EdgeInsets.only(
-                          top: MediaQuery.of(context).size.height * 0.0272,
-                          left: MediaQuery.of(context).size.width * 0.05,
-                          right: MediaQuery.of(context).size.width * 0.05,
-                          bottom: MediaQuery.of(context).size.height * 0.0272,
+                          top: height * 0.0272,
+                          left: width * 0.05,
+                          right: width * 0.05,
+                          bottom: height * 0.0272,
                         ),
                         child: Row(
                           children: [
                             Container(
-                                height: 80.h,
-                                width: 80.w,
+                                height: 80*height/figmaHeight,
+                                width: 80*width/figmaWidth,
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(40.r),
                                     color: AppColors.yellowBackground),
@@ -185,9 +183,7 @@ class _ForgotPassWordState extends State<ForgotPassWord> {
                                         BlendMode.srcIn),
                                   ),
                                 )),
-                            SizedBox(
-                              width: 20.w,
-                            ),
+                            20.pw,
                             RichText(
                               text: TextSpan(
                                 text: 'via Email:',
