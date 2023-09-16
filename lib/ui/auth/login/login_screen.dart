@@ -24,6 +24,8 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   bool isChecked = false;
+  FocusNode phoneFocus = FocusNode();
+  FocusNode passwordFocus = FocusNode();
 
   @override
   Widget build(BuildContext context) {
@@ -48,15 +50,18 @@ class _LoginScreenState extends State<LoginScreen> {
                 45.ph,
                 AuthTextField(
                   hintText: "_ _  _ _ _  _ _  _ _",
-                  prefixIcon: AppIcons.call, onNext: () {
-                  FocusScope.of(context).nextFocus();
+                  prefixIcon: AppIcons.call, onChanged: (v) {
+                    if(v.length==6) {
+                      phoneFocus.unfocus();
+                      FocusScope.of(context).requestFocus(passwordFocus);
+                    }
                 },
                 ),
                 24.ph,
                 AuthTextField(
                   hintText: "Parol",
                   prefixIcon: AppIcons.lock,
-                  isPassword: true, onNext: () {  },
+                  isPassword: true, onChanged: (v) {  },
                 ),
                 24.ph,
                 RememberCheckBox(
