@@ -78,7 +78,7 @@ class _LoginScreenState extends State<LoginScreen> {
               Center(
                 child: TextButton(
                     onPressed: () {
-                      Navigator.pushReplacementNamed(context, RouteNames.forgotPassword);
+                      Navigator.pushNamed(context, RouteNames.forgotPassword);
                     },
                     child: Text(
                       "Parolni unutdingizmi?",
