@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 
-class GlobalSearchTextField extends StatefulWidget {
+class PhoneNumberInput extends StatefulWidget {
   final String hintText;
   final TextInputType keyboardType;
   final TextInputAction textInputAction;
@@ -13,11 +12,9 @@ class GlobalSearchTextField extends StatefulWidget {
   final String? rightImage;
   final ValueChanged? onChanged;
   final FocusNode? focusNode;
-  final VoidCallback? onTap;
   final String? leftImage;
-  final bool? readOnly;
   final MaskTextInputFormatter? maskFormatter;
-  const GlobalSearchTextField({
+  const PhoneNumberInput({
     Key? key,
     required this.hintText,
     required this.keyboardType,
@@ -27,17 +24,15 @@ class GlobalSearchTextField extends StatefulWidget {
     this.rightImage,
     this.maskFormatter,
     this.leftImage,
-    this.onTap,
-    this.readOnly,
     this.focusNode,
     this.onChanged,
   }) : super(key: key);
 
   @override
-  _GlobalSearchTextField createState() => _GlobalSearchTextField();
+  _PhoneNumberInput createState() => _PhoneNumberInput();
 }
 
-class _GlobalSearchTextField extends State<GlobalSearchTextField> {
+class _PhoneNumberInput extends State<PhoneNumberInput> {
   final bool _isPasswordVisible = false;
 
   bool isFocus = false;
@@ -55,7 +50,7 @@ class _GlobalSearchTextField extends State<GlobalSearchTextField> {
         });
       } else {
         setState(() {
-          _color = AppColors.c_50;
+          _color = Colors.white;
           _iconColor = Colors.grey;
         });
       }
@@ -73,29 +68,29 @@ class _GlobalSearchTextField extends State<GlobalSearchTextField> {
             padding: const EdgeInsets.only(top: 4.0),
             child: Text(
               widget.caption,
-              style:  TextStyle(
-                fontSize: 14.sp,
+              style: const TextStyle(
+                fontSize: 14,
                 color: Colors.black,
               ),
             ),
           ),
-         SizedBox(
-          height: 5.h),
+        const SizedBox(
+          height: 5,
+        ),
         TextField(
           controller: widget.controller ?? widget.controller,
           onChanged: widget.onChanged,
-          readOnly: widget.readOnly ?? false,
           focusNode: widget.focusNode ?? _textFieldFocus,
           inputFormatters: widget.maskFormatter != null ? [widget.maskFormatter!] : null,
           decoration: InputDecoration(
             hintText: widget.hintText,
-            suffixIcon: widget.rightImage != null ?  GestureDetector(onTap: widget.onTap,child: Padding(
-              padding:  EdgeInsets.all(20.w),
-              child: SvgPicture.asset(widget.rightImage!,colorFilter: const ColorFilter.mode(AppColors.c_500, BlendMode.srcIn),),
-            )) : null,
-              prefixIcon: widget.leftImage != null ? Padding(
+            prefixIcon: const Padding(
+              padding:  EdgeInsets.all(20),
+              child: Text('+998',style: TextStyle(fontFamily: 'Urbanist',color: AppColors.c_800,fontSize: 16),),
+            ),
+            suffixIcon: widget.rightImage != null ? Padding(
               padding: const EdgeInsets.all(20),
-              child:  SvgPicture.asset(widget.rightImage!,colorFilter: const ColorFilter.mode(AppColors.c_400, BlendMode.srcIn),)
+              child: SvgPicture.asset(widget.rightImage!,colorFilter: const ColorFilter.mode(AppColors.c_400, BlendMode.srcIn),)
             ) : null,
             enabledBorder: OutlineInputBorder(
               borderSide: const BorderSide(color: AppColors.c_50, width: 1),
@@ -113,7 +108,7 @@ class _GlobalSearchTextField extends State<GlobalSearchTextField> {
               borderSide: const BorderSide(color: AppColors.c_50, width: 1),
               borderRadius: BorderRadius.circular(10),
             ),
-            fillColor: AppColors.c_50,
+            fillColor: _color,
             filled: true,
           ),
           keyboardType: widget.keyboardType,
