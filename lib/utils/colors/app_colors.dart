@@ -106,6 +106,8 @@ class AppColors {
   static const Color deepOrange = Color(0xFFFF5722);
   static const Color brown = Color(0xFF795548);
   static const Color blueGrey = Color(0xFF607D8B);
+  static const Color dimYellow = Color(0xFFFFE4A4);
+
 
   //----------------- BACKGROUND COLORS ------------------------
 

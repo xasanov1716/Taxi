@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taxi_app/ui/account/fingertest_screen.dart';
+import 'package:taxi_app/ui/home/home_screen.dart';
 import 'package:taxi_app/ui/widgets/global_button.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
@@ -74,7 +75,7 @@ class _FingerprintScreenState extends State<FingerprintScreen> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const FingerPrintScreenTest()));
+                            builder: (context) => const MapScreen()));
                   },
                   radius: 100,
                   color: AppColors.primary,
