@@ -52,9 +52,6 @@ class App extends StatelessWidget {
       child: MultiBlocProvider(
         providers: [
           BlocProvider(
-            create: (context) => HomeCubit(),
-          ),
-          BlocProvider(
             create: (context) => CodeInputCubit(),
           ),
           BlocProvider(
@@ -67,7 +64,7 @@ class App extends StatelessWidget {
             create: (context) => HomeBloc(),
           ),
           BlocProvider(
-            create: (context) => AuthBloc(),
+            create: (context) => SocialAuthBloc(),
           ),
         ],
         child: const MyApp(),
