@@ -1,17 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lottie/lottie.dart';
-
 import 'package:taxi_app/data/local/storage_repository/storage_repository.dart';
+import 'package:taxi_app/ui/auth/lets_in/lets_in_screen.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 
 import '../../utils/size/screen_size.dart';
 import '../welcome/welcome_screen.dart';
-
-import 'package:taxi_app/ui/acount_setup/subscreen/fill_profile.dart';
-import 'package:taxi_app/utils/icons/app_icons.dart';
-
-
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -22,27 +17,27 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   Future<void> _init() async {
-    await Future.delayed(const Duration(seconds: 4), () {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (BuildContext context) {
-            return !StorageRepository.getBool("isFirst")
-                ? const WelcomeScreen()
-                : Scaffold(
-                    appBar: AppBar(
-                      title: const Text("Home Screen"),
-                    ),
-                  );
-          },
-        ),
-      );
-    });
+    await Future.delayed(
+      const Duration(seconds: 4),
+      () {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (BuildContext context) {
+              return !StorageRepository.getBool("isFirst")
+                  ? const WelcomeScreen()
+                  : LetsInScreen();
+            },
+          ),
+        );
+      },
+    );
   }
 
   @override
   void initState() {
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: [SystemUiOverlay.top]);
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+        overlays: [SystemUiOverlay.top]);
     _init();
     super.initState();
   }

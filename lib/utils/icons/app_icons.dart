@@ -1,8 +1,9 @@
-import 'package:taxi_app/data/models/icons/icon_type.dart';
+
+import '../../data/models/icon/icon_type.dart';
 
 class AppIcons {
   // images
-
+  
   static const String testAvatar="assets/images/test_avatar.png";
   static const String barcode="assets/images/barcode.png";
   static const String emptyProfile="assets/images/empty_profile.png";
@@ -11,11 +12,15 @@ class AppIcons {
   static const String onBoarding1="assets/images/on_boarding1.png";
   static const String onBoarding2="assets/images/on_boarding2.png";
   static const String onBoarding3="assets/images/on_boarding3.png";
+  static const String onBoardingDark1="assets/images/on_boarding_dark1.png";
+  static const String onBoardingDark2="assets/images/on_boarding_dark2.png";
+  static const String onBoardingDark3="assets/images/on_boarding_dark3.png";
   static const String searchNotFound="assets/images/search_not_found.png";
   static const String signIn="assets/images/sign_in.png";
   static const String splashScreen="assets/images/splash_screen.png";
   static const String successPassword="assets/images/success_password.png";
   static const String taxiLogo="assets/images/taxi_logo.png";
+  static const String createNewPasswordDialog = "assets/images/create_new_password_dialog.png";
 
 
   // smile images
@@ -27,7 +32,12 @@ class AppIcons {
   static const String smileQuiet = "assets/images/mood/smile_quiet.png";
   static const String smileTired = "assets/images/mood/smile_tired.png";
   static const String smileUnhappy = "assets/images/mood/smile_unhappy.png";
-  static const String smileVeryHappy = "assets/images/mood/smile_very_happy.png";
+  static const String smileVeryHappy =  "assets/images/mood/smile_very_happy.png";
+
+  static String getSvg({required String name, IconType? iconType}) {
+    if (iconType != null) return "assets/svg/${iconType.name}/$name.svg";
+    return "assets/svg/${it.name}/$name.svg";
+  }
 
   // svg
   static IconType it = IconType.lightOutline;
@@ -150,5 +160,4 @@ class AppIcons {
 
   // lottie
   static const String splashCircular = "assets/lottie/splash_circular.json";
-
 }
