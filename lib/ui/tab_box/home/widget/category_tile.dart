@@ -5,8 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:taxi_app/cubits/category_cubit/category_cubit.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
+import 'package:taxi_app/utils/icons/app_icons.dart';
 
-import '../../../utils/icons/app_icons.dart';
 
 class CategoryTile extends StatelessWidget {
   final String categoryName;

@@ -163,4 +163,9 @@ class AppIcons {
 
   // lottie
   static const String splashCircular = "assets/lottie/splash_circular.json";
+  //others
+  static const String checked = "assets/svg/others/checked.svg";
+  static const String unchecked = "assets/svg/others/unchecked.svg";
+
+
 }

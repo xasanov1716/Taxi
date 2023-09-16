@@ -2,7 +2,7 @@ import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taxi_app/ui/app_routes.dart';
-import 'package:taxi_app/ui/restore_password/widgets/forgot_password_selector.dart';
+import 'package:taxi_app/ui/tab_box/profile/sub_screens/restore_password/widgets/forgot_password_selector.dart';
 import 'package:taxi_app/ui/widgets/global_appbar.dart';
 import 'package:taxi_app/ui/widgets/global_button.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';

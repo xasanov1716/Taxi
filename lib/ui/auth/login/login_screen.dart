@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:taxi_app/data/models/icon/icon_type.dart';
 import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/ui/auth/register/register_screen.dart';
 import 'package:taxi_app/ui/auth/widgets/auth_navigator_button.dart';
-import 'package:taxi_app/ui/auth/widgets/custom__auth_divider.dart';
+import 'package:taxi_app/ui/auth/widgets/custom_auth_divider.dart';
 import 'package:taxi_app/ui/auth/widgets/custom_auth_social_network_button.dart';
 
 import 'package:taxi_app/ui/auth/widgets/remember_me.dart';
@@ -33,105 +34,123 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
-
-      appBar: GlobalAppBar(onTap: (){
-        Navigator.pop(context);
-      }, title: ""),
-        body:Padding(
+        appBar: GlobalAppBar(
+            onTap: () {
+              Navigator.pop(context);
+            },
+            title: ""),
+        body: Padding(
           padding: EdgeInsets.symmetric(horizontal: 24.w),
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                45.ph,
-                Text("Xush kelibsiz! Akkauntga kirish",
-                    textAlign: TextAlign.left,
-                    style: Theme.of(context)
-                        .textTheme
-                        .displayMedium
-                        ?.copyWith(fontSize: width > 450 ? 48.sp : 30.sp)),
-                45.ph,
-                AuthTextField(
-                  hintText: "_ _  _ _ _  _ _  _ _",
-                  prefixIcon: AppIcons.call, onChanged: (v) {
-                    if(v.length==6) {
-                      phoneFocus.unfocus();
-                      FocusScope.of(context).requestFocus(passwordFocus);
-                    }
-                },
-                ),
-                24.ph,
-                AuthTextField(
-                  hintText: "Parol",
-                  prefixIcon: AppIcons.lock,
-                  isPassword: true, onChanged: (v) {  },
-                ),
-                24.ph,
-                RememberCheckBox(
-                    label: "Meni eslab qol",
-                    value: isChecked,
-                    onChanged: (v) {
-                      setState(() {
-                        isChecked = v;
-                      });
-                    }),
-                24.ph,
-                GlobalButton(
-                    color: AppColors.primary,
-                    radius: 100.r,
-                    textColor: AppColors.dark3,
-                    title: "Kirish",
-                    onTap: () {
-                      Navigator.pushReplacementNamed(
-                        context,
-                        RouteNames.fillProfile,
-                      );
-                    }),
-                24.ph,
-                Center(
-                  child: TextButton(
-                      onPressed: () {
-                        Navigator.pushReplacementNamed(context, RouteNames.forgotPassword);
-                      },
-                      child: Text(
-                        "Parolni unutdingizmi?",
-                        textAlign: TextAlign.center,
-                        style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                            fontWeight: FontWeight.w600,
-                            color: AppColors.primary),
-                      )),
-                ),
-                45.ph,
-                Column(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Expanded(
+                child: ListView(
+                  physics: const BouncingScrollPhysics(),
                   children: [
-                    CustomAuthDividerWidget(label: "yoki davom eting"),
-                    20.ph,
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    45.ph,
+                    Text("Xush kelibsiz! Akkauntga kirish",
+                        textAlign: TextAlign.left,
+                        style: Theme.of(context)
+                            .textTheme
+                            .displayMedium
+                            ?.copyWith(fontSize: width > 450 ? 48.sp : 30.sp)),
+                    45.ph,
+                    AuthTextField(
+                      focusNode: phoneFocus,
+                      hintText: "_ _  _ _ _  _ _  _ _",
+                      prefixIcon: AppIcons.getSvg(
+                        name: AppIcons.call,
+                        iconType: IconType.bold,
+                      ),
+                      onChanged: (v) {
+                        print(v.length);
+                        if (v.length == 12) {
+                          phoneFocus.unfocus();
+                          FocusScope.of(context).requestFocus(passwordFocus);
+                        }
+                      },
+                    ),
+                    24.ph,
+                    AuthTextField(
+                      focusNode: passwordFocus,
+                      hintText: "Parol",
+                      prefixIcon: AppIcons.lock,
+                      isPassword: true,
+                      onChanged: (v) {},
+                    ),
+                    24.ph,
+                    RememberCheckBox(
+                        label: "Meni eslab qol",
+                        value: isChecked,
+                        onChanged: (v) {
+                          setState(() {
+                            isChecked = v;
+                          });
+                        }),
+                    24.ph,
+                    GlobalButton(
+                        color: AppColors.primary,
+                        radius: 100.r,
+                        textColor: AppColors.dark3,
+                        title: "Kirish",
+                        onTap: () {
+                          Navigator.pushReplacementNamed(
+                            context,
+                            RouteNames.fillProfile,
+                          );
+                        }),
+                    24.ph,
+                    Center(
+                      child: TextButton(
+                          onPressed: () {
+                            Navigator.pushReplacementNamed(
+                                context, RouteNames.forgotPassword);
+                          },
+                          child: Text(
+                            "Parolni unutdingizmi?",
+                            textAlign: TextAlign.center,
+                            style: Theme.of(context)
+                                .textTheme
+                                .labelLarge
+                                ?.copyWith(
+                                    fontWeight: FontWeight.w600,
+                                    color: AppColors.primary),
+                          )),
+                    ),
+                    45.ph,
+                    Column(
                       children: [
-                        CustomAuthButton(
-                            imageUrl: AppIcons.facebook, onTap: () {}),
-                        CustomAuthButton(imageUrl: AppIcons.google, onTap: () {}),
-                        CustomAuthButton(imageUrl: AppIcons.apple, onTap: () {}),
+                        CustomAuthDividerWidget(label: "yoki davom eting"),
+                        20.ph,
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            CustomAuthButton(
+                                imageUrl: AppIcons.facebook, onTap: () {}),
+                            CustomAuthButton(
+                                imageUrl: AppIcons.google, onTap: () {}),
+                            CustomAuthButton(
+                                imageUrl: AppIcons.apple, onTap: () {}),
+                          ],
+                        )
                       ],
-                    )
+                    ),
+                    25.ph,
                   ],
                 ),
-                45.ph,
-                AuthNavigatorButton(
-                  title: "Akkauntingiz yo'qmi?",
-                  onTapTitle: "Ro'yxatdan o'ting",
-                  onTap: () {
-                    Navigator.pushReplacementNamed(context, RouteNames.signUp);
-                  },
-                )
-              ],
-            ),
+              ),
+              20.ph,
+              AuthNavigatorButton(
+                title: "Akkauntingiz yo'qmi?",
+                onTapTitle: "Ro'yxatdan o'ting",
+                onTap: () {
+                  Navigator.pushReplacementNamed(context, RouteNames.signUp);
+                },
+              )
+            ],
           ),
-        ) 
-    );
+        ));
   }
 }

@@ -3,13 +3,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:taxi_app/cubits/tab/tab_cubit.dart';
-import 'package:taxi_app/ui/bookings/bookings_screen.dart';
-import 'package:taxi_app/ui/home/home_screen.dart';
-import 'package:taxi_app/ui/inbox/inbox_screen.dart';
-import 'package:taxi_app/ui/profile/profile_screen.dart';
-import 'package:taxi_app/ui/wallet/wallet_screen.dart';
+import 'package:taxi_app/ui/tab_box/bookings/bookings_screen.dart';
+import 'package:taxi_app/ui/tab_box/home/home_screen.dart';
+import 'package:taxi_app/ui/tab_box/inbox/inbox_screen.dart';
+import 'package:taxi_app/ui/tab_box/profile/profile_screen.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
+
+import 'wallet/wallet_screen.dart';
 
 class TabBox extends StatefulWidget {
   const TabBox({super.key});
@@ -24,7 +25,7 @@ class _TabBoxState extends State<TabBox> {
   @override
   void initState() {
     screens = [
-      const MapScreen(),
+      const HomeScreen(),
       const BookingsScreen(),
       const InboxScreen(),
       const WalletScreen(),

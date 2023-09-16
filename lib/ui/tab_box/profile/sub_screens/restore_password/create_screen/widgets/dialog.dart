@@ -2,10 +2,10 @@ import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
+import 'package:taxi_app/utils/icons/app_icons.dart';
+import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 
-import '../../../../utils/icons/app_icons.dart';
-import '../../../../utils/size/screen_size.dart';
 
 dialog(BuildContext context) {
   print(AdaptiveTheme.of(context).theme == AdaptiveTheme.of(context).darkTheme);

@@ -4,9 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:taxi_app/cubits/user/user_cubit.dart';
 import 'package:taxi_app/data/models/user/user_field_keys.dart';
-import 'package:taxi_app/main.dart';
-import 'package:taxi_app/ui/account/widgets/pop_up.dart';
-import 'package:taxi_app/ui/account/widgets/user_image.dart';
+import 'package:taxi_app/ui/local_auth/widgets/pop_up.dart';
+import 'package:taxi_app/ui/local_auth/widgets/user_image.dart';
 import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/ui/widgets/global_appbar.dart';
 import 'package:taxi_app/ui/widgets/global_button.dart';
@@ -17,14 +16,14 @@ import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 
-class FillProfileScreen extends StatefulWidget {
-  const FillProfileScreen({Key? key}) : super(key: key);
+class EditProfileScreen extends StatefulWidget {
+  const EditProfileScreen({Key? key}) : super(key: key);
 
   @override
-  State<FillProfileScreen> createState() => _FillProfileScreenState();
+  State<EditProfileScreen> createState() => _EditProfileScreenState();
 }
 
-class _FillProfileScreenState extends State<FillProfileScreen> {
+class _EditProfileScreenState extends State<EditProfileScreen> {
   DateTime selectedDate = DateTime.now();
 
   TextEditingController dateController = TextEditingController();
@@ -91,7 +90,7 @@ class _FillProfileScreenState extends State<FillProfileScreen> {
                   24.ph,
                   GestureDetector(
                     onTap: () {
-                      _selecDate(context);
+                      _selectDate(context);
                     },
                     child: AbsorbPointer(
                       child: GlobalSearchTextField(
@@ -100,7 +99,7 @@ class _FillProfileScreenState extends State<FillProfileScreen> {
                         hintText: 'Date of Birth',
                         focusNode: focusNode,
                         onTap: () {
-                          _selecDate(context);
+                          _selectDate(context);
                         },
                         rightImage: AppIcons.calendar,
                         controller: dateController,
@@ -186,7 +185,7 @@ class _FillProfileScreenState extends State<FillProfileScreen> {
     );
   }
 
-  Future<void> _selecDate(BuildContext context) async {
+  Future<void> _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
       context: context,
       initialDate: selectedDate,

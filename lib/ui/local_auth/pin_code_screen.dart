@@ -7,17 +7,17 @@ import 'package:taxi_app/ui/widgets/global_button.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 
 
-class CodeScreen extends StatefulWidget {
-  const CodeScreen({super.key});
+class PinCodeScreen extends StatefulWidget {
+  const PinCodeScreen({super.key});
 
   @override
-  State<CodeScreen> createState() => _CodeScreenState();
+  State<PinCodeScreen> createState() => _PinCodeScreenState();
 }
 
 
 
 
-class _CodeScreenState extends State<CodeScreen> {
+class _PinCodeScreenState extends State<PinCodeScreen> {
 
   TextEditingController codeController = TextEditingController();
 

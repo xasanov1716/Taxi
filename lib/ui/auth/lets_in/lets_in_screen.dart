@@ -9,7 +9,7 @@ import 'package:taxi_app/utils/size/size_extension.dart';
 import '../../../utils/colors/app_colors.dart';
 import '../../../utils/icons/app_icons.dart';
 import '../widgets/auth_navigator_button.dart';
-import '../widgets/custom__auth_divider.dart';
+import '../widgets/custom_auth_divider.dart';
 import '../widgets/custom_auth_social_network_button.dart';
 
 class LetsInScreen extends StatelessWidget {

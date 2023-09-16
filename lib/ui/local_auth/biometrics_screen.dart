@@ -11,14 +11,14 @@ import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 
-class FingerprintScreen extends StatefulWidget {
-  const FingerprintScreen({super.key});
+class BiometricsScreen extends StatefulWidget {
+  const BiometricsScreen({super.key});
 
   @override
-  State<FingerprintScreen> createState() => _FingerprintScreenState();
+  State<BiometricsScreen> createState() => _BiometricsScreenState();
 }
 
-class _FingerprintScreenState extends State<FingerprintScreen> {
+class _BiometricsScreenState extends State<BiometricsScreen> {
   bool isAuth = false;
 
   void _checkBiometric() async {
