@@ -5,10 +5,13 @@ import 'package:taxi_app/ui/auth/widgets/auth_navigator_button.dart';
 import 'package:taxi_app/ui/auth/widgets/auth_text_field.dart';
 import 'package:taxi_app/ui/auth/widgets/custom__auth_divider.dart';
 import 'package:taxi_app/ui/auth/widgets/custom_auth_social_network_button.dart';
+import 'package:taxi_app/ui/widgets/global_appbar.dart';
 import 'package:taxi_app/ui/widgets/global_button.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
+
+import '../widgets/remember_me.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({Key? key}) : super(key: key);
@@ -23,8 +26,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-          child: Center(
+      appBar: GlobalAppBar(onTap: (){Navigator.pop(context);}, title: ""),
+      body: Center(
         child: SingleChildScrollView(
           padding: EdgeInsets.only(bottom: 48.h, left: 24.w, right: 24.w, top: 24.h),
           child: Column(
@@ -37,9 +40,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
               60.ph,
               Column(
                 children: [
-                  AuthTextField(hintText: 'Telefon Raqami', prefixIcon: AppIcons.call),
+                  AuthTextField(hintText: 'Telefon Raqami', prefixIcon: AppIcons.call, onChanged: (v) {  },),
                   20.ph,
-                  AuthTextField(hintText: 'Parol', prefixIcon: AppIcons.lock, isPassword: true),
+                  AuthTextField(hintText: 'Parol', prefixIcon: AppIcons.lock, isPassword: true, onChanged: (v) {  },),
                   20.ph,
                   RememberCheckBox(
                     label: 'Meni eslab qol',
@@ -90,55 +93,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             ],
           ),
         ),
-      )),
-    );
-  }
-}
-
-class RememberCheckBox extends StatelessWidget {
-  final bool value;
-  final ValueChanged<bool> onChanged;
-  final String? label;
-
-  const RememberCheckBox({super.key, required this.value, required this.onChanged, this.label});
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        InkWell(
-          onTap: () {
-            onChanged(!value);
-          },
-          child: Container(
-            width: 24.0,
-            height: 24.0,
-            decoration: BoxDecoration(
-              color: value ? AppColors.primary : null,
-              border: Border.all(
-                width: 3.0,
-                color: AppColors.primary,
-              ),
-              borderRadius: BorderRadius.circular(8.0),
-            ),
-            child: value
-                ? Icon(
-                    Icons.check,
-                    size: 16.0,
-                    color: AppColors.white,
-                  )
-                : null,
-          ),
-        ),
-        if (label != null) ...[
-          12.pw,
-          Text(
-            label!,
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w600),
-          )
-        ]
-      ],
+      )
     );
   }
 }

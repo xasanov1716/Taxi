@@ -1,3 +1,4 @@
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -12,11 +13,13 @@ class AuthTextField extends StatefulWidget {
     required this.hintText,
     required this.prefixIcon,
     this.isPassword = false,
+    required this.onChanged,
   });
 
   final String hintText;
   final String prefixIcon;
   final bool isPassword;
+  final ValueChanged<String> onChanged;
 
   @override
   State<AuthTextField> createState() => _AuthTextFieldState();
@@ -28,7 +31,7 @@ class _AuthTextFieldState extends State<AuthTextField> {
   bool _isObscured = false;
   bool hasValue = false;
   bool isFocused = false;
-  Color _backgroundColor = AppColors.white;
+  Color backgroundColor = AppColors.white;
   Color _iconColor = AppColors.c_500;
   var maskFormatter = MaskTextInputFormatter(
       mask: '## ### ## ##', filter: {"#": RegExp(r'[0-9]')});
@@ -42,7 +45,7 @@ class _AuthTextFieldState extends State<AuthTextField> {
             _iconColor = AppColors.primary;
           });
         } else {
-          if(MediaQuery.of(context).platformBrightness==Brightness.dark){
+          if(AdaptiveTheme.of(context).theme==AdaptiveTheme.of(context).darkTheme){
             setState(() {
               _iconColor = AppColors.white;
             });
@@ -53,32 +56,33 @@ class _AuthTextFieldState extends State<AuthTextField> {
           }
         }
       } else {
-        if (_focusNode.hasFocus) {
-          setState(() {
-            _iconColor = AppColors.primary;
-          });
-        } else {
-          setState(() {
-            _iconColor = AppColors.c_500;
-          });
-        }
+
+          if (_focusNode.hasFocus) {
+            setState(() {
+              _iconColor = AppColors.primary;
+            });
+          } else {
+            setState(() {
+              _iconColor = AppColors.c_500;
+            });
+          }
       }
     });
     _focusNode.addListener(() {
       if (_focusNode.hasFocus) {
         setState(() {
-          _backgroundColor = AppColors.orangeTransparent;
+          backgroundColor = AppColors.orangeTransparent;
           _iconColor = AppColors.primary;
         });
       } else {
         if (_controller.text.isNotEmpty) {
           setState(() {
-            _backgroundColor = AppColors.white;
+            backgroundColor = AppColors.white;
             _iconColor = AppColors.c_900;
           });
         } else {
           setState(() {
-            _backgroundColor = AppColors.white;
+            backgroundColor = AppColors.white;
             _iconColor = AppColors.c_500;
           });
         }
@@ -86,6 +90,7 @@ class _AuthTextFieldState extends State<AuthTextField> {
     });
     super.initState();
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -95,12 +100,14 @@ class _AuthTextFieldState extends State<AuthTextField> {
       focusNode: _focusNode,
       controller: _controller,
       obscureText: _isObscured,
+      maxLength: widget.isPassword?20:12,
       inputFormatters: [if(!widget.isPassword)maskFormatter],
       style: Theme.of(context)
           .textTheme
           .labelLarge
           ?.copyWith(fontWeight: FontWeight.w600, letterSpacing: 0.2),
       decoration: InputDecoration(
+        counterText: "",
           contentPadding: EdgeInsets.only(left: 20.w, right: 20.w, top: 20.h, bottom: 20.h),
           hintText: widget.hintText,
           hintStyle: Theme.of(context)
