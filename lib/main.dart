@@ -59,7 +59,7 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (context, child) {
         return AdaptiveTheme(
-          light: AppTheme.lightTheme,
+          light: AppTheme.darkTheme,
           dark: AppTheme.darkTheme,
           initial: AdaptiveThemeMode.system,
           builder: (theme, darkTheme) {
