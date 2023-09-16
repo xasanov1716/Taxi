@@ -41,6 +41,9 @@ class _FillProfileScreenState extends State<FillProfileScreen> {
 
   int selectedMenu = 1;
 
+  List<String> item = ['Male', 'Female'];
+
+  String selectItem = '';
   final FocusNode focusNode = FocusNode();
   final FocusNode phoneFocusNode = FocusNode();
   final FocusNode fullNameFocusNode = FocusNode();
@@ -53,7 +56,7 @@ class _FillProfileScreenState extends State<FillProfileScreen> {
       appBar: GlobalAppBar(onTap: () {}, title: 'Fill Your Profile'),
       body: Padding(
         padding:
-            EdgeInsets.only(left: 24.w, right: 24.w, bottom: 12.h, top: 12.h),
+        EdgeInsets.only(left: 24.w, right: 24.w, bottom: 12.h, top: 12.h),
         child: Column(
           children: [
             Expanded(
@@ -86,23 +89,29 @@ class _FillProfileScreenState extends State<FillProfileScreen> {
                     },
                   ),
                   24.ph,
-                  GlobalSearchTextField(
-                    maskFormatter: maskFormatter,
-                    readOnly: true,
-                    hintText: 'Date of Birth',
-                    focusNode: focusNode,
+                  GestureDetector(
                     onTap: () {
                       _selecDate(context);
                     },
-                    rightImage: AppIcons.calendar,
-                    controller: dateController,
-                    onChanged: (value) {
-                      if (value.length == 10) {
-                        focusNode.unfocus();
-                      }
-                    },
-                    keyboardType: TextInputType.number,
-                    textInputAction: TextInputAction.next,
+                    child: AbsorbPointer(
+                      child: GlobalSearchTextField(
+                        maskFormatter: maskFormatter,
+                        readOnly: true,
+                        hintText: 'Date of Birth',
+                        focusNode: focusNode,
+                        onTap: () {
+                          _selecDate(context);
+                        },
+                        rightImage: AppIcons.calendar,
+                        controller: dateController,
+                        onChanged: (value) {
+                          if (value.length == 10) {
+                            focusNode.unfocus();
+                          }
+                        },
+                        keyboardType: TextInputType.number,
+                        textInputAction: TextInputAction.next,),
+                    ),
                   ),
                   24.ph,
                   GlobalSearchTextField(
@@ -157,14 +166,11 @@ class _FillProfileScreenState extends State<FillProfileScreen> {
                     },
                     rightImage: AppIcons.arrowDown2,
                   ),
-                  30.ph,
+                  24.ph,
                 ],
               ),
             ),
-            30.ph,
-            SizedBox(
-              height: 15.h,
-            ),
+            24.ph,
             GlobalButton(
                 color: AppColors.disabledButton,
                 title: "Continue",
