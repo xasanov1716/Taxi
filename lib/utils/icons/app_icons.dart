@@ -21,6 +21,8 @@ class AppIcons {
   static const String successPassword="assets/images/success_password.png";
   static const String taxiLogo="assets/images/taxi_logo.png";
   static const String createNewPasswordDialog = "assets/images/create_new_password_dialog.png";
+  static const String forgotPasswordDarkImage = "assets/images/forgot_password_dark.png";
+  static const String createNewPasswordDarkImage = "assets/images/create_new_password_dark.png";
 
 
   // smile images
