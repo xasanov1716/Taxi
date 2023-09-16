@@ -42,16 +42,11 @@ class _ForgotPassWordState extends State<ForgotPassWord> {
                   ),
                   24.ph,
                   Text(
-                    'Select which contact details should we use to reset your password',
-                    style: TextStyle(
-                      color: AppColors.c_900,
-                      fontFamily: 'Urbanist',
-                      fontStyle: FontStyle.normal,
-                      fontSize: 18.sp,
-                      fontWeight: FontWeight.w500,
-                      letterSpacing: 0.2.w,
-                    ),
-                  ),
+                      'Select which contact details should we use to reset your password',
+                      style: Theme.of(context)
+                          .textTheme
+                          .labelLarge!
+                          .copyWith(fontSize: 18.sp, letterSpacing: 0.2.w)),
                   24.ph,
                   ForgotPasswordSelector(
                     title: 'via SMS:',

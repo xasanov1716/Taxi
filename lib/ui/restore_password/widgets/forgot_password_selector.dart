@@ -32,7 +32,7 @@ class _ForgotPasswordSelectorState extends State<ForgotPasswordSelector> {
       onTap: widget.onTap,
       child: Container(
         width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height * 0.14,
+        height: height * 128 / figmaHeight,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20.r),
           border: Border.all(
@@ -51,8 +51,8 @@ class _ForgotPasswordSelectorState extends State<ForgotPasswordSelector> {
           child: Row(
             children: [
               Container(
-                  height: 80 * height / figmaHeight,
-                  width: 80 * width / figmaWidth,
+                  height: 80.h,
+                  width: 80.w,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(150.r),
                       color: AppColors.yellowBackground),
@@ -68,24 +68,16 @@ class _ForgotPasswordSelectorState extends State<ForgotPasswordSelector> {
               RichText(
                 text: TextSpan(
                   text: widget.title,
-                  style: TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontStyle: FontStyle.normal,
-                      fontSize: 14.sp,
-                      fontFamily: 'Urbanist',
-                      letterSpacing: 0.2.w,
-                      color: AppColors.c_600),
+                  style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                    fontSize: 14.sp,
+                  ),
                   children: <TextSpan>[
                     TextSpan(
-                      text: widget.subtitle,
-                      style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          fontStyle: FontStyle.normal,
-                          fontSize: 16,
-                          fontFamily: 'Urbanist',
-                          letterSpacing: 0.2.w,
-                          color: AppColors.black),
-                    ),
+                        text: widget.subtitle,
+                        style: Theme.of(context)
+                            .textTheme
+                            .labelLarge!
+                            .copyWith(fontSize: 16.sp)),
                   ],
                 ),
               ),
