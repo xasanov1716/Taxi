@@ -5,11 +5,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taxi_app/blocs/auth_bloc/auth_bloc.dart';
 import 'package:taxi_app/blocs/home/home_bloc.dart';
+import 'package:taxi_app/cubits/address_cubit/address_cubit.dart';
 import 'package:taxi_app/cubits/code_input_cubit/code_input_cubit.dart';
 import 'package:taxi_app/cubits/auth_cubit/auth_cubit.dart';
 import 'package:taxi_app/cubits/home/home_cubit.dart';
 import 'package:taxi_app/data/local/storage_repository/storage_repository.dart';
+import 'package:taxi_app/data/repositories/address_api_repository.dart';
 import 'package:taxi_app/data/repositories/auth_repository.dart';
+import 'package:taxi_app/services/api_service.dart';
 import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/ui/forget_create_paswords/forget_screen/confirm_code_screen.dart';
 import 'package:taxi_app/ui/forget_create_paswords/forget_screen/forget_password_screen.dart';
@@ -19,13 +22,16 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await StorageRepository.getInstance();
 
-  runApp(const App());
+  runApp(App(apiService: ApiService()));
 }
 
 class App extends StatelessWidget {
   const App({
     super.key,
+    required this.apiService
   });
+
+  final ApiService apiService;
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +39,9 @@ class App extends StatelessWidget {
       providers: [
         RepositoryProvider(
           create: (context) => AuthRepository(),
+        ),
+        RepositoryProvider(
+          create: (context) => AddressApiRepository(apiService: apiService),
         )
       ],
       child: MultiBlocProvider(
@@ -42,6 +51,9 @@ class App extends StatelessWidget {
           ),
           BlocProvider(
             create: (context) => CodeInputCubit(),
+          ),
+          BlocProvider(
+            create: (context) => AddressCubit(addressApiRepository: context.read<AddressApiRepository>()),
           ),
           BlocProvider(
                   create: (context) => AuthCubit(),
