@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 part 'social_auth_event.dart';
 part 'social_auth_state.dart';
 
-class AuthBloc extends Bloc<AuthEvent, AuthState> {
-  AuthBloc() : super(AuthInitial()) {
+class SocialAuthBloc extends Bloc<SocialAuthEvent, SocialAuthState> {
+  SocialAuthBloc() : super(AuthInitial()) {
     on<LoginWithFacebook>(loginWithFacebook);
     on<LoginWithGoogle>(loginWithGoogle);
     on<LoginWithApple>(loginWithApple);
@@ -13,7 +13,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final bool response = true;
 
 
-   loginWithFacebook(LoginWithFacebook productsEvent,Emitter<AuthState> emit) async {
+   loginWithFacebook(LoginWithFacebook productsEvent,Emitter<SocialAuthState> emit) async {
     emit(AuthLoading());
    await Future.delayed(const Duration(seconds: 4));
     if(response == true) {
@@ -23,7 +23,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     }
   }
 
-   loginWithGoogle(LoginWithGoogle productsEvent, Emitter<AuthState> emit) async {
+   loginWithGoogle(LoginWithGoogle productsEvent, Emitter<SocialAuthState> emit) async {
     emit(AuthLoading());
     await Future.delayed(const Duration(seconds: 4));
     if(response == true) {
@@ -33,7 +33,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     }
   }
 
-  loginWithApple(LoginWithApple productsEvent, Emitter<AuthState> emit) async {
+  loginWithApple(LoginWithApple productsEvent, Emitter<SocialAuthState> emit) async {
     emit(AuthLoading());
     await Future.delayed(const Duration(seconds: 4));
     if(response == true) {
