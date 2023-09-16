@@ -9,7 +9,6 @@ import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
-// ignore: must_be_immutable
 class CreatePasswordScreen extends StatelessWidget {
   CreatePasswordScreen({super.key});
 
@@ -20,8 +19,8 @@ class CreatePasswordScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double height=MediaQuery.of(context).size.height;
-    double width=MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
     return Scaffold(
       resizeToAvoidBottomInset: true,
       appBar: GlobalAppBar(
@@ -31,7 +30,8 @@ class CreatePasswordScreen extends StatelessWidget {
         title: "Create New Password",
       ),
       body: ListView(
-        padding: EdgeInsets.only(left: width*24/figmaWidth,right:width*24/figmaWidth ),
+        padding: EdgeInsets.only(
+            left: width * 24 / figmaWidth, right: width * 24 / figmaWidth),
         children: [
           70.ph,
           Image.asset(
@@ -41,15 +41,9 @@ class CreatePasswordScreen extends StatelessWidget {
           ),
           Text(
             "Create Your New Password",
-            style: TextStyle(
-              fontSize: 18.sp,
-              fontFamily: 'Urbanist',
-              fontWeight: FontWeight.w500,
-              color: AppColors.c_900,
-              letterSpacing: 0.2.sp,
-            ),
+            style: Theme.of(context).textTheme.bodyMedium!.copyWith(),
           ),
-           24.ph,
+          24.ph,
           GlobalTextField(
             hintText: 'Password',
             keyboardType: TextInputType.visiblePassword,
@@ -72,13 +66,11 @@ class CreatePasswordScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const ForgetPasswordCheckbox(),
-              Text(
-                "Remember me",
-                style:Theme.of(context).textTheme.labelLarge!.copyWith() ),
-
+              Text("Remember me",
+                  style: Theme.of(context).textTheme.labelLarge!.copyWith()),
             ],
           ),
-           71.ph,
+          71.ph,
           GlobalButton(
             color: AppColors.primary,
             title: 'Continue',
@@ -90,9 +82,9 @@ class CreatePasswordScreen extends StatelessWidget {
                 builder: (BuildContext context) {
                   return AlertDialog(
                     contentPadding: EdgeInsets.only(
-                      top: 32*height/figmaHeight,
-                      left: 32*width/figmaWidth,
-                      right: 32*width/figmaWidth,
+                      top: 32 * height / figmaHeight,
+                      left: 32 * width / figmaWidth,
+                      right: 32 * width / figmaWidth,
                     ),
                     content: Container(
                       decoration: BoxDecoration(
@@ -107,28 +99,31 @@ class CreatePasswordScreen extends StatelessWidget {
                           32.ph,
                           Text(
                             'Congratulations!',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 24.sp,
-                            ),
+                            style: Theme.of(context)
+                                .dialogTheme
+                                .contentTextStyle!
+                                .copyWith(
+                                  fontWeight: FontWeight.bold,
+                                ),
                           ),
-                            16.ph,
+                          16.ph,
                           Center(
                             child: Text(
                               'Your account is ready to use. You will be redirected to the Home page in a few seconds..!',
-                              style: TextStyle(
+                              style: Theme.of(context)
+                                  .dialogTheme
+                                  .contentTextStyle!
+                                  .copyWith(
+                                fontWeight: FontWeight.bold,
                                 fontSize: 16.sp,
-                                letterSpacing: 0.2.w,
-                                fontFamily: "Urbanist",
                               ),
                               textAlign: TextAlign.center,
                             ),
                           ),
                           32.ph,
                           SizedBox(
-                            height: 120*height/figmaHeight,
-                            child: LottieBuilder.asset(
-                                AppIcons.splashCircular),
+                            height: 120 * height / figmaHeight,
+                            child: LottieBuilder.asset(AppIcons.splashCircular),
                           ),
                         ],
                       ),
