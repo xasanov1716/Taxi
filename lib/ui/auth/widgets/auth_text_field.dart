@@ -1,3 +1,4 @@
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -12,13 +13,13 @@ class AuthTextField extends StatefulWidget {
     required this.hintText,
     required this.prefixIcon,
     this.isPassword = false,
-    required this.onNext,
+    required this.onChanged,
   });
 
   final String hintText;
   final String prefixIcon;
   final bool isPassword;
-  final VoidCallback onNext;
+  final ValueChanged<String> onChanged;
 
   @override
   State<AuthTextField> createState() => _AuthTextFieldState();
@@ -44,7 +45,7 @@ class _AuthTextFieldState extends State<AuthTextField> {
             _iconColor = AppColors.primary;
           });
         } else {
-          if(MediaQuery.of(context).platformBrightness==Brightness.dark){
+          if(AdaptiveTheme.of(context).theme==AdaptiveTheme.of(context).darkTheme){
             setState(() {
               _iconColor = AppColors.white;
             });
@@ -55,9 +56,7 @@ class _AuthTextFieldState extends State<AuthTextField> {
           }
         }
       } else {
-        if(!widget.isPassword&&_controller.text.length==9){
-          widget.onNext.call();
-        }else{
+
           if (_focusNode.hasFocus) {
             setState(() {
               _iconColor = AppColors.primary;
@@ -67,7 +66,6 @@ class _AuthTextFieldState extends State<AuthTextField> {
               _iconColor = AppColors.c_500;
             });
           }
-        }
       }
     });
     _focusNode.addListener(() {
@@ -92,6 +90,7 @@ class _AuthTextFieldState extends State<AuthTextField> {
     });
     super.initState();
   }
+
 
   @override
   Widget build(BuildContext context) {

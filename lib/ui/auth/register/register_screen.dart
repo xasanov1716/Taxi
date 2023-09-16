@@ -38,9 +38,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
               60.ph,
               Column(
                 children: [
-                  AuthTextField(hintText: 'Telefon Raqami', prefixIcon: AppIcons.call, onNext: () {  },),
+                  AuthTextField(hintText: 'Telefon Raqami', prefixIcon: AppIcons.call, onChanged: (v) {  },),
                   20.ph,
-                  AuthTextField(hintText: 'Parol', prefixIcon: AppIcons.lock, isPassword: true, onNext: () {  },),
+                  AuthTextField(hintText: 'Parol', prefixIcon: AppIcons.lock, isPassword: true, onChanged: (v) {  },),
                   20.ph,
                   RememberCheckBox(
                     label: 'Meni eslab qol',
