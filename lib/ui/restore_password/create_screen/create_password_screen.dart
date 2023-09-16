@@ -60,15 +60,23 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
           24.ph,
           GlobalTextField(
             suffixIcon: IconButton(
-                splashColor: null,
-                splashRadius: 2,
-                onPressed: () {
-                  setState(() {
-                    isPressed = !isPressed;
-                  });
-                },
-                icon: SvgPicture.asset(
-                    isPressed ? AppIcons.show : AppIcons.hide)),
+              splashColor: null,
+              splashRadius: 2,
+              onPressed: () {
+                setState(() {
+                  isPressed = !isPressed;
+                });
+              },
+              icon: SvgPicture.asset(
+                isPressed ? AppIcons.show : AppIcons.hide,
+                colorFilter: ColorFilter.mode(
+                    AdaptiveTheme.of(context).theme ==
+                            AdaptiveTheme.of(context).darkTheme
+                        ? AppColors.white
+                        : AppColors.c_900,
+                    BlendMode.srcIn),
+              ),
+            ),
             hintText: 'Password',
             obscureText: isPressed,
             keyboardType: TextInputType.visiblePassword,
@@ -88,7 +96,14 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
                   });
                 },
                 icon: SvgPicture.asset(
-                    isPressed2 ? AppIcons.show : AppIcons.hide)),
+                  isPressed2 ? AppIcons.show : AppIcons.hide,
+                  colorFilter: ColorFilter.mode(
+                      AdaptiveTheme.of(context).theme ==
+                              AdaptiveTheme.of(context).darkTheme
+                          ? AppColors.white
+                          : AppColors.c_900,
+                      BlendMode.srcIn),
+                )),
             hintText: 'Repeat password',
             obscureText: isPressed2,
             keyboardType: TextInputType.visiblePassword,
