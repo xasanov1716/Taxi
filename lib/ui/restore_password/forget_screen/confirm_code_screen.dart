@@ -8,6 +8,7 @@ import 'package:taxi_app/ui/widgets/global_appbar.dart';
 import 'package:taxi_app/ui/widgets/global_button.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/size/screen_size.dart';
+import 'package:taxi_app/utils/size/size_extension.dart';
 
 class ConfirmCodeScreen extends StatelessWidget {
   const ConfirmCodeScreen({super.key});
@@ -26,26 +27,27 @@ class ConfirmCodeScreen extends StatelessWidget {
       ),
       body: Padding(
         padding: EdgeInsets.only(
-            left: width * 24 / figmaWidth,
-            right: width * 24 / figmaWidth,
-            top: 24 * height / figmaHeight,
-            bottom: 48 * height / figmaHeight),
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const CodeInputField(),
-              GlobalButton(
-                color: AppColors.primary,
-                title: "Verify",
-                radius: 100.r,
-                textColor: AppColors.dark3,
-                onTap: () {
-                  Navigator.pushNamed(context, RouteNames.createPassword);
-                },
-              ),
-            ],
-          ),
+          left: width * 24 / figmaWidth,
+          right: width * 24 / figmaWidth,
+          top: 24 * height / figmaHeight,
+          bottom: 48 * height / figmaHeight,
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            97.ph,
+            const CodeInputField(),
+            const Spacer(),
+            GlobalButton(
+              color: AppColors.primary,
+              title: "Verify",
+              radius: 100.r,
+              textColor: AppColors.dark3,
+              onTap: () {
+                Navigator.pushNamed(context, RouteNames.createPassword);
+              },
+            ),
+          ],
         ),
       ),
     );
