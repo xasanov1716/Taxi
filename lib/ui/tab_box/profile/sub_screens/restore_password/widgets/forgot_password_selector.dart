@@ -43,15 +43,15 @@ class _ForgotPasswordSelectorState extends State<ForgotPasswordSelector> {
         ),
         child: Padding(
           padding: EdgeInsets.only(
-            top: height * 0.02,
+            top: width * 0.02,
             left: width * 0.05,
             right: width * 0.05,
-            bottom: height * 0.02,
+            bottom: width * 0.02,
           ),
           child: Row(
             children: [
               Container(
-                  height: 80.h,
+                  height: 80.w,
                   width: 80.w,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(150.r),

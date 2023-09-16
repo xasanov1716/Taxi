@@ -52,7 +52,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: GlobalAppBar(onTap: () {}, title: 'Fill Your Profile'),
+      appBar: GlobalAppBar(onTap: () {
+        Navigator.pop(context);
+      }, title: 'Fill Your Profile'),
       body: Padding(
         padding:
         EdgeInsets.only(left: 24.w, right: 24.w, bottom: 12.h, top: 12.h),

@@ -42,7 +42,6 @@ class _GlobalTextFieldState extends State<GlobalTextField> {
   final FocusNode _textFieldFocus = FocusNode();
   Color color = const Color(0xFFFAFAFA);
 
-
   @override
   void initState() {
     super.initState();
@@ -54,7 +53,7 @@ class _GlobalTextFieldState extends State<GlobalTextField> {
     return TextField(
       controller: _internalController,
       focusNode: _textFieldFocus,
-      obscureText: !widget.obscureText!,
+      obscureText: widget.obscureText ?? false,
       decoration: InputDecoration(
         hintStyle: const TextStyle(
           fontFamily: "Urbanist",

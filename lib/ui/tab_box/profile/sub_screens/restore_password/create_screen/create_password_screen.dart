@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lottie/lottie.dart';
-import 'package:taxi_app/ui/tab_box/profile/sub_screens/restore_password/create_screen/widgets/dialog.dart';
+import 'package:taxi_app/ui/tab_box/profile/sub_screens/restore_password/create_screen/widgets/restorePasswordSuccess.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/restore_password/widgets/checkbox.dart';
 import 'package:taxi_app/ui/widgets/global_appbar.dart';
 import 'package:taxi_app/ui/widgets/global_button.dart';
@@ -128,7 +128,7 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
             radius: 50.r,
             textColor: AppColors.dark3,
             onTap: () {
-              dialog(context);
+              restorePasswordSuccess(context);
             },
           ),
         ],

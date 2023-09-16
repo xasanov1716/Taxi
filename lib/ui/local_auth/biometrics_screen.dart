@@ -92,7 +92,10 @@ class _BiometricsScreenState extends State<BiometricsScreen> {
                     style: Theme.of(context).textTheme.titleMedium),
               ],
             ),
-            Image.asset(AppIcons.fingerPrint),
+            Image.asset(
+              AppIcons.fingerPrint,
+              width: 228 * width / figmaWidth,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -108,7 +111,7 @@ class _BiometricsScreenState extends State<BiometricsScreen> {
                 Expanded(
                     child: GlobalButton(
                   title: "O'tkazib yubor",
-                  onTap: (){
+                  onTap: () {
                     Navigator.pushReplacementNamed(context, RouteNames.tabBox);
                     showDialog(
                         context: context,
@@ -156,7 +159,6 @@ class _BiometricsScreenState extends State<BiometricsScreen> {
                               ),
                             ),
                           );
-
                         });
                   },
                   radius: 100,

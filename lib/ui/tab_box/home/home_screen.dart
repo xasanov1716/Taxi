@@ -93,7 +93,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Future<void> _applyCustomMapStyle() async {
     try {
-      String style = await rootBundle.loadString('assets/map_style.json');
+      String style =
+          await rootBundle.loadString('assets/styles/map_style.json');
 
       mapController.setMapStyle(style);
     } catch (e) {}
