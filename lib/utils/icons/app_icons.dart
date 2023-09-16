@@ -154,6 +154,7 @@ class AppIcons {
   static final String volumeUp = "assets/svg/${it.name}/volume_up.svg";
   static final String wallet = "assets/svg/${it.name}/wallet.svg";
   static final String work = "assets/svg/${it.name}/work.svg";
+  static const String gps = "assets/svg/bold/gps.svg";
 
   //auth svg
   static const String facebook = "assets/svg/auth_svg/facebook.svg";

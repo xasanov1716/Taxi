@@ -39,7 +39,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
       body: AnnotatedRegion(
-        value:const SystemUiOverlayStyle(
+        value: const SystemUiOverlayStyle(
           statusBarIconBrightness:Brightness.light ,
           statusBarColor: Colors.transparent
         ),

@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:taxi_app/ui/widgets/global_appbar.dart';
+import 'package:taxi_app/cubits/tab/tab_cubit.dart';
+import 'package:taxi_app/ui/bookings/bookings_screen.dart';
+import 'package:taxi_app/ui/home/home_screen.dart';
+import 'package:taxi_app/ui/inbox/inbox_screen.dart';
+import 'package:taxi_app/ui/profile/profile_screen.dart';
+import 'package:taxi_app/ui/wallet/wallet_screen.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 
@@ -13,44 +19,27 @@ class TabBox extends StatefulWidget {
 }
 
 class _TabBoxState extends State<TabBox> {
-  int _selectedIndex = 0;
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Index 0: Home',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 1: Business',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 2: School',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 3: School',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 4: School',
-      style: optionStyle,
-    ),
-  ];
 
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
+  static List<Widget> screens = [];
+  @override
+  void initState() {
+    screens = [
+      const MapScreen(),
+      const BookingsScreen(),
+      const InboxScreen(),
+      const WalletScreen(),
+      const ProfileScreen()
+    ];
+
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: GlobalAppBar(onTap: (){}, title: "title"),
-      body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex),
+      body: IndexedStack(
+        index: context.watch<TabCubit>().state,
+        children: screens,
       ),
       bottomNavigationBar: ClipRRect(
         borderRadius: BorderRadius.only(
@@ -58,57 +47,62 @@ class _TabBoxState extends State<TabBox> {
           topRight: Radius.circular(16.r),
         ),
         child: BottomNavigationBar(
-          backgroundColor: AppColors.black,
+          backgroundColor: AppColors.dark1,
           selectedLabelStyle: const TextStyle(
             fontFamily: "Urbanist",
             fontSize: 10,
             fontWeight: FontWeight.w700,
-            color: AppColors.yellow,
+            color: AppColors.primary,
             height: 12 / 10,
           ),
           unselectedLabelStyle: const TextStyle(
             fontFamily: "Urbanist",
             fontSize: 10,
             fontWeight: FontWeight.w500,
-            color: AppColors.blueGrey,
+            color: AppColors.c_500,
             height: 12 / 10,
           ),
           items: <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: SvgPicture.asset(
                 AppIcons.home,
+                colorFilter: ColorFilter.mode(context.watch<TabCubit>().state==0?AppColors.primary:AppColors.c_500, BlendMode.screen),
               ),
               label: 'Home',
             ),
             BottomNavigationBarItem(
               icon: SvgPicture.asset(
                 AppIcons.bookmark,
+                colorFilter: ColorFilter.mode(context.watch<TabCubit>().state==1?AppColors.primary:AppColors.c_500, BlendMode.screen),
               ),
               label: 'Bookings',
             ),
             BottomNavigationBarItem(
               icon: SvgPicture.asset(
                 AppIcons.chat,
+                colorFilter: ColorFilter.mode(context.watch<TabCubit>().state==2?AppColors.primary:AppColors.c_500, BlendMode.screen),
               ),
               label: 'Inbox',
             ),
             BottomNavigationBarItem(
               icon: SvgPicture.asset(
                 AppIcons.wallet,
+                colorFilter: ColorFilter.mode(context.watch<TabCubit>().state==3?AppColors.primary:AppColors.c_500, BlendMode.screen),
               ),
               label: 'Wallet',
             ),
             BottomNavigationBarItem(
               icon: SvgPicture.asset(
                 AppIcons.profile,
+                colorFilter: ColorFilter.mode(context.watch<TabCubit>().state==4?AppColors.primary:AppColors.c_500, BlendMode.screen),
               ),
               label: 'Profile',
             ),
           ],
-          currentIndex: _selectedIndex,
+          currentIndex: context.watch<TabCubit>().state,
           selectedItemColor: AppColors.primary,
-          unselectedItemColor: const Color(0xFF9E9E9E),
-          onTap: _onItemTapped,
+          unselectedItemColor: AppColors.c_500,
+          onTap: context.read<TabCubit>().changeTabIndex,
         ),
       ),
     );
