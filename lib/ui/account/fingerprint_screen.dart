@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:local_auth/local_auth.dart';
 import 'package:lottie/lottie.dart';
 import 'package:taxi_app/data/local/storage_repository/storage_repository.dart';
+import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/ui/widgets/global_appbar.dart';
 import 'package:taxi_app/ui/widgets/global_button.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
@@ -107,7 +108,8 @@ class _FingerprintScreenState extends State<FingerprintScreen> {
                 Expanded(
                     child: GlobalButton(
                   title: "O'tkazib yubor",
-                  onTap: () {
+                  onTap: (){
+                    Navigator.pushReplacementNamed(context, RouteNames.tabBox);
                     showDialog(
                         context: context,
                         builder: (context) {
@@ -154,6 +156,7 @@ class _FingerprintScreenState extends State<FingerprintScreen> {
                               ),
                             ),
                           );
+
                         });
                   },
                   radius: 100,
