@@ -70,8 +70,7 @@ class _FillProfileScreenState extends State<FillProfileScreen> {
                     keyboardType: TextInputType.text,
                     textInputAction: TextInputAction.next,
                     onChanged: (value) {
-                      context.read<UserCubit>().updateCurrentUserField(
-                          fieldKey: UserFieldKeys.fullName, value: value);
+                      context.read<UserCubit>().updateCurrentUserField(fieldKey: UserFieldKeys.fullName, value: value);
                     },
                   ),
                   24.ph,
@@ -86,23 +85,28 @@ class _FillProfileScreenState extends State<FillProfileScreen> {
                     },
                   ),
                   24.ph,
-                  GlobalSearchTextField(
-                    maskFormatter: maskFormatter,
-                    readOnly: true,
-                    hintText: 'Date of Birth',
-                    focusNode: focusNode,
-                    onTap: () {
+                  GestureDetector(
+                    onTap: (){
                       _selecDate(context);
                     },
-                    rightImage: AppIcons.calendar,
-                    controller: dateController,
-                    onChanged: (value) {
-                      if (value.length == 10) {
-                        focusNode.unfocus();
-                      }
-                    },
-                    keyboardType: TextInputType.number,
-                    textInputAction: TextInputAction.next,
+                    child: GlobalSearchTextField(
+                      maskFormatter: maskFormatter,
+                      readOnly: true,
+                      hintText: 'Date of Birth',
+                      focusNode: focusNode,
+                      // onTap: () {
+                      //   _selecDate(context);
+                      // },
+                      rightImage: AppIcons.calendar,
+                      controller: dateController,
+                      onChanged: (value) {
+                        if (value.length == 10) {
+                          focusNode.unfocus();
+                        }
+                      },
+                      keyboardType: TextInputType.number,
+                      textInputAction: TextInputAction.next,
+                    ),
                   ),
                   24.ph,
                   GlobalSearchTextField(
@@ -157,14 +161,11 @@ class _FillProfileScreenState extends State<FillProfileScreen> {
                     },
                     rightImage: AppIcons.arrowDown2,
                   ),
-                  30.ph,
+                  24.ph,
                 ],
               ),
             ),
-            30.ph,
-            SizedBox(
-              height: 15.h,
-            ),
+            24.ph,
             GlobalButton(
                 color: AppColors.disabledButton,
                 title: "Continue",
