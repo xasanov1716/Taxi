@@ -8,6 +8,7 @@ import 'package:taxi_app/ui/splash/splash_screen.dart';
 import 'package:taxi_app/ui/tab_box/tab_box.dart';
 
 import 'auth/lets_in/lets_in_screen.dart';
+import 'auth/login/login_screen.dart';
 
 class RouteNames {
   static const String splashScreen = "/";
