@@ -1,4 +1,4 @@
-# taxi_app
+# Dastyor Taxi
 
 In today's world, “on-demand ” has become a popular practice. People can book their taxis online from various taxi companies. This has made their lives easy and convenient. A single click can help passengers book their trip at a pre-defined price. All thanks to mobile app development services. 
 
