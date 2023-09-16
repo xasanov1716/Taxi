@@ -1,3 +1,4 @@
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
@@ -68,7 +69,9 @@ class _CustomPasswordTextFieldState extends State<CustomPasswordTextField> {
               isFocus
                   ? AppColors.primary
                   : hasInput
-                      ? AppColors.white
+                      ? (AdaptiveTheme.of(context).theme == AdaptiveTheme.of(context).darkTheme
+                          ? AppColors.white
+                          : AppColors.c_900)
                       : AppColors.c_500,
               BlendMode.srcIn),
         ),
@@ -81,7 +84,9 @@ class _CustomPasswordTextFieldState extends State<CustomPasswordTextField> {
                 isFocus
                     ? AppColors.primary
                     : hasInput
-                        ? AppColors.white
+                        ? (AdaptiveTheme.of(context).theme == AdaptiveTheme.of(context).darkTheme
+                            ? AppColors.white
+                            : AppColors.c_900)
                         : AppColors.c_500,
                 BlendMode.srcIn),
           ),

@@ -107,7 +107,12 @@ class AppTheme {
             fontWeight: FontWeight.w400,
             letterSpacing: 0.2)),
     dividerTheme: const DividerThemeData(color: AppColors.c_200),
-    inputDecorationTheme: InputDecorationTheme(fillColor: AppColors.c_50),
+    inputDecorationTheme: InputDecorationTheme(
+      fillColor: AppColors.c_50,
+      filled: true,
+      hintStyle: AppTextStyle.bodyMediumRegular,
+      border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+    ),
     useMaterial3: true,
   );
 
