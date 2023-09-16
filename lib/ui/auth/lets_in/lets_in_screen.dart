@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:taxi_app/blocs/auth_bloc/auth_bloc.dart';
+import 'package:taxi_app/blocs/social_auth_bloc/social_auth_bloc.dart';
 import 'package:taxi_app/ui/app_routes.dart';
+import 'package:taxi_app/ui/widgets/global_appbar.dart';
 import 'package:taxi_app/ui/widgets/global_button.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 
@@ -18,7 +19,8 @@ class LetsInScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocListener<AuthBloc, AuthState>(
+      appBar: GlobalAppBar(onTap: () {  }, title: ''),
+      body: BlocListener<SocialAuthBloc, SocialAuthState>(
         listener: (context, state) {
           if (state is AuthLoading) {
             showDialog(
@@ -46,41 +48,45 @@ class LetsInScreen extends StatelessWidget {
                 });
           }
         },
-        child: SafeArea(
-            child: Padding(
-          padding: const EdgeInsets.only(left: 24.0, right: 24.0, bottom: 48.0, top: 24),
+        child:  Padding(
+          padding: const EdgeInsets.only(
+              left: 24.0, right: 24.0, bottom: 30.0, top: 24),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Padding(
-                padding: EdgeInsets.symmetric(
+                padding: EdgeInsets.symmetric( 
                   horizontal: 71.w,
                 ),
-                child: Image.asset(AppIcons.signIn),
-              ),
+                child: Image.asset(AppIcons.signIn)),
+              30.25.ph,
               Text("Dastyorga Kirish",
-                  style: Theme.of(context).textTheme.displayMedium!.copyWith(fontSize: 48)),
+                  style: Theme.of(context)
+                      .textTheme
+                      .displayMedium!
+                      .copyWith(fontSize: 42.sp)),
+              30.ph,
               Column(
                 children: [
                   CustomAuthButton(
                       imageUrl: AppIcons.facebook,
                       label: "Facebook bilan davom eting",
                       onTap: () {
-                        context.read<AuthBloc>().add(LoginWithFacebook());
+                        context.read<SocialAuthBloc>().add(LoginWithFacebook());
                       }),
                   16.ph,
                   CustomAuthButton(
                       imageUrl: AppIcons.google,
                       label: "Google bilan davom eting",
                       onTap: () {
-                        context.read<AuthBloc>().add(LoginWithGoogle());
+                        context.read<SocialAuthBloc>().add(LoginWithGoogle());
                       }),
                   16.ph,
                   CustomAuthButton(
                       imageUrl: AppIcons.apple,
                       label: "Apple bilan davom eting",
                       onTap: () {
-                        context.read<AuthBloc>().add(LoginWithApple());
+                        context.read<SocialAuthBloc>().add(LoginWithApple());
                       }),
                   24.ph,
                   const CustomAuthDividerWidget(label: "yoki"),
@@ -104,7 +110,6 @@ class LetsInScreen extends StatelessWidget {
             ],
           ),
         )),
-      ),
     );
   }
 }

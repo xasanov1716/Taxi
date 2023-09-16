@@ -56,7 +56,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       title: 'Ro\'yxatdan o\'tish',
                       radius: 100,
                       textColor: AppColors.dark3,
-                      onTap: () {})
+                      onTap: () {
+                        Navigator.pushReplacementNamed(
+                          context,
+                          RouteNames.fillProfile,
+                        );
+                      })
                 ],
               ),
               60.ph,

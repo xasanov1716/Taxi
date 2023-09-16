@@ -33,6 +33,11 @@ class AppIcons {
   static const String smileUnhappy = "assets/images/mood/smile_unhappy.png";
   static const String smileVeryHappy =  "assets/images/mood/smile_very_happy.png";
 
+  static String getSvg({required String name, IconType? iconType}) {
+    if (iconType != null) return "assets/svg/${iconType.name}/$name.svg";
+    return "assets/svg/${it.name}/$name.svg";
+  }
+
   // svg
   static IconType it = IconType.lightOutline;
   static final String search = "assets/svg/${it.name}/search.svg";
