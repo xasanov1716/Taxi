@@ -7,6 +7,7 @@ import '../../../../utils/icons/app_icons.dart';
 import '../../../../utils/size/screen_size.dart';
 
 dialog(BuildContext context) {
+  print({width, height});
   showDialog(
     context: context,
     builder: (BuildContext context) {
@@ -32,7 +33,9 @@ dialog(BuildContext context) {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SizedBox(
-                  height: 180 * height / figmaHeight,
+                  height: height < 735
+                      ? 170 * height / figmaHeight
+                      : 180 * height / figmaHeight,
                   width: 186 * width / figmaWidth,
                   child: Image.asset(AppIcons.createNewPasswordDialog)),
               30.ph,
