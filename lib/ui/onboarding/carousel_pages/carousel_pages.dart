@@ -7,7 +7,6 @@ import 'package:taxi_app/ui/onboarding/carousel_pages/widgets/page_view_items.da
 import 'package:taxi_app/ui/widgets/global_button.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 
-import '../../../utils/colors/app_colors.dart';
 
 class CarouselPages extends StatefulWidget {
   const CarouselPages({super.key});
@@ -25,6 +24,7 @@ class _CarouselPagesState extends State<CarouselPages> {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
+
       appBar: AppBar(
         actions: [
           Padding(
@@ -47,6 +47,7 @@ class _CarouselPagesState extends State<CarouselPages> {
             ),
           )
         ],
+
         elevation: 0,
       ),
       body: Column(
@@ -66,6 +67,7 @@ class _CarouselPagesState extends State<CarouselPages> {
                   scrollDirection: Axis.horizontal,
                   children: const [
                     PageViewItems(
+
                       title:
                           "Biz siz uchun professional taksi xizmatlarini taqdim etamiz",
                       img: AppIcons.onBoarding1,
@@ -78,15 +80,18 @@ class _CarouselPagesState extends State<CarouselPages> {
                     PageViewItems(
                       title:
                           "Keling, hozir Dastyor Taxi bilan kuningizni ajoyib o'tkazaylik!",
+
                       img: AppIcons.onBoarding3,
                     ),
                   ],
                 ),
+
                 SizedBox(height: height / 36),
                 Positioned(
                   bottom: 60 * height / 926,
                   child: PageIndexItem(activePageIndex: pageIndex),
                 ),
+
               ],
             ),
           ),
@@ -94,14 +99,18 @@ class _CarouselPagesState extends State<CarouselPages> {
             padding: EdgeInsets.only(
               right: width / 12,
               left: width / 12,
+
               bottom: width / 25,
+
             ),
             child: Column(
               children: [
                 pageIndex != 2
                     ? GlobalButton(
+
                         color: const Color(0xFFFEBB1B),
                         title: "Keyingisi",
+
                         radius: 100,
                         textColor: Colors.black,
                         onTap: () {
@@ -114,6 +123,7 @@ class _CarouselPagesState extends State<CarouselPages> {
                                 curve: Curves.linear,
                               );
                             });
+
                           }
                         })
                     : GlobalButton(
@@ -131,6 +141,7 @@ class _CarouselPagesState extends State<CarouselPages> {
                           }
                         }),
                 SizedBox(height: height * 20 / 926),
+
               ],
             ),
           )
