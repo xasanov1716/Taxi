@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lottie/lottie.dart';
+import 'package:taxi_app/ui/restore_password/create_screen/widgets/dialog.dart';
 import 'package:taxi_app/ui/restore_password/widgets/checkbox.dart';
 import 'package:taxi_app/ui/widgets/global_appbar.dart';
 import 'package:taxi_app/ui/widgets/global_button.dart';
@@ -62,7 +63,8 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
                     isPressed = !isPressed;
                   });
                 },
-                icon: SvgPicture.asset(isPressed ? AppIcons.show : AppIcons.hide)),
+                icon: SvgPicture.asset(
+                    isPressed ? AppIcons.show : AppIcons.hide)),
             hintText: 'Password',
             obscureText: isPressed,
             keyboardType: TextInputType.visiblePassword,
@@ -85,7 +87,6 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
                     isPressed2 ? AppIcons.show : AppIcons.hide)),
             hintText: 'Repeat password',
             obscureText: isPressed2,
-
             keyboardType: TextInputType.visiblePassword,
             textInputAction: TextInputAction.done,
             prefixIcon: AppIcons.lock,
@@ -108,60 +109,7 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
             radius: 50.r,
             textColor: AppColors.dark3,
             onTap: () {
-              showDialog(
-                context: context,
-                builder: (BuildContext context) {
-                  return AlertDialog(
-                    contentPadding: EdgeInsets.only(
-                      top: 32 * height / figmaHeight,
-                      left: 32 * width / figmaWidth,
-                      right: 32 * width / figmaWidth,
-                    ),
-                    content: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(32.h),
-                        color: Colors.white,
-                      ),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Image.asset(AppIcons.createNewPasswordDialog),
-                          32.ph,
-                          Text(
-                            'Congratulations!',
-                            style: Theme.of(context)
-                                .dialogTheme
-                                .contentTextStyle!
-                                .copyWith(
-                                  fontWeight: FontWeight.bold,
-                                ),
-                          ),
-                          16.ph,
-                          Center(
-                            child: Text(
-                              'Your account is ready to use. You will be redirected to the Home page in a few seconds..!',
-                              style: Theme.of(context)
-                                  .dialogTheme
-                                  .contentTextStyle!
-                                  .copyWith(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 16.sp,
-                              ),
-                              textAlign: TextAlign.center,
-                            ),
-                          ),
-                          32.ph,
-                          SizedBox(
-                            height: 120 * height / figmaHeight,
-                            child: LottieBuilder.asset(AppIcons.splashCircular),
-                          ),
-                        ],
-                      ),
-                    ),
-                  );
-                },
-              );
+              dialog(context);
             },
           ),
         ],
