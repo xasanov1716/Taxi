@@ -26,8 +26,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    width = MediaQuery.of(context).size.width;
-    height = MediaQuery.of(context).size.height;
     return Scaffold(
         body: SafeArea(
       child: Padding(
@@ -79,7 +77,9 @@ class _LoginScreenState extends State<LoginScreen> {
               24.ph,
               Center(
                 child: TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushReplacementNamed(context, RouteNames.forgotPassword);
+                    },
                     child: Text(
                       "Parolni unutdingizmi?",
                       textAlign: TextAlign.center,

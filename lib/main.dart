@@ -11,7 +11,6 @@ import 'package:taxi_app/cubits/home/home_cubit.dart';
 import 'package:taxi_app/cubits/user/user_cubit.dart';
 import 'package:taxi_app/data/local/storage_repository/storage_repository.dart';
 import 'package:taxi_app/data/repositories/auth_repository.dart';
-
 import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/theme/app_theme.dart';
@@ -39,7 +38,6 @@ class App extends StatelessWidget {
       providers: [RepositoryProvider(create: (context) => AuthRepository())],
       child: MultiBlocProvider(
         providers: [
-          BlocProvider(create: (context) => HomeCubit()),
           BlocProvider(create: (context) => CodeInputCubit()),
           BlocProvider(create: (context) => AuthCubit()),
           BlocProvider(create: (context) => UserCubit()),
