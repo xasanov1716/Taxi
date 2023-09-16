@@ -14,7 +14,8 @@ class GlobalTextField extends StatefulWidget {
   final FocusNode? focusNode;
   final MaskTextInputFormatter? maskFormatter;
   final TextEditingController? controller;
-  final String suffixIcon;
+  final Widget? suffixIcon;
+  final bool? obscureText;
 
   const GlobalTextField({
     Key? key,
@@ -23,11 +24,12 @@ class GlobalTextField extends StatefulWidget {
     this.textInputAction = TextInputAction.next,
     this.prefixIcon = "",
     this.caption = "",
-    this.suffixIcon = "",
-     this.controller,
+    this.suffixIcon,
+    this.controller,
     this.onChanged,
     this.focusNode,
     this.maskFormatter,
+    this.obscureText,
   }) : super(key: key);
 
   @override
@@ -35,8 +37,6 @@ class GlobalTextField extends StatefulWidget {
 }
 
 class _GlobalTextFieldState extends State<GlobalTextField> {
-
-
   late TextEditingController _internalController;
   final FocusNode _textFieldFocus = FocusNode();
   Color color = const Color(0xFFFAFAFA);
@@ -47,12 +47,12 @@ class _GlobalTextFieldState extends State<GlobalTextField> {
     _internalController = widget.controller ?? TextEditingController();
   }
 
-
   @override
   Widget build(BuildContext context) {
     return TextField(
       controller: _internalController,
       focusNode: _textFieldFocus,
+      obscureText: !widget.obscureText!,
       decoration: InputDecoration(
         hintStyle: const TextStyle(
           fontFamily: "Urbanist",
@@ -68,12 +68,7 @@ class _GlobalTextFieldState extends State<GlobalTextField> {
                 padding: EdgeInsets.only(left: 20.w, right: 12.w),
                 child: SvgPicture.asset(widget.prefixIcon),
               ),
-        suffixIcon: widget.suffixIcon.isEmpty
-            ? null
-            : Padding(
-                padding: EdgeInsets.only(left: 12.w, right: 20.w),
-                child: SvgPicture.asset(widget.suffixIcon),
-              ),
+        suffixIcon: widget.suffixIcon,
         enabledBorder: OutlineInputBorder(
           borderSide: const BorderSide(color: Color(0xFFFAFAFA), width: 1),
           borderRadius: BorderRadius.circular(10),
@@ -95,6 +90,7 @@ class _GlobalTextFieldState extends State<GlobalTextField> {
             : const Color(0xFFFAFAFA),
         filled: true,
       ),
+      style: TextStyle(color: AppColors.dark3, fontSize: 16.sp),
       keyboardType: widget.keyboardType,
       textInputAction: widget.textInputAction,
     );
