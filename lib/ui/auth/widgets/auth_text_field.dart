@@ -31,7 +31,7 @@ class _AuthTextFieldState extends State<AuthTextField> {
   bool _isObscured = false;
   bool hasValue = false;
   bool isFocused = false;
-  Color _backgroundColor = AppColors.white;
+  Color backgroundColor = AppColors.white;
   Color _iconColor = AppColors.c_500;
   var maskFormatter = MaskTextInputFormatter(
       mask: '## ### ## ##', filter: {"#": RegExp(r'[0-9]')});
@@ -71,18 +71,18 @@ class _AuthTextFieldState extends State<AuthTextField> {
     _focusNode.addListener(() {
       if (_focusNode.hasFocus) {
         setState(() {
-          _backgroundColor = AppColors.orangeTransparent;
+          backgroundColor = AppColors.orangeTransparent;
           _iconColor = AppColors.primary;
         });
       } else {
         if (_controller.text.isNotEmpty) {
           setState(() {
-            _backgroundColor = AppColors.white;
+            backgroundColor = AppColors.white;
             _iconColor = AppColors.c_900;
           });
         } else {
           setState(() {
-            _backgroundColor = AppColors.white;
+            backgroundColor = AppColors.white;
             _iconColor = AppColors.c_500;
           });
         }
