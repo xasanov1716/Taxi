@@ -31,10 +31,7 @@ Future<void> main() async {
 }
 
 class App extends StatelessWidget {
-  const App({
-    super.key,
-    required this.apiService
-  });
+  const App({super.key, required this.apiService});
 
   final ApiService apiService;
 
@@ -42,30 +39,20 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiRepositoryProvider(
       providers: [
+        RepositoryProvider(create: (context) => AuthRepository()),
         RepositoryProvider(
-          create: (context) => AuthRepository(),
-        ),
-        RepositoryProvider(
-          create: (context) => AddressApiRepository(apiService: apiService),
-        )
+            create: (context) => AddressApiRepository(apiService: apiService))
       ],
       child: MultiBlocProvider(
         providers: [
+          BlocProvider(create: (context) => CodeInputCubit()),
           BlocProvider(
-            create: (context) => CodeInputCubit(),
+            create: (context) => AddressCubit(
+                addressApiRepository: context.read<AddressApiRepository>()),
           ),
-          BlocProvider(
-            create: (context) => AddressCubit(addressApiRepository: context.read<AddressApiRepository>()),
-          ),
-          BlocProvider(
-                  create: (context) => AuthCubit(),
-          ),
-          BlocProvider(
-            create: (context) => HomeBloc(),
-          ),
-          BlocProvider(
-            create: (context) => SocialAuthBloc(),
-          ),
+          BlocProvider(create: (context) => AuthCubit()),
+          BlocProvider(create: (context) => HomeBloc()),
+          BlocProvider(create: (context) => SocialAuthBloc()),
         ],
         child: const MyApp(),
       ),
