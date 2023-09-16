@@ -1,4 +1,4 @@
-
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -46,7 +46,10 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
         children: [
           70.ph,
           Image.asset(
-            AppIcons.successPassword,
+            AdaptiveTheme.of(context).theme ==
+                    AdaptiveTheme.of(context).darkTheme
+                ? AppIcons.createNewPasswordDarkImage
+                : AppIcons.successPassword,
             height: height * (250 / figmaHeight),
             width: width * (329 / figmaWidth),
           ),
@@ -118,4 +121,3 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
     );
   }
 }
-
