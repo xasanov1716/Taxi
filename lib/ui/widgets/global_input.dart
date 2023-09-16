@@ -41,6 +41,7 @@ class _GlobalTextFieldState extends State<GlobalTextField> {
   final FocusNode _textFieldFocus = FocusNode();
   Color color = const Color(0xFFFAFAFA);
 
+
   @override
   void initState() {
     super.initState();
