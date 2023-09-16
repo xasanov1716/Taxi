@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lottie/lottie.dart';
 import 'package:taxi_app/data/local/storage_repository/storage_repository.dart';
+import 'package:taxi_app/ui/auth/lets_in/lets_in_screen.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 
 import '../../utils/size/screen_size.dart';
@@ -25,7 +26,7 @@ class _SplashScreenState extends State<SplashScreen> {
             builder: (BuildContext context) {
               return !StorageRepository.getBool("isFirst")
                   ? const WelcomeScreen()
-                  : Scaffold(appBar: AppBar(title: const Text("Home Screen")));
+                  : LetsInScreen();
             },
           ),
         );
@@ -61,8 +62,8 @@ class _SplashScreenState extends State<SplashScreen> {
             height: 114 * height / 812,
           ),
           SizedBox(
-            height: 145 * width / 428,
-            width: 145 * width / 428,
+            height: 125 * width / 428,
+            width: 125 * width / 428,
             child: Lottie.asset(
               AppIcons.splashCircular,
               fit: BoxFit.cover,

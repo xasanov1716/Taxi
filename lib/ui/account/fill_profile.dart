@@ -6,6 +6,7 @@ import 'package:taxi_app/ui/widgets/global_button.dart';
 import 'package:taxi_app/ui/widgets/global_search_input.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
+import 'package:taxi_app/utils/size/screen_size.dart';
 
 class FillProfileScreen extends StatefulWidget {
   const FillProfileScreen({Key? key}) : super(key: key);
@@ -58,10 +59,10 @@ class _FillProfileScreenState extends State<FillProfileScreen> {
               ),
               child: Stack(
                 children: [
-                  const Center(
+                   Center(
                       child: Icon(
                     Icons.person,
-                    size: 140,
+                    size: 140*height/figmaHeight,
                     color: AppColors.c_400,
                   )),
                   Positioned(

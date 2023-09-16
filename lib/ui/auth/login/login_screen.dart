@@ -26,8 +26,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    width = MediaQuery.of(context).size.width;
-    height = MediaQuery.of(context).size.height;
     return Scaffold(
         body: SafeArea(
       child: Padding(
@@ -58,22 +56,30 @@ class _LoginScreenState extends State<LoginScreen> {
               24.ph,
               RememberCheckBox(
                   label: "Meni eslab qol",
-                  value: isChecked, onChanged: (v){
-                setState(() {
-                  isChecked=v;
-                });
-              }),
+                  value: isChecked,
+                  onChanged: (v) {
+                    setState(() {
+                      isChecked = v;
+                    });
+                  }),
               24.ph,
               GlobalButton(
                   color: AppColors.primary,
                   radius: 100.r,
                   textColor: AppColors.dark3,
                   title: "Kirish",
-                  onTap: () {}),
+                  onTap: () {
+                    Navigator.pushReplacementNamed(
+                      context,
+                      RouteNames.fillProfile,
+                    );
+                  }),
               24.ph,
               Center(
                 child: TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushReplacementNamed(context, RouteNames.forgotPassword);
+                    },
                     child: Text(
                       "Parolni unutdingizmi?",
                       textAlign: TextAlign.center,

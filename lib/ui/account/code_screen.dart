@@ -47,10 +47,8 @@ class _CodeScreenState extends State<CodeScreen> {
 
     return Scaffold(
         resizeToAvoidBottomInset: false,
-        backgroundColor: AppColors.white,
         appBar: AppBar(
           elevation: 0,
-          backgroundColor: AppColors.white,
           title: const Text("Создать новый PIN-код",style: TextStyle(fontSize: 18),),
         ),
         body: Padding(
