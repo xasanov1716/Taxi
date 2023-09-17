@@ -249,7 +249,15 @@ class AppTheme {
           fontWeight: FontWeight.w700,
           letterSpacing: 0.2,
         ),
-        backgroundColor: AppColors.white,
+        selectedIconTheme: IconThemeData(
+          color: AppColors.primary,
+          size: 24.w,
+        ),
+        unselectedIconTheme: IconThemeData(
+          color: AppColors.c_500,
+          size: 24.w,
+        ),
+        backgroundColor: AppColors.dark1,
         selectedItemColor: AppColors.primary,
         unselectedItemColor: AppColors.c_500),
     dialogTheme: DialogTheme(
