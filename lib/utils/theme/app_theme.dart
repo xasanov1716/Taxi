@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:taxi_app/utils/fonts/text_styles.dart';
 import '../colors/app_colors.dart';
 
 class AppTheme {
@@ -40,99 +41,40 @@ class AppTheme {
             statusBarIconBrightness: Brightness.dark)),
     textTheme: TextTheme(
         //display
-        displayLarge: TextStyle(
-          color: AppColors.c_900,
-          fontSize: 57.sp,
-          fontWeight: FontWeight.w800,
-          fontFamily: 'Urbanist',
-        ),
-        displayMedium: TextStyle(
-          color: AppColors.c_900,
-          fontSize: 45.sp,
-          fontWeight: FontWeight.w700,
-          fontFamily: 'Urbanist',
-        ),
-        displaySmall: TextStyle(
-          color: AppColors.c_900,
-          fontSize: 36.sp,
-          fontWeight: FontWeight.w600,
-          fontFamily: 'Urbanist',
-        ),
+
+        displayLarge: AppTextStyle.h1Bold.copyWith(color: AppColors.white),
+        displayMedium: AppTextStyle.h2Bold.copyWith(color: AppColors.white),
+        displaySmall: AppTextStyle.h3Bold.copyWith(color: AppColors.white),
         //headline
-        headlineLarge: TextStyle(
-          color: AppColors.c_900,
-          fontSize: 32.sp,
-          fontWeight: FontWeight.w700,
-          fontFamily: 'Urbanist',
-        ),
-        headlineMedium: TextStyle(
-          color: AppColors.c_900,
-          fontSize: 28.sp,
-          fontWeight: FontWeight.w500,
-          fontFamily: 'Urbanist',
-        ),
-        headlineSmall: TextStyle(
-          color: AppColors.c_900,
-          fontSize: 24.sp,
-          fontWeight: FontWeight.w400,
-          fontFamily: 'Urbanist',
-        ),
+        headlineMedium: AppTextStyle.h4Bold.copyWith(color: AppColors.white),
+        headlineSmall: AppTextStyle.h5Bold.copyWith(color: AppColors.white),
         //title
-        titleLarge: TextStyle(
-          color: AppColors.c_900,
-          fontSize: 22.sp,
-          fontWeight: FontWeight.w700,
-          fontFamily: 'Urbanist',
-        ),
-        titleMedium: TextStyle(
-          color: AppColors.c_900,
-          fontSize: 16.sp,
-          fontWeight: FontWeight.w600,
-          fontFamily: 'Urbanist',
-        ),
+        titleLarge: AppTextStyle.h6Bold.copyWith(color: AppColors.white),
+        titleMedium: AppTextStyle.bodyXlargeMedium,
         titleSmall: TextStyle(
-          color: AppColors.c_900,
-          fontSize: 14.sp,
-          fontWeight: FontWeight.w500,
-          fontFamily: 'Urbanist',
-        ),
+            color: AppColors.white,
+            fontSize: 14.sp,
+            fontWeight: FontWeight.w500,
+            fontFamily: 'Urbanist'),
         //label
         labelLarge: TextStyle(
-          color: AppColors.c_900,
-          fontSize: 14.sp,
-          fontWeight: FontWeight.w600,
-          fontFamily: 'Urbanist',
-        ),
+            color: AppColors.white,
+            fontSize: 14.sp,
+            fontWeight: FontWeight.w600,
+            fontFamily: 'Urbanist'),
+
         labelMedium: TextStyle(
-            color: AppColors.c_900,
+            color: AppColors.white,
             fontSize: 12.sp,
             fontWeight: FontWeight.w500,
             fontFamily: 'Urbanist'),
-        labelSmall: TextStyle(
-          color: AppColors.c_900,
-          fontSize: 11.sp,
-          fontWeight: FontWeight.w500,
-          fontFamily: 'Urbanist',
-        ),
+
+        labelSmall: AppTextStyle.bodyXsmallMedium.copyWith(color: AppColors.white),
         //body
-        bodyLarge: TextStyle(
-          color: AppColors.c_900,
-          fontSize: 16.sp,
-          fontWeight: FontWeight.w500,
-          fontFamily: 'Urbanist',
-        ),
-        bodyMedium: TextStyle(
-          color: AppColors.c_900,
-          fontSize: 14.sp,
-          fontWeight: FontWeight.w500,
-          fontFamily: 'Urbanist',
-        ),
-        bodySmall: TextStyle(
-          color: AppColors.c_900,
-          fontSize: 12.sp,
-          fontWeight: FontWeight.w500,
-          fontFamily: 'Urbanist',
-        )),
+        bodyLarge: AppTextStyle.bodyLargeMedium.copyWith(color: AppColors.white),
+        bodyMedium: AppTextStyle.bodyMediumMedium.copyWith(color: AppColors.white),
+        bodySmall: AppTextStyle.bodySmallMedium.copyWith(color: AppColors.white)),
+
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
         type: BottomNavigationBarType.fixed,
         showSelectedLabels: true,
@@ -177,7 +119,31 @@ class AppTheme {
       ),
     ),
     dividerTheme: const DividerThemeData(color: AppColors.c_200),
-    inputDecorationTheme: const InputDecorationTheme(fillColor: AppColors.c_50),
+
+    inputDecorationTheme: InputDecorationTheme(
+      fillColor: AppColors.c_50,
+      filled: true,
+      hintStyle: AppTextStyle.bodyMediumRegular,
+      border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+    ),
+    useMaterial3: true,
+    switchTheme: const SwitchThemeData(
+      thumbColor: MaterialStatePropertyAll(AppColors.white),
+    ),
+    colorScheme: const ColorScheme(
+      primary: AppColors.primary,
+      secondary: AppColors.secondary,
+      surface: Color(0xFF1F222A),
+      background: Color(0xFF1F222A),
+      error: AppColors.error,
+      onPrimary: Color(0xFFFFFFFF),
+      onSecondary: Color(0xFFFFFFFF),
+      onSurface: Color(0xffff3b2948),
+      onBackground: AppColors.dark3,
+      onError: Color(0xffff690005),
+      brightness: Brightness.dark,
+    ),
+
   );
 
 
@@ -186,7 +152,10 @@ class AppTheme {
 
   static ThemeData darkTheme = ThemeData(
     hintColor: AppColors.c_500,
-    inputDecorationTheme: const InputDecorationTheme(
+    inputDecorationTheme: InputDecorationTheme(
+      filled: true,
+      hintStyle: AppTextStyle.bodyMediumRegular,
+      border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
       fillColor: AppColors.dark2,
     ),
     dividerTheme: const DividerThemeData(color: AppColors.dark3),
@@ -219,99 +188,39 @@ class AppTheme {
       ),
     ),
     textTheme: TextTheme(
-      //display
-      displayLarge: TextStyle(
-        color: AppColors.white,
-        fontSize: 57.sp,
-        fontWeight: FontWeight.w800,
-        fontFamily: 'Urbanist',
-      ),
-      displayMedium: TextStyle(
-        color: AppColors.white,
-        fontSize: 45.sp,
-        fontWeight: FontWeight.w700,
-        fontFamily: 'Urbanist',
-      ),
-      displaySmall: TextStyle(
-        color: AppColors.white,
-        fontSize: 36.sp,
-        fontWeight: FontWeight.w600,
-        fontFamily: 'Urbanist',
-      ),
-      //headline
-      headlineLarge: TextStyle(
-        color: AppColors.white,
-        fontSize: 32.sp,
-        fontWeight: FontWeight.w700,
-        fontFamily: 'Urbanist',
-      ),
-      headlineMedium: TextStyle(
-          color: AppColors.white,
-          fontSize: 28.sp,
-          fontWeight: FontWeight.w500,
-          fontFamily: 'Urbanist'),
-      headlineSmall: TextStyle(
-        color: AppColors.white,
-        fontSize: 24.sp,
-        fontWeight: FontWeight.w400,
-        fontFamily: 'Urbanist',
-      ),
-      //title
-      titleLarge: TextStyle(
-        color: AppColors.white,
-        fontSize: 22.sp,
-        fontWeight: FontWeight.w700,
-        fontFamily: 'Urbanist',
-      ),
-      titleMedium: TextStyle(
-        color: AppColors.white,
-        fontSize: 16.sp,
-        fontWeight: FontWeight.w600,
-        fontFamily: 'Urbanist',
-      ),
-      titleSmall: TextStyle(
-        color: AppColors.white,
-        fontSize: 14.sp,
-        fontWeight: FontWeight.w500,
-        fontFamily: 'Urbanist',
-      ),
-      //label
-      labelLarge: TextStyle(
-        color: AppColors.white,
-        fontSize: 14.sp,
-        fontWeight: FontWeight.w600,
-        fontFamily: 'Urbanist',
-      ),
-      labelMedium: TextStyle(
-        color: AppColors.white,
-        fontSize: 12.sp,
-        fontWeight: FontWeight.w500,
-        fontFamily: 'Urbanist',
-      ),
-      labelSmall: TextStyle(
-          color: AppColors.white,
-          fontSize: 11.sp,
-          fontWeight: FontWeight.w500,
-          fontFamily: 'Urbanist'),
-      //body
-      bodyLarge: TextStyle(
-          color: AppColors.white,
-          fontSize: 16.sp,
-          fontWeight: FontWeight.w500,
-          fontFamily: 'Urbanist'),
-      bodyMedium: TextStyle(
-        color: AppColors.white,
-        fontSize: 14.sp,
-        fontWeight: FontWeight.w500,
-        fontFamily: 'Urbanist',
-      ),
-      bodySmall: TextStyle(
-        color: AppColors.white,
-        fontSize: 12.sp,
-        fontWeight: FontWeight.w500,
-        fontFamily: 'Urbanist',
-      ),
-    ),
+
+        //display
+        displayLarge: AppTextStyle.h1Bold.copyWith(color: AppColors.white),
+        displayMedium: AppTextStyle.h2Bold.copyWith(color: AppColors.white),
+        displaySmall: AppTextStyle.h3Bold.copyWith(color: AppColors.white),
+        //headline
+        headlineMedium: AppTextStyle.h4Bold.copyWith(color: AppColors.white),
+        headlineSmall: AppTextStyle.h5Bold.copyWith(color: AppColors.white),
+        //title
+        titleLarge: AppTextStyle.h6Bold.copyWith(color: AppColors.white),
+        titleMedium: AppTextStyle.bodyXlargeMedium.copyWith(color: AppColors.white),
+        titleSmall: TextStyle(
+            color: AppColors.white,
+            fontSize: 14.sp,
+            fontWeight: FontWeight.w500,
+            fontFamily: 'Urbanist'),
+        //label
+        labelLarge: TextStyle(
+            color: AppColors.white,
+            fontSize: 14.sp,
+            fontWeight: FontWeight.w600,
+            fontFamily: 'Urbanist'),
+        labelMedium: TextStyle(
+            color: AppColors.white,
+            fontSize: 12.sp,
+            fontWeight: FontWeight.w500,
+            fontFamily: 'Urbanist'),
+        labelSmall: AppTextStyle.bodyXsmallMedium.copyWith(color: AppColors.white),
+        //body
+        bodyLarge: AppTextStyle.bodyLargeMedium.copyWith(color: AppColors.white),
+        bodyMedium: AppTextStyle.bodyMediumMedium.copyWith(color: AppColors.white),
+        bodySmall: AppTextStyle.bodySmallMedium.copyWith(color: AppColors.white)),
+
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
         type: BottomNavigationBarType.fixed,
         showSelectedLabels: true,
@@ -347,12 +256,33 @@ class AppTheme {
           letterSpacing: 0.2,
         ),
         contentTextStyle: TextStyle(
-          color: AppColors.c_900,
-          fontSize: 16.sp,
-          fontStyle: FontStyle.normal,
-          fontFamily: "Urbanist",
-          fontWeight: FontWeight.w400,
-          letterSpacing: 0.2,
-        )),
+
+            color: AppColors.c_900,
+            fontSize: 16.sp,
+            fontStyle: FontStyle.normal,
+            fontFamily: "Urbanist",
+            fontWeight: FontWeight.w400,
+            letterSpacing: 0.2)),
+    useMaterial3: true,
+    switchTheme: const SwitchThemeData(
+      thumbColor: MaterialStatePropertyAll(AppColors.white),
+      // trackColor: MaterialStatePropertyAll(AppColors.white),
+      // trackOutlineColor: MaterialStatePropertyAll(AppColors.primary),
+      // overlayColor: MaterialStatePropertyAll(AppColors.primary),
+    ),
+    colorScheme: const ColorScheme(
+      primary: AppColors.primary,
+      secondary: AppColors.secondary,
+      surface: Color(0xFF1F222A),
+      background: Color(0xFF1F222A),
+      error: AppColors.error,
+      onPrimary: Color(0xFFFFFFFF),
+      onSecondary: Color(0xFFFFFFFF),
+      onSurface: Color(0xffff3b2948),
+      onBackground: AppColors.dark3,
+      onError: Color(0xffff690005),
+      brightness: Brightness.dark,
+    ),
+
   );
 }
