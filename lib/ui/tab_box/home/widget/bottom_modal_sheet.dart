@@ -27,10 +27,10 @@ class _BottomModalSheetState extends State<BottomModalSheet> {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Container(
-        decoration: const BoxDecoration(
-          borderRadius: BorderRadius.only(
+        decoration:  BoxDecoration(
+          borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(40), topRight: Radius.circular(40)),
-          color: Colors.white,
+          color: Theme.of(context).scaffoldBackgroundColor,
         ),
         padding: EdgeInsets.only(
           bottom: MediaQuery.of(context).viewInsets.bottom,
@@ -66,6 +66,10 @@ class _BottomModalSheetState extends State<BottomModalSheet> {
                     AppIcons.getSvg(
                       name: AppIcons.location,
                       iconType: IconType.bold,
+                    ),
+                    colorFilter: const ColorFilter.mode(
+                      AppColors.c_500,
+                      BlendMode.srcIn,
                     ),
                   ),
                 ),

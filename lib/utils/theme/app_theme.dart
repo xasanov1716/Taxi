@@ -145,9 +145,9 @@ class AppTheme {
       error: AppColors.error,
       onPrimary: Color(0xFFFFFFFF),
       onSecondary: Color(0xFFFFFFFF),
-      onSurface: Color(0xffff3b2948),
+      onSurface: Color(0xff3b2948),
       onBackground: AppColors.dark3,
-      onError: Color(0xffff690005),
+      onError: Color(0xff690005),
       brightness: Brightness.dark,
     ),
   );
@@ -172,7 +172,7 @@ class AppTheme {
       )),
     )),
     scaffoldBackgroundColor: AppColors.dark1,
-    iconTheme: const IconThemeData(color: AppColors.disabledButton),
+    iconTheme: const IconThemeData(color: AppColors.white),
     appBarTheme: AppBarTheme(
       titleTextStyle: TextStyle(
         color: AppColors.white,
@@ -249,7 +249,15 @@ class AppTheme {
           fontWeight: FontWeight.w700,
           letterSpacing: 0.2,
         ),
-        backgroundColor: AppColors.white,
+        selectedIconTheme: IconThemeData(
+          color: AppColors.primary,
+          size: 24.w,
+        ),
+        unselectedIconTheme: IconThemeData(
+          color: AppColors.c_500,
+          size: 24.w,
+        ),
+        backgroundColor: AppColors.dark1,
         selectedItemColor: AppColors.primary,
         unselectedItemColor: AppColors.c_500),
     dialogTheme: DialogTheme(
@@ -285,9 +293,9 @@ class AppTheme {
       error: AppColors.error,
       onPrimary: Color(0xFFFFFFFF),
       onSecondary: Color(0xFFFFFFFF),
-      onSurface: Color(0xffff3b2948),
-      onBackground: AppColors.dark3,
-      onError: Color(0xffff690005),
+      onSurface: Color(0xff3b2948),
+      onBackground: AppColors.white,
+      onError: Color(0xff690005),
       brightness: Brightness.dark,
     ),
   );
