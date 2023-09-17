@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
+import 'package:taxi_app/utils/theme/get_theme.dart';
 
 class GlobalTextField extends StatefulWidget {
   final String hintText;
@@ -18,7 +19,7 @@ class GlobalTextField extends StatefulWidget {
   final Widget? suffixIcon;
   final bool? obscureText;
 
-  const GlobalTextField({
+   const GlobalTextField({
     Key? key,
     required this.hintText,
     this.keyboardType = TextInputType.text,
@@ -31,6 +32,8 @@ class GlobalTextField extends StatefulWidget {
     this.focusNode,
     this.maskFormatter,
     this.obscureText,
+
+
   }) : super(key: key);
 
   @override
@@ -39,13 +42,25 @@ class GlobalTextField extends StatefulWidget {
 
 class _GlobalTextFieldState extends State<GlobalTextField> {
   late TextEditingController _internalController;
-  final FocusNode _textFieldFocus = FocusNode();
+  final internalFocusNode = FocusNode();
   Color color = const Color(0xFFFAFAFA);
 
   @override
   void initState() {
     super.initState();
     _internalController = widget.controller ?? TextEditingController();
+    widget.focusNode?.addListener(_onFocusChange);
+  }
+
+  @override
+  void dispose() {
+    widget.focusNode?.removeListener(_onFocusChange);
+    super.dispose();
+  }
+
+  void _onFocusChange() {
+    setState(() {});
+
   }
 
   @override
@@ -53,7 +68,7 @@ class _GlobalTextFieldState extends State<GlobalTextField> {
     return TextField(
       obscuringCharacter: '●',
       controller: _internalController,
-      focusNode: _textFieldFocus,
+      focusNode: widget.focusNode ?? internalFocusNode,
       obscureText: widget.obscureText ?? false,
       decoration: InputDecoration(
         hintStyle: const TextStyle(
@@ -80,7 +95,10 @@ class _GlobalTextFieldState extends State<GlobalTextField> {
               ),
         suffixIcon: widget.suffixIcon,
         enabledBorder: OutlineInputBorder(
-          borderSide: const BorderSide(color: Color(0xFFFAFAFA), width: 1),
+          borderSide: BorderSide(
+              color:
+                  getTheme(context) ? AppColors.dark3 : const Color(0xFFFAFAFA),
+              width: 1),
           borderRadius: BorderRadius.circular(10),
         ),
         focusedBorder: OutlineInputBorder(
@@ -95,12 +113,11 @@ class _GlobalTextFieldState extends State<GlobalTextField> {
           borderSide: const BorderSide(color: Color(0xFFFAFAFA), width: 1),
           borderRadius: BorderRadius.circular(10),
         ),
-        fillColor: AdaptiveTheme.of(context).theme ==
-                AdaptiveTheme.of(context).darkTheme
-            ? _textFieldFocus.hasFocus
+        fillColor: getTheme(context)
+            ? (widget.focusNode?.hasFocus ?? internalFocusNode.hasFocus)
                 ? AppColors.yellowTransparent
                 : AppColors.dark2
-            : _textFieldFocus.hasFocus
+            : (widget.focusNode?.hasFocus ?? internalFocusNode.hasFocus)
                 ? const Color(0xFFFFFAED)
                 : const Color(0xFFFAFAFA),
         filled: true,
