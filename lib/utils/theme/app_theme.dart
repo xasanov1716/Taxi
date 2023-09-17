@@ -42,38 +42,38 @@ class AppTheme {
     textTheme: TextTheme(
         //display
 
-        displayLarge: AppTextStyle.h1Bold.copyWith(color: AppColors.white),
-        displayMedium: AppTextStyle.h2Bold.copyWith(color: AppColors.white),
-        displaySmall: AppTextStyle.h3Bold.copyWith(color: AppColors.white),
+        displayLarge: AppTextStyle.h1Bold.copyWith(color: AppColors.c_900),
+        displayMedium: AppTextStyle.h2Bold.copyWith(color: AppColors.c_900),
+        displaySmall: AppTextStyle.h3Bold.copyWith(color: AppColors.c_900),
         //headline
-        headlineMedium: AppTextStyle.h4Bold.copyWith(color: AppColors.white),
-        headlineSmall: AppTextStyle.h5Bold.copyWith(color: AppColors.white),
+        headlineMedium: AppTextStyle.h4Bold.copyWith(color: AppColors.c_900),
+        headlineSmall: AppTextStyle.h5Bold.copyWith(color: AppColors.c_900),
         //title
-        titleLarge: AppTextStyle.h6Bold.copyWith(color: AppColors.white),
+        titleLarge: AppTextStyle.h6Bold.copyWith(color: AppColors.c_900),
         titleMedium: AppTextStyle.bodyXlargeMedium,
         titleSmall: TextStyle(
-            color: AppColors.white,
+            color: AppColors.c_900,
             fontSize: 14.sp,
             fontWeight: FontWeight.w500,
             fontFamily: 'Urbanist'),
         //label
         labelLarge: TextStyle(
-            color: AppColors.white,
+            color: AppColors.c_900,
             fontSize: 14.sp,
             fontWeight: FontWeight.w600,
             fontFamily: 'Urbanist'),
 
         labelMedium: TextStyle(
-            color: AppColors.white,
+            color: AppColors.c_900,
             fontSize: 12.sp,
             fontWeight: FontWeight.w500,
             fontFamily: 'Urbanist'),
 
-        labelSmall: AppTextStyle.bodyXsmallMedium.copyWith(color: AppColors.white),
+        labelSmall: AppTextStyle.bodyXsmallMedium.copyWith(color: AppColors.c_900),
         //body
-        bodyLarge: AppTextStyle.bodyLargeMedium.copyWith(color: AppColors.white),
-        bodyMedium: AppTextStyle.bodyMediumMedium.copyWith(color: AppColors.white),
-        bodySmall: AppTextStyle.bodySmallMedium.copyWith(color: AppColors.white)),
+        bodyLarge: AppTextStyle.bodyLargeMedium.copyWith(color: AppColors.c_900),
+        bodyMedium: AppTextStyle.bodyMediumMedium.copyWith(color: AppColors.c_900),
+        bodySmall: AppTextStyle.bodySmallMedium.copyWith(color: AppColors.c_900)),
 
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
         type: BottomNavigationBarType.fixed,

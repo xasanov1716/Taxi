@@ -21,9 +21,7 @@ class GlobalAppBar extends StatelessWidget implements PreferredSize {
         padding: EdgeInsets.zero,
         onPressed: onTap,
         icon: SvgPicture.asset(
-          AppIcons.arrowLeft,
-          colorFilter: ColorFilter.mode(
-              Theme.of(context).textTheme.bodyLarge!.color!, BlendMode.srcIn),
+          AppIcons.arrowLeft
         ),
       ),
       title: Text(
