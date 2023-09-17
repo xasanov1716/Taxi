@@ -38,7 +38,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
-        overlays: [SystemUiOverlay.top]);
+        overlays: [SystemUiOverlay.top,SystemUiOverlay.bottom,]);
     _init();
     super.initState();
   }
