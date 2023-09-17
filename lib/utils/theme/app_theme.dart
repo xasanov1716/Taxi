@@ -261,7 +261,7 @@ class AppTheme {
         selectedItemColor: AppColors.primary,
         unselectedItemColor: AppColors.c_500),
     dialogTheme: DialogTheme(
-        backgroundColor: AppColors.dark2,
+        backgroundColor: AppColors.dark3,
         alignment: Alignment.center,
         titleTextStyle: TextStyle(
           color: AppColors.primary,
@@ -278,9 +278,9 @@ class AppTheme {
             fontFamily: "Urbanist",
             fontWeight: FontWeight.w400,
             letterSpacing: 0.2)),
-    useMaterial3: true,
+    useMaterial3: false,
     switchTheme: const SwitchThemeData(
-      thumbColor: MaterialStatePropertyAll(AppColors.white),
+      // thumbColor: MaterialStatePropertyAll(AppColors.white),
       // trackColor: MaterialStatePropertyAll(AppColors.white),
       // trackOutlineColor: MaterialStatePropertyAll(AppColors.primary),
       // overlayColor: MaterialStatePropertyAll(AppColors.primary),

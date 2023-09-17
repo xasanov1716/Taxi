@@ -51,6 +51,7 @@ class _GlobalTextFieldState extends State<GlobalTextField> {
   @override
   Widget build(BuildContext context) {
     return TextField(
+      obscuringCharacter: '●',
       controller: _internalController,
       focusNode: _textFieldFocus,
       obscureText: widget.obscureText ?? false,

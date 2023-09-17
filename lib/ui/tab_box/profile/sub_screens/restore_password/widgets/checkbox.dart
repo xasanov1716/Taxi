@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:taxi_app/ui/auth/widgets/remember_me.dart';
+import 'package:taxi_app/ui/widgets/checkbox.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 
 class ForgetPasswordCheckbox extends StatefulWidget {
@@ -13,16 +15,13 @@ class _ForgetPasswordCheckboxState extends State<ForgetPasswordCheckbox> {
   bool value = false;
   @override
   Widget build(BuildContext context) {
-    return Checkbox(
+    return RememberCheckBox(
       value: value,
       onChanged: (v) {
         setState(() {
-          value = v!;
+          value = v;
         });
       },
-      activeColor: AppColors.primary,
-      side: const BorderSide(color: AppColors.primary),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.r)),
     );
   }
 }
