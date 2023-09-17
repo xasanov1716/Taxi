@@ -10,7 +10,7 @@ class GlobalTextField extends StatefulWidget {
   final String hintText;
   final TextInputType keyboardType;
   final TextInputAction textInputAction;
-  final String prefixIcon;
+  final Widget? prefixIcon;
   final String caption;
   final ValueChanged? onChanged;
   final FocusNode? focusNode;
@@ -19,12 +19,12 @@ class GlobalTextField extends StatefulWidget {
   final Widget? suffixIcon;
   final bool? obscureText;
 
-   const GlobalTextField({
+  const GlobalTextField({
     Key? key,
     required this.hintText,
     this.keyboardType = TextInputType.text,
     this.textInputAction = TextInputAction.next,
-    this.prefixIcon = "",
+    this.prefixIcon,
     this.caption = "",
     this.suffixIcon,
     this.controller,
@@ -32,8 +32,6 @@ class GlobalTextField extends StatefulWidget {
     this.focusNode,
     this.maskFormatter,
     this.obscureText,
-
-
   }) : super(key: key);
 
   @override
@@ -60,39 +58,26 @@ class _GlobalTextFieldState extends State<GlobalTextField> {
 
   void _onFocusChange() {
     setState(() {});
-
   }
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      onChanged: widget.onChanged,
       obscuringCharacter: '●',
       controller: _internalController,
       focusNode: widget.focusNode ?? internalFocusNode,
       obscureText: widget.obscureText ?? false,
       decoration: InputDecoration(
-        hintStyle: const TextStyle(
+        hintStyle: TextStyle(
           fontFamily: "Urbanist",
-          fontSize: 14,
+          fontSize: 16.sp,
           fontWeight: FontWeight.w400,
-          color: Color(0xff9e9e9e),
+          color: const Color(0xff9e9e9e),
           height: 20 / 14,
         ),
         hintText: widget.hintText,
-        prefixIcon: widget.prefixIcon.isEmpty
-            ? null
-            : Padding(
-                padding: EdgeInsets.only(left: 20.w, right: 12.w),
-                child: SvgPicture.asset(
-                  widget.prefixIcon,
-                  colorFilter: ColorFilter.mode(
-                      AdaptiveTheme.of(context).theme ==
-                              AdaptiveTheme.of(context).darkTheme
-                          ? AppColors.white
-                          : AppColors.c_900,
-                      BlendMode.srcIn),
-                ),
-              ),
+        prefixIcon: widget.prefixIcon,
         suffixIcon: widget.suffixIcon,
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(
