@@ -121,7 +121,6 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
             textInputAction: TextInputAction.done,
             prefixIcon: AppIcons.getSvg(
               name: AppIcons.lock, iconType: IconType.bold),
-
             caption: '',
             controller: repeatPasswordController,
           ),

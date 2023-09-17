@@ -10,6 +10,7 @@ import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
+import 'package:taxi_app/utils/ui_utils/error_message_dialog.dart';
 
 class BiometricsScreen extends StatefulWidget {
   const BiometricsScreen({super.key});
@@ -28,6 +29,10 @@ class _BiometricsScreenState extends State<BiometricsScreen> {
       canCheckBiometrics = await auth.canCheckBiometrics;
     } catch (e) {
       debugPrint("error biome trics $e");
+      if(context.mounted){
+        showErrorMessage(
+            message: "Barmoq izini skanerlash xato!", context: context);
+      }
     }
 
     debugPrint("biometric is available: $canCheckBiometrics");
@@ -45,6 +50,10 @@ class _BiometricsScreenState extends State<BiometricsScreen> {
         debugPrint("\ttech: $ab");
       }
     } else {
+      if(context.mounted){
+        showErrorMessage(
+            message: "Barmoq izini skanerlash xato!", context: context);
+      }
       debugPrint("no biometrics are available");
     }
 
@@ -60,6 +69,11 @@ class _BiometricsScreenState extends State<BiometricsScreen> {
       );
     } catch (e) {
       debugPrint("error using biometric auth: $e");
+      if(context.mounted){
+        showErrorMessage(
+            message: "Barmoq izini skanerlash xato!", context: context);
+      }
+
     }
     setState(() {
       isAuth = authenticated ? true : false;

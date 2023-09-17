@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:taxi_app/cubits/user/user_cubit.dart';
 import 'package:taxi_app/data/models/user/user_field_keys.dart';
@@ -9,11 +10,11 @@ import 'package:taxi_app/ui/local_auth/widgets/user_image.dart';
 import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/ui/widgets/global_appbar.dart';
 import 'package:taxi_app/ui/widgets/global_button.dart';
+import 'package:taxi_app/ui/widgets/global_input.dart';
 import 'package:taxi_app/ui/widgets/global_search_input.dart';
 import 'package:taxi_app/ui/widgets/phone_number_text_field.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
-import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 
 class EditProfileScreen extends StatefulWidget {
@@ -38,6 +39,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
       filter: {"#": RegExp(r'[0-9]')},
       type: MaskAutoCompletionType.lazy);
 
+  ImagePicker picker = ImagePicker();
+
   int selectedMenu = 1;
 
   List<String> item = ['Male', 'Female'];
@@ -46,18 +49,23 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   final FocusNode focusNode = FocusNode();
   final FocusNode phoneFocusNode = FocusNode();
   final FocusNode fullNameFocusNode = FocusNode();
+  final FocusNode nicknameFocusNode = FocusNode();
   final FocusNode emailFocusNode = FocusNode();
-  final FocusNode nickNameFocusNode = FocusNode();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: GlobalAppBar(onTap: () {
-        Navigator.pop(context);
-      }, title: 'Fill Your Profile'),
+      appBar: GlobalAppBar(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          title: 'Fill Your Profile'),
       body: Padding(
-        padding:
-        EdgeInsets.only(left: 24.w, right: 24.w, bottom: 12.h, top: 12.h),
+        padding: EdgeInsets.only(
+          left: 24.w,
+          right: 24.w,
+          bottom: 12.h,
+        ),
         child: Column(
           children: [
             Expanded(
@@ -65,10 +73,13 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 physics: const BouncingScrollPhysics(),
                 children: [
                   UserImage(
+                      onTap: () {
+                        showBottomSheetDialog();
+                      },
                       userImage: AppIcons.emptyProfile,
                       edit: AppIcons.editSquare),
                   24.ph,
-                  GlobalSearchTextField(
+                  GlobalTextField(
                     focusNode: fullNameFocusNode,
                     hintText: 'Full Name',
                     keyboardType: TextInputType.text,
@@ -79,8 +90,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     },
                   ),
                   24.ph,
-                  GlobalSearchTextField(
-                    focusNode: nickNameFocusNode,
+                  GlobalTextField(
+                    focusNode: nicknameFocusNode,
                     hintText: 'Nickname',
                     keyboardType: TextInputType.text,
                     textInputAction: TextInputAction.next,
@@ -111,20 +122,20 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                           }
                         },
                         keyboardType: TextInputType.number,
-                        textInputAction: TextInputAction.next,),
+                        textInputAction: TextInputAction.next,
+                      ),
                     ),
                   ),
                   24.ph,
-                  GlobalSearchTextField(
-                    hintText: 'Email',
+                  GlobalTextField(
                     focusNode: emailFocusNode,
+                    hintText: 'Email',
                     keyboardType: TextInputType.emailAddress,
                     textInputAction: TextInputAction.next,
                     onChanged: (value) {
                       context.read<UserCubit>().updateCurrentUserField(
                           fieldKey: UserFieldKeys.emailAddress, value: value);
                     },
-                    rightImage: AppIcons.message,
                   ),
                   22.ph,
                   PhoneNumberInput(
@@ -199,6 +210,81 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
         selectedDate = picked;
         dateController.text = selectedDate.toString().split(' ')[0];
       });
+    }
+  }
+
+  void showBottomSheetDialog() {
+    showModalBottomSheet(
+      backgroundColor: Colors.transparent,
+      context: context,
+      builder: (BuildContext context) {
+        return Container(
+          padding: const EdgeInsets.all(24),
+          height: 200,
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.centerRight,
+                end: Alignment.centerLeft,
+                colors: [
+                  Color(0xFFFEBB1B),
+                  Color(0xFFFFC740),
+                ]),
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(16),
+              topRight: Radius.circular(16),
+            ),
+          ),
+          child: Column(
+            children: [
+              ListTile(
+                onTap: () {
+                  _getFromCamera();
+                  Navigator.pop(context);
+                },
+                leading: const Icon(Icons.camera_alt,color: AppColors.white,),
+                title: const Text("Select from Camera",style: TextStyle(color: AppColors.white,fontSize: 20),),
+              ),
+              ListTile(
+                onTap: () {
+                  _getFromGallery();
+                  Navigator.pop(context);
+                },
+                leading: const Icon(Icons.photo,color: AppColors.white,),
+                title: const Text("Select from Gallery",style: TextStyle(color: AppColors.white,fontSize: 20),),
+              )
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  Future<void> _getFromCamera() async {
+    XFile? xFile = await picker.pickImage(
+      source: ImageSource.camera,
+      maxHeight: 512,
+      maxWidth: 512,
+    );
+
+    if (xFile != null && context.mounted) {
+      // context.read<WebsiteCubit>().updateWebsiteField(
+      //   fieldKey: WebsiteFieldKeys.image,
+      //   value: xFile.path,
+      // );
+    }
+  }
+
+  Future<void> _getFromGallery() async {
+    XFile? xFile = await picker.pickImage(
+      source: ImageSource.gallery,
+      maxHeight: 512,
+      maxWidth: 512,
+    );
+    if (xFile != null && context.mounted) {
+      // context.read<WebsiteCubit>().updateWebsiteField(
+      //   fieldKey: WebsiteFieldKeys.image,
+      //   value: xFile.path,
+      // );
     }
   }
 }

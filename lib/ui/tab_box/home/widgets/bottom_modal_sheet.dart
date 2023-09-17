@@ -60,6 +60,7 @@ class _BottomModalSheetState extends State<BottomModalSheet> {
             Padding(
               padding: const EdgeInsets.only(left: 16, right: 16, bottom: 30),
               child: GlobalTextField(
+                focusNode: FocusNode(),
                 suffixIcon: Padding(
                   padding: EdgeInsets.all(24.w),
                   child: SvgPicture.asset(
