@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taxi_app/cubits/code_input_cubit/code_input_cubit.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
+import 'package:taxi_app/utils/size/size_extension.dart';
+import 'package:taxi_app/utils/theme/get_theme.dart';
 
 class CodeInputField extends StatefulWidget {
   const CodeInputField({super.key});
@@ -30,15 +33,17 @@ class _CodeInputFieldState extends State<CodeInputField> {
           "Code has been sent to +1 111 ******99",
           style: Theme.of(context).textTheme.titleMedium,
         ),
-        SizedBox(
-          height: 60.h,
-        ),
+        60.ph,
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: List.generate(4, (index) {
             return SizedBox(
-              width: 75.0.w,
+              width: 80.0.w,
               child: TextField(
+                style: Theme.of(context)
+                    .appBarTheme
+                    .titleTextStyle!
+                    .copyWith(fontSize: 22.sp),
                 onTap: () {
                   setState(() {
                     FocusScope.of(context)
@@ -48,10 +53,12 @@ class _CodeInputFieldState extends State<CodeInputField> {
                 controller: codeInputCubit.pinControllers[index],
                 maxLength: 1,
                 keyboardType: TextInputType.number,
+                inputFormatters: [
+                  FilteringTextInputFormatter
+                      .digitsOnly, // Allow only numeric input
+                ],
                 decoration: InputDecoration(
                   counterText: "",
-                  hintText: '',
-                  hintStyle: const TextStyle(fontSize: 20.0),
                   contentPadding: EdgeInsets.symmetric(
                       vertical: 16.0.h, horizontal: 32.0.w),
                   focusedBorder: OutlineInputBorder(
@@ -60,12 +67,19 @@ class _CodeInputFieldState extends State<CodeInputField> {
                   ),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
-                    borderSide: const BorderSide(color: AppColors.c_300),
+                    borderSide: BorderSide(
+                        color: getTheme(context)
+                            ? AppColors.c_500
+                            : AppColors.c_300),
                   ),
                   filled: true,
-                  fillColor: codeInputCubit.pinFocusNodes[index].hasFocus
-                      ? AppColors.yellowTransparent
-                      : AppColors.c_200,
+                  fillColor: getTheme(context)
+                      ? codeInputCubit.pinFocusNodes[index].hasFocus
+                          ? AppColors.yellowTransparent
+                          : AppColors.dark3
+                      : codeInputCubit.pinFocusNodes[index].hasFocus
+                          ? AppColors.yellowTransparent
+                          : AppColors.c_200,
                 ),
                 textAlign: TextAlign.center,
                 focusNode: codeInputCubit.pinFocusNodes[index],
@@ -78,16 +92,13 @@ class _CodeInputFieldState extends State<CodeInputField> {
             );
           }),
         ),
-        SizedBox(
-          height: 60.h,
-        ),
+        60.ph,
         BlocBuilder<CodeInputCubit, CodeInputState>(
           builder: (context, state) {
             final defaultTextStyle = Theme.of(context).textTheme.titleMedium;
 
             if (state is CodeInputCountdown) {
               final remainingTime = "${state.remainingTime}";
-
               return RichText(
                 text: TextSpan(
                   children: [

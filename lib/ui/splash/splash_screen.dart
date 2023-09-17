@@ -1,12 +1,13 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lottie/lottie.dart';
 import 'package:taxi_app/data/local/storage_repository/storage_repository.dart';
 import 'package:taxi_app/ui/auth/lets_in/lets_in_screen.dart';
+import 'package:taxi_app/ui/enterance/welcome/welcome_screen.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 
 import '../../utils/size/screen_size.dart';
-import '../welcome/welcome_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -37,7 +38,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
-        overlays: [SystemUiOverlay.top]);
+        overlays: [SystemUiOverlay.top,SystemUiOverlay.bottom,]);
     _init();
     super.initState();
   }
@@ -46,6 +47,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     width = MediaQuery.of(context).size.width;
     height = MediaQuery.of(context).size.height;
+
     return Scaffold(
       body: Column(
         children: [

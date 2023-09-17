@@ -1,3 +1,4 @@
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -9,12 +10,14 @@ class GlobalTextField extends StatefulWidget {
   final TextInputType keyboardType;
   final TextInputAction textInputAction;
   final String prefixIcon;
-  final String caption;
   final ValueChanged? onChanged;
-  final FocusNode? focusNode;
+  final FocusNode focusNode;
   final MaskTextInputFormatter? maskFormatter;
-  final TextEditingController controller;
-  final String suffixIcon;
+  final TextEditingController? controller;
+  final Widget? suffixIcon;
+  final bool? obscureText;
+  final bool? readOnly;
+  final VoidCallback? onTap;
 
   const GlobalTextField({
     Key? key,
@@ -22,12 +25,14 @@ class GlobalTextField extends StatefulWidget {
     this.keyboardType = TextInputType.text,
     this.textInputAction = TextInputAction.next,
     this.prefixIcon = "",
-    this.caption = "",
-    this.suffixIcon = "",
-    required this.controller,
+    this.suffixIcon,
+    this.controller,
     this.onChanged,
-    this.focusNode,
+    required this.focusNode,
     this.maskFormatter,
+    this.obscureText,
+    this.onTap,
+    this.readOnly,
   }) : super(key: key);
 
   @override
@@ -35,16 +40,78 @@ class GlobalTextField extends StatefulWidget {
 }
 
 class _GlobalTextFieldState extends State<GlobalTextField> {
-  final FocusNode _textFieldFocus = FocusNode();
+  late TextEditingController _internalController;
+  bool hasValue = false;
+  bool isFocused = false;
+  Color backgroundColor = AppColors.white;
+  Color _iconColor = AppColors.c_500;
+  final TextEditingController _controller = TextEditingController();
   Color color = const Color(0xFFFAFAFA);
 
-  focusColor() {}
+  @override
+  void initState() {
+    super.initState();
+    _internalController = widget.controller ?? TextEditingController();
+    _controller.addListener(() {
+      if (_controller.text.isNotEmpty) {
+        if (widget.focusNode.hasFocus) {
+          setState(() {
+            _iconColor = AppColors.primary;
+          });
+        } else {
+          if (AdaptiveTheme.of(context).theme ==
+              AdaptiveTheme.of(context).darkTheme) {
+            setState(() {
+              _iconColor = AppColors.white;
+            });
+          } else {
+            setState(() {
+              _iconColor = AppColors.c_900;
+            });
+          }
+        }
+      } else {
+        if (widget.focusNode.hasFocus) {
+          setState(() {
+            _iconColor = AppColors.primary;
+          });
+        } else {
+          setState(() {
+            _iconColor = AppColors.c_500;
+          });
+        }
+      }
+    });
+    widget.focusNode.addListener(() {
+      if (widget.focusNode.hasFocus) {
+        setState(() {
+          backgroundColor = AppColors.orangeTransparent;
+          _iconColor = AppColors.primary;
+        });
+      } else {
+        if (_controller.text.isNotEmpty) {
+          setState(() {
+            backgroundColor = AppColors.white;
+            _iconColor = AppColors.c_900;
+          });
+        } else {
+          setState(() {
+            backgroundColor = AppColors.white;
+            _iconColor = AppColors.c_500;
+          });
+        }
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return TextField(
-      controller: widget.controller,
-      focusNode: _textFieldFocus,
+      readOnly: widget.readOnly ?? false,
+      onTap: widget.onTap,
+      controller: _internalController,
+      focusNode: widget.focusNode,
+      obscureText: widget.obscureText ?? false,
       decoration: InputDecoration(
         hintStyle: const TextStyle(
           fontFamily: "Urbanist",
@@ -58,14 +125,17 @@ class _GlobalTextFieldState extends State<GlobalTextField> {
             ? null
             : Padding(
                 padding: EdgeInsets.only(left: 20.w, right: 12.w),
-                child: SvgPicture.asset(widget.prefixIcon),
+                child: SvgPicture.asset(
+                  widget.prefixIcon,
+                  colorFilter: ColorFilter.mode(
+                      AdaptiveTheme.of(context).theme ==
+                              AdaptiveTheme.of(context).darkTheme
+                          ? AppColors.white
+                          : AppColors.c_900,
+                      BlendMode.srcIn),
+                ),
               ),
-        suffixIcon: widget.suffixIcon.isEmpty
-            ? null
-            : Padding(
-                padding: EdgeInsets.only(left: 12.w, right: 20.w),
-                child: SvgPicture.asset(widget.suffixIcon),
-              ),
+        suffixIcon: widget.suffixIcon,
         enabledBorder: OutlineInputBorder(
           borderSide: const BorderSide(color: Color(0xFFFAFAFA), width: 1),
           borderRadius: BorderRadius.circular(10),
@@ -82,11 +152,10 @@ class _GlobalTextFieldState extends State<GlobalTextField> {
           borderSide: const BorderSide(color: Color(0xFFFAFAFA), width: 1),
           borderRadius: BorderRadius.circular(10),
         ),
-        fillColor: _textFieldFocus.hasFocus
-            ? const Color(0xFFFFFAED)
-            : const Color(0xFFFAFAFA),
+        fillColor: widget.focusNode.hasFocus ? AppColors.orangeTransparent : null,
         filled: true,
       ),
+      // style: TextStyle(color: AppColors.dark3, fontSize: 16.sp),
       keyboardType: widget.keyboardType,
       textInputAction: widget.textInputAction,
     );

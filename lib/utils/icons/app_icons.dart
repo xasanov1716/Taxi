@@ -1,27 +1,31 @@
-
 import '../../data/models/icon/icon_type.dart';
 
 class AppIcons {
   // images
-  
-  static const String testAvatar="assets/images/test_avatar.png";
-  static const String barcode="assets/images/barcode.png";
-  static const String emptyProfile="assets/images/empty_profile.png";
-  static const String enterPassword="assets/images/enter_password.png";
-  static const String fingerPrint="assets/images/finger_print.png";
-  static const String onBoarding1="assets/images/on_boarding1.png";
-  static const String onBoarding2="assets/images/on_boarding2.png";
-  static const String onBoarding3="assets/images/on_boarding3.png";
-  static const String onBoardingDark1="assets/images/on_boarding_dark1.png";
-  static const String onBoardingDark2="assets/images/on_boarding_dark2.png";
-  static const String onBoardingDark3="assets/images/on_boarding_dark3.png";
-  static const String searchNotFound="assets/images/search_not_found.png";
-  static const String signIn="assets/images/sign_in.png";
-  static const String splashScreen="assets/images/splash_screen.png";
-  static const String successPassword="assets/images/success_password.png";
-  static const String taxiLogo="assets/images/taxi_logo.png";
-  static const String createNewPasswordDialog = "assets/images/create_new_password_dialog.png";
 
+  static const String testAvatar = "assets/images/test_avatar.png";
+  static const String barcode = "assets/images/barcode.png";
+  static const String emptyProfile = "assets/images/empty_profile.png";
+  static const String enterPassword = "assets/images/enter_password.png";
+  static const String fingerPrint = "assets/images/finger_print.png";
+  static const String onBoarding1 = "assets/images/on_boarding1.png";
+  static const String onBoarding2 = "assets/images/on_boarding2.png";
+  static const String onBoarding3 = "assets/images/on_boarding3.png";
+  static const String onBoardingDark1 = "assets/images/on_boarding_dark1.png";
+  static const String onBoardingDark2 = "assets/images/on_boarding_dark2.png";
+  static const String onBoardingDark3 = "assets/images/on_boarding_dark3.png";
+  static const String searchNotFound = "assets/images/search_not_found.png";
+  static const String signIn = "assets/images/sign_in.png";
+  static const String splashScreen = "assets/images/splash_screen.png";
+  static const String successPassword = "assets/images/success_password.png";
+  static const String taxiLogo = "assets/images/taxi_logo.png";
+  static const String uzbFlag = "assets/images/uzb.png";
+  static const String createNewPasswordDialog =
+      "assets/images/create_new_password_dialog.png";
+  static const String forgotPasswordDarkImage =
+      "assets/images/forgot_password_dark.png";
+  static const String createNewPasswordDarkImage =
+      "assets/images/create_new_password_dark.png";
 
   // smile images
   static const String smileAngry = "assets/images/mood/smile_angry.png";
@@ -32,7 +36,15 @@ class AppIcons {
   static const String smileQuiet = "assets/images/mood/smile_quiet.png";
   static const String smileTired = "assets/images/mood/smile_tired.png";
   static const String smileUnhappy = "assets/images/mood/smile_unhappy.png";
-  static const String smileVeryHappy =  "assets/images/mood/smile_very_happy.png";
+  static const String smileVeryHappy =
+      "assets/images/mood/smile_very_happy.png";
+
+  static String getSvg({required String name, IconType? iconType}) {
+    if (iconType != null) {
+      return "assets/svg/${iconType.name}/${name.substring(name.lastIndexOf("/") + 1, name.indexOf("."))}.svg";
+    }
+    return name;
+  }
 
   // svg
   static IconType it = IconType.lightOutline;
@@ -147,6 +159,7 @@ class AppIcons {
   static final String volumeUp = "assets/svg/${it.name}/volume_up.svg";
   static final String wallet = "assets/svg/${it.name}/wallet.svg";
   static final String work = "assets/svg/${it.name}/work.svg";
+  static const String gps = "assets/svg/bold/gps.svg";
 
   //auth svg
   static const String facebook = "assets/svg/auth_svg/facebook.svg";
@@ -155,4 +168,8 @@ class AppIcons {
 
   // lottie
   static const String splashCircular = "assets/lottie/splash_circular.json";
+
+  //others
+  static const String checked = "assets/svg/others/checked.svg";
+  static const String unchecked = "assets/svg/others/unchecked.svg";
 }
