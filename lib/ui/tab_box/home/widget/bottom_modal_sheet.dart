@@ -67,6 +67,10 @@ class _BottomModalSheetState extends State<BottomModalSheet> {
                       name: AppIcons.location,
                       iconType: IconType.bold,
                     ),
+                    colorFilter: const ColorFilter.mode(
+                      AppColors.c_500,
+                      BlendMode.srcIn,
+                    ),
                   ),
                 ),
                 hintText: 'Where would you go?',
