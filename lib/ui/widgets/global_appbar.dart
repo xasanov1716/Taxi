@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
+
 class GlobalAppBar extends StatelessWidget implements PreferredSize {
   const GlobalAppBar({
     Key? key,
-    required this.onTap,
-    required this.title,
+    this.onTap,
+    this.title = "",
   }) : super(key: key);
 
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
   final String title;
 
   @override
@@ -17,22 +18,22 @@ class GlobalAppBar extends StatelessWidget implements PreferredSize {
     return AppBar(
       elevation: 0,
       centerTitle: true,
-      leading: IconButton(
-        padding: EdgeInsets.zero,
-        onPressed: onTap,
-        icon: SvgPicture.asset(
-          AppIcons.arrowLeft,
-          colorFilter: ColorFilter.mode(
-              Theme.of(context).textTheme.bodyLarge!.color!, BlendMode.srcIn),
-        ),
-      ),
-      title: Text(
-        title,
-        style: Theme.of(context)
-            .textTheme
-            .titleMedium!
-            .copyWith(fontSize: 24.sp, fontWeight: FontWeight.w700),
-      ),
+      leading: onTap != null
+          ? IconButton(
+              padding: EdgeInsets.zero,
+              onPressed: onTap,
+              icon: SvgPicture.asset(AppIcons.arrowLeft),
+            )
+          : null,
+      title: title.isNotEmpty
+          ? Text(
+              title,
+              style: Theme.of(context)
+                  .textTheme
+                  .titleMedium!
+                  .copyWith(fontSize: 24.sp, fontWeight: FontWeight.w700),
+            )
+          : null,
     );
   }
 

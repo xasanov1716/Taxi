@@ -1,32 +1,31 @@
 import 'package:flutter/material.dart';
 
-import 'package:taxi_app/ui/account/code_screen.dart';
-import 'package:taxi_app/ui/account/fingerprint_screen.dart';
-import 'package:taxi_app/ui/account/fill_profile.dart';
-import 'package:taxi_app/ui/restore_password/create_screen/create_password_screen.dart';
-import 'package:taxi_app/ui/restore_password/forget_screen/confirm_code_screen.dart';
-import 'package:taxi_app/ui/restore_password/forget_screen/forget_password_screen.dart';
+import 'package:taxi_app/ui/local_auth/pin_code_screen.dart';
+import 'package:taxi_app/ui/local_auth/biometrics_screen.dart';
+import 'package:taxi_app/ui/tab_box/profile/sub_screens/edit_profile/edit_profile_screen.dart';
 import 'package:taxi_app/ui/auth/login/login_screen.dart';
 import 'package:taxi_app/ui/auth/register/register_screen.dart';
 import 'package:taxi_app/ui/splash/splash_screen.dart';
+import 'package:taxi_app/ui/tab_box/profile/sub_screens/restore_password/create_screen/create_password_screen.dart';
+import 'package:taxi_app/ui/tab_box/profile/sub_screens/restore_password/forget_screen/confirm_code_screen.dart';
+import 'package:taxi_app/ui/tab_box/profile/sub_screens/restore_password/forget_screen/forget_password_screen.dart';
 
 import 'package:taxi_app/ui/tab_box/tab_box.dart';
 
 import 'auth/lets_in/lets_in_screen.dart';
-import 'auth/login/login_screen.dart';
 
 class RouteNames {
   static const String splashScreen = "/";
-  static const String conFirmCodeScreen = "/conFirmCodeScreen";
-  static const String forgotPassword = "/forgotPassword";
-  static const String createPassword = "/createPassword";
-  static const String letsIn = "lets_in_screen";
-  static const String signUp = "sign_up_screen";
-  static const String login = "login_screen";
-  static const String tabBox = "tab_box";
-  static const String profileScreen = "profile_screen";
-  static const String codeScreen = "code_screen";
-  static const String fingerprintScreen = "fingerprint_creen";
+  static const String conFirmCodeScreen = "/confirm_code_screen";
+  static const String forgotPassword = "/forgot_password";
+  static const String createPassword = "/create_password";
+  static const String letsIn = "/lets_in_screen";
+  static const String signUp = "/sign_up_screen";
+  static const String login = "/login_screen";
+  static const String tabBox = "/tab_box";
+  static const String profileScreen = "/profile_screen";
+  static const String codeScreen = "/code_screen";
+  static const String fingerprintScreen = "/finger_print";
   static const String fillProfile = "/profile";
   static const String code = "/code";
 }
@@ -52,21 +51,19 @@ class AppRoutes {
         );
       case RouteNames.profileScreen:
         return MaterialPageRoute(
-          builder: (context) => const FillProfileScreen(),
+          builder: (context) => const EditProfileScreen(),
         );
-
       case RouteNames.fillProfile:
         return MaterialPageRoute(
-          builder: (context) => const FillProfileScreen(),
+          builder: (context) => const EditProfileScreen(),
         );
       case RouteNames.codeScreen:
         return MaterialPageRoute(
-          builder: (context) => const CodeScreen(),
+          builder: (context) => const PinCodeScreen(),
         );
-
       case RouteNames.fingerprintScreen:
         return MaterialPageRoute(
-            builder: (context) => const FingerprintScreen());
+            builder: (context) => const BiometricsScreen());
       case RouteNames.conFirmCodeScreen:
         return MaterialPageRoute(
           builder: (context) => const ConfirmCodeScreen(),

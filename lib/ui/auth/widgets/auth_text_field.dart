@@ -1,5 +1,5 @@
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
@@ -12,11 +12,15 @@ class AuthTextField extends StatefulWidget {
     required this.hintText,
     required this.prefixIcon,
     this.isPassword = false,
+    required this.onChanged,
+    required this.focusNode,
   });
 
   final String hintText;
   final String prefixIcon;
+  final FocusNode focusNode;
   final bool isPassword;
+  final ValueChanged<String> onChanged;
 
   @override
   State<AuthTextField> createState() => _AuthTextFieldState();
@@ -24,11 +28,10 @@ class AuthTextField extends StatefulWidget {
 
 class _AuthTextFieldState extends State<AuthTextField> {
   final TextEditingController _controller = TextEditingController();
-  final FocusNode _focusNode = FocusNode();
   bool _isObscured = false;
   bool hasValue = false;
   bool isFocused = false;
-  Color _backgroundColor = AppColors.white;
+  Color backgroundColor = AppColors.white;
   Color _iconColor = AppColors.c_500;
   var maskFormatter = MaskTextInputFormatter(
       mask: '## ### ## ##', filter: {"#": RegExp(r'[0-9]')});
@@ -37,17 +40,24 @@ class _AuthTextFieldState extends State<AuthTextField> {
   void initState() {
     _controller.addListener(() {
       if (_controller.text.isNotEmpty) {
-        if (_focusNode.hasFocus) {
+        if (widget.focusNode.hasFocus) {
           setState(() {
             _iconColor = AppColors.primary;
           });
         } else {
-          setState(() {
-            _iconColor = AppColors.c_900;
-          });
+          if (AdaptiveTheme.of(context).theme ==
+              AdaptiveTheme.of(context).darkTheme) {
+            setState(() {
+              _iconColor = AppColors.white;
+            });
+          } else {
+            setState(() {
+              _iconColor = AppColors.c_900;
+            });
+          }
         }
       } else {
-        if (_focusNode.hasFocus) {
+        if (widget.focusNode.hasFocus) {
           setState(() {
             _iconColor = AppColors.primary;
           });
@@ -58,21 +68,21 @@ class _AuthTextFieldState extends State<AuthTextField> {
         }
       }
     });
-    _focusNode.addListener(() {
-      if (_focusNode.hasFocus) {
+    widget.focusNode.addListener(() {
+      if (widget.focusNode.hasFocus) {
         setState(() {
-          _backgroundColor = AppColors.orangeTransparent;
+          backgroundColor = AppColors.orangeTransparent;
           _iconColor = AppColors.primary;
         });
       } else {
         if (_controller.text.isNotEmpty) {
           setState(() {
-            _backgroundColor = AppColors.white;
+            backgroundColor = AppColors.white;
             _iconColor = AppColors.c_900;
           });
         } else {
           setState(() {
-            _backgroundColor = AppColors.white;
+            backgroundColor = AppColors.white;
             _iconColor = AppColors.c_500;
           });
         }
@@ -84,30 +94,61 @@ class _AuthTextFieldState extends State<AuthTextField> {
   @override
   Widget build(BuildContext context) {
     return TextField(
-      keyboardType: widget.isPassword?TextInputType.text:TextInputType.phone,
-      textInputAction: widget.isPassword?TextInputAction.done:TextInputAction.go,
-      focusNode: _focusNode,
+      keyboardType:
+          widget.isPassword ? TextInputType.text : TextInputType.phone,
+      textInputAction:
+          widget.isPassword ? TextInputAction.done : TextInputAction.go,
+      focusNode: widget.focusNode,
       controller: _controller,
       obscureText: _isObscured,
-      inputFormatters: [if(!widget.isPassword)maskFormatter],
+      onChanged: widget.onChanged,
+      maxLength: widget.isPassword ? 20 : 12,
+      inputFormatters: [if (!widget.isPassword) maskFormatter],
       style: Theme.of(context)
           .textTheme
           .labelLarge
           ?.copyWith(fontWeight: FontWeight.w600, letterSpacing: 0.2),
       decoration: InputDecoration(
-          contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
+          counterText: "",
+          contentPadding:
+              EdgeInsets.only(left: 20.w, right: 20.w, top: 20.h, bottom: 20.h),
           hintText: widget.hintText,
           hintStyle: Theme.of(context)
               .textTheme
               .labelLarge
               ?.copyWith(fontWeight: FontWeight.w400, color: AppColors.c_500),
-          prefixIcon: IconButton(
-              onPressed: () {},
-              icon: SvgPicture.asset(
-                widget.prefixIcon,
-                colorFilter: ColorFilter.mode(_iconColor, BlendMode.srcIn),
-                semanticsLabel: "A grey color mode",
-              )),
+          prefixIcon: !widget.isPassword
+              ? SizedBox(
+                  width: 90.w,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      IconButton(
+                        onPressed: null,
+                        icon: SvgPicture.asset(
+                          widget.prefixIcon,
+                          colorFilter:
+                              ColorFilter.mode(_iconColor, BlendMode.srcIn),
+                          semanticsLabel: "A grey color mode",
+                        ),
+                      ),
+                      Text(
+                        "+998",
+                        style: Theme.of(context)
+                            .textTheme
+                            .labelLarge
+                            ?.copyWith(fontWeight: FontWeight.w400),
+                      )
+                    ],
+                  ),
+                )
+              : IconButton(
+                  onPressed: () {},
+                  icon: SvgPicture.asset(
+                    widget.prefixIcon,
+                    colorFilter: ColorFilter.mode(_iconColor, BlendMode.srcIn),
+                    semanticsLabel: "A grey color mode",
+                  )),
           suffixIcon: widget.isPassword
               ? IconButton(
                   onPressed: () {
@@ -129,7 +170,8 @@ class _AuthTextFieldState extends State<AuthTextField> {
           focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12.r),
               borderSide: BorderSide(width: 1.w, color: AppColors.primary)),
-          fillColor: _focusNode.hasFocus ? AppColors.orangeTransparent : null,
+          fillColor:
+              widget.focusNode.hasFocus ? AppColors.orangeTransparent : null,
           filled: true),
     );
   }

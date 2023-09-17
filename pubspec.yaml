@@ -5,7 +5,7 @@ version: 0.1.0
 
 environment:
 
-  sdk: '>=3.1.0 <4.0.0'
+  sdk: '>=3.0.2 <4.0.0'
 
 
 dependencies:
@@ -90,6 +90,9 @@ flutter:
     - assets/svg/lightBorder/
     - assets/svg/lightOutline/
     - assets/svg/twoTone/
+    - assets/svg/others/
+    - assets/styles/
+
 
 
   fonts:
