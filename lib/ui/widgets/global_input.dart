@@ -4,35 +4,36 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
+import 'package:taxi_app/utils/theme/get_theme.dart';
 
 class GlobalTextField extends StatefulWidget {
   final String hintText;
   final TextInputType keyboardType;
   final TextInputAction textInputAction;
   final String prefixIcon;
+  final String caption;
   final ValueChanged? onChanged;
-  final FocusNode focusNode;
+  final FocusNode? focusNode;
   final MaskTextInputFormatter? maskFormatter;
   final TextEditingController? controller;
   final Widget? suffixIcon;
   final bool? obscureText;
-  final bool? readOnly;
-  final VoidCallback? onTap;
 
-  const GlobalTextField({
+   const GlobalTextField({
     Key? key,
     required this.hintText,
     this.keyboardType = TextInputType.text,
     this.textInputAction = TextInputAction.next,
     this.prefixIcon = "",
+    this.caption = "",
     this.suffixIcon,
     this.controller,
     this.onChanged,
-    required this.focusNode,
+    this.focusNode,
     this.maskFormatter,
     this.obscureText,
-    this.onTap,
-    this.readOnly,
+
+
   }) : super(key: key);
 
   @override
@@ -41,76 +42,33 @@ class GlobalTextField extends StatefulWidget {
 
 class _GlobalTextFieldState extends State<GlobalTextField> {
   late TextEditingController _internalController;
-  bool hasValue = false;
-  bool isFocused = false;
-  Color backgroundColor = AppColors.white;
-  Color _iconColor = AppColors.c_500;
-  final TextEditingController _controller = TextEditingController();
+  final internalFocusNode = FocusNode();
   Color color = const Color(0xFFFAFAFA);
 
   @override
   void initState() {
     super.initState();
     _internalController = widget.controller ?? TextEditingController();
-    _controller.addListener(() {
-      if (_controller.text.isNotEmpty) {
-        if (widget.focusNode.hasFocus) {
-          setState(() {
-            _iconColor = AppColors.primary;
-          });
-        } else {
-          if (AdaptiveTheme.of(context).theme ==
-              AdaptiveTheme.of(context).darkTheme) {
-            setState(() {
-              _iconColor = AppColors.white;
-            });
-          } else {
-            setState(() {
-              _iconColor = AppColors.c_900;
-            });
-          }
-        }
-      } else {
-        if (widget.focusNode.hasFocus) {
-          setState(() {
-            _iconColor = AppColors.primary;
-          });
-        } else {
-          setState(() {
-            _iconColor = AppColors.c_500;
-          });
-        }
-      }
-    });
-    widget.focusNode.addListener(() {
-      if (widget.focusNode.hasFocus) {
-        setState(() {
-          backgroundColor = AppColors.orangeTransparent;
-          _iconColor = AppColors.primary;
-        });
-      } else {
-        if (_controller.text.isNotEmpty) {
-          setState(() {
-            backgroundColor = AppColors.white;
-            _iconColor = AppColors.c_900;
-          });
-        } else {
-          setState(() {
-            backgroundColor = AppColors.white;
-            _iconColor = AppColors.c_500;
-          });
-        }
-      }
-    });
+    widget.focusNode?.addListener(_onFocusChange);
+  }
+
+  @override
+  void dispose() {
+    widget.focusNode?.removeListener(_onFocusChange);
+    super.dispose();
+  }
+
+  void _onFocusChange() {
+    setState(() {});
+
   }
 
   @override
   Widget build(BuildContext context) {
     return TextField(
-      readOnly: widget.readOnly ?? false,
-      onTap: widget.onTap,
+      obscuringCharacter: '●',
       controller: _internalController,
-      focusNode: widget.focusNode,
+      focusNode: widget.focusNode ?? internalFocusNode,
       obscureText: widget.obscureText ?? false,
       decoration: InputDecoration(
         hintStyle: const TextStyle(
@@ -137,7 +95,10 @@ class _GlobalTextFieldState extends State<GlobalTextField> {
               ),
         suffixIcon: widget.suffixIcon,
         enabledBorder: OutlineInputBorder(
-          borderSide: const BorderSide(color: Color(0xFFFAFAFA), width: 1),
+          borderSide: BorderSide(
+              color:
+                  getTheme(context) ? AppColors.dark3 : const Color(0xFFFAFAFA),
+              width: 1),
           borderRadius: BorderRadius.circular(10),
         ),
         focusedBorder: OutlineInputBorder(
@@ -152,7 +113,13 @@ class _GlobalTextFieldState extends State<GlobalTextField> {
           borderSide: const BorderSide(color: Color(0xFFFAFAFA), width: 1),
           borderRadius: BorderRadius.circular(10),
         ),
-        fillColor: widget.focusNode.hasFocus ? AppColors.orangeTransparent : null,
+        fillColor: getTheme(context)
+            ? (widget.focusNode?.hasFocus ?? internalFocusNode.hasFocus)
+                ? AppColors.yellowTransparent
+                : AppColors.dark2
+            : (widget.focusNode?.hasFocus ?? internalFocusNode.hasFocus)
+                ? const Color(0xFFFFFAED)
+                : const Color(0xFFFAFAFA),
         filled: true,
       ),
       // style: TextStyle(color: AppColors.dark3, fontSize: 16.sp),
