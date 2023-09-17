@@ -22,7 +22,13 @@ class GlobalAppBar extends StatelessWidget implements PreferredSize {
           ? IconButton(
               padding: EdgeInsets.zero,
               onPressed: onTap,
-              icon: SvgPicture.asset(AppIcons.arrowLeft),
+              icon: SvgPicture.asset(
+                AppIcons.arrowLeft,
+                colorFilter: ColorFilter.mode(
+                  Theme.of(context).colorScheme.onBackground,
+                  BlendMode.srcIn,
+                ),
+              ),
             )
           : null,
       title: title.isNotEmpty
