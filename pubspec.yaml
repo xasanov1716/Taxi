@@ -72,7 +72,6 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/images/
     - assets/svg/bold/
     - assets/svg/auth_svg/
     - assets/svg/broken/
@@ -81,16 +80,10 @@ flutter:
     - assets/svg/lightBorder/
     - assets/svg/lightOutline/
     - assets/svg/twoTone/
+    - assets/svg/others/
+    - assets/images/
     - assets/fonts/
     - assets/lottie/
-    - assets/svg/bold/
-    - assets/svg/broken/
-    - assets/svg/bulk/
-    - assets/svg/curved/
-    - assets/svg/lightBorder/
-    - assets/svg/lightOutline/
-    - assets/svg/twoTone/
-    - assets/svg/others/
     - assets/styles/
 
 

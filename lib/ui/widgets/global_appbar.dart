@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
+import 'package:taxi_app/utils/theme/get_theme.dart';
 
 class GlobalAppBar extends StatelessWidget implements PreferredSize {
   const GlobalAppBar({
@@ -22,7 +24,12 @@ class GlobalAppBar extends StatelessWidget implements PreferredSize {
           ? IconButton(
               padding: EdgeInsets.zero,
               onPressed: onTap,
-              icon: SvgPicture.asset(AppIcons.arrowLeft),
+              icon: SvgPicture.asset(
+                AppIcons.arrowLeft,
+                colorFilter: ColorFilter.mode(
+                    getTheme(context) ? AppColors.white : AppColors.c_900,
+                    BlendMode.srcIn),
+              ),
             )
           : null,
       title: title.isNotEmpty
