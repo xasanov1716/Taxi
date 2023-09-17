@@ -59,6 +59,7 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
           ),
           24.ph,
           GlobalTextField(
+            focusNode: FocusNode(),
             suffixIcon: IconButton(
               splashColor: null,
               splashRadius: 2,
@@ -82,11 +83,11 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
             keyboardType: TextInputType.visiblePassword,
             textInputAction: TextInputAction.next,
             prefixIcon: AppIcons.lock,
-            caption: '',
             controller: passwordController,
           ),
           24.ph,
           GlobalTextField(
+            focusNode: FocusNode(),
             suffixIcon: IconButton(
                 splashColor: null,
                 splashRadius: 2,
@@ -109,7 +110,6 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
             keyboardType: TextInputType.visiblePassword,
             textInputAction: TextInputAction.done,
             prefixIcon: AppIcons.lock,
-            caption: '',
             controller: repeatPasswordController,
           ),
           24.ph,
