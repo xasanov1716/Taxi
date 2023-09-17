@@ -3,22 +3,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:taxi_app/data/models/icon/icon_type.dart';
 import 'package:taxi_app/ui/widgets/global_input.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 
-
-
-
 class BottomModalSheet extends StatefulWidget {
-  const BottomModalSheet({super.key,});
+  const BottomModalSheet({
+    super.key,
+  });
 
   @override
   _BottomModalSheetState createState() => _BottomModalSheetState();
 }
 
 class _BottomModalSheetState extends State<BottomModalSheet> {
-
   TextEditingController targetController = TextEditingController();
   TextEditingController entranceController = TextEditingController();
   TextEditingController floorController = TextEditingController();
@@ -29,19 +28,17 @@ class _BottomModalSheetState extends State<BottomModalSheet> {
     return SingleChildScrollView(
       child: Container(
         decoration: const BoxDecoration(
-          borderRadius: BorderRadius.only(topLeft: Radius.circular(40),topRight: Radius.circular(40)),
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(40), topRight: Radius.circular(40)),
           color: Colors.white,
         ),
         padding: EdgeInsets.only(
-          bottom: MediaQuery
-              .of(context)
-              .viewInsets
-              .bottom,
+          bottom: MediaQuery.of(context).viewInsets.bottom,
         ),
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.only(top: 8,bottom: 24),
+              padding: const EdgeInsets.only(top: 8, bottom: 24),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -50,21 +47,28 @@ class _BottomModalSheetState extends State<BottomModalSheet> {
                   Column(
                     children: [
                       Container(
-                          width: 38 ,
-                          height: 3 ,
+                          width: 38,
+                          height: 3,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(100.r),
-                              color: AppColors.c_300)
-                      )
+                              color: AppColors.c_300))
                     ],
                   )
                 ],
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 16,right:16,bottom: 30 ),
+              padding: const EdgeInsets.only(left: 16, right: 16, bottom: 30),
               child: GlobalTextField(
-                suffixIcon: SvgPicture.asset(AppIcons.location),
+                suffixIcon: Padding(
+                  padding: EdgeInsets.all(24.w),
+                  child: SvgPicture.asset(
+                    AppIcons.getSvg(
+                      name: AppIcons.location,
+                      iconType: IconType.bold,
+                    ),
+                  ),
+                ),
                 hintText: 'Where would you go?',
                 controller: targetController,
               ),

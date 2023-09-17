@@ -5,7 +5,6 @@ import 'package:taxi_app/utils/fonts/text_styles.dart';
 import '../colors/app_colors.dart';
 
 class AppTheme {
-
   //LIGHT
 
   static ThemeData lightTheme = ThemeData(
@@ -62,19 +61,20 @@ class AppTheme {
             fontSize: 14.sp,
             fontWeight: FontWeight.w600,
             fontFamily: 'Urbanist'),
-
         labelMedium: TextStyle(
             color: AppColors.c_900,
             fontSize: 12.sp,
             fontWeight: FontWeight.w500,
             fontFamily: 'Urbanist'),
-
-        labelSmall: AppTextStyle.bodyXsmallMedium.copyWith(color: AppColors.c_900),
+        labelSmall:
+            AppTextStyle.bodyXsmallMedium.copyWith(color: AppColors.c_900),
         //body
-        bodyLarge: AppTextStyle.bodyLargeMedium.copyWith(color: AppColors.c_900),
-        bodyMedium: AppTextStyle.bodyMediumMedium.copyWith(color: AppColors.c_900),
-        bodySmall: AppTextStyle.bodySmallMedium.copyWith(color: AppColors.c_900)),
-
+        bodyLarge:
+            AppTextStyle.bodyLargeMedium.copyWith(color: AppColors.c_900),
+        bodyMedium:
+            AppTextStyle.bodyMediumMedium.copyWith(color: AppColors.c_900),
+        bodySmall:
+            AppTextStyle.bodySmallMedium.copyWith(color: AppColors.c_900)),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
         type: BottomNavigationBarType.fixed,
         showSelectedLabels: true,
@@ -94,6 +94,14 @@ class AppTheme {
           fontFamily: "Urbanist",
           fontWeight: FontWeight.w700,
           letterSpacing: 0.2,
+        ),
+        selectedIconTheme: IconThemeData(
+          color: AppColors.primary,
+          size: 24.w,
+        ),
+        unselectedIconTheme: IconThemeData(
+          color: AppColors.c_500,
+          size: 24.w,
         ),
         backgroundColor: AppColors.white,
         selectedItemColor: AppColors.primary,
@@ -119,7 +127,6 @@ class AppTheme {
       ),
     ),
     dividerTheme: const DividerThemeData(color: AppColors.c_200),
-
     inputDecorationTheme: InputDecorationTheme(
       fillColor: AppColors.c_50,
       filled: true,
@@ -143,10 +150,7 @@ class AppTheme {
       onError: Color(0xffff690005),
       brightness: Brightness.dark,
     ),
-
   );
-
-
 
   //DARK
 
@@ -198,7 +202,8 @@ class AppTheme {
         headlineSmall: AppTextStyle.h5Bold.copyWith(color: AppColors.white),
         //title
         titleLarge: AppTextStyle.h6Bold.copyWith(color: AppColors.white),
-        titleMedium: AppTextStyle.bodyXlargeMedium.copyWith(color: AppColors.white),
+        titleMedium:
+            AppTextStyle.bodyXlargeMedium.copyWith(color: AppColors.white),
         titleSmall: TextStyle(
             color: AppColors.white,
             fontSize: 14.sp,
@@ -215,12 +220,15 @@ class AppTheme {
             fontSize: 12.sp,
             fontWeight: FontWeight.w500,
             fontFamily: 'Urbanist'),
-        labelSmall: AppTextStyle.bodyXsmallMedium.copyWith(color: AppColors.white),
+        labelSmall:
+            AppTextStyle.bodyXsmallMedium.copyWith(color: AppColors.white),
         //body
-        bodyLarge: AppTextStyle.bodyLargeMedium.copyWith(color: AppColors.white),
-        bodyMedium: AppTextStyle.bodyMediumMedium.copyWith(color: AppColors.white),
-        bodySmall: AppTextStyle.bodySmallMedium.copyWith(color: AppColors.white)),
-
+        bodyLarge:
+            AppTextStyle.bodyLargeMedium.copyWith(color: AppColors.white),
+        bodyMedium:
+            AppTextStyle.bodyMediumMedium.copyWith(color: AppColors.white),
+        bodySmall:
+            AppTextStyle.bodySmallMedium.copyWith(color: AppColors.white)),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
         type: BottomNavigationBarType.fixed,
         showSelectedLabels: true,
@@ -256,7 +264,6 @@ class AppTheme {
           letterSpacing: 0.2,
         ),
         contentTextStyle: TextStyle(
-
             color: AppColors.c_900,
             fontSize: 16.sp,
             fontStyle: FontStyle.normal,
@@ -283,6 +290,5 @@ class AppTheme {
       onError: Color(0xffff690005),
       brightness: Brightness.dark,
     ),
-
   );
 }

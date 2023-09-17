@@ -64,48 +64,42 @@ class _TabBoxState extends State<TabBox> {
             height: 12 / 10,
           ),
           items: <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              activeIcon: SvgPicture.asset(
-                AppIcons.getSvg(
-                  name: AppIcons.home,
-                  iconType: IconType.bold,
-                ),
-                colorFilter: const ColorFilter.mode(AppColors.primary, BlendMode.srcIn),
-              ),
-              icon: SvgPicture.asset(AppIcons.home),
-              label: 'Home',
-            ),
-            BottomNavigationBarItem(
-              icon: SvgPicture.asset(AppIcons.bookmark),
-              label: 'Bookings',
-            ),
-            BottomNavigationBarItem(
-              icon: SvgPicture.asset(AppIcons.chat),
-              label: 'Inbox',
-            ),
-            BottomNavigationBarItem(
-              icon: SvgPicture.asset(AppIcons.wallet),
-              label: 'Wallet',
-            ),
-            BottomNavigationBarItem(
-              activeIcon: SvgPicture.asset(
-                AppIcons.getSvg(
-                  name: AppIcons.profile,
-                  iconType: IconType.bold,
-                ),
-                colorFilter:
-                    const ColorFilter.mode(AppColors.primary, BlendMode.srcIn),
-              ),
-              icon: SvgPicture.asset(AppIcons.profile),
-              label: 'Profile',
-            ),
+            _getItem(icon: AppIcons.home, label: "Home"),
+            _getItem(icon: AppIcons.paper, label: "Bookings"),
+            _getItem(icon: AppIcons.chat, label: "Inbox"),
+            _getItem(icon: AppIcons.wallet, label: "Wallet"),
+            _getItem(icon: AppIcons.profile, label: "Profile"),
           ],
           currentIndex: context.watch<TabCubit>().state,
-          //selectedItemColor: AppColors.primary,
-          unselectedItemColor: AppColors.c_500,
           onTap: context.read<TabCubit>().changeTabIndex,
         ),
       ),
+    );
+  }
+
+  BottomNavigationBarItem _getItem({
+    required String icon,
+    required String label,
+  }) {
+    return BottomNavigationBarItem(
+      activeIcon: SvgPicture.asset(
+        AppIcons.getSvg(
+          name: icon,
+          iconType: IconType.bold,
+        ),
+        colorFilter: const ColorFilter.mode(
+          AppColors.primary,
+          BlendMode.srcIn,
+        ),
+      ),
+      icon: SvgPicture.asset(
+        icon,
+        colorFilter: const ColorFilter.mode(
+          AppColors.c_500,
+          BlendMode.srcIn,
+        ),
+      ),
+      label: label,
     );
   }
 }
