@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
+import 'package:taxi_app/utils/theme/get_theme.dart';
 
 // ignore: must_be_immutable
 class ForgotPasswordSelector extends StatefulWidget {
@@ -34,11 +35,16 @@ class _ForgotPasswordSelectorState extends State<ForgotPasswordSelector> {
         width: MediaQuery.of(context).size.width,
         height: height * 128 / figmaHeight,
         decoration: BoxDecoration(
+          color: getTheme(context) ? AppColors.dark2 : AppColors.white,
           borderRadius: BorderRadius.circular(20.r),
           border: Border.all(
-              color: widget.pressed
-                  ? AppColors.disabledButton
-                  : AppColors.c_900.withOpacity(0.3),
+              color: getTheme(context)
+                  ? widget.pressed
+                      ? AppColors.disabledButton
+                      : AppColors.dark2
+                  : widget.pressed
+                      ? AppColors.disabledButton
+                      : AppColors.c_300,
               width: 2.w),
         ),
         child: Padding(
@@ -55,7 +61,7 @@ class _ForgotPasswordSelectorState extends State<ForgotPasswordSelector> {
                   width: 80.w,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(150.r),
-                      color: AppColors.yellowBackground),
+                      color: AppColors.yellowTransparent),
                   child: IconButton(
                     onPressed: null,
                     icon: SvgPicture.asset(
@@ -69,8 +75,8 @@ class _ForgotPasswordSelectorState extends State<ForgotPasswordSelector> {
                 text: TextSpan(
                   text: widget.title,
                   style: Theme.of(context).textTheme.labelLarge!.copyWith(
-                    fontSize: 14.sp,
-                  ),
+                        fontSize: 14.sp,
+                      ),
                   children: <TextSpan>[
                     TextSpan(
                         text: widget.subtitle,
