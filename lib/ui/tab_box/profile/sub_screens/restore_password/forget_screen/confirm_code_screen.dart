@@ -30,7 +30,7 @@ class ConfirmCodeScreen extends StatelessWidget {
           left: width * 24 / figmaWidth,
           right: width * 24 / figmaWidth,
           top: 24 * height / figmaHeight,
-          bottom: 48 * height / figmaHeight,
+          bottom: 40 * height / figmaHeight,
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

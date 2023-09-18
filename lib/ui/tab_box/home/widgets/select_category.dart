@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taxi_app/cubits/category_cubit/category_cubit.dart';
 
 import 'category_tile.dart';
@@ -12,7 +13,7 @@ class CategoryOfAddress extends StatelessWidget {
         return SizedBox(
           height: 38 ,
           child: ListView(
-            padding: EdgeInsets.symmetric(horizontal: 12 ),
+            padding: EdgeInsets.symmetric(horizontal: 12.w ),
             scrollDirection: Axis.horizontal,
             children: [
               ...List.generate(

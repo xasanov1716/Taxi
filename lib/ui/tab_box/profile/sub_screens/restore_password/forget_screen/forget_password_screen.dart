@@ -75,6 +75,7 @@ class _ForgotPassWordState extends State<ForgotPassWord> {
                     },
                     pressed: !pressed,
                   ),
+
                 ],
               ),
             ),

@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:taxi_app/ui/tab_box/home/widget/action_buttons.dart';
-import 'package:taxi_app/ui/tab_box/home/widget/bottom_modal_sheet.dart';
-import 'package:taxi_app/ui/tab_box/home/widget/global_action_button.dart';
-import 'package:taxi_app/ui/tab_box/home/widget/select_category.dart';
+import 'package:taxi_app/ui/tab_box/home/widgets/action_buttons.dart';
+import 'package:taxi_app/ui/tab_box/home/widgets/bottom_modal_sheet.dart';
+import 'package:taxi_app/ui/tab_box/home/widgets/global_action_button.dart';
+import 'package:taxi_app/ui/tab_box/home/widgets/select_category.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 
 import 'package:taxi_app/utils/icons/app_icons.dart';
@@ -93,9 +93,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Future<void> _applyCustomMapStyle() async {
     try {
-      String style =
-          await rootBundle.loadString('assets/styles/map_style.json');
-
+      String style = await rootBundle.loadString('assets/styles/map_style.json');
       mapController.setMapStyle(style);
     } catch (e) {}
   }

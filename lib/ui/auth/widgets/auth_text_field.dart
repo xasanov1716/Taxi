@@ -31,7 +31,6 @@ class _AuthTextFieldState extends State<AuthTextField> {
   bool _isObscured = false;
   bool hasValue = false;
   bool isFocused = false;
-  Color backgroundColor = AppColors.white;
   Color _iconColor = AppColors.c_500;
   var maskFormatter = MaskTextInputFormatter(
       mask: '## ### ## ##', filter: {"#": RegExp(r'[0-9]')});
@@ -71,18 +70,15 @@ class _AuthTextFieldState extends State<AuthTextField> {
     widget.focusNode.addListener(() {
       if (widget.focusNode.hasFocus) {
         setState(() {
-          backgroundColor = AppColors.orangeTransparent;
           _iconColor = AppColors.primary;
         });
       } else {
         if (_controller.text.isNotEmpty) {
           setState(() {
-            backgroundColor = AppColors.white;
             _iconColor = AppColors.c_900;
           });
         } else {
           setState(() {
-            backgroundColor = AppColors.white;
             _iconColor = AppColors.c_500;
           });
         }
@@ -107,7 +103,7 @@ class _AuthTextFieldState extends State<AuthTextField> {
       style: Theme.of(context)
           .textTheme
           .labelLarge
-          ?.copyWith(fontWeight: FontWeight.w600, letterSpacing: 0.2),
+          ?.copyWith(fontSize:15.sp,fontWeight: FontWeight.w600, letterSpacing: 0.2),
       decoration: InputDecoration(
           counterText: "",
           contentPadding:
@@ -137,7 +133,7 @@ class _AuthTextFieldState extends State<AuthTextField> {
                         style: Theme.of(context)
                             .textTheme
                             .labelLarge
-                            ?.copyWith(fontWeight: FontWeight.w400),
+                            ?.copyWith(fontSize: 15.sp,fontWeight: FontWeight.w400, letterSpacing: 0.2),
                       )
                     ],
                   ),

@@ -10,6 +10,7 @@ import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
+import 'package:taxi_app/utils/ui_utils/error_message_dialog.dart';
 
 class BiometricsScreen extends StatefulWidget {
   const BiometricsScreen({super.key});
@@ -28,6 +29,10 @@ class _BiometricsScreenState extends State<BiometricsScreen> {
       canCheckBiometrics = await auth.canCheckBiometrics;
     } catch (e) {
       debugPrint("error biome trics $e");
+      if(context.mounted){
+        showErrorMessage(
+            message: "Barmoq izini skanerlash xato!", context: context);
+      }
     }
 
     debugPrint("biometric is available: $canCheckBiometrics");
@@ -45,6 +50,10 @@ class _BiometricsScreenState extends State<BiometricsScreen> {
         debugPrint("\ttech: $ab");
       }
     } else {
+      if(context.mounted){
+        showErrorMessage(
+            message: "Barmoq izini skanerlash xato!", context: context);
+      }
       debugPrint("no biometrics are available");
     }
 
@@ -60,6 +69,11 @@ class _BiometricsScreenState extends State<BiometricsScreen> {
       );
     } catch (e) {
       debugPrint("error using biometric auth: $e");
+      if(context.mounted){
+        showErrorMessage(
+            message: "Barmoq izini skanerlash xato!", context: context);
+      }
+
     }
     setState(() {
       isAuth = authenticated ? true : false;
@@ -116,46 +130,44 @@ class _BiometricsScreenState extends State<BiometricsScreen> {
                     showDialog(
                         context: context,
                         builder: (context) {
-                          return Dialog(
+                          return AlertDialog(
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(24.0)),
-                            child: SizedBox(
-                              height: 487.h,
-                              child: Padding(
-                                padding: const EdgeInsets.all(32),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Container(
-                                      margin: EdgeInsets.symmetric(
-                                          horizontal: 30 * width / 428),
-                                      height: 150 * height / 926,
-                                      width: 150 * width / 428,
-                                      child: Image.asset(
-                                          AppIcons.createNewPasswordDialog),
+                            content: Padding(
+                              padding: const EdgeInsets.all(32),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    margin: EdgeInsets.symmetric(
+                                        horizontal: 30 * width / 428),
+                                    height: 150 * height / 926,
+                                    width: 150 * width / 428,
+                                    child: Image.asset(
+                                        AppIcons.createNewPasswordDialog),
+                                  ),
+                                  24.ph,
+                                  Text("Tabriklaymiz!",
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .headlineSmall),
+                                  16.ph,
+                                  Text(
+                                      "Hisobingiz foydalanishga tayyor. Siz bir necha soniyadan so'ng asosiy sahifaga yo'naltirilasiz..",
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyLarge),
+                                  22.ph,
+                                  SizedBox(
+                                    height: 125 * width / 428,
+                                    width: 125 * width / 428,
+                                    child: Lottie.asset(
+                                      AppIcons.splashCircular,
+                                      fit: BoxFit.cover,
                                     ),
-                                    24.ph,
-                                    Text("Tabriklaymiz!",
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .headlineSmall),
-                                    16.ph,
-                                    Text(
-                                        "Hisobingiz foydalanishga tayyor. Siz bir necha soniyadan so'ng asosiy sahifaga yo'naltirilasiz..",
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .bodyLarge),
-                                    22.ph,
-                                    SizedBox(
-                                      height: 125 * width / 428,
-                                      width: 125 * width / 428,
-                                      child: Lottie.asset(
-                                        AppIcons.splashCircular,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    )
-                                  ],
-                                ),
+                                  )
+                                ],
                               ),
                             ),
                           );

@@ -52,7 +52,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       focusNode: phoneFocus,
                       hintText: 'Telefon Raqami',
                       prefixIcon: AppIcons.call,
-                      onChanged: (v) {},
+                      onChanged: (v) {
+                        if (v.length == 12) {
+                          phoneFocus.unfocus();
+                          FocusScope.of(context).requestFocus(passwordFocus);
+                        }
+                      },
                     ),
                     20.ph,
                     AuthTextField(

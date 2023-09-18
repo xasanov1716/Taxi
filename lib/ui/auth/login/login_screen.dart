@@ -58,23 +58,19 @@ class _LoginScreenState extends State<LoginScreen> {
                     45.ph,
                     AuthTextField(
                       focusNode: phoneFocus,
-                      hintText: "_ _  _ _ _  _ _  _ _",
-                      prefixIcon: AppIcons.getSvg(
-                        name: AppIcons.call,
-                        iconType: IconType.bold,
-                      ),
+                      hintText: 'Telefon Raqami',
+                      prefixIcon: AppIcons.call,
                       onChanged: (v) {
-                        print(v.length);
                         if (v.length == 12) {
                           phoneFocus.unfocus();
                           FocusScope.of(context).requestFocus(passwordFocus);
                         }
                       },
                     ),
-                    24.ph,
+                    20.ph,
                     AuthTextField(
                       focusNode: passwordFocus,
-                      hintText: "Parol",
+                      hintText: 'Parol',
                       prefixIcon: AppIcons.lock,
                       isPassword: true,
                       onChanged: (v) {},
@@ -121,7 +117,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     45.ph,
                     Column(
                       children: [
-                        CustomAuthDividerWidget(label: "yoki davom eting"),
+                        const CustomAuthDividerWidget(label: "yoki davom eting"),
                         20.ph,
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -129,8 +125,10 @@ class _LoginScreenState extends State<LoginScreen> {
                           children: [
                             CustomAuthButton(
                                 imageUrl: AppIcons.facebook, onTap: () {}),
+                            20.pw,
                             CustomAuthButton(
                                 imageUrl: AppIcons.google, onTap: () {}),
+                            20.pw,
                             CustomAuthButton(
                                 imageUrl: AppIcons.apple, onTap: () {}),
                           ],
