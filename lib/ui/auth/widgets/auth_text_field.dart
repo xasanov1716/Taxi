@@ -103,7 +103,7 @@ class _AuthTextFieldState extends State<AuthTextField> {
       style: Theme.of(context)
           .textTheme
           .labelLarge
-          ?.copyWith(fontWeight: FontWeight.w600, letterSpacing: 0.2),
+          ?.copyWith(fontSize:15.sp,fontWeight: FontWeight.w600, letterSpacing: 0.2),
       decoration: InputDecoration(
           counterText: "",
           contentPadding:
@@ -133,7 +133,7 @@ class _AuthTextFieldState extends State<AuthTextField> {
                         style: Theme.of(context)
                             .textTheme
                             .labelLarge
-                            ?.copyWith(fontWeight: FontWeight.w400),
+                            ?.copyWith(fontSize: 15.sp,fontWeight: FontWeight.w400, letterSpacing: 0.2),
                       )
                     ],
                   ),
