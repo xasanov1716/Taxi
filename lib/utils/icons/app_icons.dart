@@ -26,6 +26,8 @@ class AppIcons {
       "assets/images/forgot_password_dark.png";
   static const String createNewPasswordDarkImage =
       "assets/images/create_new_password_dark.png";
+  static const String locationInSearchDb =
+      "assets/images/location_in_search.png";
 
   // smile images
   static const String smileAngry = "assets/images/mood/smile_angry.png";
