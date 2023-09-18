@@ -1118,7 +1118,7 @@ packages:
     source: hosted
     version: "1.0.1"
   path_provider:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: path_provider
       sha256: a1aa8aaa2542a6bc57e381f132af822420216c80d4781f7aa085ca3229208aaa
@@ -1530,6 +1530,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.1"
+  translit:
+    dependency: "direct main"
+    description:
+      name: translit
+      sha256: "47c7da51b05a14acbe37bb3bd60755ad1c046940531d24e255af6a7c41adc930"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.1"
   typed_data:
     dependency: transitive
     description:

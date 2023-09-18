@@ -6,6 +6,8 @@ import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 
+import '../../utils/theme/get_theme.dart';
+
 class PhoneNumberInput extends StatefulWidget {
   final String hintText;
   final TextInputType keyboardType;
@@ -145,7 +147,10 @@ class _PhoneNumberInput extends State<PhoneNumberInput> {
               child: SvgPicture.asset(widget.rightImage!,colorFilter: const ColorFilter.mode(AppColors.c_400, BlendMode.srcIn),)
             ) : null,
             enabledBorder: OutlineInputBorder(
-              borderSide: const BorderSide(color: Color(0xFFFAFAFA), width: 1),
+              borderSide: BorderSide(
+                  color:
+                  getTheme(context) ? AppColors.dark3 : const Color(0xFFFAFAFA),
+                  width: 1),
               borderRadius: BorderRadius.circular(10),
             ),
             focusedBorder: OutlineInputBorder(
@@ -157,7 +162,7 @@ class _PhoneNumberInput extends State<PhoneNumberInput> {
               borderRadius: BorderRadius.circular(10),
             ),
             border: OutlineInputBorder(
-              borderSide: const BorderSide(color: Color(0xFFFAFAFA), width: 1),
+              borderSide: BorderSide(color: getTheme(context)? const Color(0xFFFAFAFA):AppColors.dark2, width: 1),
               borderRadius: BorderRadius.circular(10),
             ),
             fillColor: widget.focusNode.hasFocus ? AppColors.orangeTransparent : null,

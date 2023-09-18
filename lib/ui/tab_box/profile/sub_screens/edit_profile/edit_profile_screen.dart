@@ -236,21 +236,39 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
           ),
           child: Column(
             children: [
-              ListTile(
-                onTap: () {
-                  _getFromCamera();
-                  Navigator.pop(context);
-                },
-                leading: const Icon(Icons.camera_alt,color: AppColors.white,),
-                title: const Text("Select from Camera",style: TextStyle(color: AppColors.white,fontSize: 20),),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.white,width: 2),
+                    borderRadius: BorderRadius.circular(16)
+                  ),
+                  child: ListTile(
+                    onTap: () {
+                      _getFromCamera();
+                      Navigator.pop(context);
+                    },
+                    leading: const Icon(Icons.camera_alt,color: AppColors.white,),
+                    title: const Text("Select from Camera",style: TextStyle(color: AppColors.white,fontSize: 20),),
+                  ),
+                ),
               ),
-              ListTile(
-                onTap: () {
-                  _getFromGallery();
-                  Navigator.pop(context);
-                },
-                leading: const Icon(Icons.photo,color: AppColors.white,),
-                title: const Text("Select from Gallery",style: TextStyle(color: AppColors.white,fontSize: 20),),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                    border: Border.all(color: Colors.white,width: 2)
+                  ),
+                  child: ListTile(
+                    onTap: () {
+                      _getFromGallery();
+                      Navigator.pop(context);
+                    },
+                    leading: const Icon(Icons.photo,color: AppColors.white,),
+                    title: const Text("Select from Gallery",style: TextStyle(color: AppColors.white,fontSize: 20),),
+                  ),
+                ),
               )
             ],
           ),
