@@ -7,6 +7,7 @@ import 'package:taxi_app/data/models/search_history/search_history_model.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
+import 'package:taxi_app/utils/theme/get_theme.dart';
 
 class SearchHistoryScreen extends StatelessWidget {
   const SearchHistoryScreen({super.key});
@@ -37,6 +38,7 @@ class SearchHistoryScreen extends StatelessWidget {
             ],
           ),
           24.ph,
+          Divider(color: getTheme(context) ? AppColors.dark3 : AppColors.c_200),
           ...List.generate(state.history.length, (index) {
             SearchHistoryModel history = state.history[index];
 
