@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taxi_app/blocs/social_auth_bloc/social_auth_bloc.dart';
 import 'package:taxi_app/ui/app_routes.dart';
-import 'package:taxi_app/ui/widgets/global_appbar.dart';
 import 'package:taxi_app/ui/widgets/global_button.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 import '../../../utils/colors/app_colors.dart';
