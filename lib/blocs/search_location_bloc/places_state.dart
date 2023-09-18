@@ -6,10 +6,12 @@ class PlacesState extends Equatable {
   final List<DistrictModel> districts;
   final List<QuarterModel> quarters;
   final List<SearchHistoryModel> history;
+  final String query;
   final String errorText;
   final FormStatus status;
-  PlacesState(
-      {required this.errorText,
+  const PlacesState(
+      {required this.query,
+      required this.errorText,
       required this.status,
       required this.districts,
       required this.quarters,
@@ -26,10 +28,12 @@ class PlacesState extends Equatable {
     List<QuarterModel>? quarters,
     List<SearchHistoryModel>? history,
     String? errorText,
+    String? query,
     FormStatus? status,
   }) {
     return PlacesState(
       regions: regions ?? this.regions,
+      query: query ?? this.query,
       districts: districts ?? this.districts,
       quarters: quarters ?? this.quarters,
       history: history ?? this.history,
@@ -37,5 +41,4 @@ class PlacesState extends Equatable {
       status: status ?? this.status,
     );
   }
-
 }

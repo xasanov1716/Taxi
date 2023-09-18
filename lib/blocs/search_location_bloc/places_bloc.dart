@@ -21,13 +21,14 @@ class SearchLocationBloc extends Bloc<PlacesEvent, PlacesState> {
   SearchLocationBloc({
     required this.searchHistoryRepository,
     required this.placesDatabaseRepository,
-  }) : super(PlacesState(
+  }) : super(const PlacesState(
+          query: '',
           status: FormStatus.pure,
-          districts: const [],
+          districts: [],
           errorText: '',
-          history: const [],
-          quarters: const [],
-          regions: const [],
+          history: [],
+          quarters: [],
+          regions: [],
         )) {
     on<SearchRegionsByNameEvent>(_searchByRegion);
     on<SearchDistrictsByNameEvent>(_searchByDistrict);
@@ -47,7 +48,8 @@ class SearchLocationBloc extends Bloc<PlacesEvent, PlacesState> {
     List<RegionModel> datas = data.data;
     if (datas.isNotEmpty) {
       // ignore: invalid_use_of_visible_for_testing_member
-      emit(state.copyWith(regions: datas, status: FormStatus.success));
+      emit(state.copyWith(
+          regions: datas, status: FormStatus.success, query: event.query));
     } else {
       // ignore: invalid_use_of_visible_for_testing_member
       emit(state.copyWith(errorText: data.error, status: FormStatus.failure));
@@ -65,7 +67,8 @@ class SearchLocationBloc extends Bloc<PlacesEvent, PlacesState> {
 
     if (datas.isNotEmpty) {
       // ignore: invalid_use_of_visible_for_testing_member
-      emit(state.copyWith(districts: datas, status: FormStatus.success));
+      emit(state.copyWith(
+          districts: datas, status: FormStatus.success, query: event.query));
     } else {
       // ignore: invalid_use_of_visible_for_testing_member
       emit(state.copyWith(errorText: data.error, status: FormStatus.failure));
@@ -82,7 +85,8 @@ class SearchLocationBloc extends Bloc<PlacesEvent, PlacesState> {
     List<QuarterModel> datas = data.data;
     if (datas.isNotEmpty) {
       // ignore: invalid_use_of_visible_for_testing_member
-      emit(state.copyWith(quarters: datas, status: FormStatus.success));
+      emit(state.copyWith(
+          quarters: datas, status: FormStatus.success, query: event.query));
     } else {
       // ignore: invalid_use_of_visible_for_testing_member
       emit(state.copyWith(errorText: data.error, status: FormStatus.failure));
@@ -116,7 +120,7 @@ class SearchLocationBloc extends Bloc<PlacesEvent, PlacesState> {
     var datas = data.data;
     if (datas.isNotEmpty) {
       // ignore: invalid_use_of_visible_for_testing_member
-      emit(state.copyWith( status: FormStatus.success));
+      emit(state.copyWith(status: FormStatus.success));
       add(GetSearchHistoryEvent(15));
     } else {
       // ignore: invalid_use_of_visible_for_testing_member

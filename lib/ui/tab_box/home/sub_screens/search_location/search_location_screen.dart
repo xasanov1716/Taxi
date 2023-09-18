@@ -5,7 +5,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:taxi_app/blocs/search_location_bloc/places_bloc.dart';
 import 'package:taxi_app/data/models/icon/icon_type.dart';
 import 'package:taxi_app/data/models/status/form_status.dart';
-import 'package:taxi_app/ui/tab_box/home/sub_screens/search_location/widgets/no_data_screen.dart';
+import 'package:taxi_app/ui/tab_box/home/sub_screens/search_location/widgets/query_not_found_screen.dart';
+import 'package:taxi_app/ui/tab_box/home/sub_screens/search_location/widgets/search_history_screen.dart';
 import 'package:taxi_app/ui/tab_box/home/sub_screens/search_location/widgets/searched_data_screen.dart';
 import 'package:taxi_app/ui/widgets/global_input.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
@@ -73,14 +74,23 @@ class SearchLocationScreen extends StatelessWidget {
         child: BlocConsumer<SearchLocationBloc, PlacesState>(
           builder: (context, state) {
             if (state.status == FormStatus.loading) {
-              return const CircularProgressIndicator();
+              return const Center(child: CircularProgressIndicator());
+            }
+            if (state.query.isEmpty) {
+              return const SearchHistoryScreen();
+            }
+            if (state.regions.length +
+                    state.districts.length +
+                    state.quarters.length ==
+                0) {
+              return const QueryNotFoundScreen();
             }
             if (state.regions.isNotEmpty ||
                 state.districts.isNotEmpty ||
-                state.quarters.isNotEmpty) {
+                state.quarters.isNotEmpty && state.query.isNotEmpty) {
               return const LoadedDataScreen();
             } else if (state.history.isNotEmpty) {
-              return const DataNotFoundScreen();
+              return const SearchHistoryScreen();
             } else {
               return const Text("You Didn't added any data");
             }
