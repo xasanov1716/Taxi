@@ -52,7 +52,8 @@ class SearchLocationBloc extends Bloc<PlacesEvent, PlacesState> {
           regions: datas, status: FormStatus.success, query: event.query));
     } else {
       // ignore: invalid_use_of_visible_for_testing_member
-      emit(state.copyWith(errorText: data.error, status: FormStatus.failure));
+      emit(state.copyWith(
+          errorText: data.error, status: FormStatus.failure, regions: []));
     }
   }
 
@@ -71,7 +72,8 @@ class SearchLocationBloc extends Bloc<PlacesEvent, PlacesState> {
           districts: datas, status: FormStatus.success, query: event.query));
     } else {
       // ignore: invalid_use_of_visible_for_testing_member
-      emit(state.copyWith(errorText: data.error, status: FormStatus.failure));
+      emit(state.copyWith(
+          errorText: data.error, status: FormStatus.failure, districts: []));
     }
   }
 
@@ -89,7 +91,8 @@ class SearchLocationBloc extends Bloc<PlacesEvent, PlacesState> {
           quarters: datas, status: FormStatus.success, query: event.query));
     } else {
       // ignore: invalid_use_of_visible_for_testing_member
-      emit(state.copyWith(errorText: data.error, status: FormStatus.failure));
+      emit(state.copyWith(
+          errorText: data.error, status: FormStatus.failure, quarters: []));
     }
   }
 
@@ -134,10 +137,12 @@ class SearchLocationBloc extends Bloc<PlacesEvent, PlacesState> {
     emit(state.copyWith(status: FormStatus.loading));
 
     UniversalData data = await searchHistoryRepository.clearSearchHistory();
+    add(GetSearchHistoryEvent(15));
+
     String datas = data.data;
     if (datas.isNotEmpty) {
       // ignore: invalid_use_of_visible_for_testing_member
-      emit(state.copyWith(status: FormStatus.success));
+      emit(state.copyWith(status: FormStatus.success,history: []));
     } else {
       // ignore: invalid_use_of_visible_for_testing_member
       emit(state.copyWith(errorText: data.error, status: FormStatus.failure));

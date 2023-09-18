@@ -12,8 +12,7 @@ import 'package:taxi_app/ui/widgets/global_input.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
-import 'package:taxi_app/utils/ui_utils/custom_circular.dart';
-import 'package:taxi_app/utils/ui_utils/loading_dialog.dart';
+import 'package:translit/translit.dart';
 
 class SearchLocationScreen extends StatelessWidget {
   const SearchLocationScreen({super.key});
@@ -34,15 +33,16 @@ class SearchLocationScreen extends StatelessWidget {
           height: 58.h,
           child: GlobalTextField(
             onChanged: (value) {
+              String v = Translit().toTranslit(source: value);
               context
                   .read<SearchLocationBloc>()
-                  .add(SearchRegionsByNameEvent(value));
+                  .add(SearchRegionsByNameEvent(v));
               context
                   .read<SearchLocationBloc>()
-                  .add(SearchQuartersByNameEvent(value));
+                  .add(SearchQuartersByNameEvent(v));
               context
                   .read<SearchLocationBloc>()
-                  .add(SearchDistrictsByNameEvent(value));
+                  .add(SearchDistrictsByNameEvent(v));
             },
             focusNode: searchFocusNode,
             prefixIcon: Padding(

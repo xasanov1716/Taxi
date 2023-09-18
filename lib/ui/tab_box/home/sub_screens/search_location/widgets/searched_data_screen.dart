@@ -25,19 +25,18 @@ class LoadedDataScreen extends StatelessWidget {
             children: [
               RichText(
                 text: TextSpan(
-                  style: Theme.of(context)
-                      .textTheme
-                      .headlineSmall,
+                  style: Theme.of(context).textTheme.headlineSmall,
                   children: [
                     const TextSpan(
                       text: "Results for ",
                     ),
                     TextSpan(
-                        text: "\"${state.query}\"",
-                        style: Theme.of(context)
-                            .textTheme
-                            .headlineSmall!
-                            .copyWith(color: AppColors.primary)),
+                      text: "\"${state.query}\"",
+                      style:
+                          Theme.of(context).textTheme.headlineSmall!.copyWith(
+                                color: AppColors.primary,
+                              ),
+                    ),
                   ],
                 ),
               ),
@@ -50,14 +49,21 @@ class LoadedDataScreen extends StatelessWidget {
             ],
           ),
           24.ph,
-          Text(
-            "Regions",
-            style: Theme.of(context).textTheme.headlineSmall,
-          ),
+          state.regions.isEmpty
+              ? const SizedBox()
+              : Text(
+                  "Regions",
+                  style: Theme.of(context).textTheme.headlineSmall,
+                ),
           ...List.generate(state.regions.length, (index) {
             RegionModel regions = state.regions[index];
 
             return ListTile(
+              onTap: () {
+                context
+                    .read<SearchLocationBloc>()
+                    .add(CreateSearchHistoryEvent(regions.name));
+              },
               titleAlignment: ListTileTitleAlignment.center,
               leading: Image.asset(AppIcons.locationInSearchDb),
               title: highlightText(regions.name, state.query, context),
@@ -66,14 +72,21 @@ class LoadedDataScreen extends StatelessWidget {
               ),
             );
           }),
-          Text(
-            "Districts",
-            style: Theme.of(context).textTheme.headlineSmall,
-          ),
+          state.districts.isEmpty
+              ? const SizedBox()
+              : Text(
+                  "Districts",
+                  style: Theme.of(context).textTheme.headlineSmall,
+                ),
           ...List.generate(state.districts.length, (index) {
             DistrictModel districts = state.districts[index];
 
             return ListTile(
+              onTap: () {
+                context
+                    .read<SearchLocationBloc>()
+                    .add(CreateSearchHistoryEvent(districts.name));
+              },
               titleAlignment: ListTileTitleAlignment.center,
               leading: Image.asset(AppIcons.locationInSearchDb),
               title: highlightText(districts.name, state.query, context),
@@ -82,14 +95,21 @@ class LoadedDataScreen extends StatelessWidget {
               ),
             );
           }),
-          Text(
-            "Quarters",
-            style: Theme.of(context).textTheme.headlineSmall,
-          ),
+          state.quarters.isEmpty
+              ? const SizedBox()
+              : Text(
+                  "Quarters",
+                  style: Theme.of(context).textTheme.headlineSmall,
+                ),
           ...List.generate(state.quarters.length, (index) {
             QuarterModel quarters = state.quarters[index];
 
             return ListTile(
+              onTap: () {
+                context
+                    .read<SearchLocationBloc>()
+                    .add(CreateSearchHistoryEvent(quarters.name));
+              },
               titleAlignment: ListTileTitleAlignment.center,
               leading: Image.asset(AppIcons.locationInSearchDb),
               title: highlightText(quarters.name, state.query, context),

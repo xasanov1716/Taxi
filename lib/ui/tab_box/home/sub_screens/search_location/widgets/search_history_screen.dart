@@ -28,7 +28,7 @@ class SearchHistoryScreen extends StatelessWidget {
                 onPressed: () {
                   context
                       .read<SearchLocationBloc>()
-                      .add(CreateSearchHistoryEvent("Tashkent"));
+                      .add(ClearSearchHistoryEvent());
                 },
                 child: const Text(
                   "Clear All",
