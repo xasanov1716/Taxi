@@ -13,7 +13,7 @@ class ActionButtons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(right: 24.w, top: 35.h),
+      padding: EdgeInsets.only(right: 24.w, top: 65.h),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
@@ -22,8 +22,8 @@ class ActionButtons extends StatelessWidget {
             icon: SvgPicture.asset(
               AppIcons.search,
             ),
-            height: 52,
-            width: 52,
+            height: 52.h,
+            width: 52.h,
             onTap: () {
               Navigator.push(
                   context,
@@ -40,8 +40,8 @@ class ActionButtons extends StatelessWidget {
             icon: SvgPicture.asset(
               AppIcons.notification,
             ),
-            height: 52,
-            width: 52,
+            height: 52.h,
+            width: 52.h,
             onTap: () {},
           ),
           const SizedBox(
@@ -52,8 +52,8 @@ class ActionButtons extends StatelessWidget {
             icon: SvgPicture.asset(
               AppIcons.discount,
             ),
-            height: 52,
-            width: 52,
+            height: 52.h,
+            width: 52.h,
             onTap: () {},
           ),
         ],
