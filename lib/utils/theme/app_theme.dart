@@ -25,19 +25,20 @@ class AppTheme {
     primaryColor: AppColors.primary,
     hintColor: AppColors.c_500,
     appBarTheme: AppBarTheme(
-        titleTextStyle: TextStyle(
-          color: AppColors.c_900,
-          fontSize: 24.sp,
-          fontFamily: 'Urbanist',
-          fontWeight: FontWeight.w700,
-          fontStyle: FontStyle.normal,
-        ),
-        backgroundColor: AppColors.white,
-        iconTheme: const IconThemeData(color: AppColors.c_900),
-        systemOverlayStyle: const SystemUiOverlayStyle(
-            statusBarColor: AppColors.white,
-            statusBarBrightness: Brightness.dark,
-            statusBarIconBrightness: Brightness.dark)),
+      titleTextStyle: TextStyle(
+        color: AppColors.c_900,
+        fontSize: 24.sp,
+        fontFamily: 'Urbanist',
+        fontWeight: FontWeight.w700,
+        fontStyle: FontStyle.normal,
+      ),
+      backgroundColor: AppColors.white,
+      iconTheme: const IconThemeData(color: AppColors.c_900),
+      systemOverlayStyle: const SystemUiOverlayStyle(
+          statusBarColor: AppColors.white,
+          statusBarBrightness: Brightness.dark,
+          statusBarIconBrightness: Brightness.dark),
+    ),
     textTheme: TextTheme(
         //display
 
@@ -280,11 +281,11 @@ class AppTheme {
             letterSpacing: 0.2)),
     useMaterial3: false,
     switchTheme: const SwitchThemeData(
-      // thumbColor: MaterialStatePropertyAll(AppColors.white),
-      // trackColor: MaterialStatePropertyAll(AppColors.white),
-      // trackOutlineColor: MaterialStatePropertyAll(AppColors.primary),
-      // overlayColor: MaterialStatePropertyAll(AppColors.primary),
-    ),
+        // thumbColor: MaterialStatePropertyAll(AppColors.white),
+        // trackColor: MaterialStatePropertyAll(AppColors.white),
+        // trackOutlineColor: MaterialStatePropertyAll(AppColors.primary),
+        // overlayColor: MaterialStatePropertyAll(AppColors.primary),
+        ),
     colorScheme: const ColorScheme(
       primary: AppColors.primary,
       secondary: AppColors.secondary,

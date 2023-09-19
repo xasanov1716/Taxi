@@ -131,16 +131,8 @@ class _PhoneNumberInput extends State<PhoneNumberInput> {
             hintText: widget.hintText,
             prefixIcon: Padding(
               padding:  const EdgeInsets.all(20),
-              child: SizedBox(
-                width: 70,
-                child: Row(
-                  children: [
-                    Image.asset(AppIcons.uzbFlag,width: 24,height: 18),
-                    const SizedBox(width: 4),
-                    Text('+998',style: Theme.of(context).textTheme.headlineSmall),
-                  ],
-                ),
-              ),
+              child:                     Text('+998',style: Theme.of(context).textTheme.headlineSmall),
+
             ),
             suffixIcon: widget.rightImage != null ? Padding(
               padding: const EdgeInsets.all(20),
