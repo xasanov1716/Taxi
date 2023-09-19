@@ -189,7 +189,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 radius: 100,
                 textColor: AppColors.black,
                 onTap: () {
-                  Navigator.pushNamed(context, RouteNames.codeScreen);
+                  Navigator.pushNamed(context, RouteNames.setPinCodeScreen);
                 }),
             SizedBox(height: 48.h),
           ],

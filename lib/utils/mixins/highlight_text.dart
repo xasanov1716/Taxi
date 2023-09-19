@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:path/path.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 
 RichText highlightText(String text, String query, BuildContext context) {
