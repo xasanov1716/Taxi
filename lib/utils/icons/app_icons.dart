@@ -170,6 +170,7 @@ class AppIcons {
 
   // lottie
   static const String splashCircular = "assets/lottie/splash_circular.json";
+  static const String cameraSelect = "assets/lottie/camera_select.json";
 
   //others
   static const String checked = "assets/svg/others/checked.svg";
