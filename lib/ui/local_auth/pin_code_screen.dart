@@ -26,6 +26,7 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
   @override
   void initState() {
     currentPin = StorageRepository.getString("code");
+    _checkBiometric();
     super.initState();
   }
 
@@ -59,7 +60,7 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
   @override
   Widget build(BuildContext context) {
 
-    _checkBiometric();
+
 
     final defaultPinTheme = PinTheme(
       height: 61,

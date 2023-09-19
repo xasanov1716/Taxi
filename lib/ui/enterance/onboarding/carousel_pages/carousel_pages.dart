@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taxi_app/data/local/storage_repository/storage_repository.dart';
 import 'package:taxi_app/ui/app_routes.dart';
@@ -6,6 +7,7 @@ import 'package:taxi_app/ui/enterance/onboarding/carousel_pages/widgets/page_vie
 import 'package:taxi_app/ui/enterance/onboarding/carousel_pages/widgets/page_view_items.dart';
 import 'package:taxi_app/ui/widgets/global_button.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
+import 'package:taxi_app/utils/theme/get_theme.dart';
 
 
 class CarouselPages extends StatefulWidget {
@@ -26,6 +28,9 @@ class _CarouselPagesState extends State<CarouselPages> {
     return Scaffold(
 
       appBar: AppBar(
+        systemOverlayStyle: SystemUiOverlayStyle(
+          statusBarBrightness:getTheme(context)? Brightness.dark:Brightness.light
+        ),
         actions: [
           Padding(
             padding: EdgeInsets.symmetric(
