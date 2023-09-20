@@ -25,11 +25,11 @@ class ActionButtons extends StatelessWidget {
             height: 52.h,
             width: 52.h,
             onTap: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const SearchLocationScreen(),
-                  ));
+              // Navigator.push(
+              //     context,
+              //     MaterialPageRoute(
+              //       builder: (context) => const SearchLocationScreen(),
+              //     ));
             },
           ),
           const SizedBox(

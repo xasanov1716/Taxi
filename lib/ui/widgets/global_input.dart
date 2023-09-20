@@ -14,6 +14,7 @@ class GlobalTextField extends StatefulWidget {
   final String caption;
   final ValueChanged? onChanged;
   final FocusNode? focusNode;
+  final bool readOnly;
   final MaskTextInputFormatter? maskFormatter;
   final TextEditingController? controller;
   final Widget? suffixIcon;
@@ -27,6 +28,7 @@ class GlobalTextField extends StatefulWidget {
     this.prefixIcon,
     this.caption = "",
     this.suffixIcon,
+    this.readOnly = false,
     this.controller,
     this.onChanged,
     this.focusNode,
@@ -65,6 +67,7 @@ class _GlobalTextFieldState extends State<GlobalTextField> {
     return TextField(
       onChanged: widget.onChanged,
       obscuringCharacter: '●',
+      readOnly: widget.readOnly,
       controller: _internalController,
       focusNode: widget.focusNode ?? internalFocusNode,
       obscureText: widget.obscureText ?? false,
