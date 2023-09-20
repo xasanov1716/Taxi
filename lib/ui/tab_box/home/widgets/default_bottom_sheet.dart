@@ -11,6 +11,7 @@ import '../../../../utils/colors/app_colors.dart';
 import '../../../../utils/icons/app_icons.dart';
 import '../../../../utils/size/screen_size.dart';
 import '../../../widgets/global_button.dart';
+import '../location_details/get_location_screen.dart';
 
 class DefaultBottomSheet extends StatelessWidget {
   const DefaultBottomSheet({super.key, required this.onTab});
@@ -276,17 +277,18 @@ endBottomSheet(BuildContext context) {
               ),
               40.ph,
               GlobalButton(
-                textColor: AppColors.black,
-                color: AppColors.yellow,
-                title: "Buyurtma berishda davom eting",
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const SelectDriverScreen()),
-                  );
-                },
-              ),
+                  textColor: AppColors.black,
+                  color: AppColors.yellow,
+                  title: "Buyurtma berishda davom eting",
+                  onTap: () {
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => GetLocationScreen(
+                            text: 'Soft Bank',
+                          ),
+                        ));
+                  }),
             ],
           ),
         ),
