@@ -25,11 +25,12 @@ class QueryNotFoundScreen extends StatelessWidget {
                       text: "Results for ",
                     ),
                     TextSpan(
-                        text: "\"${state.query}\"",
-                        style: Theme.of(context)
-                            .textTheme
-                            .headlineSmall!
-                            .copyWith(color: AppColors.primary)),
+                      text: "\"${state.query}\"",
+                      style:
+                          Theme.of(context).textTheme.headlineSmall!.copyWith(
+                                color: AppColors.primary,
+                              ),
+                    ),
                   ],
                 ),
               ),

@@ -172,6 +172,8 @@ class AppIcons {
   // lottie
   static const String splashCircular = "assets/lottie/splash_circular.json";
   static const String cameraSelect = "assets/lottie/camera_select.json";
+  static const String fingerPrintTwo = "assets/lottie/fingerprint.json";
+  static const String loader = "assets/lottie/loader.json";
 
   //others
   static const String checked = "assets/svg/others/checked.svg";
@@ -186,4 +188,10 @@ class AppIcons {
   static const String unSelected = "assets/svg/others/unselected.svg";
   static const String sideCancel = "assets/svg/others/side_cancel.svg";
   static const String cancel = "assets/svg/others/cancel.svg";
+  static const String bike='assets/svg/others/catgory_bike.svg';
+  static const String premium='assets/svg/others/premium.svg';
+  static const String standard='assets/svg/others/standard.svg';
+  static const String circle='assets/svg/others/circle.svg';
+  static const String circleTwo='assets/svg/others/circle_two.svg';
+  static const String frame = "assets/svg/others/fram.svg";
 }
