@@ -171,6 +171,8 @@ class AppIcons {
   // lottie
   static const String splashCircular = "assets/lottie/splash_circular.json";
   static const String cameraSelect = "assets/lottie/camera_select.json";
+  static const String fingerPrintTwo = "assets/lottie/fingerprint.json";
+  static const String loader = "assets/lottie/loader.json";
 
   //others
   static const String checked = "assets/svg/others/checked.svg";
