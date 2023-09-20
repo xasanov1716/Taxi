@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:taxi_app/ui/create_order/sub_screens/select_transport/widgets/promos_button.dart';
-import 'package:taxi_app/ui/create_order/sub_screens/select_transport/widgets/select_transport_bottomsheet.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:taxi_app/ui/create_order/sub_screens/select_transport/widget/choose_data.dart';
 import 'package:taxi_app/ui/widgets/global_appbar.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
+import 'package:taxi_app/utils/icons/app_icons.dart';
+import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 
 class SelectDriverScreen extends StatefulWidget {
@@ -16,29 +18,56 @@ class SelectDriverScreen extends StatefulWidget {
 class _SelectDriverScreenState extends State<SelectDriverScreen> {
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
     return Scaffold(
-      appBar: const GlobalAppBar(title: 'Select Car'),
-      body: Column(
-        children: [
-          Expanded(
-            child: ListView(
-              physics: const BouncingScrollPhysics(),
-              padding: EdgeInsets.symmetric(horizontal: 24.w),
+      appBar: GlobalAppBar(
+        onTap: () {},
+        title: "Select Car",
+      ),
+      backgroundColor: AppColors.greysCale,
+      body: Padding(
+        padding: EdgeInsets.only(
+            left: 24 * width / figmaWidth, right: 24 * width / figmaWidth),
+        child: ListView(
+          children: [
+            Column(
               children: [
                 24.ph,
-                const Divider(color: AppColors.dark3),
+                Text("Select the vehicle category you want to ride.",
+                    style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                        fontSize: 16.sp, fontWeight: FontWeight.w500)),
                 24.ph,
-                Text(
-                  'Promo Code',
-                  style: Theme.of(context).textTheme.titleLarge,
+                const ChooseData(
+                  icon: AppIcons.bike,
+                  text1: 'Bike',
+                  text2: '7 nearbies',
+                  text3: '10.00',
+                  icon2: AppIcons.circle,
+                  icon1: AppIcons.circleTwo,
                 ),
-                16.ph,
-                const PromosButton(),
+                24.ph,
+                const ChooseData(
+                  icon: AppIcons.standard,
+                  text1: 'Standard',
+                  text2: '9 nearbies',
+                  text3: '20.00',
+                  icon2: AppIcons.circle,
+                  icon1: AppIcons.circleTwo,
+                ),
+                24.ph,
+                const ChooseData(
+                  icon: AppIcons.premium,
+                  text1: 'Premium',
+                  text2: '4 nearbies',
+                  text3: '30.00',
+                  icon2: AppIcons.circle,
+                  icon1: AppIcons.circleTwo,
+                ),
               ],
-            ),
-          ),
-          const SelectTransPrtBottomSheet()
-        ],
+            )
+          ],
+        ),
       ),
     );
   }

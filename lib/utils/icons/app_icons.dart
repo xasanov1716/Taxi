@@ -175,8 +175,10 @@ class AppIcons {
   //others
   static const String checked = "assets/svg/others/checked.svg";
   static const String unchecked = "assets/svg/others/unchecked.svg";
-  static const String frame = "assets/svg/others/fram.svg";
+  static const String bike='assets/svg/others/catgory_bike.svg';
+  static const String premium='assets/svg/others/premium.svg';
+  static const String standard='assets/svg/others/standard.svg';
   static const String circle='assets/svg/others/circle.svg';
   static const String circleTwo='assets/svg/others/circle_two.svg';
-
+  static const String frame = "assets/svg/others/fram.svg";
 }

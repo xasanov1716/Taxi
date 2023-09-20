@@ -80,7 +80,7 @@ class AppColors {
 
   //----------------- DARK COLORS -------------------------
 
-  static const Color dark1 = Color(0xFF181A20);
+  static const Color dark1 = Color(0xFF181A20);//04060F FAFAFA
   static const Color dark2 = Color(0xFF1F222A);
   static const Color dark3 = Color(0xFF35383F);
 
@@ -107,6 +107,9 @@ class AppColors {
   static const Color brown = Color(0xFF795548);
   static const Color blueGrey = Color(0xFF607D8B);
   static const Color dimYellow = Color(0xFFFFE4A4);
+  static const Color cardShadowTwo=Color(0xFF04060F);
+  static const Color greysCale =Color(0xFFFAFAFA);
+
 
 
   //----------------- BACKGROUND COLORS ------------------------
