@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:taxi_app/data/models/icon/icon_type.dart';
+import 'package:taxi_app/ui/create_order/sub_screens/select_transport/widgets/promos_button.dart';
 import 'package:taxi_app/ui/widgets/global_button.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
@@ -26,6 +27,7 @@ class SelectTransPrtBottomSheet extends StatelessWidget {
       ),
       child: Column(
         children: [
+          PromosButton(),
           24.ph,
           Container(
             padding: EdgeInsets.all(20.r),

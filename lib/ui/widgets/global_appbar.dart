@@ -11,7 +11,8 @@ class GlobalAppBar extends StatelessWidget implements PreferredSize {
   const GlobalAppBar({
     Key? key,
     this.onTap,
-    this.title = "", this.action, this.centerTitle,
+    this.action, this.centerTitle,
+    this.title = "",
   }) : super(key: key);
 
   final VoidCallback? onTap;

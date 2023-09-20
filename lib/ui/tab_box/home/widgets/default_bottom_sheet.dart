@@ -80,7 +80,7 @@ enterBottomSheet(BuildContext context) {
     context: context,
     backgroundColor: Colors.white,
     builder: (BuildContext context) {
-      return StatefulBuilder(builder: (context, setState) {
+      return StatefulBuilder(builder: (context, setState){
         return Container(
           height: height / 1.2,
           decoration: BoxDecoration(

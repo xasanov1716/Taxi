@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:taxi_app/utils/ui_utils/custom_circular.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:lottie/lottie.dart';
+import 'package:taxi_app/utils/icons/app_icons.dart';
+
 
 
 void showLoading({required BuildContext context}) {
@@ -13,11 +16,11 @@ void showLoading({required BuildContext context}) {
         child: Container(
           alignment: AlignmentDirectional.center,
           decoration: const BoxDecoration(),
-          child: const Center(
+          child:  Center(
             child: SizedBox(
-              height: 70.0,
-              width: 70.0,
-              child: CustomCircularProgressIndicator(strokeWidth: 6,),
+              height: 200.h,
+              width: 200.w,
+              child: Lottie.asset(AppIcons.loader),
             ),
           ),
         ),
