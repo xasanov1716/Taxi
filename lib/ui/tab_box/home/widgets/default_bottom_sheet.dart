@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/ui/tab_box/home/widgets/saved_places.dart';
 import 'package:taxi_app/ui/tab_box/home/widgets/text_field_item.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
@@ -279,7 +280,8 @@ endBottomSheet(BuildContext context) {
                   color: AppColors.yellow,
                   title: "Buyurtma berishda davom eting",
                   onTap: () {
-                    Navigator.pop(context);
+                    Navigator.pushNamed(context, RouteNames.paymentMethods);
+                    // Navigator.pop(context);
                   }),
             ],
           ),
