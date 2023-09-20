@@ -194,6 +194,46 @@ class AppIcons {
   static const String circle='assets/svg/others/circle.svg';
   static const String circleTwo='assets/svg/others/circle_two.svg';
   static const String frame = "assets/svg/others/fram.svg";
+
+
+  // additional icons
+  static final String bank = "assets/svg/${it.name}/bank.svg";
+  static final String bike = "assets/svg/${it.name}/bike.svg";
+  static final String building = "assets/svg/${it.name}/building.svg";
+  static final String buildingBold = "assets/svg/${it.name}/building_bold.svg";
+  static final String buildingHouse = "assets/svg/${it.name}/building_house.svg";
+  static final String buildingHouseBold = "assets/svg/${it.name}/building_house_bold.svg";
+  static final String carWifi = "assets/svg/${it.name}/car_wifi.svg";
+  static final String card = "assets/svg/${it.name}/card.svg";
+  static final String copyAlt = "assets/svg/${it.name}/copy_alt.svg";
+  static final String copyAltBold = "assets/svg/${it.name}/copy_alt_bold.svg";
+  static final String currentLocation = "assets/svg/${it.name}/current_location.svg";
+  static final String dollarCircle = "assets/svg/${it.name}/dollar_circle.svg";
+  static final String dollarCircleBold = "assets/svg/${it.name}/dollar_circle_bold.svg";
+  static final String editLocation = "assets/svg/${it.name}/edit_location.svg";
+  static final String link = "assets/svg/${it.name}/link.svg";
+  static final String linkAlt = "assets/svg/${it.name}/link_alt.svg";
+  static final String listUi = "assets/svg/${it.name}/list_ui.svg";
+  static final String locationPlus = "assets/svg/${it.name}/location_plus.svg";
+  static final String locationPlusBold = "assets/svg/${it.name}/location_plus_bold.svg";
+  static final String mapAlt = "assets/svg/${it.name}/map_alt.svg";
+  static final String mapAltBold = "assets/svg/${it.name}/map_alt_bold.svg";
+  static final String mapPin = "assets/svg/${it.name}/map_pin.svg";
+  static final String mapPinBold = "assets/svg/${it.name}/map_pin_bold.svg";
+  static final String menu = "assets/svg/${it.name}/menu.svg";
+  static final String minus = "assets/svg/${it.name}/minus.svg";
+  static final String minusCircle = "assets/svg/${it.name}/minus_circle.svg";
+  static final String money = "assets/svg/${it.name}/money.svg";
+  static final String navigation = "assets/svg/${it.name}/navigation.svg";
+  static final String navigationBold = "assets/svg/${it.name}/navigation_bold.svg";
+  static final String plusAdditional = "assets/svg/${it.name}/plus_additional.svg";
+  static final String plusCircle = "assets/svg/${it.name}/plus_circle.svg";
+  static final String taxi = "assets/svg/${it.name}/taxi.svg";
+  static final String taxiBold = "assets/svg/${it.name}/taxi_bold.svg";
+  static final String xClose = "assets/svg/${it.name}/x_close.svg";
+  static final String xCloseCircle = "assets/svg/${it.name}/x_close_circle.svg";
+  static final String xCloseCircleBold = "assets/svg/${it.name}/x_close_circle_bold.svg";
+
   static const String blueOffer = "assets/svg/others/blue_offer.svg";
   static const String greenOffer = "assets/svg/others/green_offer.svg";
   static const String purpleOffer = "assets/svg/others/purple_offer.svg";
