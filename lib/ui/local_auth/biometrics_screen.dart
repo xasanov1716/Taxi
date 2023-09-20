@@ -100,6 +100,7 @@ class _BiometricsScreenState extends State<BiometricsScreen> {
                     title: "Keyingi",
                     onTap: () {
                       _checkBiometric();
+
                     },
                     radius: 100,
                     color: AppColors.primary,
