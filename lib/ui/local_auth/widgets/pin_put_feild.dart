@@ -17,12 +17,10 @@ class PinPutField extends StatefulWidget {
 }
 
 class _PinPutFieldState extends State<PinPutField> {
-  // final TextEditingController codeController = TextEditingController();
   final List<FocusNode> pinFocusNodes = List.generate(4, (_) => FocusNode());
   final List<TextEditingController> pinControllers =
       List.generate(4, (_) => TextEditingController());
 
-  // String currentPin = '';
 
   @override
   void initState() {
@@ -65,7 +63,7 @@ class _PinPutFieldState extends State<PinPutField> {
                         counterText: "",
                         hintText: '',
                         hintStyle: const TextStyle(fontSize: 20.0),
-                        contentPadding: EdgeInsets.symmetric(
+                        contentPadding: const EdgeInsets.symmetric(
                             vertical: 16.0, horizontal: 26.0),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(12),
@@ -116,8 +114,8 @@ class _PinPutFieldState extends State<PinPutField> {
             for (var element in pinControllers) {
               pinCode += element.text;
             }
-            print(pinCode);
-            print(StorageRepository.getString("code"));
+            debugPrint(pinCode);
+            debugPrint(StorageRepository.getString("code"));
             if (pinCode == StorageRepository.getString("code")) {
               Navigator.pushReplacementNamed(context, RouteNames.tabBox);
             }else{
