@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:taxi_app/ui/create_order/sub_screens/add_promo/add_promo_screen.dart';
 import 'package:taxi_app/ui/create_order/sub_screens/driver_arriving/driver_arriving_screen.dart';
 import 'package:taxi_app/ui/create_order/sub_screens/payment_methods/payment_methods_screen.dart';
 import 'package:taxi_app/ui/create_order/sub_screens/searching_driver/searching_driver_screen.dart';
@@ -41,8 +42,10 @@ class RouteNames {
   static const String paymentMethods = "/payment_methods";
   static const String searchingDriver = "/searching_driver";
   static const String driverArriving = "/driver_arriving";
-  static const String selectDriverScreen = "/select_driver_screen";
+  static const String selectTransportScreen = "/select_driver_screen";
+  static const String addPromo = "/add_promo";
 }
+
 
 class AppRoutes {
   static Route generateRoute(RouteSettings settings) {
@@ -108,6 +111,10 @@ class AppRoutes {
         return MaterialPageRoute(
           builder: (context) => const PaymentMethodsScreen(),
         );
+      case RouteNames.addPromo:
+        return MaterialPageRoute(
+          builder: (context) => const AddPromoScreen(),
+        );
       case RouteNames.searchingDriver:
         return MaterialPageRoute(
           builder: (context) => const SearchingDriverScreen(),
@@ -116,9 +123,9 @@ class AppRoutes {
         return MaterialPageRoute(
           builder: (context) => const DriverArrivingScreen(),
         );
-      case RouteNames.selectDriverScreen:
+      case RouteNames.selectTransportScreen:
         return MaterialPageRoute(
-          builder: (context) => const SelectDriverScreen(),
+          builder: (context) => const SelectTransportScreen(),
         );
       default:
         return MaterialPageRoute(

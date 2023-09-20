@@ -9,8 +9,8 @@ import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
 
-class SelectTransPrtBottomSheet extends StatelessWidget {
-  const SelectTransPrtBottomSheet({super.key});
+class SelectTransportBottomSheet extends StatelessWidget {
+  const SelectTransportBottomSheet({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -45,13 +45,6 @@ class SelectTransPrtBottomSheet extends StatelessWidget {
             ),
           ),
           24.ph,
-          GlobalButton(
-            title: 'Continue',
-            radius: 100.r,
-            color: AppColors.primary,
-            onTap: () {},
-          ),
-          36.ph,
         ],
       ),
     );

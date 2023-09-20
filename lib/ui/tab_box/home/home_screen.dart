@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:taxi_app/ui/tab_box/home/dialogs/address_select_dialog.dart';
 import 'package:taxi_app/ui/tab_box/home/widgets/action_buttons.dart';
+import 'package:taxi_app/ui/tab_box/home/widgets/address_selected_view.dart';
 import 'package:taxi_app/ui/tab_box/home/widgets/global_action_button.dart';
 import 'package:taxi_app/ui/tab_box/home/widgets/home_address_selector.dart';
 import 'package:taxi_app/ui/tab_box/home/widgets/select_category.dart';
@@ -75,10 +76,10 @@ class _HomeScreenState extends State<HomeScreen> {
               left: 0,
               right: 0,
               child:
-              HomeAddressSelector(
-                onTab: () {
-                  addressSelectDialog(context);
-                },
+              AddressSelectedView(
+                // onTab: () {
+                //   addressSelectDialog(context);
+                // },
               ),
             ),
           ],

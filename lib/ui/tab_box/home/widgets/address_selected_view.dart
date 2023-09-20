@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/ui/tab_box/home/sub_screens/location_details/get_location_screen.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 
@@ -49,7 +50,7 @@ class AddressSelectedView extends StatelessWidget {
                   iconType: IconType.bold,
                 ),
                 colorFilter: const ColorFilter.mode(
-                  AppColors.yellow,
+                  AppColors.primary,
                   BlendMode.srcIn,
                 ),
               ),
@@ -59,7 +60,7 @@ class AddressSelectedView extends StatelessWidget {
                   iconType: IconType.bold,
                 ),
                 colorFilter: const ColorFilter.mode(
-                  AppColors.yellow,
+                  AppColors.primary,
                   BlendMode.srcIn,
                 ),
               ),
@@ -74,7 +75,7 @@ class AddressSelectedView extends StatelessWidget {
                   iconType: IconType.bold,
                 ),
                 colorFilter: const ColorFilter.mode(
-                  AppColors.yellow,
+                  AppColors.primary,
                   BlendMode.srcIn,
                 ),
               ),
@@ -84,7 +85,7 @@ class AddressSelectedView extends StatelessWidget {
                   iconType: IconType.bold,
                 ),
                 colorFilter: const ColorFilter.mode(
-                  AppColors.yellow,
+                  AppColors.primary,
                   BlendMode.srcIn,
                 ),
               ),
@@ -94,16 +95,12 @@ class AddressSelectedView extends StatelessWidget {
             40.ph,
             GlobalButton(
               textColor: AppColors.black,
-              color: AppColors.yellow,
+              color: AppColors.primary,
               title: "Buyurtma berishda davom eting",
               onTap: () {
-                Navigator.pushReplacement(
+                Navigator.pushNamed(
                   context,
-                  MaterialPageRoute(
-                    builder: (context) => GetLocationScreen(
-                      text: 'Soft Bank',
-                    ),
-                  ),
+                  RouteNames.selectTransportScreen,
                 );
               },
             ),

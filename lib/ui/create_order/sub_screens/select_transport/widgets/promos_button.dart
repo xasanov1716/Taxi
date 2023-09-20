@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:taxi_app/data/models/icon/icon_type.dart';
+import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
@@ -16,6 +17,7 @@ class PromosButton extends StatefulWidget {
 
 class _PromosButtonState extends State<PromosButton> {
   int promos = 0;
+
   @override
   Widget build(BuildContext context) {
     return promos != 0
@@ -86,6 +88,7 @@ class _PromosButtonState extends State<PromosButton> {
               ),
               20.pw,
               getPlusButton(() {
+                Navigator.pushNamed(context, RouteNames.addPromo);
                 setState(() {
                   promos++;
                 });

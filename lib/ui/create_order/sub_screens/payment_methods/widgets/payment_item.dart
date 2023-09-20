@@ -20,7 +20,6 @@ class PaymentItem extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 12.h),
       child: Container(
-        height: 80*height/figmaHeight,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16.r),
           color: getTheme(context) ? AppColors.dark2 : AppColors.white,
@@ -34,6 +33,7 @@ class PaymentItem extends StatelessWidget {
           borderRadius: BorderRadius.circular(16.r),
           color: getTheme(context) ? AppColors.dark2 : AppColors.white,
           child: InkWell(
+            borderRadius: BorderRadius.circular(16.r),
             onTap: onTap,
             child: Padding(
               padding: EdgeInsets.all(24.sp),

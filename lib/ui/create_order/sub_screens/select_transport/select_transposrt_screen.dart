@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/ui/create_order/sub_screens/select_transport/widgets/choose_data.dart';
 import 'package:taxi_app/ui/create_order/sub_screens/select_transport/widgets/select_transport_bottomsheet.dart';
 import 'package:taxi_app/ui/widgets/global_appbar.dart';
+import 'package:taxi_app/ui/widgets/global_button.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
-import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 
-class SelectDriverScreen extends StatefulWidget {
-  const SelectDriverScreen({super.key});
+class SelectTransportScreen extends StatefulWidget {
+  const SelectTransportScreen({super.key});
 
   @override
-  State<SelectDriverScreen> createState() => _SelectDriverScreenState();
+  State<SelectTransportScreen> createState() => _SelectTransportScreenState();
 }
 
-class _SelectDriverScreenState extends State<SelectDriverScreen> {
+class _SelectTransportScreenState extends State<SelectTransportScreen> {
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -68,7 +68,17 @@ class _SelectDriverScreenState extends State<SelectDriverScreen> {
               ],
             ),
           ),
-          SelectTransPrtBottomSheet(),
+          SelectTransportBottomSheet(),
+          GlobalButton(
+            title: 'Continue',
+            radius: 100.r,
+            color: AppColors.primary,
+            onTap: () {
+              Navigator.pushNamed(context, RouteNames.paymentMethods);
+
+            },
+          ),
+          36.ph,
         ],
       ),
     );
