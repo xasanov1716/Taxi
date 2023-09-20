@@ -62,6 +62,15 @@ class CreateSearchHistoryEvent extends PlacesEvent {
   List<Object?> get props => [query];
 }
 
+class UpdateQueryEvent extends PlacesEvent {
+  final String query;
+
+  UpdateQueryEvent(this.query);
+
+  @override
+  List<Object?> get props => [query];
+}
+
 class ClearSearchHistoryEvent extends PlacesEvent {
   @override
   List<Object?> get props => [];
