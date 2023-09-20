@@ -10,7 +10,6 @@ import 'package:taxi_app/ui/widgets/global_button.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
-
 import '../widgets/remember_me.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -94,7 +93,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 60.ph,
                 Column(
                   children: [
-                    CustomAuthDividerWidget(label: 'yoki davom eting'),
+                    const CustomAuthDividerWidget(label: 'yoki davom eting'),
                     20.ph,
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -120,6 +119,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               ],
             ),
           ),
-        ));
+        ),
+    );
   }
 }

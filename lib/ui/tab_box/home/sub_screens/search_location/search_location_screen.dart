@@ -31,15 +31,7 @@ class SearchLocationScreen extends StatelessWidget {
         title: GlobalTextField(
           onChanged: (value) {
             String v = Translit().toTranslit(source: value);
-            context
-                .read<SearchLocationBloc>()
-                .add(SearchRegionsByNameEvent(v));
-            context
-                .read<SearchLocationBloc>()
-                .add(SearchQuartersByNameEvent(v));
-            context
-                .read<SearchLocationBloc>()
-                .add(SearchDistrictsByNameEvent(v));
+            context.read<SearchLocationBloc>().add(UpdateQueryEvent(v));
           },
           focusNode: searchFocusNode,
           contentPadding: EdgeInsets.zero,

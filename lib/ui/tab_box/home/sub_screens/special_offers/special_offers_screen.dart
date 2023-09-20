@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:taxi_app/data/models/icon/icon_type.dart';
 import 'package:taxi_app/data/models/offers/offers_model.dart';
-import 'package:taxi_app/ui/tab_box/home/special_offers/widgets/special_offer_button.dart';
+import 'package:taxi_app/ui/tab_box/home/sub_screens/special_offers/widgets/special_offer_button.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 
 class SpecialOffersScreen extends StatefulWidget {
