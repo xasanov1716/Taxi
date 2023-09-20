@@ -10,6 +10,7 @@ import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/ui_utils/error_message_dialog.dart';
 
+
 class PinCodeScreen extends StatefulWidget {
   const PinCodeScreen({super.key});
 
