@@ -31,7 +31,9 @@ class SavedPlaces extends StatelessWidget {
                 ),
               ),
               30.pw,
-              const Text("Saved Places",style: TextStyle(color: Colors.black),),
+               Text("Saved Places",style: Theme.of(context).textTheme.titleLarge!.copyWith(
+
+               ),),
               const Spacer(),
               SvgPicture.asset(
                 AppIcons.getSvg(
