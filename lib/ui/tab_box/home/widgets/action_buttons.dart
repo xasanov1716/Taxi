@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/ui/tab_box/home/sub_screens/search_location/search_location_screen.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
@@ -19,22 +20,17 @@ class ActionButtons extends StatelessWidget {
         children: [
           GlobalActionButtons(
             color: AppColors.dimYellow,
-            icon: SvgPicture.asset(
-              AppIcons.search,
-            ),
+            icon: SvgPicture.asset(AppIcons.search),
             height: 52.h,
             width: 52.h,
             onTap: () {
-              // Navigator.push(
-              //     context,
-              //     MaterialPageRoute(
-              //       builder: (context) => const SearchLocationScreen(),
-              //     ));
+              Navigator.pushNamed(
+                context,
+                RouteNames.searchLocationScreen,
+              );
             },
           ),
-          const SizedBox(
-            width: 16,
-          ),
+          const SizedBox(width: 16),
           GlobalActionButtons(
             color: AppColors.dimYellow,
             icon: SvgPicture.asset(
@@ -44,9 +40,7 @@ class ActionButtons extends StatelessWidget {
             width: 52.h,
             onTap: () {},
           ),
-          const SizedBox(
-            width: 16,
-          ),
+          const SizedBox(width: 16),
           GlobalActionButtons(
             color: AppColors.dimYellow,
             icon: SvgPicture.asset(

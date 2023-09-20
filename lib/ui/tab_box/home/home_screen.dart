@@ -10,7 +10,7 @@ import 'package:taxi_app/ui/tab_box/home/widgets/select_category.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 
 import 'package:taxi_app/utils/icons/app_icons.dart';
-
+import 'package:taxi_app/utils/size/screen_size.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -51,31 +51,23 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             const ActionButtons(),
             Positioned(
-              bottom: 150,
-              right: 24,
-              child: Stack(
-                children: [
-                  GlobalActionButtons(
-                    color: AppColors.primary,
-                    icon: SvgPicture.asset(
-                      AppIcons.gps,
-                    ),
-                    height: 52.h,
-                    width: 52.h,
-                    onTap: () {},
-                  ),
-                ],
+              bottom: height / 4,
+              right: 24.w,
+              child: GlobalActionButtons(
+                color: AppColors.primary,
+                icon: SvgPicture.asset(
+                  AppIcons.gps,
+                ),
+                height: 52.h,
+                width: 52.h,
+                onTap: () {},
               ),
             ),
             Positioned(
-              bottom: 141.h,
+              bottom: height / 6,
               left: 0,
               right: 0,
-              child: Stack(
-                children: [
-                  CategoryOfAddress(),
-                ],
-              ),
+              child: CategoryOfAddress(),
             ),
             Positioned(
               bottom: 0,
@@ -101,6 +93,3 @@ class _HomeScreenState extends State<HomeScreen> {
     } catch (e) {}
   }
 }
-
-
-
