@@ -100,7 +100,10 @@ class _BiometricsScreenState extends State<BiometricsScreen> {
                     title: "Keyingi",
                     onTap: () {
                       _checkBiometric();
-
+                      if (StorageRepository.getBool("isAuth")) {
+                        Navigator.pushReplacementNamed(
+                            context, RouteNames.tabBox);
+                      }
                     },
                     radius: 100,
                     color: AppColors.primary,
