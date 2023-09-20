@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:taxi_app/data/models/icon/icon_type.dart';
 import 'package:taxi_app/ui/widgets/global_appbar.dart';
 import 'package:taxi_app/ui/widgets/global_button.dart';
-import 'package:taxi_app/ui/widgets/promos_image_dots.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
+import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
 
 class AddPromoScreen extends StatefulWidget {
@@ -31,7 +30,10 @@ class _AddPromoScreenState extends State<AddPromoScreen> {
             onPressed: () {},
             icon: SvgPicture.asset(
               AppIcons.search,
-              color: getTheme(context) ? AppColors.white : AppColors.c_900,
+              colorFilter: ColorFilter.mode(
+                getTheme(context) ? AppColors.white : AppColors.c_900,
+                BlendMode.srcIn,
+              ),
             ),
           ),
         ],
@@ -44,24 +46,17 @@ class _AddPromoScreenState extends State<AddPromoScreen> {
               margin: EdgeInsets.only(bottom: 24.w),
               padding: EdgeInsets.all(16.w),
               child: ListTile(
-                onTap: () {
-                  setState(() {
-                    selected = !selected;
-                  });
-                },
-                trailing: IconButton(
-                    onPressed: null,
-                    icon: selected
-                        ? SvgPicture.asset(AppIcons.circle)
-                        : SvgPicture.asset(AppIcons.circleTwo)),
-                leading: DotsGroup(
-                  imagePath: AppIcons.getSvg(
-                    name: AppIcons.ticketStar,
-                    iconType: IconType.bold,
-
-                  ),
-                )
-              ],
+                  onTap: () {
+                    setState(() {
+                      selected = !selected;
+                    });
+                  },
+                  trailing: IconButton(
+                      onPressed: null,
+                      icon: selected
+                          ? SvgPicture.asset(AppIcons.circle)
+                          : SvgPicture.asset(AppIcons.circleTwo)),
+                  leading: SvgPicture.asset(AppIcons.yellowOffer)),
             ),
           ),
           GlobalButton(
@@ -72,7 +67,6 @@ class _AddPromoScreenState extends State<AddPromoScreen> {
           ),
           36.ph,
         ],
-
       ),
     );
   }

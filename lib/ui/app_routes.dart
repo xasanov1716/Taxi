@@ -115,7 +115,8 @@ class AppRoutes {
       case RouteNames.driverArriving:
         return MaterialPageRoute(
           builder: (context) => const DriverArrivingScreen(),
-        case RouteNames.selectDriverScreen:
+        );
+      case RouteNames.selectDriverScreen:
         return MaterialPageRoute(
           builder: (context) => const SelectDriverScreen(),
         );
