@@ -61,6 +61,7 @@ class App extends StatelessWidget {
           BlocProvider(create: (context) => CodeInputCubit()),
           BlocProvider(
             create: (context) => AddressCubit(
+
                 addressApiRepository: context.read<AddressApiRepository>()),
           ),
           BlocProvider(create: (context) => AuthCubit()),
