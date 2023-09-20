@@ -11,17 +11,20 @@ class GlobalAppBar extends StatelessWidget implements PreferredSize {
   const GlobalAppBar({
     Key? key,
     this.onTap,
-    this.title = "",
+    this.title = "", this.action, this.centerTitle,
   }) : super(key: key);
 
   final VoidCallback? onTap;
   final String title;
+  final List<Widget>? action;
+  final bool? centerTitle;
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      actions: action,
       elevation: 0,
-      centerTitle: true,
+      centerTitle: centerTitle,
       leading: onTap != null
           ? IconButton(
         padding: EdgeInsets.zero,
