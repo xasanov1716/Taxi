@@ -72,7 +72,12 @@ class _SpecialOffersScreenState extends State<SpecialOffersScreen> {
             (index) {
               OffersModel offer = offers[index];
               return SpecialOfferButton(
-                  title: offer.title, text: offer.subtitle, icon: offer.icon,desc: offer.description,promoCode: offer.promoCode,);
+                title: offer.title,
+                text: offer.subtitle,
+                icon: offer.icon,
+                desc: offer.description,
+                promoCode: offer.promoCode,
+              );
             },
           )
         ],
