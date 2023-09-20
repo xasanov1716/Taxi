@@ -26,7 +26,7 @@ class SavedPlaces extends StatelessWidget {
                   iconType: IconType.bold,
                 ),
                 colorFilter: const ColorFilter.mode(
-                  AppColors.yellow,
+                  AppColors.primary,
                   BlendMode.srcIn,
                 ),
               ),
@@ -35,11 +35,11 @@ class SavedPlaces extends StatelessWidget {
               const Spacer(),
               SvgPicture.asset(
                 AppIcons.getSvg(
-                  name: AppIcons.arrowRight,
-                  iconType: IconType.bold,
+                  name: AppIcons.arrowRight2,
+                  iconType: IconType.lightOutline,
                 ),
                 colorFilter: const ColorFilter.mode(
-                  AppColors.yellow,
+                  AppColors.primary,
                   BlendMode.srcIn,
                 ),
               ),

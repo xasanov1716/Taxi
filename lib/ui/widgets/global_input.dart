@@ -19,6 +19,7 @@ class GlobalTextField extends StatefulWidget {
   final TextEditingController? controller;
   final Widget? suffixIcon;
   final bool? obscureText;
+  final EdgeInsets? contentPadding;
 
   const GlobalTextField({
     Key? key,
@@ -34,6 +35,7 @@ class GlobalTextField extends StatefulWidget {
     this.focusNode,
     this.maskFormatter,
     this.obscureText,
+    this.contentPadding,
   }) : super(key: key);
 
   @override
@@ -79,6 +81,7 @@ class _GlobalTextFieldState extends State<GlobalTextField> {
           color: const Color(0xff9e9e9e),
           height: 20 / 14,
         ),
+        contentPadding:widget.contentPadding,
         hintText: widget.hintText,
         prefixIcon: widget.prefixIcon,
         suffixIcon: widget.suffixIcon,
