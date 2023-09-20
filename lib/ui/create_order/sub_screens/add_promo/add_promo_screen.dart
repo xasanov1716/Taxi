@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:taxi_app/data/models/icon/icon_type.dart';
 import 'package:taxi_app/ui/widgets/global_appbar.dart';
+import 'package:taxi_app/ui/widgets/global_button.dart';
 import 'package:taxi_app/ui/widgets/promos_image_dots.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
@@ -35,7 +36,7 @@ class _AddPromoScreenState extends State<AddPromoScreen> {
           ),
         ],
       ),
-      body: ListView(
+      body: Column(
         children: [
           ...List.generate(
             5,
@@ -57,19 +58,21 @@ class _AddPromoScreenState extends State<AddPromoScreen> {
                   imagePath: AppIcons.getSvg(
                     name: AppIcons.ticketStar,
                     iconType: IconType.bold,
+
                   ),
-                  color: AppColors.gradientGreen,
-                ),
-                title: Text(
-                  "Discount 35% Off",
-                  style: Theme.of(context).textTheme.titleLarge,
-                ),
-                subtitle: Text("Special promo only today!",
-                    style: Theme.of(context).textTheme.bodyMedium),
-              ),
+                )
+              ],
             ),
-          )
+          ),
+          GlobalButton(
+            title: 'Apply Promo',
+            radius: 100.r,
+            color: AppColors.primary,
+            onTap: () {},
+          ),
+          36.ph,
         ],
+
       ),
     );
   }
