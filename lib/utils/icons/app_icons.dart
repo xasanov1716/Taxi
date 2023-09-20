@@ -194,4 +194,10 @@ class AppIcons {
   static const String circle='assets/svg/others/circle.svg';
   static const String circleTwo='assets/svg/others/circle_two.svg';
   static const String frame = "assets/svg/others/fram.svg";
+  static const String blueOffer = "assets/svg/others/blue_offer.svg";
+  static const String greenOffer = "assets/svg/others/green_offer.svg";
+  static const String purpleOffer = "assets/svg/others/purple_offer.svg";
+  static const String redOffer = "assets/svg/others/red_offer.svg";
+  static const String yellowOffer = "assets/svg/others/yellow_offer.svg";
+  static const String promoCode = "assets/svg/others/promo_code.svg";
 }

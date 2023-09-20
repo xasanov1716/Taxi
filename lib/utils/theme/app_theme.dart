@@ -41,7 +41,6 @@ class AppTheme {
     ),
     textTheme: TextTheme(
         //display
-
         displayLarge: AppTextStyle.h1Bold.copyWith(color: AppColors.c_900),
         displayMedium: AppTextStyle.h2Bold.copyWith(color: AppColors.c_900),
         displaySmall: AppTextStyle.h3Bold.copyWith(color: AppColors.c_900),

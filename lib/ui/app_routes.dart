@@ -7,6 +7,7 @@ import 'package:taxi_app/ui/create_order/sub_screens/select_transport/select_tra
 import 'package:taxi_app/ui/local_auth/pin_code_screen.dart';
 import 'package:taxi_app/ui/local_auth/biometrics_screen.dart';
 import 'package:taxi_app/ui/local_auth/pin_code_set_screen_.dart';
+import 'package:taxi_app/ui/tab_box/home/special_offers/special_offers_screen.dart';
 import 'package:taxi_app/ui/tab_box/home/sub_screens/search_location/search_location_screen.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/edit_profile/edit_profile_screen.dart';
 import 'package:taxi_app/ui/auth/login/login_screen.dart';
@@ -36,6 +37,7 @@ class RouteNames {
   static const String fillProfile = "/profile";
   static const String code = "/code";
   static const String searchLocationScreen = "/search_location";
+  static const String specialOffers = "/special_offers";
   static const String paymentMethods = "/payment_methods";
   static const String searchingDriver = "/searching_driver";
   static const String driverArriving = "/driver_arriving";
@@ -48,6 +50,10 @@ class AppRoutes {
       case RouteNames.splashScreen:
         return MaterialPageRoute(
           builder: (context) => const SplashScreen(),
+        );
+      case RouteNames.specialOffers:
+        return MaterialPageRoute(
+          builder: (context) => const SpecialOffersScreen(),
         );
       case RouteNames.letsIn:
         return MaterialPageRoute(
