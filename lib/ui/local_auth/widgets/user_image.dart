@@ -7,7 +7,12 @@ import '../../../utils/colors/app_colors.dart';
 import '../../../utils/size/screen_size.dart';
 
 class UserImage extends StatefulWidget {
-  const UserImage({super.key, required this.userImage, required this.edit, required this.onTap});
+  const UserImage({
+    super.key,
+    required this.userImage,
+    required this.edit,
+    required this.onTap,
+  });
 
   final String userImage;
   final String edit;
@@ -38,16 +43,18 @@ class _UserImageState extends State<UserImage> {
                   child: Image.asset(widget.userImage),
                 ),
                 Positioned(
-                    bottom: 0,
-                    right: 15.w,
-                    child: ZoomTapAnimation(
-                        child: SvgPicture.asset(
+                  bottom: 0,
+                  right: 15.w,
+                  child: ZoomTapAnimation(
+                    child: SvgPicture.asset(
                       widget.edit,
                       colorFilter: const ColorFilter.mode(
                           AppColors.primary, BlendMode.srcIn),
                       width: 35 * width / figmaWidth,
                       height: 35 * height / figmaHeight,
-                    ))),
+                    ),
+                  ),
+                ),
               ],
             ),
           ),

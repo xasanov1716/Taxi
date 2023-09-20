@@ -27,44 +27,41 @@ class SearchLocationScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-
-        automaticallyImplyLeading: false, // Set this to false
-        title: SizedBox(
-          height: 58.h,
-          child: GlobalTextField(
-            onChanged: (value) {
-              String v = Translit().toTranslit(source: value);
-              context
-                  .read<SearchLocationBloc>()
-                  .add(SearchRegionsByNameEvent(v));
-              context
-                  .read<SearchLocationBloc>()
-                  .add(SearchQuartersByNameEvent(v));
-              context
-                  .read<SearchLocationBloc>()
-                  .add(SearchDistrictsByNameEvent(v));
-            },
-            focusNode: searchFocusNode,
-            prefixIcon: Padding(
-              padding: EdgeInsets.only(left: 20.w, right: 12.w),
-              child: SvgPicture.asset(
-                AppIcons.search,
-                colorFilter: ColorFilter.mode(
-                    getTheme(context) ? AppColors.c_600 : AppColors.c_400,
-                    BlendMode.srcIn),
-              ),
+        automaticallyImplyLeading: true, // Set this to false
+        title: GlobalTextField(
+          onChanged: (value) {
+            String v = Translit().toTranslit(source: value);
+            context
+                .read<SearchLocationBloc>()
+                .add(SearchRegionsByNameEvent(v));
+            context
+                .read<SearchLocationBloc>()
+                .add(SearchQuartersByNameEvent(v));
+            context
+                .read<SearchLocationBloc>()
+                .add(SearchDistrictsByNameEvent(v));
+          },
+          focusNode: searchFocusNode,
+          contentPadding: EdgeInsets.zero,
+          prefixIcon: Padding(
+            padding: EdgeInsets.only(left: 20.w, right: 12.w),
+            child: SvgPicture.asset(
+              AppIcons.search,
+              colorFilter: ColorFilter.mode(
+                  getTheme(context) ? AppColors.c_600 : AppColors.c_400,
+                  BlendMode.srcIn),
             ),
-            hintText: "Search",
-            suffixIcon: IconButton(
-              onPressed: null,
-              icon: SvgPicture.asset(
-                AppIcons.getSvg(
-                  name: AppIcons.filter,
-                  iconType: IconType.bold,
-                ),
-                colorFilter:
-                    const ColorFilter.mode(AppColors.primary, BlendMode.srcIn),
+          ),
+          hintText: "Search",
+          suffixIcon: IconButton(
+            onPressed: null,
+            icon: SvgPicture.asset(
+              AppIcons.getSvg(
+                name: AppIcons.filter,
+                iconType: IconType.bold,
               ),
+              colorFilter:
+                  const ColorFilter.mode(AppColors.primary, BlendMode.srcIn),
             ),
           ),
         ),

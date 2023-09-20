@@ -18,7 +18,7 @@ import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
 
 class CreatePasswordScreen extends StatefulWidget {
-  CreatePasswordScreen({super.key});
+  const CreatePasswordScreen({super.key});
 
   @override
   State<CreatePasswordScreen> createState() => _CreatePasswordScreenState();

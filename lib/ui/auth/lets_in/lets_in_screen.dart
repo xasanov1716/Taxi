@@ -116,6 +116,7 @@ class LetsInScreen extends StatelessWidget {
                   Navigator.pushNamed(context, RouteNames.signUp);
                 },
               ),
+              24.ph,
             ],
           ),
         ),

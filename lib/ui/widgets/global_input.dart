@@ -14,10 +14,12 @@ class GlobalTextField extends StatefulWidget {
   final String caption;
   final ValueChanged? onChanged;
   final FocusNode? focusNode;
+  final bool readOnly;
   final MaskTextInputFormatter? maskFormatter;
   final TextEditingController? controller;
   final Widget? suffixIcon;
   final bool? obscureText;
+  final EdgeInsets? contentPadding;
 
   const GlobalTextField({
     Key? key,
@@ -27,11 +29,13 @@ class GlobalTextField extends StatefulWidget {
     this.prefixIcon,
     this.caption = "",
     this.suffixIcon,
+    this.readOnly = false,
     this.controller,
     this.onChanged,
     this.focusNode,
     this.maskFormatter,
     this.obscureText,
+    this.contentPadding,
   }) : super(key: key);
 
   @override
@@ -65,6 +69,7 @@ class _GlobalTextFieldState extends State<GlobalTextField> {
     return TextField(
       onChanged: widget.onChanged,
       obscuringCharacter: '●',
+      readOnly: widget.readOnly,
       controller: _internalController,
       focusNode: widget.focusNode ?? internalFocusNode,
       obscureText: widget.obscureText ?? false,
@@ -76,6 +81,7 @@ class _GlobalTextFieldState extends State<GlobalTextField> {
           color: const Color(0xff9e9e9e),
           height: 20 / 14,
         ),
+        contentPadding:widget.contentPadding,
         hintText: widget.hintText,
         prefixIcon: widget.prefixIcon,
         suffixIcon: widget.suffixIcon,

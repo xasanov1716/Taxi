@@ -1,67 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:local_auth/local_auth.dart';
-import 'package:lottie/lottie.dart';
 import 'package:pinput/pinput.dart';
 import 'package:taxi_app/data/local/storage_repository/storage_repository.dart';
 import 'package:taxi_app/ui/app_routes.dart';
-import 'package:taxi_app/ui/widgets/global_appbar.dart';
 import 'package:taxi_app/ui/widgets/global_button.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
-import 'package:taxi_app/utils/icons/app_icons.dart';
-import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/ui_utils/error_message_dialog.dart';
 
-
-class PinCodeScreen extends StatefulWidget {
-  const PinCodeScreen({super.key});
+class PinCodeSetScreen extends StatefulWidget {
+  const PinCodeSetScreen({super.key});
 
   @override
-  State<PinCodeScreen> createState() => _PinCodeScreenState();
+  State<PinCodeSetScreen> createState() => _PinCodeSetScreenState();
 }
 
-class _PinCodeScreenState extends State<PinCodeScreen> {
+class _PinCodeSetScreenState extends State<PinCodeSetScreen> {
   final TextEditingController codeController = TextEditingController();
-  final LocalAuthentication auth = LocalAuthentication();
   final FocusNode focusNode = FocusNode();
-  String currentPin = '';
-  bool authenticated = false;
-
-  @override
-  void initState() {
-    currentPin = StorageRepository.getString("code");
-    _checkBiometric();
-    super.initState();
-  }
-
-  void _checkBiometric() async {
-    try {
-      authenticated = await auth.authenticate(
-        localizedReason: 'Tasdiqlash uchun sensorga barmog\'ingizni bosing',
-        options: const AuthenticationOptions(
-          useErrorDialogs: true,
-          stickyAuth: false,
-          biometricOnly: true,
-        ),
-      );
-      debugPrint("AUTHENTICATED THEN:$authenticated");
-    } catch (e) {
-      debugPrint("error using biometric auth: $e");
-      if (context.mounted) {
-        showErrorMessage(
-            message: "Barmoq izini skanerlash xato!", context: context);
-      }
-    }
-    setState(() {
-      bool isAuth = StorageRepository.getBool("isAuth");
-      if (isAuth && authenticated) {
-        Navigator.pushReplacementNamed(context, RouteNames.tabBox);
-      }
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
+    const focusedBorderColor = Colors.blue;
+    const fillColor = AppColors.c_50;
+
     final defaultPinTheme = PinTheme(
       height: 61,
       textStyle: TextStyle(
@@ -76,7 +38,13 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: const GlobalAppBar(title: "Pin codeni kiriting!"),
+      appBar: AppBar(
+        elevation: 0,
+        title: const Text(
+          "Создать новый PIN-код",
+          style: TextStyle(fontSize: 18),
+        ),
+      ),
       body: Padding(
         padding: EdgeInsets.only(left: 24.w, right: 24.w, bottom: 48.h),
         child: Column(
@@ -84,14 +52,21 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
             Expanded(
                 child: ListView(
               children: [
-                115.ph,
-                Center(
-                  child: Text(
-                    'Add a PIN number to make your account\n                    more secure.',
-                    style: TextStyle(fontSize: 18.sp),
-                  ),
+                const SizedBox(
+                  height: 115,
                 ),
-                80.ph,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Add a PIN number to make your account\n                    more secure.',
+                      style: TextStyle(fontSize: 18.sp),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 80.h,
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
@@ -116,21 +91,21 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
                                 margin: const EdgeInsets.only(bottom: 9),
                                 width: 10.w,
                                 height: 1.h,
-                                color: Colors.blue,
+                                color: focusedBorderColor,
                               ),
                             ],
                           ),
                           focusedPinTheme: defaultPinTheme.copyWith(
                             decoration: defaultPinTheme.decoration!.copyWith(
                               borderRadius: BorderRadius.circular(8),
-                              border: Border.all(color: Colors.blue),
+                              border: Border.all(color: focusedBorderColor),
                             ),
                           ),
                           submittedPinTheme: defaultPinTheme.copyWith(
                             decoration: defaultPinTheme.decoration!.copyWith(
-                              color: AppColors.c_50,
+                              color: fillColor,
                               borderRadius: BorderRadius.circular(19),
-                              border: Border.all(color: Colors.blue),
+                              border: Border.all(color: focusedBorderColor),
                             ),
                           ),
                           errorPinTheme: defaultPinTheme.copyBorderWith(
@@ -143,28 +118,16 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
                 ),
               ],
             )),
-            GestureDetector(
-              onTap: () {
-                _checkBiometric();
-                if (authenticated) {
-                  Navigator.pushReplacementNamed(context, RouteNames.tabBox);
-                }
-              },
-              child: SizedBox(
-                height: 300.h,
-                width: 300.h,
-                child: Lottie.asset(AppIcons.fingerPrintTwo),
-              ),
-            ),
             GlobalButton(
               color: AppColors.primary,
               title: 'Continue',
               radius: 100,
               textColor: AppColors.black,
               onTap: () {
-                if (currentPin == codeController.text) {
-                  Navigator.pushReplacementNamed(context, RouteNames.tabBox);
+                if (codeController.text.isNotEmpty) {
+                  StorageRepository.putString('code', codeController.text);
                 }
+                Navigator.pushNamed(context, RouteNames.fingerprintScreen);
               },
             ),
           ],
