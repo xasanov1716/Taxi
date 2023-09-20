@@ -13,8 +13,8 @@ class DotsGroup extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 100.w,
-      height: 80.h,
+      width: 103.w,
+      height: 100.h,
       child: Stack(
         children: [
           Positioned(
