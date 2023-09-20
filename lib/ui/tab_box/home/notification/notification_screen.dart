@@ -8,14 +8,9 @@ import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
 
-class NotificationScreen extends StatefulWidget {
+class NotificationScreen extends StatelessWidget {
   const NotificationScreen({super.key});
 
-  @override
-  State<NotificationScreen> createState() => _NotificationScreenState();
-}
-
-class _NotificationScreenState extends State<NotificationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,10 +59,10 @@ class _NotificationScreenState extends State<NotificationScreen> {
                 ),
                 24.ph,
                 GlobalNotificationContainer(
-                      title: "30% Special Discount!",
-                      text: "Special promotion only valid today",
-                      icon: AppIcons.getSvg(
-                          name: AppIcons.discount, iconType: IconType.bold)),
+                    title: "30% Special Discount!",
+                    text: "Special promotion only valid today",
+                    icon: AppIcons.getSvg(
+                        name: AppIcons.discount, iconType: IconType.bold)),
                 24.ph,
                 GlobalNotificationContainer(
                     title: "Top Up E-Wallet Successful!",
@@ -99,18 +94,21 @@ class _NotificationScreenState extends State<NotificationScreen> {
                           : AppColors.c_900),
                 ),
                 24.ph,
-                const GlobalNotificationContainer(
+                GlobalNotificationContainer(
                     title: "Payment Successful!",
                     text: "You have made a taxi payment",
-                    icon: AppIcons.money),
+                    icon: AppIcons.getSvg(
+                        name: AppIcons.money, iconType: IconType.additionalIcons)),
                 24.ph,
-                const GlobalNotificationContainer(
+                GlobalNotificationContainer(
                     title: "Credit Card Connected!",
                     text: "Credit Card has been linked!",
-                    icon: AppIcons.card),
+                    icon: AppIcons.getSvg(
+                        name: AppIcons.card, iconType: IconType.additionalIcons)),
               ],
             ),
           ),
+          30.ph
         ],
       ),
     );
