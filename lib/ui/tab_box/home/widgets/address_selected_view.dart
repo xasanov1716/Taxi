@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:taxi_app/ui/app_routes.dart';
-import 'package:taxi_app/ui/tab_box/home/sub_screens/location_details/get_location_screen.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
-
+import 'package:taxi_app/utils/theme/get_theme.dart';
 import '../../../../data/models/icon/icon_type.dart';
 import '../../../../utils/colors/app_colors.dart';
 import '../../../../utils/icons/app_icons.dart';
@@ -21,7 +20,7 @@ class AddressSelectedView extends StatelessWidget {
       height: height / 2,
       padding: EdgeInsets.all(24.w),
       decoration: BoxDecoration(
-          color: AppColors.white,
+          color: Theme.of(context).scaffoldBackgroundColor,
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(40.w),
             topRight: Radius.circular(40.w),
@@ -94,7 +93,7 @@ class AddressSelectedView extends StatelessWidget {
             ),
             40.ph,
             GlobalButton(
-              textColor: AppColors.black,
+              textColor: AppColors.dark2,
               color: AppColors.primary,
               title: "Buyurtma berishda davom eting",
               onTap: () {
