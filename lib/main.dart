@@ -75,7 +75,7 @@ class App extends StatelessWidget {
           BlocProvider(create: (context) => TabCubit()),
           BlocProvider(create: (context) => HomeBloc()),
           BlocProvider(create: (context) => SocialAuthBloc()),
-            BlocProvider(create: (context) => UserCubit()),
+          BlocProvider(create: (context) => UserCubit()),
           BlocProvider(
             create: (_) => CategoryCubit(),
           ),
@@ -105,8 +105,8 @@ class MyApp extends StatelessWidget {
               debugShowCheckedModeBanner: false,
               theme: theme,
               darkTheme: darkTheme,
-             home: DriverDetailScreen(),
-             /* initialRoute: RouteNames.splashScreen,
+              home: DriverDetailScreen(),
+              /*initialRoute: RouteNames.splashScreen,
               onGenerateRoute: AppRoutes.generateRoute,*/
             );
           },
