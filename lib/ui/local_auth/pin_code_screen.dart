@@ -5,6 +5,7 @@ import 'package:lottie/lottie.dart';
 import 'package:pinput/pinput.dart';
 import 'package:taxi_app/data/local/storage_repository/storage_repository.dart';
 import 'package:taxi_app/ui/app_routes.dart';
+import 'package:taxi_app/ui/local_auth/widgets/pin_put_feild.dart';
 import 'package:taxi_app/ui/widgets/global_appbar.dart';
 import 'package:taxi_app/ui/widgets/global_button.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
@@ -34,6 +35,18 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
     super.initState();
   }
 
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      appBar: const GlobalAppBar(title: "Pin codeni kiriting!"),
+      body: Padding(
+        padding: EdgeInsets.only(left: 24.w, right: 24.w, bottom: 48.h),
+        child: const PinPutField(),
+      ),
+    );
+  }
+
   void _checkBiometric() async {
     try {
       authenticated = await auth.authenticate(
@@ -59,7 +72,6 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
       }
     });
   }
-
   @override
   Widget build(BuildContext context) {
     final defaultPinTheme = PinTheme(
