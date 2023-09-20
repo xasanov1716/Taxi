@@ -9,16 +9,17 @@ class IconsContainer extends StatelessWidget {
    final VoidCallback onTap;
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
+    double height=MediaQuery.of(context).size.height;
+    double width=MediaQuery.of(context).size.width;
     return  Container(
-        width: 72 * width / figmaWidth,
-        height: 72 * width / figmaWidth,
+        width: (width>=figmaWidth||width>=1800)?72.w:56.w,
+        height: (height>=figmaHeight||height>=2560)?72.w:56.w,
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(36.r),
+            borderRadius: BorderRadius.circular((width>=figmaWidth||width>=1800)?100:36),
             color: AppColors.amber),
         child: IconButton(
           onPressed: onTap,
-          icon: SvgPicture.asset(icon),
+          icon: SvgPicture.asset(icon,height: (height>=figmaHeight||height>=2560)?40.w:24.w,width: (width>=figmaWidth||width>=1800)?40.w:24.w),
         ));
   }
 }

@@ -119,53 +119,9 @@ class _DriverDetailScreenState extends State<DriverDetailScreen> {
                        )),
                  ],),
                ],
-
-             ),
+             )
             ],), radius: 24.r, height: 170, width: 380,),
-            24.ph,
-            ScreenData(column: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [ Text('Member Since',
-                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                    fontSize: 16.sp,
-                    fontWeight: FontWeight.w500,
-                  )),
-                Text('July 15, 2019',
-                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                      fontSize: 18.sp,
-                      fontWeight: FontWeight.w600,
-                    )),],),
-                20.pw,
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [ Text('Car Model',
-                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                    fontSize: 16.sp,
-                    fontWeight: FontWeight.w500,
-                  )),
-                Text('Mercedes-Benz E-Class',
-                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                      fontSize: 18.sp,
-                      fontWeight: FontWeight.w600,
-                    )),],),
-                20.pw,
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [ Text('Plate Number',
-                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                    fontSize: 16.sp,
-                    fontWeight: FontWeight.w500,
-                  )),
-                Text('HSW 4736 XK',
-                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                      fontSize: 18.sp,
-                      fontWeight: FontWeight.w600,
-                    )),],),
-            ],), radius: 16.r, height: 163, width: 380,)
+
           ],
         ),
       ),

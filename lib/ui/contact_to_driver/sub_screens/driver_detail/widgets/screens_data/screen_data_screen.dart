@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/size/screen_size.dart';
+import 'package:taxi_app/utils/theme/get_theme.dart';
 
 class ScreenData extends StatelessWidget {
   const ScreenData(
@@ -21,15 +22,12 @@ class ScreenData extends StatelessWidget {
       height: height * height1 / figmaHeight,
       width: width * width1 / figmaWidth,
       decoration: BoxDecoration(
+        color: getTheme(context)? AppColors.dark2: AppColors.greysCale,
         borderRadius: BorderRadius.circular(radius),
-        color: AppColors.white,
       ),
       child: Padding(
-        padding: EdgeInsets.only(
-            left: 24 * width1 / figmaWidth,
-            right: 24 * width1 / figmaWidth,
-            top: 24 * height1 / figmaHeight,
-            bottom: 24 * height1 / figmaHeight),
+        padding: EdgeInsets.all(
+             24 * width1 / figmaWidth,),
         child: column,
       ),
     );
