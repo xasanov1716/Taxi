@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:taxi_app/ui/create_order/sub_screens/select_transport/select_transposrt_screen.dart';
 import 'package:taxi_app/ui/tab_box/home/widgets/saved_places.dart';
 import 'package:taxi_app/ui/tab_box/home/widgets/text_field_item.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
@@ -78,7 +79,7 @@ enterBottomSheet(BuildContext context) {
     context: context,
     backgroundColor: Colors.white,
     builder: (BuildContext context) {
-      return StatefulBuilder(builder: (context, setState){
+      return StatefulBuilder(builder: (context, setState) {
         return Container(
           height: height / 1.2,
           decoration: BoxDecoration(
@@ -156,10 +157,10 @@ enterBottomSheet(BuildContext context) {
                 const SavedPlaces(),
                 Expanded(
                     child: ListView(
-                      children: [
-                        ...List.generate(
-                            10,
-                                (index) => const ListTile(
+                  children: [
+                    ...List.generate(
+                        10,
+                        (index) => const ListTile(
                               leading: Icon(Icons.watch_later_outlined),
                               trailing: Text(
                                 "2.9 km",
@@ -167,10 +168,10 @@ enterBottomSheet(BuildContext context) {
                               ),
                               title: Text("Eleonora Hotel"),
                               subtitle:
-                              Text("6 Glendale St. Worcester, MA 01604"),
+                                  Text("6 Glendale St. Worcester, MA 01604"),
                             ))
-                      ],
-                    )),
+                  ],
+                )),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 24.w),
                   child: GlobalButton(
@@ -275,12 +276,17 @@ endBottomSheet(BuildContext context) {
               ),
               40.ph,
               GlobalButton(
-                  textColor: AppColors.black,
-                  color: AppColors.yellow,
-                  title: "Buyurtma berishda davom eting",
-                  onTap: () {
-                    Navigator.pop(context);
-                  }),
+                textColor: AppColors.black,
+                color: AppColors.yellow,
+                title: "Buyurtma berishda davom eting",
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const SelectDriverScreen()),
+                  );
+                },
+              ),
             ],
           ),
         ),
