@@ -6,7 +6,6 @@ import 'package:taxi_app/ui/widgets/global_appbar.dart';
 import 'package:taxi_app/ui/widgets/promos_image_dots.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
-import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
 
 class AddPromoScreen extends StatefulWidget {
@@ -52,8 +51,8 @@ class _AddPromoScreenState extends State<AddPromoScreen> {
                 trailing: IconButton(
                     onPressed: null,
                     icon: selected
-                        ? SvgPicture.asset(AppIcons.circleTwo)
-                        : SvgPicture.asset(AppIcons.circle)),
+                        ? SvgPicture.asset(AppIcons.circle)
+                        : SvgPicture.asset(AppIcons.circleTwo)),
                 leading: DotsGroup(
                   imagePath: AppIcons.getSvg(
                     name: AppIcons.ticketStar,

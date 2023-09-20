@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:taxi_app/data/models/icon/icon_type.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
+import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
 
@@ -36,16 +37,14 @@ class _PromosButtonState extends State<PromosButton> {
                         ),
                         child: Row(
                           children: [
-                            Expanded(
-                              child: Text(
-                                'Discount 30% Off',
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodyLarge!
-                                    .copyWith(
-                                      color: AppColors.dark3,
-                                    ),
-                              ),
+                            Text(
+                              'Discount 30% Off',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyLarge!
+                                  .copyWith(
+                                    color: AppColors.dark3,
+                                  ),
                             ),
                             8.pw,
                             InkWell(
@@ -75,7 +74,7 @@ class _PromosButtonState extends State<PromosButton> {
                 children: [
                   Container(
                     height: 56.h,
-                    width: 311.w,
+
                     padding:
                         EdgeInsets.symmetric(horizontal: 20.w, vertical: 17.h),
                     decoration: BoxDecoration(

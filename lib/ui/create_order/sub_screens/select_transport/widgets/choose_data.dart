@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
+import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 
@@ -12,14 +13,12 @@ class ChooseData extends StatefulWidget {
       required this.text1,
       required this.text2,
       required this.text3,
-      required this.icon2,
-      required this.icon1});
+      });
   final String icon;
   final String text1;
   final String text2;
   final String text3;
-  final String icon1;
-  final String icon2;
+
 
   @override
   State<ChooseData> createState() => _ChooseDataState();
@@ -81,8 +80,8 @@ class _ChooseDataState extends State<ChooseData> {
                   });
                 },
                 icon: selected
-                    ? SvgPicture.asset(widget.icon1)
-                    : SvgPicture.asset(widget.icon2))
+                    ? SvgPicture.asset(AppIcons.circle)
+                    : SvgPicture.asset(AppIcons.circleTwo))
           ],
         ),
       ),
