@@ -3,6 +3,7 @@ import '../../data/models/icon/icon_type.dart';
 class AppIcons {
   // images
 
+  static const String taxiLogotip = "assets/images/taxi_logotip.png";
   static const String testAvatar = "assets/images/test_avatar.png";
   static const String barcode = "assets/images/barcode.png";
   static const String emptyProfile = "assets/images/empty_profile.png";
@@ -171,11 +172,27 @@ class AppIcons {
   // lottie
   static const String splashCircular = "assets/lottie/splash_circular.json";
   static const String cameraSelect = "assets/lottie/camera_select.json";
+  static const String fingerPrintTwo = "assets/lottie/fingerprint.json";
   static const String loader = "assets/lottie/loader.json";
 
   //others
   static const String checked = "assets/svg/others/checked.svg";
   static const String unchecked = "assets/svg/others/unchecked.svg";
+  static const String myWallet = "assets/svg/others/my_wallet.svg";
+  static const String payPal = "assets/svg/others/paypal.svg";
+  static const String masterCard = "assets/svg/others/master_card.svg";
+  static const String googlePay = "assets/svg/others/google.svg";
+  static const String cashMoney = "assets/svg/others/cash_money.svg";
+  static const String applePay = "assets/svg/others/apple_pay.svg";
+  static const String selected = "assets/svg/others/selected.svg";
+  static const String unSelected = "assets/svg/others/unselected.svg";
+  static const String sideCancel = "assets/svg/others/side_cancel.svg";
+  static const String cancel = "assets/svg/others/cancel.svg";
+  static const String bike='assets/svg/others/catgory_bike.svg';
+  static const String premium='assets/svg/others/premium.svg';
+  static const String standard='assets/svg/others/standard.svg';
+  static const String circle='assets/svg/others/circle.svg';
+  static const String circleTwo='assets/svg/others/circle_two.svg';
   static const String frame = "assets/svg/others/fram.svg";
   static const String blueOffer = "assets/svg/others/blue_offer.svg";
   static const String greenOffer = "assets/svg/others/green_offer.svg";
@@ -183,5 +200,4 @@ class AppIcons {
   static const String redOffer = "assets/svg/others/red_offer.svg";
   static const String yellowOffer = "assets/svg/others/yellow_offer.svg";
   static const String promoCode = "assets/svg/others/promo_code.svg";
-
 }

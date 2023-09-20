@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:taxi_app/ui/create_order/sub_screens/driver_arriving/driver_arriving_screen.dart';
+import 'package:taxi_app/ui/create_order/sub_screens/payment_methods/payment_methods_screen.dart';
+import 'package:taxi_app/ui/create_order/sub_screens/searching_driver/searching_driver_screen.dart';
+import 'package:taxi_app/ui/create_order/sub_screens/select_transport/select_transposrt_screen.dart';
 
 import 'package:taxi_app/ui/local_auth/pin_code_screen.dart';
 import 'package:taxi_app/ui/local_auth/biometrics_screen.dart';
@@ -34,6 +38,10 @@ class RouteNames {
   static const String code = "/code";
   static const String searchLocationScreen = "/search_location";
   static const String specialOffers = "/special_offers";
+  static const String paymentMethods = "/payment_methods";
+  static const String searchingDriver = "/searching_driver";
+  static const String driverArriving = "/driver_arriving";
+  static const String selectDriverScreen = "/select_driver_screen";
 }
 
 class AppRoutes {
@@ -95,6 +103,21 @@ class AppRoutes {
       case RouteNames.searchLocationScreen:
         return MaterialPageRoute(
           builder: (context) => const SearchLocationScreen(),
+        );
+      case RouteNames.paymentMethods:
+        return MaterialPageRoute(
+          builder: (context) => const PaymentMethodsScreen(),
+        );
+      case RouteNames.searchingDriver:
+        return MaterialPageRoute(
+          builder: (context) => const SearchingDriverScreen(),
+        );
+      case RouteNames.driverArriving:
+        return MaterialPageRoute(
+          builder: (context) => const DriverArrivingScreen(),
+        case RouteNames.selectDriverScreen:
+        return MaterialPageRoute(
+          builder: (context) => const SelectDriverScreen(),
         );
       default:
         return MaterialPageRoute(
