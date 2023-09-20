@@ -26,7 +26,7 @@ class _GetLocationScreenState extends State<GetLocationScreen> {
   @override
   Widget build(BuildContext context) {
     final textLength = widget.text.length;
-    final svgWidth = 50.h + (textLength * 5.0);
+    final svgWidth = 50.w + (textLength * 5.0);
 
     return Scaffold(
       appBar: AppBar(
@@ -86,7 +86,6 @@ class _GetLocationScreenState extends State<GetLocationScreen> {
                   child: SvgPicture.asset(
                   AppIcons.frame,
                   width: svgWidth,
-                  height: 30.h,
                     ),
                 ),
                 Positioned.fill(
@@ -107,7 +106,7 @@ class _GetLocationScreenState extends State<GetLocationScreen> {
                 ),
                 Center(
                   child: Container(
-                    margin: EdgeInsets.only(top: 100.h),
+                    margin: EdgeInsets.only(top: 150.h),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30.r),
                       color: AppColors.primaryBackground.withOpacity(0.5),
