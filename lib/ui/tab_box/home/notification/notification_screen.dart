@@ -95,16 +95,16 @@ class NotificationScreen extends StatelessWidget {
                 ),
                 24.ph,
                 GlobalNotificationContainer(
-                    title: "Payment Successful!",
-                    text: "You have made a taxi payment",
-                    icon: AppIcons.getSvg(
-                        name: AppIcons.money, iconType: IconType.additionalIcons)),
+                  title: "Payment Successful!",
+                  text: "You have made a taxi payment",
+                  icon: AppIcons.money,
+                ),
                 24.ph,
                 GlobalNotificationContainer(
-                    title: "Credit Card Connected!",
-                    text: "Credit Card has been linked!",
-                    icon: AppIcons.getSvg(
-                        name: AppIcons.card, iconType: IconType.additionalIcons)),
+                  title: "Credit Card Connected!",
+                  text: "Credit Card has been linked!",
+                  icon: AppIcons.card,
+                ),
               ],
             ),
           ),

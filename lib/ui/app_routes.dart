@@ -111,7 +111,7 @@ class AppRoutes {
         );
       case RouteNames.notificationScreen:
         return MaterialPageRoute(
-          builder: (context) => const NotificationScreen(),
+          builder: (context) => const NotificationScreen(),);
       case RouteNames.paymentMethods:
         return MaterialPageRoute(
           builder: (context) => const PaymentMethodsScreen(),

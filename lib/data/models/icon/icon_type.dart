@@ -6,5 +6,4 @@ enum IconType {
   lightBorder,
   lightOutline,
   twoTon,
-  additionalIcons
 }
