@@ -2,11 +2,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:taxi_app/cubits/category_cubit/category_cubit.dart';
+import 'package:taxi_app/data/models/icon/icon_type.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
-
 
 class CategoryTile extends StatelessWidget {
   final String categoryName;
@@ -30,7 +31,7 @@ class CategoryTile extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(30),
-          border: Border.all(color: AppColors.primary,width: 2),
+          border: Border.all(color: AppColors.primary, width: 2),
           color: isSelected ? AppColors.primary : AppColors.white,
         ),
         margin: const EdgeInsets.symmetric(horizontal: 6),
@@ -38,17 +39,20 @@ class CategoryTile extends StatelessWidget {
         child: Row(
           children: [
             SvgPicture.asset(
-              AppIcons.location,
+              AppIcons.getSvg(
+                name: AppIcons.location,
+                iconType: IconType.bold,
+              ),
               color: isSelected ? AppColors.white : AppColors.primary,
+              width: 16.w,
             ),
             const SizedBox(width: 8),
             Text(
               categoryName,
               style: TextStyle(
-                color: isSelected ? AppColors.white : AppColors.primary,
-                fontWeight: FontWeight.w600,
-                fontSize: 16
-              ),
+                  color: isSelected ? AppColors.white : AppColors.primary,
+                  fontWeight: FontWeight.w600,
+                  fontSize: 16),
             ),
           ],
         ),

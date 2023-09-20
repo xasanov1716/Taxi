@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
+import 'package:taxi_app/utils/theme/get_theme.dart';
 
 class GlobalSearchTextField extends StatefulWidget {
   final String hintText;
@@ -41,6 +42,7 @@ class _GlobalSearchTextField extends State<GlobalSearchTextField> {
   final bool _isPasswordVisible = false;
 
   bool isFocus = false;
+  final internalFocusNode = FocusNode();
   final FocusNode _textFieldFocus = FocusNode();
   Color _color = AppColors.c_50;
   Color _iconColor = AppColors.c_300;
@@ -98,22 +100,31 @@ class _GlobalSearchTextField extends State<GlobalSearchTextField> {
               child:  SvgPicture.asset(widget.rightImage!,colorFilter: const ColorFilter.mode(AppColors.c_400, BlendMode.srcIn),)
             ) : null,
             enabledBorder: OutlineInputBorder(
-              borderSide: const BorderSide(color: AppColors.c_50, width: 1),
+              borderSide: BorderSide(
+                  color:
+                  getTheme(context) ? AppColors.dark3 : const Color(0xFFFAFAFA),
+                  width: 1),
               borderRadius: BorderRadius.circular(10),
             ),
             focusedBorder: OutlineInputBorder(
-              borderSide: const BorderSide(color: AppColors.c_50, width: 1),
+              borderSide: const BorderSide(color: AppColors.primary, width: 1),
               borderRadius: BorderRadius.circular(10),
             ),
             errorBorder: OutlineInputBorder(
-              borderSide: const BorderSide(color: AppColors.c_50, width: 1),
+              borderSide: const BorderSide(color: Colors.red, width: 1),
               borderRadius: BorderRadius.circular(10),
             ),
             border: OutlineInputBorder(
-              borderSide: const BorderSide(color: AppColors.c_50, width: 1),
+              borderSide: BorderSide(color: getTheme(context)? const Color(0xFFFAFAFA):AppColors.dark2, width: 1),
               borderRadius: BorderRadius.circular(10),
             ),
-            fillColor: AppColors.c_50,
+            fillColor: getTheme(context)
+                ? (widget.focusNode?.hasFocus ?? internalFocusNode.hasFocus)
+                ? AppColors.yellowTransparent
+                : AppColors.dark2
+                : (widget.focusNode?.hasFocus ?? internalFocusNode.hasFocus)
+                ? const Color(0xFFFFFAED)
+                : const Color(0xFFFAFAFA),
             filled: true,
           ),
           keyboardType: widget.keyboardType,

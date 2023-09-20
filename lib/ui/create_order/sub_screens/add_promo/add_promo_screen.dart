@@ -1,0 +1,76 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:taxi_app/ui/app_routes.dart';
+import 'package:taxi_app/ui/widgets/global_appbar.dart';
+import 'package:taxi_app/ui/widgets/global_button.dart';
+import 'package:taxi_app/utils/colors/app_colors.dart';
+import 'package:taxi_app/utils/icons/app_icons.dart';
+import 'package:taxi_app/utils/size/size_extension.dart';
+import 'package:taxi_app/utils/theme/get_theme.dart';
+
+class AddPromoScreen extends StatefulWidget {
+  const AddPromoScreen({super.key});
+
+  @override
+  State<AddPromoScreen> createState() => _AddPromoScreenState();
+}
+
+class _AddPromoScreenState extends State<AddPromoScreen> {
+  bool selected = true;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: GlobalAppBar(
+        centerTitle: false,
+        title: "Add Promo",
+        onTap: () {
+          Navigator.pop(context);
+        },
+        action: [
+          IconButton(
+            onPressed: () {},
+            icon: SvgPicture.asset(
+              AppIcons.search,
+              colorFilter: ColorFilter.mode(
+                getTheme(context) ? AppColors.white : AppColors.c_900,
+                BlendMode.srcIn,
+              ),
+            ),
+          ),
+        ],
+      ),
+      body: Column(
+        children: [
+          ...List.generate(
+            5,
+            (index) => Container(
+              margin: EdgeInsets.only(bottom: 24.w),
+              padding: EdgeInsets.all(16.w),
+              child: ListTile(
+                  onTap: () {
+                    setState(() {
+                      selected = !selected;
+                    });
+                  },
+                  trailing: IconButton(
+                      onPressed: null,
+                      icon: selected
+                          ? SvgPicture.asset(AppIcons.circle)
+                          : SvgPicture.asset(AppIcons.circleTwo)),
+                  leading: SvgPicture.asset(AppIcons.yellowOffer)),
+            ),
+          ),
+          GlobalButton(
+            title: 'Apply Promo',
+            radius: 100.r,
+            color: AppColors.primary,
+            onTap: () {},
+          ),
+          36.ph,
+        ],
+      ),
+    );
+  }
+}
