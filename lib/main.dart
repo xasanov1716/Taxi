@@ -23,6 +23,7 @@ import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/theme/app_theme.dart';
 import 'cubits/category_cubit/category_cubit.dart';
 import 'cubits/user/user_cubit.dart';
+import 'ui/contact_to_driver/sub_screens/driver_detail/driver_detail_screen.dart';
 import 'ui/create_order/sub_screens/select_transport/select_transposrt_screen.dart';
 
 Future<void> main() async {
