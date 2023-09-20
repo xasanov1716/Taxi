@@ -69,32 +69,7 @@ class _PromosButtonState extends State<PromosButton> {
               }, context)
             ],
           )
-        : Row(
-            children: [
-              Container(
-                height: 56.h,
-                width: 311.w,
-                padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 17.h),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12.r),
-                  color: getTheme(context) ? AppColors.dark2 : AppColors.c_50,
-                ),
-                child: Text(
-                  'Enter Promo Code',
-                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                        color: AppColors.c_500,
-                      ),
-                ),
-              ),
-              20.pw,
-              getPlusButton(() {
-                Navigator.pushNamed(context, RouteNames.addPromo);
-                setState(() {
-                  promos++;
-                });
-              }, context)
-            ],
-          );
+        : SizedBox();
   }
 }
 

@@ -3,7 +3,7 @@ import 'package:taxi_app/ui/create_order/sub_screens/add_promo/add_promo_screen.
 import 'package:taxi_app/ui/create_order/sub_screens/driver_arriving/driver_arriving_screen.dart';
 import 'package:taxi_app/ui/create_order/sub_screens/payment_methods/payment_methods_screen.dart';
 import 'package:taxi_app/ui/create_order/sub_screens/searching_driver/searching_driver_screen.dart';
-import 'package:taxi_app/ui/create_order/sub_screens/select_transport/select_transposrt_screen.dart';
+import 'package:taxi_app/ui/create_order/sub_screens/select_transport/select_transport_screen.dart';
 
 import 'package:taxi_app/ui/local_auth/pin_code_screen.dart';
 import 'package:taxi_app/ui/local_auth/biometrics_screen.dart';
