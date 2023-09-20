@@ -7,7 +7,6 @@ import 'package:taxi_app/ui/create_order/sub_screens/select_transport/select_tra
 import 'package:taxi_app/ui/local_auth/pin_code_screen.dart';
 import 'package:taxi_app/ui/local_auth/biometrics_screen.dart';
 import 'package:taxi_app/ui/local_auth/pin_code_set_screen_.dart';
-import 'package:taxi_app/ui/tab_box/home/special_offers/special_offers_screen.dart';
 import 'package:taxi_app/ui/tab_box/home/sub_screens/search_location/search_location_screen.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/edit_profile/edit_profile_screen.dart';
 import 'package:taxi_app/ui/auth/login/login_screen.dart';
@@ -20,6 +19,7 @@ import 'package:taxi_app/ui/tab_box/profile/sub_screens/restore_password/forget_
 import 'package:taxi_app/ui/tab_box/tab_box.dart';
 
 import 'auth/lets_in/lets_in_screen.dart';
+import 'tab_box/home/sub_screens/special_offers/special_offers_screen.dart';
 
 class RouteNames {
   static const String splashScreen = "/";

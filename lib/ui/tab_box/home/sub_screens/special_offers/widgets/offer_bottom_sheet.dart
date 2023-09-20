@@ -117,7 +117,7 @@ class OfferBottomSheetItem extends StatelessWidget {
                     ],
                   )
                 ],
-              ))
+              ),)
         ],
       ),
     );

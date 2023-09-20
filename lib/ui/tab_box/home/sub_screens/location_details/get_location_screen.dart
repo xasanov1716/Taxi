@@ -5,11 +5,11 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:taxi_app/data/models/icon/icon_type.dart';
+import 'package:taxi_app/ui/widgets/global_button.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
-import '../../../../data/models/icon/icon_type.dart';
-import '../../../widgets/global_button.dart';
 
 class GetLocationScreen extends StatefulWidget {
   const GetLocationScreen({Key? key, required this.text}) : super(key: key);
