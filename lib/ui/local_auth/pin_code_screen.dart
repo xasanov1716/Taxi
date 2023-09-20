@@ -12,6 +12,7 @@ import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/ui_utils/error_message_dialog.dart';
 
+
 class PinCodeScreen extends StatefulWidget {
   const PinCodeScreen({super.key});
 
