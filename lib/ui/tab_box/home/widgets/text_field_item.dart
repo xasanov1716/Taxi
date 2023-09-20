@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../widgets/global_input.dart';
 
-
 class TextFieldItem extends StatelessWidget {
   const TextFieldItem({super.key, required this.hintText, required this.startIcon, required this.endIcon});
 
@@ -13,18 +12,17 @@ class TextFieldItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Row(
+    return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         startIcon,
         SizedBox(
-            width: 340.w,
-            child: GlobalTextField(
-              hintText: hintText,suffixIcon:Padding(
-              padding: const EdgeInsets.all(18.0),
-              child: endIcon
-            ),
-            ),
+          width: 345.w,
+          height: 73.h,
+          child: GlobalTextField(
+            hintText: hintText,
+            suffixIcon: Padding(padding: EdgeInsets.all(18.w), child: endIcon),
+          ),
         ),
       ],
     );

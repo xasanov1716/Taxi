@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:taxi_app/utils/theme/get_theme.dart';
 
 import '../../../../data/models/icon/icon_type.dart';
 import '../../../../utils/colors/app_colors.dart';
@@ -17,9 +18,9 @@ class HomeAddressSelector extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(24.h),
       width: width,
-      height: height / 7,
+      height: height / 7.7,
       decoration: BoxDecoration(
-          color: AppColors.white,
+          color: Theme.of(context).scaffoldBackgroundColor,
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(40.w),
             topRight: Radius.circular(40.w),
@@ -33,7 +34,7 @@ class HomeAddressSelector extends StatelessWidget {
           child: Ink(
             padding: EdgeInsets.all(24.h),
             decoration: BoxDecoration(
-              color: AppColors.c_100,
+              color: getTheme(context)?AppColors.dark3:AppColors.white,
               borderRadius: BorderRadius.circular(16.w),
             ),
             child: Row(
