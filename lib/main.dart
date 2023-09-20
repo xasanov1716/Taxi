@@ -104,7 +104,7 @@ class MyApp extends StatelessWidget {
               debugShowCheckedModeBanner: false,
               theme: theme,
               darkTheme: darkTheme,
-              initialRoute: RouteNames.splashScreen,
+              initialRoute: RouteNames.notificationScreen,
               onGenerateRoute: AppRoutes.generateRoute,
             );
           },

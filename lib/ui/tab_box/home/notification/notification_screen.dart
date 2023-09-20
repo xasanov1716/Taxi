@@ -1,0 +1,118 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:taxi_app/data/models/icon/icon_type.dart';
+import 'package:taxi_app/ui/tab_box/home/notification/widgets/global_notification_container.dart';
+import 'package:taxi_app/utils/colors/app_colors.dart';
+import 'package:taxi_app/utils/icons/app_icons.dart';
+import 'package:taxi_app/utils/size/size_extension.dart';
+import 'package:taxi_app/utils/theme/get_theme.dart';
+
+class NotificationScreen extends StatefulWidget {
+  const NotificationScreen({super.key});
+
+  @override
+  State<NotificationScreen> createState() => _NotificationScreenState();
+}
+
+class _NotificationScreenState extends State<NotificationScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: SvgPicture.asset(
+            AppIcons.arrowLeft,
+            colorFilter: ColorFilter.mode(
+                getTheme(context) ? AppColors.white : AppColors.black,
+                BlendMode.srcIn),
+          ),
+        ),
+        title: Text("Notification",
+            style: Theme.of(context).appBarTheme.titleTextStyle),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: SvgPicture.asset(
+              AppIcons.moreCircle,
+              colorFilter: ColorFilter.mode(
+                  getTheme(context) ? AppColors.white : AppColors.black,
+                  BlendMode.srcIn),
+            ),
+          ),
+        ],
+      ),
+      body: ListView(
+        children: [
+          24.ph,
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 24.w),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Today",
+                  style: Theme.of(context).dialogTheme.titleTextStyle!.copyWith(
+                      fontSize: 18.sp,
+                      color: getTheme(context)
+                          ? AppColors.white
+                          : AppColors.c_900),
+                ),
+                24.ph,
+                GlobalNotificationContainer(
+                      title: "30% Special Discount!",
+                      text: "Special promotion only valid today",
+                      icon: AppIcons.getSvg(
+                          name: AppIcons.discount, iconType: IconType.bold)),
+                24.ph,
+                GlobalNotificationContainer(
+                    title: "Top Up E-Wallet Successful!",
+                    text: "You have to top up your e-wallet",
+                    icon: AppIcons.getSvg(
+                        name: AppIcons.wallet, iconType: IconType.bold)),
+                24.ph,
+                Text(
+                  "Yesterday",
+                  style: Theme.of(context).dialogTheme.titleTextStyle!.copyWith(
+                      fontSize: 18.sp,
+                      color: getTheme(context)
+                          ? AppColors.white
+                          : AppColors.c_900),
+                ),
+                24.ph,
+                GlobalNotificationContainer(
+                    title: "New Services Available!",
+                    text: "Now you can track drivers in real time",
+                    icon: AppIcons.getSvg(
+                        name: AppIcons.location, iconType: IconType.bold)),
+                24.ph,
+                Text(
+                  "December 22, 2024",
+                  style: Theme.of(context).dialogTheme.titleTextStyle!.copyWith(
+                      fontSize: 18.sp,
+                      color: getTheme(context)
+                          ? AppColors.white
+                          : AppColors.c_900),
+                ),
+                24.ph,
+                const GlobalNotificationContainer(
+                    title: "Payment Successful!",
+                    text: "You have made a taxi payment",
+                    icon: AppIcons.money),
+                24.ph,
+                const GlobalNotificationContainer(
+                    title: "Credit Card Connected!",
+                    text: "Credit Card has been linked!",
+                    icon: AppIcons.card),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}

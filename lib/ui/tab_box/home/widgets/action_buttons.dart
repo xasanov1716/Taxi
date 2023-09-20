@@ -38,7 +38,9 @@ class ActionButtons extends StatelessWidget {
             ),
             height: 52.h,
             width: 52.h,
-            onTap: () {},
+            onTap: () {
+              Navigator.pushNamed(context, RouteNames.notificationScreen);
+            },
           ),
           const SizedBox(width: 16),
           GlobalActionButtons(
