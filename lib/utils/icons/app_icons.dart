@@ -176,4 +176,6 @@ class AppIcons {
   //others
   static const String checked = "assets/svg/others/checked.svg";
   static const String unchecked = "assets/svg/others/unchecked.svg";
+  static const String frame = "assets/svg/others/fram.svg";
+
 }

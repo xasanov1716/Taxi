@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -22,15 +24,18 @@ class GlobalAppBar extends StatelessWidget implements PreferredSize {
       centerTitle: true,
       leading: onTap != null
           ? IconButton(
-              padding: EdgeInsets.zero,
-              onPressed: onTap,
-              icon: SvgPicture.asset(
-                AppIcons.arrowLeft,
-                colorFilter: ColorFilter.mode(
-                    getTheme(context) ? AppColors.white : AppColors.c_900,
-                    BlendMode.srcIn),
-              ),
-            )
+        padding: EdgeInsets.zero,
+        onPressed: onTap,
+        icon: Platform.isIOS
+            ? Icon(
+          Icons.arrow_back_ios,
+          color: getTheme(context) ? AppColors.white : AppColors.c_900,
+        )
+            : SvgPicture.asset(
+          AppIcons.arrowLeft,
+          color: getTheme(context) ? AppColors.white : AppColors.c_900,
+        ),
+      )
           : null,
       title: title.isNotEmpty
           ? Text(
