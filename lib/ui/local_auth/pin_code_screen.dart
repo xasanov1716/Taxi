@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:local_auth/local_auth.dart';
+import 'package:lottie/lottie.dart';
 import 'package:pinput/pinput.dart';
 import 'package:taxi_app/data/local/storage_repository/storage_repository.dart';
 import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/ui/widgets/global_appbar.dart';
 import 'package:taxi_app/ui/widgets/global_button.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
+import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/ui_utils/error_message_dialog.dart';
 
@@ -22,6 +24,7 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
   final LocalAuthentication auth = LocalAuthentication();
   final FocusNode focusNode = FocusNode();
   String currentPin = '';
+  bool authenticated = false;
 
   @override
   void initState() {
@@ -31,7 +34,6 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
   }
 
   void _checkBiometric() async {
-    bool authenticated = false;
     try {
       authenticated = await auth.authenticate(
         localizedReason: 'Tasdiqlash uchun sensorga barmog\'ingizni bosing',
@@ -59,9 +61,6 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
 
   @override
   Widget build(BuildContext context) {
-
-
-
     final defaultPinTheme = PinTheme(
       height: 61,
       textStyle: TextStyle(
@@ -143,6 +142,19 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
                 ),
               ],
             )),
+            GestureDetector(
+              onTap: () {
+                _checkBiometric();
+                if (authenticated) {
+                  Navigator.pushReplacementNamed(context, RouteNames.tabBox);
+                }
+              },
+              child: SizedBox(
+                height: 300.h,
+                width: 300.h,
+                child: Lottie.asset(AppIcons.fingerPrintTwo),
+              ),
+            ),
             GlobalButton(
               color: AppColors.primary,
               title: 'Continue',
