@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:taxi_app/ui/create_order/sub_screens/select_transport/select_transposrt_screen.dart';
 
 import 'package:taxi_app/ui/local_auth/pin_code_screen.dart';
 import 'package:taxi_app/ui/local_auth/biometrics_screen.dart';
@@ -32,6 +33,7 @@ class RouteNames {
   static const String fillProfile = "/profile";
   static const String code = "/code";
   static const String searchLocationScreen = "/search_location";
+  static const String selectDriverScreen = "/select_driver_screen";
 }
 
 class AppRoutes {
@@ -89,6 +91,10 @@ class AppRoutes {
       case RouteNames.searchLocationScreen:
         return MaterialPageRoute(
           builder: (context) => const SearchLocationScreen(),
+        );
+        case RouteNames.selectDriverScreen:
+        return MaterialPageRoute(
+          builder: (context) => const SelectDriverScreen(),
         );
       default:
         return MaterialPageRoute(
