@@ -36,6 +36,7 @@ class SearchLocationBloc extends Bloc<PlacesEvent, PlacesState> {
     on<GetSearchHistoryEvent>(_getSearchHistoryByLimit);
     on<CreateSearchHistoryEvent>(_createSearchHistory);
     on<ClearSearchHistoryEvent>(_clearSearchHistory);
+    on<UpdateQueryEvent>(_updateQuery);
   }
 
   Future<void> _searchByRegion(
@@ -142,10 +143,17 @@ class SearchLocationBloc extends Bloc<PlacesEvent, PlacesState> {
     String datas = data.data;
     if (datas.isNotEmpty) {
       // ignore: invalid_use_of_visible_for_testing_member
-      emit(state.copyWith(status: FormStatus.success,history: []));
+      emit(state.copyWith(status: FormStatus.success, history: []));
     } else {
       // ignore: invalid_use_of_visible_for_testing_member
       emit(state.copyWith(errorText: data.error, status: FormStatus.failure));
     }
+  }
+
+  Future<void> _updateQuery(
+      UpdateQueryEvent event, Emitter<PlacesState> emitter) async {
+    add(SearchRegionsByNameEvent(event.query));
+    add(SearchQuartersByNameEvent(event.query));
+    add(SearchDistrictsByNameEvent(event.query));
   }
 }
