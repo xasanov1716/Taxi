@@ -5,6 +5,7 @@ import 'package:taxi_app/data/local/storage_repository/storage_repository.dart';
 import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/ui/widgets/global_button.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
+import 'package:taxi_app/utils/constants/storage_keys.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
 import 'package:taxi_app/utils/ui_utils/error_message_dialog.dart';
@@ -114,8 +115,8 @@ class _PinPutFieldState extends State<PinPutField> {
               pinCode += element.text;
             }
             debugPrint(pinCode);
-            debugPrint(StorageRepository.getString("code"));
-            if (pinCode == StorageRepository.getString("code")) {
+            debugPrint(StorageRepository.getString(StorageKeys.pinCode));
+            if (pinCode == StorageRepository.getString(StorageKeys.pinCode)) {
               Navigator.pushReplacementNamed(context, RouteNames.tabBox);
             } else {
               showErrorMessage(message: "Pin Code Xato!", context: context);

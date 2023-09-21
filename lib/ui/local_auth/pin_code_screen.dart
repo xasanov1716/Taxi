@@ -5,6 +5,7 @@ import 'package:taxi_app/data/local/storage_repository/storage_repository.dart';
 import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/ui/local_auth/widgets/pin_put_feild.dart';
 import 'package:taxi_app/ui/widgets/global_appbar.dart';
+import 'package:taxi_app/utils/constants/storage_keys.dart';
 import 'package:taxi_app/utils/ui_utils/error_message_dialog.dart';
 
 class PinCodeScreen extends StatefulWidget {
@@ -23,7 +24,7 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
 
   @override
   void initState() {
-    currentPin = StorageRepository.getString("code");
+    currentPin = StorageRepository.getString(StorageKeys.pinCode);
     _checkBiometric();
     super.initState();
   }
