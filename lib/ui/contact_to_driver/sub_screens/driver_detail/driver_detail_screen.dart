@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:taxi_app/data/models/icon/icon_type.dart';
 import 'package:taxi_app/ui/app_routes.dart';
+import 'package:taxi_app/ui/contact_to_driver/sub_screens/driver_detail/widgets/third_Item_in_driver_detail.dart';
 import 'package:taxi_app/ui/widgets/global_appbar.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
@@ -165,61 +166,22 @@ class _DriverDetailScreenState extends State<DriverDetailScreen> {
               width: 380,
             ),
             24.ph,
-            ScreenData(
+            const ScreenData(
               column: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text('Member Since',
-                          style:
-                              Theme.of(context).textTheme.bodyMedium!.copyWith(
-                                    fontSize: 16.sp,
-                                    fontWeight: FontWeight.w500,
-                                  )),
-                      Text('July 15, 2019',
-                          style:
-                              Theme.of(context).textTheme.bodyMedium!.copyWith(
-                                    fontSize: 18.sp,
-                                    fontWeight: FontWeight.w600,
-                                  )),
-                    ],
+                  ThirdItemInDriverDetail(
+                    startText: "Member Since",
+                    endText: "July 15, 2019",
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text('Car Model',
-                          style:
-                              Theme.of(context).textTheme.bodyMedium!.copyWith(
-                                    fontSize: 16.sp,
-                                    fontWeight: FontWeight.w500,
-                                  )),
-                      Text('July 15, 2019',
-                          style:
-                              Theme.of(context).textTheme.bodyMedium!.copyWith(
-                                    fontSize: 18.sp,
-                                    fontWeight: FontWeight.w600,
-                                  )),
-                    ],
+                  ThirdItemInDriverDetail(
+                    startText: "Car Model",
+                    endText: "July 15, 2019",
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text('Plate Number',
-                          style:
-                              Theme.of(context).textTheme.bodyMedium!.copyWith(
-                                    fontSize: 16.sp,
-                                    fontWeight: FontWeight.w500,
-                                  )),
-                      Text('HSW 4736 XK',
-                          style:
-                              Theme.of(context).textTheme.bodyMedium!.copyWith(
-                                    fontSize: 18.sp,
-                                    fontWeight: FontWeight.w600,
-                                  )),
-                    ],
+                  ThirdItemInDriverDetail(
+                    startText: "Plate Number",
+                    endText: "HSW 4736 XK",
                   ),
                 ],
               ),
