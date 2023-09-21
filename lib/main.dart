@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taxi_app/blocs/create_order/create_order_bloc.dart';
 import 'package:taxi_app/blocs/home/home_bloc.dart';
+import 'package:taxi_app/blocs/messages/message_bloc.dart';
 import 'package:taxi_app/blocs/search_location_bloc/places_bloc.dart';
 import 'package:taxi_app/cubits/address_cubit/address_cubit.dart';
 import 'package:taxi_app/blocs/social_auth_bloc/social_auth_bloc.dart';
@@ -20,6 +21,7 @@ import 'package:taxi_app/data/repositories/places_db_repository.dart';
 import 'package:taxi_app/data/repositories/search_history_db.dart';
 import 'package:taxi_app/services/api_service.dart';
 import 'package:taxi_app/ui/app_routes.dart';
+import 'package:taxi_app/ui/contact_to_driver/sub_screens/chat_with_driver/chat_with_driver.dart';
 import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/theme/app_theme.dart';
 import 'cubits/category_cubit/category_cubit.dart';
@@ -79,6 +81,7 @@ class App extends StatelessWidget {
           BlocProvider(
             create: (_) => CategoryCubit(),
           ),
+          BlocProvider(create: (context) => MessageBloc()),
         ],
         child: const MyApp(),
       ),
@@ -105,8 +108,9 @@ class MyApp extends StatelessWidget {
               debugShowCheckedModeBanner: false,
               theme: theme,
               darkTheme: darkTheme,
-              initialRoute: RouteNames.splashScreen,
-              onGenerateRoute: AppRoutes.generateRoute,
+              // initialRoute: RouteNames.splashScreen,
+              // onGenerateRoute: AppRoutes.generateRoute,
+              home: ChatWithDriverScreen(),
             );
           },
         );
