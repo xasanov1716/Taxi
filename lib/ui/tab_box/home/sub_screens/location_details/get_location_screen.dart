@@ -5,11 +5,11 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:taxi_app/data/models/icon/icon_type.dart';
+import 'package:taxi_app/ui/widgets/global_button.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
-import '../../../../data/models/icon/icon_type.dart';
-import '../../../widgets/global_button.dart';
 
 class GetLocationScreen extends StatefulWidget {
   const GetLocationScreen({Key? key, required this.text}) : super(key: key);
@@ -26,7 +26,7 @@ class _GetLocationScreenState extends State<GetLocationScreen> {
   @override
   Widget build(BuildContext context) {
     final textLength = widget.text.length;
-    final svgWidth = 50.h + (textLength * 5.0);
+    final svgWidth = 50.w + (textLength * 5.0);
 
     return Scaffold(
       appBar: AppBar(
@@ -86,7 +86,6 @@ class _GetLocationScreenState extends State<GetLocationScreen> {
                   child: SvgPicture.asset(
                   AppIcons.frame,
                   width: svgWidth,
-                  height: 30.h,
                     ),
                 ),
                 Positioned.fill(
@@ -107,7 +106,7 @@ class _GetLocationScreenState extends State<GetLocationScreen> {
                 ),
                 Center(
                   child: Container(
-                    margin: EdgeInsets.only(top: 100.h),
+                    margin: EdgeInsets.only(top: 150.h),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(30.r),
                       color: AppColors.primaryBackground.withOpacity(0.5),
