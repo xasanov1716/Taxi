@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/ui/create_order/sub_screens/driver_arriving/widgets/driver_item.dart';
 import 'package:taxi_app/ui/create_order/sub_screens/searching_driver/widgets/side_cancel_button.dart';
 import 'package:taxi_app/utils/size/screen_size.dart';
@@ -49,7 +50,7 @@ class _DriverArrivingScreenState extends State<DriverArrivingScreen> {
             zoomControlsEnabled: false,
           ),
           Positioned(
-            bottom: 325*height/figmaHeight,
+            bottom: 325 * height / figmaHeight,
             right: 24.w,
             child: GlobalActionButtons(
               color: AppColors.primary,
@@ -62,40 +63,58 @@ class _DriverArrivingScreenState extends State<DriverArrivingScreen> {
             ),
           ),
           Positioned(
-            top: 66*height/figmaHeight,
+              top: 66 * height / figmaHeight,
               left: 24.w,
               child: GestureDetector(
-                onTap: (){
+                onTap: () {
                   Navigator.pop(context);
                 },
                 child: Container(
-                  height: 52.w, width: 52.w,
+                  height: 52.w,
+                  width: 52.w,
                   padding: EdgeInsets.all(12.r),
                   decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: getTheme(context) ? AppColors.primaryBackground : AppColors.dimYellow
+                      shape: BoxShape.circle,
+                      color: getTheme(context)
+                          ? AppColors.primaryBackground
+                          : AppColors.dimYellow),
+                  child: SvgPicture.asset(
+                    AppIcons.arrowLeft2,
+                    fit: BoxFit.cover,
                   ),
-                  child: SvgPicture.asset(AppIcons.arrowLeft2, fit: BoxFit.cover,),),
+                ),
               )),
           Positioned(
               bottom: 24.h,
-              left: (width-230.w)/2,
-              child: SideCalcelButton(icon: AppIcons.image,title: "Driver arrive",onTap: (){
-                setState(() {
-                  isDriver = true;
-                });
-              },)),
+              left: (width - 230.w) / 2,
+              child: SideCalcelButton(
+                icon: AppIcons.image,
+                title: "Driver arrive",
+                onTap: () {
+                  setState(() {
+                    isDriver = true;
+                  });
+                },
+              )),
           Visibility(
             visible: isDriver,
             child: Positioned(
               bottom: 0,
               left: 0,
               right: 0,
-              child: DriverItem(onTap: (){
-                setState(() {
-                  isDriver = false;
-                });
-              },),
+              child: DriverItem(
+                cancelTap: () {
+                  Navigator.pushNamed(context, RouteNames.cancelDriver);
+
+                  setState(() {
+                    isDriver = false;
+                  });
+                },
+                chatTap: () {
+                  Navigator.pushNamed(context, RouteNames.chatWithDriver);
+                },
+                callTap: () {},
+              ),
             ),
           ),
         ],
@@ -106,7 +125,7 @@ class _DriverArrivingScreenState extends State<DriverArrivingScreen> {
   Future<void> _applyCustomMapStyle() async {
     try {
       String style =
-      await rootBundle.loadString('assets/styles/map_style.json');
+          await rootBundle.loadString('assets/styles/map_style.json');
       mapController.setMapStyle(style);
     } catch (e) {}
   }

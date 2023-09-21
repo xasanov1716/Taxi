@@ -108,6 +108,7 @@ class _ChatWithDriverScreenState extends State<ChatWithDriverScreen> {
                       ),
               ),
               SendMessageTextField(
+
                 onSuffixIconTap: () {
                   showBottomSheetDialog(context);
                 },
