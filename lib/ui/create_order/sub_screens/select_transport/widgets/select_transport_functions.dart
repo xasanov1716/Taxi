@@ -29,3 +29,24 @@ getRow(String text, String icon, BuildContext context) {
     ],
   );
 }
+
+getPlusButton(VoidCallback onTap, BuildContext context) {
+  return InkWell(
+    radius: 100.r,
+    borderRadius: BorderRadius.circular(100.r),
+    onTap: onTap,
+    child: Container(
+      padding: EdgeInsets.all(12.r),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(100.r),
+        color:
+        getTheme(context) ? AppColors.dark3 : AppColors.orangeTransparent,
+      ),
+      child: Icon(
+        Icons.add,
+        size: 16.h,
+        color: getTheme(context) ? AppColors.white : AppColors.dark3,
+      ),
+    ),
+  );
+}
