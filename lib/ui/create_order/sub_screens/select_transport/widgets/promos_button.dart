@@ -20,56 +20,8 @@ class _PromosButtonState extends State<PromosButton> {
 
   @override
   Widget build(BuildContext context) {
-    return promos != 0
-        ? Wrap(
-            runSpacing: 10.h,
-            spacing: 10.w,
-            children: [
-              ...List.generate(
-                promos,
-                (index) {
-                  return Container(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 20.w, vertical: 8.h),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(100.r),
-                      color: AppColors.primary,
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(
-                          'Discount 30% Off',
-                          style:
-                              Theme.of(context).textTheme.bodyLarge!.copyWith(
-                                    color: AppColors.dark3,
-                                  ),
-                        ),
-                        8.pw,
-                        InkWell(
-                          onTap: () {
-                            setState(() {
-                              promos--;
-                            });
-                          },
-                          child: SvgPicture.asset(AppIcons.getSvg(
-                              name: AppIcons.closeSquare,
-                              iconType: IconType.lightOutline)),
-                        ),
-                      ],
-                    ),
-                  );
-                },
-              ),
-              20.pw,
-              getPlusButton(() {
-                setState(() {
-                  promos++;
-                });
-              }, context)
-            ],
-          )
-        : SizedBox();
+    return SizedBox();
+
   }
 }
 

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:taxi_app/blocs/create_order/create_order_bloc.dart';
 import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/ui/widgets/global_appbar.dart';
 import 'package:taxi_app/ui/widgets/global_button.dart';
@@ -18,6 +20,7 @@ class AddPromoScreen extends StatefulWidget {
 
 class _AddPromoScreenState extends State<AddPromoScreen> {
   bool selected = true;
+  String selectedText = '';
 
   @override
   Widget build(BuildContext context) {
@@ -54,6 +57,8 @@ class _AddPromoScreenState extends State<AddPromoScreen> {
                       promoItems[i].selected = (i == index);
                     }
                   });
+                  selectedText = promoItems[index].text;
+                  print(selectedText);
                 },
                 child: Container(
                   margin: EdgeInsets.only(bottom: 24.h),
@@ -93,14 +98,18 @@ class _AddPromoScreenState extends State<AddPromoScreen> {
               );
             },
           )),
-
           Padding(
-            padding:  EdgeInsets.all(24.h),
+            padding: EdgeInsets.all(24.h),
             child: GlobalButton(
               title: 'Apply Promo',
               radius: 100.r,
               color: AppColors.primary,
-              onTap: () {},
+              onTap: () {
+                context
+                    .read<CreateOrderBloc>()
+                    .add(UpdatePromoCodes(promoCode: selectedText));
+                Navigator.pop(context);
+              },
             ),
           ),
           12.ph,
@@ -113,15 +122,7 @@ class _AddPromoScreenState extends State<AddPromoScreen> {
 List<PromoItem> promoItems = [
   PromoItem(
       icon: AppIcons.yellowOffer,
-      selected: true,
-      text: "Special 25% Off",
-      subtitle: "Special promo only today!"), PromoItem(
-      icon: AppIcons.yellowOffer,
-      selected: true,
-      text: "Special 25% Off",
-      subtitle: "Special promo only today!"), PromoItem(
-      icon: AppIcons.yellowOffer,
-      selected: true,
+      selected: false,
       text: "Special 25% Off",
       subtitle: "Special promo only today!"),
   PromoItem(
