@@ -194,6 +194,8 @@ class AppIcons {
   static const String circle='assets/svg/others/circle.svg';
   static const String circleTwo='assets/svg/others/circle_two.svg';
   static const String frame = "assets/svg/others/fram.svg";
+  static const String rateStarUser = "assets/svg/others/rate_star_user.svg";
+  static const String rateStar = "assets/svg/others/rate_star.svg";
 
 
   // additional icons
