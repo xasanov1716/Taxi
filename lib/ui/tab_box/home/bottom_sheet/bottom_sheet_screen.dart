@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:taxi_app/ui/tab_box/home/notification/widgets/global_notification_container.dart';
+import 'package:taxi_app/ui/tab_box/home/bottom_sheet/widgets/global_bottom_sheet_bottom.dart';
+import 'package:taxi_app/ui/tab_box/home/bottom_sheet/widgets/global_bottom_sheet_start.dart';
+import 'package:taxi_app/ui/tab_box/home/bottom_sheet/widgets/smile_widgets.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/screen_size.dart';
@@ -17,15 +18,16 @@ class BottomSheetScreen extends StatefulWidget {
 }
 
 class _BottomSheetScreenState extends State<BottomSheetScreen> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
         systemOverlayStyle:
-            SystemUiOverlayStyle(statusBarColor: Colors.transparent),
+            const SystemUiOverlayStyle(statusBarColor: Colors.transparent),
         backgroundColor: Colors.white,
-        title: Text(
+        title: const Text(
           "Bottom Sheet",
           style: TextStyle(color: Colors.black),
         ),
@@ -42,85 +44,62 @@ class _BottomSheetScreenState extends State<BottomSheetScreen> {
             borderRadius: BorderRadius.circular(16.r),
             onTap: () {
               showModalBottomSheet(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(32.r),
-                      topRight: Radius.circular(32.r),
-                    ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(32.r),
+                    topRight: Radius.circular(32.r),
                   ),
-                  showDragHandle: true,
-                  isScrollControlled: true,
-                  context: context,
-                  backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-                  builder: (context) {
-                    return SizedBox(
-                      height: height / 1.2,
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 24.w),
-                        child: Column(
-                          children: [
-                            Text(
-                              "Your Mood",
-                              style: Theme.of(context)
-                                  .dialogTheme
-                                  .titleTextStyle
-                                  ?.copyWith(
-                                      fontSize: 24.sp,
-                                      color: getTheme(context)
-                                          ? AppColors.white
-                                          : AppColors.c_900),
-                            ),
-                            24.ph,
-                            const Divider(),
-                            24.ph,
-                            // GlobalNotificationContainer(title: "Daniel Austin", text: "Mercedes-Benz E-Class", icon: AppIcons.profile)
-                            Row(
-                              children: [
-                                Image.asset(AppIcons.testAvatar,
-                                    width: 60.w, height: 60.h),
-                                20.pw,
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Text(
-                                          "Daniel Austin",
-                                          style: Theme.of(context)
-                                              .dialogTheme
-                                              .titleTextStyle
-                                              ?.copyWith(
-                                                  fontSize: 18.sp,
-                                                  fontWeight: FontWeight.w700,
-                                                  color: getTheme(context)
-                                                      ? AppColors.white
-                                                      : AppColors.c_900),
-                                        ),
-                                        SvgPicture.asset(AppIcons.starPrimary)
-                                      ],
-                                    ),
-                                    8.ph,
-                                    Text(
-                                      "Mercedes-Benz E-Class",
-                                      style: Theme.of(context)
-                                          .dialogTheme
-                                          .titleTextStyle
-                                          ?.copyWith(
-                                          fontSize: 18.sp,
-                                          fontWeight: FontWeight.w700,
-                                          color: getTheme(context)
-                                              ? AppColors.white
-                                              : AppColors.c_900),
-                                    ),
-                                  ],
-                                )
-                              ],
-                            )
-                          ],
-                        ),
+                ),
+                showDragHandle: true,
+                isScrollControlled: true,
+                context: context,
+                backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+                builder: (context) {
+                  return SizedBox(
+                    height: height / 1.2,
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 24.w),
+                      child: Column(
+                        children: [
+                          const GlobalBottomSheetStart(
+                              centerText: "Your Mood",
+                              name: "Daniel Austin",
+                              carName: "Mercedes-Benz E-Class",
+                              starCount: "4.8",
+                              carNumber: "HSW 4736 XK",
+                              commentTitle: "What's Your Mood!",
+                              commentSubtitle: "about this trip?"),
+                          40.ph,
+                          const SmileWidgets(icon1: AppIcons.smileEyeGlass, icon2: AppIcons.smileExcited, icon3: AppIcons.smileHappy),
+                          24.ph,
+                          const SmileWidgets(icon1: AppIcons.smileVeryHappy, icon2: AppIcons.smileAngry, icon3: AppIcons.smileQuiet),
+                          24.ph,
+                          const SmileWidgets(icon1: AppIcons.smileUnhappy, icon2: AppIcons.smileTired, icon3: AppIcons.smileCry),
+                          64.ph,
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              GlobalBottomSheetBottom(
+                                text: "Cancel",
+                                colorText: getTheme(context)
+                                    ? AppColors.white
+                                    : AppColors.dark3,
+                                colorContainer: getTheme(context)
+                                    ? AppColors.dark3
+                                    : AppColors.white,
+                              ),
+                              const GlobalBottomSheetBottom(
+                                  text: "Submit",
+                                  colorText: AppColors.dark3,
+                                  colorContainer: AppColors.primary),
+                            ],
+                          ),
+                        ],
                       ),
-                    );
-                  });
+                    ),
+                  );
+                },
+              );
             },
             child: Container(
                 padding: EdgeInsets.only(
@@ -132,3 +111,4 @@ class _BottomSheetScreenState extends State<BottomSheetScreen> {
     );
   }
 }
+
