@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taxi_app/blocs/home/home_bloc.dart';
+import 'package:taxi_app/blocs/messages/message_bloc.dart';
 import 'package:taxi_app/blocs/search_location_bloc/places_bloc.dart';
 import 'package:taxi_app/cubits/address_cubit/address_cubit.dart';
 import 'package:taxi_app/blocs/social_auth_bloc/social_auth_bloc.dart';
@@ -77,6 +78,7 @@ class App extends StatelessWidget {
           BlocProvider(
             create: (_) => CategoryCubit(),
           ),
+          BlocProvider(create: (context) => MessageBloc()),
         ],
         child: const MyApp(),
       ),
