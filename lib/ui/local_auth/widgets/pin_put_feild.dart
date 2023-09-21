@@ -21,7 +21,6 @@ class _PinPutFieldState extends State<PinPutField> {
   final List<TextEditingController> pinControllers =
       List.generate(4, (_) => TextEditingController());
 
-
   @override
   void initState() {
     super.initState();
@@ -47,7 +46,7 @@ class _PinPutFieldState extends State<PinPutField> {
                       style: Theme.of(context)
                           .appBarTheme
                           .titleTextStyle!
-                          .copyWith(fontSize: 20.sp),
+                          .copyWith(fontSize: 16.sp),
                       onTap: () {
                         setState(() {
                           FocusScope.of(context)
@@ -118,8 +117,7 @@ class _PinPutFieldState extends State<PinPutField> {
             debugPrint(StorageRepository.getString("code"));
             if (pinCode == StorageRepository.getString("code")) {
               Navigator.pushReplacementNamed(context, RouteNames.tabBox);
-            }else{
-
+            } else {
               showErrorMessage(message: "Pin Code Xato!", context: context);
             }
           },

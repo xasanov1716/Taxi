@@ -73,7 +73,7 @@ class App extends StatelessWidget {
           BlocProvider(create: (context) => TabCubit()),
           BlocProvider(create: (context) => HomeBloc()),
           BlocProvider(create: (context) => SocialAuthBloc()),
-            BlocProvider(create: (context) => UserCubit()),
+          BlocProvider(create: (context) => UserCubit()),
           BlocProvider(
             create: (_) => CategoryCubit(),
           ),
