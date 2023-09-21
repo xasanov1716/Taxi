@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:taxi_app/data/local/storage_repository/storage_repository.dart';
-import 'package:taxi_app/ui/app_routes.dart';
-import 'package:taxi_app/ui/widgets/global_button.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
-import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
 
 class PinCodePinPutField extends StatefulWidget {
@@ -19,7 +15,7 @@ class _PinCodePinPutFieldState extends State<PinCodePinPutField> {
   // final TextEditingController codeController = TextEditingController();
   final List<FocusNode> pinFocusNodes = List.generate(4, (_) => FocusNode());
   final List<TextEditingController> pinControllers =
-  List.generate(4, (_) => TextEditingController());
+      List.generate(4, (_) => TextEditingController());
 
   // String currentPin = '';
 
@@ -45,8 +41,7 @@ class _PinCodePinPutFieldState extends State<PinCodePinPutField> {
                 .copyWith(fontSize: 20.sp),
             onTap: () {
               setState(() {
-                FocusScope.of(context)
-                    .requestFocus(pinFocusNodes[index]);
+                FocusScope.of(context).requestFocus(pinFocusNodes[index]);
               });
             },
             controller: pinControllers[index],
@@ -58,12 +53,11 @@ class _PinCodePinPutFieldState extends State<PinCodePinPutField> {
               counterText: "",
               hintText: '',
               hintStyle: const TextStyle(fontSize: 20.0),
-              contentPadding: EdgeInsets.symmetric(
-                  vertical: 16.0, horizontal: 26.0),
+              contentPadding:
+                  EdgeInsets.symmetric(vertical: 16.0, horizontal: 26.0),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
-                borderSide:
-                const BorderSide(color: AppColors.primary),
+                borderSide: const BorderSide(color: AppColors.primary),
               ),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
@@ -77,8 +71,8 @@ class _PinCodePinPutFieldState extends State<PinCodePinPutField> {
               fillColor: pinFocusNodes[index].hasFocus
                   ? AppColors.yellowTransparent
                   : getTheme(context)
-                  ? const Color(0xFF1F222A)
-                  : AppColors.c_200,
+                      ? const Color(0xFF1F222A)
+                      : AppColors.c_200,
             ),
             textAlign: TextAlign.center,
             focusNode: pinFocusNodes[index],

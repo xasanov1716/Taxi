@@ -1,6 +1,20 @@
 part of 'create_order_bloc.dart';
+class CreateOrderState extends Equatable {
+  final List<String> promoCodeList;
+  final FormStatus status;
 
-@immutable
-abstract class CreateOrderState {}
+  const CreateOrderState({required this.promoCodeList, required this.status});
 
-class CreateOrderInitial extends CreateOrderState {}
+  @override
+  List<Object?> get props => [status, promoCodeList];
+
+  CreateOrderState copyWith({
+    List<String>? promoCodeList,
+    FormStatus? status,
+  }) {
+    return CreateOrderState(
+      promoCodeList: promoCodeList ?? this.promoCodeList,
+      status: status ?? this.status,
+    );
+  }
+}

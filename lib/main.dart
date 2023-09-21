@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:taxi_app/blocs/create_order/create_order_bloc.dart';
 import 'package:taxi_app/blocs/home/home_bloc.dart';
+import 'package:taxi_app/blocs/messages/message_bloc.dart';
 import 'package:taxi_app/blocs/search_location_bloc/places_bloc.dart';
 import 'package:taxi_app/cubits/address_cubit/address_cubit.dart';
 import 'package:taxi_app/blocs/social_auth_bloc/social_auth_bloc.dart';
@@ -25,7 +27,6 @@ import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/theme/app_theme.dart';
 import 'cubits/category_cubit/category_cubit.dart';
 import 'cubits/user/user_cubit.dart';
-import 'ui/create_order/sub_screens/select_transport/select_transposrt_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -62,6 +63,7 @@ class App extends StatelessWidget {
           BlocProvider(create: (context) => CodeInputCubit()),
           BlocProvider(
             create: (context) => AddressCubit(
+
                 addressApiRepository: context.read<AddressApiRepository>()),
           ),
           BlocProvider(create: (context) => AuthCubit()),
@@ -76,9 +78,11 @@ class App extends StatelessWidget {
           BlocProvider(create: (context) => HomeBloc()),
           BlocProvider(create: (context) => SocialAuthBloc()),
             BlocProvider(create: (context) => UserCubit()),
+            BlocProvider(create: (context) => CreateOrderBloc()),
           BlocProvider(
             create: (_) => CategoryCubit(),
           ),
+          BlocProvider(create: (context) => MessageBloc()),
         ],
         child: const MyApp(),
       ),
@@ -105,9 +109,8 @@ class MyApp extends StatelessWidget {
               debugShowCheckedModeBanner: false,
               theme: theme,
               darkTheme: darkTheme,
-              // initialRoute: RouteNames.splashScreen,
+              initialRoute: RouteNames.splashScreen,
               onGenerateRoute: AppRoutes.generateRoute,
-              home: const TipForDriverBottomSheet(),
             );
           },
         );
