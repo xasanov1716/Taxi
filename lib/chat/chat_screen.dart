@@ -6,14 +6,13 @@ import 'package:image_picker/image_picker.dart';
 import 'package:taxi_app/blocs/messages/message_bloc.dart';
 import 'package:taxi_app/blocs/messages/message_event.dart';
 import 'package:taxi_app/blocs/messages/message_state.dart';
+import 'package:taxi_app/chat/widgets/image_container.dart';
+import 'package:taxi_app/chat/widgets/message_container.dart';
+import 'package:taxi_app/chat/widgets/send_message_textfield.dart';
 import 'package:taxi_app/data/models/message/message_model.dart';
-import 'package:taxi_app/ui/contact_to_driver/sub_screens/chat_with_driver/widgets/image_container.dart';
-import 'package:taxi_app/ui/contact_to_driver/sub_screens/chat_with_driver/widgets/message_container.dart';
-import 'package:taxi_app/ui/contact_to_driver/sub_screens/chat_with_driver/widgets/send_message_textfield.dart';
 import 'package:taxi_app/ui/widgets/global_appbar.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
-import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
 
 class ChatWithDriverScreen extends StatefulWidget {
