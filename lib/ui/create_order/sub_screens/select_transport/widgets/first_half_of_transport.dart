@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taxi_app/ui/create_order/sub_screens/select_transport/widgets/choose_data.dart';
+import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
+import 'package:taxi_app/utils/theme/get_theme.dart';
 
 class FirstHalfOfTransport extends StatefulWidget {
    const FirstHalfOfTransport({super.key});
@@ -66,7 +68,7 @@ class _FirstHalfOfTransportState extends State<FirstHalfOfTransport> {
               ),
               Padding(
                 padding: EdgeInsets.only(right: 24.h, left: 24.h, ),
-                child: const Divider(),
+                child: Divider(color: getTheme(context)?AppColors.dark3: AppColors.c_200,),
               ),
               Padding(
                 padding: EdgeInsets.only(right: 24.h, left: 24.h,bottom: 24.h),

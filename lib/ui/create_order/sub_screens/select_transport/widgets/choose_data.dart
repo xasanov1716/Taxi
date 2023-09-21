@@ -34,7 +34,6 @@ class ChooseData extends StatelessWidget {
       width: 380 * width / figmaWidth,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16.r),
-        color: AppColors.white,
       ),
       child: Padding(
         padding: EdgeInsets.all(24 * width / figmaWidth),

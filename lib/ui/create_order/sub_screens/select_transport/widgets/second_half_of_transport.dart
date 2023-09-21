@@ -38,25 +38,30 @@ class SecondHalfOfTransportScreen extends StatelessWidget {
                   child: BlocBuilder<CreateOrderBloc, CreateOrderState>(
                     builder: (context, state) {
                       if (state.promoCodeList.isEmpty) {
-                        return Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            SizedBox(
-                                width: 300 * width / figmaWidth,
-                                child: const GlobalTextField(
-                                    hintText: 'Enter Promo Code')),
-                            10.pw,
-                            getPlusButton(() {
-                              Navigator.pushNamed(
-                                  context, RouteNames.addPromo);
-                            }, context),
-                          ],
+                        return Padding(
+                          padding:EdgeInsets.only(top: 24.h),
+
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              SizedBox(
+                                  width: 300 * width / figmaWidth,
+                                  child: const GlobalTextField(
+                                      hintText: 'Enter Promo Code')),
+                              10.pw,
+                              getPlusButton(() {
+                                Navigator.pushNamed(
+                                    context, RouteNames.addPromo);
+                              }, context),
+                            ],
+                          ),
                         );
                       }
                       if (state.promoCodeList.isNotEmpty) {
                         return ListView(
+                          padding:EdgeInsets.only(top: 24.h),
                           children: [
                             Wrap(
                               runSpacing: 10.h,
