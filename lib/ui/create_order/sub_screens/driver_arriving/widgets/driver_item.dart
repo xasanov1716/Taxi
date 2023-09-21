@@ -11,9 +11,18 @@ import '../../../../../utils/theme/get_theme.dart';
 import 'driver_button.dart';
 
 class DriverItem extends StatelessWidget {
-  const DriverItem({super.key, required this.onTap});
+  const DriverItem({
+    super.key,
+    required this.cancelTap,
+    required this.chatTap,
+    required this.callTap,
+    required this.onDriverDetailTap,
+  });
 
-  final VoidCallback onTap;
+  final VoidCallback cancelTap;
+  final VoidCallback chatTap;
+  final VoidCallback callTap;
+  final VoidCallback onDriverDetailTap;
 
   @override
   Widget build(BuildContext context) {
@@ -67,78 +76,85 @@ class DriverItem extends StatelessWidget {
               color: getTheme(context) ? AppColors.dark3 : AppColors.c_200,
             ),
           ),
-          Container(
-            margin: EdgeInsets.all(24.r),
-            height: 60 * height / figmaHeight,
-            width: double.infinity,
-            child: Row(
-              children: [
-                SizedBox(
-                    height: 60 * height / figmaHeight,
-                    width: 60 * height / figmaHeight,
-                    child: Image.asset(AppIcons.testAvatar)),
-                20.pw,
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Text(
-                      "Daniel Austin",
-                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                            fontFamily: "Urbanist",
-                            fontSize: 18.sp,
-                            fontWeight: FontWeight.w700,
+          GestureDetector(
+            onTap: onDriverDetailTap,
+            child: Container(
+              margin: EdgeInsets.all(24.r),
+              width: double.infinity,
+              child: Row(
+                children: [
+                  SizedBox(
+                      height: 60 * height / figmaHeight,
+                      width: 60 * height / figmaHeight,
+                      child: Image.asset(AppIcons.testAvatar)),
+                  20.pw,
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Text(
+                        "Daniel Austin",
+                        style:
+                            Theme.of(context).textTheme.titleMedium?.copyWith(
+                                  fontFamily: "Urbanist",
+                                  fontSize: 18.sp,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                      ),
+                      Text(
+                        "Mercedes-Benz E-Class",
+                        style:
+                            Theme.of(context).textTheme.titleMedium?.copyWith(
+                                  fontFamily: "Urbanist",
+                                  fontSize: 14.sp,
+                                  fontWeight: FontWeight.w400,
+                                ),
+                      )
+                    ],
+                  ),
+                  const Spacer(),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Row(
+                        children: [
+                          SizedBox(
+                            height: 20.w,
+                            width: 20.w,
+                            child: SvgPicture.asset(
+                              AppIcons.star,
+                              colorFilter: const ColorFilter.mode(
+                                  AppColors.orange, BlendMode.srcIn),
+                            ),
                           ),
-                    ),
-                    Text(
-                      "Mercedes-Benz E-Class",
-                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                            fontFamily: "Urbanist",
-                            fontSize: 14.sp,
-                            fontWeight: FontWeight.w400,
+                          8.pw,
+                          Text(
+                            "4.8",
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleMedium
+                                ?.copyWith(
+                                  fontFamily: "Urbanist",
+                                  fontSize: 14.sp,
+                                  fontWeight: FontWeight.w500,
+                                ),
                           ),
-                    )
-                  ],
-                ),
-                const Spacer(),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Row(
-                      children: [
-                        SizedBox(
-                          height: 20.w,
-                          width: 20.w,
-                          child: SvgPicture.asset(
-                            AppIcons.star,
-                            colorFilter: const ColorFilter.mode(
-                                AppColors.orange, BlendMode.srcIn),
-                          ),
-                        ),
-                        8.pw,
-                        Text(
-                          "4.8",
-                          style:
-                              Theme.of(context).textTheme.titleMedium?.copyWith(
-                                    fontFamily: "Urbanist",
-                                    fontSize: 14.sp,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                        ),
-                      ],
-                    ),
-                    Text(
-                      "HSW 4736 XK",
-                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                            fontFamily: "Urbanist",
-                            fontSize: 14.sp,
-                            fontWeight: FontWeight.w600,
-                          ),
-                    )
-                  ],
-                )
-              ],
+                        ],
+                      ),
+                      Text(
+                        "HSW 4736 XK",
+                        style:
+                            Theme.of(context).textTheme.titleMedium?.copyWith(
+                                  fontFamily: "Urbanist",
+                                  fontSize: 14.sp,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                      )
+                    ],
+                  )
+                ],
+              ),
             ),
           ),
           Row(
@@ -147,19 +163,21 @@ class DriverItem extends StatelessWidget {
               DriverButton(
                   color: AppColors.dimYellow,
                   icon: AppIcons.cancel,
-                  onTap: onTap),
+                  onTap: cancelTap),
               24.pw,
               DriverButton(
-                  color: AppColors.primaryBackground,
-                  icon: AppIcons.getSvg(
-                      name: AppIcons.chat, iconType: IconType.bold),
-                  onTap: () {}),
+                color: AppColors.primaryBackground,
+                icon: AppIcons.getSvg(
+                    name: AppIcons.chat, iconType: IconType.bold),
+                onTap: chatTap,
+              ),
               24.pw,
               DriverButton(
-                  color: AppColors.primaryBackground,
-                  icon: AppIcons.getSvg(
-                      name: AppIcons.call, iconType: IconType.bulk),
-                  onTap: () {}),
+                color: AppColors.primaryBackground,
+                icon: AppIcons.getSvg(
+                    name: AppIcons.call, iconType: IconType.bulk),
+                onTap: callTap,
+              ),
             ],
           ),
           26.ph

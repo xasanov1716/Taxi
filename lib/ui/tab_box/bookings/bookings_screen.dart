@@ -28,8 +28,8 @@ class _BookingsScreenState extends State<BookingsScreen> {
             padding: EdgeInsets.only(left: 24.w),
             child: Image.asset(
               AppIcons.taxiLogotip,
-              width: 32,
-              height: 32,
+              width: 32.w,
+              height: 32.w,
             ),
           ),
           title: const Text("My bookings"),
@@ -62,7 +62,7 @@ class _BookingsScreenState extends State<BookingsScreen> {
         ),
         body: TabBarView(children: <Widget>[
           ActiveNowView(
-            orders: [fakeBookings[0]],
+            orders:[fakeBookings[0]],
           ),
           CompletedView(orders: [
             fakeBookings[1],

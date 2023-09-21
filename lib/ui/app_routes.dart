@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:taxi_app/chat/chat_screen.dart';
 import 'package:taxi_app/ui/contact_to_driver/sub_screens/cancel_driver/cancel_driver_screen.dart';
-import 'package:taxi_app/ui/contact_to_driver/sub_screens/chat_with_driver/chat_with_driver.dart';
+import 'package:taxi_app/ui/contact_to_driver/sub_screens/driver_detail/driver_detail_screen.dart';
 import 'package:taxi_app/ui/create_order/sub_screens/add_promo/add_promo_screen.dart';
 import 'package:taxi_app/ui/create_order/sub_screens/driver_arriving/driver_arriving_screen.dart';
 import 'package:taxi_app/ui/create_order/sub_screens/payment_methods/payment_methods_screen.dart';
@@ -55,6 +56,7 @@ class RouteNames {
   static const String chekSetPinCodeScreen = "/chek_set_pin_code_screen";
   static const String cancelDriver = "/cancel_driver";
   static const String chatWithDriver = "/chat_with_driver";
+  static const String driverDetail = "/driver_detail";
 }
 
 class AppRoutes {
@@ -100,6 +102,11 @@ class AppRoutes {
       case RouteNames.pinCodeScreen:
         return MaterialPageRoute(
           builder: (context) => const PinCodeScreen(),
+        );
+
+      case RouteNames.driverDetail:
+        return MaterialPageRoute(
+          builder: (context) => const DriverDetailScreen(),
         );
 
       case RouteNames.fingerprintScreen:
