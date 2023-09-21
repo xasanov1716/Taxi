@@ -29,16 +29,13 @@ class ChooseData extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Container(
-
-      height: 92 * height / figmaHeight,
-      width: 380 * width / figmaWidth,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16.r),
-        color: AppColors.white,
       ),
       child: Padding(
         padding: EdgeInsets.all(24 * width / figmaWidth),
         child: Row(
+          mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Row(
@@ -48,16 +45,18 @@ class ChooseData extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(text1,style: Theme.of(context).textTheme.titleLarge),
-                    Text(text2,style: Theme.of(context).textTheme.bodyMedium),
+                    Text(text1, style: Theme.of(context).textTheme.titleLarge),
+                    Text(text2, style: Theme.of(context).textTheme.bodyMedium),
                   ],
                 ),
               ],
             ),
             Row(
               children: [
-                Text("\$ $text3",style: Theme.of(context).textTheme.bodyLarge,),
-
+                Text(
+                  "\$ $text3",
+                  style: Theme.of(context).textTheme.bodyLarge,
+                ),
                 IconButton(
                   onPressed: () {
                     onSelect(!selected);
@@ -68,8 +67,6 @@ class ChooseData extends StatelessWidget {
                 ),
               ],
             ),
-
-
           ],
         ),
       ),

@@ -38,25 +38,32 @@ class SecondHalfOfTransportScreen extends StatelessWidget {
                   child: BlocBuilder<CreateOrderBloc, CreateOrderState>(
                     builder: (context, state) {
                       if (state.promoCodeList.isEmpty) {
-                        return Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            SizedBox(
+                        return Padding(
+                          padding: EdgeInsets.only(top: 24.h),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              SizedBox(
                                 width: 300 * width / figmaWidth,
                                 child: const GlobalTextField(
-                                    hintText: 'Enter Promo Code')),
-                            10.pw,
-                            getPlusButton(() {
-                              Navigator.pushNamed(
-                                  context, RouteNames.addPromo);
-                            }, context),
-                          ],
+                                  textInputAction: TextInputAction.done,
+                                  hintText: 'Enter Promo Code',
+                                ),
+                              ),
+                              10.pw,
+                              getPlusButton(() {
+                                Navigator.pushNamed(
+                                    context, RouteNames.addPromo);
+                              }, context),
+                            ],
+                          ),
                         );
                       }
                       if (state.promoCodeList.isNotEmpty) {
                         return ListView(
+                          padding: EdgeInsets.only(top: 24.h),
                           children: [
                             Wrap(
                               runSpacing: 10.h,
@@ -65,8 +72,7 @@ class SecondHalfOfTransportScreen extends StatelessWidget {
                                 ...List.generate(
                                   state.promoCodeList.length,
                                   (index) {
-                                    var promoCode =
-                                        state.promoCodeList[index];
+                                    var promoCode = state.promoCodeList[index];
                                     return Container(
                                       padding: EdgeInsets.symmetric(
                                           horizontal: 5.w, vertical: 8.h),
@@ -98,8 +104,7 @@ class SecondHalfOfTransportScreen extends StatelessWidget {
                                             child: SvgPicture.asset(
                                               AppIcons.getSvg(
                                                 name: AppIcons.closeSquare,
-                                                iconType:
-                                                    IconType.lightOutline,
+                                                iconType: IconType.lightOutline,
                                               ),
                                             ),
                                           ),
@@ -126,7 +131,6 @@ class SecondHalfOfTransportScreen extends StatelessWidget {
             ],
           ),
         ),
-
       ],
     );
   }

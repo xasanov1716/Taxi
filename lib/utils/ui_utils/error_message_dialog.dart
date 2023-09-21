@@ -9,7 +9,7 @@ void showErrorMessage({
     barrierDismissible: false,
     context: context,
     builder: (BuildContext context) => AlertDialog(
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       title: const Text(
         "Error",
         style: TextStyle(fontWeight: FontWeight.w800),

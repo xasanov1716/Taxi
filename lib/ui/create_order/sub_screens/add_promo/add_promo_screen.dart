@@ -47,6 +47,7 @@ class _AddPromoScreenState extends State<AddPromoScreen> {
         children: [
           Expanded(
               child: ListView.builder(
+                physics: const BouncingScrollPhysics(),
             itemCount: promoItems.length,
             itemBuilder: (context, index) {
               return InkWell(
@@ -80,7 +81,7 @@ class _AddPromoScreenState extends State<AddPromoScreen> {
                       const Spacer(), // Push the radio button to the right edge
                       Radio(
                         activeColor: AppColors.primary,
-                        fillColor: MaterialStatePropertyAll(AppColors.primary),
+                        fillColor: const MaterialStatePropertyAll(AppColors.primary),
                         value: index,
                         groupValue: promoItems[index].selected ? index : null,
                         onChanged: (value) {

@@ -24,15 +24,18 @@ class _SelectTransportScreenState extends State<SelectTransportScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: GlobalAppBar(
-        onTap: () {},
+        onTap: () {
+          Navigator.pop(context);
+        },
         title: "Select Car",
       ),
-      backgroundColor: AppColors.greysCale,
+
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Expanded(
               child: ListView(
+                physics: const BouncingScrollPhysics(),
             children:const [
                FirstHalfOfTransport(),
                SecondHalfOfTransportScreen(),
@@ -47,7 +50,7 @@ class _SelectTransportScreenState extends State<SelectTransportScreen> {
                 topRight: Radius.circular(24.r),
                 topLeft: Radius.circular(24.r),
               ),
-              border: Border.all(color: AppColors.c_200, width: 1),
+              border: Border.all(color:getTheme(context)?AppColors.dark3: AppColors.c_200, width: 1),
             ),
             child: Column(
               mainAxisSize: MainAxisSize.min,
