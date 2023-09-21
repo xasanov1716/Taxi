@@ -108,9 +108,8 @@ class MyApp extends StatelessWidget {
               debugShowCheckedModeBanner: false,
               theme: theme,
               darkTheme: darkTheme,
-              home: DriverDetailScreen(),
-              /*initialRoute: RouteNames.splashScreen,
-              onGenerateRoute: AppRoutes.generateRoute,*/
+              initialRoute: RouteNames.splashScreen,
+              onGenerateRoute: AppRoutes.generateRoute,
             );
           },
         );
