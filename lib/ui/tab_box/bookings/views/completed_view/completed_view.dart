@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taxi_app/ui/tab_box/bookings/widgets/booking_details.dart';
-import 'package:taxi_app/utils/size/size_extension.dart';
 import '../../../../../data/models/booking/booking_model.dart';
 import '../../widgets/empty.dart';
 
@@ -18,11 +17,8 @@ class CompletedView extends StatelessWidget {
           ? const EmptyBookings()
           : SizedBox(
             height: 600,
-            child: ListView.separated(
+            child: ListView.builder(
                 itemCount: orders!.length,
-                separatorBuilder: (context, index) {
-                  return 20.ph;
-                },
                 itemBuilder: (context, index) {
                   return BookingDetails(order: orders![index]);
                 },

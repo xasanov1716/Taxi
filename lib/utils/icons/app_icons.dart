@@ -12,6 +12,7 @@ class AppIcons {
   // images
 
   static const String taxiLogotip = "assets/images/taxi_logotip.png";
+  static const String mapAtBooking = "assets/images/map_at_booking.png";
   static const String emptyBookings = "assets/images/empty_bookings.png";
   static const String emptyBookingsDark = "assets/images/empty_bookings_dark.png";
   static const String testAvatar = "assets/images/test_avatar.png";

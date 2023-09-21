@@ -61,10 +61,13 @@ class _BookingsScreenState extends State<BookingsScreen> {
           ),
         ),
         body: TabBarView(children: <Widget>[
-          const ActiveNowView(
-            orders: null,
+          ActiveNowView(
+            orders: [fakeBookings[0]],
           ),
-           CompletedView(orders: [fakeBookings[1],fakeBookings[2],]),
+          CompletedView(orders: [
+            fakeBookings[1],
+            fakeBookings[2],
+          ]),
           CancelledView(
             orders: [
               fakeBookings[3],

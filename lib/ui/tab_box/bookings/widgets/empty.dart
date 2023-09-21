@@ -13,14 +13,20 @@ class EmptyBookings extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Image.asset(
-          getTheme(context)?AppIcons.emptyBookingsDark:AppIcons.emptyBookings,
+          getTheme(context)
+              ? AppIcons.emptyBookingsDark
+              : AppIcons.emptyBookings,
           height: 220 * height / figmaHeight,
           width: 225 * width / figmaWidth,
         ),
         48.ph,
-        Text("You have no active taxi booking",style: Theme.of(context).textTheme.headlineSmall,),
+        Text(
+          "You have no active taxi booking",
+          style: Theme.of(context).textTheme.headlineSmall,
+        ),
         12.ph,
-        Text("You don't have an active taxi booking at this time",style: Theme.of(context).textTheme.bodyLarge)
+        Text("You don't have an active taxi booking at this time",
+            style: Theme.of(context).textTheme.bodyLarge)
       ],
     );
   }

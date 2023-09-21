@@ -10,11 +10,12 @@ class AppTheme {
   static ThemeData lightTheme = ThemeData(
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
-        backgroundColor: const MaterialStatePropertyAll(AppColors.white),
-        overlayColor: const MaterialStatePropertyAll(AppColors.c_200),
+        backgroundColor: const MaterialStatePropertyAll(AppColors.primary),
+
+        overlayColor: const MaterialStatePropertyAll(AppColors.secondary),
         shape: MaterialStatePropertyAll(
           RoundedRectangleBorder(
-            side: const BorderSide(color: AppColors.c_200),
+            // side: const BorderSide(color: AppColors.c_200),
             borderRadius: BorderRadius.circular(16),
           ),
         ),
@@ -177,7 +178,8 @@ class AppTheme {
     dividerTheme: const DividerThemeData(color: AppColors.dark3),
     elevatedButtonTheme: ElevatedButtonThemeData(
         style: ButtonStyle(
-      backgroundColor: const MaterialStatePropertyAll(AppColors.dark2),
+          backgroundColor: const MaterialStatePropertyAll(AppColors.primary),
+          overlayColor: const MaterialStatePropertyAll(AppColors.secondary),
       shape: MaterialStatePropertyAll(RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16),
         side: const BorderSide(color: AppColors.dark2),
@@ -236,9 +238,9 @@ class AppTheme {
             AppTextStyle.bodyXsmallMedium.copyWith(color: AppColors.white),
         //body
         bodyLarge:
-            AppTextStyle.bodyLargeMedium.copyWith(color: AppColors.white),
+            AppTextStyle.bodyLargeSemibold.copyWith(color: AppColors.white),
         bodyMedium:
-            AppTextStyle.bodyMediumMedium.copyWith(color: AppColors.white),
+            AppTextStyle.bodyMediumSemibold.copyWith(color: AppColors.white),
         bodySmall:
             AppTextStyle.bodySmallMedium.copyWith(color: AppColors.white)),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
