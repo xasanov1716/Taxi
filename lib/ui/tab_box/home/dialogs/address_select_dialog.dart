@@ -4,7 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:taxi_app/ui/tab_box/home/widgets/saved_places.dart';
 import 'package:taxi_app/ui/tab_box/home/widgets/text_field_item.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
-
+import 'package:taxi_app/utils/theme/get_theme.dart';
 import '../../../../data/models/icon/icon_type.dart';
 import '../../../../utils/colors/app_colors.dart';
 import '../../../../utils/icons/app_icons.dart';
@@ -14,14 +14,16 @@ import '../../../widgets/global_button.dart';
 addressSelectDialog(BuildContext context) {
   showModalBottomSheet<void>(
     isScrollControlled: true,
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(32.r))),
     context: context,
-    backgroundColor: Colors.white,
+    showDragHandle: true,
+    backgroundColor: Theme.of(context).scaffoldBackgroundColor,
     builder: (BuildContext context) {
       return StatefulBuilder(builder: (context, setState) {
         return Container(
-          height: height / 1.2,
+          height: height / 1.4,
           decoration: BoxDecoration(
-              color: AppColors.white,
+              color: Colors.transparent,
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(40.w),
                 topRight: Radius.circular(40.w),
@@ -31,23 +33,25 @@ addressSelectDialog(BuildContext context) {
               mainAxisAlignment: MainAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                30.ph,
                 Center(
                   child: Text(
                     "Select Address",
-                    style: TextStyle(color: Colors.black, fontSize: 24.spMin),
+                    style: Theme.of(context).textTheme.headlineMedium,
                   ),
                 ),
-                16.ph,
+                20.ph,
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 24.w),
+                  child: const Divider(),
+                ),
+                20.ph,
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 24.w),
                   child: TextFieldItem(
                     hintText: "Form",
                     startIcon: SvgPicture.asset(
-                      AppIcons.getSvg(
-                        name: AppIcons.discount,
-                        iconType: IconType.bold,
-                      ),
+                      AppIcons.getSvg(name: AppIcons.circle),
+                      width: 24.w,
                       colorFilter: const ColorFilter.mode(
                         AppColors.primary,
                         BlendMode.srcIn,
@@ -65,7 +69,13 @@ addressSelectDialog(BuildContext context) {
                     ),
                   ),
                 ),
-                16.ph,
+                Row(
+                  children: [
+                    35.pw,
+                    Container(height: 30.h,width:1.w,color: Theme.of(context).hintColor),
+                    const Spacer(),
+                  ],
+                ),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 24.w),
                   child: TextFieldItem(
@@ -98,14 +108,14 @@ addressSelectDialog(BuildContext context) {
                     children: [
                       ...List.generate(
                         10,
-                        (index) => const ListTile(
-                          leading: Icon(Icons.watch_later_outlined),
+                        (index) => ListTile(
+                          leading: const Icon(Icons.watch_later_outlined),
                           trailing: Text(
                             "2.9 km",
-                            style: TextStyle(color: Colors.black),
+                            style: Theme.of(context).textTheme.bodyMedium,
                           ),
-                          title: Text("Eleonora Hotel"),
-                          subtitle: Text("6 Glendale St. Worcester, MA 01604"),
+                          title: const Text("Eleonora Hotel"),
+                          subtitle: const Text("6 Glendale St. Worcester, MA 01604"),
                         ),
                       )
                     ],
