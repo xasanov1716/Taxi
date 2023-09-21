@@ -9,6 +9,7 @@ import 'package:taxi_app/ui/create_order/sub_screens/select_transport/select_tra
 import 'package:taxi_app/ui/local_auth/pin_code_screen.dart';
 import 'package:taxi_app/ui/local_auth/biometrics_screen.dart';
 import 'package:taxi_app/ui/local_auth/pin_code_set_screen_.dart';
+import 'package:taxi_app/ui/tab_box/home/bottom_sheet/bottom_sheet_screen.dart';
 import 'package:taxi_app/ui/tab_box/home/notification/notification_screen.dart';
 import 'package:taxi_app/ui/tab_box/home/sub_screens/search_location/search_location_screen.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/edit_profile/edit_profile_screen.dart';
@@ -46,6 +47,7 @@ class RouteNames {
   static const String searchingDriver = "/searching_driver";
   static const String driverArriving = "/driver_arriving";
   static const String selectTransportScreen = "/select_driver_screen";
+  static const String bottomSheetDialog = "/bottom_sheet_dialog";
   static const String addPromo = "/add_promo";
   static const String cancelDriver = "/cancel_driver";
 }
@@ -137,6 +139,10 @@ class AppRoutes {
       case RouteNames.selectTransportScreen:
         return MaterialPageRoute(
           builder: (context) => const SelectTransportScreen(),
+        );
+      case RouteNames.bottomSheetDialog:
+        return MaterialPageRoute(
+          builder: (context) => const BottomSheetScreen(),
         );
       default:
         return MaterialPageRoute(

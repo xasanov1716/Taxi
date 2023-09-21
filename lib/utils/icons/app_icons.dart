@@ -146,6 +146,7 @@ class AppIcons {
   static final String shieldFail = "assets/svg/${it.name}/shield_fail.svg";
   static final String show = "assets/svg/${it.name}/show.svg";
   static final String star = "assets/svg/${it.name}/star.svg";
+  static final String starPrimary = "assets/svg/${it.name}/star_primary.svg";
   static final String swap = "assets/svg/${it.name}/swap.svg";
   static final String tickSquare = "assets/svg/${it.name}/tick_square.svg";
   static final String ticket = "assets/svg/${it.name}/ticket.svg";

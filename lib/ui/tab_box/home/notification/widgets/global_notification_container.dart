@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 import '../../../../../utils/theme/get_theme.dart';
@@ -29,7 +30,9 @@ class GlobalNotificationContainer extends StatelessWidget {
         ],
       ),
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          Navigator.pushNamed(context, RouteNames.bottomSheetDialog);
+        },
         borderRadius: BorderRadius.circular(16.r),
         child: Container(
           padding: EdgeInsets.all(16.r),
