@@ -77,17 +77,17 @@ class _ChatWithDriverScreenState extends State<ChatWithDriverScreen> {
                                     ? MainAxisAlignment.start
                                     : MainAxisAlignment.end,
                                 children: [
-                                  Flexible(
-                                    fit: FlexFit.loose,
-                                    child: message.image == null
-                                        ? MessageContainer(
+                                  message.image == null
+                                      ? Flexible(
+                                          fit: FlexFit.loose,
+                                          child: MessageContainer(
                                             index: index,
                                             message: message.message!,
                                             dateTime: message.dateTime,
-                                          )
-                                        : ImageContainer(
-                                            images: message.image!),
-                                  ),
+                                          ),
+                                        )
+                                      : ImageContainer(
+                                          images: message.image ?? []),
                                 ],
                               );
                             },
@@ -145,7 +145,6 @@ class _ChatWithDriverScreenState extends State<ChatWithDriverScreen> {
                   child: ListTile(
                     onTap: () {
                       _getFromCamera();
-                      Navigator.pop(context);
                     },
                     leading: const Icon(
                       Icons.camera_alt,
@@ -167,7 +166,6 @@ class _ChatWithDriverScreenState extends State<ChatWithDriverScreen> {
                   child: ListTile(
                     onTap: () {
                       _getFromGallery();
-                      Navigator.pop(context);
                     },
                     leading: const Icon(
                       Icons.photo,
@@ -190,8 +188,6 @@ class _ChatWithDriverScreenState extends State<ChatWithDriverScreen> {
   Future<void> _getFromCamera() async {
     XFile? xFile = await picker.pickImage(
       source: ImageSource.camera,
-      maxHeight: 512 * height / figmaHeight,
-      maxWidth: 512 * width / figmaWidth,
     );
 
     if (xFile != null && context.mounted) {
@@ -203,15 +199,13 @@ class _ChatWithDriverScreenState extends State<ChatWithDriverScreen> {
             dateTime: DateTime.now().toString(),
             image: images,
           )));
-      setState(() {});
+      print(images);
+
     }
   }
 
   Future<void> _getFromGallery() async {
-    List<XFile>? xFiles = await picker.pickMultiImage(
-      maxHeight: 512 * height / figmaHeight,
-      maxWidth: 512 * width / figmaWidth,
-    );
+    List<XFile>? xFiles = await picker.pickMultiImage();
     if (context.mounted) {
       images = xFiles.map((file) => file.path).toList();
       context.read<MessageBloc>().add(SendMessage(
@@ -221,7 +215,7 @@ class _ChatWithDriverScreenState extends State<ChatWithDriverScreen> {
             dateTime: DateTime.now().toString(),
             image: images,
           )));
-      setState(() {});
+
     }
   }
 }
