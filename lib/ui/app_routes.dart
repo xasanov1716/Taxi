@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:taxi_app/ui/contact_to_driver/sub_screens/cancel_driver/cancel_driver_screen.dart';
 import 'package:taxi_app/ui/create_order/sub_screens/add_promo/add_promo_screen.dart';
 import 'package:taxi_app/ui/create_order/sub_screens/driver_arriving/driver_arriving_screen.dart';
 import 'package:taxi_app/ui/create_order/sub_screens/payment_methods/payment_methods_screen.dart';
@@ -46,6 +47,7 @@ class RouteNames {
   static const String driverArriving = "/driver_arriving";
   static const String selectTransportScreen = "/select_driver_screen";
   static const String addPromo = "/add_promo";
+  static const String cancelDriver = "/cancel_driver";
 }
 
 
@@ -63,6 +65,10 @@ class AppRoutes {
       case RouteNames.letsIn:
         return MaterialPageRoute(
           builder: (context) => const LetsInScreen(),
+        );
+      case RouteNames.cancelDriver:
+        return MaterialPageRoute(
+          builder: (context) => const CancelDriverScreen(),
         );
       case RouteNames.login:
         return MaterialPageRoute(builder: (context) => const LoginScreen());

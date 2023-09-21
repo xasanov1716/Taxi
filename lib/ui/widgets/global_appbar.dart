@@ -46,8 +46,7 @@ class GlobalAppBar extends StatelessWidget implements PreferredSize {
               title,
               style: Theme.of(context)
                   .textTheme
-                  .titleMedium!
-                  .copyWith(fontSize: 24.sp, fontWeight: FontWeight.w700),
+                  .headlineMedium
             )
           : null,
     );

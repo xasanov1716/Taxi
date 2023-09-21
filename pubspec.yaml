@@ -85,6 +85,7 @@ flutter:
     - assets/svg/twoTone/
     - assets/svg/others/
     - assets/images/
+    - assets/images/mood/
     - assets/fonts/
     - assets/lottie/
     - assets/styles/
