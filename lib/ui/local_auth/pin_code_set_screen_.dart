@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:local_auth/local_auth.dart';
 import 'package:taxi_app/data/local/storage_repository/storage_repository.dart';
 import 'package:taxi_app/ui/app_routes.dart';
-import 'package:taxi_app/ui/local_auth/widgets/pin_put_feild.dart';
 import 'package:taxi_app/ui/widgets/global_appbar.dart';
 import 'package:taxi_app/ui/widgets/global_button.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
@@ -19,11 +19,41 @@ class PinCodeSetScreen extends StatefulWidget {
 }
 
 class _PinCodeSetScreenState extends State<PinCodeSetScreen> {
+  List result = [];
   final LocalAuthentication auth = LocalAuthentication();
+  String code = '';
   String currentPin = '';
   final List<FocusNode> pinFocusNodes = List.generate(4, (_) => FocusNode());
   final List<TextEditingController> pinControllers =
       List.generate(4, (_) => TextEditingController());
+
+  @override
+  void initState() {
+    pinFocusNodes[0].requestFocus();
+
+    super.initState();
+  }
+
+  handleKey(RawKeyEvent key, int index) {
+    if (key is RawKeyUpEvent) {
+      if (key.data.logicalKey.keyLabel == 'Backspace') {
+        if (index != 0) {
+          pinFocusNodes[index].unfocus();
+          pinFocusNodes[index - 1].requestFocus();
+          pinControllers[index].clear();
+          print(index);
+
+          result.removeAt(index);
+          print(result);
+        } else {
+          result.removeAt(index);
+          print(result);
+        }
+      } else {
+        handleCodeInput(index, key.data.logicalKey.keyLabel);
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +63,15 @@ class _PinCodeSetScreenState extends State<PinCodeSetScreen> {
       body: Padding(
         padding: EdgeInsets.only(left: 24.w, right: 24.w, bottom: 48.h),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Text(
+              'Yangi Parollni Kiriting',
+              style: Theme.of(context)
+                  .textTheme
+                  .labelLarge!
+                  .copyWith(fontSize: 20.sp),
+            ),
             Expanded(
               child: ListView(
                 children: [
@@ -43,57 +81,65 @@ class _PinCodeSetScreenState extends State<PinCodeSetScreen> {
                     children: List.generate(4, (index) {
                       return SizedBox(
                         width: 85.0.w,
-                        child: TextField(
-                          style: Theme.of(context)
-                              .appBarTheme
-                              .titleTextStyle!
-                              .copyWith(fontSize: 20.sp),
-                          onTap: () {
-                            setState(() {
-                              FocusScope.of(context)
-                                  .requestFocus(pinFocusNodes[index]);
-                            });
+                        child: RawKeyboardListener(
+                          focusNode: FocusNode(),
+                          onKey: (key) {
+                            handleKey(key, index);
                           },
-                          controller: pinControllers[index],
-                          maxLength: 1,
-                          obscureText: true,
-                          obscuringCharacter: getTheme(context) ? '⚪' : "⚫",
-                          keyboardType: TextInputType.number,
-                          decoration: InputDecoration(
-                            counterText: "",
-                            hintText: '',
-                            hintStyle: const TextStyle(fontSize: 20.0),
-                            contentPadding: EdgeInsets.symmetric(
-                                vertical: 16.0, horizontal: 26.0),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(12),
-                              borderSide:
-                                  const BorderSide(color: AppColors.primary),
+                          child: TextField(
+                            style: Theme.of(context)
+                                .appBarTheme
+                                .titleTextStyle!
+                                .copyWith(fontSize: 16.sp),
+
+                            onTap: () {
+                              // if (index == 3) {
+                              //   FocusScope.of(context)
+                              //       .requestFocus(pinFocusNodes[index]);
+                              // } else {
+                              //   pinFocusNodes[index].unfocus();
+                              // }
+                            },
+
+                            controller: pinControllers[index],
+                            maxLength: 1,
+                            //  obscureText: true,
+                            //  obscuringCharacter: getTheme(context) ? '⚪' : "⚫" ,
+                            keyboardType: TextInputType.number,
+                            decoration: InputDecoration(
+                              counterText: "",
+                              hintText: '',
+                              hintStyle: const TextStyle(fontSize: 20.0),
+                              contentPadding: EdgeInsets.symmetric(
+                                  vertical: 16.0, horizontal: 26.0),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(12),
+                                borderSide:
+                                    const BorderSide(color: AppColors.primary),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(12),
+                                borderSide:
+                                    const BorderSide(color: AppColors.c_400),
+                              ),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(12),
+                                borderSide:
+                                    const BorderSide(color: AppColors.c_400),
+                              ),
+                              filled: true,
+                              fillColor: pinFocusNodes[index].hasFocus
+                                  ? AppColors.yellowTransparent
+                                  : getTheme(context)
+                                      ? const Color(0xFF1F222A)
+                                      : AppColors.c_200,
                             ),
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(12),
-                              borderSide:
-                                  const BorderSide(color: AppColors.c_400),
-                            ),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(12),
-                              borderSide:
-                                  const BorderSide(color: AppColors.c_400),
-                            ),
-                            filled: true,
-                            fillColor: pinFocusNodes[index].hasFocus
-                                ? AppColors.yellowTransparent
-                                : getTheme(context)
-                                    ? const Color(0xFF1F222A)
-                                    : AppColors.c_200,
+                            textAlign: TextAlign.center,
+                            focusNode: pinFocusNodes[index],
+                            onChanged: (value) {
+                              print(result);
+                            },
                           ),
-                          textAlign: TextAlign.center,
-                          focusNode: pinFocusNodes[index],
-                          onChanged: (value) {
-                            setState(() {
-                              handleCodeInput(index, value);
-                            });
-                          },
                         ),
                       );
                     }),
@@ -109,26 +155,16 @@ class _PinCodeSetScreenState extends State<PinCodeSetScreen> {
               textColor: AppColors.black,
               onTap: () {
                 String pinCode = "";
-                for (var element in pinControllers) {
-                  pinCode += element.text;
-                }
-                if (currentPin.isEmpty) {
-                  currentPin = pinCode;
-                  for (var element in pinControllers) {
-                    element.clear();
-                  }
-                } else {
-                  if (currentPin == pinCode) {
-                    StorageRepository.putString("code", pinCode);
-                    Navigator.pushNamed(context, RouteNames.fingerprintScreen);
-                  }else{
-                    showErrorMessage(message: "Pin Code Mos Emas", context: context);
-                    for (var element in pinControllers) {
-                      element.clear();
-                    }
-                    currentPin="";
+                pinCode = resultStr(result);
 
-                  }
+                // for (var element in pinControllers) {
+                //   pinCode += element.text;
+                // }
+
+                if (pinCode.isNotEmpty && pinCode.length == 4) {
+                  StorageRepository.putString("code", pinCode);
+                  pinCode = '';
+                  Navigator.pushNamed(context, RouteNames.chekSetPinCodeScreen);
                 }
 
                 // print(pinCode);
@@ -177,6 +213,14 @@ class _PinCodeSetScreenState extends State<PinCodeSetScreen> {
     super.dispose();
   }
 
+  String resultStr(List result) {
+    String javob = '';
+    for (int i = 0; result.length > i; i++) {
+      javob += result[i];
+    }
+    return javob;
+  }
+
   void disposeControllersAndFocusNodes() {
     for (var controller in pinControllers) {
       controller.dispose();
@@ -187,17 +231,21 @@ class _PinCodeSetScreenState extends State<PinCodeSetScreen> {
   }
 
   void handleCodeInput(int index, String value) {
-    if (value.isEmpty) {
-      pinControllers[index].clear();
-      if (index > 0) {
-        FocusScope.of(_context!).requestFocus(pinFocusNodes[index - 1]);
-      }
+    if (index == 3) {
+      pinControllers[index].text = value;
+      result.add(value);
+      Future.delayed(const Duration(milliseconds: 300), () {
+        pinControllers[index].text = getTheme(context) ? '⚪' : "⚫";
+      });
+      pinFocusNodes[index].unfocus();
     } else {
-      if (index == 3) {
-        pinFocusNodes[index].unfocus();
-      } else {
-        FocusScope.of(_context!).requestFocus(pinFocusNodes[(index + 1) % 4]);
-      }
+      pinControllers[index].text = value;
+      result.add(value);
+      print(result);
+      Future.delayed(const Duration(milliseconds: 400), () {
+        pinControllers[index].text = getTheme(context) ? '⚪' : "⚫";
+      });
+      pinFocusNodes[(index + 1) % 4].requestFocus();
     }
   }
 
@@ -207,3 +255,46 @@ class _PinCodeSetScreenState extends State<PinCodeSetScreen> {
     _context = context;
   }
 }
+// PageView.builder(
+//   controller: controller,
+//   itemBuilder: (context, position) {
+//     if (position == currentPageValue.floor()) {
+//       return Transform(
+//         transform: Matrix4.identity()..rotateX(currentPageValue - position),
+//         child: Container(
+//           color: position % 2 == 0 ? Colors.blue : Colors.pink,
+//           child: Center(
+//             child: Text(
+//               "Page",
+//               style: TextStyle(color: Colors.white, fontSize: 22.0),
+//             ),
+//           ),
+//         ),
+//       );
+//     } else if (position == currentPageValue.floor() + 1){
+//       return Transform(
+//         transform: Matrix4.identity()..rotateX(currentPageValue - position),
+//         child: Container(
+//           color: position % 2 == 0 ? Colors.blue : Colors.pink,
+//           child: Center(
+//             child: Text(
+//               "Page",
+//               style: TextStyle(color: Colors.white, fontSize: 22.0),
+//             ),
+//           ),
+//         ),
+//       );
+//     } else {
+//       return Container(
+//         color: position % 2 == 0 ? Colors.blue : Colors.pink,
+//         child: Center(
+//           child: Text(
+//             "Page",
+//             style: TextStyle(color: Colors.white, fontSize: 22.0),
+//           ),
+//         ),
+//       );
+//     }
+//   },
+//   itemCount: 10,
+// )

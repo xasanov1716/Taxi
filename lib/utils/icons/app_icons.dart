@@ -1,9 +1,20 @@
 import '../../data/models/icon/icon_type.dart';
 
 class AppIcons {
+  //fake images of drivers
+  static const String drFake1 = "assets/images/fake_images/dr_fake1.png";
+  static const String drFake2 = "assets/images/fake_images/dr_fake2.png";
+  static const String drFake3 = "assets/images/fake_images/dr_fake3.png";
+  static const String drFake4 = "assets/images/fake_images/dr_fake4.png";
+  static const String drFake5 = "assets/images/fake_images/dr_fake5.png";
+
+
   // images
 
   static const String taxiLogotip = "assets/images/taxi_logotip.png";
+  static const String mapAtBooking = "assets/images/map_at_booking.png";
+  static const String emptyBookings = "assets/images/empty_bookings.png";
+  static const String emptyBookingsDark = "assets/images/empty_bookings_dark.png";
   static const String testAvatar = "assets/images/test_avatar.png";
   static const String barcode = "assets/images/barcode.png";
   static const String emptyProfile = "assets/images/empty_profile.png";
@@ -195,6 +206,7 @@ class AppIcons {
   static const String circle='assets/svg/others/circle.svg';
   static const String circleTwo='assets/svg/others/circle_two.svg';
   static const String frame = "assets/svg/others/fram.svg";
+  static const String copy = "assets/svg/others/copy.svg";
 
 
   // additional icons

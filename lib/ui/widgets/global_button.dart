@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:taxi_app/utils/colors/app_colors.dart';
 
 class GlobalButton extends StatelessWidget {
   const GlobalButton({
@@ -8,7 +9,7 @@ class GlobalButton extends StatelessWidget {
     this.color = Colors.blue,
     required this.title,
     this.radius = 16,
-    this.textColor = Colors.white,
+    this.textColor = AppColors.dark3,
     this.leftIcon = "",
     this.rightIcon = "",
     this.borderColor = Colors.transparent,

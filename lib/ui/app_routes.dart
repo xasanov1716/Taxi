@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:taxi_app/ui/contact_to_driver/sub_screens/cancel_driver/cancel_driver_screen.dart';
+import 'package:taxi_app/ui/contact_to_driver/sub_screens/chat_with_driver/chat_with_driver.dart';
 import 'package:taxi_app/ui/create_order/sub_screens/add_promo/add_promo_screen.dart';
 import 'package:taxi_app/ui/create_order/sub_screens/driver_arriving/driver_arriving_screen.dart';
 import 'package:taxi_app/ui/create_order/sub_screens/payment_methods/payment_methods_screen.dart';
 import 'package:taxi_app/ui/create_order/sub_screens/searching_driver/searching_driver_screen.dart';
-import 'package:taxi_app/ui/create_order/sub_screens/select_transport/select_transposrt_screen.dart';
+import 'package:taxi_app/ui/local_auth/chek_set_pin_code_screen.dart';
+
 
 import 'package:taxi_app/ui/local_auth/pin_code_screen.dart';
 import 'package:taxi_app/ui/local_auth/biometrics_screen.dart';
@@ -23,6 +25,7 @@ import 'package:taxi_app/ui/tab_box/profile/sub_screens/restore_password/forget_
 import 'package:taxi_app/ui/tab_box/tab_box.dart';
 
 import 'auth/lets_in/lets_in_screen.dart';
+import 'create_order/sub_screens/select_transport/select_transport_screen.dart';
 import 'tab_box/home/sub_screens/special_offers/special_offers_screen.dart';
 
 class RouteNames {
@@ -49,9 +52,10 @@ class RouteNames {
   static const String selectTransportScreen = "/select_driver_screen";
   static const String bottomSheetDialog = "/bottom_sheet_dialog";
   static const String addPromo = "/add_promo";
+  static const String chekSetPinCodeScreen = "/chek_set_pin_code_screen";
   static const String cancelDriver = "/cancel_driver";
+  static const String chatWithDriver = "/chat_with_driver";
 }
-
 
 class AppRoutes {
   static Route generateRoute(RouteSettings settings) {
@@ -119,7 +123,8 @@ class AppRoutes {
         );
       case RouteNames.notificationScreen:
         return MaterialPageRoute(
-          builder: (context) => const NotificationScreen(),);
+          builder: (context) => const NotificationScreen(),
+        );
       case RouteNames.paymentMethods:
         return MaterialPageRoute(
           builder: (context) => const PaymentMethodsScreen(),
@@ -138,7 +143,14 @@ class AppRoutes {
         );
       case RouteNames.selectTransportScreen:
         return MaterialPageRoute(
-          builder: (context) => const SelectTransportScreen(),
+          builder: (context) => const SelectTransportScreen()
+        );
+      case RouteNames.chekSetPinCodeScreen:
+        return MaterialPageRoute(
+          builder: (context) => const ChekSetPinCodeScreen(),);
+      case RouteNames.chatWithDriver:
+        return MaterialPageRoute(
+          builder: (context) => const ChatWithDriverScreen(),
         );
       case RouteNames.bottomSheetDialog:
         return MaterialPageRoute(
