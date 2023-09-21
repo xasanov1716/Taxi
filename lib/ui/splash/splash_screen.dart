@@ -29,7 +29,7 @@ class _SplashScreenState extends State<SplashScreen> {
             builder: (BuildContext context) {
               return !StorageRepository.getBool("isFirst")
                   ? const WelcomeScreen()
-                  : const PinCodeSetScreen();
+                  : const PinCodeScreen();
             },
           ),
         );

@@ -11,14 +11,14 @@ import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
 import 'package:taxi_app/utils/ui_utils/error_message_dialog.dart';
 
-class PinCodeSetScreen extends StatefulWidget {
-  const PinCodeSetScreen({super.key});
+class ChekSetPinCodeScreen extends StatefulWidget {
+  const ChekSetPinCodeScreen({super.key});
 
   @override
-  State<PinCodeSetScreen> createState() => _PinCodeSetScreenState();
+  State<ChekSetPinCodeScreen> createState() => _ChekSetPinCodeScreenState();
 }
 
-class _PinCodeSetScreenState extends State<PinCodeSetScreen> {
+class _ChekSetPinCodeScreenState extends State<ChekSetPinCodeScreen> {
   List result = [];
   final LocalAuthentication auth = LocalAuthentication();
   String code = '';
@@ -66,7 +66,7 @@ class _PinCodeSetScreenState extends State<PinCodeSetScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'Yangi Parollni Kiriting',
+              'Parollni tasdinqlang',
               style: Theme.of(context)
                   .textTheme
                   .labelLarge!
@@ -161,10 +161,14 @@ class _PinCodeSetScreenState extends State<PinCodeSetScreen> {
                 //   pinCode += element.text;
                 // }
 
-                if (pinCode.isNotEmpty && pinCode.length == 4) {
-                  StorageRepository.putString("code", pinCode);
-                  pinCode = '';
-                  Navigator.pushNamed(context, RouteNames.chekSetPinCodeScreen);
+                if (pinCode.isNotEmpty &&
+                    pinCode.length == 4 &&
+                    StorageRepository.getString('code') == pinCode) {
+                  Navigator.pushReplacementNamed(
+                      context, RouteNames.fingerprintScreen);
+                } else {
+                  showErrorMessage(
+                      message: 'korfirim cod Natog`ri', context: context);
                 }
 
                 // print(pinCode);

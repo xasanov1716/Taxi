@@ -4,6 +4,7 @@ import 'package:taxi_app/ui/create_order/sub_screens/driver_arriving/driver_arri
 import 'package:taxi_app/ui/create_order/sub_screens/payment_methods/payment_methods_screen.dart';
 import 'package:taxi_app/ui/create_order/sub_screens/searching_driver/searching_driver_screen.dart';
 import 'package:taxi_app/ui/create_order/sub_screens/select_transport/select_transposrt_screen.dart';
+import 'package:taxi_app/ui/local_auth/chek_set_pin_code_screen.dart';
 
 import 'package:taxi_app/ui/local_auth/pin_code_screen.dart';
 import 'package:taxi_app/ui/local_auth/biometrics_screen.dart';
@@ -46,8 +47,8 @@ class RouteNames {
   static const String driverArriving = "/driver_arriving";
   static const String selectTransportScreen = "/select_driver_screen";
   static const String addPromo = "/add_promo";
+  static const String chekSetPinCodeScreen = "/chek_set_pin_code_screen";
 }
-
 
 class AppRoutes {
   static Route generateRoute(RouteSettings settings) {
@@ -111,7 +112,8 @@ class AppRoutes {
         );
       case RouteNames.notificationScreen:
         return MaterialPageRoute(
-          builder: (context) => const NotificationScreen(),);
+          builder: (context) => const NotificationScreen(),
+        );
       case RouteNames.paymentMethods:
         return MaterialPageRoute(
           builder: (context) => const PaymentMethodsScreen(),
@@ -131,6 +133,10 @@ class AppRoutes {
       case RouteNames.selectTransportScreen:
         return MaterialPageRoute(
           builder: (context) => const SelectTransportScreen(),
+        );
+      case RouteNames.chekSetPinCodeScreen:
+        return MaterialPageRoute(
+          builder: (context) => const ChekSetPinCodeScreen(),
         );
       default:
         return MaterialPageRoute(
