@@ -5,7 +5,6 @@ import 'package:taxi_app/ui/create_order/sub_screens/add_promo/add_promo_screen.
 import 'package:taxi_app/ui/create_order/sub_screens/driver_arriving/driver_arriving_screen.dart';
 import 'package:taxi_app/ui/create_order/sub_screens/payment_methods/payment_methods_screen.dart';
 import 'package:taxi_app/ui/create_order/sub_screens/searching_driver/searching_driver_screen.dart';
-import 'package:taxi_app/ui/create_order/sub_screens/select_transport/select_transposrt_screen.dart';
 import 'package:taxi_app/ui/local_auth/chek_set_pin_code_screen.dart';
 
 
@@ -25,6 +24,7 @@ import 'package:taxi_app/ui/tab_box/profile/sub_screens/restore_password/forget_
 import 'package:taxi_app/ui/tab_box/tab_box.dart';
 
 import 'auth/lets_in/lets_in_screen.dart';
+import 'create_order/sub_screens/select_transport/select_transport_screen.dart';
 import 'tab_box/home/sub_screens/special_offers/special_offers_screen.dart';
 
 class RouteNames {
@@ -141,11 +141,11 @@ class AppRoutes {
         );
       case RouteNames.selectTransportScreen:
         return MaterialPageRoute(
-          builder: (context) => const SelectTransportScreen(),
+          builder: (context) => const SelectTransportScreen()
         );
       case RouteNames.chekSetPinCodeScreen:
         return MaterialPageRoute(
-          builder: (context) => const ChekSetPinCodeScreen(),
+          builder: (context) => const ChekSetPinCodeScreen(),);
       case RouteNames.chatWithDriver:
         return MaterialPageRoute(
           builder: (context) => const ChatWithDriverScreen(),
