@@ -30,7 +30,7 @@ class OfferBottomSheetItem extends StatelessWidget {
     return Container(
       width: double.infinity,
       height: height - height / 5,
-      color: AppColors.white,
+      color:Theme.of(context).scaffoldBackgroundColor,
       padding: EdgeInsets.only(left: 24.w, right: 24.w),
       child: Column(
         children: [

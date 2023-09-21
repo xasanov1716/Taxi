@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:taxi_app/ui/contact_to_driver/sub_screens/cancel_driver/cancel_driver_screen.dart';
+import 'package:taxi_app/ui/contact_to_driver/sub_screens/chat_with_driver/chat_with_driver.dart';
 import 'package:taxi_app/ui/create_order/sub_screens/add_promo/add_promo_screen.dart';
 import 'package:taxi_app/ui/create_order/sub_screens/driver_arriving/driver_arriving_screen.dart';
 import 'package:taxi_app/ui/create_order/sub_screens/payment_methods/payment_methods_screen.dart';
 import 'package:taxi_app/ui/create_order/sub_screens/searching_driver/searching_driver_screen.dart';
 import 'package:taxi_app/ui/create_order/sub_screens/select_transport/select_transposrt_screen.dart';
 import 'package:taxi_app/ui/local_auth/chek_set_pin_code_screen.dart';
+
 
 import 'package:taxi_app/ui/local_auth/pin_code_screen.dart';
 import 'package:taxi_app/ui/local_auth/biometrics_screen.dart';
@@ -48,6 +51,8 @@ class RouteNames {
   static const String selectTransportScreen = "/select_driver_screen";
   static const String addPromo = "/add_promo";
   static const String chekSetPinCodeScreen = "/chek_set_pin_code_screen";
+  static const String cancelDriver = "/cancel_driver";
+  static const String chatWithDriver = "/chat_with_driver";
 }
 
 class AppRoutes {
@@ -64,6 +69,10 @@ class AppRoutes {
       case RouteNames.letsIn:
         return MaterialPageRoute(
           builder: (context) => const LetsInScreen(),
+        );
+      case RouteNames.cancelDriver:
+        return MaterialPageRoute(
+          builder: (context) => const CancelDriverScreen(),
         );
       case RouteNames.login:
         return MaterialPageRoute(builder: (context) => const LoginScreen());
@@ -137,6 +146,9 @@ class AppRoutes {
       case RouteNames.chekSetPinCodeScreen:
         return MaterialPageRoute(
           builder: (context) => const ChekSetPinCodeScreen(),
+      case RouteNames.chatWithDriver:
+        return MaterialPageRoute(
+          builder: (context) => const ChatWithDriverScreen(),
         );
       default:
         return MaterialPageRoute(
