@@ -15,6 +15,7 @@ class InboxChatScreen extends StatelessWidget {
       children: [
         Expanded(
           child: ListView(
+            physics: const BouncingScrollPhysics(),
             children: [
               ...List.generate(
                 15,
@@ -36,8 +37,8 @@ class InboxChatScreen extends StatelessWidget {
                   trailing: Column(
                     children: [
                       Container(
-                          height: 30.h,
-                          width: 30.w,
+                          height: 29.4.h,
+                          width: 29.4.w,
                           decoration: const BoxDecoration(
                               shape: BoxShape.circle, color: AppColors.primary),
                           child: Center(
