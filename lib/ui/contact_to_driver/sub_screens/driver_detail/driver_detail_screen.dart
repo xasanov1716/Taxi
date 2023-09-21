@@ -3,7 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:taxi_app/data/models/icon/icon_type.dart';
 import 'package:taxi_app/ui/app_routes.dart';
-import 'package:taxi_app/ui/contact_to_driver/sub_screens/driver_detail/widgets/third_Item_in_driver_detail.dart';
+import 'package:taxi_app/ui/contact_to_driver/sub_screens/driver_detail/widgets/third_item/third_Item_in_driver_detail.dart';
+import 'package:taxi_app/ui/contact_to_driver/sub_screens/driver_detail/widgets/third_item/third_item_container.dart';
 import 'package:taxi_app/ui/widgets/global_appbar.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
@@ -12,7 +13,7 @@ import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
 
 import 'widgets/icons_container/icons_container_screen.dart';
-import 'widgets/screens_data/screen_data_screen.dart';
+import 'widgets/second_item/second_item_container.dart';
 
 class DriverDetailScreen extends StatefulWidget {
   const DriverDetailScreen({super.key});
@@ -24,8 +25,6 @@ class DriverDetailScreen extends StatefulWidget {
 class _DriverDetailScreenState extends State<DriverDetailScreen> {
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: GlobalAppBar(
         onTap: () {
@@ -36,29 +35,26 @@ class _DriverDetailScreenState extends State<DriverDetailScreen> {
         action: [
           IconButton(
             onPressed: () {},
-            icon: SvgPicture.asset(AppIcons.moreCircle),
+            icon: SvgPicture.asset(AppIcons.moreCircle, colorFilter: ColorFilter.mode(getTheme(context)?AppColors.white:AppColors.c_900, BlendMode.srcIn),),
           ),
         ],
       ),
       // backgroundColor: AppColors.greysCale,
       body: Padding(
-        padding: EdgeInsets.only(
-            left: 24 * width / figmaWidth, right: 24 * width / figmaWidth),
+        padding: EdgeInsets.symmetric(horizontal: 24 * width / figmaWidth),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            24.ph,
             Center(
                 child: CircleAvatar(
               radius: 60.r,
               child: Image.asset(AppIcons.testAvatar),
             )),
-            20.ph,
             Text('Daniel Austin',
                 style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                       fontSize: 22.sp,
                       fontWeight: FontWeight.w700,
                     )),
-            20.ph,
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -71,124 +67,8 @@ class _DriverDetailScreenState extends State<DriverDetailScreen> {
                     onPressed: () {}, icon: SvgPicture.asset(AppIcons.copy)),
               ],
             ),
-            24.ph,
-            ScreenData(
-              column: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Column(
-                        children: [
-                          IconsContainer(
-                            icon: AppIcons.getSvg(
-                                name: AppIcons.star, iconType: IconType.bold),
-                            onTap: () {},
-                          ),
-                          12.pw,
-                          Text('4.8',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyMedium!
-                                  .copyWith(
-                                    fontSize: 18.sp,
-                                    fontWeight: FontWeight.w700,
-                                  )),
-                          Text('Ratings',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyMedium!
-                                  .copyWith(
-                                    fontSize: 12.sp,
-                                    fontWeight: FontWeight.w400,
-                                  )),
-                        ],
-                      ),
-                      32.pw,
-                      Column(
-                        children: [
-                          IconsContainer(
-                            icon: AppIcons.standard,
-                            onTap: () {},
-                          ),
-                          Text('279',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyMedium!
-                                  .copyWith(
-                                    fontSize: 18.sp,
-                                    fontWeight: FontWeight.w700,
-                                  )),
-                          Text('Trips',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyMedium!
-                                  .copyWith(
-                                    fontSize: 12.sp,
-                                    fontWeight: FontWeight.w400,
-                                  )),
-                        ],
-                      ),
-                      32.pw,
-                      Column(
-                        children: [
-                          IconsContainer(
-                            icon: AppIcons.getSvg(
-                                name: AppIcons.timeCircle,
-                                iconType: IconType.lightBorder),
-                            onTap: () {},
-                          ),
-                          Text('5',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyMedium!
-                                  .copyWith(
-                                    fontSize: 18.sp,
-                                    fontWeight: FontWeight.w700,
-                                  )),
-                          Text('Years',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyMedium!
-                                  .copyWith(
-                                    fontSize: 12.sp,
-                                    fontWeight: FontWeight.w400,
-                                  )),
-                        ],
-                      ),
-                    ],
-                  )
-                ],
-              ),
-              radius: 24.r,
-              height: 170,
-              width: 380,
-            ),
-            24.ph,
-            const ScreenData(
-              column: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  ThirdItemInDriverDetail(
-                    startText: "Member Since",
-                    endText: "July 15, 2019",
-                  ),
-                  ThirdItemInDriverDetail(
-                    startText: "Car Model",
-                    endText: "July 15, 2019",
-                  ),
-                  ThirdItemInDriverDetail(
-                    startText: "Plate Number",
-                    endText: "HSW 4736 XK",
-                  ),
-                ],
-              ),
-              radius: 15,
-              height: 163,
-              width: 380,
-            ),
+            const SecondItemContainer(),
+            const ThirdItemContainer(),
           ],
         ),
       ),
@@ -203,11 +83,9 @@ class _DriverDetailScreenState extends State<DriverDetailScreen> {
           color: getTheme(context) ? AppColors.dark2 : AppColors.greysCale,
         ),
         child: Padding(
-          padding: EdgeInsets.only(
-              left: 24 * width / figmaWidth,
-              right: 24 * width / figmaWidth,
-              top: 24 * height / figmaHeight,
-              bottom: 24 * height / figmaHeight),
+          padding: EdgeInsets.all(
+            24 * height / figmaHeight,
+          ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

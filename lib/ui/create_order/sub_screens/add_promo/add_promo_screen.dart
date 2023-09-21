@@ -58,7 +58,6 @@ class _AddPromoScreenState extends State<AddPromoScreen> {
                     }
                   });
                   selectedText = promoItems[index].text;
-                  print(selectedText);
                 },
                 child: Container(
                   margin: EdgeInsets.only(bottom: 24.h),
