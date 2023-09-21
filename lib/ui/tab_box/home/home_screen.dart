@@ -80,7 +80,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             const Visibility(
-              visible: false, // <= Ko'rish
+              visible: true, // <= Ko'rish
               child: Positioned(
                 bottom: 0,
                 left: 0,
