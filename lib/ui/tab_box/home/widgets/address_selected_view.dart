@@ -17,7 +17,6 @@ class AddressSelectedView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: height / 2,
       padding: EdgeInsets.all(24.w),
       decoration: BoxDecoration(
           color: Theme.of(context).scaffoldBackgroundColor,
