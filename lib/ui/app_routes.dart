@@ -5,7 +5,9 @@ import 'package:taxi_app/ui/create_order/sub_screens/add_promo/add_promo_screen.
 import 'package:taxi_app/ui/create_order/sub_screens/driver_arriving/driver_arriving_screen.dart';
 import 'package:taxi_app/ui/create_order/sub_screens/payment_methods/payment_methods_screen.dart';
 import 'package:taxi_app/ui/create_order/sub_screens/searching_driver/searching_driver_screen.dart';
-import 'package:taxi_app/ui/create_order/sub_screens/select_transport/select_transport_screen.dart';
+import 'package:taxi_app/ui/create_order/sub_screens/select_transport/select_transposrt_screen.dart';
+import 'package:taxi_app/ui/local_auth/chek_set_pin_code_screen.dart';
+
 
 import 'package:taxi_app/ui/local_auth/pin_code_screen.dart';
 import 'package:taxi_app/ui/local_auth/biometrics_screen.dart';
@@ -48,6 +50,7 @@ class RouteNames {
   static const String driverArriving = "/driver_arriving";
   static const String selectTransportScreen = "/select_driver_screen";
   static const String addPromo = "/add_promo";
+  static const String chekSetPinCodeScreen = "/chek_set_pin_code_screen";
   static const String cancelDriver = "/cancel_driver";
   static const String chatWithDriver = "/chat_with_driver";
 }
@@ -140,6 +143,9 @@ class AppRoutes {
         return MaterialPageRoute(
           builder: (context) => const SelectTransportScreen(),
         );
+      case RouteNames.chekSetPinCodeScreen:
+        return MaterialPageRoute(
+          builder: (context) => const ChekSetPinCodeScreen(),
       case RouteNames.chatWithDriver:
         return MaterialPageRoute(
           builder: (context) => const ChatWithDriverScreen(),
