@@ -103,9 +103,11 @@ class _DriverArrivingScreenState extends State<DriverArrivingScreen> {
               left: 0,
               right: 0,
               child: DriverItem(
+                onDriverDetailTap: () {
+                  Navigator.pushNamed(context, RouteNames.driverDetail);
+                },
                 cancelTap: () {
                   Navigator.pushNamed(context, RouteNames.cancelDriver);
-
                   setState(() {
                     isDriver = false;
                   });
