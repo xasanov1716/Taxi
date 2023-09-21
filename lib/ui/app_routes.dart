@@ -24,6 +24,7 @@ import 'package:taxi_app/ui/tab_box/profile/sub_screens/restore_password/forget_
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/restore_password/forget_screen/forget_password_screen.dart';
 
 import 'package:taxi_app/ui/tab_box/tab_box.dart';
+import 'package:taxi_app/ui/tab_box/wallet/sub_screens/top_up_payment_screen.dart';
 
 import 'auth/lets_in/lets_in_screen.dart';
 import 'create_order/sub_screens/select_transport/select_transport_screen.dart';
@@ -57,6 +58,7 @@ class RouteNames {
   static const String cancelDriver = "/cancel_driver";
   static const String chatWithDriver = "/chat_with_driver";
   static const String driverDetail = "/driver_detail";
+  static const String topUpPaymentScreen = "/top_up_payment_screen";
 }
 
 class AppRoutes {
@@ -162,6 +164,10 @@ class AppRoutes {
       case RouteNames.bottomSheetDialog:
         return MaterialPageRoute(
           builder: (context) => const BottomSheetScreen(),
+        );
+      case RouteNames.topUpPaymentScreen:
+        return MaterialPageRoute(
+          builder: (context) => const TopUpPaymentScreen(),
         );
       default:
         return MaterialPageRoute(
