@@ -39,7 +39,7 @@ class _FirstHalfOfTransportState extends State<FirstHalfOfTransport> {
                 selectedList.length,
                     (index) => Padding(
                   padding: EdgeInsets.only(
-                      bottom: 24.h, left: 24.w, right: 24.w),
+                       left: 24.w, right: 24.w),
                   child: InkWell(
                     borderRadius: BorderRadius.circular(16.r),
                     onTap: () {

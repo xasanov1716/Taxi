@@ -39,17 +39,19 @@ class SecondHalfOfTransportScreen extends StatelessWidget {
                     builder: (context, state) {
                       if (state.promoCodeList.isEmpty) {
                         return Padding(
-                          padding:EdgeInsets.only(top: 24.h),
-
+                          padding: EdgeInsets.only(top: 24.h),
                           child: Row(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.center,
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               SizedBox(
-                                  width: 300 * width / figmaWidth,
-                                  child: const GlobalTextField(
-                                      hintText: 'Enter Promo Code')),
+                                width: 300 * width / figmaWidth,
+                                child: const GlobalTextField(
+                                  textInputAction: TextInputAction.done,
+                                  hintText: 'Enter Promo Code',
+                                ),
+                              ),
                               10.pw,
                               getPlusButton(() {
                                 Navigator.pushNamed(
@@ -61,7 +63,7 @@ class SecondHalfOfTransportScreen extends StatelessWidget {
                       }
                       if (state.promoCodeList.isNotEmpty) {
                         return ListView(
-                          padding:EdgeInsets.only(top: 24.h),
+                          padding: EdgeInsets.only(top: 24.h),
                           children: [
                             Wrap(
                               runSpacing: 10.h,
@@ -70,8 +72,7 @@ class SecondHalfOfTransportScreen extends StatelessWidget {
                                 ...List.generate(
                                   state.promoCodeList.length,
                                   (index) {
-                                    var promoCode =
-                                        state.promoCodeList[index];
+                                    var promoCode = state.promoCodeList[index];
                                     return Container(
                                       padding: EdgeInsets.symmetric(
                                           horizontal: 5.w, vertical: 8.h),
@@ -103,8 +104,7 @@ class SecondHalfOfTransportScreen extends StatelessWidget {
                                             child: SvgPicture.asset(
                                               AppIcons.getSvg(
                                                 name: AppIcons.closeSquare,
-                                                iconType:
-                                                    IconType.lightOutline,
+                                                iconType: IconType.lightOutline,
                                               ),
                                             ),
                                           ),
@@ -131,7 +131,6 @@ class SecondHalfOfTransportScreen extends StatelessWidget {
             ],
           ),
         ),
-
       ],
     );
   }

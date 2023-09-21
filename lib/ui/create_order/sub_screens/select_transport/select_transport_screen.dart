@@ -24,7 +24,9 @@ class _SelectTransportScreenState extends State<SelectTransportScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: GlobalAppBar(
-        onTap: () {},
+        onTap: () {
+          Navigator.pop(context);
+        },
         title: "Select Car",
       ),
 
