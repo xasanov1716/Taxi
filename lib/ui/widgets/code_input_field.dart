@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taxi_app/cubits/code_input_cubit/code_input_cubit.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
+import 'package:taxi_app/utils/theme/get_theme.dart';
 
 class CodeInputField extends StatefulWidget {
   const CodeInputField({super.key});
@@ -37,9 +38,12 @@ class _CodeInputFieldState extends State<CodeInputField> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: List.generate(4, (index) {
             return SizedBox(
-              width: 75.0.w,
+              width: 80.0.w,
               child: TextField(
-                style: const TextStyle(color: AppColors.dark3),
+                style: Theme.of(context)
+                    .appBarTheme
+                    .titleTextStyle!
+                    .copyWith(fontSize: 22.sp),
                 onTap: () {
                   setState(() {
                     FocusScope.of(context)
@@ -50,7 +54,8 @@ class _CodeInputFieldState extends State<CodeInputField> {
                 maxLength: 1,
                 keyboardType: TextInputType.number,
                 inputFormatters: [
-                  FilteringTextInputFormatter.digitsOnly, // Allow only numeric input
+                  FilteringTextInputFormatter
+                      .digitsOnly, // Allow only numeric input
                 ],
                 decoration: InputDecoration(
                   counterText: "",
@@ -62,12 +67,19 @@ class _CodeInputFieldState extends State<CodeInputField> {
                   ),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
-                    borderSide: const BorderSide(color: AppColors.c_300),
+                    borderSide: BorderSide(
+                        color: getTheme(context)
+                            ? AppColors.c_500
+                            : AppColors.c_300),
                   ),
                   filled: true,
-                  fillColor: codeInputCubit.pinFocusNodes[index].hasFocus
-                      ? AppColors.yellowTransparent
-                      : AppColors.c_200,
+                  fillColor: getTheme(context)
+                      ? codeInputCubit.pinFocusNodes[index].hasFocus
+                          ? AppColors.yellowTransparent
+                          : AppColors.dark3
+                      : codeInputCubit.pinFocusNodes[index].hasFocus
+                          ? AppColors.yellowTransparent
+                          : AppColors.c_200,
                 ),
                 textAlign: TextAlign.center,
                 focusNode: codeInputCubit.pinFocusNodes[index],
@@ -76,8 +88,7 @@ class _CodeInputFieldState extends State<CodeInputField> {
                     codeInputCubit.handleCodeInput(index, value);
                   });
                 },
-              )
-              ,
+              ),
             );
           }),
         ),

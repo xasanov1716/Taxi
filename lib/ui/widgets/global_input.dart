@@ -1,35 +1,41 @@
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
+import 'package:taxi_app/utils/theme/get_theme.dart';
 
 class GlobalTextField extends StatefulWidget {
   final String hintText;
   final TextInputType keyboardType;
   final TextInputAction textInputAction;
-  final String prefixIcon;
+  final Widget? prefixIcon;
   final String caption;
   final ValueChanged? onChanged;
   final FocusNode? focusNode;
+  final bool readOnly;
   final MaskTextInputFormatter? maskFormatter;
   final TextEditingController? controller;
   final Widget? suffixIcon;
   final bool? obscureText;
+  final EdgeInsets? contentPadding;
 
   const GlobalTextField({
     Key? key,
     required this.hintText,
     this.keyboardType = TextInputType.text,
     this.textInputAction = TextInputAction.next,
-    this.prefixIcon = "",
+    this.prefixIcon,
     this.caption = "",
     this.suffixIcon,
+    this.readOnly = false,
     this.controller,
     this.onChanged,
     this.focusNode,
     this.maskFormatter,
     this.obscureText,
+    this.contentPadding,
   }) : super(key: key);
 
   @override
@@ -38,40 +44,52 @@ class GlobalTextField extends StatefulWidget {
 
 class _GlobalTextFieldState extends State<GlobalTextField> {
   late TextEditingController _internalController;
-  final FocusNode _textFieldFocus = FocusNode();
+  final internalFocusNode = FocusNode();
   Color color = const Color(0xFFFAFAFA);
-
 
   @override
   void initState() {
     super.initState();
     _internalController = widget.controller ?? TextEditingController();
+    widget.focusNode?.addListener(_onFocusChange);
+  }
+
+  @override
+  void dispose() {
+    widget.focusNode?.removeListener(_onFocusChange);
+    super.dispose();
+  }
+
+  void _onFocusChange() {
+    setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      onChanged: widget.onChanged,
+      obscuringCharacter: '●',
+      readOnly: widget.readOnly,
       controller: _internalController,
-      focusNode: _textFieldFocus,
-      obscureText: !widget.obscureText!,
+      focusNode: widget.focusNode ?? internalFocusNode,
+      obscureText: widget.obscureText ?? false,
       decoration: InputDecoration(
-        hintStyle: const TextStyle(
+        hintStyle: TextStyle(
           fontFamily: "Urbanist",
-          fontSize: 14,
+          fontSize: 16.sp,
           fontWeight: FontWeight.w400,
-          color: Color(0xff9e9e9e),
+          color: const Color(0xff9e9e9e),
           height: 20 / 14,
         ),
+        contentPadding:widget.contentPadding,
         hintText: widget.hintText,
-        prefixIcon: widget.prefixIcon.isEmpty
-            ? null
-            : Padding(
-                padding: EdgeInsets.only(left: 20.w, right: 12.w),
-                child: SvgPicture.asset(widget.prefixIcon),
-              ),
+        prefixIcon: widget.prefixIcon,
         suffixIcon: widget.suffixIcon,
         enabledBorder: OutlineInputBorder(
-          borderSide: const BorderSide(color: Color(0xFFFAFAFA), width: 1),
+          borderSide: BorderSide(
+              color:
+                  getTheme(context) ? AppColors.dark3 : const Color(0xFFFAFAFA),
+              width: 1),
           borderRadius: BorderRadius.circular(10),
         ),
         focusedBorder: OutlineInputBorder(
@@ -83,15 +101,19 @@ class _GlobalTextFieldState extends State<GlobalTextField> {
           borderRadius: BorderRadius.circular(10),
         ),
         border: OutlineInputBorder(
-          borderSide: const BorderSide(color: Color(0xFFFAFAFA), width: 1),
+          borderSide: BorderSide(color: getTheme(context)? const Color(0xFFFAFAFA):AppColors.dark2, width: 1),
           borderRadius: BorderRadius.circular(10),
         ),
-        fillColor: _textFieldFocus.hasFocus
-            ? const Color(0xFFFFFAED)
-            : const Color(0xFFFAFAFA),
+        fillColor: getTheme(context)
+            ? (widget.focusNode?.hasFocus ?? internalFocusNode.hasFocus)
+                ? AppColors.yellowTransparent
+                : AppColors.dark2
+            : (widget.focusNode?.hasFocus ?? internalFocusNode.hasFocus)
+                ? const Color(0xFFFFFAED)
+                : const Color(0xFFFAFAFA),
         filled: true,
       ),
-      style: TextStyle(color: AppColors.dark3, fontSize: 16.sp),
+      // style: TextStyle(color: AppColors.dark3, fontSize: 16.sp),
       keyboardType: widget.keyboardType,
       textInputAction: widget.textInputAction,
     );

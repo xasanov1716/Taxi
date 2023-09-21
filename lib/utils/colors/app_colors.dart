@@ -34,53 +34,53 @@ class AppColors {
       begin: Alignment.centerRight,
       end: Alignment.centerLeft,
       colors: [
-         Color(0xFFFEBB1B),
-         Color(0xFFFFC740),
+        Color(0xFFFEBB1B),
+        Color(0xFFFFC740),
       ]);
 
   static const Gradient gradientBlue = LinearGradient(
       begin: Alignment.centerRight,
       end: Alignment.centerLeft,
       colors: [
-         Color(0xFF335EF7),
-         Color(0xFF5F82FF),
+        Color(0xFF335EF7),
+        Color(0xFF5F82FF),
       ]);
 
   static const Gradient gradientPurple = LinearGradient(
       begin: Alignment.centerRight,
       end: Alignment.centerLeft,
       colors: [
-         Color(0xFF7210FF),
-         Color(0xFF9D59FF),
+        Color(0xFF7210FF),
+        Color(0xFF9D59FF),
       ]);
 
   static const Gradient gradientYellow = LinearGradient(
       begin: Alignment.centerRight,
       end: Alignment.centerLeft,
       colors: [
-         Color(0xFFFACC15),
-         Color(0xFFFFE580),
+        Color(0xFFFACC15),
+        Color(0xFFFFE580),
       ]);
 
   static const Gradient gradientGreen = LinearGradient(
       begin: Alignment.centerRight,
       end: Alignment.centerLeft,
       colors: [
-         Color(0xFF22BB9C),
-         Color(0xFF35DEBC),
+        Color(0xFF22BB9C),
+        Color(0xFF35DEBC),
       ]);
 
   static const Gradient gradientRed = LinearGradient(
       begin: Alignment.centerRight,
       end: Alignment.centerLeft,
       colors: [
-         Color(0xFFFF4D67),
-         Color(0xFFFF8A9B),
+        Color(0xFFFF4D67),
+        Color(0xFFFF8A9B),
       ]);
 
   //----------------- DARK COLORS -------------------------
 
-  static const Color dark1 = Color(0xFF181A20);
+  static const Color dark1 = Color(0xFF181A20);//04060F FAFAFA
   static const Color dark2 = Color(0xFF1F222A);
   static const Color dark3 = Color(0xFF35383F);
 
@@ -106,6 +106,11 @@ class AppColors {
   static const Color deepOrange = Color(0xFFFF5722);
   static const Color brown = Color(0xFF795548);
   static const Color blueGrey = Color(0xFF607D8B);
+  static const Color dimYellow = Color(0xFFFFE4A4);
+  static const Color cardShadowTwo=Color(0xFF04060F);
+  static const Color greysCale =Color(0xFFFAFAFA);
+
+
 
   //----------------- BACKGROUND COLORS ------------------------
 
@@ -127,5 +132,4 @@ class AppColors {
   static const Color redTransparent = Color(0x14f75555);
   static const Color greenTransparent = Color(0x144caf50);
   static const Color cyanTransparent = Color(0x1400bcd4);
-
 }
