@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:taxi_app/ui/create_order/sub_screens/driver_arriving/widgets/driver_bottomsheet.dart';
+import 'package:taxi_app/ui/create_order/sub_screens/driver_arriving/widgets/driver_item.dart';
 import 'package:taxi_app/ui/create_order/sub_screens/searching_driver/widgets/side_cancel_button.dart';
 import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
@@ -21,10 +21,11 @@ class DriverArrivingScreen extends StatefulWidget {
 
 class _DriverArrivingScreenState extends State<DriverArrivingScreen> {
   late GoogleMapController mapController;
+  bool isDriver = false;
 
   @override
   void initState() {
-    Future.microtask(() => driverBottomSheet(context));
+    // Future.microtask(() => driverBottomSheet(context));
     super.initState();
   }
 
@@ -77,11 +78,26 @@ class _DriverArrivingScreenState extends State<DriverArrivingScreen> {
                   child: SvgPicture.asset(AppIcons.arrowLeft2, fit: BoxFit.cover,),),
               )),
           Positioned(
-            bottom: 24.h,
+              bottom: 24.h,
               left: (width-230.w)/2,
               child: SideCalcelButton(icon: AppIcons.image,title: "Driver arrive",onTap: (){
-                driverBottomSheet(context);
-              },))
+                setState(() {
+                  isDriver = true;
+                });
+              },)),
+          Visibility(
+            visible: isDriver,
+            child: Positioned(
+              bottom: 0,
+              left: 0,
+              right: 0,
+              child: DriverItem(onTap: (){
+                setState(() {
+                  isDriver = false;
+                });
+              },),
+            ),
+          ),
         ],
       ),
     );
