@@ -56,5 +56,5 @@ class GlobalAppBar extends StatelessWidget implements PreferredSize {
   Widget get child => throw UnimplementedError();
 
   @override
-  Size get preferredSize => Size(double.infinity, 56.h);
+  Size get preferredSize => Size(double.infinity, 56);
 }

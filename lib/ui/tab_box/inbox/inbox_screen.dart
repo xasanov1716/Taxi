@@ -8,6 +8,7 @@ import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
+import 'package:taxi_app/utils/ui_utils/utilitiy_function.dart';
 
 class InboxScreen extends StatelessWidget {
   const InboxScreen({super.key});
@@ -41,27 +42,15 @@ class InboxScreen extends StatelessWidget {
             style: Theme.of(context).textTheme.headlineMedium,
           ),
           actions: [
-            IconButton(
-              onPressed: () {},
-              icon: SvgPicture.asset(
-                AppIcons.search,
-                width: 24.w,
-                colorFilter: ColorFilter.mode(
-                  getTheme(context) ? AppColors.white : AppColors.c_900,
-                  BlendMode.srcIn,
-                ),
-              ),
+            getIcon(
+              AppIcons.search,
+              context: context,
+              onTap: () {},
             ),
-            IconButton(
-              onPressed: () {},
-              icon: SvgPicture.asset(
-                AppIcons.moreCircle,
-                width: 24.w,
-                colorFilter: ColorFilter.mode(
-                  getTheme(context) ? AppColors.white : AppColors.c_900,
-                  BlendMode.srcIn,
-                ),
-              ),
+            getIcon(
+              AppIcons.moreCircle,
+              context: context,
+              onTap: () {},
             ),
             12.pw,
           ],
