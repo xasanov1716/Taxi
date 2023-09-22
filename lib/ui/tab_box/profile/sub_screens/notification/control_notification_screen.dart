@@ -24,60 +24,49 @@ class _ControlNotificationScreenState extends State<ControlNotificationScreen> {
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24.w),
-        child: ListView(
-          children: [
-            24.ph,
-            SwitchWidgetForNotification(
-              title: 'General Notification',
-              callback: () {},
-            ),
-            40.ph,
-            SwitchWidgetForNotification(
-              title: 'Sound',
-              callback: () {},
-            ),
-            40.ph,
-            SwitchWidgetForNotification(
-              title: 'Vibrate',
-              callback: () {},
-            ),
-            40.ph,
-            SwitchWidgetForNotification(
-              title: 'Special Offers',
-              callback: () {},
-            ),
-            40.ph,
-            SwitchWidgetForNotification(
-              title: 'Promo & Discount',
-              callback: () {},
-            ),
-            40.ph,
-            SwitchWidgetForNotification(
-              title: 'Payments',
-              callback: () {},
-            ),
-            40.ph,
-            SwitchWidgetForNotification(
-              title: 'Cashback',
-              callback: () {},
-            ),
-            40.ph,
-            SwitchWidgetForNotification(
-              title: 'App Updates',
-              callback: () {},
-            ),
-            40.ph,
-            SwitchWidgetForNotification(
-              title: 'New Service Available',
-              callback: () {},
-            ),
-            40.ph,
-            SwitchWidgetForNotification(
-              title: 'New Tips Available',
-              callback: () {},
-            ),40.ph
-          ]
-        ),
+        child: ListView(children: [
+          24.ph,
+          const SwitchWidgetForNotification(
+            title: 'General Notification',
+          ),
+          40.ph,
+          const SwitchWidgetForNotification(
+            title: 'Sound',
+          ),
+          40.ph,
+          const SwitchWidgetForNotification(
+            title: 'Vibrate',
+          ),
+          40.ph,
+          const SwitchWidgetForNotification(
+            title: 'Special Offers',
+          ),
+          40.ph,
+          const SwitchWidgetForNotification(
+            title: 'Promo & Discount',
+          ),
+          40.ph,
+          const SwitchWidgetForNotification(
+            title: 'Payments',
+          ),
+          40.ph,
+          const SwitchWidgetForNotification(
+            title: 'Cashback',
+          ),
+          40.ph,
+          const SwitchWidgetForNotification(
+            title: 'App Updates',
+          ),
+          40.ph,
+          const SwitchWidgetForNotification(
+            title: 'New Service Available',
+          ),
+          40.ph,
+          const SwitchWidgetForNotification(
+            title: 'New Tips Available',
+          ),
+          40.ph
+        ]),
       ),
     );
   }
