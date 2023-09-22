@@ -78,8 +78,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                               borderRadius: BorderRadius.circular(100.r),
                               child: Image.file(
                                 File(image),
-                                width: 175 * width / figmaWidth,
-                                height: 142 * height / figmaHeight,
+                                width: 142 * width / figmaWidth,
+                                height: 142 * width / figmaWidth,
                                 fit: BoxFit.cover,
                               ),
                             ),
