@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 import '../../../utils/colors/app_colors.dart';
 import '../../../utils/size/screen_size.dart';
@@ -31,33 +30,34 @@ class _UserImageState extends State<UserImage> {
       children: [
         Container(
           height: 142 * height / figmaHeight,
-          width: 175 * width / figmaWidth,
-          decoration:  const BoxDecoration(
+          width: 142 * width / figmaWidth,
+          decoration: const BoxDecoration(
             shape: BoxShape.circle,
             color: AppColors.c_50,
           ),
           child: Stack(
-              children: [
-                Center(
-                  child: widget.userImage,
-                ),
-                Positioned(
-                  bottom: 0,
-                  right: 0.w,
-                  child: IconButton(
-                    onPressed: widget.onTap,
-                    icon: SvgPicture.asset(
-                      widget.edit,
-                      colorFilter: const ColorFilter.mode(
-                          AppColors.primary, BlendMode.srcIn),
-                      width: 35 * width / figmaWidth,
-                      height: 35 * height / figmaHeight,
-                    ),
+            children: [
+              Center(
+                child: widget.userImage,
+              ),
+              Positioned(
+                bottom: 0,
+                right: 0.w,
+                child: IconButton(
+                  onPressed: widget.onTap,
+                  icon: SvgPicture.asset(
+                    widget.edit,
+                    colorFilter: const ColorFilter.mode(
+                        AppColors.primary, BlendMode.srcIn),
+                    width: 35 * width / figmaWidth,
+                    height: 35 * height / figmaHeight,
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-        ],);
+        ),
+      ],
+    );
   }
 }

@@ -62,11 +62,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
           },
           title: 'Fill Your Profile'),
       body: Padding(
-        padding: EdgeInsets.only(
-          left: 24.w,
-          right: 24.w,
-          bottom: 12.h,
-        ),
+        padding: EdgeInsets.all(24.h),
         child: Column(
           children: [
             Expanded(
@@ -82,8 +78,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                               borderRadius: BorderRadius.circular(100.r),
                               child: Image.file(
                                 File(image),
-                                width: 175 * width / figmaWidth,
-                                height: 142 * height / figmaHeight,
+                                width: 142 * width / figmaWidth,
+                                height: 142 * width / figmaWidth,
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -202,23 +198,31 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
             ),
             24.ph,
             GlobalButton(
-                color: AppColors.disabledButton,
-                title: "Continue",
-                radius: 100,
-                textColor: AppColors.black,
-                onTap: () {
-                  if (context.read<UserCubit>().canRegister()) {
-                    Navigator.pushNamed(context, RouteNames.setPinCodeScreen);
-                  }else{
-                    ScaffoldMessenger.of(context).showSnackBar(
-                       SnackBar(
-                        backgroundColor: getTheme(context) ? AppColors.c_900 : AppColors.c_700,
-                        content:  Text("Maydonlar to'liq emas", style: TextStyle(color: getTheme(context) ? AppColors.white : AppColors.black),),
+              color: AppColors.disabledButton,
+              title: "Continue",
+              radius: 100,
+              textColor: AppColors.black,
+              onTap: () {
+                if (context.read<UserCubit>().canRegister()) {
+                  Navigator.pushNamed(context, RouteNames.setPinCodeScreen);
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      backgroundColor:
+                          getTheme(context) ? AppColors.c_900 : AppColors.c_700,
+                      content: Text(
+                        "Maydonlar to'liq emas",
+                        style: TextStyle(
+                            color: getTheme(context)
+                                ? AppColors.white
+                                : AppColors.black),
                       ),
-                    );
-                  }
-                }),
-            SizedBox(height: 48.h),
+                    ),
+                  );
+                }
+              },
+            ),
+            24.ph
           ],
         ),
       ),
@@ -269,7 +273,6 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
       builder: (BuildContext context) {
         return Container(
           padding: EdgeInsets.all(24.w),
-          height: 250 * height / figmaHeight,
           decoration: BoxDecoration(
             color: getTheme(context) ? AppColors.c_900 : AppColors.c_700,
             borderRadius: const BorderRadius.only(
@@ -278,6 +281,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
             ),
           ),
           child: Column(
+            mainAxisSize: MainAxisSize.min,
             children: [
               Padding(
                 padding: const EdgeInsets.all(8.0),
