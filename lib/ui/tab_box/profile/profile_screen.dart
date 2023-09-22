@@ -41,6 +41,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
       appBar: AppBar(),
       body: ListView(
         children: [
+          Center(
+            child: CupertinoSwitch(
+              onChanged: (v) {
+                setState(() {
+                  isSwitched = !isSwitched;
+                });
+                if (isSwitched) {
+                  AdaptiveTheme.of(context).setDark();
+                } else {
+                  AdaptiveTheme.of(context).setLight();
+                }
+              },
+              value: isSwitched,
+            ),
+          ),
           TextButton(onPressed: (){}, child: const Text("Edit Profile")),
           TextButton(onPressed: (){}, child: const Text("Address")),
           TextButton(onPressed: (){}, child: const Text("Notification")),
@@ -58,18 +73,3 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 }
 
-// Center(
-//   child: CupertinoSwitch(
-//     onChanged: (v) {
-//       setState(() {
-//         isSwitched = !isSwitched;
-//       });
-//       if (isSwitched) {
-//         AdaptiveTheme.of(context).setDark();
-//       } else {
-//         AdaptiveTheme.of(context).setLight();
-//       }
-//     },
-//     value: isSwitched,
-//   ),
-// ),
