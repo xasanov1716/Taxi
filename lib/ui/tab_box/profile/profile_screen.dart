@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:taxi_app/cubits/user/user_cubit.dart';
 import 'package:taxi_app/data/models/icon/icon_type.dart';
@@ -18,8 +17,7 @@ import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
-
-import '../../app_routes.dart';
+import 'package:taxi_app/utils/ui_utils/utilitiy_function.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -29,25 +27,15 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  bool isSwitched = false;
   String image = "";
   ImagePicker picker = ImagePicker();
-
-  @override
-  void initState() {
-    _init();
-    super.initState();
-  }
-
-  _init() async {
-    isSwitched = await Future.microtask(() => getTheme(context));
-    setState(() {});
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          scrolledUnderElevation: 0,
+          elevation: 0,
           leading: Padding(
             padding: EdgeInsets.only(left: 24.w),
             child: Image.asset(
@@ -60,9 +48,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
             style: Theme.of(context).textTheme.headlineMedium,
           ),
           actions: [
-            IconButton(
-                onPressed: () {}, icon: SvgPicture.asset(AppIcons.moreCircle)),
-            24.pw
+            getIcon(
+              AppIcons.moreCircle,
+              context: context,
+              onTap: () {},
+            ),
+            12.pw
           ],
         ),
         body: Column(
@@ -126,7 +117,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   isLanguage: true,
                   language: "Uzbek",
                 ),
-                ThemeChangerButton(isSwitched: isSwitched),
+                ThemeChangerButton(),
                 ProfileButton(
                     text: "Privacy Policy", icon: AppIcons.lock, onTap: () {}),
                 ProfileButton(
@@ -140,6 +131,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   icon: AppIcons.logOut,
                   onTap: () {
                     showModalBottomSheet(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.vertical(
+                          top: Radius.circular(32.r),
+                        ),
+                      ),
                       backgroundColor:
                           Theme.of(context).scaffoldBackgroundColor,
                       showDragHandle: true,
@@ -258,4 +254,3 @@ class _ProfileScreenState extends State<ProfileScreen> {
     }
   }
 }
-

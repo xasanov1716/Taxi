@@ -11,21 +11,24 @@ import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
 
 class ThemeChangerButton extends StatefulWidget {
-  const ThemeChangerButton({super.key, required this.isSwitched});
-
-  final bool isSwitched;
+  const ThemeChangerButton({super.key});
 
   @override
   State<ThemeChangerButton> createState() => _ThemeChangerButtonState();
 }
 
 class _ThemeChangerButtonState extends State<ThemeChangerButton> {
-  late bool isSwitched;
+  bool isSwitched = false;
 
   @override
   void initState() {
-    isSwitched = widget.isSwitched;
+    _init();
     super.initState();
+  }
+
+  _init() async {
+    isSwitched = await Future.microtask(() => getTheme(context));
+    setState(() {});
   }
 
   @override
