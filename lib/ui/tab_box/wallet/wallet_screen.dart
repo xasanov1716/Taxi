@@ -46,7 +46,12 @@ class WalletScreen extends StatelessWidget {
                 ),
                 const Spacer(),
                 TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(
+                        context,
+                        RouteNames.transactionsHistory,
+                      );
+                    },
                     child: Text("See All",
                         style: Theme.of(context)
                             .textTheme
@@ -59,13 +64,54 @@ class WalletScreen extends StatelessWidget {
             ),
           ),
           12.ph,
-          Expanded(child: ListView(
+          Expanded(
+              child: ListView(
             children: [
-              TransactionItem(onTap: (){ }, name: "Daniel Austin", date: "Dec 20, 2024 | 10:00 AM", price: 14, expense: "Taxi Expense",iconName: AppIcons.arrowUpSquare, iconColor: AppColors.error,),
-              TransactionItem(onTap: (){ }, name: "Top Up Wallet", date: "Dec 16, 2024 | 16:42 PM", price: 80, expense: "Top Up",iconName: AppIcons.arrowDownSquare, iconColor: AppColors.info,),
-              TransactionItem(onTap: (){ }, name: "Daniel Austin", date: "Dec 20, 2024 | 10:00 AM", price: 14, expense: "Taxi Expense",iconName: AppIcons.arrowUpSquare, iconColor: AppColors.error,),
-              TransactionItem(onTap: (){ }, name: "Daniel Austin", date: "Dec 20, 2024 | 10:00 AM", price: 14, expense: "Taxi Expense",iconName: AppIcons.arrowUpSquare, iconColor: AppColors.error,),
-              TransactionItem(onTap: (){ }, name: "Top Up Wallet", date: "Dec 16, 2024 | 16:42 PM", price: 80, expense: "Top Up",iconName: AppIcons.arrowDownSquare, iconColor: AppColors.info,),
+              TransactionItem(
+                onTap: () {},
+                name: "Daniel Austin",
+                date: "Dec 20, 2024 | 10:00 AM",
+                price: 14,
+                expense: "Taxi Expense",
+                iconName: AppIcons.arrowUpSquare,
+                iconColor: AppColors.error,
+              ),
+              TransactionItem(
+                onTap: () {},
+                name: "Top Up Wallet",
+                date: "Dec 16, 2024 | 16:42 PM",
+                price: 80,
+                expense: "Top Up",
+                iconName: AppIcons.arrowDownSquare,
+                iconColor: AppColors.info,
+              ),
+              TransactionItem(
+                onTap: () {},
+                name: "Daniel Austin",
+                date: "Dec 20, 2024 | 10:00 AM",
+                price: 14,
+                expense: "Taxi Expense",
+                iconName: AppIcons.arrowUpSquare,
+                iconColor: AppColors.error,
+              ),
+              TransactionItem(
+                onTap: () {},
+                name: "Daniel Austin",
+                date: "Dec 20, 2024 | 10:00 AM",
+                price: 14,
+                expense: "Taxi Expense",
+                iconName: AppIcons.arrowUpSquare,
+                iconColor: AppColors.error,
+              ),
+              TransactionItem(
+                onTap: () {},
+                name: "Top Up Wallet",
+                date: "Dec 16, 2024 | 16:42 PM",
+                price: 80,
+                expense: "Top Up",
+                iconName: AppIcons.arrowDownSquare,
+                iconColor: AppColors.info,
+              ),
             ],
           ))
         ],

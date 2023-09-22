@@ -1,5 +1,6 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 
 import '../../ui/widgets/date_formatter.dart';
@@ -41,7 +42,7 @@ class _AudioContainerState extends State<AudioContainer> {
     player.onPositionChanged.listen((Duration d) {
       currentDuration = d;
       setState(() {});
-      print("DURATION: ${d.inSeconds}");
+      debugPrint("DURATION: ${d.inSeconds}");
     });
   }
 
@@ -79,7 +80,7 @@ class _AudioContainerState extends State<AudioContainer> {
                 },
                 icon: Icon(
                   isPlaying ? Icons.pause : Icons.play_arrow,
-                  size: 50,
+                  size: 24.w,
                 ),
               ),
               Slider(
@@ -87,10 +88,9 @@ class _AudioContainerState extends State<AudioContainer> {
                 activeColor: AppColors.green,
                 value: currentDuration.inSeconds.toDouble(),
                 max:  duration.inSeconds.toDouble(),
-                // divisions: 60,
+                divisions: 100,
                 //label: _currentSliderValue.round().toString(),
                 onChanged: (double value) async {
-                  print(value);
                   await player.seek(Duration(seconds: value.toInt()));
                   setState(() {});
                 },

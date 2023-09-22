@@ -23,6 +23,7 @@ class GlobalAppBar extends StatelessWidget implements PreferredSize {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      scrolledUnderElevation: 0,
       actions: action,
       elevation: 0,
       centerTitle: centerTitle,
