@@ -17,38 +17,7 @@ class AddressDetailController extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration:
-          BoxDecoration(color: color, borderRadius: BorderRadius.circular(12)),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Expanded(
-            child: GestureDetector(
-              onTap: onTap,
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Expanded(
-                      child: Text(
-                        overflow:TextOverflow.ellipsis,
-                        text.length > 30 ? text.substring(0, 30) : text,
-                        style: Theme.of(context)
-                            .textTheme
-                            .titleLarge
-                            ?.copyWith(color: AppColors.c_500),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-          iconButton,
-        ],
-      ),
-    );
+    return TextField();
+
   }
 }
