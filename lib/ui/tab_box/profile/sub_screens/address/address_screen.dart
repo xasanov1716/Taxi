@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/address/widgets/address_item.dart';
 import 'package:taxi_app/ui/widgets/global_appbar.dart';
 import 'package:taxi_app/ui/widgets/global_button.dart';
@@ -39,8 +40,8 @@ class _AddressScreenState extends State<AddressScreen> {
             }, separatorBuilder: (BuildContext context, int index) { 
               return Divider(
                 color: AppColors.c_200,
-                endIndent: 32.w,
-                indent: 28.w,
+                endIndent:24.w,
+                indent: 24.w,
               );
              },
           )),
@@ -51,6 +52,8 @@ class _AddressScreenState extends State<AddressScreen> {
               radius: 100.r,
               color: AppColors.primary,
               onTap: () {
+                Navigator.pushNamed(context, RouteNames.addressAddDetailScreen);
+
               },
             ),
           ),

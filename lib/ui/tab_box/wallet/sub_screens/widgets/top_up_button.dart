@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 
-class GlobalButton extends StatelessWidget {
-  const GlobalButton({
+class TopUpGlobalButton extends StatelessWidget {
+  const TopUpGlobalButton({
     super.key,
     this.color = Colors.blue,
     required this.title,
@@ -31,14 +31,6 @@ class GlobalButton extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(radius),
-          boxShadow: [
-            BoxShadow(
-              color: AppColors.primary.withOpacity(0.3),
-              blurRadius: 17,
-              spreadRadius: -7,
-              offset: const Offset(0,6)
-            )
-          ],
           border: Border.all(width: 1, color: borderColor)),
       child: Material(
         borderRadius: BorderRadius.circular(radius),
