@@ -23,6 +23,7 @@ import 'package:taxi_app/data/repositories/places_db_repository.dart';
 import 'package:taxi_app/data/repositories/search_history_db.dart';
 import 'package:taxi_app/services/api_service.dart';
 import 'package:taxi_app/ui/app_routes.dart';
+import 'package:taxi_app/ui/tab_box/profile/sub_screens/privacy_policy/privacy_policy_screen.dart';
 import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/theme/app_theme.dart';
 import 'cubits/category_cubit/category_cubit.dart';
