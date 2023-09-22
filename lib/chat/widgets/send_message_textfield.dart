@@ -134,7 +134,7 @@ class _SendMessageTextFieldState extends State<SendMessageTextField> {
             ),
           ),
           12.pw,
-          value.isEmpty
+          widget.value.isEmpty
               ? AudioController()
               : InkWell(
                   borderRadius: BorderRadius.circular(100.r),
