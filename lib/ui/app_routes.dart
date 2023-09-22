@@ -19,6 +19,7 @@ import 'package:taxi_app/ui/tab_box/profile/sub_screens/edit_profile/edit_profil
 import 'package:taxi_app/ui/auth/login/login_screen.dart';
 import 'package:taxi_app/ui/auth/register/register_screen.dart';
 import 'package:taxi_app/ui/splash/splash_screen.dart';
+import 'package:taxi_app/ui/tab_box/profile/sub_screens/notification/control_notification_screen.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/restore_password/create_screen/create_password_screen.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/restore_password/forget_screen/confirm_code_screen.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/restore_password/forget_screen/forget_password_screen.dart';
@@ -57,6 +58,7 @@ class RouteNames {
   static const String cancelDriver = "/cancel_driver";
   static const String chatWithDriver = "/chat_with_driver";
   static const String driverDetail = "/driver_detail";
+  static const String notificationSwitch = "/notification_switch";
 }
 
 class AppRoutes {
@@ -162,6 +164,10 @@ class AppRoutes {
       case RouteNames.bottomSheetDialog:
         return MaterialPageRoute(
           builder: (context) => const BottomSheetScreen(),
+        );
+      case RouteNames.notificationSwitch:
+        return MaterialPageRoute(
+          builder: (context) => const ControlNotificationScreen(),
         );
       default:
         return MaterialPageRoute(
