@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
 
+import '../../app_routes.dart';
+
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
 
