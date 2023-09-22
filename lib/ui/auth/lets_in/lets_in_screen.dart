@@ -11,13 +11,14 @@ import '../widgets/auth_navigator_button.dart';
 import '../widgets/custom_auth_divider.dart';
 import '../widgets/custom_auth_social_network_button.dart';
 
+
 class LetsInScreen extends StatelessWidget {
   const LetsInScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const GlobalAppBar(),
+      // appBar:  GlobalAppBar(),
       body: BlocListener<SocialAuthBloc, SocialAuthState>(
         listener: (context, state) {
           if (state is AuthLoading) {
