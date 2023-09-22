@@ -18,6 +18,17 @@ class BottomSheetScreen extends StatefulWidget {
 }
 
 class _BottomSheetScreenState extends State<BottomSheetScreen> {
+  List<String> smiles = [
+    AppIcons.smileUnhappy,
+    AppIcons.smileCry,
+    AppIcons.smileTired,
+    AppIcons.smileAngry,
+    AppIcons.smileQuiet,
+    AppIcons.smileVeryHappy,
+    AppIcons.smileExcited,
+    AppIcons.smileHappy,
+    AppIcons.smileEyeGlass
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +67,7 @@ class _BottomSheetScreenState extends State<BottomSheetScreen> {
                 backgroundColor: Theme.of(context).scaffoldBackgroundColor,
                 builder: (context) {
                   return SizedBox(
-                    height: height / 1.2,
+                    height: height / 1.18,
                     child: Padding(
                       padding: EdgeInsets.symmetric(horizontal: 24.w),
                       child: Column(
@@ -69,13 +80,24 @@ class _BottomSheetScreenState extends State<BottomSheetScreen> {
                               carNumber: "HSW 4736 XK",
                               commentTitle: "What's Your Mood!",
                               commentSubtitle: "about this trip?"),
-                          40.ph,
-                          const SmileWidgets(icon1: AppIcons.smileEyeGlass, icon2: AppIcons.smileExcited, icon3: AppIcons.smileHappy),
                           24.ph,
-                          const SmileWidgets(icon1: AppIcons.smileVeryHappy, icon2: AppIcons.smileAngry, icon3: AppIcons.smileQuiet),
+                          const SmileWidgets(
+                              icon1: AppIcons.smileEyeGlass,
+                              icon2: AppIcons.smileExcited,
+                              icon3: AppIcons.smileHappy),
                           24.ph,
-                          const SmileWidgets(icon1: AppIcons.smileUnhappy, icon2: AppIcons.smileTired, icon3: AppIcons.smileCry),
-                          64.ph,
+                          const SmileWidgets(
+                              icon1: AppIcons.smileVeryHappy,
+                              icon2: AppIcons.smileAngry,
+                              icon3: AppIcons.smileQuiet),
+                          24.ph,
+                          const SmileWidgets(
+                              icon1: AppIcons.smileUnhappy,
+                              icon2: AppIcons.smileTired,
+                              icon3: AppIcons.smileCry),
+                          24.ph,
+                          const Divider(),
+                          24.ph,
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
@@ -94,6 +116,7 @@ class _BottomSheetScreenState extends State<BottomSheetScreen> {
                                   colorContainer: AppColors.primary),
                             ],
                           ),
+                          48.ph,
                         ],
                       ),
                     ),
@@ -111,4 +134,3 @@ class _BottomSheetScreenState extends State<BottomSheetScreen> {
     );
   }
 }
-

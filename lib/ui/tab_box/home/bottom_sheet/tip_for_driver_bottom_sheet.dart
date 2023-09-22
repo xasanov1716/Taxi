@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:taxi_app/ui/tab_box/home/bottom_sheet/widgets/global_bottom_sheet_bottom.dart';
+import 'package:taxi_app/ui/tab_box/home/bottom_sheet/widgets/global_bottom_sheet_start.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
-import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
-
 import '../../../../utils/theme/get_theme.dart';
 
 class TipForDriverBottomSheet extends StatefulWidget {
@@ -62,137 +61,15 @@ class _TipForDriverBottomSheetState extends State<TipForDriverBottomSheet> {
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              Text(
-                                "Tip for Driver",
-                                style: Theme.of(context)
-                                    .dialogTheme
-                                    .titleTextStyle
-                                    ?.copyWith(
-                                    fontSize: 24.sp,
-                                    color: getTheme(context)
-                                        ? AppColors.white
-                                        : AppColors.c_900),
-                              ),
-                              24.ph,
-                              const Divider(),
-                              24.ph,
-                              Row(
-                                children: [
-                                  SizedBox(
-                                      width: 60.w,
-                                      height: 60.w,
-                                      child: Image.asset(AppIcons.testAvatar)),
-                                  20.pw,
-                                  Column(
-                                    crossAxisAlignment:
-                                    CrossAxisAlignment.start,
-                                    mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                    children: [
-                                      Text(
-                                        "Daniel Austin",
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .titleMedium
-                                            ?.copyWith(
-                                          fontFamily: "Urbanist",
-                                          fontSize: 18.sp,
-                                          fontWeight: FontWeight.w700,
-                                        ),
-                                      ),
-                                      8.ph,
-                                      Text(
-                                        "Mercedes-Benz E-Class",
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .titleMedium
-                                            ?.copyWith(
-                                          fontFamily: "Urbanist",
-                                          fontSize: 14.sp,
-                                          fontWeight: FontWeight.w400,
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                  const Spacer(),
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.end,
-                                    mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                      Row(
-                                        children: [
-                                          SizedBox(
-                                            height: 20.w,
-                                            width: 20.w,
-                                            child: SvgPicture.asset(
-                                              AppIcons.rateStarUser,
-                                              colorFilter:
-                                              const ColorFilter.mode(
-                                                  AppColors.orange,
-                                                  BlendMode.srcIn),
-                                            ),
-                                          ),
-                                          8.pw,
-                                          Text(
-                                            "4.8",
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .titleMedium
-                                                ?.copyWith(
-                                              fontFamily: "Urbanist",
-                                              fontSize: 14.sp,
-                                              fontWeight: FontWeight.w500,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      8.ph,
-                                      Text(
-                                        "HSW 4736 XK",
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .titleMedium
-                                            ?.copyWith(
-                                          fontFamily: "Urbanist",
-                                          fontSize: 14.sp,
-                                          fontWeight: FontWeight.w600,
-                                        ),
-                                      )
-                                    ],
-                                  )
-                                ],
-                              ),
-                              24.ph,
-                              const Divider(),
-                              24.ph,
-                              Text(
-                                "Wow 5 Star!",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .titleMedium
-                                    ?.copyWith(
-                                    fontFamily: "Urbanist",
-                                    fontSize: 24.sp,
-                                    fontWeight: FontWeight.w700,
-                                    color: getTheme(context)
-                                        ? AppColors.white
-                                        : AppColors.c_900),
-                              ),
-                              12.ph,
-                              Text(
-                                "Do you want to add additional tip for Daniel?",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .titleMedium
-                                    ?.copyWith(
-                                    fontFamily: "Urbanist",
-                                    fontSize: 16.sp,
-                                    fontWeight: FontWeight.w500,
-                                    color: getTheme(context)
-                                        ? AppColors.white
-                                        : AppColors.c_700),
-                              ),
+                              const GlobalBottomSheetStart(
+                                  centerText: "Rate Driver",
+                                  name: "Daniel Austin",
+                                  carName: "Mercedes-Benz E-Class",
+                                  starCount: "4.8",
+                                  carNumber: "HSW 4736 XK",
+                                  commentTitle: "Wow 5 Star!",
+                                  commentSubtitle:
+                                  "Do you want to add additional tip for Daniel?"),
                               24.ph,
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -204,7 +81,6 @@ class _TipForDriverBottomSheetState extends State<TipForDriverBottomSheet> {
                                               state(() {
                                                 selectRate = index;
                                               });
-                                              print(selectRate);
                                             },
                                             child: Container(
                                               padding: EdgeInsets.all(24.r),
@@ -230,11 +106,32 @@ class _TipForDriverBottomSheetState extends State<TipForDriverBottomSheet> {
                                                         : AppColors.dark3),),
                                               ),
                                             )
-                                          ))
+                                          ),
+                                  ),
                                 ],
                               ),
                               24.ph,
                               const Divider(),
+                              24.ph,
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                children: [
+                                  GlobalBottomSheetBottom(
+                                    text: "Cancel",
+                                    colorText: getTheme(context)
+                                        ? AppColors.white
+                                        : AppColors.dark3,
+                                    colorContainer: getTheme(context)
+                                        ? AppColors.dark3
+                                        : AppColors.white,
+                                  ),
+                                  const GlobalBottomSheetBottom(
+                                      text: "Submit",
+                                      colorText: AppColors.dark3,
+                                      colorContainer: AppColors.primary),
+                                ],
+                              ),
+                              48.ph,
                             ],
                           ),
                         ),
