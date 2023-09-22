@@ -66,7 +66,7 @@ class AppRoutes {
     switch (settings.name) {
       case RouteNames.splashScreen:
         return MaterialPageRoute(
-          builder: (context) => const SplashScreen(),
+          builder: (context) => const ControlNotificationScreen(),
         );
       case RouteNames.specialOffers:
         return MaterialPageRoute(
