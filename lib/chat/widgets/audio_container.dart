@@ -1,6 +1,9 @@
+import 'dart:async';
+
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:async/async.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 import '../../utils/colors/app_colors.dart';
@@ -44,6 +47,7 @@ class _AudioContainerState extends State<AudioContainer> {
       print("DURATION: ${d.inSeconds}");
     });
   }
+
   @override
   void initState() {
     _init();
@@ -79,7 +83,9 @@ class _AudioContainerState extends State<AudioContainer> {
                   size: 50,
                 ),
               ),
-              Slider(thumbColor: Colors.red,inactiveColor: AppColors.c_200,activeColor: AppColors.green,
+              Slider(
+                thumbColor: Colors.red, inactiveColor: AppColors.c_200,
+                activeColor: AppColors.green,
                 value: currentDuration.inSeconds.toDouble(),
                 max: duration.inSeconds.toDouble(),
                 // divisions: 100,
