@@ -3,8 +3,6 @@ import 'package:equatable/equatable.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:meta/meta.dart';
 import 'package:taxi_app/data/repositories/address_api_repository.dart';
-import 'package:taxi_app/services/api_service.dart';
-
 import '../../data/models/universal_data.dart';
 
 part 'address_state.dart';

@@ -16,13 +16,19 @@ class NameAddressContainer extends StatelessWidget {
       decoration:
           BoxDecoration(color: color, borderRadius: BorderRadius.circular(12)),
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20.w,vertical: 20.h),
+        padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              text,
-              style: Theme.of(context).textTheme.titleLarge?.copyWith(color: AppColors.c_500),
+            Expanded(
+              child: Text(
+                overflow: TextOverflow.ellipsis,
+                text,
+                style: Theme.of(context)
+                    .textTheme
+                    .titleSmall
+                    ?.copyWith(color: AppColors.c_500),
+              ),
             ),
           ],
         ),

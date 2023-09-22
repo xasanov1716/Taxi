@@ -91,14 +91,24 @@ class _AddressAddDetailScreenState extends State<AddressAddDetailScreen> {
               child: ElevatedButton(
                   onPressed: () {
                     showModalBottomSheet<void>(
-                      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.only(
+                          topRight: Radius.circular(32),
+                          topLeft: Radius.circular(32),
+                        ),
+                      ),
+                      backgroundColor:
+                          Theme.of(context).scaffoldBackgroundColor,
                       context: context,
                       builder: (BuildContext context) {
-                        return const ShowModalBottomSheetAddressAddScreen();
+                        return AddressAddDialog();
                       },
                     );
                   },
-                  child: const Text("show dialog",style: TextStyle(color: Colors.white),)),
+                  child: const Text(
+                    "show dialog",
+                    style: TextStyle(color: Colors.white),
+                  )),
             )
           ],
         ),
