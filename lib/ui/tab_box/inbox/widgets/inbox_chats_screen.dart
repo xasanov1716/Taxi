@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:taxi_app/data/models/icon/icon_type.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
+import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 
 class InboxChatScreen extends StatelessWidget {
@@ -11,6 +12,7 @@ class InboxChatScreen extends StatelessWidget {
   final VoidCallback onTapChat;
   @override
   Widget build(BuildContext context) {
+    print({width,height});
     return Column(
       children: [
         Expanded(
@@ -46,7 +48,7 @@ class InboxChatScreen extends StatelessWidget {
                             '5',
                             style: Theme.of(context).textTheme.bodySmall,
                           ))),
-                      10.ph,
+                   height>=900&&width>=600?  0.0005.ph:10.ph,
                       Text(
                         DateTime.now().toString().substring(10, 16),
                         style: Theme.of(context).textTheme.bodyMedium,
