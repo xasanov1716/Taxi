@@ -8,6 +8,8 @@ import 'package:taxi_app/ui/widgets/global_button.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 
+import '../../../app_routes.dart';
+
 class TopUpAmountScreen extends StatelessWidget {
   const TopUpAmountScreen({super.key});
 
@@ -56,7 +58,9 @@ class TopUpAmountScreen extends StatelessWidget {
                 color: AppColors.primary,
                 textColor: AppColors.dark3,
                 radius: 100.r,
-                onTap: () {},
+                onTap: () {
+                  Navigator.pushNamed(context, RouteNames.topUpPaymentScreen);
+                },
               ),
             ),
           ],

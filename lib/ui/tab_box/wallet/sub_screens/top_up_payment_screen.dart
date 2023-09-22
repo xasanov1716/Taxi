@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taxi_app/ui/create_order/sub_screens/payment_methods/widgets/payment_appbar.dart';
+import 'package:taxi_app/ui/tab_box/wallet/sub_screens/widgets/top_up_button.dart';
 import 'package:taxi_app/ui/tab_box/wallet/sub_screens/widgets/top_up_payment_appbar.dart';
 import 'package:taxi_app/ui/widgets/global_appbar.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
@@ -47,10 +48,10 @@ class _TopUpPaymentScreenState extends State<TopUpPaymentScreen> {
               12.ph,
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 24.w),
-                child: GlobalButton(
+                child: TopUpGlobalButton(
                   onTap: (){
                     Navigator.pushNamed(context, RouteNames.pinCodeScreen);
-                  },title: "Add New Card", color: getTheme(context) ? AppColors.dark3 : AppColors.white ,radius: 40.r, textColor: getTheme(context) ? AppColors.white : AppColors.dark3,),
+                  },title: "Add New Card", color: getTheme(context) ? AppColors.dark3 : const Color(0xFFFFF8E8) ,radius: 40.r, textColor: getTheme(context) ? AppColors.white : AppColors.dark3,),
               ),
             ],
           )),
