@@ -7,6 +7,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:taxi_app/cubits/user/user_cubit.dart';
 import 'package:taxi_app/data/models/icon/icon_type.dart';
 import 'package:taxi_app/data/models/user/user_field_keys.dart';
+import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/ui/local_auth/widgets/user_image.dart';
 import 'package:taxi_app/ui/tab_box/profile/widgets/log_out.dart';
 import 'package:taxi_app/ui/tab_box/profile/widgets/profile_button.dart';
@@ -105,7 +106,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ProfileButton(
                     text: "Notification",
                     icon: AppIcons.notification,
-                    onTap: () {}),
+                    onTap: () {
+                      Navigator.pushNamed(context, RouteNames.notificationSwitch);
+                    }),
                 ProfileButton(
                     text: "Payment", icon: AppIcons.wallet, onTap: () {}),
                 ProfileButton(

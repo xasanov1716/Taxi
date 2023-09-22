@@ -178,7 +178,7 @@ class AppRoutes {
         );
       case RouteNames.notificationSwitch:
         return MaterialPageRoute(
-          builder: (context) => const ControlNotificationScreen(),
+          builder: (context) => const ControlNotificationScreen(),);
       case RouteNames.topUpPaymentScreen:
         return MaterialPageRoute(
           builder: (context) => const TopUpPaymentScreen(),
