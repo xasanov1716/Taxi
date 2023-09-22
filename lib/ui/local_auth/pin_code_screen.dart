@@ -57,8 +57,7 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
     } catch (e) {
       debugPrint("error using biometric auth: $e");
       if (context.mounted) {
-        showErrorMessage(
-            message: "Barmoq izini skanerlash xato!", context: context);
+        //showErrorMessage(message: "Barmoq izini skanerlash xato!", context: context);
       }
     }
     setState(() {
