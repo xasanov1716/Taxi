@@ -153,7 +153,7 @@ class AppRoutes {
           builder: (context) => const ChekSetPinCodeScreen(),);
       case RouteNames.chatWithDriver:
         return MaterialPageRoute(
-          builder: (context) => const ChatWithDriverScreen(),
+          builder: (context) => const ChatScreen(),
         );
       case RouteNames.bottomSheetDialog:
         return MaterialPageRoute(

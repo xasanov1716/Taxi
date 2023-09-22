@@ -15,14 +15,14 @@ import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
 
-class ChatWithDriverScreen extends StatefulWidget {
-  const ChatWithDriverScreen({super.key});
+class ChatScreen extends StatefulWidget {
+  const ChatScreen({super.key});
 
   @override
-  State<ChatWithDriverScreen> createState() => _ChatWithDriverScreenState();
+  State<ChatScreen> createState() => _ChatScreenState();
 }
 
-class _ChatWithDriverScreenState extends State<ChatWithDriverScreen> {
+class _ChatScreenState extends State<ChatScreen> {
   ImagePicker picker = ImagePicker();
 
   List<String> images = [];
