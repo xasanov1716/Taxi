@@ -16,7 +16,10 @@ import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
+import 'package:flutter/src/widgets/framework.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
+
+import '../../app_routes.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -256,6 +259,3 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 }
 
-// Center(
-//   child:
-// ),

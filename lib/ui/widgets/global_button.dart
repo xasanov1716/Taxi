@@ -55,6 +55,7 @@ class GlobalButton extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(16),
                   child: Text(
+                    overflow:TextOverflow.ellipsis,
                     title,
                     style: TextStyle(
                       fontFamily: "Urbanist",

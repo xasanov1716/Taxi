@@ -40,8 +40,8 @@ class _AddressScreenState extends State<AddressScreen> {
             }, separatorBuilder: (BuildContext context, int index) { 
               return Divider(
                 color: AppColors.c_200,
-                endIndent: 32.w,
-                indent: 28.w,
+                endIndent:24.w,
+                indent: 24.w,
               );
              },
           )),
