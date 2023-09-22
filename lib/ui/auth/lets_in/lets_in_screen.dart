@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taxi_app/blocs/social_auth_bloc/social_auth_bloc.dart';
 import 'package:taxi_app/ui/app_routes.dart';
-import 'package:taxi_app/ui/widgets/global_appbar.dart';
 import 'package:taxi_app/ui/widgets/global_button.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 import '../../../utils/colors/app_colors.dart';
@@ -12,13 +11,14 @@ import '../widgets/auth_navigator_button.dart';
 import '../widgets/custom_auth_divider.dart';
 import '../widgets/custom_auth_social_network_button.dart';
 
+
 class LetsInScreen extends StatelessWidget {
   const LetsInScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const GlobalAppBar(),
+      // appBar:  GlobalAppBar(),
       body: BlocListener<SocialAuthBloc, SocialAuthState>(
         listener: (context, state) {
           if (state is AuthLoading) {

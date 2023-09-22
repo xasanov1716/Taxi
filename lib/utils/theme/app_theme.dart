@@ -76,6 +76,7 @@ class AppTheme {
             AppTextStyle.bodyMediumMedium.copyWith(color: AppColors.c_900),
         bodySmall:
             AppTextStyle.bodySmallMedium.copyWith(color: AppColors.c_900)),
+
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
         type: BottomNavigationBarType.fixed,
         showSelectedLabels: true,
