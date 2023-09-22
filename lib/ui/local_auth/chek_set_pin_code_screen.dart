@@ -11,6 +11,8 @@ import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
 import 'package:taxi_app/utils/ui_utils/error_message_dialog.dart';
 
+import '../../utils/constants/storage_keys.dart';
+
 class ChekSetPinCodeScreen extends StatefulWidget {
   const ChekSetPinCodeScreen({super.key});
 
@@ -163,7 +165,7 @@ class _ChekSetPinCodeScreenState extends State<ChekSetPinCodeScreen> {
 
                 if (pinCode.isNotEmpty &&
                     pinCode.length == 4 &&
-                    StorageRepository.getString('code') == pinCode) {
+                    StorageRepository.getString(StorageKeys.pinCode) == pinCode) {
                   Navigator.pushReplacementNamed(
                       context, RouteNames.fingerprintScreen);
                 } else {
