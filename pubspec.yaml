@@ -28,7 +28,7 @@ dependencies:
   firebase_storage: ^11.2.7
   cloud_firestore: ^4.9.2
   google_sign_in: ^6.1.5
-  flutter_login_facebook: ^1.8.0
+#  flutter_login_facebook: ^1.8.0
   sign_in_with_apple: ^5.0.0
   pinput: ^3.0.1
   record_mp3: ^3.0.0

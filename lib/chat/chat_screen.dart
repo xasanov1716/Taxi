@@ -6,6 +6,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:taxi_app/blocs/messages/message_bloc.dart';
 import 'package:taxi_app/blocs/messages/message_event.dart';
 import 'package:taxi_app/blocs/messages/message_state.dart';
+import 'package:taxi_app/chat/widgets/audio_container.dart';
 import 'package:taxi_app/chat/widgets/image_container.dart';
 import 'package:taxi_app/chat/widgets/message_container.dart';
 import 'package:taxi_app/chat/widgets/send_message_textfield.dart';
@@ -76,17 +77,21 @@ class _ChatScreenState extends State<ChatScreen> {
                                     ? MainAxisAlignment.start
                                     : MainAxisAlignment.end,
                                 children: [
-                                  message.image == null
-                                      ? Flexible(
-                                          fit: FlexFit.loose,
-                                          child: MessageContainer(
-                                            index: index,
-                                            message: message.message!,
-                                            dateTime: message.dateTime,
-                                          ),
-                                        )
-                                      : ImageContainer(
-                                          images: message.image ?? []),
+                                  message.image== null &&
+                                          message.message== null
+                                      ? AudioContainer(
+                                          audioPath: message.voice?? '')
+                                      : message.image == null
+                                          ? Flexible(
+                                              fit: FlexFit.loose,
+                                              child: MessageContainer(
+                                                index: index,
+                                                message: message.message!,
+                                                dateTime: message.dateTime,
+                                              ),
+                                            )
+                                          : ImageContainer(
+                                              images: message.image ?? []),
                                 ],
                               );
                             },
@@ -107,7 +112,6 @@ class _ChatScreenState extends State<ChatScreen> {
                       ),
               ),
               SendMessageTextField(
-
                 onSuffixIconTap: () {
                   showBottomSheetDialog(context);
                 },
@@ -200,7 +204,6 @@ class _ChatScreenState extends State<ChatScreen> {
             image: images,
           )));
       print(images);
-
     }
   }
 
@@ -215,7 +218,6 @@ class _ChatScreenState extends State<ChatScreen> {
             dateTime: DateTime.now().toString(),
             image: images,
           )));
-
     }
   }
 }
