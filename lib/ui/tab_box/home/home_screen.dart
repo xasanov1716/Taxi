@@ -3,12 +3,13 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:taxi_app/ui/tab_box/home/dialogs/address_select_dialog.dart';
 import 'package:taxi_app/ui/tab_box/home/widgets/action_buttons.dart';
-import 'package:taxi_app/ui/tab_box/home/widgets/default_bottom_sheet.dart';
+import 'package:taxi_app/ui/tab_box/home/widgets/address_selected_view.dart';
 import 'package:taxi_app/ui/tab_box/home/widgets/global_action_button.dart';
+import 'package:taxi_app/ui/tab_box/home/widgets/home_address_selector.dart';
 import 'package:taxi_app/ui/tab_box/home/widgets/select_category.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
-
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/screen_size.dart';
 
@@ -18,7 +19,6 @@ class HomeScreen extends StatefulWidget {
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
-
 class _HomeScreenState extends State<HomeScreen> {
   late GoogleMapController mapController;
 
@@ -73,10 +73,19 @@ class _HomeScreenState extends State<HomeScreen> {
               bottom: 0,
               left: 0,
               right: 0,
-              child: DefaultBottomSheet(
-                onTab: () {
-                  enterBottomSheet(context);
+              child: HomeAddressSelector(
+                onTab: (){
+                  addressSelectDialog(context);
                 },
+              ),
+            ),
+            const Visibility(
+              visible: true, // <= Ko'rish
+              child: Positioned(
+                bottom: 0,
+                left: 0,
+                right: 0,
+                child: AddressSelectedView(),
               ),
             ),
           ],

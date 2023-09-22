@@ -1,18 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:local_auth/local_auth.dart';
-import 'package:lottie/lottie.dart';
-import 'package:pinput/pinput.dart';
 import 'package:taxi_app/data/local/storage_repository/storage_repository.dart';
 import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/ui/local_auth/widgets/pin_put_feild.dart';
 import 'package:taxi_app/ui/widgets/global_appbar.dart';
-import 'package:taxi_app/ui/widgets/global_button.dart';
-import 'package:taxi_app/utils/colors/app_colors.dart';
-import 'package:taxi_app/utils/icons/app_icons.dart';
-import 'package:taxi_app/utils/size/size_extension.dart';
+import 'package:taxi_app/utils/constants/storage_keys.dart';
 import 'package:taxi_app/utils/ui_utils/error_message_dialog.dart';
-
 
 class PinCodeScreen extends StatefulWidget {
   const PinCodeScreen({super.key});
@@ -27,10 +21,9 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
   final FocusNode focusNode = FocusNode();
   String currentPin = '';
   bool authenticated = false;
-
   @override
   void initState() {
-    currentPin = StorageRepository.getString("code");
+    currentPin = StorageRepository.getString(StorageKeys.pinCode);
     _checkBiometric();
     super.initState();
   }

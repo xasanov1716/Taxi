@@ -10,11 +10,12 @@ class AppTheme {
   static ThemeData lightTheme = ThemeData(
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
-        backgroundColor: const MaterialStatePropertyAll(AppColors.white),
-        overlayColor: const MaterialStatePropertyAll(AppColors.c_200),
+        backgroundColor: const MaterialStatePropertyAll(AppColors.primary),
+
+        overlayColor: const MaterialStatePropertyAll(AppColors.secondary),
         shape: MaterialStatePropertyAll(
           RoundedRectangleBorder(
-            side: const BorderSide(color: AppColors.c_200),
+            // side: const BorderSide(color: AppColors.c_200),
             borderRadius: BorderRadius.circular(16),
           ),
         ),
@@ -41,7 +42,6 @@ class AppTheme {
     ),
     textTheme: TextTheme(
         //display
-
         displayLarge: AppTextStyle.h1Bold.copyWith(color: AppColors.c_900),
         displayMedium: AppTextStyle.h2Bold.copyWith(color: AppColors.c_900),
         displaySmall: AppTextStyle.h3Bold.copyWith(color: AppColors.c_900),
@@ -76,6 +76,7 @@ class AppTheme {
             AppTextStyle.bodyMediumMedium.copyWith(color: AppColors.c_900),
         bodySmall:
             AppTextStyle.bodySmallMedium.copyWith(color: AppColors.c_900)),
+
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
         type: BottomNavigationBarType.fixed,
         showSelectedLabels: true,
@@ -151,6 +152,18 @@ class AppTheme {
       onError: Color(0xff690005),
       brightness: Brightness.dark,
     ),
+    tabBarTheme: TabBarTheme(
+      indicator: null,
+      indicatorSize: TabBarIndicatorSize.tab,
+      dividerColor: AppColors.c_200,
+      overlayColor: const MaterialStatePropertyAll(AppColors.c_200),
+      tabAlignment: TabAlignment.center,
+      indicatorColor: AppColors.primary,
+      unselectedLabelStyle: AppTextStyle.bodyXlargeSemibold,
+      unselectedLabelColor: AppColors.c_500,
+      labelColor: AppColors.primary,
+      labelStyle: AppTextStyle.bodyXlargeSemibold,
+    )
   );
 
   //DARK
@@ -166,7 +179,8 @@ class AppTheme {
     dividerTheme: const DividerThemeData(color: AppColors.dark3),
     elevatedButtonTheme: ElevatedButtonThemeData(
         style: ButtonStyle(
-      backgroundColor: const MaterialStatePropertyAll(AppColors.dark2),
+          backgroundColor: const MaterialStatePropertyAll(AppColors.primary),
+          overlayColor: const MaterialStatePropertyAll(AppColors.secondary),
       shape: MaterialStatePropertyAll(RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16),
         side: const BorderSide(color: AppColors.dark2),
@@ -225,9 +239,9 @@ class AppTheme {
             AppTextStyle.bodyXsmallMedium.copyWith(color: AppColors.white),
         //body
         bodyLarge:
-            AppTextStyle.bodyLargeMedium.copyWith(color: AppColors.white),
+            AppTextStyle.bodyLargeSemibold.copyWith(color: AppColors.white),
         bodyMedium:
-            AppTextStyle.bodyMediumMedium.copyWith(color: AppColors.white),
+            AppTextStyle.bodyMediumSemibold.copyWith(color: AppColors.white),
         bodySmall:
             AppTextStyle.bodySmallMedium.copyWith(color: AppColors.white)),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
@@ -299,5 +313,17 @@ class AppTheme {
       onError: Color(0xff690005),
       brightness: Brightness.dark,
     ),
+    tabBarTheme: TabBarTheme(
+      indicator: null,
+      indicatorSize: TabBarIndicatorSize.tab,
+      dividerColor: AppColors.dark3,
+      overlayColor: const MaterialStatePropertyAll(AppColors.c_200),
+      tabAlignment: TabAlignment.center,
+      indicatorColor: AppColors.primary,
+      unselectedLabelStyle: AppTextStyle.bodyXlargeSemibold,
+      unselectedLabelColor: AppColors.c_700,
+      labelColor: AppColors.primary,
+      labelStyle: AppTextStyle.bodyXlargeSemibold,
+    )
   );
 }
