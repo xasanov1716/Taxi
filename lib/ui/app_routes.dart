@@ -25,6 +25,7 @@ import 'package:taxi_app/ui/tab_box/profile/sub_screens/restore_password/forget_
 import 'package:taxi_app/ui/tab_box/tab_box.dart';
 import 'package:taxi_app/ui/tab_box/wallet/sub_screens/top_up_amount_screen.dart';
 import 'package:taxi_app/ui/tab_box/wallet/sub_screens/top_up_payment_screen.dart';
+import 'package:taxi_app/ui/tab_box/wallet/sub_screens/transaction_history_screen.dart';
 import 'auth/lets_in/lets_in_screen.dart';
 import 'create_order/sub_screens/select_transport/select_transport_screen.dart';
 import 'tab_box/home/sub_screens/special_offers/special_offers_screen.dart';
@@ -61,6 +62,7 @@ class RouteNames {
   static const String addressScreen = "/address";
   static const String topUpPaymentScreen = "/top_up_payment_screen";
   static const String addressAddDetailScreen = "/address_add_detail_screen";
+  static const String transactionsHistory = "/transaction_histories";
 }
 
 class AppRoutes {
@@ -179,6 +181,10 @@ class AppRoutes {
       case RouteNames.addressAddDetailScreen:
         return MaterialPageRoute(
           builder: (context) => const AddressAddDetailScreen(),
+        );
+      case RouteNames.transactionsHistory:
+        return MaterialPageRoute(
+          builder: (context) => const TransactionHistoryScreen(),
         );
       default:
         return MaterialPageRoute(
