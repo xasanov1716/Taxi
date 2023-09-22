@@ -5,7 +5,8 @@ import 'package:taxi_app/ui/contact_to_driver/sub_screens/driver_detail/widgets/
 import 'package:taxi_app/ui/contact_to_driver/sub_screens/driver_detail/widgets/third_item/third_item_container.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 
-List<Widget> getFiveWidgetsInDrDetails(BuildContext context) {
+List<Widget> getFiveWidgetsInDrDetails(BuildContext context,
+    {required VoidCallback onCopyButtonPressed}) {
   return [
     Center(
         child: CircleAvatar(
@@ -25,7 +26,7 @@ List<Widget> getFiveWidgetsInDrDetails(BuildContext context) {
               fontSize: 14.sp,
               fontWeight: FontWeight.w700,
             )),
-        IconButton(onPressed: () {}, icon: SvgPicture.asset(AppIcons.copy)),
+        IconButton(onPressed: onCopyButtonPressed, icon: SvgPicture.asset(AppIcons.copy)),
       ],
     ),
     const SecondItemContainer(),

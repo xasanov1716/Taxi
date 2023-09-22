@@ -13,14 +13,20 @@ import 'package:taxi_app/ui/local_auth/pin_code_set_screen_.dart';
 import 'package:taxi_app/ui/tab_box/home/bottom_sheet/bottom_sheet_screen.dart';
 import 'package:taxi_app/ui/tab_box/home/notification/notification_screen.dart';
 import 'package:taxi_app/ui/tab_box/home/sub_screens/search_location/search_location_screen.dart';
+import 'package:taxi_app/ui/tab_box/profile/sub_screens/address/address_add_screen.dart';
+import 'package:taxi_app/ui/tab_box/profile/sub_screens/address/address_screen.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/edit_profile/edit_profile_screen.dart';
 import 'package:taxi_app/ui/auth/login/login_screen.dart';
 import 'package:taxi_app/ui/auth/register/register_screen.dart';
 import 'package:taxi_app/ui/splash/splash_screen.dart';
+import 'package:taxi_app/ui/tab_box/profile/sub_screens/notification/control_notification_screen.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/restore_password/create_screen/create_password_screen.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/restore_password/forget_screen/confirm_code_screen.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/restore_password/forget_screen/forget_password_screen.dart';
 import 'package:taxi_app/ui/tab_box/tab_box.dart';
+import 'package:taxi_app/ui/tab_box/wallet/sub_screens/top_up_amount_screen.dart';
+import 'package:taxi_app/ui/tab_box/wallet/sub_screens/top_up_payment_screen.dart';
+import 'package:taxi_app/ui/tab_box/wallet/sub_screens/transaction_history_screen.dart';
 import 'auth/lets_in/lets_in_screen.dart';
 import 'create_order/sub_screens/select_transport/select_transport_screen.dart';
 import 'tab_box/home/sub_screens/special_offers/special_offers_screen.dart';
@@ -53,6 +59,12 @@ class RouteNames {
   static const String cancelDriver = "/cancel_driver";
   static const String chatWithDriver = "/chat_with_driver";
   static const String driverDetail = "/driver_detail";
+  static const String notificationSwitch = "/notification_switch";
+  static const String topUpAmountScreen = "/top_up_amount_screen";
+  static const String addressScreen = "/address";
+  static const String topUpPaymentScreen = "/top_up_payment_screen";
+  static const String addressAddDetailScreen = "/address_add_detail_screen";
+  static const String transactionsHistory = "/transaction_histories";
 }
 
 class AppRoutes {
@@ -60,7 +72,7 @@ class AppRoutes {
     switch (settings.name) {
       case RouteNames.splashScreen:
         return MaterialPageRoute(
-          builder: (context) => const SplashScreen(),
+          builder: (context) =>const SplashScreen (),
         );
       case RouteNames.specialOffers:
         return MaterialPageRoute(
@@ -105,6 +117,11 @@ class AppRoutes {
           builder: (context) => const DriverDetailScreen(),
         );
 
+      case RouteNames.topUpAmountScreen:
+        return MaterialPageRoute(
+          builder: (context) => const TopUpAmountScreen(),
+        );
+
       case RouteNames.fingerprintScreen:
         return MaterialPageRoute(
             builder: (context) => const BiometricsScreen());
@@ -146,11 +163,11 @@ class AppRoutes {
         );
       case RouteNames.selectTransportScreen:
         return MaterialPageRoute(
-          builder: (context) => const SelectTransportScreen()
-        );
+            builder: (context) => const SelectTransportScreen());
       case RouteNames.chekSetPinCodeScreen:
         return MaterialPageRoute(
-          builder: (context) => const ChekSetPinCodeScreen(),);
+          builder: (context) => const ChekSetPinCodeScreen(),
+        );
       case RouteNames.chatWithDriver:
         return MaterialPageRoute(
           builder: (context) => const ChatScreen(),
@@ -158,6 +175,25 @@ class AppRoutes {
       case RouteNames.bottomSheetDialog:
         return MaterialPageRoute(
           builder: (context) => const BottomSheetScreen(),
+        );
+      case RouteNames.notificationSwitch:
+        return MaterialPageRoute(
+          builder: (context) => const ControlNotificationScreen(),);
+      case RouteNames.topUpPaymentScreen:
+        return MaterialPageRoute(
+          builder: (context) => const TopUpPaymentScreen(),
+        );
+      case RouteNames.addressAddDetailScreen:
+        return MaterialPageRoute(
+          builder: (context) => const AddressAddDetailScreen(),
+        );
+      case RouteNames.transactionsHistory:
+        return MaterialPageRoute(
+          builder: (context) => const TransactionHistoryScreen(),
+        );
+      case RouteNames.addressScreen:
+        return MaterialPageRoute(
+          builder: (context) => const AddressScreen(),
         );
       default:
         return MaterialPageRoute(

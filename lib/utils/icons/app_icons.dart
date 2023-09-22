@@ -11,6 +11,7 @@ class AppIcons {
 
   // images
 
+  static const String myLocation = "assets/images/my_location.png";
   static const String taxiLogotip = "assets/images/taxi_logotip.png";
   static const String mapAtBooking = "assets/images/map_at_booking.png";
   static const String emptyBookings = "assets/images/empty_bookings.png";
@@ -208,7 +209,7 @@ class AppIcons {
   static const String rateStarUser = "assets/svg/others/rate_star_user.svg";
   static const String rateStar = "assets/svg/others/rate_star.svg";
   static const String copy = "assets/svg/others/copy.svg";
-  static const String add="assets/svg/others/add.svg";
+  static const String visa = "assets/svg/others/visa.svg";
 
 
   // additional icons

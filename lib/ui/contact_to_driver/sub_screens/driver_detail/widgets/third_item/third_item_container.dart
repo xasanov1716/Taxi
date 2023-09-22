@@ -10,7 +10,6 @@ class ThirdItemContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 163 * height / figmaHeight,
       decoration: BoxDecoration(
         color: getTheme(context) ? AppColors.dark2 : AppColors.greysCale,
         borderRadius: BorderRadius.circular(15),

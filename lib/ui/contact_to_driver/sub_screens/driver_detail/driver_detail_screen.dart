@@ -43,7 +43,10 @@ class _DriverDetailScreenState extends State<DriverDetailScreen> {
         padding: EdgeInsets.symmetric(horizontal: 24 * width / figmaWidth),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: getFiveWidgetsInDrDetails(context),
+          children: getFiveWidgetsInDrDetails(
+            context,
+            onCopyButtonPressed: () {},
+          ),
         ),
       ),
       bottomNavigationBar: drBottomNavbar(

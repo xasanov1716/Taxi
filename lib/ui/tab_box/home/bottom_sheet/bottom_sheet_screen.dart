@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:taxi_app/ui/tab_box/home/bottom_sheet/moodSelectionDialog.dart';
+import 'package:taxi_app/ui/tab_box/home/bottom_sheet/rate_driver_bottom_sheet.dart';
 import 'package:taxi_app/ui/tab_box/home/bottom_sheet/widgets/global_bottom_sheet_bottom.dart';
 import 'package:taxi_app/ui/tab_box/home/bottom_sheet/widgets/global_bottom_sheet_start.dart';
 import 'package:taxi_app/ui/tab_box/home/bottom_sheet/widgets/smile_widgets.dart';
@@ -18,7 +20,6 @@ class BottomSheetScreen extends StatefulWidget {
 }
 
 class _BottomSheetScreenState extends State<BottomSheetScreen> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,63 +44,7 @@ class _BottomSheetScreenState extends State<BottomSheetScreen> {
           child: InkWell(
             borderRadius: BorderRadius.circular(16.r),
             onTap: () {
-              showModalBottomSheet(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(32.r),
-                    topRight: Radius.circular(32.r),
-                  ),
-                ),
-                showDragHandle: true,
-                isScrollControlled: true,
-                context: context,
-                backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-                builder: (context) {
-                  return SizedBox(
-                    height: height / 1.2,
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 24.w),
-                      child: Column(
-                        children: [
-                          const GlobalBottomSheetStart(
-                              centerText: "Your Mood",
-                              name: "Daniel Austin",
-                              carName: "Mercedes-Benz E-Class",
-                              starCount: "4.8",
-                              carNumber: "HSW 4736 XK",
-                              commentTitle: "What's Your Mood!",
-                              commentSubtitle: "about this trip?"),
-                          40.ph,
-                          const SmileWidgets(icon1: AppIcons.smileEyeGlass, icon2: AppIcons.smileExcited, icon3: AppIcons.smileHappy),
-                          24.ph,
-                          const SmileWidgets(icon1: AppIcons.smileVeryHappy, icon2: AppIcons.smileAngry, icon3: AppIcons.smileQuiet),
-                          24.ph,
-                          const SmileWidgets(icon1: AppIcons.smileUnhappy, icon2: AppIcons.smileTired, icon3: AppIcons.smileCry),
-                          64.ph,
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              GlobalBottomSheetBottom(
-                                text: "Cancel",
-                                colorText: getTheme(context)
-                                    ? AppColors.white
-                                    : AppColors.dark3,
-                                colorContainer: getTheme(context)
-                                    ? AppColors.dark3
-                                    : AppColors.white,
-                              ),
-                              const GlobalBottomSheetBottom(
-                                  text: "Submit",
-                                  colorText: AppColors.dark3,
-                                  colorContainer: AppColors.primary),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  );
-                },
-              );
+              moodSelectionDialog(context);
             },
             child: Container(
                 padding: EdgeInsets.only(
@@ -111,4 +56,3 @@ class _BottomSheetScreenState extends State<BottomSheetScreen> {
     );
   }
 }
-

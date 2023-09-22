@@ -13,17 +13,17 @@ class IconsContainer extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Container(
-      width: (width >= figmaWidth || width >= 1800) ? 72.w : 56.w,
-      height: (height >= figmaHeight || height >= 2560) ? 72.w : 56.w,
+      width: height >= 900 && width >= 600 ? 72.w : 56.w,
+      height: height >= 900 && width >= 600  ? 72.w : 56.w,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(
-              (width >= figmaWidth || width >= 1800) ? 100 : 36),
+              (height >= 900 && width >= 600) ? 100 : 36),
           color: AppColors.amber),
       child: IconButton(
         onPressed: onTap,
         icon: SvgPicture.asset(icon,
-            height: (height >= figmaHeight || height >= 2560) ? 40.w : 24.w,
-            width: (width >= figmaWidth || width >= 1800) ? 40.w : 24.w),
+            height: (height >= 900 && width >= 600) ? 34.w : 24.w,
+            width: (height >= 900 && width >= 600) ? 34.w : 24.w),
       ),
     );
   }

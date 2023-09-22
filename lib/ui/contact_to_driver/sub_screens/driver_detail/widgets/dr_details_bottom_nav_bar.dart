@@ -11,8 +11,6 @@ import 'package:taxi_app/utils/theme/get_theme.dart';
 
 Widget drBottomNavbar(BuildContext context, {required VoidCallback onTapBottomChat,required VoidCallback onBottomTapCall}) {
   return Container(
-    height: 132 * height / figmaHeight,
-    width: 428 * width / figmaWidth,
     decoration: BoxDecoration(
       borderRadius: BorderRadius.only(
         topLeft: Radius.circular(24.r),
