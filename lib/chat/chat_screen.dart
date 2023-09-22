@@ -14,6 +14,7 @@ import 'package:taxi_app/data/models/message/message_model.dart';
 import 'package:taxi_app/ui/widgets/global_appbar.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
+import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
 
 class ChatScreen extends StatefulWidget {
@@ -63,6 +64,7 @@ class _ChatScreenState extends State<ChatScreen> {
         builder: (context, state) {
           return Column(
             children: [
+              14.ph,
               Expanded(
                 child: state.messages.isNotEmpty
                     ? ListView(
@@ -72,26 +74,31 @@ class _ChatScreenState extends State<ChatScreen> {
                             state.messages.length,
                             (index) {
                               MessageModel message = state.messages[index];
-                              return Row(
-                                mainAxisAlignment: index.isEven
-                                    ? MainAxisAlignment.start
-                                    : MainAxisAlignment.end,
+                              return Column(
                                 children: [
-                                  message.image== null &&
-                                          message.message== null
-                                      ? AudioContainer(
-                                          audioPath: message.voice?? '')
-                                      : message.image == null
-                                          ? Flexible(
-                                              fit: FlexFit.loose,
-                                              child: MessageContainer(
-                                                index: index,
-                                                message: message.message!,
-                                                dateTime: message.dateTime,
-                                              ),
-                                            )
-                                          : ImageContainer(
-                                              images: message.image ?? []),
+                                  14.ph,
+                                  Row(
+                                    mainAxisAlignment: index.isEven
+                                        ? MainAxisAlignment.start
+                                        : MainAxisAlignment.end,
+                                    children: [
+                                      message.image == null &&
+                                              message.message == null
+                                          ? AudioContainer(
+                                              audioPath: message.voice ?? '')
+                                          : message.image == null
+                                              ? Flexible(
+                                                  fit: FlexFit.loose,
+                                                  child: MessageContainer(
+                                                    index: index,
+                                                    message: message.message!,
+                                                    dateTime: message.dateTime,
+                                                  ),
+                                                )
+                                              : ImageContainer(
+                                                  images: message.image ?? []),
+                                    ],
+                                  ),
                                 ],
                               );
                             },
