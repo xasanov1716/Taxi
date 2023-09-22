@@ -23,21 +23,26 @@ class AddressDetailController extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          GestureDetector(
-            onTap: onTap,
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    text.length > 30 ? text.substring(0, 30) : text,
-                    style: Theme.of(context)
-                        .textTheme
-                        .titleLarge
-                        ?.copyWith(color: AppColors.c_500),
-                  ),
-                ],
+          Expanded(
+            child: GestureDetector(
+              onTap: onTap,
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      child: Text(
+                        overflow:TextOverflow.ellipsis,
+                        text.length > 30 ? text.substring(0, 30) : text,
+                        style: Theme.of(context)
+                            .textTheme
+                            .titleLarge
+                            ?.copyWith(color: AppColors.c_500),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
