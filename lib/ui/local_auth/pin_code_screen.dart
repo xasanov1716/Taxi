@@ -27,7 +27,6 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
   final FocusNode focusNode = FocusNode();
   String currentPin = '';
   bool authenticated = false;
-
   @override
   void initState() {
     currentPin = StorageRepository.getString("code");
