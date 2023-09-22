@@ -83,10 +83,6 @@ class AppRoutes {
         return MaterialPageRoute(
           builder: (context) => const CancelDriverScreen(),
         );
-      case RouteNames.addressScreen:
-        return MaterialPageRoute(
-          builder: (context) => const AddressScreen(),
-        );
       case RouteNames.login:
         return MaterialPageRoute(builder: (context) => const LoginScreen());
       case RouteNames.signUp:
@@ -171,7 +167,7 @@ class AppRoutes {
         );
       case RouteNames.chatWithDriver:
         return MaterialPageRoute(
-          builder: (context) => const ChatWithDriverScreen(),
+          builder: (context) => const ChatScreen(),
         );
       case RouteNames.bottomSheetDialog:
         return MaterialPageRoute(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:taxi_app/ui/tab_box/home/bottom_sheet/rate_driver_bottom_sheet.dart';
 import 'package:taxi_app/ui/tab_box/home/bottom_sheet/widgets/global_bottom_sheet_bottom.dart';
 import 'package:taxi_app/ui/tab_box/home/bottom_sheet/widgets/global_bottom_sheet_start.dart';
 import 'package:taxi_app/ui/tab_box/home/bottom_sheet/widgets/smile_widgets.dart';
@@ -18,6 +19,17 @@ class BottomSheetScreen extends StatefulWidget {
 }
 
 class _BottomSheetScreenState extends State<BottomSheetScreen> {
+  List<String> smiles = [
+    AppIcons.smileUnhappy,
+    AppIcons.smileCry,
+    AppIcons.smileTired,
+    AppIcons.smileAngry,
+    AppIcons.smileQuiet,
+    AppIcons.smileVeryHappy,
+    AppIcons.smileExcited,
+    AppIcons.smileHappy,
+    AppIcons.smileEyeGlass
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -55,47 +67,64 @@ class _BottomSheetScreenState extends State<BottomSheetScreen> {
                 context: context,
                 backgroundColor: Theme.of(context).scaffoldBackgroundColor,
                 builder: (context) {
-                  return SizedBox(
-                    height: height / 1.2,
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 24.w),
-                      child: Column(
-                        children: [
-                          const GlobalBottomSheetStart(
-                              centerText: "Your Mood",
-                              name: "Daniel Austin",
-                              carName: "Mercedes-Benz E-Class",
-                              starCount: "4.8",
-                              carNumber: "HSW 4736 XK",
-                              commentTitle: "What's Your Mood!",
-                              commentSubtitle: "about this trip?"),
-                          40.ph,
-                          const SmileWidgets(icon1: AppIcons.smileEyeGlass, icon2: AppIcons.smileExcited, icon3: AppIcons.smileHappy),
-                          24.ph,
-                          const SmileWidgets(icon1: AppIcons.smileVeryHappy, icon2: AppIcons.smileAngry, icon3: AppIcons.smileQuiet),
-                          24.ph,
-                          const SmileWidgets(icon1: AppIcons.smileUnhappy, icon2: AppIcons.smileTired, icon3: AppIcons.smileCry),
-                          64.ph,
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              GlobalBottomSheetBottom(
-                                text: "Cancel",
-                                colorText: getTheme(context)
-                                    ? AppColors.white
-                                    : AppColors.dark3,
-                                colorContainer: getTheme(context)
-                                    ? AppColors.dark3
-                                    : AppColors.white,
-                              ),
-                              const GlobalBottomSheetBottom(
-                                  text: "Submit",
-                                  colorText: AppColors.dark3,
-                                  colorContainer: AppColors.primary),
-                            ],
-                          ),
-                        ],
-                      ),
+                  return Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 24.w),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        const GlobalBottomSheetStart(
+                            centerText: "Your Mood",
+                            name: "Daniel Austin",
+                            carName: "Mercedes-Benz E-Class",
+                            starCount: "4.8",
+                            carNumber: "HSW 4736 XK",
+                            commentTitle: "What's Your Mood!",
+                            commentSubtitle: "about this trip?"),
+                        24.ph,
+                        const SmileWidgets(
+                            icon1: AppIcons.smileEyeGlass,
+                            icon2: AppIcons.smileExcited,
+                            icon3: AppIcons.smileHappy),
+                        24.ph,
+                        const SmileWidgets(
+                            icon1: AppIcons.smileVeryHappy,
+                            icon2: AppIcons.smileAngry,
+                            icon3: AppIcons.smileQuiet),
+                        24.ph,
+                        const SmileWidgets(
+                            icon1: AppIcons.smileUnhappy,
+                            icon2: AppIcons.smileTired,
+                            icon3: AppIcons.smileCry),
+                        24.ph,
+                        const Divider(),
+                        24.ph,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            GlobalBottomSheetBottom(
+                              onTap: (){
+                                Navigator.pop(context);
+                              },
+                              text: "Cancel",
+                              colorText: getTheme(context)
+                                  ? AppColors.white
+                                  : AppColors.dark3,
+                              colorContainer: getTheme(context)
+                                  ? AppColors.dark3
+                                  : AppColors.white,
+                            ),
+                            GlobalBottomSheetBottom(
+                              onTap: (){
+                                Navigator.pop(context);
+                                rateDriverBottomSheet(context);
+                              },
+                                text: "Submit",
+                                colorText: AppColors.dark3,
+                                colorContainer: AppColors.primary),
+                          ],
+                        ),
+                        48.ph,
+                      ],
                     ),
                   );
                 },
@@ -111,4 +140,3 @@ class _BottomSheetScreenState extends State<BottomSheetScreen> {
     );
   }
 }
-
