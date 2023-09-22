@@ -77,7 +77,7 @@ class ShowModalBottomSheetAddressAddScreen extends StatelessWidget {
                     icon: SvgPicture.asset(
                       AppIcons.location,
                       colorFilter: ColorFilter.mode(
-                          getTheme(context) ? AppColors.dark2 : AppColors.c_50,
+                          getTheme(context) ? AppColors.c_50 : AppColors.c_50,
                           BlendMode.srcIn),
                     )),
                 onTap: () {}),
