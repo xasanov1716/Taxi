@@ -25,81 +25,79 @@ Future rateDriverBottomSheet(BuildContext context){
     builder: (context) {
       return StatefulBuilder(
         builder: (context, state) {
-          return SizedBox(
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24.w),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const GlobalBottomSheetStart(
-                      centerText: "Rate Driver",
-                      name: "Daniel Austin",
-                      carName: "Mercedes-Benz E-Class",
-                      starCount: "4.8",
-                      carNumber: "HSW 4736 XK",
-                      commentTitle: "Wow 5 Star!",
-                      commentSubtitle:
-                      "Do you want to add additional tip for Daniel?"),
-                  24.ph,
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      ...List.generate(
-                        5,
-                            (index) => Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 12.w),
-                          child: GestureDetector(
-                            onTap: () {
-                              state(() {
-                                selectRate = index + 1;
-                              });
-                            },
-                            child: index < selectRate
-                                ? SvgPicture.asset(
-                                AppIcons.rateStar,width: 40.w,)
-                                : SvgPicture.asset(
-                              AppIcons.star,
-                              // ignore: deprecated_member_use
-                              color: AppColors.primary,
-                              width: 40.w,
-                            ),
+          return Padding(
+            padding: EdgeInsets.symmetric(horizontal: 24.w),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const GlobalBottomSheetStart(
+                    centerText: "Rate Driver",
+                    name: "Daniel Austin",
+                    carName: "Mercedes-Benz E-Class",
+                    starCount: "4.8",
+                    carNumber: "HSW 4736 XK",
+                    commentTitle: "Wow 5 Star!",
+                    commentSubtitle:
+                    "Do you want to add additional tip for Daniel?"),
+                24.ph,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ...List.generate(
+                      5,
+                          (index) => Padding(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 12.w),
+                        child: GestureDetector(
+                          onTap: () {
+                            state(() {
+                              selectRate = index + 1;
+                            });
+                          },
+                          child: index < selectRate
+                              ? SvgPicture.asset(
+                              AppIcons.rateStar,width: 40.w,)
+                              : SvgPicture.asset(
+                            AppIcons.star,
+                            // ignore: deprecated_member_use
+                            color: AppColors.primary,
+                            width: 40.w,
                           ),
                         ),
                       ),
-                    ],
-                  ),
-                  24.ph,
-                  const Divider(),
-                  24.ph,
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      GlobalBottomSheetBottom(
+                    ),
+                  ],
+                ),
+                24.ph,
+                const Divider(),
+                24.ph,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    GlobalBottomSheetBottom(
+                      onTap: (){
+                        Navigator.pop(context);
+                      },
+                      text: "Cancel",
+                      colorText: getTheme(context)
+                          ? AppColors.white
+                          : AppColors.dark3,
+                      colorContainer: getTheme(context)
+                          ? AppColors.dark3
+                          : AppColors.white,
+                    ),
+                    GlobalBottomSheetBottom(
                         onTap: (){
                           Navigator.pop(context);
+                          tipForDriverBottomSheet(context);
                         },
-                        text: "Cancel",
-                        colorText: getTheme(context)
-                            ? AppColors.white
-                            : AppColors.dark3,
-                        colorContainer: getTheme(context)
-                            ? AppColors.dark3
-                            : AppColors.white,
-                      ),
-                      GlobalBottomSheetBottom(
-                          onTap: (){
-                            Navigator.pop(context);
-                            tipForDriverBottomSheet(context);
-                          },
-                          text: "Submit",
-                          colorText: AppColors.dark3,
-                          colorContainer: AppColors.primary),
-                    ],
-                  ),
-                  48.ph,
-                ],
-              ),
+                        text: "Submit",
+                        colorText: AppColors.dark3,
+                        colorContainer: AppColors.primary),
+                  ],
+                ),
+                48.ph,
+              ],
             ),
           );
         },

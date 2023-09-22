@@ -67,66 +67,64 @@ class _BottomSheetScreenState extends State<BottomSheetScreen> {
                 context: context,
                 backgroundColor: Theme.of(context).scaffoldBackgroundColor,
                 builder: (context) {
-                  return SizedBox(
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 24.w),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          const GlobalBottomSheetStart(
-                              centerText: "Your Mood",
-                              name: "Daniel Austin",
-                              carName: "Mercedes-Benz E-Class",
-                              starCount: "4.8",
-                              carNumber: "HSW 4736 XK",
-                              commentTitle: "What's Your Mood!",
-                              commentSubtitle: "about this trip?"),
-                          24.ph,
-                          const SmileWidgets(
-                              icon1: AppIcons.smileEyeGlass,
-                              icon2: AppIcons.smileExcited,
-                              icon3: AppIcons.smileHappy),
-                          24.ph,
-                          const SmileWidgets(
-                              icon1: AppIcons.smileVeryHappy,
-                              icon2: AppIcons.smileAngry,
-                              icon3: AppIcons.smileQuiet),
-                          24.ph,
-                          const SmileWidgets(
-                              icon1: AppIcons.smileUnhappy,
-                              icon2: AppIcons.smileTired,
-                              icon3: AppIcons.smileCry),
-                          24.ph,
-                          const Divider(),
-                          24.ph,
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              GlobalBottomSheetBottom(
-                                onTap: (){
-                                  Navigator.pop(context);
-                                },
-                                text: "Cancel",
-                                colorText: getTheme(context)
-                                    ? AppColors.white
-                                    : AppColors.dark3,
-                                colorContainer: getTheme(context)
-                                    ? AppColors.dark3
-                                    : AppColors.white,
-                              ),
-                              GlobalBottomSheetBottom(
-                                onTap: (){
-                                  Navigator.pop(context);
-                                  rateDriverBottomSheet(context);
-                                },
-                                  text: "Submit",
-                                  colorText: AppColors.dark3,
-                                  colorContainer: AppColors.primary),
-                            ],
-                          ),
-                          48.ph,
-                        ],
-                      ),
+                  return Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 24.w),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        const GlobalBottomSheetStart(
+                            centerText: "Your Mood",
+                            name: "Daniel Austin",
+                            carName: "Mercedes-Benz E-Class",
+                            starCount: "4.8",
+                            carNumber: "HSW 4736 XK",
+                            commentTitle: "What's Your Mood!",
+                            commentSubtitle: "about this trip?"),
+                        24.ph,
+                        const SmileWidgets(
+                            icon1: AppIcons.smileEyeGlass,
+                            icon2: AppIcons.smileExcited,
+                            icon3: AppIcons.smileHappy),
+                        24.ph,
+                        const SmileWidgets(
+                            icon1: AppIcons.smileVeryHappy,
+                            icon2: AppIcons.smileAngry,
+                            icon3: AppIcons.smileQuiet),
+                        24.ph,
+                        const SmileWidgets(
+                            icon1: AppIcons.smileUnhappy,
+                            icon2: AppIcons.smileTired,
+                            icon3: AppIcons.smileCry),
+                        24.ph,
+                        const Divider(),
+                        24.ph,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            GlobalBottomSheetBottom(
+                              onTap: (){
+                                Navigator.pop(context);
+                              },
+                              text: "Cancel",
+                              colorText: getTheme(context)
+                                  ? AppColors.white
+                                  : AppColors.dark3,
+                              colorContainer: getTheme(context)
+                                  ? AppColors.dark3
+                                  : AppColors.white,
+                            ),
+                            GlobalBottomSheetBottom(
+                              onTap: (){
+                                Navigator.pop(context);
+                                rateDriverBottomSheet(context);
+                              },
+                                text: "Submit",
+                                colorText: AppColors.dark3,
+                                colorContainer: AppColors.primary),
+                          ],
+                        ),
+                        48.ph,
+                      ],
                     ),
                   );
                 },

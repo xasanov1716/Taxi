@@ -22,89 +22,87 @@ Future tipForDriverBottomSheet(BuildContext context){
     builder: (context) {
       return StatefulBuilder(
         builder: (context,state) {
-          return SizedBox(
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24.w),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const GlobalBottomSheetStart(
-                      centerText: "Rate Driver",
-                      name: "Daniel Austin",
-                      carName: "Mercedes-Benz E-Class",
-                      starCount: "4.8",
-                      carNumber: "HSW 4736 XK",
-                      commentTitle: "Wow 5 Star!",
-                      commentSubtitle:
-                      "Do you want to add additional tip for Daniel?"),
-                  24.ph,
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      ...List.generate(
-                        4,
-                            (index) => GestureDetector(
-                            onTap: () {
-                              state(() {
-                                selectRate = index;
-                              });
-                            },
-                            child: Container(
-                              padding: EdgeInsets.all(24.r),
-                              decoration: selectRate==index?BoxDecoration(
-                                  borderRadius: BorderRadius.circular(24.r),
-                                  border: Border.all(color: AppColors.primary),
-                                  color: AppColors.primary
-                              ):BoxDecoration(
-                                  borderRadius: BorderRadius.circular(24.r),
-                                  border: Border.all(color: AppColors.primary)
-                              ),
-                              child: Center(
-                                child: Text("\$${index + 2}",
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .titleMedium
-                                      ?.copyWith(
-                                      fontFamily: "Urbanist",
-                                      fontSize: 24.sp,
-                                      fontWeight: FontWeight.w700,
-                                      color: getTheme(context)
-                                          ? AppColors.white
-                                          : AppColors.dark3),),
-                              ),
-                            )
-                        ),
+          return Padding(
+            padding: EdgeInsets.symmetric(horizontal: 24.w),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const GlobalBottomSheetStart(
+                    centerText: "Rate Driver",
+                    name: "Daniel Austin",
+                    carName: "Mercedes-Benz E-Class",
+                    starCount: "4.8",
+                    carNumber: "HSW 4736 XK",
+                    commentTitle: "Wow 5 Star!",
+                    commentSubtitle:
+                    "Do you want to add additional tip for Daniel?"),
+                24.ph,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    ...List.generate(
+                      4,
+                          (index) => GestureDetector(
+                          onTap: () {
+                            state(() {
+                              selectRate = index;
+                            });
+                          },
+                          child: Container(
+                            padding: EdgeInsets.all(24.r),
+                            decoration: selectRate==index?BoxDecoration(
+                                borderRadius: BorderRadius.circular(24.r),
+                                border: Border.all(color: AppColors.primary),
+                                color: AppColors.primary
+                            ):BoxDecoration(
+                                borderRadius: BorderRadius.circular(24.r),
+                                border: Border.all(color: AppColors.primary)
+                            ),
+                            child: Center(
+                              child: Text("\$${index + 2}",
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .titleMedium
+                                    ?.copyWith(
+                                    fontFamily: "Urbanist",
+                                    fontSize: 24.sp,
+                                    fontWeight: FontWeight.w700,
+                                    color: getTheme(context)
+                                        ? AppColors.white
+                                        : AppColors.dark3),),
+                            ),
+                          )
                       ),
-                    ],
-                  ),
-                  24.ph,
-                  const Divider(),
-                  24.ph,
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      GlobalBottomSheetBottom(
-                        onTap: (){
-                          Navigator.pop(context);
-                        },
-                        text: "Cancel",
-                        colorText: getTheme(context)
-                            ? AppColors.white
-                            : AppColors.dark3,
-                        colorContainer: getTheme(context)
-                            ? AppColors.dark3
-                            : AppColors.white,
-                      ),
-                      GlobalBottomSheetBottom(
-                          onTap: (){},
-                          text: "Submit",
-                          colorText: AppColors.dark3,
-                          colorContainer: AppColors.primary),
-                    ],
-                  ),
-                  48.ph,
-                ],
-              ),
+                    ),
+                  ],
+                ),
+                24.ph,
+                const Divider(),
+                24.ph,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    GlobalBottomSheetBottom(
+                      onTap: (){
+                        Navigator.pop(context);
+                      },
+                      text: "Cancel",
+                      colorText: getTheme(context)
+                          ? AppColors.white
+                          : AppColors.dark3,
+                      colorContainer: getTheme(context)
+                          ? AppColors.dark3
+                          : AppColors.white,
+                    ),
+                    GlobalBottomSheetBottom(
+                        onTap: (){},
+                        text: "Submit",
+                        colorText: AppColors.dark3,
+                        colorContainer: AppColors.primary),
+                  ],
+                ),
+                48.ph,
+              ],
             ),
           );
         },
