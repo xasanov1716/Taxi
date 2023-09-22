@@ -1,8 +1,10 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:permission_handler/permission_handler.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:taxi_app/utils/size/size_extension.dart';
 
+import '../../ui/widgets/date_formatter.dart';
 import '../../utils/colors/app_colors.dart';
 
 class AudioContainer extends StatefulWidget {
@@ -44,6 +46,7 @@ class _AudioContainerState extends State<AudioContainer> {
       print("DURATION: ${d.inSeconds}");
     });
   }
+
   @override
   void initState() {
     _init();
@@ -53,10 +56,12 @@ class _AudioContainerState extends State<AudioContainer> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(24),
-      color: AppColors.primary,
+      padding: const EdgeInsets.all(3),
+      decoration: const BoxDecoration(
+          color: AppColors.primary,
+          borderRadius: BorderRadius.all(Radius.circular(20))),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -79,10 +84,12 @@ class _AudioContainerState extends State<AudioContainer> {
                   size: 50,
                 ),
               ),
-              Slider(thumbColor: Colors.red,inactiveColor: AppColors.c_200,activeColor: AppColors.green,
+              Slider(
+                thumbColor: Colors.red, inactiveColor: AppColors.c_200,
+                activeColor: AppColors.green,
                 value: currentDuration.inSeconds.toDouble(),
-                max: duration.inSeconds.toDouble(),
-                // divisions: 100,
+                max:  duration.inSeconds.toDouble(),
+                // divisions: 60,
                 //label: _currentSliderValue.round().toString(),
                 onChanged: (double value) async {
                   print(value);
@@ -94,10 +101,12 @@ class _AudioContainerState extends State<AudioContainer> {
           ),
           Row(
             children: [
-              Text("Max Duration: ${duration.inSeconds.toString()}"),
-              Text("Current Duration: ${currentDuration.inSeconds.toString()}"),
+              Text("${formatSeconds(currentDuration.inSeconds)} | "),
+              Text(formatSeconds(duration.inSeconds)),
             ],
           ),
+          4.ph,
+
         ],
       ),
     );
