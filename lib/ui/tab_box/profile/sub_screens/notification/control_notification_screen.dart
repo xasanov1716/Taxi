@@ -24,48 +24,38 @@ class _ControlNotificationScreenState extends State<ControlNotificationScreen> {
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24.w),
-        child: ListView(children: [
-          24.ph,
-          const SwitchWidgetForNotification(
+        child: ListView(
+            children: const [
+          SwitchWidgetForNotification(
             title: 'General Notification',
           ),
-          40.ph,
-          const SwitchWidgetForNotification(
+          SwitchWidgetForNotification(
             title: 'Sound',
           ),
-          40.ph,
-          const SwitchWidgetForNotification(
+          SwitchWidgetForNotification(
             title: 'Vibrate',
           ),
-          40.ph,
-          const SwitchWidgetForNotification(
+          SwitchWidgetForNotification(
             title: 'Special Offers',
           ),
-          40.ph,
-          const SwitchWidgetForNotification(
+          SwitchWidgetForNotification(
             title: 'Promo & Discount',
           ),
-          40.ph,
-          const SwitchWidgetForNotification(
+          SwitchWidgetForNotification(
             title: 'Payments',
           ),
-          40.ph,
-          const SwitchWidgetForNotification(
+          SwitchWidgetForNotification(
             title: 'Cashback',
           ),
-          40.ph,
-          const SwitchWidgetForNotification(
+          SwitchWidgetForNotification(
             title: 'App Updates',
           ),
-          40.ph,
-          const SwitchWidgetForNotification(
+          SwitchWidgetForNotification(
             title: 'New Service Available',
           ),
-          40.ph,
-          const SwitchWidgetForNotification(
+          SwitchWidgetForNotification(
             title: 'New Tips Available',
           ),
-          40.ph
         ]),
       ),
     );
