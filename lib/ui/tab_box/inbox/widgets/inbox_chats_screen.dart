@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:taxi_app/data/models/icon/icon_type.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
+import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 
 class InboxChatScreen extends StatelessWidget {
@@ -49,7 +50,7 @@ class InboxChatScreen extends StatelessWidget {
                       10.ph,
                       Text(
                         DateTime.now().toString().substring(10, 16),
-                        style: Theme.of(context).textTheme.bodyMedium,
+                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: width>=1800?8.sp:10.sp ),
                       )
                     ],
                   ),

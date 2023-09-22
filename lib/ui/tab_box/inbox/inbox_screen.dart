@@ -5,7 +5,9 @@ import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/ui/tab_box/inbox/widgets/inbox_appbar.dart';
 import 'package:taxi_app/ui/tab_box/inbox/widgets/inbox_call_screen.dart';
 import 'package:taxi_app/ui/tab_box/inbox/widgets/inbox_chats_screen.dart';
+import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
+import 'package:taxi_app/utils/size/screen_size.dart';
 
 class InboxScreen extends StatelessWidget {
   const InboxScreen({super.key});
@@ -29,6 +31,11 @@ class InboxScreen extends StatelessWidget {
             )
           ],
         ),
+          floatingActionButton:FloatingActionButton(onPressed: () {},
+            shape: const CircleBorder(),
+            backgroundColor: AppColors.primary,
+            child: SvgPicture.asset(AppIcons.add),
+          ),
       ),
     );
   }

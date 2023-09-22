@@ -76,7 +76,8 @@ class _SendMessageTextFieldState extends State<SendMessageTextField> {
                               messageModel: MessageModel(
                             receiverName: '',
                             senderName: '',
-                            dateTime: DateTime.now().toString(),
+                            dateTime:
+                                DateTime.now().toString().substring(10, 16),
                             message: value,
                           ))),
                         );
