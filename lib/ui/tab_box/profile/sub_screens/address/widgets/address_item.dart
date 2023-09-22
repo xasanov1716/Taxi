@@ -33,7 +33,7 @@ class AddressItem extends StatelessWidget {
               colorFilter:
                   const ColorFilter.mode(AppColors.primary, BlendMode.srcIn),
             ),
-            subtitle: Text(subtitle),
+            subtitle: Text(subtitle,maxLines: 1,style: Theme.of(context).textTheme.titleSmall!.copyWith(color: AppColors.c_700),),
           )),
     );
   }

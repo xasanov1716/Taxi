@@ -71,21 +71,25 @@ class SpecialOfferButton extends StatelessWidget {
               children: [
                 SvgPicture.asset(icon),
                 20.pw,
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      title,
-                      style: Theme.of(context).textTheme.titleLarge,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    8.ph,
-                    Text(
-                      text,
-                      style: Theme.of(context).textTheme.bodyMedium,
-                      overflow: TextOverflow.ellipsis,
-                    )
-                  ],
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        title,
+                        style: Theme.of(context).textTheme.titleLarge,
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 1,
+                      ),
+                      8.ph,
+                      Text(
+                        text,
+                        style: Theme.of(context).textTheme.bodyMedium,
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 2,
+                      )
+                    ],
+                  ),
                 )
               ],
             ),

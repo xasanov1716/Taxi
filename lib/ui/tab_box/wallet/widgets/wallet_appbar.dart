@@ -47,7 +47,7 @@ class WalletAppbar extends StatelessWidget implements PreferredSize{
             colorFilter: ColorFilter.mode(getTheme(context) ? AppColors.white : AppColors.c_900, BlendMode.srcIn),
           ),
         ),
-        24.pw,
+        12.pw,
       ],
     );
   }
