@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:taxi_app/blocs/create_order/create_order_bloc.dart';
-import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/ui/widgets/global_appbar.dart';
 import 'package:taxi_app/ui/widgets/global_button.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
@@ -59,7 +58,6 @@ class _AddPromoScreenState extends State<AddPromoScreen> {
                     }
                   });
                   selectedText = promoItems[index].text;
-                  print(selectedText);
                 },
                 child: Container(
                   margin: EdgeInsets.only(bottom: 24.h),

@@ -90,7 +90,7 @@ List<TransportItem> transportItem = [
       nearby: "9 nearbies",
       price: '10.00'),
   TransportItem(
-      icon: AppIcons.standard,
+      icon: AppIcons.standart,
       selected: false,
       type: "Standard",
       nearby: "9 nearbies",

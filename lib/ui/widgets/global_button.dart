@@ -31,6 +31,14 @@ class GlobalButton extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(radius),
+          boxShadow: [
+            BoxShadow(
+              color: AppColors.primary.withOpacity(0.3),
+              blurRadius: 17,
+              spreadRadius: -7,
+              offset: const Offset(0,6)
+            )
+          ],
           border: Border.all(width: 1, color: borderColor)),
       child: Material(
         borderRadius: BorderRadius.circular(radius),
@@ -47,6 +55,7 @@ class GlobalButton extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(16),
                   child: Text(
+                    overflow:TextOverflow.ellipsis,
                     title,
                     style: TextStyle(
                       fontFamily: "Urbanist",
@@ -58,9 +67,7 @@ class GlobalButton extends StatelessWidget {
                   ),
                 ),
                 SizedBox(width: 16.w),
-                rightIcon.isEmpty
-                    ? const Text("")
-                    : SvgPicture.asset(rightIcon),
+                rightIcon.isEmpty ? const Text("") : SvgPicture.asset(rightIcon),
               ],
             ),
           ),
