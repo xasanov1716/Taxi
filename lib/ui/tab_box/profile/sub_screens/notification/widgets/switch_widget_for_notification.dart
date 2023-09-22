@@ -26,37 +26,40 @@ class _SwitchWidgetForNotificationState
 
   @override
   Widget build(BuildContext context) {
-    return Ink(
-      height: 50.h,
-      child: InkWell(
-        onTap: () {
-          setState(
-            () {
-              StorageRepository.putBool(widget.title, !switchValue);
-              switchValue = !switchValue;
-            },
-          );
-        },
-        child:
-            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-          Text(
-            widget.title,
-            style: Theme.of(context)
-                .textTheme
-                .titleLarge!
-                .copyWith(fontWeight: FontWeight.w700),
-          ),
-          CupertinoSwitch(
-            activeColor: AppColors.primary,
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 15.0),
+      child: Ink(
+        height: 60.h,
+        child: InkWell(
+          onTap: () {
+            setState(
+              () {
+                StorageRepository.putBool(widget.title, !switchValue);
+                switchValue = !switchValue;
+              },
+            );
+          },
+          child:
+              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+            Text(
+              widget.title,
+              style: Theme.of(context)
+                  .textTheme
+                  .titleLarge!
+                  .copyWith(fontWeight: FontWeight.w700),
+            ),
+            CupertinoSwitch(
+              activeColor: AppColors.primary,
 
-              value: switchValue,
-              onChanged: (value) {
-                setState(() {
-                  StorageRepository.putBool(widget.title, value);
-                  switchValue = !switchValue;
-                });
-              })
-        ]),
+                value: switchValue,
+                onChanged: (value) {
+                  setState(() {
+                    StorageRepository.putBool(widget.title, value);
+                    switchValue = !switchValue;
+                  });
+                })
+          ]),
+        ),
       ),
     );
   }
