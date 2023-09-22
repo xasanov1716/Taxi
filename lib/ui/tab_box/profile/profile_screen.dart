@@ -11,6 +11,7 @@ import 'package:flutter/widgets.dart'
         Text,
         TextStyle,
         Widget;
+import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -37,20 +38,36 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: CupertinoSwitch(
-          onChanged: (v) {
-            setState(() {
-              isSwitched = !isSwitched;
-            });
-            if (isSwitched) {
-              AdaptiveTheme.of(context).setDark();
-            } else {
-              AdaptiveTheme.of(context).setLight();
-            }
-          },
-          value: isSwitched,
-        ),
+      appBar: AppBar(),
+      body: Column(
+        children: [
+          ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, RouteNames.addressAddDetailScreen);
+              },
+              child: const Text("Address Add Detail Screen")),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.pushNamed(context, RouteNames.addressScreen);
+            },
+            child: const Text("Address Screen"),
+          ),
+          Center(
+            child: CupertinoSwitch(
+              onChanged: (v) {
+                setState(() {
+                  isSwitched = !isSwitched;
+                });
+                if (isSwitched) {
+                  AdaptiveTheme.of(context).setDark();
+                } else {
+                  AdaptiveTheme.of(context).setLight();
+                }
+              },
+              value: isSwitched,
+            ),
+          ),
+        ],
       ),
     );
   }
