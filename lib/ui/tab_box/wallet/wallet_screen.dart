@@ -30,7 +30,7 @@ class WalletScreen extends StatelessWidget {
         children: [
           CardItem(
             onTap: () {
-              Navigator.pushNamed(context, RouteNames.topUpPaymentScreen);
+              Navigator.pushNamed(context, RouteNames.topUpAmountScreen);
             },
           ),
           Padding(
