@@ -75,14 +75,17 @@ class OfferBottomSheetItem extends StatelessWidget {
                           Text(
                             promoCode,
                             style: Theme.of(context).textTheme.headlineSmall,
+                            overflow: TextOverflow.ellipsis,
                           ),
                           12.pw,
-                          ZoomTapAnimation(
-                            child: SvgPicture.asset(AppIcons.promoCode),
-                            onTap: () {
-                              FlutterClipboard.copy(promoCode)
-                                  .then((value) => debugPrint('copied'));
-                            },
+                          Expanded(
+                            child: ZoomTapAnimation(
+                              child: SvgPicture.asset(AppIcons.promoCode),
+                              onTap: () {
+                                FlutterClipboard.copy(promoCode)
+                                    .then((value) => debugPrint('copied'));
+                              },
+                            ),
                           )
                         ],
                       ),
