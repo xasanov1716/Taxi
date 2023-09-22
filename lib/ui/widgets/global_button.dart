@@ -54,15 +54,18 @@ class GlobalButton extends StatelessWidget {
                 SizedBox(width: 16.w),
                 Padding(
                   padding: const EdgeInsets.all(16),
-                  child: Text(
-                    title,
-                    style: TextStyle(
-                      fontFamily: "Urbanist",
-                      fontSize: 16.sp,
-                      fontWeight: FontWeight.w700,
-                      color: textColor,
+                  child: Expanded(
+                    child: Text(
+                      overflow:TextOverflow.ellipsis,
+                      title,
+                      style: TextStyle(
+                        fontFamily: "Urbanist",
+                        fontSize: 16.sp,
+                        fontWeight: FontWeight.w700,
+                        color: textColor,
+                      ),
+                      textAlign: TextAlign.center,
                     ),
-                    textAlign: TextAlign.center,
                   ),
                 ),
                 SizedBox(width: 16.w),

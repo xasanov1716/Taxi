@@ -180,6 +180,10 @@ class AppRoutes {
         return MaterialPageRoute(
           builder: (context) => const AddressAddDetailScreen(),
         );
+      case RouteNames.addressScreen:
+        return MaterialPageRoute(
+          builder: (context) => const AddressScreen(),
+        );
       default:
         return MaterialPageRoute(
           builder: (context) => const Scaffold(

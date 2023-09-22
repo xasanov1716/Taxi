@@ -56,20 +56,23 @@ class _ProfileScreenState extends State<ProfileScreen> {
               value: isSwitched,
             ),
           ),
-          TextButton(onPressed: (){}, child: const Text("Edit Profile")),
-          TextButton(onPressed: (){}, child: const Text("Address")),
-          TextButton(onPressed: (){}, child: const Text("Notification")),
-          TextButton(onPressed: (){}, child: const Text("Payment")),
-          TextButton(onPressed: (){}, child: const Text("Security")),
-          TextButton(onPressed: (){}, child: const Text("Language")),
-          TextButton(onPressed: (){}, child: const Text("Dark Mode")),
-          TextButton(onPressed: (){}, child: const Text("Privacy Policy")),
-          TextButton(onPressed: (){}, child: const Text("Help Center")),
-          TextButton(onPressed: (){}, child: const Text("Invite Friends")),
-          TextButton(onPressed: (){}, child: const Text("Logout")),
+          TextButton(onPressed: () {}, child: const Text("Edit Profile")),
+          TextButton(
+              onPressed: () {
+                Navigator.pushNamed(context, RouteNames.addressScreen);
+              },
+              child: const Text("Address")),
+          TextButton(onPressed: () {}, child: const Text("Notification")),
+          TextButton(onPressed: () {}, child: const Text("Payment")),
+          TextButton(onPressed: () {}, child: const Text("Security")),
+          TextButton(onPressed: () {}, child: const Text("Language")),
+          TextButton(onPressed: () {}, child: const Text("Dark Mode")),
+          TextButton(onPressed: () {}, child: const Text("Privacy Policy")),
+          TextButton(onPressed: () {}, child: const Text("Help Center")),
+          TextButton(onPressed: () {}, child: const Text("Invite Friends")),
+          TextButton(onPressed: () {}, child: const Text("Logout")),
         ],
       ),
     );
   }
 }
-

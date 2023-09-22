@@ -32,14 +32,14 @@ class ShowModalBottomSheetAddressAddScreen extends StatelessWidget {
                     color: Theme.of(context).secondaryHeaderColor,
                   )),
             ),
-            24.ph,
+            16.ph,
             Center(
               child: Text(
                 "Address Details",
                 style: Theme.of(context).textTheme.headlineMedium,
               ),
             ),
-            24.ph,
+            16.ph,
             const Divider(),
             24.ph,
             Row(
@@ -81,7 +81,7 @@ class ShowModalBottomSheetAddressAddScreen extends StatelessWidget {
                           BlendMode.srcIn),
                     )),
                 onTap: () {}),
-            24.ph,
+            14.ph,
             GlobalButton(
               title: "Add Adress",
               onTap: () {
