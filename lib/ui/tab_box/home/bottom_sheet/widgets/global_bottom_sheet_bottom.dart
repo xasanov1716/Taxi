@@ -6,11 +6,13 @@ class GlobalBottomSheetBottom extends StatelessWidget {
       {super.key,
       required this.text,
       required this.colorText,
-      required this.colorContainer});
+      required this.colorContainer,
+      required this.onTap});
 
   final String text;
   final Color colorText;
   final Color colorContainer;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -21,10 +23,11 @@ class GlobalBottomSheetBottom extends StatelessWidget {
           width: 184.w,
           height: 58.h,
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(100.r), color: colorContainer),
+              borderRadius: BorderRadius.circular(100.r),
+              color: colorContainer),
           child: InkWell(
             borderRadius: BorderRadius.circular(100.r),
-            onTap: () {},
+            onTap: onTap,
             child: Center(
               child: Text(
                 text,

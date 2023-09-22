@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:taxi_app/ui/tab_box/home/bottom_sheet/rate_driver_bottom_sheet.dart';
 import 'package:taxi_app/ui/tab_box/home/bottom_sheet/widgets/global_bottom_sheet_bottom.dart';
 import 'package:taxi_app/ui/tab_box/home/bottom_sheet/widgets/global_bottom_sheet_start.dart';
 import 'package:taxi_app/ui/tab_box/home/bottom_sheet/widgets/smile_widgets.dart';
@@ -67,10 +68,10 @@ class _BottomSheetScreenState extends State<BottomSheetScreen> {
                 backgroundColor: Theme.of(context).scaffoldBackgroundColor,
                 builder: (context) {
                   return SizedBox(
-                    height: height / 1.18,
                     child: Padding(
                       padding: EdgeInsets.symmetric(horizontal: 24.w),
                       child: Column(
+                        mainAxisSize: MainAxisSize.min,
                         children: [
                           const GlobalBottomSheetStart(
                               centerText: "Your Mood",
@@ -102,6 +103,9 @@ class _BottomSheetScreenState extends State<BottomSheetScreen> {
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
                               GlobalBottomSheetBottom(
+                                onTap: (){
+                                  Navigator.pop(context);
+                                },
                                 text: "Cancel",
                                 colorText: getTheme(context)
                                     ? AppColors.white
@@ -110,7 +114,11 @@ class _BottomSheetScreenState extends State<BottomSheetScreen> {
                                     ? AppColors.dark3
                                     : AppColors.white,
                               ),
-                              const GlobalBottomSheetBottom(
+                              GlobalBottomSheetBottom(
+                                onTap: (){
+                                  Navigator.pop(context);
+                                  rateDriverBottomSheet(context);
+                                },
                                   text: "Submit",
                                   colorText: AppColors.dark3,
                                   colorContainer: AppColors.primary),
