@@ -46,8 +46,7 @@ class GlobalAppBar extends StatelessWidget implements PreferredSize {
               title,
               style: Theme.of(context)
                   .textTheme
-                  .titleMedium!
-                  .copyWith(fontSize: 24.sp, fontWeight: FontWeight.w700),
+                  .headlineMedium
             )
           : null,
     );
@@ -57,5 +56,5 @@ class GlobalAppBar extends StatelessWidget implements PreferredSize {
   Widget get child => throw UnimplementedError();
 
   @override
-  Size get preferredSize => Size(double.infinity, 56.h);
+  Size get preferredSize => Size(double.infinity, 56);
 }

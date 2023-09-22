@@ -5,6 +5,7 @@ import 'package:taxi_app/data/local/storage_repository/storage_repository.dart';
 import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/ui/widgets/global_button.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
+import 'package:taxi_app/utils/constants/storage_keys.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
 import 'package:taxi_app/utils/ui_utils/error_message_dialog.dart';
@@ -20,7 +21,6 @@ class _PinPutFieldState extends State<PinPutField> {
   final List<FocusNode> pinFocusNodes = List.generate(4, (_) => FocusNode());
   final List<TextEditingController> pinControllers =
       List.generate(4, (_) => TextEditingController());
-
 
   @override
   void initState() {
@@ -47,7 +47,7 @@ class _PinPutFieldState extends State<PinPutField> {
                       style: Theme.of(context)
                           .appBarTheme
                           .titleTextStyle!
-                          .copyWith(fontSize: 20.sp),
+                          .copyWith(fontSize: 16.sp),
                       onTap: () {
                         setState(() {
                           FocusScope.of(context)
@@ -115,11 +115,10 @@ class _PinPutFieldState extends State<PinPutField> {
               pinCode += element.text;
             }
             debugPrint(pinCode);
-            debugPrint(StorageRepository.getString("code"));
-            if (pinCode == StorageRepository.getString("code")) {
+            debugPrint(StorageRepository.getString(StorageKeys.pinCode));
+            if (pinCode == StorageRepository.getString(StorageKeys.pinCode)) {
               Navigator.pushReplacementNamed(context, RouteNames.tabBox);
-            }else{
-
+            } else {
               showErrorMessage(message: "Pin Code Xato!", context: context);
             }
           },
