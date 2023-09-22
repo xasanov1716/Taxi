@@ -1,4 +1,5 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -23,6 +24,7 @@ import 'package:taxi_app/data/repositories/places_db_repository.dart';
 import 'package:taxi_app/data/repositories/search_history_db.dart';
 import 'package:taxi_app/services/api_service.dart';
 import 'package:taxi_app/ui/app_routes.dart';
+import 'package:taxi_app/ui/tab_box/profile/sub_screens/language/language_screen.dart';
 import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/theme/app_theme.dart';
 import 'cubits/category_cubit/category_cubit.dart';
@@ -31,6 +33,7 @@ import 'cubits/user/user_cubit.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await StorageRepository.getInstance();
+  await  EasyLocalization.ensureInitialized();
 
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
@@ -84,7 +87,15 @@ class App extends StatelessWidget {
           ),
           BlocProvider(create: (context) => MessageBloc()),
         ],
-        child: const MyApp(),
+        child: EasyLocalization(
+          supportedLocales: [
+            Locale('ru', 'RU'),
+            Locale('uz','UZ'),
+            Locale('en','EN'),
+          ],
+          path: 'assets/translations',
+          fallbackLocale: const Locale('uz','UZ'),
+          child: const MyApp()),
       ),
     );
   }
@@ -111,7 +122,9 @@ class MyApp extends StatelessWidget {
               darkTheme: darkTheme,
               initialRoute: RouteNames.splashScreen,
               onGenerateRoute: AppRoutes.generateRoute,
-
+              localizationsDelegates: context.localizationDelegates,
+              supportedLocales: context.supportedLocales,
+              locale: context.locale,
             );
           },
         );
