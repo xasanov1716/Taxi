@@ -9,6 +9,7 @@ import 'package:taxi_app/cubits/user/user_cubit.dart';
 import 'package:taxi_app/data/models/icon/icon_type.dart';
 import 'package:taxi_app/data/models/user/user_field_keys.dart';
 import 'package:taxi_app/ui/local_auth/widgets/user_image.dart';
+import 'package:taxi_app/ui/tab_box/profile/widgets/log_out.dart';
 import 'package:taxi_app/ui/tab_box/profile/widgets/profile_button.dart';
 import 'package:taxi_app/ui/tab_box/profile/widgets/theme_changer_button.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
@@ -113,7 +114,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     onTap: () {}),
                 ProfileButton(
                     text: "Payment", icon: AppIcons.wallet, onTap: () {}),
-                ProfileButton(text: "Security", icon: AppIcons.shieldDone, onTap: () {}),
+                ProfileButton(
+                    text: "Security", icon: AppIcons.shieldDone, onTap: () {}),
                 ProfileButton(
                   text: "Language",
                   icon: AppIcons.moreCircle,
@@ -122,10 +124,30 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   language: "Uzbek",
                 ),
                 ThemeChangerButton(isSwitched: isSwitched),
-                ProfileButton(text: "Privacy Policy", icon: AppIcons.lock, onTap: () {}),
-                ProfileButton(text: "Help Center", icon: AppIcons.infoSquare, onTap: () {}),
-                ProfileButton(text: "Invite Friends", icon: AppIcons.user3, onTap: () {}),
-                ProfileButton(text: "Log Out", icon: AppIcons.logOut, onTap: () {},isLogOut: true,),
+                ProfileButton(
+                    text: "Privacy Policy", icon: AppIcons.lock, onTap: () {}),
+                ProfileButton(
+                    text: "Help Center",
+                    icon: AppIcons.infoSquare,
+                    onTap: () {}),
+                ProfileButton(
+                    text: "Invite Friends", icon: AppIcons.user3, onTap: () {}),
+                ProfileButton(
+                  text: "Log Out",
+                  icon: AppIcons.logOut,
+                  onTap: () {
+                    showModalBottomSheet(
+                      backgroundColor:
+                          Theme.of(context).scaffoldBackgroundColor,
+                      showDragHandle: true,
+                      context: context,
+                      builder: (context) {
+                        return const LogOutItem();
+                      },
+                    );
+                  },
+                  isLogOut: true,
+                ),
               ],
             )),
           ],
