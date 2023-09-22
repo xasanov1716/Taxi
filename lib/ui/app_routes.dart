@@ -19,6 +19,7 @@ import 'package:taxi_app/ui/tab_box/profile/sub_screens/edit_profile/edit_profil
 import 'package:taxi_app/ui/auth/login/login_screen.dart';
 import 'package:taxi_app/ui/auth/register/register_screen.dart';
 import 'package:taxi_app/ui/splash/splash_screen.dart';
+import 'package:taxi_app/ui/tab_box/profile/sub_screens/notification/control_notification_screen.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/restore_password/create_screen/create_password_screen.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/restore_password/forget_screen/confirm_code_screen.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/restore_password/forget_screen/forget_password_screen.dart';
@@ -58,6 +59,7 @@ class RouteNames {
   static const String cancelDriver = "/cancel_driver";
   static const String chatWithDriver = "/chat_with_driver";
   static const String driverDetail = "/driver_detail";
+  static const String notificationSwitch = "/notification_switch";
   static const String topUpAmountScreen = "/top_up_amount_screen";
   static const String addressScreen = "/address";
   static const String topUpPaymentScreen = "/top_up_payment_screen";
@@ -70,7 +72,7 @@ class AppRoutes {
     switch (settings.name) {
       case RouteNames.splashScreen:
         return MaterialPageRoute(
-          builder: (context) => const SplashScreen(),
+          builder: (context) =>const SplashScreen (),
         );
       case RouteNames.specialOffers:
         return MaterialPageRoute(
@@ -174,6 +176,9 @@ class AppRoutes {
         return MaterialPageRoute(
           builder: (context) => const BottomSheetScreen(),
         );
+      case RouteNames.notificationSwitch:
+        return MaterialPageRoute(
+          builder: (context) => const ControlNotificationScreen(),
       case RouteNames.topUpPaymentScreen:
         return MaterialPageRoute(
           builder: (context) => const TopUpPaymentScreen(),
