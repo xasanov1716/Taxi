@@ -111,10 +111,9 @@ class MyApp extends StatelessWidget {
               debugShowCheckedModeBanner: false,
               theme: theme,
               darkTheme: darkTheme,
-              // initialRoute: RouteNames.splashScreen,
-              // onGenerateRoute: AppRoutes.generateRoute,
+              initialRoute: RouteNames.splashScreen,
+              onGenerateRoute: AppRoutes.generateRoute,
 
-              home: const ChatScreen(),
             );
           },
         );

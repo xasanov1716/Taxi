@@ -68,12 +68,13 @@ class _ChatScreenState extends State<ChatScreen> {
               Expanded(
                 child: state.messages.isNotEmpty
                     ? ListView(
+                  reverse: true,
                         padding: EdgeInsets.symmetric(horizontal: 24.w),
                         children: [
                           ...List.generate(
                             state.messages.length,
                             (index) {
-                              MessageModel message = state.messages[index];
+                              MessageModel message = state.messages.reversed.toList()[index];
                               return Column(
                                 children: [
                                   14.ph,
