@@ -10,30 +10,32 @@ class GlobalTextField extends StatefulWidget {
   final String hintText;
   final TextInputType keyboardType;
   final TextInputAction textInputAction;
-  final String prefixIcon;
+  final Widget? prefixIcon;
   final String caption;
   final ValueChanged? onChanged;
   final FocusNode? focusNode;
+  final bool readOnly;
   final MaskTextInputFormatter? maskFormatter;
   final TextEditingController? controller;
   final Widget? suffixIcon;
   final bool? obscureText;
+  final EdgeInsets? contentPadding;
 
-   const GlobalTextField({
+  const GlobalTextField({
     Key? key,
     required this.hintText,
     this.keyboardType = TextInputType.text,
     this.textInputAction = TextInputAction.next,
-    this.prefixIcon = "",
+    this.prefixIcon,
     this.caption = "",
     this.suffixIcon,
+    this.readOnly = false,
     this.controller,
     this.onChanged,
     this.focusNode,
     this.maskFormatter,
     this.obscureText,
-
-
+    this.contentPadding,
   }) : super(key: key);
 
   @override
@@ -60,39 +62,28 @@ class _GlobalTextFieldState extends State<GlobalTextField> {
 
   void _onFocusChange() {
     setState(() {});
-
   }
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      onChanged: widget.onChanged,
       obscuringCharacter: '●',
+      readOnly: widget.readOnly,
       controller: _internalController,
       focusNode: widget.focusNode ?? internalFocusNode,
       obscureText: widget.obscureText ?? false,
       decoration: InputDecoration(
-        hintStyle: const TextStyle(
+        hintStyle: TextStyle(
           fontFamily: "Urbanist",
-          fontSize: 14,
+          fontSize: 16.sp,
           fontWeight: FontWeight.w400,
-          color: Color(0xff9e9e9e),
+          color: const Color(0xff9e9e9e),
           height: 20 / 14,
         ),
+        contentPadding:widget.contentPadding,
         hintText: widget.hintText,
-        prefixIcon: widget.prefixIcon.isEmpty
-            ? null
-            : Padding(
-                padding: EdgeInsets.only(left: 20.w, right: 12.w),
-                child: SvgPicture.asset(
-                  widget.prefixIcon,
-                  colorFilter: ColorFilter.mode(
-                      AdaptiveTheme.of(context).theme ==
-                              AdaptiveTheme.of(context).darkTheme
-                          ? AppColors.white
-                          : AppColors.c_900,
-                      BlendMode.srcIn),
-                ),
-              ),
+        prefixIcon: widget.prefixIcon,
         suffixIcon: widget.suffixIcon,
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(
@@ -110,7 +101,7 @@ class _GlobalTextFieldState extends State<GlobalTextField> {
           borderRadius: BorderRadius.circular(10),
         ),
         border: OutlineInputBorder(
-          borderSide: const BorderSide(color: Color(0xFFFAFAFA), width: 1),
+          borderSide: BorderSide(color: getTheme(context)? const Color(0xFFFAFAFA):AppColors.dark2, width: 1),
           borderRadius: BorderRadius.circular(10),
         ),
         fillColor: getTheme(context)

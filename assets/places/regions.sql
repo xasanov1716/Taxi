@@ -1,33 +1,13 @@
-SET
-SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET
-AUTOCOMMIT = 0;
-START TRANSACTION;
-SET
-time_zone = "+00:00";
 
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
--- --------------------------------------------------------
-
---
--- Структура таблицы `districts`
---
 
 CREATE TABLE `districts`
 (
     `id`        int(11) NOT NULL,
     `region_id` int(11) NOT NULL,
     `name`      varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+);
 
---
--- Дамп данных таблицы `districts`
---
 
 INSERT INTO `districts` (`id`, `region_id`, `name`)
 VALUES (15, 1, 'Amudaryo tumani'),
@@ -234,22 +214,13 @@ VALUES (15, 1, 'Amudaryo tumani'),
        (217, 13, 'Tuproqqala tumani'),
        (218, 5, 'Ko‘kdala tumani');
 
--- --------------------------------------------------------
-
---
--- Структура таблицы `quarters`
---
 
 CREATE TABLE `quarters`
 (
     `id`          int(11) NOT NULL,
     `district_id` int(11) NOT NULL,
     `name`        varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Дамп данных таблицы `quarters`
---
+);
 
 INSERT INTO `quarters` (`id`, `district_id`, `name`)
 VALUES (1, 15, 'Amir Temur nomli ovul fuqarolar yig`ini'),
@@ -10293,21 +10264,13 @@ VALUES (9176, 193, 'Pastom MFY'),
        (11197, 218, 'G’allakor MFY'),
        (11198, 218, 'Oltin dala MFY');
 
--- --------------------------------------------------------
 
---
--- Структура таблицы `regions`
---
 
 CREATE TABLE `regions`
 (
     `id`   int(11) NOT NULL,
     `name` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Дамп данных таблицы `regions`
---
+);
 
 INSERT INTO `regions` (`id`, `name`)
 VALUES (1, 'Qoraqalpog‘iston Respublikasi'),
@@ -10324,52 +10287,3 @@ VALUES (1, 'Qoraqalpog‘iston Respublikasi'),
        (12, 'Farg‘ona viloyati'),
        (13, 'Xorazm viloyati'),
        (14, 'Toshkent shahri');
-
---
--- Индексы сохранённых таблиц
---
-
---
--- Индексы таблицы `districts`
---
-ALTER TABLE `districts`
-    ADD PRIMARY KEY (`id`);
-
---
--- Индексы таблицы `quarters`
---
-ALTER TABLE `quarters`
-    ADD PRIMARY KEY (`id`);
-
---
--- Индексы таблицы `regions`
---
-ALTER TABLE `regions`
-    ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT для сохранённых таблиц
---
-
---
--- AUTO_INCREMENT для таблицы `districts`
---
-ALTER TABLE `districts`
-    MODIFY `id` int (11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=218;
-
---
--- AUTO_INCREMENT для таблицы `quarters`
---
-ALTER TABLE `quarters`
-    MODIFY `id` int (11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11191;
-
---
--- AUTO_INCREMENT для таблицы `regions`
---
-ALTER TABLE `regions`
-    MODIFY `id` int (11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

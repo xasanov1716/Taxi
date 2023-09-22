@@ -10,11 +10,12 @@ class AppTheme {
   static ThemeData lightTheme = ThemeData(
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
-        backgroundColor: const MaterialStatePropertyAll(AppColors.white),
-        overlayColor: const MaterialStatePropertyAll(AppColors.c_200),
+        backgroundColor: const MaterialStatePropertyAll(AppColors.primary),
+
+        overlayColor: const MaterialStatePropertyAll(AppColors.secondary),
         shape: MaterialStatePropertyAll(
           RoundedRectangleBorder(
-            side: const BorderSide(color: AppColors.c_200),
+            // side: const BorderSide(color: AppColors.c_200),
             borderRadius: BorderRadius.circular(16),
           ),
         ),
@@ -25,22 +26,22 @@ class AppTheme {
     primaryColor: AppColors.primary,
     hintColor: AppColors.c_500,
     appBarTheme: AppBarTheme(
-        titleTextStyle: TextStyle(
-          color: AppColors.c_900,
-          fontSize: 24.sp,
-          fontFamily: 'Urbanist',
-          fontWeight: FontWeight.w700,
-          fontStyle: FontStyle.normal,
-        ),
-        backgroundColor: AppColors.white,
-        iconTheme: const IconThemeData(color: AppColors.c_900),
-        systemOverlayStyle: const SystemUiOverlayStyle(
-            statusBarColor: AppColors.white,
-            statusBarBrightness: Brightness.dark,
-            statusBarIconBrightness: Brightness.dark)),
+      titleTextStyle: TextStyle(
+        color: AppColors.c_900,
+        fontSize: 24.sp,
+        fontFamily: 'Urbanist',
+        fontWeight: FontWeight.w700,
+        fontStyle: FontStyle.normal,
+      ),
+      backgroundColor: AppColors.white,
+      iconTheme: const IconThemeData(color: AppColors.c_900),
+      systemOverlayStyle: const SystemUiOverlayStyle(
+          statusBarColor: AppColors.white,
+          statusBarBrightness: Brightness.dark,
+          statusBarIconBrightness: Brightness.dark),
+    ),
     textTheme: TextTheme(
         //display
-
         displayLarge: AppTextStyle.h1Bold.copyWith(color: AppColors.c_900),
         displayMedium: AppTextStyle.h2Bold.copyWith(color: AppColors.c_900),
         displaySmall: AppTextStyle.h3Bold.copyWith(color: AppColors.c_900),
@@ -150,6 +151,18 @@ class AppTheme {
       onError: Color(0xff690005),
       brightness: Brightness.dark,
     ),
+    tabBarTheme: TabBarTheme(
+      indicator: null,
+      indicatorSize: TabBarIndicatorSize.tab,
+      dividerColor: AppColors.c_200,
+      overlayColor: const MaterialStatePropertyAll(AppColors.c_200),
+      tabAlignment: TabAlignment.center,
+      indicatorColor: AppColors.primary,
+      unselectedLabelStyle: AppTextStyle.bodyXlargeSemibold,
+      unselectedLabelColor: AppColors.c_500,
+      labelColor: AppColors.primary,
+      labelStyle: AppTextStyle.bodyXlargeSemibold,
+    )
   );
 
   //DARK
@@ -165,7 +178,8 @@ class AppTheme {
     dividerTheme: const DividerThemeData(color: AppColors.dark3),
     elevatedButtonTheme: ElevatedButtonThemeData(
         style: ButtonStyle(
-      backgroundColor: const MaterialStatePropertyAll(AppColors.dark2),
+          backgroundColor: const MaterialStatePropertyAll(AppColors.primary),
+          overlayColor: const MaterialStatePropertyAll(AppColors.secondary),
       shape: MaterialStatePropertyAll(RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16),
         side: const BorderSide(color: AppColors.dark2),
@@ -224,9 +238,9 @@ class AppTheme {
             AppTextStyle.bodyXsmallMedium.copyWith(color: AppColors.white),
         //body
         bodyLarge:
-            AppTextStyle.bodyLargeMedium.copyWith(color: AppColors.white),
+            AppTextStyle.bodyLargeSemibold.copyWith(color: AppColors.white),
         bodyMedium:
-            AppTextStyle.bodyMediumMedium.copyWith(color: AppColors.white),
+            AppTextStyle.bodyMediumSemibold.copyWith(color: AppColors.white),
         bodySmall:
             AppTextStyle.bodySmallMedium.copyWith(color: AppColors.white)),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
@@ -280,11 +294,11 @@ class AppTheme {
             letterSpacing: 0.2)),
     useMaterial3: false,
     switchTheme: const SwitchThemeData(
-      // thumbColor: MaterialStatePropertyAll(AppColors.white),
-      // trackColor: MaterialStatePropertyAll(AppColors.white),
-      // trackOutlineColor: MaterialStatePropertyAll(AppColors.primary),
-      // overlayColor: MaterialStatePropertyAll(AppColors.primary),
-    ),
+        // thumbColor: MaterialStatePropertyAll(AppColors.white),
+        // trackColor: MaterialStatePropertyAll(AppColors.white),
+        // trackOutlineColor: MaterialStatePropertyAll(AppColors.primary),
+        // overlayColor: MaterialStatePropertyAll(AppColors.primary),
+        ),
     colorScheme: const ColorScheme(
       primary: AppColors.primary,
       secondary: AppColors.secondary,
@@ -298,5 +312,17 @@ class AppTheme {
       onError: Color(0xff690005),
       brightness: Brightness.dark,
     ),
+    tabBarTheme: TabBarTheme(
+      indicator: null,
+      indicatorSize: TabBarIndicatorSize.tab,
+      dividerColor: AppColors.dark3,
+      overlayColor: const MaterialStatePropertyAll(AppColors.c_200),
+      tabAlignment: TabAlignment.center,
+      indicatorColor: AppColors.primary,
+      unselectedLabelStyle: AppTextStyle.bodyXlargeSemibold,
+      unselectedLabelColor: AppColors.c_700,
+      labelColor: AppColors.primary,
+      labelStyle: AppTextStyle.bodyXlargeSemibold,
+    )
   );
 }

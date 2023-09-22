@@ -22,7 +22,7 @@ class CustomCheckbox extends StatelessWidget {
             width: 2.0,
           ),
           borderRadius: BorderRadius.circular(8),
-          color: isChecked ? AppColors.primary : AppColors.white, // Fill color
+          color: isChecked ? AppColors.primary : Theme.of(context).scaffoldBackgroundColor, // Fill color
         ),
         child: isChecked
             ? const Icon(
