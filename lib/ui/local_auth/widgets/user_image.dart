@@ -30,7 +30,7 @@ class _UserImageState extends State<UserImage> {
       children: [
         Container(
           height: 142 * height / figmaHeight,
-          width: 175 * width / figmaWidth,
+          width: 142 * width / figmaWidth,
           decoration: const BoxDecoration(
             shape: BoxShape.circle,
             color: AppColors.c_50,

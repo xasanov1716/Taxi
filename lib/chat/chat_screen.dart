@@ -29,6 +29,10 @@ class _ChatScreenState extends State<ChatScreen> {
 
   List<String> images = [];
 
+  String value = '';
+
+  TextEditingController controller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -122,6 +126,26 @@ class _ChatScreenState extends State<ChatScreen> {
                 onSuffixIconTap: () {
                   showBottomSheetDialog(context);
                 },
+                onChanged: (v) {
+                  setState(() {
+                    value = v;
+                  });
+                },
+                onSendTap: () {
+                  context.read<MessageBloc>().add(
+                        (SendMessage(
+                            messageModel: MessageModel(
+                          receiverName: '',
+                          senderName: '',
+                          dateTime: DateTime.now().toString().substring(10, 16),
+                          message: value,
+                        ))),
+                      );
+                  value = '';
+                  controller.clear();
+                },
+                controller: controller,
+                value: value,
               ),
             ],
           );
@@ -203,14 +227,17 @@ class _ChatScreenState extends State<ChatScreen> {
 
     if (xFile != null && context.mounted) {
       images.add(xFile.path);
-      context.read<MessageBloc>().add(SendMessage(
+      context.read<MessageBloc>().add(
+            SendMessage(
               messageModel: MessageModel(
-            receiverName: '',
-            senderName: '',
-            dateTime: DateTime.now().toString(),
-            image: images,
-          )));
-      print(images);
+                receiverName: '',
+                senderName: '',
+                dateTime: DateTime.now().toString(),
+                image: images,
+              ),
+            ),
+          );
+      images = [];
     }
   }
 
@@ -218,13 +245,17 @@ class _ChatScreenState extends State<ChatScreen> {
     List<XFile>? xFiles = await picker.pickMultiImage();
     if (context.mounted) {
       images = xFiles.map((file) => file.path).toList();
-      context.read<MessageBloc>().add(SendMessage(
+      context.read<MessageBloc>().add(
+            SendMessage(
               messageModel: MessageModel(
-            receiverName: '',
-            senderName: '',
-            dateTime: DateTime.now().toString(),
-            image: images,
-          )));
+                receiverName: '',
+                senderName: '',
+                dateTime: DateTime.now().toString(),
+                image: images,
+              ),
+            ),
+          );
+      images = [];
     }
   }
 }
