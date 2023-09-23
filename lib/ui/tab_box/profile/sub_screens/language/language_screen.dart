@@ -2,10 +2,10 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:taxi_app/ui/tab_box/profile/sub_screens/language/widgets/language_selector.dart';
 import 'package:taxi_app/ui/widgets/global_appbar.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
-
 
 class LanguageScreen extends StatefulWidget {
   const LanguageScreen({super.key});
@@ -15,77 +15,65 @@ class LanguageScreen extends StatefulWidget {
 }
 
 class _LanguageScreenState extends State<LanguageScreen> {
-
-  int isSelected = 0;
+  int selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      appBar:  GlobalAppBar(title: tr('language'),onTap: (){
-        Navigator.pop(context);
-      },),
+    return Scaffold(
+      appBar: GlobalAppBar(
+        title: tr('language'),
+        onTap: () {
+          Navigator.pop(context);
+        },
+      ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          24.ph,
           Padding(
-            padding:  EdgeInsets.only(left: 24.w,top: 24.h,),
-            child: Row(
-              children: [
-                Text(tr('suggested'),style: Theme.of(context).textTheme.titleMedium,),
-              ],
+            padding: EdgeInsets.symmetric(horizontal: 24.w),
+            child: Text(
+              tr('suggested'),
+              style: Theme.of(context).textTheme.titleMedium,
             ),
           ),
-          40.ph,
-          InkWell(
-          onTap: (){
-            isSelected = 0;
-            setState(() {
-              
-            });
-              context.setLocale(const Locale('uz','UZ'));
-          },
-          child: Container(
-          padding: EdgeInsets.only(top: 20.h, left: 24.w, right: 24.w,bottom: 20),
-          child:  ListTile(
-            title:  Text("O'zbek"),
-            trailing: isSelected == 0 ? SvgPicture.asset(AppIcons.selected): SvgPicture.asset(AppIcons.unSelected),
-          ),),
-        ),
-        InkWell(
-          onTap: (){
-            setState(() {
-              isSelected = 1;
-              setState(() {
-                
-              });
-            });
-              context.setLocale(const Locale('ru','RU'));
-          },
-          child: Container(
-          padding: EdgeInsets.only(top: 20.h, left: 24.w, right: 24.w,bottom: 20),
-          child: ListTile(
-            title:  Text('Russian'),
-          trailing: isSelected == 1 ? SvgPicture.asset(AppIcons.selected): SvgPicture.asset(AppIcons.unSelected),
-          ),),
-        ),
-        InkWell(
-          onTap: (){
-            isSelected = 2;
-            setState(() {
-              
-            });
-              context.setLocale(const Locale('en','EN'),);
-          },
-          child: Container(
-          padding: EdgeInsets.only(top: 20.h, left: 24.w, right: 24.w,bottom: 20),
-          child: ListTile(
-            title:   const Text('Узбек'),
-        trailing: isSelected == 2 ? SvgPicture.asset(AppIcons.selected): SvgPicture.asset(AppIcons.unSelected),
-          ),),
-        ),
+          16.ph,
+          LanguageSelector(
+            onTap: () {
+              changeLanguage("uz");
+            },
+            isSelected: selectedIndex == 0,
+            title: "O'zbek",
+          ),
+          LanguageSelector(
+            onTap: () {
+              changeLanguage("cyrl");
+            },
+            isSelected: selectedIndex == 1,
+            title: "Кирилл-Лотин",
+          ),
+          LanguageSelector(
+            onTap: () {
+              changeLanguage("ru");
+            },
+            isSelected: selectedIndex == 2,
+            title: "Русский",
+          ),
         ],
       ),
     );
+  }
+
+  changeLanguage(String langCode) {
+    if (langCode == "uz") {
+      selectedIndex = 0;
+      context.setLocale(const Locale('uz', 'UZ'));
+    } else if (langCode == "cyrl") {
+      selectedIndex = 1;
+      context.setLocale(const Locale('uz', 'Cyrl'));
+    } else {
+      selectedIndex = 2;
+      context.setLocale(const Locale('ru', 'RU'));
+    }
+    setState(() {});
   }
 }

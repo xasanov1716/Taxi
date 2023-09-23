@@ -92,7 +92,7 @@ class App extends StatelessWidget {
           supportedLocales: const [
             Locale('ru', 'RU'),
             Locale('uz','UZ'),
-            Locale('en','EN'),
+            Locale('uz', 'Cyrl'),
           ],
           path: 'assets/translations',
           fallbackLocale: const Locale('uz','UZ'),
