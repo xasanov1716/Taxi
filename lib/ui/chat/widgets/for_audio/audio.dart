@@ -7,7 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:record_mp3/record_mp3.dart';
+// import 'package:record_mp3/record_mp3.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:taxi_app/blocs/messages/message_bloc.dart';
 import 'package:taxi_app/blocs/messages/message_event.dart';
@@ -24,7 +24,7 @@ class AudioController extends StatefulWidget {
 }
 
 class _AudioControllerState extends State<AudioController> {
-  RecordMp3 recordMp3 = RecordMp3.instance;
+  String recordMp3 = "";
   bool isRecording = false;
   String mp3FilePath = "";
   AudioPlayer audioPlayer = AudioPlayer();
@@ -58,9 +58,9 @@ class _AudioControllerState extends State<AudioController> {
 
   void startRecording() async {
     if (!isRecording) {
-      await recordMp3.start(mp3FilePath, (path) {
-        print("Error");
-      });
+      // await recordMp3.start(mp3FilePath, (path) {
+      //   print("Error");
+      // });
       timer = Timer.periodic(const Duration(seconds: 1), (Timer t) {
         setState(() {
           recordingDuration = recordingDuration + const Duration(seconds: 1);
@@ -74,7 +74,7 @@ class _AudioControllerState extends State<AudioController> {
 
   void stopRecording() async {
     if (isRecording) {
-      await recordMp3.stop();
+      //await recordMp3.stop();
       if (timer != null && timer!.isActive) {
         timer!.cancel();
       }

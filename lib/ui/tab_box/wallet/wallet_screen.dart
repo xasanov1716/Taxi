@@ -16,66 +16,64 @@ class WalletScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: WalletAppbar(
-          title: "My E-Wallet",
-          onTap: () {},
-          searchTap: () {},
-        ),
-        body: CustomScrollView(
-          slivers: [
-            SliverAppBar(
-              scrolledUnderElevation: 0,
-              expandedHeight: 320 * height / figmaHeight,
-              collapsedHeight: 86,
-              floating: true,
-              snap: true,
-              flexibleSpace: FlexibleSpaceBar(
-                  background: SingleChildScrollView(
-                physics: const NeverScrollableScrollPhysics(),
-                child: Column(
-                  children: [
-                    CardItem(
-                      onTap: () {
-                        Navigator.pushNamed(
-                            context, RouteNames.topUpAmountScreen);
-                      },
-                    ),
-                  ],
-                ),
-              )),
-            ),
-            SliverPadding(
-              padding: const EdgeInsets.all(0),
-              sliver: SliverPersistentHeader(
-                pinned: true,
-                delegate: TransactionPersistentHeader(
-                  onTap: () {
-                    Navigator.pushNamed(
-                      context,
-                      RouteNames.transactionsHistory,
-                    );
-                  },
-                ),
-              ),
-            ),
-            SliverList(
-              delegate: SliverChildListDelegate([
-                12.ph,
-                ...List.generate(
-                  15,
-                  (index) => TransactionItem(
-                    onTap: () {},
-                    name: "Daniel Austin",
-                    date: "Dec 20, 2024 | 10:00 AM",
-                    price: 14,
-                    expense: "Taxi Expense",
-                    iconName: AppIcons.arrowUpSquare,
-                    iconColor: AppColors.error,
+      appBar: WalletAppbar(
+        title: "My E-Wallet",
+        onTap: () {},
+        searchTap: () {},
+      ),
+      body: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            scrolledUnderElevation: 0,
+            expandedHeight: 320 * height / figmaHeight,
+            collapsedHeight: 86,
+            floating: true,
+            snap: true,
+            flexibleSpace: FlexibleSpaceBar(
+                background: SingleChildScrollView(
+              physics: const NeverScrollableScrollPhysics(),
+              child: Column(
+                children: [
+                  CardItem(
+                    onTap: () {
+                      Navigator.pushNamed(
+                          context, RouteNames.topUpAmountScreen);
+                    },
                   ),
-                )
-              ]),
+                ],
+              ),
+            )),
+          ),
+          SliverPersistentHeader(
+            pinned: true,
+            delegate: TransactionPersistentHeader(
+              onTap: () {
+                Navigator.pushNamed(
+                  context,
+                  RouteNames.transactionsHistory,
+                );
+              },
             ),
-          ],
-        ));
+          ),
+          SliverList(
+            delegate: SliverChildListDelegate([
+              12.ph,
+              ...List.generate(
+                15,
+                (index) => TransactionItem(
+                  onTap: () {},
+                  name: "Daniel Austin",
+                  date: "Dec 20, 2024 | 10:00 AM",
+                  price: 14,
+                  expense: "Taxi Expense",
+                  iconName: AppIcons.arrowUpSquare,
+                  iconColor: AppColors.error,
+                ),
+              )
+            ]),
+          ),
+        ],
+      ),
+    );
   }
 }
