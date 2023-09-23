@@ -21,6 +21,8 @@ import 'package:taxi_app/ui/auth/register/register_screen.dart';
 import 'package:taxi_app/ui/splash/splash_screen.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/language/language_screen.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/notification/control_notification_screen.dart';
+import 'package:taxi_app/ui/tab_box/profile/sub_screens/payments/payment_add_card_screen.dart';
+import 'package:taxi_app/ui/tab_box/profile/sub_screens/payments/payment_screen.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/privacy_policy/privacy_policy_screen.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/restore_password/create_screen/create_password_screen.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/restore_password/forget_screen/confirm_code_screen.dart';
@@ -71,6 +73,8 @@ class RouteNames {
   static const String languageScreen = "/language_screen";
   static const String security = "/security";
   static const String privacyPolicy = "/privacy_policy";
+  static const String payment = "/payment_screen";
+  static const String paymentAddCard = "/payment_add_card_screen";
 }
 
 class AppRoutes {
@@ -212,6 +216,14 @@ class AppRoutes {
       case RouteNames.addressScreen:
         return MaterialPageRoute(
           builder: (context) => const AddressScreen(),
+        );
+      case RouteNames.payment:
+        return MaterialPageRoute(
+          builder: (context) => const PaymentsListScreen(),
+        );
+      case RouteNames.paymentAddCard:
+        return MaterialPageRoute(
+          builder: (context) => const PaymentAddCardScreen(),
         );
       default:
         return MaterialPageRoute(
