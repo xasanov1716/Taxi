@@ -89,9 +89,9 @@ class App extends StatelessWidget {
         ],
         child: EasyLocalization(
           supportedLocales: const [
-            Locale('ru', 'ru-RU'),
-            Locale('uz','uz-UZ'),
-            Locale('en','en-EN'),
+            Locale('ru', 'RU'),
+            Locale('uz','UZ'),
+            Locale('en','EN'),
           ],
           path: 'assets/translations',
           fallbackLocale: const Locale('uz','UZ'),
