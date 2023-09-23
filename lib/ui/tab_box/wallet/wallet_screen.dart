@@ -10,7 +10,6 @@ import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 
-
 class WalletScreen extends StatelessWidget {
   const WalletScreen({super.key});
 
@@ -25,33 +24,39 @@ class WalletScreen extends StatelessWidget {
         body: CustomScrollView(
           slivers: [
             SliverAppBar(
-              expandedHeight: 290*height/figmaHeight,
-              floating: false,
+              scrolledUnderElevation: 0,
+              expandedHeight: 320 * height / figmaHeight,
+              collapsedHeight: 86,
+              floating: true,
+              snap: true,
               flexibleSpace: FlexibleSpaceBar(
-                background: SingleChildScrollView(
-                  physics: const NeverScrollableScrollPhysics(),
-                  child: Column(
-                    children: [
-                      CardItem(
-                        onTap: () {
-                          Navigator.pushNamed(context, RouteNames.topUpAmountScreen);
-                        },
-                      ),
-                    ],
-                  ),
-                )
-              ),
+                  background: SingleChildScrollView(
+                physics: const NeverScrollableScrollPhysics(),
+                child: Column(
+                  children: [
+                    CardItem(
+                      onTap: () {
+                        Navigator.pushNamed(
+                            context, RouteNames.topUpAmountScreen);
+                      },
+                    ),
+                  ],
+                ),
+              )),
             ),
             SliverPadding(
               padding: const EdgeInsets.all(0),
               sliver: SliverPersistentHeader(
-                  pinned: true,
-                  delegate: TransactionPersistentHeader(onTap: (){
+                pinned: true,
+                delegate: TransactionPersistentHeader(
+                  onTap: () {
                     Navigator.pushNamed(
                       context,
                       RouteNames.transactionsHistory,
                     );
-                  })),
+                  },
+                ),
+              ),
             ),
             SliverList(
               delegate: SliverChildListDelegate([
@@ -74,4 +79,3 @@ class WalletScreen extends StatelessWidget {
         ));
   }
 }
-

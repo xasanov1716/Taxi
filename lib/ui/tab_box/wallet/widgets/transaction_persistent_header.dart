@@ -6,10 +6,10 @@ import '../../../../utils/theme/get_theme.dart';
 class TransactionPersistentHeader extends SliverPersistentHeaderDelegate {
   TransactionPersistentHeader({required this.onTap});
   @override
-  double get minExtent => 40.h;
+  double get minExtent => 50.h;
 
   @override
-  double get maxExtent => 40.h;
+  double get maxExtent => 50.h;
 
   final VoidCallback onTap;
 
