@@ -112,7 +112,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           context, RouteNames.notificationSwitch);
                     }),
                 ProfileButton(
-                    text: "Payment", icon: AppIcons.wallet, onTap: () {}),
+                    text: "Payment", icon: AppIcons.wallet, onTap: () {
+                  Navigator.pushNamed(
+                      context, RouteNames.payment);
+                }),
                 ProfileButton(
                     text: "Security",
                     icon: AppIcons.shieldDone,
