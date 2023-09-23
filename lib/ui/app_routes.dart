@@ -19,11 +19,11 @@ import 'package:taxi_app/ui/tab_box/profile/sub_screens/edit_profile/edit_profil
 import 'package:taxi_app/ui/auth/login/login_screen.dart';
 import 'package:taxi_app/ui/auth/register/register_screen.dart';
 import 'package:taxi_app/ui/splash/splash_screen.dart';
+import 'package:taxi_app/ui/tab_box/profile/sub_screens/language/language_screen.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/notification/control_notification_screen.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/restore_password/create_screen/create_password_screen.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/restore_password/forget_screen/confirm_code_screen.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/restore_password/forget_screen/forget_password_screen.dart';
-import 'package:taxi_app/ui/tab_box/profile/sub_screens/security/security_screen.dart';
 import 'package:taxi_app/ui/tab_box/tab_box.dart';
 import 'package:taxi_app/ui/tab_box/wallet/sub_screens/top_up_amount_screen.dart';
 import 'package:taxi_app/ui/tab_box/wallet/sub_screens/top_up_payment_screen.dart';
@@ -66,7 +66,7 @@ class RouteNames {
   static const String topUpPaymentScreen = "/top_up_payment_screen";
   static const String addressAddDetailScreen = "/address_add_detail_screen";
   static const String transactionsHistory = "/transaction_histories";
-  static const String securityScreen = "/securityScreen";
+  static const String languageScreen = "/language_screen";
 }
 
 class AppRoutes {
@@ -74,15 +74,15 @@ class AppRoutes {
     switch (settings.name) {
       case RouteNames.splashScreen:
         return MaterialPageRoute(
-          builder: (context) => const SplashScreen(),
+          builder: (context) =>const SplashScreen (),
         );
       case RouteNames.specialOffers:
         return MaterialPageRoute(
           builder: (context) => const SpecialOffersScreen(),
         );
-      case RouteNames.securityScreen:
+      case RouteNames.languageScreen:
         return MaterialPageRoute(
-          builder: (context) => const SecurityScreen(),
+          builder: (context) => const LanguageScreen(),
         );
       case RouteNames.letsIn:
         return MaterialPageRoute(
@@ -184,8 +184,7 @@ class AppRoutes {
         );
       case RouteNames.notificationSwitch:
         return MaterialPageRoute(
-          builder: (context) => const ControlNotificationScreen(),
-        );
+          builder: (context) => const ControlNotificationScreen(),);
       case RouteNames.topUpPaymentScreen:
         return MaterialPageRoute(
           builder: (context) => const TopUpPaymentScreen(),

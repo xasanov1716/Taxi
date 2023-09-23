@@ -118,7 +118,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ProfileButton(
                   text: "Language",
                   icon: AppIcons.moreCircle,
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pushNamed(context, RouteNames.languageScreen);
+                  },
                   isLanguage: true,
                   language: "Uzbek",
                 ),
