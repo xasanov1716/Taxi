@@ -49,13 +49,16 @@ class AddressAddDialog extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Address Details",
+                "Name Address",
                 style: Theme.of(context).textTheme.titleLarge,
               ),
             ],
           ),
           16.ph,
           NameAddressContainer(
+            onTap: (){
+
+            },
             text: "Apartment",
             color: getTheme(context) ? AppColors.dark2 : AppColors.c_50,
           ),

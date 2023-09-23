@@ -1,10 +1,11 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:taxi_app/ui/widgets/date_formatter.dart';
+import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 
-import '../../ui/widgets/date_formatter.dart';
-import '../../utils/colors/app_colors.dart';
+
 
 class AudioContainer extends StatefulWidget {
   const AudioContainer({super.key, required this.audioPath});

@@ -103,7 +103,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ProfileButton(
                     text: "Edit Profile", icon: AppIcons.profile, onTap: () {}),
                 ProfileButton(
-                    text: "Address", icon: AppIcons.location, onTap: () {}),
+                    text: "Address",
+                    icon: AppIcons.location,
+                    onTap: () {
+                      Navigator.pushNamed(context, RouteNames.addressScreen);
+                    }),
                 ProfileButton(
                     text: "Notification",
                     icon: AppIcons.notification,
@@ -112,7 +116,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           context, RouteNames.notificationSwitch);
                     }),
                 ProfileButton(
-                    text: "Payment", icon: AppIcons.wallet, onTap: () {}),
+                    text: "Payment", icon: AppIcons.wallet, onTap: () {
+                  Navigator.pushNamed(
+                      context, RouteNames.payment);
+                }),
                 ProfileButton(
                     text: "Security",
                     icon: AppIcons.shieldDone,
