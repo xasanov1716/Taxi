@@ -17,7 +17,6 @@ import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
 import 'package:taxi_app/utils/ui_utils/utilitiy_function.dart';
 
@@ -101,7 +100,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 child: ListView(
               children: [
                 ProfileButton(
-                    text: "Edit Profile", icon: AppIcons.profile, onTap: () {}),
+                  text: "Edit Profile",
+                  icon: AppIcons.profile,
+                  onTap: () {
+                    Navigator.pushNamed(context, RouteNames.editProfile);
+                  },
+                ),
                 ProfileButton(
                     text: "Address",
                     icon: AppIcons.location,
@@ -116,10 +120,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           context, RouteNames.notificationSwitch);
                     }),
                 ProfileButton(
-                    text: "Payment", icon: AppIcons.wallet, onTap: () {
-                  Navigator.pushNamed(
-                      context, RouteNames.payment);
-                }),
+                    text: "Payment",
+                    icon: AppIcons.wallet,
+                    onTap: () {
+                      Navigator.pushNamed(context, RouteNames.payment);
+                    }),
                 ProfileButton(
                     text: "Security",
                     icon: AppIcons.shieldDone,
