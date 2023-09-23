@@ -1,18 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:taxi_app/cubits/notifications_cubit/notification_cubit.dart';
 import 'package:taxi_app/ui/tab_box/profile/widgets/switcher_listtile.dart';
 import 'package:taxi_app/ui/widgets/global_appbar.dart';
 
-class ControlNotificationScreen extends StatefulWidget {
+class ControlNotificationScreen extends StatelessWidget {
   const ControlNotificationScreen({Key? key}) : super(key: key);
-
-  @override
-  State<ControlNotificationScreen> createState() =>
-      _ControlNotificationScreenState();
-}
-
-class _ControlNotificationScreenState extends State<ControlNotificationScreen> {
-  bool generalNotification = false;
-  bool sound = false;
 
   @override
   Widget build(BuildContext context) {
@@ -23,27 +16,27 @@ class _ControlNotificationScreenState extends State<ControlNotificationScreen> {
           Navigator.pop(context);
         },
       ),
-      body: ListView(
-        children: [
-          SwitcherListTile(
-            isSwitched: generalNotification,
-            onTap: () {
-              setState(() {
-                generalNotification = !generalNotification;
-              });
+      body: BlocBuilder<NotificationCubit, NotificationState>(
+        builder: (context, state) {
+          return ListView.builder(
+            itemCount: state.notificationNames.length,
+            itemBuilder: (context, index) {
+              String notification = state.notificationNames[index];
+              bool value = state.notificationValues[index];
+
+              return SwitcherListTile(
+                isSwitched: value,
+                onTap: () {
+                  context
+                      .read<NotificationCubit>()
+                      .updateNotificationValues(
+                          notification, !value, state.notificationNames);
+                },
+                text: notification,
+              );
             },
-            text: "General Notification",
-          ),
-          SwitcherListTile(
-            isSwitched: sound,
-            onTap: () {
-              setState(() {
-                sound = !sound;
-              });
-            },
-            text: "Sound",
-          ),
-        ],
+          );
+        },
       ),
     );
   }

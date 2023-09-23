@@ -12,6 +12,8 @@ import 'package:taxi_app/cubits/address_cubit/address_cubit.dart';
 import 'package:taxi_app/blocs/social_auth_bloc/social_auth_bloc.dart';
 import 'package:taxi_app/cubits/code_input_cubit/code_input_cubit.dart';
 import 'package:taxi_app/cubits/auth_cubit/auth_cubit.dart';
+import 'package:taxi_app/cubits/notifications_cubit/notification_cubit.dart';
+import 'package:taxi_app/cubits/security_cubit/security_cubit.dart';
 import 'package:taxi_app/cubits/tab/tab_cubit.dart';
 import 'package:taxi_app/data/local/search_location/places_db.dart';
 import 'package:taxi_app/data/local/search_location/search_history_db.dart';
@@ -22,7 +24,6 @@ import 'package:taxi_app/data/repositories/places_db_repository.dart';
 import 'package:taxi_app/data/repositories/search_history_db.dart';
 import 'package:taxi_app/services/api_service.dart';
 import 'package:taxi_app/ui/app_routes.dart';
-import 'package:taxi_app/ui/tab_box/profile/sub_screens/language/language_screen.dart';
 import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/theme/app_theme.dart';
 import 'cubits/category_cubit/category_cubit.dart';
@@ -76,6 +77,8 @@ class App extends StatelessWidget {
             ),
           ),
           BlocProvider(create: (context) => TabCubit()),
+          BlocProvider(create: (context) => NotificationCubit()),
+          BlocProvider(create: (context) => SecurityCubit()),
           BlocProvider(create: (context) => HomeBloc()),
           BlocProvider(create: (context) => SocialAuthBloc()),
           BlocProvider(create: (context) => UserCubit()),
@@ -89,7 +92,7 @@ class App extends StatelessWidget {
           supportedLocales: const [
             Locale('ru', 'RU'),
             Locale('uz','UZ'),
-            Locale('en','EN'),
+            Locale('uz', 'Cyrl'),
           ],
           path: 'assets/translations',
           fallbackLocale: const Locale('uz','UZ'),
