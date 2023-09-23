@@ -41,16 +41,16 @@ class _UserImageState extends State<UserImage> {
                 child: widget.userImage,
               ),
               Positioned(
-                bottom: 0,
-                right: 0.w,
+                bottom: 0.h,
+                right: 0,
                 child: IconButton(
                   onPressed: widget.onTap,
                   icon: SvgPicture.asset(
                     widget.edit,
                     colorFilter: const ColorFilter.mode(
                         AppColors.primary, BlendMode.srcIn),
-                    width: 35 * width / figmaWidth,
-                    height: 35 * height / figmaHeight,
+                    width: 25 * width / figmaWidth,
+                    height: 25 * height / figmaHeight,
                   ),
                 ),
               ),

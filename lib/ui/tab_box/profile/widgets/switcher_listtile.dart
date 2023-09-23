@@ -27,7 +27,10 @@ class _SwitcherListTileState extends State<SwitcherListTile> {
   Widget build(BuildContext context) {
     return ListTile(
       onTap: widget.onTap,
-      contentPadding: EdgeInsets.all(24.w),
+      contentPadding: EdgeInsets.symmetric(
+        vertical: 4.h,
+        horizontal: 24.w,
+      ),
       title: Text(widget.text),
       trailing: CupertinoSwitch(
         activeColor: AppColors.primary,

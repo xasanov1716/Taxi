@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taxi_app/cubits/notifications_cubit/notification_cubit.dart';
 import 'package:taxi_app/ui/tab_box/profile/widgets/switcher_listtile.dart';
 import 'package:taxi_app/ui/widgets/global_appbar.dart';
@@ -19,6 +20,7 @@ class ControlNotificationScreen extends StatelessWidget {
       body: BlocBuilder<NotificationCubit, NotificationState>(
         builder: (context, state) {
           return ListView.builder(
+            padding: EdgeInsets.symmetric(vertical: 16.h),
             itemCount: state.notificationNames.length,
             itemBuilder: (context, index) {
               String notification = state.notificationNames[index];

@@ -1,9 +1,11 @@
+import 'package:easy_localization/easy_localization.dart';
+
 class StorageKeys {
   static const String pinCode = "code";
   static const String themeKey = "theme_mode";
   static const String languageKey = 'language_key';
   static const String generalNotifications = "General Notification";
-  static const String soundNotifications = "Sound";
+  static final String soundNotifications = tr("sound");
   static const String vibrateNotifications = "Vibrate";
   static const String specialOffersNotifications = "Special Offers";
   static const String promoDiscountNotifications = "Promo & Discount";
