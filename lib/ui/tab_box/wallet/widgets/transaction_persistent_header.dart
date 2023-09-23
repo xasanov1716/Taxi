@@ -16,6 +16,7 @@ class TransactionPersistentHeader extends SliverPersistentHeaderDelegate {
   @override
   Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
     return Container(
+      height: 50.h,
       padding: EdgeInsets.symmetric(horizontal: 24.w),
       decoration: BoxDecoration(
           color: getTheme(context) ? AppColors.dark1 : AppColors.white
