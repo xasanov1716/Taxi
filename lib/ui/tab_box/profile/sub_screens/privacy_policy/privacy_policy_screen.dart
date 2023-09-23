@@ -11,7 +11,9 @@ class PrivacyPolicyScreen extends StatelessWidget {
     return Scaffold(
       appBar: GlobalAppBar(
         centerTitle: false,
-        onTap: () {},
+        onTap: () {
+          Navigator.pop(context);
+        },
         title: 'Privacy Policy',
       ),
       body: SingleChildScrollView(
