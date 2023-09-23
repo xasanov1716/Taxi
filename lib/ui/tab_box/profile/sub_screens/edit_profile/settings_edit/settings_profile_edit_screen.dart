@@ -7,7 +7,7 @@ import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:taxi_app/cubits/user/user_cubit.dart';
 import 'package:taxi_app/data/models/icon/icon_type.dart';
 import 'package:taxi_app/data/models/user/user_field_keys.dart';
-import 'package:taxi_app/ui/widgets/global_appbar.dart';
+import 'package:taxi_app/ui/tab_box/profile/sub_screens/edit_profile/settings_edit/widgets/edit_appbar.dart';
 import 'package:taxi_app/ui/widgets/global_button.dart';
 import 'package:taxi_app/ui/widgets/global_input.dart';
 import 'package:taxi_app/ui/widgets/global_search_input.dart';
@@ -48,9 +48,7 @@ class _SettingsProfileEditScreenState extends State<SettingsProfileEditScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:const GlobalAppBar(
-        title: "Edit Profile",
-      ),
+      appBar:const EditAppBar(title: "Edit Profile"),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24.w,vertical: 24.h),
         child: Column(
@@ -117,22 +115,22 @@ class _SettingsProfileEditScreenState extends State<SettingsProfileEditScreen> {
                     ),
                     24.ph,
                     Container(
-                      height: 56.0,
-                      padding: EdgeInsets.symmetric(horizontal: 20.w),
+
+                      padding: EdgeInsets.symmetric(horizontal: 20.w,vertical:6.h),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(12.r),
-                        color: AppColors.greysCale, // Use the desired background color
+                        color: getTheme(context)?AppColors.dark2:AppColors.greysCale, // Use the desired background color
                       ),
                       child: DropdownButton<String>(
                         isExpanded: true,
                         underline:const SizedBox(),
-                        dropdownColor:AppColors.greysCale ,
-                        icon: SvgPicture.asset(AppIcons.getSvg(name: AppIcons.arrowDown2,iconType: IconType.bold)),
+                        dropdownColor:getTheme(context)?AppColors.dark2: AppColors.greysCale ,
+                        icon: SvgPicture.asset(AppIcons.getSvg(name: AppIcons.arrowDown2,iconType: IconType.bold),colorFilter: ColorFilter.mode(getTheme(context)?AppColors.white: AppColors.c_900, BlendMode.srcIn),),
                         borderRadius: BorderRadius.circular(12.r),
                         items: genders.map((String items) {
                           return DropdownMenuItem(
                             value: items,
-                            child: Text(items,style: AppTextStyle.bodyMediumSemibold.copyWith(color: AppColors.c_900),),
+                            child: Text(items,style: AppTextStyle.bodyMediumSemibold.copyWith(color:getTheme(context)?AppColors.white: AppColors.c_900),),
                           );
                         }).toList(),
                         onChanged: (String? newValue) {
@@ -142,7 +140,7 @@ class _SettingsProfileEditScreenState extends State<SettingsProfileEditScreen> {
                           context.read<UserCubit>().updateCurrentUserField(
                               fieldKey: UserFieldKeys.gender, value: newValue);
                         },
-                        hint: Text(gender,style: AppTextStyle.bodyMediumSemibold.copyWith(color: AppColors.c_900)), // Placeholder text
+                        hint: Text(gender,style: AppTextStyle.bodyMediumSemibold.copyWith(color: getTheme(context)?AppColors.white: AppColors.c_900)), // Placeholder text
                       ),
                     ),
                     24.ph
