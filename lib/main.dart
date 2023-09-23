@@ -88,10 +88,10 @@ class App extends StatelessWidget {
           BlocProvider(create: (context) => MessageBloc()),
         ],
         child: EasyLocalization(
-          supportedLocales: [
-            Locale('ru', 'RU'),
-            Locale('uz','UZ'),
-            Locale('en','EN'),
+          supportedLocales: const [
+            Locale('ru', 'ru-RU'),
+            Locale('uz','uz-UZ'),
+            Locale('en','en-EN'),
           ],
           path: 'assets/translations',
           fallbackLocale: const Locale('uz','UZ'),
