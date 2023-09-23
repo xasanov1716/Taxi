@@ -9,7 +9,11 @@ import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
 
-Widget drBottomNavbar(BuildContext context, {required VoidCallback onTapBottomChat,required VoidCallback onBottomTapCall}) {
+Widget drBottomNavbar(
+  BuildContext context, {
+  required VoidCallback onTapBottomChat,
+  required VoidCallback onBottomTapCall,
+}) {
   return Container(
     decoration: BoxDecoration(
       borderRadius: BorderRadius.only(
