@@ -2,8 +2,10 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:taxi_app/data/local/storage_repository/storage_repository.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/language/widgets/language_selector.dart';
 import 'package:taxi_app/ui/widgets/global_appbar.dart';
+import 'package:taxi_app/utils/constants/storage_keys.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 
@@ -18,6 +20,14 @@ class _LanguageScreenState extends State<LanguageScreen> {
   int selectedIndex = 0;
 
   @override
+  void initState() {
+    selectedIndex = StorageRepository.getInt(StorageKeys.languageKey);
+    super.initState();
+  }
+
+
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: GlobalAppBar(
@@ -29,13 +39,13 @@ class _LanguageScreenState extends State<LanguageScreen> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 24.w),
-            child: Text(
-              tr('suggested'),
-              style: Theme.of(context).textTheme.titleMedium,
-            ),
-          ),
+          // Padding(
+          //   padding: EdgeInsets.symmetric(horizontal: 24.w),
+          //   child: Text(
+          //     tr('suggested'),
+          //     style: Theme.of(context).textTheme.titleMedium,
+          //   ),
+          // ),
           16.ph,
           LanguageSelector(
             onTap: () {
@@ -74,6 +84,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
       selectedIndex = 2;
       context.setLocale(const Locale('ru', 'RU'));
     }
+    StorageRepository.putInt(StorageKeys.languageKey, selectedIndex);
     setState(() {});
   }
 }
