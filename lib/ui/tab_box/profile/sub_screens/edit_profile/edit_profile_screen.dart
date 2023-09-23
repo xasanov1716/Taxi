@@ -203,23 +203,24 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
               radius: 100,
               textColor: AppColors.black,
               onTap: () {
-                if (context.read<UserCubit>().canRegister()) {
-                  Navigator.pushNamed(context, RouteNames.setPinCodeScreen);
-                } else {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      backgroundColor:
-                          getTheme(context) ? AppColors.c_900 : AppColors.c_700,
-                      content: Text(
-                        "Maydonlar to'liq emas",
-                        style: TextStyle(
-                            color: getTheme(context)
-                                ? AppColors.white
-                                : AppColors.black),
-                      ),
-                    ),
-                  );
-                }
+                // if (context.read<UserCubit>().canRegister()) {
+                //   Navigator.pushNamed(context, RouteNames.setPinCodeScreen);
+                // } else {
+                //   ScaffoldMessenger.of(context).showSnackBar(
+                //     SnackBar(
+                //       backgroundColor:
+                //           getTheme(context) ? AppColors.c_900 : AppColors.c_700,
+                //       content: Text(
+                //         "Maydonlar to'liq emas",
+                //         style: TextStyle(
+                //             color: getTheme(context)
+                //                 ? AppColors.white
+                //                 : AppColors.black),
+                //       ),
+                //     ),
+                //   );
+                // }
+                Navigator.pushNamed(context, RouteNames.setPinCodeScreen);
               },
             ),
             24.ph
