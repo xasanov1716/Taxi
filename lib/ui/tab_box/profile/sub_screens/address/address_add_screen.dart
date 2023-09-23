@@ -5,10 +5,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:taxi_app/cubits/address_cubit/address_cubit.dart';
+import 'package:taxi_app/services/api_service.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/address/widgets/show_modal_botton_sheet_address_add_screen.dart';
 import 'package:taxi_app/ui/widgets/global_appbar.dart';
 import 'package:taxi_app/ui/widgets/global_input.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
+import 'package:taxi_app/utils/size/screen_size.dart';
 
 class AddressAddDetailScreen extends StatefulWidget {
   const AddressAddDetailScreen({super.key});
@@ -20,6 +22,10 @@ class AddressAddDetailScreen extends StatefulWidget {
 class _AddressAddDetailScreenState extends State<AddressAddDetailScreen> {
   late GoogleMapController mapController;
   TextEditingController addressDetailController = TextEditingController();
+  ApiService apiService = ApiService();
+  LatLng latLng = const LatLng(37.7749, -122.4194);
+  String locationName = "";
+  FocusNode focusNode = FocusNode();
 
   @override
   void initState() {
@@ -54,6 +60,14 @@ class _AddressAddDetailScreenState extends State<AddressAddDetailScreen> {
               children: [
                 GoogleMap(
                   mapType: MapType.normal,
+                  onCameraMove: (argument) {
+                    latLng = LatLng(
+                        argument.target.latitude, argument.target.longitude);
+                    locationName = context
+                        .read<AddressCubit>()
+                        .getAddressByLatLong(latLng: latLng);
+                    print(locationName);
+                  },
                   initialCameraPosition: const CameraPosition(
                     target: LatLng(37.7749, -122.4194),
                     zoom: 12.0,
@@ -65,31 +79,41 @@ class _AddressAddDetailScreenState extends State<AddressAddDetailScreen> {
                     });
                   },
                 ),
-                Align(
-                    child: SizedBox(
-                      height: 61.h,
-                      width: 52.w,
-                      child: Image.asset(
-                        AppIcons.myLocation,
-                        fit: BoxFit.cover,
-                      ),
-                    )),
-                Visibility(
-                  visible: false, // <= Ko'rish
-                  child: Positioned(
-                    bottom: 0,
+                Positioned(
+                  top: height/5,
                     left: 0,
                     right: 0,
-                    child: GlobalTextField(
-                      hintText: "Address Details",
-                      suffixIcon: IconButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          icon: SvgPicture.asset(AppIcons.location)),
+                    child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(locationName.isEmpty
+                        ? "Aniqlanmagan hudud"
+                        : locationName),
+                    Image.asset(
+                      AppIcons.myLocation,
+                      height: 61.h,
+                      width: 52.w,
+                      fit: BoxFit.fill,
                     ),
-                  ),
+                  ],
+                )),
+                Positioned(
+                  left: 0,
+                  right: 0,
+                  bottom: 50,
+                  child: Visibility(
+                      visible: true,
+                      child: GlobalTextField(
+                        focusNode: focusNode,
+                          hintText: "Apartment")),
                 ),
+                // Positioned(
+                //     bottom: 100,
+                //     left: 0,
+                //     right: 0,
+                //     child: Text(context
+                //         .read<AddressCubit>()
+                //         .getAddressByLatLong(latLng: latLng).toString())),
                 Align(
                   alignment: Alignment.topCenter,
                   child: ElevatedButton(
@@ -102,9 +126,7 @@ class _AddressAddDetailScreenState extends State<AddressAddDetailScreen> {
                             ),
                           ),
                           backgroundColor:
-                          Theme
-                              .of(context)
-                              .scaffoldBackgroundColor,
+                              Theme.of(context).scaffoldBackgroundColor,
                           context: context,
                           builder: (BuildContext context) {
                             return AddressAddDialog();
@@ -127,7 +149,7 @@ class _AddressAddDetailScreenState extends State<AddressAddDetailScreen> {
   Future<void> _applyCustomMapStyle() async {
     try {
       String style =
-      await rootBundle.loadString('assets/styles/map_style.json');
+          await rootBundle.loadString('assets/styles/map_style.json');
       mapController.setMapStyle(style);
     } catch (e) {}
   }
