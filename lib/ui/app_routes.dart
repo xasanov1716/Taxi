@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:taxi_app/chat/chat_screen.dart';
+import 'package:taxi_app/ui/chat/chat_screen.dart';
 import 'package:taxi_app/ui/contact_to_driver/sub_screens/cancel_driver/cancel_driver_screen.dart';
 import 'package:taxi_app/ui/contact_to_driver/sub_screens/driver_detail/driver_detail_screen.dart';
 import 'package:taxi_app/ui/create_order/sub_screens/add_promo/add_promo_screen.dart';
