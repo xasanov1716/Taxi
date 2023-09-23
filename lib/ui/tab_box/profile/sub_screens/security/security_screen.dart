@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:taxi_app/ui/tab_box/profile/sub_screens/security/widgets/security_listtile.dart';
 import 'package:taxi_app/ui/widgets/global_appbar.dart';
 import 'package:taxi_app/ui/widgets/global_button.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
+
+import '../../widgets/switcher_listtile.dart';
 
 class SecurityScreen extends StatefulWidget {
   const SecurityScreen({super.key});
@@ -29,7 +30,7 @@ class _SecurityScreenState extends State<SecurityScreen> {
           title: "Security"),
       body: Column(
         children: [
-          SecurityListTile(
+          SwitcherListTile(
               isSwitched: rememberMeValue,
               onTap: () {
                 setState(() {
@@ -37,7 +38,7 @@ class _SecurityScreenState extends State<SecurityScreen> {
                 });
               },
               text: "Remember me"),
-          SecurityListTile(
+          SwitcherListTile(
               isSwitched: faceId,
               onTap: () {
                 setState(() {
@@ -45,7 +46,7 @@ class _SecurityScreenState extends State<SecurityScreen> {
                 });
               },
               text: "Face ID"),
-          SecurityListTile(
+          SwitcherListTile(
               isSwitched: biometricId,
               onTap: () {
                 setState(() {

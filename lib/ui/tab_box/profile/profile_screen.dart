@@ -107,14 +107,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     text: "Notification",
                     icon: AppIcons.notification,
                     onTap: () {
-                      Navigator.pushNamed(context, RouteNames.notificationSwitch);
+                      Navigator.pushNamed(
+                          context, RouteNames.notificationSwitch);
                     }),
                 ProfileButton(
                     text: "Payment", icon: AppIcons.wallet, onTap: () {}),
                 ProfileButton(
-                    text: "Security", icon: AppIcons.shieldDone, onTap: () {
-                      // Navigator.pushNamed(context, RouteNames.);
-                }),
+                    text: "Security",
+                    icon: AppIcons.shieldDone,
+                    onTap: () {
+                      Navigator.pushNamed(context, RouteNames.security);
+                    }),
                 ProfileButton(
                   text: "Language",
                   icon: AppIcons.moreCircle,
@@ -124,9 +127,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   isLanguage: true,
                   language: "Uzbek",
                 ),
-                ThemeChangerButton(),
+                const ThemeChangerButton(),
                 ProfileButton(
-                    text: "Privacy Policy", icon: AppIcons.lock, onTap: () {}),
+                    text: "Privacy Policy",
+                    icon: AppIcons.lock,
+                    onTap: () {
+                      Navigator.pushNamed(context, RouteNames.privacyPolicy);
+                    }),
                 ProfileButton(
                     text: "Help Center",
                     icon: AppIcons.infoSquare,
