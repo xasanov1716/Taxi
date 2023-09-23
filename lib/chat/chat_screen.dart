@@ -16,6 +16,7 @@ import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
+import 'package:taxi_app/utils/ui_utils/utilitiy_function.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key});
@@ -42,25 +43,15 @@ class _ChatScreenState extends State<ChatScreen> {
         },
         title: 'Daniel Austin',
         action: [
-          IconButton(
-            onPressed: () {},
-            icon: SvgPicture.asset(
-              AppIcons.call,
-              width: 28.w,
-              colorFilter: ColorFilter.mode(
-                  getTheme(context) ? AppColors.white : AppColors.c_900,
-                  BlendMode.srcIn),
-            ),
+          getIcon(
+            AppIcons.call,
+            context: context,
+            onTap: () {},
           ),
-          IconButton(
-            onPressed: () {},
-            icon: SvgPicture.asset(
-              AppIcons.moreCircle,
-              width: 28.w,
-              colorFilter: ColorFilter.mode(
-                  getTheme(context) ? AppColors.white : AppColors.c_900,
-                  BlendMode.srcIn),
-            ),
+          getIcon(
+            AppIcons.moreCircle,
+            context: context,
+            onTap: () {},
           ),
         ],
       ),
@@ -72,13 +63,14 @@ class _ChatScreenState extends State<ChatScreen> {
               Expanded(
                 child: state.messages.isNotEmpty
                     ? ListView(
-                  reverse: true,
+                        reverse: true,
                         padding: EdgeInsets.symmetric(horizontal: 24.w),
                         children: [
                           ...List.generate(
                             state.messages.length,
                             (index) {
-                              MessageModel message = state.messages.reversed.toList()[index];
+                              MessageModel message =
+                                  state.messages.reversed.toList()[index];
                               return Column(
                                 children: [
                                   14.ph,
