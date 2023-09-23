@@ -16,7 +16,6 @@ class MessageContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // width: 280.w,
       margin: EdgeInsets.symmetric(vertical: 12.h),
       padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 12.h),
       decoration: BoxDecoration(
