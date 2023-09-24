@@ -39,18 +39,14 @@ class _ChekSetPinCodeScreenState extends State<ChekSetPinCodeScreen> {
   handleKey(RawKeyEvent key, int index) {
     if (key is RawKeyUpEvent) {
       if (key.data.logicalKey.keyLabel == 'Backspace') {
-        if (index != 0) {
-          pinFocusNodes[index].unfocus();
-          pinFocusNodes[index - 1].requestFocus();
-          pinControllers[index].clear();
-          print(index);
-
-          result.removeAt(index);
-          print(result);
-        } else {
-          result.removeAt(index);
-          print(result);
+        for (var i = 0; i < pinControllers.length; i++) {
+          pinControllers[i].clear();
+          pinFocusNodes[i].unfocus();
         }
+        setState(() {
+          pinFocusNodes[0].requestFocus();
+        });
+        result.clear();
       } else {
         handleCodeInput(index, key.data.logicalKey.keyLabel);
       }
@@ -242,46 +238,3 @@ class _ChekSetPinCodeScreenState extends State<ChekSetPinCodeScreen> {
     _context = context;
   }
 }
-// PageView.builder(
-//   controller: controller,
-//   itemBuilder: (context, position) {
-//     if (position == currentPageValue.floor()) {
-//       return Transform(
-//         transform: Matrix4.identity()..rotateX(currentPageValue - position),
-//         child: Container(
-//           color: position % 2 == 0 ? Colors.blue : Colors.pink,
-//           child: Center(
-//             child: Text(
-//               "Page",
-//               style: TextStyle(color: Colors.white, fontSize: 22.0),
-//             ),
-//           ),
-//         ),
-//       );
-//     } else if (position == currentPageValue.floor() + 1){
-//       return Transform(
-//         transform: Matrix4.identity()..rotateX(currentPageValue - position),
-//         child: Container(
-//           color: position % 2 == 0 ? Colors.blue : Colors.pink,
-//           child: Center(
-//             child: Text(
-//               "Page",
-//               style: TextStyle(color: Colors.white, fontSize: 22.0),
-//             ),
-//           ),
-//         ),
-//       );
-//     } else {
-//       return Container(
-//         color: position % 2 == 0 ? Colors.blue : Colors.pink,
-//         child: Center(
-//           child: Text(
-//             "Page",
-//             style: TextStyle(color: Colors.white, fontSize: 22.0),
-//           ),
-//         ),
-//       );
-//     }
-//   },
-//   itemCount: 10,
-// )
