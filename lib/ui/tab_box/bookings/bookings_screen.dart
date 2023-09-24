@@ -7,6 +7,7 @@ import 'package:taxi_app/ui/tab_box/bookings/views/active_now_view/active_now_vi
 import 'package:taxi_app/ui/tab_box/bookings/views/cancelled_view/cancelled_view.dart';
 import 'package:taxi_app/ui/tab_box/bookings/views/completed_view/completed_view.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
+import 'package:taxi_app/utils/ui_utils/utilitiy_function.dart';
 import '../../../utils/icons/app_icons.dart';
 
 class BookingsScreen extends StatefulWidget {
@@ -34,20 +35,8 @@ class _BookingsScreenState extends State<BookingsScreen> {
           ),
           title: const Text("My bookings"),
           actions: [
-            IconButton(
-              onPressed: () {},
-              icon: SvgPicture.asset(AppIcons.getSvg(
-                name: AppIcons.search,
-                iconType: IconType.lightOutline,
-              )),
-            ),
-            IconButton(
-              onPressed: () {},
-              icon: SvgPicture.asset(AppIcons.getSvg(
-                name: AppIcons.moreCircle,
-                iconType: IconType.lightOutline,
-              )),
-            ),
+            getIcon(AppIcons.search, context: context, onTap: (){}),
+            getIcon(AppIcons.moreCircle, context: context, onTap: (){}),
             24.pw,
           ],
           bottom: const TabBar(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class GlobalAlretDialog extends StatefulWidget {
-  const GlobalAlretDialog(
+class GlobalAlertDialog extends StatefulWidget {
+  const GlobalAlertDialog(
       {super.key,
         required this.TextTitle,
         required this.model,
@@ -19,10 +19,10 @@ class GlobalAlretDialog extends StatefulWidget {
   final ValueChanged onTap;
 
   @override
-  State<GlobalAlretDialog> createState() => _GlobalAlretDialogState();
+  State<GlobalAlertDialog> createState() => _GlobalAlertDialogState();
 }
 
-class _GlobalAlretDialogState extends State<GlobalAlretDialog> {
+class _GlobalAlertDialogState extends State<GlobalAlertDialog> {
   @override
   Widget build(BuildContext context) {
     return TextButton(

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
@@ -54,7 +53,7 @@ class _PinCodePinPutFieldState extends State<PinCodePinPutField> {
               hintText: '',
               hintStyle: const TextStyle(fontSize: 20.0),
               contentPadding:
-                  EdgeInsets.symmetric(vertical: 16.0, horizontal: 26.0),
+                  const EdgeInsets.symmetric(vertical: 16.0, horizontal: 26.0),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
                 borderSide: const BorderSide(color: AppColors.primary),

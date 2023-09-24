@@ -8,6 +8,7 @@ import 'package:taxi_app/ui/widgets/global_button.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
+import 'package:taxi_app/utils/ui_utils/utilitiy_function.dart';
 
 class PaymentsListScreen extends StatelessWidget {
   const PaymentsListScreen({super.key});
@@ -27,8 +28,7 @@ class PaymentsListScreen extends StatelessWidget {
       appBar: GlobalAppBar(
         title: 'Payment',
         action: [
-          IconButton(
-              onPressed: () {}, icon: SvgPicture.asset(AppIcons.moreCircle))
+          getIcon(AppIcons.moreCircle, context: context, onTap: (){}),
         ],
       ),
       body: Column(

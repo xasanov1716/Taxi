@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/ui/tab_box/wallet/widgets/card_item.dart';
 import 'package:taxi_app/ui/tab_box/wallet/widgets/transaction_item.dart';
