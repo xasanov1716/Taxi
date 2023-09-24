@@ -21,8 +21,6 @@ class _SetBiometricsScreenState extends State<SetBiometricsScreen> {
   bool isAuth = false;
   final LocalAuthentication auth = LocalAuthentication();
 
-
-
   void _checkBiometric() async {
     bool authenticated = false;
     try {
@@ -52,10 +50,9 @@ class _SetBiometricsScreenState extends State<SetBiometricsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: GlobalAppBar(
-          onTap: () {
-            Navigator.pop(context);
-          },
-          title: "Barmoq izingizni oʻrnating"),
+        onTap: null,
+        title: "Barmoq izingizni oʻrnating",
+      ),
       body: Padding(
         padding: const EdgeInsets.only(left: 24, right: 24, bottom: 48),
         child: Column(

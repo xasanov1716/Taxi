@@ -10,6 +10,7 @@ import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:taxi_app/cubits/user/user_cubit.dart';
 import 'package:taxi_app/data/models/icon/icon_type.dart';
 import 'package:taxi_app/data/models/user/user_field_keys.dart';
+import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/edit_profile/widgets/edit_appbar.dart';
 import 'package:taxi_app/ui/widgets/user_image.dart';
 import 'package:taxi_app/ui/widgets/global_button.dart';
@@ -34,7 +35,6 @@ class EditProfileScreen extends StatefulWidget {
 }
 
 class _EditProfileScreenState extends State<EditProfileScreen> {
-
   DateTime selectedDate = DateTime.now();
   TextEditingController dateController = TextEditingController();
   String gender = "Male";
@@ -54,135 +54,167 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   final FocusNode fullNameFocusNode = FocusNode();
   final FocusNode nicknameFocusNode = FocusNode();
   final FocusNode emailFocusNode = FocusNode();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:const EditAppBar(title: "Edit Profile"),
+      appBar: const EditAppBar(title: "Edit Profile"),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 24.w,vertical: 24.h),
+        padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 24.h),
         child: Column(
-            children: [
-              Expanded(
-                child: ListView(
-                  children: [
-                    UserImage(
-                        userImage: image.isEmpty
-                            ? Image.asset(
-                          AppIcons.emptyProfile,
-                        )
-                            : ClipRRect(
-                          borderRadius: BorderRadius.circular(100.r),
-                          child: Image.file(
-                            File(image),
-                            width: 142 * width / figmaWidth,
-                            height: 142 * width / figmaWidth,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        edit: AppIcons.editSquare,
-                        onTap: () {
-                          showBottomSheetDialog(context,picker,image);
-                        }),
-                    24.ph,
-                    GlobalTextField(
-                      focusNode: fullNameFocusNode,
-                      hintText: 'Full Name',
-                      keyboardType: TextInputType.text,
-                      textInputAction: TextInputAction.next,
-                      onChanged: (value) {
-                        context.read<UserCubit>().updateCurrentUserField(
-                            fieldKey: UserFieldKeys.fullName, value: value);
-                      },
-                    ),
-                    24.ph,
-                    GlobalTextField(
-                      focusNode: nicknameFocusNode,
-                      hintText: 'Nickname',
-                      keyboardType: TextInputType.text,
-                      textInputAction: TextInputAction.next,
-                      onChanged: (value) {
-                        context.read<UserCubit>().updateCurrentUserField(
-                            fieldKey: UserFieldKeys.nickName, value: value);
-                      },
-                    ),
-                    24.ph,
-                    GestureDetector(
+          children: [
+            Expanded(
+              child: ListView(
+                children: [
+                  UserImage(
+                      userImage: image.isEmpty
+                          ? Image.asset(
+                              AppIcons.emptyProfile,
+                            )
+                          : ClipRRect(
+                              borderRadius: BorderRadius.circular(100.r),
+                              child: Image.file(
+                                File(image),
+                                width: 142 * width / figmaWidth,
+                                height: 142 * width / figmaWidth,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                      edit: AppIcons.editSquare,
                       onTap: () {
-                        _showDatePicker(context);
-                      },
-                      child: AbsorbPointer(
-                        child: GlobalSearchTextField(
-                          readOnly: true,
-                          hintText: 'Date of Birth',
-                          focusNode: focusNode,
-                          onTap: () {
-                            _showDatePicker(context);
-                          },
-                          rightImage: AppIcons.calendar,
-                          controller: dateController,
-                          onChanged: (value) {},
-                          keyboardType: TextInputType.number,
-                          textInputAction: TextInputAction.next,
-                        ),
-                      ),
-                    ),
-                    24.ph,
-                    PhoneNumberInput(
-                      hintText: 'Phone Number',
-                      keyboardType: TextInputType.phone,
-                      focusNode: phoneFocusNode,
-                      maskFormatter: phoneFormatter,
-                      onChanged: (value) {
-                        context.read<UserCubit>().updateCurrentUserField(
-                            fieldKey: UserFieldKeys.phone, value: value);
-                        if (value.length == 12) {
-                          phoneFocusNode.unfocus();
-                        }
-                      },
-                      textInputAction: TextInputAction.next,
-                    ),
-                    24.ph,
-                    Container(
-
-                      padding: EdgeInsets.symmetric(horizontal: 20.w,vertical:6.h),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12.r),
-                        color: getTheme(context)?AppColors.dark2:AppColors.greysCale, // Use the desired background color
-                      ),
-                      child: DropdownButton<String>(
-                        isExpanded: true,
-                        underline:const SizedBox(),
-                        dropdownColor:getTheme(context)?AppColors.dark2: AppColors.greysCale ,
-                        icon: SvgPicture.asset(AppIcons.getSvg(name: AppIcons.arrowDown2,iconType: IconType.bold),colorFilter: ColorFilter.mode(getTheme(context)?AppColors.white: AppColors.c_900, BlendMode.srcIn),),
-                        borderRadius: BorderRadius.circular(12.r),
-                        items: genders.map((String items) {
-                          return DropdownMenuItem(
-                            value: items,
-                            child: Text(items,style: AppTextStyle.bodyMediumSemibold.copyWith(color:getTheme(context)?AppColors.white: AppColors.c_900),),
-                          );
-                        }).toList(),
-                        onChanged: (String? newValue) {
-                          setState(() {
-                            gender = newValue!;
-                          });
-                          context.read<UserCubit>().updateCurrentUserField(
-                              fieldKey: UserFieldKeys.gender, value: newValue);
+                        showBottomSheetDialog(context, picker, image);
+                      }),
+                  24.ph,
+                  GlobalTextField(
+                    focusNode: fullNameFocusNode,
+                    hintText: 'Full Name',
+                    keyboardType: TextInputType.text,
+                    textInputAction: TextInputAction.next,
+                    onChanged: (value) {
+                      context.read<UserCubit>().updateCurrentUserField(
+                          fieldKey: UserFieldKeys.fullName, value: value);
+                    },
+                  ),
+                  24.ph,
+                  GlobalTextField(
+                    focusNode: nicknameFocusNode,
+                    hintText: 'Nickname',
+                    keyboardType: TextInputType.text,
+                    textInputAction: TextInputAction.next,
+                    onChanged: (value) {
+                      context.read<UserCubit>().updateCurrentUserField(
+                          fieldKey: UserFieldKeys.nickName, value: value);
+                    },
+                  ),
+                  24.ph,
+                  GestureDetector(
+                    onTap: () {
+                      _showDatePicker(context);
+                    },
+                    child: AbsorbPointer(
+                      child: GlobalSearchTextField(
+                        readOnly: true,
+                        hintText: 'Date of Birth',
+                        focusNode: focusNode,
+                        onTap: () {
+                          _showDatePicker(context);
                         },
-                        hint: Text(gender,style: AppTextStyle.bodyMediumSemibold.copyWith(color: getTheme(context)?AppColors.white: AppColors.c_900)), // Placeholder text
+                        rightImage: AppIcons.calendar,
+                        controller: dateController,
+                        onChanged: (value) {},
+                        keyboardType: TextInputType.number,
+                        textInputAction: TextInputAction.next,
                       ),
                     ),
-                    24.ph
-                  ],
-                ),
+                  ),
+                  24.ph,
+                  PhoneNumberInput(
+                    hintText: 'Phone Number',
+                    keyboardType: TextInputType.phone,
+                    focusNode: phoneFocusNode,
+                    maskFormatter: phoneFormatter,
+                    onChanged: (value) {
+                      context.read<UserCubit>().updateCurrentUserField(
+                          fieldKey: UserFieldKeys.phone, value: value);
+                      if (value.length == 12) {
+                        phoneFocusNode.unfocus();
+                      }
+                    },
+                    textInputAction: TextInputAction.next,
+                  ),
+                  24.ph,
+                  Container(
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 20.w, vertical: 6.h),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12.r),
+                      color: getTheme(context)
+                          ? AppColors.dark2
+                          : AppColors
+                              .greysCale, // Use the desired background color
+                    ),
+                    child: DropdownButton<String>(
+                      isExpanded: true,
+                      underline: const SizedBox(),
+                      dropdownColor: getTheme(context)
+                          ? AppColors.dark2
+                          : AppColors.greysCale,
+                      icon: SvgPicture.asset(
+                        AppIcons.getSvg(
+                            name: AppIcons.arrowDown2, iconType: IconType.bold),
+                        colorFilter: ColorFilter.mode(
+                            getTheme(context)
+                                ? AppColors.white
+                                : AppColors.c_900,
+                            BlendMode.srcIn),
+                      ),
+                      borderRadius: BorderRadius.circular(12.r),
+                      items: genders.map((String items) {
+                        return DropdownMenuItem(
+                          value: items,
+                          child: Text(
+                            items,
+                            style: AppTextStyle.bodyMediumSemibold.copyWith(
+                                color: getTheme(context)
+                                    ? AppColors.white
+                                    : AppColors.c_900),
+                          ),
+                        );
+                      }).toList(),
+                      onChanged: (String? newValue) {
+                        setState(() {
+                          gender = newValue!;
+                        });
+                        context.read<UserCubit>().updateCurrentUserField(
+                            fieldKey: UserFieldKeys.gender, value: newValue);
+                      },
+                      hint: Text(gender,
+                          style: AppTextStyle.bodyMediumSemibold.copyWith(
+                              color: getTheme(context)
+                                  ? AppColors.white
+                                  : AppColors.c_900)), // Placeholder text
+                    ),
+                  ),
+                  24.ph
+                ],
               ),
-              GlobalButton(title: "Update", onTap: (){
-
-              },radius: 100.r,color: AppColors.primary,)
-            ],
-          ),
+            ),
+            GlobalButton(
+              title: "Update",
+              onTap: () {
+                if(widget.navigateFromAuth){
+                  Navigator.pushReplacementNamed(context, RouteNames.setPinCodeScreen);
+                }
+              },
+              radius: 100.r,
+              color: AppColors.primary,
+            )
+          ],
         ),
+      ),
     );
   }
+
   Future<void> _showDatePicker(BuildContext context) async {
     final DateTime? pickedDate = await showCupertinoModalPopup<DateTime>(
       context: context,
@@ -202,7 +234,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
               if (newDate != selectedDate) {
                 setState(() {
                   dateController.text =
-                  newDate.toLocal().toString().split(' ')[0];
+                      newDate.toLocal().toString().split(' ')[0];
                   selectedDate = newDate;
                   context.read<UserCubit>().updateCurrentUserField(
                       fieldKey: UserFieldKeys.date, value: dateController.text);

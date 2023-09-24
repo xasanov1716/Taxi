@@ -256,4 +256,5 @@ class AppIcons {
   static const String redOffer = "assets/svg/others/red_offer.svg";
   static const String yellowOffer = "assets/svg/others/yellow_offer.svg";
   static const String promoCode = "assets/svg/others/promo_code.svg";
+  static const String pinFilled = "assets/svg/others/pin_filled.svg";
 }

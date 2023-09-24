@@ -50,7 +50,7 @@ class RouteNames {
   static const String profileScreen = "/profile_screen";
   static const String setPinCodeScreen = "/set_pin_code_screen";
   static const String enterPinScreen = "/pin_code_screen";
-  static const String fingerprintScreen = "/finger_print";
+  static const String setBiometrics = "/set_biometrics";
   static const String code = "/code";
   static const String searchLocationScreen = "/search_location";
   static const String notificationScreen = "/notification_screen";
@@ -139,7 +139,9 @@ class AppRoutes {
         );
       case RouteNames.setPinCodeScreen:
         return MaterialPageRoute(
-          builder: (context) => const SetPinScreen(),
+          builder: (context) =>  SetPinScreen(
+            previousPin: settings.arguments as String?,
+          ),
         );
       case RouteNames.enterPinScreen:
         return MaterialPageRoute(
@@ -156,7 +158,7 @@ class AppRoutes {
           builder: (context) => const TopUpAmountScreen(),
         );
 
-      case RouteNames.fingerprintScreen:
+      case RouteNames.setBiometrics:
         return MaterialPageRoute(
             builder: (context) => const SetBiometricsScreen());
       case RouteNames.conFirmCodeScreen:
