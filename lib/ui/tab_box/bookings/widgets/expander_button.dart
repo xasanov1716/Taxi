@@ -24,7 +24,7 @@ class BookingExpanderButton extends StatelessWidget {
         margin: EdgeInsets.symmetric(horizontal: 24.w),
         height: 60 * height / figmaHeight,
         child: Center(
-          child: getIcon(isExpanded ? AppIcons.arrowUp2 : AppIcons.arrowDown2, context: context, onTap: (){}),
+          child: getIcon(isExpanded ? AppIcons.arrowUp2 : AppIcons.arrowDown2, context: context, onTap: null),
         ),
       ),
     );
