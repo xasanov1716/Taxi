@@ -88,19 +88,17 @@ class _AddPromoScreenState extends State<AddPromoScreen> {
               );
             },
           )),
-          Padding(
-            padding: EdgeInsets.all(24.h),
-            child: GlobalButton(
-              title: 'Apply Promo',
-              radius: 100.r,
-              color: AppColors.primary,
-              onTap: () {
-                context
-                    .read<CreateOrderBloc>()
-                    .add(UpdatePromoCodes(promoCode: selectedText));
-                Navigator.pop(context);
-              },
-            ),
+          GlobalButton(
+            padding:  EdgeInsets.all(24.h),
+            title: 'Apply Promo',
+            radius: 100.r,
+            color: AppColors.primary,
+            onTap: () {
+              context
+                  .read<CreateOrderBloc>()
+                  .add(UpdatePromoCodes(promoCode: selectedText));
+              Navigator.pop(context);
+            },
           ),
           12.ph,
         ],

@@ -56,24 +56,20 @@ class _SecurityScreenState extends State<SecurityScreen> {
                       BlendMode.srcIn),
                 ),
               ),
-              Padding(
+              GlobalButton(
                 padding: const EdgeInsets.all(24),
-                child: GlobalButton(
-                  title: 'Change PIN',
-                  onTap: () {
-                    Navigator.pushNamed(context, RouteNames.pinCodeScreen,
-                        arguments: true);
-                  },
-                  color: AppColors.primary,
-                ),
+                title: 'Change PIN',
+                onTap: () {
+                  Navigator.pushNamed(context, RouteNames.pinCodeScreen,
+                      arguments: true);
+                },
+                color: AppColors.primary,
               ),
-              Padding(
+              GlobalButton(
                 padding: EdgeInsets.symmetric(horizontal: 24.w),
-                child: GlobalButton(
-                  title: 'Change Password',
-                  onTap: () {},
-                  color: AppColors.primary,
-                ),
+                title: 'Change Password',
+                onTap: () {},
+                color: AppColors.primary,
               ),
             ],
           );

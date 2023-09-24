@@ -121,16 +121,14 @@ addressSelectDialog(BuildContext context) {
                   ),
                 ),
                 12.ph,
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 24.w),
-                  child: GlobalButton(
-                      textColor: AppColors.black,
-                      color: AppColors.primary,
-                      title: "Keyingisi",
-                      onTap: () {
-                        Navigator.pop(context);
-                      }),
-                ),
+                GlobalButton(
+                    padding: EdgeInsets.symmetric(horizontal: 24.w),
+                    textColor: AppColors.black,
+                    color: AppColors.primary,
+                    title: "Keyingisi",
+                    onTap: () {
+                      Navigator.pop(context);
+                    }),
                 16.ph
               ],
             ),

@@ -15,7 +15,6 @@ class PaymentsListScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     List<List> payments = [
       [AppIcons.payPal, 'PayPal', 'Connected'],
       [AppIcons.googlePay, 'Google Pay', 'Connected'],
@@ -28,7 +27,7 @@ class PaymentsListScreen extends StatelessWidget {
       appBar: GlobalAppBar(
         title: 'Payment',
         action: [
-          getIcon(AppIcons.moreCircle, context: context, onTap: (){}),
+          getIcon(AppIcons.moreCircle, context: context, onTap: () {}),
         ],
       ),
       body: Column(
@@ -39,16 +38,21 @@ class PaymentsListScreen extends StatelessWidget {
                 12.ph,
                 ...List.generate(
                     payments.length,
-                    (index) =>
-                        PaymentContainer(icon: payments[index][0], title: payments[index][1], state: payments[index][2]))
+                    (index) => PaymentContainer(
+                        icon: payments[index][0],
+                        title: payments[index][1],
+                        state: payments[index][2]))
               ],
             ),
           ),
-          Padding(
+          GlobalButton(
             padding: EdgeInsets.symmetric(horizontal: 24.w),
-            child: GlobalButton(onTap: () {
+            onTap: () {
               Navigator.pushNamed(context, RouteNames.paymentAddCard);
-            },title: 'Add New Card',color: AppColors.primary,radius: 100,),
+            },
+            title: 'Add New Card',
+            color: AppColors.primary,
+            radius: 100,
           ),
           48.ph
         ],

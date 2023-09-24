@@ -9,6 +9,7 @@ import 'package:taxi_app/data/models/icon/icon_type.dart';
 import 'package:taxi_app/ui/widgets/global_button.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
+import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/ui_utils/utilitiy_function.dart';
 
 class GetLocationScreen extends StatefulWidget {
@@ -135,18 +136,15 @@ class _GetLocationScreenState extends State<GetLocationScreen> {
                       topRight: Radius.circular(24.r)),
                   color: Theme.of(context).scaffoldBackgroundColor,
                 ),
-                child: Padding(
-                  padding: EdgeInsets.only(
-                      left: 24.0.w, right: 24.0.w, top: 24.0.h, bottom: 36.0.h),
-                  child: GlobalButton(
-                    color: AppColors.primary,
-                    title: 'Continue',
-                    radius: 100.r,
-                    textColor: AppColors.black,
-                    onTap: () {
-                      // Handle button tap here.
-                    },
-                  ),
+                child: GlobalButton(
+                  padding: EdgeInsets.all(width/16),
+                  color: AppColors.primary,
+                  title: 'Continue',
+                  radius: 100.r,
+                  textColor: AppColors.black,
+                  onTap: () {
+                    // Handle button tap here.
+                  },
                 ),
               ),
             ),
