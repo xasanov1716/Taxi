@@ -152,7 +152,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     icon: AppIcons.infoSquare,
                     onTap: () {}),
                 ProfileButton(
-                    text: "Invite Friends", icon: AppIcons.user3, onTap: () {}),
+                    text: "Invite Friends", icon: AppIcons.user3, onTap: () {
+                      Navigator.pushNamed(context, RouteNames.inviteFriends);
+                }),
                 ProfileButton(
                   text: "Log Out",
                   icon: AppIcons.logOut,
