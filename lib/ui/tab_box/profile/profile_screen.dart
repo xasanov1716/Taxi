@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,7 +17,6 @@ import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
 import 'package:taxi_app/utils/ui_utils/utilitiy_function.dart';
 
@@ -100,35 +100,61 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 child: ListView(
               children: [
                 ProfileButton(
-                    text: "Edit Profile", icon: AppIcons.profile, onTap: () {}),
+                  text: "Edit Profile",
+                  icon: AppIcons.profile,
+                  onTap: () {
+                    Navigator.pushNamed(context, RouteNames.editProfile);
+                  },
+                ),
                 ProfileButton(
-                    text: "Address", icon: AppIcons.location, onTap: () {}),
+                    text: "Address",
+                    icon: AppIcons.location,
+                    onTap: () {
+                      Navigator.pushNamed(context, RouteNames.addressScreen);
+                    }),
                 ProfileButton(
                     text: "Notification",
                     icon: AppIcons.notification,
                     onTap: () {
-                      Navigator.pushNamed(context, RouteNames.notificationSwitch);
+                      Navigator.pushNamed(
+                          context, RouteNames.notificationSwitch);
                     }),
                 ProfileButton(
-                    text: "Payment", icon: AppIcons.wallet, onTap: () {}),
+                    text: "Payment",
+                    icon: AppIcons.wallet,
+                    onTap: () {
+                      Navigator.pushNamed(context, RouteNames.payment);
+                    }),
                 ProfileButton(
-                    text: "Security", icon: AppIcons.shieldDone, onTap: () {}),
+                    text: "Security",
+                    icon: AppIcons.shieldDone,
+                    onTap: () {
+                      Navigator.pushNamed(context, RouteNames.security);
+                    }),
                 ProfileButton(
                   text: "Language",
                   icon: AppIcons.moreCircle,
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pushNamed(context, RouteNames.languageScreen);
+                  },
                   isLanguage: true,
-                  language: "Uzbek",
+                  language: tr("language_type"),
                 ),
-                ThemeChangerButton(),
+                const ThemeChangerButton(),
                 ProfileButton(
-                    text: "Privacy Policy", icon: AppIcons.lock, onTap: () {}),
+                    text: "Privacy Policy",
+                    icon: AppIcons.lock,
+                    onTap: () {
+                      Navigator.pushNamed(context, RouteNames.privacyPolicy);
+                    }),
                 ProfileButton(
                     text: "Help Center",
                     icon: AppIcons.infoSquare,
                     onTap: () {}),
                 ProfileButton(
-                    text: "Invite Friends", icon: AppIcons.user3, onTap: () {}),
+                    text: "Invite Friends", icon: AppIcons.user3, onTap: () {
+                      Navigator.pushNamed(context, RouteNames.inviteFriends);
+                }),
                 ProfileButton(
                   text: "Log Out",
                   icon: AppIcons.logOut,

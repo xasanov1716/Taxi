@@ -17,7 +17,7 @@ class CardItem extends StatelessWidget {
       margin: EdgeInsets.all(24.sp),
       padding: EdgeInsets.all(32.sp),
       decoration: BoxDecoration(
-          color: Color(0xFFF79E1B),
+          color: const Color(0xFFF79E1B),
           borderRadius: BorderRadius.circular(32.r)
       ),
       child: Column(

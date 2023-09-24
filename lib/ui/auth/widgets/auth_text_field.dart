@@ -126,6 +126,7 @@ class _AuthTextFieldState extends State<AuthTextField> {
                           colorFilter:
                               ColorFilter.mode(_iconColor, BlendMode.srcIn),
                           semanticsLabel: "A grey color mode",
+                          width: 24.w,
                         ),
                       ),
                       Text(

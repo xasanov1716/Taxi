@@ -37,10 +37,9 @@ class InboxChatScreen extends StatelessWidget {
                     ],
                   ),
                   trailing: Column(
+                    mainAxisSize: MainAxisSize.min,
                     children: [
                       Container(
-                        height: 30.h,
-                        width: 30.h,
                         decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           color: AppColors.primary,

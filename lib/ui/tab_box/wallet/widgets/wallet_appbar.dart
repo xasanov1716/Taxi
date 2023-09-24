@@ -24,6 +24,7 @@ class WalletAppbar extends StatelessWidget implements PreferredSize {
   Widget build(BuildContext context) {
     return AppBar(
       elevation: 0,
+      scrolledUnderElevation: 0,
       leading: Padding(
         padding: EdgeInsets.only(left: 24.w),
         child: Image.asset(

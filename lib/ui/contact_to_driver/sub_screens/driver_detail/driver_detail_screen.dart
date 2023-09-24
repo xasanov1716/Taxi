@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/ui/contact_to_driver/sub_screens/driver_detail/widgets/dr_details_bottom_nav_bar.dart';
@@ -7,6 +8,7 @@ import 'package:taxi_app/ui/widgets/global_appbar.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/screen_size.dart';
+import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
 
 class DriverDetailScreen extends StatefulWidget {
@@ -36,6 +38,7 @@ class _DriverDetailScreenState extends State<DriverDetailScreen> {
                   BlendMode.srcIn),
             ),
           ),
+          12.pw,
         ],
       ),
       // backgroundColor: AppColors.greysCale,

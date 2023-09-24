@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:taxi_app/chat/chat_screen.dart';
+import 'package:taxi_app/ui/chat/chat_screen.dart';
 import 'package:taxi_app/ui/contact_to_driver/sub_screens/cancel_driver/cancel_driver_screen.dart';
 import 'package:taxi_app/ui/contact_to_driver/sub_screens/driver_detail/driver_detail_screen.dart';
 import 'package:taxi_app/ui/create_order/sub_screens/add_promo/add_promo_screen.dart';
@@ -19,10 +19,17 @@ import 'package:taxi_app/ui/tab_box/profile/sub_screens/edit_profile/edit_profil
 import 'package:taxi_app/ui/auth/login/login_screen.dart';
 import 'package:taxi_app/ui/auth/register/register_screen.dart';
 import 'package:taxi_app/ui/splash/splash_screen.dart';
+import 'package:taxi_app/ui/tab_box/profile/sub_screens/edit_profile/settings_edit/settings_profile_edit_screen.dart';
+import 'package:taxi_app/ui/tab_box/profile/sub_screens/invite_friends/invite_friends.dart';
+import 'package:taxi_app/ui/tab_box/profile/sub_screens/language/language_screen.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/notification/control_notification_screen.dart';
+import 'package:taxi_app/ui/tab_box/profile/sub_screens/payments/payment_add_card_screen.dart';
+import 'package:taxi_app/ui/tab_box/profile/sub_screens/payments/payment_screen.dart';
+import 'package:taxi_app/ui/tab_box/profile/sub_screens/privacy_policy/privacy_policy_screen.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/restore_password/create_screen/create_password_screen.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/restore_password/forget_screen/confirm_code_screen.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/restore_password/forget_screen/forget_password_screen.dart';
+import 'package:taxi_app/ui/tab_box/profile/sub_screens/security/security_screen.dart';
 import 'package:taxi_app/ui/tab_box/tab_box.dart';
 import 'package:taxi_app/ui/tab_box/wallet/sub_screens/top_up_amount_screen.dart';
 import 'package:taxi_app/ui/tab_box/wallet/sub_screens/top_up_payment_screen.dart';
@@ -65,6 +72,13 @@ class RouteNames {
   static const String topUpPaymentScreen = "/top_up_payment_screen";
   static const String addressAddDetailScreen = "/address_add_detail_screen";
   static const String transactionsHistory = "/transaction_histories";
+  static const String languageScreen = "/language_screen";
+  static const String security = "/security";
+  static const String privacyPolicy = "/privacy_policy";
+  static const String payment = "/payment_screen";
+  static const String paymentAddCard = "/payment_add_card_screen";
+  static const String editProfile = "/edit_profile";
+  static const String inviteFriends = "/invite_friends";
 }
 
 class AppRoutes {
@@ -74,9 +88,25 @@ class AppRoutes {
         return MaterialPageRoute(
           builder: (context) =>const SplashScreen (),
         );
+      case RouteNames.editProfile:
+        return MaterialPageRoute(
+          builder: (context) =>const SettingsProfileEditScreen (),
+        );
       case RouteNames.specialOffers:
         return MaterialPageRoute(
           builder: (context) => const SpecialOffersScreen(),
+        );
+      case RouteNames.inviteFriends:
+        return MaterialPageRoute(
+          builder: (context) => const InviteFriendsScreen(),
+        );
+      case RouteNames.security:
+        return MaterialPageRoute(
+          builder: (context) => const SecurityScreen(),
+        );
+      case RouteNames.languageScreen:
+        return MaterialPageRoute(
+          builder: (context) => const LanguageScreen(),
         );
       case RouteNames.letsIn:
         return MaterialPageRoute(
@@ -85,6 +115,10 @@ class AppRoutes {
       case RouteNames.cancelDriver:
         return MaterialPageRoute(
           builder: (context) => const CancelDriverScreen(),
+        );
+      case RouteNames.privacyPolicy:
+        return MaterialPageRoute(
+          builder: (context) => const PrivacyPolicyScreen(),
         );
       case RouteNames.login:
         return MaterialPageRoute(builder: (context) => const LoginScreen());
@@ -194,6 +228,14 @@ class AppRoutes {
       case RouteNames.addressScreen:
         return MaterialPageRoute(
           builder: (context) => const AddressScreen(),
+        );
+      case RouteNames.payment:
+        return MaterialPageRoute(
+          builder: (context) => const PaymentsListScreen(),
+        );
+      case RouteNames.paymentAddCard:
+        return MaterialPageRoute(
+          builder: (context) => const PaymentAddCardScreen(),
         );
       default:
         return MaterialPageRoute(
