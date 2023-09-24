@@ -20,7 +20,7 @@ class InboxChatScreen extends StatelessWidget {
             children: [
               ...List.generate(
                 15,
-                (index) => ListTile(
+                    (index) => ListTile(
                   leading: Image.asset(AppIcons.taxiLogotip),
                   title: Text(
                     "Tanner Stafford",
@@ -36,9 +36,10 @@ class InboxChatScreen extends StatelessWidget {
                     ],
                   ),
                   trailing: Column(
-                    mainAxisSize: MainAxisSize.min,
                     children: [
                       Container(
+                        height: 29.h,
+                        width: 29.h,
                         decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           color: AppColors.primary,
