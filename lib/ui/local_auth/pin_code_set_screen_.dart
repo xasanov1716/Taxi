@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:local_auth/local_auth.dart';
 import 'package:taxi_app/data/local/storage_repository/storage_repository.dart';
 import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/ui/widgets/global_appbar.dart';
@@ -10,7 +9,6 @@ import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/constants/storage_keys.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
-import 'package:taxi_app/utils/ui_utils/error_message_dialog.dart';
 
 class PinCodeSetScreen extends StatefulWidget {
   const PinCodeSetScreen({super.key});
@@ -37,18 +35,14 @@ class _PinCodeSetScreenState extends State<PinCodeSetScreen> {
   handleKey(RawKeyEvent key, int index) {
     if (key is RawKeyUpEvent) {
       if (key.data.logicalKey.keyLabel == 'Backspace') {
-        if (index != 0) {
-          pinFocusNodes[index].unfocus();
-          pinFocusNodes[index - 1].requestFocus();
-          pinControllers[index].clear();
-          print(index);
-
-          result.removeAt(index);
-          print(result);
-        } else {
-          result.removeAt(index);
-          print(result);
+        for (var i = 0; i < pinControllers.length; i++) {
+          pinControllers[i].clear();
+          pinFocusNodes[i].unfocus();
         }
+        setState(() {
+          pinFocusNodes[0].requestFocus();
+        });
+        result.clear();
       } else {
         handleCodeInput(index, key.data.logicalKey.keyLabel);
       }
@@ -91,26 +85,14 @@ class _PinCodeSetScreenState extends State<PinCodeSetScreen> {
                                 .appBarTheme
                                 .titleTextStyle!
                                 .copyWith(fontSize: 16.sp),
-
-                            onTap: () {
-                              // if (index == 3) {
-                              //   FocusScope.of(context)
-                              //       .requestFocus(pinFocusNodes[index]);
-                              // } else {
-                              //   pinFocusNodes[index].unfocus();
-                              // }
-                            },
-
                             controller: pinControllers[index],
                             maxLength: 1,
-                            //  obscureText: true,
-                            //  obscuringCharacter: getTheme(context) ? '⚪' : "⚫" ,
                             keyboardType: TextInputType.number,
                             decoration: InputDecoration(
                               counterText: "",
                               hintText: '',
                               hintStyle: const TextStyle(fontSize: 20.0),
-                              contentPadding: EdgeInsets.symmetric(
+                              contentPadding: const EdgeInsets.symmetric(
                                   vertical: 16.0, horizontal: 26.0),
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(12),
@@ -136,9 +118,6 @@ class _PinCodeSetScreenState extends State<PinCodeSetScreen> {
                             ),
                             textAlign: TextAlign.center,
                             focusNode: pinFocusNodes[index],
-                            onChanged: (value) {
-                              print(result);
-                            },
                           ),
                         ),
                       );
@@ -204,17 +183,12 @@ class _PinCodeSetScreenState extends State<PinCodeSetScreen> {
     } else {
       pinControllers[index].text = value;
       result.add(value);
-      print(result);
       Future.delayed(const Duration(milliseconds: 400), () {
         pinControllers[index].text = getTheme(context) ? '⚪' : "⚫";
       });
-      pinFocusNodes[(index + 1) % 4].requestFocus();
+      setState(() {
+        pinFocusNodes[(index + 1) % 4].requestFocus();
+      });
     }
-  }
-
-  BuildContext? _context;
-
-  void setContext(BuildContext context) {
-    _context = context;
   }
 }

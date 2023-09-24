@@ -137,7 +137,9 @@ class AppRoutes {
 
       case RouteNames.pinCodeScreen:
         return MaterialPageRoute(
-          builder: (context) => const PinCodeScreen(),
+
+          builder: (context) =>  PinCodeScreen(isFromSecurity: settings.arguments as bool?),
+
         );
 
       case RouteNames.driverDetail:

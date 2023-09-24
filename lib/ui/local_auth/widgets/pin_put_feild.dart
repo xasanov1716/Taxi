@@ -11,9 +11,11 @@ import 'package:taxi_app/utils/theme/get_theme.dart';
 import 'package:taxi_app/utils/ui_utils/error_message_dialog.dart';
 
 class PinPutField extends StatefulWidget {
-  const PinPutField({super.key});
+  const PinPutField({super.key, this.isFromSecurity});
+  final bool? isFromSecurity;
 
   @override
+  // ignore: library_private_types_in_public_api
   _PinPutFieldState createState() => _PinPutFieldState();
 }
 
@@ -120,7 +122,7 @@ class _PinPutFieldState extends State<PinPutField> {
           }),
         ),
         60.ph,
-        const Expanded(child: const SizedBox()),
+        const Expanded(child: SizedBox()),
         GlobalButton(
           color: AppColors.primary,
           title: 'Continue',
@@ -134,7 +136,13 @@ class _PinPutFieldState extends State<PinPutField> {
             debugPrint(pinCode);
             debugPrint(StorageRepository.getString(StorageKeys.pinCode));
             if (pinCode == StorageRepository.getString(StorageKeys.pinCode)) {
-              Navigator.pushReplacementNamed(context, RouteNames.tabBox);
+              if (widget.isFromSecurity != false &&
+                  widget.isFromSecurity != null) {
+                Navigator.pushReplacementNamed(
+                    context, RouteNames.setPinCodeScreen);
+              } else {
+                Navigator.pushReplacementNamed(context, RouteNames.tabBox);
+              }
             } else {
               showErrorMessage(message: "Pin Code Xato!", context: context);
             }
@@ -173,7 +181,6 @@ class _PinPutFieldState extends State<PinPutField> {
       } else {
         setState(() {
           FocusScope.of(_context!).requestFocus(pinFocusNodes[(index + 1) % 4]);
-
         });
       }
       pinControllers[index].text = value;

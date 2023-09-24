@@ -89,20 +89,8 @@ class _ChekSetPinCodeScreenState extends State<ChekSetPinCodeScreen> {
                                 .appBarTheme
                                 .titleTextStyle!
                                 .copyWith(fontSize: 16.sp),
-
-                            onTap: () {
-                              // if (index == 3) {
-                              //   FocusScope.of(context)
-                              //       .requestFocus(pinFocusNodes[index]);
-                              // } else {
-                              //   pinFocusNodes[index].unfocus();
-                              // }
-                            },
-
                             controller: pinControllers[index],
                             maxLength: 1,
-                            //  obscureText: true,
-                            //  obscuringCharacter: getTheme(context) ? '⚪' : "⚫" ,
                             keyboardType: TextInputType.number,
                             decoration: InputDecoration(
                               counterText: "",
@@ -134,9 +122,6 @@ class _ChekSetPinCodeScreenState extends State<ChekSetPinCodeScreen> {
                             ),
                             textAlign: TextAlign.center,
                             focusNode: pinFocusNodes[index],
-                            onChanged: (value) {
-                              print(result);
-                            },
                           ),
                         ),
                       );
@@ -224,17 +209,12 @@ class _ChekSetPinCodeScreenState extends State<ChekSetPinCodeScreen> {
     } else {
       pinControllers[index].text = value;
       result.add(value);
-      print(result);
       Future.delayed(const Duration(milliseconds: 400), () {
         pinControllers[index].text = getTheme(context) ? '⚪' : "⚫";
       });
-      pinFocusNodes[(index + 1) % 4].requestFocus();
+      setState(() {
+        pinFocusNodes[(index + 1) % 4].requestFocus();
+      });
     }
-  }
-
-  BuildContext? _context;
-
-  void setContext(BuildContext context) {
-    _context = context;
   }
 }
