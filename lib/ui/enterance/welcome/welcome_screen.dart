@@ -15,7 +15,7 @@ class WelcomeScreen extends StatefulWidget {
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
   Future<void> _init() async {
-    await Future.delayed(const Duration(seconds: 4), () {
+    await Future.delayed(const Duration(seconds: 3), () {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(

@@ -60,7 +60,7 @@ class _SecurityScreenState extends State<SecurityScreen> {
                 padding: const EdgeInsets.all(24),
                 title: 'Change PIN',
                 onTap: () {
-                  Navigator.pushNamed(context, RouteNames.pinCodeScreen,
+                  Navigator.pushNamed(context, RouteNames.enterPinScreen,
                       arguments: true);
                 },
                 color: AppColors.primary,

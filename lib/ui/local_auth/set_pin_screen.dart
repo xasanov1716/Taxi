@@ -10,14 +10,14 @@ import 'package:taxi_app/utils/constants/storage_keys.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
 
-class PinCodeSetScreen extends StatefulWidget {
-  const PinCodeSetScreen({super.key});
+class SetPinScreen extends StatefulWidget {
+  const SetPinScreen({super.key});
 
   @override
-  State<PinCodeSetScreen> createState() => _PinCodeSetScreenState();
+  State<SetPinScreen> createState() => _SetPinScreenState();
 }
 
-class _PinCodeSetScreenState extends State<PinCodeSetScreen> {
+class _SetPinScreenState extends State<SetPinScreen> {
   List result = [];
   String code = '';
   String currentPin = '';
@@ -66,67 +66,7 @@ class _PinCodeSetScreenState extends State<PinCodeSetScreen> {
                   .labelLarge!
                   .copyWith(fontSize: 20.sp),
             ),
-            Expanded(
-              child: ListView(
-                children: [
-                  60.ph,
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: List.generate(4, (index) {
-                      return SizedBox(
-                        width: 85.0.w,
-                        child: RawKeyboardListener(
-                          focusNode: FocusNode(),
-                          onKey: (key) {
-                            handleKey(key, index);
-                          },
-                          child: TextField(
-                            style: Theme.of(context)
-                                .appBarTheme
-                                .titleTextStyle!
-                                .copyWith(fontSize: 16.sp),
-                            controller: pinControllers[index],
-                            maxLength: 1,
-                            keyboardType: TextInputType.number,
-                            decoration: InputDecoration(
-                              counterText: "",
-                              hintText: '',
-                              hintStyle: const TextStyle(fontSize: 20.0),
-                              contentPadding: const EdgeInsets.symmetric(
-                                  vertical: 16.0, horizontal: 26.0),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(12),
-                                borderSide:
-                                    const BorderSide(color: AppColors.primary),
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(12),
-                                borderSide:
-                                    const BorderSide(color: AppColors.c_400),
-                              ),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(12),
-                                borderSide:
-                                    const BorderSide(color: AppColors.c_400),
-                              ),
-                              filled: true,
-                              fillColor: pinFocusNodes[index].hasFocus
-                                  ? AppColors.yellowTransparent
-                                  : getTheme(context)
-                                      ? const Color(0xFF1F222A)
-                                      : AppColors.c_200,
-                            ),
-                            textAlign: TextAlign.center,
-                            focusNode: pinFocusNodes[index],
-                          ),
-                        ),
-                      );
-                    }),
-                  ),
-                  60.ph,
-                ],
-              ),
-            ),
+
             GlobalButton(
               color: AppColors.primary,
               title: 'Continue',
@@ -139,7 +79,7 @@ class _PinCodeSetScreenState extends State<PinCodeSetScreen> {
                 if (pinCode.isNotEmpty && pinCode.length == 4) {
                   StorageRepository.putString(StorageKeys.pinCode, pinCode);
                   pinCode = '';
-                  Navigator.pushNamed(context, RouteNames.chekSetPinCodeScreen);
+                  Navigator.pushNamed(context, RouteNames.tabBox);
                 }
               },
             ),

@@ -1,12 +1,16 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:taxi_app/cubits/user/user_cubit.dart';
 import 'package:taxi_app/data/models/icon/icon_type.dart';
 import 'package:taxi_app/data/models/user/user_field_keys.dart';
+import 'package:taxi_app/ui/local_auth/widgets/user_image.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/edit_profile/settings_edit/widgets/edit_appbar.dart';
 import 'package:taxi_app/ui/widgets/global_button.dart';
 import 'package:taxi_app/ui/widgets/global_input.dart';
@@ -18,19 +22,22 @@ import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
+import 'package:taxi_app/utils/ui_utils/utilitiy_function.dart';
 
-class SettingsProfileEditScreen extends StatefulWidget {
-  const SettingsProfileEditScreen({super.key});
+class EditProfileScreen extends StatefulWidget {
+  const EditProfileScreen({super.key});
 
   @override
-  State<SettingsProfileEditScreen> createState() => _SettingsProfileEditScreenState();
+  State<EditProfileScreen> createState() => _EditProfileScreenState();
 }
 
-class _SettingsProfileEditScreenState extends State<SettingsProfileEditScreen> {
+class _EditProfileScreenState extends State<EditProfileScreen> {
 
   DateTime selectedDate = DateTime.now();
   TextEditingController dateController = TextEditingController();
   String gender = "Male";
+  ImagePicker picker = ImagePicker();
+  String image = '';
 
   var phoneFormatter = MaskTextInputFormatter(
       mask: '## ### ## ##',
@@ -56,6 +63,25 @@ class _SettingsProfileEditScreenState extends State<SettingsProfileEditScreen> {
               Expanded(
                 child: ListView(
                   children: [
+                    UserImage(
+                        userImage: image.isEmpty
+                            ? Image.asset(
+                          AppIcons.emptyProfile,
+                        )
+                            : ClipRRect(
+                          borderRadius: BorderRadius.circular(100.r),
+                          child: Image.file(
+                            File(image),
+                            width: 142 * width / figmaWidth,
+                            height: 142 * width / figmaWidth,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        edit: AppIcons.editSquare,
+                        onTap: () {
+                          showBottomSheetDialog(context,picker,image);
+                        }),
+                    24.ph,
                     GlobalTextField(
                       focusNode: fullNameFocusNode,
                       hintText: 'Full Name',

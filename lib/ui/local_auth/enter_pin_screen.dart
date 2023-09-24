@@ -1,23 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:local_auth/local_auth.dart';
 import 'package:taxi_app/data/local/storage_repository/storage_repository.dart';
 import 'package:taxi_app/ui/app_routes.dart';
-import 'package:taxi_app/ui/local_auth/widgets/pin_put_feild.dart';
 import 'package:taxi_app/ui/widgets/global_alert_dialog.dart';
 import 'package:taxi_app/ui/widgets/global_appbar.dart';
 import 'package:taxi_app/utils/constants/storage_keys.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 
-class PinCodeScreen extends StatefulWidget {
-  const PinCodeScreen({super.key, this.isFromSecurity});
+class EnterPinScreen extends StatefulWidget {
+  const EnterPinScreen({super.key, this.isFromSecurity});
   final bool? isFromSecurity;
 
   @override
-  State<PinCodeScreen> createState() => _PinCodeScreenState();
+  State<EnterPinScreen> createState() => _EnterPinScreenState();
 }
 
-class _PinCodeScreenState extends State<PinCodeScreen> {
+class _EnterPinScreenState extends State<EnterPinScreen> {
   final TextEditingController codeController = TextEditingController();
   final LocalAuthentication auth = LocalAuthentication();
   final FocusNode focusNode = FocusNode();
@@ -35,10 +33,7 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: const GlobalAppBar(title: "Pin codeni kiriting!"),
-      body: Padding(
-        padding: EdgeInsets.only(left: 24.w, right: 24.w, bottom: 48.h),
-        child: PinPutField(isFromSecurity: widget.isFromSecurity),
-      ),
+      body: Column(children: [],),
     );
   }
 

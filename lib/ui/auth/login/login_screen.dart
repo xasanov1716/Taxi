@@ -88,7 +88,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         onTap: () {
                           Navigator.pushReplacementNamed(
                             context,
-                            RouteNames.fillProfile,
+                            RouteNames.editProfile,
                           );
                         }),
                     24.ph,

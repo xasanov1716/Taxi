@@ -6,6 +6,7 @@ import 'package:taxi_app/ui/enterance/onboarding/carousel_pages/widgets/on_board
 import 'package:taxi_app/ui/enterance/onboarding/carousel_pages/widgets/page_view_icon_index.dart';
 import 'package:taxi_app/ui/enterance/onboarding/carousel_pages/widgets/page_view_item.dart';
 import 'package:taxi_app/ui/widgets/global_button.dart';
+import 'package:taxi_app/utils/constants/storage_keys.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 
 class CarouselPages extends StatefulWidget {
@@ -79,7 +80,7 @@ class _CarouselPagesState extends State<CarouselPages> {
                     });
                   }
                   if (pageIndex == 2) {
-                    await StorageRepository.putBool("isFirst", true);
+                    await StorageRepository.putBool(StorageKeys.welcomeDone, true);
                     if (context.mounted) {
                       Navigator.pushReplacementNamed(
                         context,
