@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:local_auth/local_auth.dart';
 import 'package:taxi_app/data/local/storage_repository/storage_repository.dart';
 import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/ui/widgets/global_appbar.dart';
@@ -10,7 +9,6 @@ import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/constants/storage_keys.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
-import 'package:taxi_app/utils/ui_utils/error_message_dialog.dart';
 
 class PinCodeSetScreen extends StatefulWidget {
   const PinCodeSetScreen({super.key});
@@ -21,7 +19,6 @@ class PinCodeSetScreen extends StatefulWidget {
 
 class _PinCodeSetScreenState extends State<PinCodeSetScreen> {
   List result = [];
-  final LocalAuthentication auth = LocalAuthentication();
   String code = '';
   String currentPin = '';
   final List<FocusNode> pinFocusNodes = List.generate(4, (_) => FocusNode());
@@ -38,18 +35,14 @@ class _PinCodeSetScreenState extends State<PinCodeSetScreen> {
   handleKey(RawKeyEvent key, int index) {
     if (key is RawKeyUpEvent) {
       if (key.data.logicalKey.keyLabel == 'Backspace') {
-        if (index != 0) {
-          pinFocusNodes[index].unfocus();
-          pinFocusNodes[index - 1].requestFocus();
-          pinControllers[index].clear();
-          print(index);
-
-          result.removeAt(index);
-          print(result);
-        } else {
-          result.removeAt(index);
-          print(result);
+        for (var i = 0; i < pinControllers.length; i++) {
+          pinControllers[i].clear();
+          pinFocusNodes[i].unfocus();
         }
+        setState(() {
+          pinFocusNodes[0].requestFocus();
+        });
+        result.clear();
       } else {
         handleCodeInput(index, key.data.logicalKey.keyLabel);
       }
@@ -92,26 +85,14 @@ class _PinCodeSetScreenState extends State<PinCodeSetScreen> {
                                 .appBarTheme
                                 .titleTextStyle!
                                 .copyWith(fontSize: 16.sp),
-
-                            onTap: () {
-                              // if (index == 3) {
-                              //   FocusScope.of(context)
-                              //       .requestFocus(pinFocusNodes[index]);
-                              // } else {
-                              //   pinFocusNodes[index].unfocus();
-                              // }
-                            },
-
                             controller: pinControllers[index],
                             maxLength: 1,
-                            //  obscureText: true,
-                            //  obscuringCharacter: getTheme(context) ? '⚪' : "⚫" ,
                             keyboardType: TextInputType.number,
                             decoration: InputDecoration(
                               counterText: "",
                               hintText: '',
                               hintStyle: const TextStyle(fontSize: 20.0),
-                              contentPadding: EdgeInsets.symmetric(
+                              contentPadding: const EdgeInsets.symmetric(
                                   vertical: 16.0, horizontal: 26.0),
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(12),
@@ -137,9 +118,6 @@ class _PinCodeSetScreenState extends State<PinCodeSetScreen> {
                             ),
                             textAlign: TextAlign.center,
                             focusNode: pinFocusNodes[index],
-                            onChanged: (value) {
-                              print(result);
-                            },
                           ),
                         ),
                       );
@@ -158,54 +136,17 @@ class _PinCodeSetScreenState extends State<PinCodeSetScreen> {
                 String pinCode = "";
                 pinCode = resultStr(result);
 
-                // for (var element in pinControllers) {
-                //   pinCode += element.text;
-                // }
-
                 if (pinCode.isNotEmpty && pinCode.length == 4) {
                   StorageRepository.putString(StorageKeys.pinCode, pinCode);
                   pinCode = '';
                   Navigator.pushNamed(context, RouteNames.chekSetPinCodeScreen);
                 }
-
-                // print(pinCode);
-                // print(StorageRepository.getString("code"));
-                // if (pinCode == StorageRepository.getString("code")) {
-                //   Navigator.pushReplacementNamed(context, RouteNames.tabBox);
-                // }
               },
             ),
           ],
         ),
       ),
     );
-  }
-
-  void _checkBiometric() async {
-    bool authenticated = false;
-    try {
-      authenticated = await auth.authenticate(
-        localizedReason: 'Tasdiqlash uchun sensorga barmog\'ingizni bosing',
-        options: const AuthenticationOptions(
-          useErrorDialogs: true,
-          stickyAuth: false,
-          biometricOnly: true,
-        ),
-      );
-      debugPrint("AUTHENTICATED THEN:$authenticated");
-    } catch (e) {
-      debugPrint("error using biometric auth: $e");
-      if (context.mounted) {
-        showErrorMessage(
-            message: "Barmoq izini skanerlash xato!", context: context);
-      }
-    }
-    setState(() {
-      bool isAuth = StorageRepository.getBool("isAuth");
-      if (isAuth && authenticated) {
-        Navigator.pushReplacementNamed(context, RouteNames.tabBox);
-      }
-    });
   }
 
   @override
@@ -242,60 +183,12 @@ class _PinCodeSetScreenState extends State<PinCodeSetScreen> {
     } else {
       pinControllers[index].text = value;
       result.add(value);
-      print(result);
       Future.delayed(const Duration(milliseconds: 400), () {
         pinControllers[index].text = getTheme(context) ? '⚪' : "⚫";
       });
-      pinFocusNodes[(index + 1) % 4].requestFocus();
+      setState(() {
+        pinFocusNodes[(index + 1) % 4].requestFocus();
+      });
     }
   }
-
-  BuildContext? _context;
-
-  void setContext(BuildContext context) {
-    _context = context;
-  }
 }
-// PageView.builder(
-//   controller: controller,
-//   itemBuilder: (context, position) {
-//     if (position == currentPageValue.floor()) {
-//       return Transform(
-//         transform: Matrix4.identity()..rotateX(currentPageValue - position),
-//         child: Container(
-//           color: position % 2 == 0 ? Colors.blue : Colors.pink,
-//           child: Center(
-//             child: Text(
-//               "Page",
-//               style: TextStyle(color: Colors.white, fontSize: 22.0),
-//             ),
-//           ),
-//         ),
-//       );
-//     } else if (position == currentPageValue.floor() + 1){
-//       return Transform(
-//         transform: Matrix4.identity()..rotateX(currentPageValue - position),
-//         child: Container(
-//           color: position % 2 == 0 ? Colors.blue : Colors.pink,
-//           child: Center(
-//             child: Text(
-//               "Page",
-//               style: TextStyle(color: Colors.white, fontSize: 22.0),
-//             ),
-//           ),
-//         ),
-//       );
-//     } else {
-//       return Container(
-//         color: position % 2 == 0 ? Colors.blue : Colors.pink,
-//         child: Center(
-//           child: Text(
-//             "Page",
-//             style: TextStyle(color: Colors.white, fontSize: 22.0),
-//           ),
-//         ),
-//       );
-//     }
-//   },
-//   itemCount: 10,
-// )

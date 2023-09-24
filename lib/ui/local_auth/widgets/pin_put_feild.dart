@@ -11,13 +11,16 @@ import 'package:taxi_app/utils/theme/get_theme.dart';
 import 'package:taxi_app/utils/ui_utils/error_message_dialog.dart';
 
 class PinPutField extends StatefulWidget {
-  const PinPutField({super.key});
+  const PinPutField({super.key, this.isFromSecurity});
+  final bool? isFromSecurity;
 
   @override
+  // ignore: library_private_types_in_public_api
   _PinPutFieldState createState() => _PinPutFieldState();
 }
 
 class _PinPutFieldState extends State<PinPutField> {
+  List result = [];
   final List<FocusNode> pinFocusNodes = List.generate(4, (_) => FocusNode());
   final List<TextEditingController> pinControllers =
       List.generate(4, (_) => TextEditingController());
@@ -27,6 +30,23 @@ class _PinPutFieldState extends State<PinPutField> {
     super.initState();
 
     setContext(context);
+  }
+
+  handleKey(RawKeyEvent key, int index) {
+    if (key is RawKeyUpEvent) {
+      if (key.data.logicalKey.keyLabel == 'Backspace') {
+        for (var i = 0; i < pinControllers.length; i++) {
+          pinControllers[i].clear();
+          pinFocusNodes[i].unfocus();
+        }
+        setState(() {
+          pinFocusNodes[0].requestFocus();
+        });
+        result.clear();
+      } else {
+        handleCodeInput(index, key.data.logicalKey.keyLabel);
+      }
+    }
   }
 
   @override
@@ -40,65 +60,69 @@ class _PinPutFieldState extends State<PinPutField> {
             return SizedBox(
               height: 85.w,
               width: 85.0.w,
-              child: TextField(
-                style: Theme.of(context)
-                    .appBarTheme
-                    .titleTextStyle!
-                    .copyWith(fontSize: 16.sp),
-                onTap: () {
-                  setState(() {
-                    FocusScope.of(context)
-                        .requestFocus(pinFocusNodes[index]);
-                  });
+              child: RawKeyboardListener(
+                focusNode: FocusNode(),
+                onKey: (key) {
+                  handleKey(key, index);
                 },
-                controller: pinControllers[index],
-                maxLength: 1,
-                obscureText: true,
-                obscuringCharacter: getTheme(context) ? '⚪' : "⚫",
-                keyboardType: TextInputType.number,
-                decoration: InputDecoration(
-                  counterText: "",
-                  hintText: '',
-                  hintStyle: const TextStyle(fontSize: 20.0),
-                  contentPadding: const EdgeInsets.symmetric(
-                      vertical: 16.0, horizontal: 26.0),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                    borderSide:
-                    const BorderSide(color: AppColors.primary),
+                child: TextField(
+                  style: Theme.of(context)
+                      .appBarTheme
+                      .titleTextStyle!
+                      .copyWith(fontSize: 16.sp),
+                  onTap: () {
+                    setState(() {
+                      FocusScope.of(context).requestFocus(pinFocusNodes[index]);
+                    });
+                  },
+                  controller: pinControllers[index],
+                  maxLength: 1,
+                  obscureText: true,
+                  obscuringCharacter: getTheme(context) ? '⚪' : "⚫",
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                    counterText: "",
+                    hintText: '',
+                    hintStyle: const TextStyle(fontSize: 20.0),
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 16.0, horizontal: 26.0),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      borderSide: const BorderSide(color: AppColors.primary),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      borderSide: const BorderSide(color: AppColors.c_400),
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      borderSide: const BorderSide(color: AppColors.c_400),
+                    ),
+                    errorBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      borderSide: const BorderSide(color: AppColors.error),
+                    ),
+                    filled: true,
+                    fillColor: pinFocusNodes[index].hasFocus
+                        ? AppColors.yellowTransparent
+                        : getTheme(context)
+                            ? const Color(0xFF1F222A)
+                            : AppColors.c_200,
                   ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                    borderSide: const BorderSide(color: AppColors.c_400),
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                    borderSide: const BorderSide(color: AppColors.c_400),
-                  ),
-                  errorBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                    borderSide: const BorderSide(color: AppColors.error),
-                  ),
-                  filled: true,
-                  fillColor: pinFocusNodes[index].hasFocus
-                      ? AppColors.yellowTransparent
-                      : getTheme(context)
-                      ? const Color(0xFF1F222A)
-                      : AppColors.c_200,
+                  textAlign: TextAlign.center,
+                  focusNode: pinFocusNodes[index],
+                  onChanged: (value) {
+                    setState(() {
+                      handleCodeInput(index, value);
+                    });
+                  },
                 ),
-                textAlign: TextAlign.center,
-                focusNode: pinFocusNodes[index],
-                onChanged: (value) {
-                  setState(() {
-                    handleCodeInput(index, value);
-                  });
-                },
               ),
             );
           }),
         ),
         60.ph,
-        const Expanded(child: const SizedBox()),
+        const Expanded(child: SizedBox()),
         GlobalButton(
           color: AppColors.primary,
           title: 'Continue',
@@ -112,7 +136,13 @@ class _PinPutFieldState extends State<PinPutField> {
             debugPrint(pinCode);
             debugPrint(StorageRepository.getString(StorageKeys.pinCode));
             if (pinCode == StorageRepository.getString(StorageKeys.pinCode)) {
-              Navigator.pushReplacementNamed(context, RouteNames.tabBox);
+              if (widget.isFromSecurity != false &&
+                  widget.isFromSecurity != null) {
+                Navigator.pushReplacementNamed(
+                    context, RouteNames.setPinCodeScreen);
+              } else {
+                Navigator.pushReplacementNamed(context, RouteNames.tabBox);
+              }
             } else {
               showErrorMessage(message: "Pin Code Xato!", context: context);
             }
@@ -141,14 +171,19 @@ class _PinPutFieldState extends State<PinPutField> {
     if (value.isEmpty) {
       pinControllers[index].clear();
       if (index > 0) {
-        FocusScope.of(_context!).requestFocus(pinFocusNodes[index - 1]);
+        setState(() {
+          FocusScope.of(_context!).requestFocus(pinFocusNodes[index - 1]);
+        });
       }
     } else {
       if (index == 3) {
         pinFocusNodes[index].unfocus();
       } else {
-        FocusScope.of(_context!).requestFocus(pinFocusNodes[(index + 1) % 4]);
+        setState(() {
+          FocusScope.of(_context!).requestFocus(pinFocusNodes[(index + 1) % 4]);
+        });
       }
+      pinControllers[index].text = value;
     }
   }
 

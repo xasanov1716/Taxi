@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:taxi_app/data/models/address/address_model.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/address/widgets/address_details_controller.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/address/widgets/name_address_container.dart';
@@ -9,6 +8,7 @@ import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
+import 'package:taxi_app/utils/ui_utils/utilitiy_function.dart';
 
 class AddressAddDialog extends StatelessWidget {
   const AddressAddDialog({super.key});
@@ -76,17 +76,7 @@ class AddressAddDialog extends StatelessWidget {
           AddressDetailController(
             text: "931 Ine Taylor931 Indian Summer Drive Taylor, MI 48180",
             color: getTheme(context) ? AppColors.dark2 : AppColors.c_50,
-            iconButton: IconButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              icon: SvgPicture.asset(
-                AppIcons.location,
-                colorFilter: ColorFilter.mode(
-                    getTheme(context) ? AppColors.c_50 : AppColors.c_50,
-                    BlendMode.srcIn),
-              ),
-            ),
+            iconButton: getIcon(AppIcons.location, context: context, onTap: (){Navigator.pop(context);}),
             onTap: () {},
           ),
          14.ph,

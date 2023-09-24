@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:taxi_app/ui/contact_to_driver/sub_screens/driver_detail/widgets/second_item/second_item_container.dart';
 import 'package:taxi_app/ui/contact_to_driver/sub_screens/driver_detail/widgets/third_item/third_item_container.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
+import 'package:taxi_app/utils/ui_utils/utilitiy_function.dart';
 
 List<Widget> getFiveWidgetsInDrDetails(BuildContext context,
     {required VoidCallback onCopyButtonPressed}) {
@@ -26,7 +26,7 @@ List<Widget> getFiveWidgetsInDrDetails(BuildContext context,
               fontSize: 14.sp,
               fontWeight: FontWeight.w700,
             )),
-        IconButton(onPressed: onCopyButtonPressed, icon: SvgPicture.asset(AppIcons.copy)),
+        getIcon(AppIcons.copy, context: context, onTap:onCopyButtonPressed),
       ],
     ),
     const SecondItemContainer(),

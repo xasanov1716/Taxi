@@ -6,7 +6,7 @@ class PageTwo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return const Column(
       children: [
         Text('2'),
         PinPutField(),

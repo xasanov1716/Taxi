@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
-import '../../../../../../utils/size/screen_size.dart';
+import 'package:taxi_app/utils/ui_utils/utilitiy_function.dart';
 
 class IconsContainer extends StatelessWidget {
   const IconsContainer({super.key, required this.icon, required this.onTap});
@@ -19,12 +18,7 @@ class IconsContainer extends StatelessWidget {
           borderRadius: BorderRadius.circular(
               (height >= 900 && width >= 600) ? 100 : 36),
           color: AppColors.amber),
-      child: IconButton(
-        onPressed: onTap,
-        icon: SvgPicture.asset(icon,
-            height: (height >= 900 && width >= 600) ? 34.w : 24.w,
-            width: (height >= 900 && width >= 600) ? 34.w : 24.w),
-      ),
+      child: getIcon(icon, context: context, onTap: onTap),
     );
   }
 }

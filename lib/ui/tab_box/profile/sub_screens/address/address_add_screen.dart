@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:taxi_app/cubits/address_cubit/address_cubit.dart';
 import 'package:taxi_app/services/api_service.dart';
@@ -11,6 +10,7 @@ import 'package:taxi_app/ui/widgets/global_appbar.dart';
 import 'package:taxi_app/ui/widgets/global_input.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/screen_size.dart';
+import 'package:taxi_app/utils/ui_utils/utilitiy_function.dart';
 
 class AddressAddDetailScreen extends StatefulWidget {
   const AddressAddDetailScreen({super.key});
@@ -42,10 +42,7 @@ class _AddressAddDetailScreenState extends State<AddressAddDetailScreen> {
             action: [
               Padding(
                 padding: EdgeInsets.only(right: 24.w),
-                child: IconButton(
-                  onPressed: () {},
-                  icon: SvgPicture.asset(AppIcons.moreCircle),
-                ),
+                child: getIcon(AppIcons.moreCircle, context: context, onTap: (){}),
               )
             ],
             onTap: () {

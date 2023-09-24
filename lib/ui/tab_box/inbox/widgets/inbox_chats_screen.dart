@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/screen_size.dart';
@@ -12,7 +11,7 @@ class InboxChatScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print({width, height});
+    debugPrint({width.toString(), height.toString()}.toString());
     return Column(
       children: [
         Expanded(
@@ -21,7 +20,7 @@ class InboxChatScreen extends StatelessWidget {
             children: [
               ...List.generate(
                 15,
-                (index) => ListTile(
+                    (index) => ListTile(
                   leading: Image.asset(AppIcons.taxiLogotip),
                   title: Text(
                     "Tanner Stafford",
@@ -37,9 +36,10 @@ class InboxChatScreen extends StatelessWidget {
                     ],
                   ),
                   trailing: Column(
-                    mainAxisSize: MainAxisSize.min,
                     children: [
                       Container(
+                        height: 29.h,
+                        width: 29.h,
                         decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           color: AppColors.primary,
