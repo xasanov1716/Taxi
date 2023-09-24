@@ -10,7 +10,7 @@ import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:taxi_app/cubits/user/user_cubit.dart';
 import 'package:taxi_app/data/models/icon/icon_type.dart';
 import 'package:taxi_app/data/models/user/user_field_keys.dart';
-import 'package:taxi_app/ui/local_auth/widgets/user_image.dart';
+import 'package:taxi_app/ui/widgets/user_image.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/edit_profile/settings_edit/widgets/edit_appbar.dart';
 import 'package:taxi_app/ui/widgets/global_button.dart';
 import 'package:taxi_app/ui/widgets/global_input.dart';

@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:taxi_app/utils/ui_utils/utilitiy_function.dart';
 
-import '../../../utils/colors/app_colors.dart';
-import '../../../utils/size/screen_size.dart';
+import '../../utils/colors/app_colors.dart';
+import '../../utils/size/screen_size.dart';
 
 class UserImage extends StatefulWidget {
   const UserImage({
