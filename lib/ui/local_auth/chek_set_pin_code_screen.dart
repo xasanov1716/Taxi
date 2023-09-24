@@ -112,7 +112,7 @@ class _ChekSetPinCodeScreenState extends State<ChekSetPinCodeScreen> {
                               counterText: "",
                               hintText: '',
                               hintStyle: const TextStyle(fontSize: 20.0),
-                              contentPadding: EdgeInsets.symmetric(
+                              contentPadding: const EdgeInsets.symmetric(
                                   vertical: 16.0, horizontal: 26.0),
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(12),
@@ -155,62 +155,43 @@ class _ChekSetPinCodeScreenState extends State<ChekSetPinCodeScreen> {
               title: 'Continue',
               radius: 100,
               textColor: AppColors.black,
-              onTap: () {
+              onTap: () async {
+                final List<BiometricType> availableBiometrics =
+                    await auth.getAvailableBiometrics();
                 String pinCode = "";
                 pinCode = resultStr(result);
 
-                // for (var element in pinControllers) {
-                //   pinCode += element.text;
-                // }
-
                 if (pinCode.isNotEmpty &&
                     pinCode.length == 4 &&
-                    StorageRepository.getString(StorageKeys.pinCode) == pinCode) {
-                  Navigator.pushReplacementNamed(
-                      context, RouteNames.fingerprintScreen);
+                    StorageRepository.getString(StorageKeys.pinCode) ==
+                        pinCode) {
+                  if (StorageRepository.getBool(
+                              StorageKeys.biometricIdMeSecurity) ==
+                          true ||
+                      availableBiometrics.contains(BiometricType.fingerprint) ||
+                      availableBiometrics.contains(BiometricType.face)) {
+                    if (context.mounted) {
+                      Navigator.pushReplacementNamed(
+                          context, RouteNames.fingerprintScreen);
+                    }
+                  } else {
+                    if (context.mounted) {
+                      Navigator.pushReplacementNamed(
+                          context, RouteNames.tabBox);
+                    }
+                  }
                 } else {
-                  showErrorMessage(
-                      message: 'korfirim cod Natog`ri', context: context);
+                  if (context.mounted) {
+                    showErrorMessage(
+                        message: 'korfirim cod Natog`ri', context: context);
+                  }
                 }
-
-                // print(pinCode);
-                // print(StorageRepository.getString("code"));
-                // if (pinCode == StorageRepository.getString("code")) {
-                //   Navigator.pushReplacementNamed(context, RouteNames.tabBox);
-                // }
               },
             ),
           ],
         ),
       ),
     );
-  }
-
-  void _checkBiometric() async {
-    bool authenticated = false;
-    try {
-      authenticated = await auth.authenticate(
-        localizedReason: 'Tasdiqlash uchun sensorga barmog\'ingizni bosing',
-        options: const AuthenticationOptions(
-          useErrorDialogs: true,
-          stickyAuth: false,
-          biometricOnly: true,
-        ),
-      );
-      debugPrint("AUTHENTICATED THEN:$authenticated");
-    } catch (e) {
-      debugPrint("error using biometric auth: $e");
-      if (context.mounted) {
-        showErrorMessage(
-            message: "Barmoq izini skanerlash xato!", context: context);
-      }
-    }
-    setState(() {
-      bool isAuth = StorageRepository.getBool("isAuth");
-      if (isAuth && authenticated) {
-        Navigator.pushReplacementNamed(context, RouteNames.tabBox);
-      }
-    });
   }
 
   @override

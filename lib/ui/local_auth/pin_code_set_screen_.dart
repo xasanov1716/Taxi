@@ -21,7 +21,6 @@ class PinCodeSetScreen extends StatefulWidget {
 
 class _PinCodeSetScreenState extends State<PinCodeSetScreen> {
   List result = [];
-  final LocalAuthentication auth = LocalAuthentication();
   String code = '';
   String currentPin = '';
   final List<FocusNode> pinFocusNodes = List.generate(4, (_) => FocusNode());
@@ -158,54 +157,17 @@ class _PinCodeSetScreenState extends State<PinCodeSetScreen> {
                 String pinCode = "";
                 pinCode = resultStr(result);
 
-                // for (var element in pinControllers) {
-                //   pinCode += element.text;
-                // }
-
                 if (pinCode.isNotEmpty && pinCode.length == 4) {
                   StorageRepository.putString(StorageKeys.pinCode, pinCode);
                   pinCode = '';
                   Navigator.pushNamed(context, RouteNames.chekSetPinCodeScreen);
                 }
-
-                // print(pinCode);
-                // print(StorageRepository.getString("code"));
-                // if (pinCode == StorageRepository.getString("code")) {
-                //   Navigator.pushReplacementNamed(context, RouteNames.tabBox);
-                // }
               },
             ),
           ],
         ),
       ),
     );
-  }
-
-  void _checkBiometric() async {
-    bool authenticated = false;
-    try {
-      authenticated = await auth.authenticate(
-        localizedReason: 'Tasdiqlash uchun sensorga barmog\'ingizni bosing',
-        options: const AuthenticationOptions(
-          useErrorDialogs: true,
-          stickyAuth: false,
-          biometricOnly: true,
-        ),
-      );
-      debugPrint("AUTHENTICATED THEN:$authenticated");
-    } catch (e) {
-      debugPrint("error using biometric auth: $e");
-      if (context.mounted) {
-        showErrorMessage(
-            message: "Barmoq izini skanerlash xato!", context: context);
-      }
-    }
-    setState(() {
-      bool isAuth = StorageRepository.getBool("isAuth");
-      if (isAuth && authenticated) {
-        Navigator.pushReplacementNamed(context, RouteNames.tabBox);
-      }
-    });
   }
 
   @override
@@ -256,46 +218,3 @@ class _PinCodeSetScreenState extends State<PinCodeSetScreen> {
     _context = context;
   }
 }
-// PageView.builder(
-//   controller: controller,
-//   itemBuilder: (context, position) {
-//     if (position == currentPageValue.floor()) {
-//       return Transform(
-//         transform: Matrix4.identity()..rotateX(currentPageValue - position),
-//         child: Container(
-//           color: position % 2 == 0 ? Colors.blue : Colors.pink,
-//           child: Center(
-//             child: Text(
-//               "Page",
-//               style: TextStyle(color: Colors.white, fontSize: 22.0),
-//             ),
-//           ),
-//         ),
-//       );
-//     } else if (position == currentPageValue.floor() + 1){
-//       return Transform(
-//         transform: Matrix4.identity()..rotateX(currentPageValue - position),
-//         child: Container(
-//           color: position % 2 == 0 ? Colors.blue : Colors.pink,
-//           child: Center(
-//             child: Text(
-//               "Page",
-//               style: TextStyle(color: Colors.white, fontSize: 22.0),
-//             ),
-//           ),
-//         ),
-//       );
-//     } else {
-//       return Container(
-//         color: position % 2 == 0 ? Colors.blue : Colors.pink,
-//         child: Center(
-//           child: Text(
-//             "Page",
-//             style: TextStyle(color: Colors.white, fontSize: 22.0),
-//           ),
-//         ),
-//       );
-//     }
-//   },
-//   itemCount: 10,
-// )
