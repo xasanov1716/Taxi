@@ -21,6 +21,8 @@ class _BiometricsScreenState extends State<BiometricsScreen> {
   bool isAuth = false;
   final LocalAuthentication auth = LocalAuthentication();
 
+
+
   void _checkBiometric() async {
     bool authenticated = false;
     try {
