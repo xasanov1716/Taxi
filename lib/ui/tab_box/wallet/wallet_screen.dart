@@ -25,6 +25,7 @@ class WalletScreen extends StatelessWidget {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
+            automaticallyImplyLeading: false,
             scrolledUnderElevation: 0,
             expandedHeight: 320 * height / figmaHeight,
             collapsedHeight: 86,
