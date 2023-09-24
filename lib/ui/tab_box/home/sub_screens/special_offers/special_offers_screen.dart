@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:taxi_app/data/models/icon/icon_type.dart';
 import 'package:taxi_app/data/models/offers/offers_model.dart';
 import 'package:taxi_app/ui/tab_box/home/sub_screens/special_offers/widgets/special_offer_button.dart';
 import 'package:taxi_app/ui/widgets/global_appbar.dart';
-import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
-import 'package:taxi_app/utils/theme/get_theme.dart';
+import 'package:taxi_app/utils/ui_utils/utilitiy_function.dart';
 
 class SpecialOffersScreen extends StatefulWidget {
   const SpecialOffersScreen({super.key});
@@ -59,16 +56,7 @@ class _SpecialOffersScreenState extends State<SpecialOffersScreen> {
           Navigator.pop(context);
         },
         action: [
-          IconButton(
-            onPressed: () {},
-            icon: SvgPicture.asset(
-              AppIcons.getSvg(
-                name: AppIcons.moreCircle,
-                iconType: IconType.lightBorder,
-              ),
-              color: getTheme(context) ? AppColors.white : AppColors.dark2,
-            ),
-          ),
+          getIcon(AppIcons.moreCircle, context: context, onTap: (){}),
         ],
       ),
       body: ListView(

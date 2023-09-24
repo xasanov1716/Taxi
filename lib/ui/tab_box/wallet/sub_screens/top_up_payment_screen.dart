@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:taxi_app/ui/create_order/sub_screens/payment_methods/widgets/payment_appbar.dart';
 import 'package:taxi_app/ui/tab_box/wallet/sub_screens/widgets/top_up_button.dart';
 import 'package:taxi_app/ui/tab_box/wallet/sub_screens/widgets/top_up_payment_appbar.dart';
-import 'package:taxi_app/ui/widgets/global_appbar.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 
 import '../../../../data/models/payment/payment_model.dart';

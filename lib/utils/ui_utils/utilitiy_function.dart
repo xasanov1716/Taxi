@@ -115,7 +115,7 @@ Future<void> _getFromGallery(
 IconButton getIcon(
   String iconName, {
   required BuildContext context,
-  required VoidCallback onTap,
+  required VoidCallback? onTap,
 }) =>
     IconButton(
       onPressed: onTap,
