@@ -32,7 +32,7 @@ import 'cubits/user/user_cubit.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await StorageRepository.getInstance();
-  await  EasyLocalization.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
 
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
@@ -89,14 +89,14 @@ class App extends StatelessWidget {
           BlocProvider(create: (context) => MessageBloc()),
         ],
         child: EasyLocalization(
-          supportedLocales: const [
-            Locale('ru', 'RU'),
-            Locale('uz','UZ'),
-            Locale('uz', 'Cyrl'),
-          ],
-          path: 'assets/translations',
-          fallbackLocale: const Locale('uz','UZ'),
-          child: const MyApp()),
+            supportedLocales: const [
+              Locale('ru', 'RU'),
+              Locale('uz', 'UZ'),
+              Locale('uz', 'Cyrl'),
+            ],
+            path: 'assets/translations',
+            fallbackLocale: const Locale('uz', 'UZ'),
+            child: const MyApp()),
       ),
     );
   }
