@@ -4,7 +4,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:taxi_app/ui/tab_box/home/widgets/saved_places.dart';
 import 'package:taxi_app/ui/tab_box/home/widgets/text_field_item.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
-import 'package:taxi_app/utils/theme/get_theme.dart';
 import '../../../../data/models/icon/icon_type.dart';
 import '../../../../utils/colors/app_colors.dart';
 import '../../../../utils/icons/app_icons.dart';

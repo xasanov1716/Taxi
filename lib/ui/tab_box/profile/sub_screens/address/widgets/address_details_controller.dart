@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:taxi_app/utils/colors/app_colors.dart';
 
 class AddressDetailController extends StatelessWidget {
   const AddressDetailController(
@@ -17,33 +15,7 @@ class AddressDetailController extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration:
-          BoxDecoration(color: color, borderRadius: BorderRadius.circular(12)),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          GestureDetector(
-            onTap: onTap,
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    text.length > 30 ? text.substring(0, 30) : text,
-                    style: Theme.of(context)
-                        .textTheme
-                        .titleLarge
-                        ?.copyWith(color: AppColors.c_500),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          iconButton,
-        ],
-      ),
-    );
+    return const TextField();
+
   }
 }

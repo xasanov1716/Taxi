@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:taxi_app/utils/ui_utils/utilitiy_function.dart';
 
 import '../../../utils/colors/app_colors.dart';
 import '../../../utils/size/screen_size.dart';
@@ -41,18 +41,9 @@ class _UserImageState extends State<UserImage> {
                 child: widget.userImage,
               ),
               Positioned(
-                bottom: 0,
-                right: 0.w,
-                child: IconButton(
-                  onPressed: widget.onTap,
-                  icon: SvgPicture.asset(
-                    widget.edit,
-                    colorFilter: const ColorFilter.mode(
-                        AppColors.primary, BlendMode.srcIn),
-                    width: 35 * width / figmaWidth,
-                    height: 35 * height / figmaHeight,
-                  ),
-                ),
+                bottom: 0.h,
+                right: 0,
+                child: getIcon(widget.edit, context: context, onTap: widget.onTap),
               ),
             ],
           ),

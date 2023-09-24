@@ -8,7 +8,6 @@ import 'package:image_picker/image_picker.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:taxi_app/cubits/user/user_cubit.dart';
 import 'package:taxi_app/data/models/user/user_field_keys.dart';
-import 'package:taxi_app/ui/local_auth/widgets/pop_up.dart';
 import 'package:taxi_app/ui/local_auth/widgets/user_image.dart';
 import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/ui/widgets/global_appbar.dart';
@@ -203,23 +202,24 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
               radius: 100,
               textColor: AppColors.black,
               onTap: () {
-                if (context.read<UserCubit>().canRegister()) {
-                  Navigator.pushNamed(context, RouteNames.setPinCodeScreen);
-                } else {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      backgroundColor:
-                          getTheme(context) ? AppColors.c_900 : AppColors.c_700,
-                      content: Text(
-                        "Maydonlar to'liq emas",
-                        style: TextStyle(
-                            color: getTheme(context)
-                                ? AppColors.white
-                                : AppColors.black),
-                      ),
-                    ),
-                  );
-                }
+                // if (context.read<UserCubit>().canRegister()) {
+                //   Navigator.pushNamed(context, RouteNames.setPinCodeScreen);
+                // } else {
+                //   ScaffoldMessenger.of(context).showSnackBar(
+                //     SnackBar(
+                //       backgroundColor:
+                //           getTheme(context) ? AppColors.c_900 : AppColors.c_700,
+                //       content: Text(
+                //         "Maydonlar to'liq emas",
+                //         style: TextStyle(
+                //             color: getTheme(context)
+                //                 ? AppColors.white
+                //                 : AppColors.black),
+                //       ),
+                //     ),
+                //   );
+                // }
+                Navigator.pushNamed(context, RouteNames.setPinCodeScreen);
               },
             ),
             24.ph

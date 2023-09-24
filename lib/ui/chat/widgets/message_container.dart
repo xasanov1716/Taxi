@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
-import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
 
 class MessageContainer extends StatelessWidget {
@@ -17,7 +16,6 @@ class MessageContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 280.w,
       margin: EdgeInsets.symmetric(vertical: 12.h),
       padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 12.h),
       decoration: BoxDecoration(
@@ -39,22 +37,24 @@ class MessageContainer extends StatelessWidget {
                 bottomRight: Radius.circular(12.r),
               ),
       ),
-      child: RichText(
-        text: TextSpan(
-          children: [
-            TextSpan(
-              text: message,
-              style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                    fontWeight: FontWeight.w400,
-                    color: index.isEven
-                        ? getTheme(context)
-                            ? AppColors.white
-                            : AppColors.c_900
-                        : AppColors.dark3,
-                  ),
-            ),
-            TextSpan(
-              text: '    $dateTime',
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          Text(
+            message,
+            style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                  fontWeight: FontWeight.w400,
+                  color: index.isEven
+                      ? getTheme(context)
+                          ? AppColors.white
+                          : AppColors.c_900
+                      : AppColors.dark3,
+                ),
+          ),
+          SizedBox(
+            // height: Theme.of(context).textTheme.bodyMedium!.fontSize,
+            child: Text(
+              dateTime,
               style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                     fontWeight: FontWeight.w400,
                     color: index.isEven
@@ -64,8 +64,8 @@ class MessageContainer extends StatelessWidget {
                         : AppColors.c_700,
                   ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
