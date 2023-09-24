@@ -89,6 +89,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           Navigator.pushReplacementNamed(
                             context,
                             RouteNames.editProfile,
+                            arguments: true,
                           );
                         }),
                     24.ph,

@@ -10,8 +10,8 @@ import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:taxi_app/cubits/user/user_cubit.dart';
 import 'package:taxi_app/data/models/icon/icon_type.dart';
 import 'package:taxi_app/data/models/user/user_field_keys.dart';
+import 'package:taxi_app/ui/tab_box/profile/sub_screens/edit_profile/widgets/edit_appbar.dart';
 import 'package:taxi_app/ui/widgets/user_image.dart';
-import 'package:taxi_app/ui/tab_box/profile/sub_screens/edit_profile/settings_edit/widgets/edit_appbar.dart';
 import 'package:taxi_app/ui/widgets/global_button.dart';
 import 'package:taxi_app/ui/widgets/global_input.dart';
 import 'package:taxi_app/ui/widgets/global_search_input.dart';
@@ -25,7 +25,9 @@ import 'package:taxi_app/utils/theme/get_theme.dart';
 import 'package:taxi_app/utils/ui_utils/utilitiy_function.dart';
 
 class EditProfileScreen extends StatefulWidget {
-  const EditProfileScreen({super.key});
+  const EditProfileScreen({super.key, required this.navigateFromAuth});
+
+  final bool navigateFromAuth;
 
   @override
   State<EditProfileScreen> createState() => _EditProfileScreenState();
@@ -173,7 +175,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   ],
                 ),
               ),
-              GlobalButton(title: "Update", onTap: (){},radius: 100.r,color: AppColors.primary,)
+              GlobalButton(title: "Update", onTap: (){
+
+              },radius: 100.r,color: AppColors.primary,)
             ],
           ),
         ),

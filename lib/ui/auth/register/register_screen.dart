@@ -86,6 +86,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           Navigator.pushReplacementNamed(
                             context,
                             RouteNames.editProfile,
+                            arguments: true,
                           );
                         })
                   ],

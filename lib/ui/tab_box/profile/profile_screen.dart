@@ -103,7 +103,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   text: "Edit Profile",
                   icon: AppIcons.profile,
                   onTap: () {
-                    Navigator.pushNamed(context, RouteNames.editProfile);
+                    Navigator.pushNamed(
+                      context,
+                      RouteNames.editProfile,
+                      arguments: false,
+                    );
                   },
                 ),
                 ProfileButton(
@@ -152,9 +156,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     icon: AppIcons.infoSquare,
                     onTap: () {}),
                 ProfileButton(
-                    text: "Invite Friends", icon: AppIcons.user3, onTap: () {
+                    text: "Invite Friends",
+                    icon: AppIcons.user3,
+                    onTap: () {
                       Navigator.pushNamed(context, RouteNames.inviteFriends);
-                }),
+                    }),
                 ProfileButton(
                   text: "Log Out",
                   icon: AppIcons.logOut,
