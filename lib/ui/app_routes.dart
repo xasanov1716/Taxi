@@ -19,6 +19,8 @@ import 'package:taxi_app/ui/tab_box/profile/sub_screens/edit_profile/edit_profil
 import 'package:taxi_app/ui/auth/login/login_screen.dart';
 import 'package:taxi_app/ui/auth/register/register_screen.dart';
 import 'package:taxi_app/ui/splash/splash_screen.dart';
+import 'package:taxi_app/ui/tab_box/profile/sub_screens/edit_profile/settings_edit/settings_profile_edit_screen.dart';
+import 'package:taxi_app/ui/tab_box/profile/sub_screens/invite_friends/invite_friends.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/language/language_screen.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/notification/control_notification_screen.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/payments/payment_add_card_screen.dart';
@@ -75,6 +77,8 @@ class RouteNames {
   static const String privacyPolicy = "/privacy_policy";
   static const String payment = "/payment_screen";
   static const String paymentAddCard = "/payment_add_card_screen";
+  static const String editProfile = "/edit_profile";
+  static const String inviteFriends = "/invite_friends";
 }
 
 class AppRoutes {
@@ -84,9 +88,17 @@ class AppRoutes {
         return MaterialPageRoute(
           builder: (context) =>const SplashScreen (),
         );
+      case RouteNames.editProfile:
+        return MaterialPageRoute(
+          builder: (context) =>const SettingsProfileEditScreen (),
+        );
       case RouteNames.specialOffers:
         return MaterialPageRoute(
           builder: (context) => const SpecialOffersScreen(),
+        );
+      case RouteNames.inviteFriends:
+        return MaterialPageRoute(
+          builder: (context) => const InviteFriendsScreen(),
         );
       case RouteNames.security:
         return MaterialPageRoute(
