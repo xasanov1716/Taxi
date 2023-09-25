@@ -63,15 +63,16 @@ class WalletScreen extends StatelessWidget {
               ...List.generate(
                 15,
                 (index) => TransactionItem(
-                  onTap: () {},
-                  transactionModel: TransactionModel(
-                    name: "Daniel Austin",
-                    date: "Dec 20, 2024 | 10:00 AM",
-                    price: 14,
-                    expense: "Taxi Expense",
-                    iconName: AppIcons.arrowUpSquare,
-                    iconColor: AppColors.error,
-                  ),
+                  onTap: () {
+                    Navigator.pushNamed(context, RouteNames.transactionsDetail);
+                  },
+                  name: "Daniel Austin",
+                  date: "Dec 20, 2024 | 10:00 AM",
+                  price: 14,
+                  expense: "Taxi Expense",
+                  iconName: AppIcons.arrowUpSquare,
+                  iconColor: AppColors.error,
+
                 ),
               )
             ]),

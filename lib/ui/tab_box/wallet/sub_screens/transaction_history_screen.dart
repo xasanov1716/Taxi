@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/ui/tab_box/wallet/widgets/transaction_item.dart';
 import 'package:taxi_app/ui/widgets/global_appbar.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
@@ -30,15 +31,15 @@ class TransactionHistoryScreen extends StatelessWidget {
           ...List.generate(
             100,
             (index) => TransactionItem(
-              onTap: () {},
-              transactionModel: TransactionModel(
-                name: "Daniel Austin",
-                date: "Dec 20, 2024 | 10:00 AM",
-                price: 14,
-                expense: "Taxi Expense",
-                iconName: AppIcons.arrowUpSquare,
-                iconColor: AppColors.error,
-              ),
+              onTap: () {
+                Navigator.pushNamed(context, RouteNames.transactionsDetail);
+              },
+              name: "Daniel Austin",
+              date: "Dec 20, 2024 | 10:00 AM",
+              price: 14,
+              expense: "Taxi Expense",
+              iconName: AppIcons.arrowUpSquare,
+              iconColor: AppColors.error,
             ),
           )
         ],
