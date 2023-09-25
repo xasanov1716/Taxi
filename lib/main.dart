@@ -13,6 +13,7 @@ import 'package:taxi_app/blocs/social_auth_bloc/social_auth_bloc.dart';
 import 'package:taxi_app/cubits/code_input_cubit/code_input_cubit.dart';
 import 'package:taxi_app/cubits/auth_cubit/auth_cubit.dart';
 import 'package:taxi_app/cubits/notifications_cubit/notification_cubit.dart';
+import 'package:taxi_app/cubits/search/search_cubit.dart';
 import 'package:taxi_app/cubits/security_cubit/security_cubit.dart';
 import 'package:taxi_app/cubits/tab/tab_cubit.dart';
 import 'package:taxi_app/data/local/search_location/places_db.dart';
@@ -87,6 +88,7 @@ class App extends StatelessWidget {
             create: (_) => CategoryCubit(),
           ),
           BlocProvider(create: (context) => MessageBloc()),
+          BlocProvider(create: (context) => SearchCubit()),
         ],
         child: EasyLocalization(
           supportedLocales: const [
