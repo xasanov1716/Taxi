@@ -39,7 +39,6 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   TextEditingController dateController = TextEditingController();
   String gender = "Male";
   ImagePicker picker = ImagePicker();
-  String image = '';
 
   var phoneFormatter = MaskTextInputFormatter(
       mask: '## ### ## ##',
@@ -68,22 +67,13 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 physics: const BouncingScrollPhysics(),
                 children: [
                   UserImage(
-                      userImage: image.isEmpty
-                          ? Image.asset(
-                              AppIcons.emptyProfile,
-                            )
-                          : ClipRRect(
-                              borderRadius: BorderRadius.circular(100.r),
-                              child: Image.file(
-                                File(image),
-                                width: 142 * width / figmaWidth,
-                                height: 142 * width / figmaWidth,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                      onTap: () {
-                        showBottomSheetDialog(context, picker, image);
-                      }),
+                    onTap: () {
+                      showBottomSheetDialog(
+                        context,
+                        picker
+                      );
+                    },
+                  ),
                   24.ph,
                   GlobalTextField(
                     focusNode: fullNameFocusNode,
@@ -145,13 +135,13 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   24.ph,
                   Container(
                     padding:
-                    EdgeInsets.symmetric(horizontal: 20.w, vertical: 6.h),
+                        EdgeInsets.symmetric(horizontal: 20.w, vertical: 6.h),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12.r),
                       color: getTheme(context)
                           ? AppColors.dark2
                           : AppColors
-                          .greysCale, // Use the desired background color
+                              .greysCale, // Use the desired background color
                     ),
                     child: DropdownButton<String>(
                       isExpanded: true,
@@ -203,8 +193,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
             GlobalButton(
               title: "Update",
               onTap: () {
-                if(widget.navigateFromAuth){
-                  Navigator.pushReplacementNamed(context, RouteNames.setPinCodeScreen);
+                if (widget.navigateFromAuth) {
+                  Navigator.pushReplacementNamed(
+                      context, RouteNames.setPinCodeScreen);
                 }
               },
               radius: 100.r,

@@ -18,7 +18,9 @@ import '../size/screen_size.dart';
 import '../theme/get_theme.dart';
 
 void showBottomSheetDialog(
-    BuildContext context, ImagePicker picker, String image) {
+  BuildContext context,
+  ImagePicker picker,
+) {
   showModalBottomSheet(
     backgroundColor: Colors.transparent,
     context: context,
@@ -43,7 +45,7 @@ void showBottomSheetDialog(
                     borderRadius: BorderRadius.circular(16)),
                 child: ListTile(
                   onTap: () {
-                    _getFromCamera(context, picker, image);
+                    _getFromCamera(context, picker);
                     Navigator.pop(context);
                   },
                   leading: const Icon(
@@ -65,7 +67,7 @@ void showBottomSheetDialog(
                     border: Border.all(color: Colors.white, width: 2)),
                 child: ListTile(
                   onTap: () {
-                    _getFromGallery(context, picker, image);
+                    _getFromGallery(context, picker);
                     Navigator.pop(context);
                   },
                   leading: const Icon(
@@ -87,7 +89,9 @@ void showBottomSheetDialog(
 }
 
 Future<void> _getFromCamera(
-    BuildContext context, ImagePicker picker, String image) async {
+  BuildContext context,
+  ImagePicker picker,
+) async {
   XFile? xFile = await picker.pickImage(
     source: ImageSource.camera,
     maxHeight: 512 * height / figmaHeight,
@@ -99,12 +103,13 @@ Future<void> _getFromCamera(
           fieldKey: UserFieldKeys.image,
           value: xFile.path,
         );
-    image = xFile.path;
   }
 }
 
 Future<void> _getFromGallery(
-    BuildContext context, ImagePicker picker, String image) async {
+  BuildContext context,
+  ImagePicker picker,
+) async {
   XFile? xFile = await picker.pickImage(
     source: ImageSource.gallery,
     maxHeight: 512 * height / figmaHeight,
@@ -115,7 +120,6 @@ Future<void> _getFromGallery(
           fieldKey: UserFieldKeys.image,
           value: xFile.path,
         );
-    image = xFile.path;
   }
 }
 

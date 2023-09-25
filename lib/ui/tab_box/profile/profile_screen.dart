@@ -58,28 +58,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
           children: [
             30.ph,
             UserImage(
-                userImage: image.isEmpty
-                    ? Image.asset(
-                        AppIcons.drFake1,
-                      )
-                    : ClipRRect(
-                        borderRadius: BorderRadius.circular(100.r),
-                        child: Image.file(
-                          File(image),
-                          width: 120 * width / figmaWidth,
-                          height: 120 * width / figmaWidth,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                onTap: () {
-                  profileDialog(
-                      picker: picker,
-                      context: context,
-                      valueChanged: (v) {
-                        image = v;
-                        setState(() {});
-                      });
-                }),
+              onTap: () {
+                profileDialog(
+                  picker: picker,
+                  context: context,
+                  valueChanged: (v) {
+                    image = v;
+                    setState(() {});
+                  },
+                );
+              },
+            ),
             12.ph,
             Text(
               "Andrew Ainsley",

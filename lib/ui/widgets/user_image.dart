@@ -1,57 +1,74 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:taxi_app/cubits/user/user_cubit.dart';
+import 'package:taxi_app/cubits/user/user_state.dart';
 import 'package:taxi_app/data/models/icon/icon_type.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
-import 'package:taxi_app/utils/ui_utils/utilitiy_function.dart';
 
 import '../../utils/colors/app_colors.dart';
 import '../../utils/size/screen_size.dart';
 
-class UserImage extends StatefulWidget {
+class UserImage extends StatelessWidget {
   const UserImage({
     super.key,
-    required this.userImage,
     required this.onTap,
   });
 
-  final Widget userImage;
   final VoidCallback onTap;
 
-  @override
-  State<UserImage> createState() => _UserImageState();
-}
-
-class _UserImageState extends State<UserImage> {
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Container(
-          height: 142 * height / figmaHeight,
-          width: 142 * width / figmaWidth,
-          decoration: const BoxDecoration(
-            shape: BoxShape.circle,
-            color: AppColors.c_50,
-          ),
-          child: Stack(
-            children: [
-              Center(
-                child: widget.userImage,
-              ),
-              Positioned(
-                bottom: -12.h,
-                right: 3.w,
-                child: getIcon(
-                  AppIcons.editSquare,
-                  context: context,
-                  onTap: widget.onTap,
-                  color: AppColors.primary,
-                  iconType: IconType.bold,
+        GestureDetector(
+          onTap: onTap,
+          child: Container(
+            height: 100 * width / figmaWidth,
+            width: 100 * width / figmaWidth,
+            decoration: const BoxDecoration(
+              shape: BoxShape.circle,
+              color: AppColors.c_50,
+            ),
+            child: Stack(
+              children: [
+                BlocBuilder<UserCubit,UserState>(builder: (context,state){
+                  return Center(
+                    child: state.userModel.image.isEmpty
+                        ? Image.asset(
+                      AppIcons.emptyProfile,
+                      height: 100 * width / figmaWidth,
+                    )
+                        : ClipRRect(
+                      borderRadius: BorderRadius.circular(100.r),
+                      child: Image.file(
+                        File(state.userModel.image),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  );
+                }),
+                Positioned(
+                  bottom: 0,
+                  right: 0,
+                  child: SvgPicture.asset(
+                    AppIcons.getSvg(
+                      name: AppIcons.editSquare,
+                      iconType: IconType.bold,
+                    ),
+                    width: 24.w,
+                    colorFilter: const ColorFilter.mode(
+                      AppColors.primary,
+                      BlendMode.srcIn,
+                    ),
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ],
