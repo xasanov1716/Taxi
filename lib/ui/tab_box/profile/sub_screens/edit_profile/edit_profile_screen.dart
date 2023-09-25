@@ -229,7 +229,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       newDate.toLocal().toString().split(' ')[0];
                   selectedDate = newDate;
                   context.read<UserCubit>().updateCurrentUserField(
-                      fieldKey: UserFieldKeys.date, value: dateController.text);
+                      fieldKey: UserFieldKeys.birthDate, value: dateController.text);
                 });
               }
             },
