@@ -4,10 +4,18 @@ import 'package:taxi_app/cubits/search/search_cubit.dart';
 import 'package:taxi_app/ui/widgets/global_input.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 
-class SearchScreen extends StatelessWidget {
-  final _searchController = TextEditingController();
+class SearchScreen extends StatefulWidget {
+  SearchScreen({super.key, required this.onChanged});
+  final ValueChanged onChanged;
 
-  SearchScreen({super.key});
+  @override
+  State<SearchScreen> createState() => _SearchScreenState();
+}
+
+class _SearchScreenState extends State<SearchScreen> {
+
+  final _searchController = TextEditingController();
+  String searchItem = '';
 
   @override
   Widget build(BuildContext context) {
@@ -16,27 +24,16 @@ class SearchScreen extends StatelessWidget {
         return Column(
           children: [
             30.ph,
-            GlobalTextField(
-              hintText: 'Search',
-              controller: _searchController,
-              onChanged: (value) {
-                context.read<SearchCubit>().search(value);
-              },
+            Focus(
+              onFocusChange: widget.onChanged,
+              child: GlobalTextField(
+                hintText: 'Search',
+                controller: _searchController,
+                onChanged: (value) {
+                  context.read<SearchCubit>().search(value);
+                },
+              ),
             ),
-            // Expanded(
-            //   child: ListView.builder(
-            //     itemCount: state.isNotEmpty
-            //         ? state.length
-            //         : context.read<SearchCubit>().list.length,
-            //     itemBuilder: (context, index) {
-            //       return ListTile(
-            //         title: Text(state.isNotEmpty
-            //             ? state[index]
-            //             : context.read<SearchCubit>().list[index]),
-            //       );
-            //     },
-            //   ),
-            // ),
           ],
         );
       },
