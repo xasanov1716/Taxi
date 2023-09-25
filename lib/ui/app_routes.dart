@@ -20,6 +20,7 @@ import 'package:taxi_app/ui/auth/login/login_screen.dart';
 import 'package:taxi_app/ui/auth/register/register_screen.dart';
 import 'package:taxi_app/ui/splash/splash_screen.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/edit_profile/edit_profile_screen.dart';
+import 'package:taxi_app/ui/tab_box/profile/sub_screens/help_center/help_center_screen.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/invite_friends/invite_friends.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/language/language_screen.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/notification/control_notification_screen.dart';
@@ -78,6 +79,7 @@ class RouteNames {
   static const String editProfile = "/edit_profile";
   static const String inviteFriends = "/invite_friends";
   static const String welcomeScreen = "/welcome";
+  static const String helpCenterScreen = "/helpCenterScreen";
 }
 
 class AppRoutes {
@@ -90,6 +92,9 @@ class AppRoutes {
       case RouteNames.welcomeScreen:
         return MaterialPageRoute(
           builder: (context) => const WelcomeScreen(),
+        ); case RouteNames.helpCenterScreen:
+        return MaterialPageRoute(
+          builder: (context) => const HelpCenterScreen(),
         );
       case RouteNames.editProfile:
         return MaterialPageRoute(

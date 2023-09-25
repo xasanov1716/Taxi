@@ -5,6 +5,7 @@ import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
+import 'package:taxi_app/utils/theme/get_theme.dart';
 import 'widgets/help_taxio/person_data.dart';
 class HelpCenterScreen extends StatefulWidget {
   const HelpCenterScreen({super.key});
@@ -19,7 +20,7 @@ class _HelpCenterScreenState extends State<HelpCenterScreen> {
     double height=MediaQuery.of(context).size.height;
     double width=MediaQuery.of(context).size.width;
     return Scaffold(
-      backgroundColor: AppColors.greysCale,
+      backgroundColor: getTheme(context) ? AppColors.dark2 : AppColors.greysCale,
       appBar: GlobalAppBar(
         title: "Help Center",onTap: (){},action: [
         IconButton(onPressed: (){}, icon: SvgPicture.asset(AppIcons.moreCircle )),
