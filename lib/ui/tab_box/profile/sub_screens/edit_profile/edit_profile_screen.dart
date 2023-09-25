@@ -12,6 +12,7 @@ import 'package:taxi_app/data/models/icon/icon_type.dart';
 import 'package:taxi_app/data/models/user/user_field_keys.dart';
 import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/edit_profile/widgets/edit_appbar.dart';
+import 'package:taxi_app/ui/tab_box/profile/widgets/profile_dialog.dart';
 import 'package:taxi_app/ui/widgets/user_image.dart';
 import 'package:taxi_app/ui/widgets/global_button.dart';
 import 'package:taxi_app/ui/widgets/global_input.dart';
@@ -39,6 +40,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   TextEditingController dateController = TextEditingController();
   String gender = "Male";
   ImagePicker picker = ImagePicker();
+  String image = "";
 
   var phoneFormatter = MaskTextInputFormatter(
       mask: '## ### ## ##',
@@ -68,10 +70,15 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 children: [
                   UserImage(
                     onTap: () {
-                      showBottomSheetDialog(
-                        context,
-                        picker
-                      );
+                      // showBottomSheetDialog(
+                      //   context,
+                      //   picker
+                      // );
+                      profileDialog(picker: picker, context: context, valueChanged: (v){
+                        setState(() {
+                          image = v;
+                        });
+                      });
                     },
                   ),
                   24.ph,
