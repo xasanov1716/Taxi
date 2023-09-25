@@ -66,13 +66,15 @@ class WalletScreen extends StatelessWidget {
                   onTap: () {
                     Navigator.pushNamed(context, RouteNames.transactionsDetail);
                   },
-                  name: "Daniel Austin",
-                  date: "Dec 20, 2024 | 10:00 AM",
-                  price: 14,
-                  expense: "Taxi Expense",
-                  iconName: AppIcons.arrowUpSquare,
-                  iconColor: AppColors.error,
 
+                  transactionModel: TransactionModel(
+                    name: "Daniel Austin",
+                    date: "Dec 20, 2024 | 10:00 AM",
+                    price: 14,
+                    expense: "Taxi Expense",
+                    iconName: AppIcons.arrowUpSquare,
+                    iconColor: AppColors.error,
+                  ),
                 ),
               )
             ]),
