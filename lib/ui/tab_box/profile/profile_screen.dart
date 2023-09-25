@@ -9,6 +9,8 @@ import 'package:taxi_app/cubits/user/user_cubit.dart';
 import 'package:taxi_app/data/models/icon/icon_type.dart';
 import 'package:taxi_app/data/models/user/user_field_keys.dart';
 import 'package:taxi_app/ui/app_routes.dart';
+import 'package:taxi_app/ui/local_auth/widgets/user_image.dart';
+import 'package:taxi_app/ui/tab_box/profile/sub_screens/help_center/widgets/search_widget.dart';
 import 'package:taxi_app/ui/tab_box/profile/widgets/profile_dialog.dart';
 import 'package:taxi_app/ui/widgets/user_image.dart';
 import 'package:taxi_app/ui/tab_box/profile/widgets/log_out.dart';
@@ -158,7 +160,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ProfileButton(
                     text: "Help Center",
                     icon: AppIcons.infoSquare,
-                    onTap: () {}),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SearchScreen()));
+                    }),
                 ProfileButton(
                     text: "Invite Friends",
                     icon: AppIcons.user3,
