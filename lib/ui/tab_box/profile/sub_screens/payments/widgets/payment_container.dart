@@ -23,7 +23,9 @@ class PaymentContainer extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16.r),
-            color: getTheme(context)?AppColors.dark2:AppColors.white,
+            color: getTheme(context)
+                ? AppColors.dark2
+                : AppColors.white,
             boxShadow: const [
               BoxShadow(
                 // Horizontal and vertical offset
