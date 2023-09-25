@@ -37,7 +37,7 @@ class _HelpDataState extends State<HelpData> {
             width: double.infinity,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16),
-                color: getTheme(context) ? AppColors.black : AppColors.white,),
+                color: getTheme(context) ? AppColors.dark2 : AppColors.white,),
           ),
           Column(
             children: [
