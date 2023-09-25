@@ -7,6 +7,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taxi_app/blocs/create_order/create_order_bloc.dart';
 import 'package:taxi_app/blocs/home/home_bloc.dart';
 import 'package:taxi_app/blocs/messages/message_bloc.dart';
+import 'package:taxi_app/blocs/payment/payment_bloc.dart';
+import 'package:taxi_app/blocs/payment_add/payment_add_bloc.dart';
 import 'package:taxi_app/blocs/search_location_bloc/places_bloc.dart';
 import 'package:taxi_app/cubits/address_cubit/address_cubit.dart';
 import 'package:taxi_app/blocs/social_auth_bloc/social_auth_bloc.dart';
@@ -23,7 +25,7 @@ import 'package:taxi_app/data/repositories/auth_repository.dart';
 import 'package:taxi_app/data/repositories/places_db_repository.dart';
 import 'package:taxi_app/data/repositories/search_history_db.dart';
 import 'package:taxi_app/services/api_service.dart';
-import 'package:taxi_app/ui/app_routes.dart';
+import 'package:taxi_app/ui/tab_box/profile/sub_screens/payments/payment_screen.dart';
 import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/theme/app_theme.dart';
 import 'cubits/category_cubit/category_cubit.dart';
@@ -83,6 +85,8 @@ class App extends StatelessWidget {
           BlocProvider(create: (context) => SocialAuthBloc()),
           BlocProvider(create: (context) => UserCubit()),
           BlocProvider(create: (context) => CreateOrderBloc()),
+          BlocProvider(create: (context) => PaymentBloc()),
+          BlocProvider(create: (context) => PaymentAddBloc()),
           BlocProvider(
             create: (_) => CategoryCubit(),
           ),
@@ -121,8 +125,9 @@ class MyApp extends StatelessWidget {
               debugShowCheckedModeBanner: false,
               theme: theme,
               darkTheme: darkTheme,
-              initialRoute: RouteNames.splashScreen,
-              onGenerateRoute: AppRoutes.generateRoute,
+              home: PaymentsListScreen(),
+              // initialRoute: RouteNames.splashScreen,
+              // onGenerateRoute: AppRoutes.generateRoute,
               localizationsDelegates: context.localizationDelegates,
               supportedLocales: context.supportedLocales,
               locale: context.locale,
