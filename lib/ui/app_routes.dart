@@ -20,6 +20,7 @@ import 'package:taxi_app/ui/auth/login/login_screen.dart';
 import 'package:taxi_app/ui/auth/register/register_screen.dart';
 import 'package:taxi_app/ui/splash/splash_screen.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/edit_profile/edit_profile_screen.dart';
+import 'package:taxi_app/ui/tab_box/profile/sub_screens/help_center/help_center_screen.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/invite_friends/invite_friends.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/language/language_screen.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/notification/control_notification_screen.dart';
@@ -33,6 +34,7 @@ import 'package:taxi_app/ui/tab_box/profile/sub_screens/security/security_screen
 import 'package:taxi_app/ui/tab_box/tab_box.dart';
 import 'package:taxi_app/ui/tab_box/wallet/sub_screens/top_up_amount_screen.dart';
 import 'package:taxi_app/ui/tab_box/wallet/sub_screens/top_up_payment_screen.dart';
+import 'package:taxi_app/ui/tab_box/wallet/sub_screens/transaction_detail_screen.dart';
 import 'package:taxi_app/ui/tab_box/wallet/sub_screens/transaction_history_screen.dart';
 import 'auth/lets_in/lets_in_screen.dart';
 import 'create_order/sub_screens/select_transport/select_transport_screen.dart';
@@ -70,6 +72,7 @@ class RouteNames {
   static const String topUpPaymentScreen = "/top_up_payment_screen";
   static const String addressAddDetailScreen = "/address_add_detail_screen";
   static const String transactionsHistory = "/transaction_histories";
+  static const String transactionsDetail = "/transaction_detail";
   static const String languageScreen = "/language_screen";
   static const String security = "/security";
   static const String privacyPolicy = "/privacy_policy";
@@ -78,6 +81,7 @@ class RouteNames {
   static const String editProfile = "/edit_profile";
   static const String inviteFriends = "/invite_friends";
   static const String welcomeScreen = "/welcome";
+  static const String helpCenterScreen = "/helpCenterScreen";
 }
 
 class AppRoutes {
@@ -90,6 +94,9 @@ class AppRoutes {
       case RouteNames.welcomeScreen:
         return MaterialPageRoute(
           builder: (context) => const WelcomeScreen(),
+        ); case RouteNames.helpCenterScreen:
+        return MaterialPageRoute(
+          builder: (context) => const HelpCenterScreen(),
         );
       case RouteNames.editProfile:
         return MaterialPageRoute(
@@ -223,6 +230,10 @@ class AppRoutes {
       case RouteNames.transactionsHistory:
         return MaterialPageRoute(
           builder: (context) => const TransactionHistoryScreen(),
+        );
+      case RouteNames.transactionsDetail:
+        return MaterialPageRoute(
+          builder: (context) => const TransactionDetailScreen(),
         );
       case RouteNames.addressScreen:
         return MaterialPageRoute(

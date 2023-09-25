@@ -25,6 +25,7 @@ class WalletScreen extends StatelessWidget {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
+            automaticallyImplyLeading: false,
             scrolledUnderElevation: 0,
             expandedHeight: 320 * height / figmaHeight,
             collapsedHeight: 86,
@@ -62,7 +63,10 @@ class WalletScreen extends StatelessWidget {
               ...List.generate(
                 15,
                 (index) => TransactionItem(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pushNamed(context, RouteNames.transactionsDetail);
+                  },
+
                   transactionModel: TransactionModel(
                     name: "Daniel Austin",
                     date: "Dec 20, 2024 | 10:00 AM",

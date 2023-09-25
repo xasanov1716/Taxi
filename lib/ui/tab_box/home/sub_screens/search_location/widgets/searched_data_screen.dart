@@ -4,6 +4,8 @@ import 'package:taxi_app/blocs/search_location_bloc/places_bloc.dart';
 import 'package:taxi_app/data/models/places/district_model.dart';
 import 'package:taxi_app/data/models/places/quarter_model.dart';
 import 'package:taxi_app/data/models/places/region_model.dart';
+import 'package:taxi_app/ui/app_routes.dart';
+import 'package:taxi_app/ui/tab_box/home/sub_screens/location_details/get_location_screen.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/mixins/highlight_text.dart';
