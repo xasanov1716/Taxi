@@ -55,7 +55,7 @@ class InboxChatScreen extends StatelessWidget {
                       width >= 600 ? 0.0005.ph : 10.ph,
                       Text(
                         DateTime.now().toString().substring(10, 16),
-                        style: Theme.of(context).textTheme.bodyMedium,
+                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: width>=1800?8.sp:10.sp ),
                       )
                     ],
                   ),
