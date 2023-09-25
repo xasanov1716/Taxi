@@ -22,49 +22,46 @@ class _PaymentsListScreenState extends State<PaymentsListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-      appBar: GlobalAppBar(
-        title: 'Payment',
-        action: [
-          getIcon(AppIcons.moreCircle, context: context, onTap: () {}),
-        ],
-      ),
-      body: BlocBuilder<PaymentAddBloc, PaymentAddState>(
-        builder: (context, state) {
-          return Column(
-            children: [
-              Expanded(
-                child: ListView(
-                  children: [
-                    12.ph,
-                    ...List.generate(
-                        state.cards.length,
-                            (index) => PaymentContainer(
-                            icon: state.cards[index].paymentIcon,
-                            title: state.cards[index].title,
-                            state: "Connected"))
-                  ],
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        appBar: GlobalAppBar(
+          title: 'Payment',
+          action: [
+            getIcon(AppIcons.moreCircle, context: context, onTap: () {}),
+          ],
+        ),
+        body: BlocBuilder<PaymentAddBloc, PaymentAddState>(
+          builder: (context, state) {
+            return Column(
+              children: [
+                Expanded(
+                  child: ListView(
+                    children: [
+                      12.ph,
+                      ...List.generate(
+                          state.cards.length,
+                          (index) => PaymentContainer(
+                              icon: state.cards[index].paymentIcon,
+                              title: state.cards[index].title,
+                              state: "Connected"))
+                    ],
+                  ),
                 ),
-              ),
-              GlobalButton(
-                padding: EdgeInsets.symmetric(horizontal: 24.w),
-                onTap: () {
-                  // Navigator.pushNamed(context, RouteNames.paymentAddCard);
-                  Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return PaymentAddCardScreen(
-                    );
-                  }));
-                },
-                title: 'Add New Card',
-                color: AppColors.primary,
-                radius: 100,
-              ),
-              48.ph
-            ],
-          );
-        },
-      )
-    );
+                GlobalButton(
+                  padding: EdgeInsets.symmetric(horizontal: 24.w),
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return const PaymentAddCardScreen();
+                    }));
+                  },
+                  title: 'Add New Card',
+                  color: AppColors.primary,
+                  radius: 100,
+                ),
+                48.ph
+              ],
+            );
+          },
+        ));
   }
 }
-

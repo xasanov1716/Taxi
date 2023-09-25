@@ -11,7 +11,9 @@ class PaymentTextField extends StatelessWidget {
       required this.text,
       required this.hintText,
       required this.onChanged,
-       this.maskFormatter, required this.textInputType, required this.textInputAction});
+      this.maskFormatter,
+      required this.textInputType,
+      required this.textInputAction});
 
   final String text;
   final String hintText;
@@ -30,9 +32,7 @@ class PaymentTextField extends StatelessWidget {
             Text(
               text,
               style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                  color: getTheme(context)
-                      ? AppColors.white
-                      : AppColors.dark2,
+                  color: getTheme(context) ? AppColors.white : AppColors.dark2,
                   fontWeight: FontWeight.w700,
                   fontSize: 18.sp,
                   fontFamily: "Urbanist"),
@@ -41,44 +41,60 @@ class PaymentTextField extends StatelessWidget {
         ),
         12.ph,
         TextField(
-          onTapOutside: (event){
+          onTapOutside: (event) {
             FocusManager.instance.primaryFocus?.unfocus();
           },
-           inputFormatters: [maskFormatter!],
-          keyboardType:textInputType,
+          inputFormatters: [maskFormatter!],
+          keyboardType: textInputType,
           textInputAction: textInputAction,
           onChanged: onChanged,
           style: Theme.of(context).textTheme.titleSmall?.copyWith(
-              color: getTheme(context)
-                  ? AppColors.white
-                  : AppColors.dark2,
+              color: getTheme(context) ? AppColors.white : AppColors.dark2,
               fontWeight: FontWeight.w600,
               fontSize: 14.sp,
               fontFamily: "Urbanist"),
           decoration: InputDecoration(
               hintText: hintText,
               hintStyle: Theme.of(context).textTheme.titleSmall?.copyWith(
-                  color: getTheme(context)
-                      ? AppColors.white
-                      : AppColors.dark2,
+                  color: getTheme(context) ? AppColors.white : AppColors.dark2,
                   fontWeight: FontWeight.w600,
                   fontSize: 14.sp,
                   fontFamily: "Urbanist"),
               disabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(16.r),
-                  borderSide: BorderSide(width: 1.w, color: Colors.white)),
+                  borderSide: BorderSide(
+                      width: 1.w,
+                      color: getTheme(context)
+                          ? AppColors.dark2
+                          : AppColors.white)),
               enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(16.r),
-                  borderSide: BorderSide(width: 1.w, color: Colors.white)),
+                  borderSide: BorderSide(
+                      width: 1.w,
+                      color: getTheme(context)
+                          ? AppColors.dark2
+                          : AppColors.white)),
               errorBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(16.r),
-                  borderSide: BorderSide(width: 1.w, color: Colors.white)),
+                  borderSide: BorderSide(
+                      width: 1.w,
+                      color: getTheme(context)
+                          ? AppColors.dark2
+                          : AppColors.white)),
               focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(16.r),
-                  borderSide: BorderSide(width: 1.w, color: Colors.white)),
+                  borderSide: BorderSide(
+                      width: 1.w,
+                      color: getTheme(context)
+                          ? AppColors.dark2
+                          : AppColors.white)),
               focusedErrorBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(16.r),
-                  borderSide: BorderSide(width: 1.w, color: Colors.white))),
+                  borderSide: BorderSide(
+                      width: 1.w,
+                      color: getTheme(context)
+                          ? AppColors.dark2
+                          : AppColors.white))),
         ),
       ],
     );
