@@ -21,7 +21,7 @@ class _HelpCenterScreenState extends State<HelpCenterScreen> {
       initialIndex: 0,
       length: 2,
       child: Scaffold(
-        backgroundColor:getTheme(context)?AppColors.dark1: AppColors.black,
+        backgroundColor:getTheme(context)?AppColors.dark1: AppColors.c_100,
         appBar: AppBar(
           elevation: 0,
           bottom: const TabBar(
