@@ -25,7 +25,7 @@ class _HelpCenterScreenState extends State<HelpCenterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.greysCale,
+      backgroundColor: getTheme(context) ? AppColors.dark2 : AppColors.greysCale,
       appBar: GlobalAppBar(
         title: "Help Center",
         onTap: () {
@@ -43,6 +43,8 @@ class _HelpCenterScreenState extends State<HelpCenterScreen> {
         ),
         child: ListView(
           children: [
+            24.ph,
+            const Categories(),
             SearchScreen(
               onChanged: (hasFocus) {
                 if (hasFocus) {
@@ -74,7 +76,7 @@ class _HelpCenterScreenState extends State<HelpCenterScreen> {
                         ...List.generate(
                             state.length,
                             (index) => ListTile(
-                                  subtitle: Divider(),
+                                  subtitle: const Divider(),
                                   title: Text(
                                     state[index],
                                   ),
