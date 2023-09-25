@@ -7,7 +7,6 @@ import 'package:taxi_app/utils/theme/get_theme.dart';
 
 import '../../../../../utils/colors/app_colors.dart';
 import '../../../../../utils/icons/app_icons.dart';
-import '../../../../../utils/size/screen_size.dart';
 
 class PaymentItem extends StatelessWidget {
   const PaymentItem({super.key, required this.paymentModel, required this.isSelected, required this.onTap});

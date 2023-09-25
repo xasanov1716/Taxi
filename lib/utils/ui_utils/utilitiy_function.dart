@@ -2,9 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:taxi_app/cubits/address_cubit/address_cubit.dart';
 import 'package:taxi_app/cubits/user/user_cubit.dart';
 import 'package:taxi_app/data/models/user/user_field_keys.dart';
+import 'package:taxi_app/ui/widgets/global_button.dart';
+import 'package:taxi_app/ui/widgets/global_input.dart';
+import 'package:taxi_app/utils/icons/app_icons.dart';
+import 'package:taxi_app/utils/size/size_extension.dart';
 
 import '../colors/app_colors.dart';
 import '../size/screen_size.dart';
@@ -115,7 +121,7 @@ Future<void> _getFromGallery(
 IconButton getIcon(
   String iconName, {
   required BuildContext context,
-  required VoidCallback onTap,
+  required VoidCallback? onTap,
 }) =>
     IconButton(
       onPressed: onTap,
@@ -127,3 +133,53 @@ IconButton getIcon(
             BlendMode.srcIn),
       ),
     );
+
+
+void addAddressDialog(BuildContext context, TextEditingController apartmentController,TextEditingController controller,CameraPosition currentCameraPosition, VoidCallback onTap) {
+  showModalBottomSheet(
+    backgroundColor: getTheme(context)? AppColors.dark1: AppColors.c_100,
+    context: context,
+    builder: (BuildContext context) {
+      return Container(
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.horizontal(left: Radius.circular(40.r),right: Radius.circular(40.r))
+        ),
+        child: Padding(
+          padding:  EdgeInsets.all(24.w),
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Center(child: Text('Address Details',style: Theme.of(context).textTheme.labelLarge!.copyWith(fontSize: 24.sp,fontWeight: FontWeight.w700),)),
+                24.ph,
+                const Divider(color: AppColors.c_200,),
+                24.ph,
+                BlocBuilder<AddressCubit,AddressState>(
+                    builder: (context,state) {
+                      if(state is AddressSuccessState){
+                        return Text(state.address,style: Theme.of(context).textTheme.labelLarge!.copyWith(fontSize: 18.sp,fontWeight: FontWeight.w700),);
+                      }
+                      return  Text('Name Address',style: Theme.of(context).textTheme.labelLarge!.copyWith(fontSize: 18),);
+                    }
+                ),
+                16.ph,
+                GlobalTextField(hintText: 'Apartment',controller: apartmentController,),
+                24.ph,
+                Text('Address Details',style: Theme.of(context).textTheme.labelLarge!.copyWith(fontSize: 18.sp,fontWeight: FontWeight.w700),),
+                16.ph,
+                GlobalTextField(controller: controller,hintText: '931 Indian Summer Drive Taylor, MI 48180kg',suffixIcon: Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: SvgPicture.asset(AppIcons.location,colorFilter:  ColorFilter.mode(getTheme(context)? AppColors.white: AppColors.c_900, BlendMode.srcIn),),
+                ),),
+                24.ph,
+                GlobalButton(title: 'Add Address', onTap: onTap,radius: 100.r,color: AppColors.primary,),
+                24.ph
+              ],
+            ),
+          ),
+        ),
+      );
+    },
+  );
+}

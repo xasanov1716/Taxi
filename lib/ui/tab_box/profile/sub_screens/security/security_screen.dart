@@ -61,7 +61,8 @@ class _SecurityScreenState extends State<SecurityScreen> {
                 child: GlobalButton(
                   title: 'Change PIN',
                   onTap: () {
-                    Navigator.pushNamed(context, RouteNames.setPinCodeScreen);
+                    Navigator.pushNamed(context, RouteNames.enterPinScreen,
+                        arguments: true);
                   },
                   color: AppColors.primary,
                 ),

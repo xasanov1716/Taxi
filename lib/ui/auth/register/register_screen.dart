@@ -85,7 +85,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         onTap: () {
                           Navigator.pushReplacementNamed(
                             context,
-                            RouteNames.fillProfile,
+                            RouteNames.editProfile,
+                            arguments: true,
                           );
                         })
                   ],

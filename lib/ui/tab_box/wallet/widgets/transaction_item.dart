@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:taxi_app/data/models/transaction/transaction_model.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 
 import '../../../../data/models/icon/icon_type.dart';
@@ -10,14 +11,9 @@ import '../../../../utils/size/screen_size.dart';
 import '../../../../utils/theme/get_theme.dart';
 
 class TransactionItem extends StatelessWidget {
-  const TransactionItem({super.key, required this.onTap, required this.name, required this.date, required this.price, required this.expense, required this.iconName, required this.iconColor});
+  const TransactionItem({super.key, required this.onTap, required this.transactionModel});
   final VoidCallback onTap;
-  final String name;
-  final String date;
-  final double price;
-  final String expense;
-  final String iconName;
-  final Color iconColor;
+  final TransactionModel transactionModel;
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +34,7 @@ class TransactionItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    name,
+                    transactionModel.name,
                     style:
                     Theme.of(context).textTheme.titleMedium?.copyWith(
                       fontSize: 18.sp,
@@ -47,7 +43,7 @@ class TransactionItem extends StatelessWidget {
                   ),
                   8.ph,
                   Text(
-                    date,
+                    transactionModel.date,
                     style:
                     Theme.of(context).textTheme.titleMedium?.copyWith(
                       fontSize: 14.sp,
@@ -61,7 +57,7 @@ class TransactionItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Text(
-                    "\$$price",
+                    "\$${transactionModel.price}",
                     style: Theme.of(context)
                         .textTheme
                         .titleMedium
@@ -74,7 +70,7 @@ class TransactionItem extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        expense,
+                        transactionModel.expense,
                         style:
                         Theme.of(context).textTheme.titleMedium?.copyWith(
                           fontSize: 14.sp,
@@ -86,8 +82,8 @@ class TransactionItem extends StatelessWidget {
                         height: 20.w,
                         width: 20.w,
                         child: SvgPicture.asset(
-                          AppIcons.getSvg(name: iconName, iconType: IconType.bold),
-                          colorFilter: ColorFilter.mode(iconColor, BlendMode.srcIn),
+                          AppIcons.getSvg(name: transactionModel.iconName, iconType: IconType.bold),
+                          colorFilter: ColorFilter.mode(transactionModel.iconColor, BlendMode.srcIn),
                         ),
                       ),
                     ],

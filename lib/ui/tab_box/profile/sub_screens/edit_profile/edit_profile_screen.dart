@@ -4,26 +4,31 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:taxi_app/cubits/user/user_cubit.dart';
+import 'package:taxi_app/data/models/icon/icon_type.dart';
 import 'package:taxi_app/data/models/user/user_field_keys.dart';
-import 'package:taxi_app/ui/local_auth/widgets/pop_up.dart';
-import 'package:taxi_app/ui/local_auth/widgets/user_image.dart';
 import 'package:taxi_app/ui/app_routes.dart';
-import 'package:taxi_app/ui/widgets/global_appbar.dart';
+import 'package:taxi_app/ui/tab_box/profile/sub_screens/edit_profile/widgets/edit_appbar.dart';
+import 'package:taxi_app/ui/widgets/user_image.dart';
 import 'package:taxi_app/ui/widgets/global_button.dart';
 import 'package:taxi_app/ui/widgets/global_input.dart';
 import 'package:taxi_app/ui/widgets/global_search_input.dart';
 import 'package:taxi_app/ui/widgets/phone_number_text_field.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
+import 'package:taxi_app/utils/fonts/text_styles.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
+import 'package:taxi_app/utils/ui_utils/utilitiy_function.dart';
 
 class EditProfileScreen extends StatefulWidget {
-  const EditProfileScreen({Key? key}) : super(key: key);
+  const EditProfileScreen({super.key, required this.navigateFromAuth});
+
+  final bool navigateFromAuth;
 
   @override
   State<EditProfileScreen> createState() => _EditProfileScreenState();
@@ -32,17 +37,16 @@ class EditProfileScreen extends StatefulWidget {
 class _EditProfileScreenState extends State<EditProfileScreen> {
   DateTime selectedDate = DateTime.now();
   TextEditingController dateController = TextEditingController();
-  TextEditingController gender = TextEditingController();
+  String gender = "Male";
+  ImagePicker picker = ImagePicker();
+  String image = '';
 
   var phoneFormatter = MaskTextInputFormatter(
       mask: '## ### ## ##',
       filter: {"#": RegExp(r'[0-9]')},
       type: MaskAutoCompletionType.lazy);
 
-  List<String> genders = ['Male', 'Female'];
-  String selectGender = '';
-
-  ImagePicker picker = ImagePicker();
+  var genders = ['Male', 'Female'];
 
   String selectItem = '';
   final FocusNode focusNode = FocusNode();
@@ -51,23 +55,16 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   final FocusNode nicknameFocusNode = FocusNode();
   final FocusNode emailFocusNode = FocusNode();
 
-  String image = '';
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: GlobalAppBar(
-          onTap: () {
-            Navigator.pop(context);
-          },
-          title: 'Fill Your Profile'),
+      appBar: const EditAppBar(title: "Edit Profile"),
       body: Padding(
-        padding: EdgeInsets.all(24.h),
+        padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 24.h),
         child: Column(
           children: [
             Expanded(
               child: ListView(
-                physics: const BouncingScrollPhysics(),
                 children: [
                   UserImage(
                       userImage: image.isEmpty
@@ -85,7 +82,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                             ),
                       edit: AppIcons.editSquare,
                       onTap: () {
-                        showBottomSheetDialog(context);
+                        showBottomSheetDialog(context, picker, image);
                       }),
                   24.ph,
                   GlobalTextField(
@@ -131,17 +128,6 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     ),
                   ),
                   24.ph,
-                  GlobalTextField(
-                    focusNode: emailFocusNode,
-                    hintText: 'Email',
-                    keyboardType: TextInputType.emailAddress,
-                    textInputAction: TextInputAction.next,
-                    onChanged: (value) {
-                      context.read<UserCubit>().updateCurrentUserField(
-                          fieldKey: UserFieldKeys.emailAddress, value: value);
-                    },
-                  ),
-                  22.ph,
                   PhoneNumberInput(
                     hintText: 'Phone Number',
                     keyboardType: TextInputType.phone,
@@ -157,73 +143,72 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     textInputAction: TextInputAction.next,
                   ),
                   24.ph,
-                  GlobalTextField(
-                    readOnly: true,
-                    hintText: 'Gender',
-                    suffixIcon: PopupMenuButton<String>(
-                      color: AppColors.white,
-                      child: Icon(Icons.keyboard_arrow_down_sharp),
-                      initialValue: selectGender,
-                      onSelected: (value) {
-                        setState(() {
-                          selectGender = value;
-                        });
-                        gender.text = value;
-                        context.read<UserCubit>().updateCurrentUserField(
-                            fieldKey: UserFieldKeys.gender, value: value);
-                      },
-                      itemBuilder: (BuildContext context) {
-                        return genders.map((String category) {
-                          return PopupMenuItem<String>(
-                            value: category,
-                            child: Text(
-                              category,
-                              style: TextStyle(color: AppColors.c_900),
-                            ),
-                          );
-                        }).toList();
-                      },
+                  Container(
+                    padding:
+                    EdgeInsets.symmetric(horizontal: 20.w, vertical: 6.h),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12.r),
+                      color: getTheme(context)
+                          ? AppColors.dark2
+                          : AppColors
+                          .greysCale, // Use the desired background color
                     ),
-                    controller: gender,
-                    keyboardType: TextInputType.text,
-                    textInputAction: TextInputAction.done,
-                    onChanged: (value) {
-                      context.read<UserCubit>().updateCurrentUserField(
-                          fieldKey: UserFieldKeys.gender, value: value);
-                    },
+                    child: DropdownButton<String>(
+                      isExpanded: true,
+                      underline: const SizedBox(),
+                      dropdownColor: getTheme(context)
+                          ? AppColors.dark2
+                          : AppColors.greysCale,
+                      icon: SvgPicture.asset(
+                        AppIcons.getSvg(
+                            name: AppIcons.arrowDown2, iconType: IconType.bold),
+                        colorFilter: ColorFilter.mode(
+                            getTheme(context)
+                                ? AppColors.white
+                                : AppColors.c_900,
+                            BlendMode.srcIn),
+                      ),
+                      borderRadius: BorderRadius.circular(12.r),
+                      items: genders.map((String items) {
+                        return DropdownMenuItem(
+                          value: items,
+                          child: Text(
+                            items,
+                            style: AppTextStyle.bodyMediumSemibold.copyWith(
+                                color: getTheme(context)
+                                    ? AppColors.white
+                                    : AppColors.c_900),
+                          ),
+                        );
+                      }).toList(),
+                      onChanged: (String? newValue) {
+                        setState(() {
+                          gender = newValue!;
+                        });
+                        context.read<UserCubit>().updateCurrentUserField(
+                            fieldKey: UserFieldKeys.gender, value: newValue);
+                      },
+                      hint: Text(gender,
+                          style: AppTextStyle.bodyMediumSemibold.copyWith(
+                              color: getTheme(context)
+                                  ? AppColors.white
+                                  : AppColors.c_900)), // Placeholder text
+                    ),
                   ),
-                  24.ph,
+                  24.ph
                 ],
               ),
             ),
-            24.ph,
             GlobalButton(
-              color: AppColors.disabledButton,
-              title: "Continue",
-              radius: 100,
-              textColor: AppColors.black,
+              title: "Update",
               onTap: () {
-                // if (context.read<UserCubit>().canRegister()) {
-                //   Navigator.pushNamed(context, RouteNames.setPinCodeScreen);
-                // } else {
-                //   ScaffoldMessenger.of(context).showSnackBar(
-                //     SnackBar(
-                //       backgroundColor:
-                //           getTheme(context) ? AppColors.c_900 : AppColors.c_700,
-                //       content: Text(
-                //         "Maydonlar to'liq emas",
-                //         style: TextStyle(
-                //             color: getTheme(context)
-                //                 ? AppColors.white
-                //                 : AppColors.black),
-                //       ),
-                //     ),
-                //   );
-                // }
-                Navigator.pushNamed(context, RouteNames.setPinCodeScreen);
+                if(widget.navigateFromAuth){
+                  Navigator.pushReplacementNamed(context, RouteNames.setPinCodeScreen);
+                }
               },
-            ),
-            24.ph
+              radius: 100.r,
+              color: AppColors.primary,
+            )
           ],
         ),
       ),
@@ -264,107 +249,6 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
       setState(() {
         selectedDate = pickedDate;
       });
-    }
-  }
-
-  void showBottomSheetDialog(BuildContext context) {
-    showModalBottomSheet(
-      backgroundColor: Colors.transparent,
-      context: context,
-      builder: (BuildContext context) {
-        return Container(
-          padding: EdgeInsets.all(24.w),
-          decoration: BoxDecoration(
-            color: getTheme(context) ? AppColors.c_900 : AppColors.c_700,
-            borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(16),
-              topRight: Radius.circular(16),
-            ),
-          ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.white, width: 2),
-                      borderRadius: BorderRadius.circular(16)),
-                  child: ListTile(
-                    onTap: () {
-                      _getFromCamera();
-                      Navigator.pop(context);
-                    },
-                    leading: const Icon(
-                      Icons.camera_alt,
-                      color: AppColors.white,
-                    ),
-                    title: const Text(
-                      "Select from Camera",
-                      style: TextStyle(color: AppColors.white, fontSize: 20),
-                    ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16),
-                      border: Border.all(color: Colors.white, width: 2)),
-                  child: ListTile(
-                    onTap: () {
-                      _getFromGallery();
-                      Navigator.pop(context);
-                    },
-                    leading: const Icon(
-                      Icons.photo,
-                      color: AppColors.white,
-                    ),
-                    title: const Text(
-                      "Select from Gallery",
-                      style: TextStyle(color: AppColors.white, fontSize: 20),
-                    ),
-                  ),
-                ),
-              )
-            ],
-          ),
-        );
-      },
-    );
-  }
-
-  Future<void> _getFromCamera() async {
-    XFile? xFile = await picker.pickImage(
-      source: ImageSource.camera,
-      maxHeight: 512 * height / figmaHeight,
-      maxWidth: 512 * width / figmaWidth,
-    );
-
-    if (xFile != null && context.mounted) {
-      context.read<UserCubit>().updateCurrentUserField(
-            fieldKey: UserFieldKeys.image,
-            value: xFile.path,
-          );
-      image = xFile.path;
-      setState(() {});
-    }
-  }
-
-  Future<void> _getFromGallery() async {
-    XFile? xFile = await picker.pickImage(
-      source: ImageSource.gallery,
-      maxHeight: 512 * height / figmaHeight,
-      maxWidth: 512 * width / figmaWidth,
-    );
-    if (xFile != null && context.mounted) {
-      context.read<UserCubit>().updateCurrentUserField(
-            fieldKey: UserFieldKeys.image,
-            value: xFile.path,
-          );
-      image = xFile.path;
-      setState(() {});
     }
   }
 }

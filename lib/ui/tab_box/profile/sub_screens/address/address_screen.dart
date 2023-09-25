@@ -36,8 +36,8 @@ class _AddressScreenState extends State<AddressScreen> {
             itemCount: addres.length,
             itemBuilder: (context, index) {
               AddressModel addressModel = addres[index];
-              return AddressItem(image: AppIcons.locationInSearchDb, title: addressModel.name, subtitle: addressModel.appartment, onTap: (){});
-            }, separatorBuilder: (BuildContext context, int index) { 
+              return AddressItem(image: AppIcons.locationInSearchDb, title: addressModel.name, subtitle: addressModel.apartment, onTap: (){});
+            }, separatorBuilder: (BuildContext context, int index) {
               return Divider(
                 color: AppColors.c_200,
                 endIndent:24.w,
@@ -45,17 +45,15 @@ class _AddressScreenState extends State<AddressScreen> {
               );
              },
           )),
-          Padding(
+          GlobalButton(
             padding: EdgeInsets.all(24.h),
-            child: GlobalButton(
-              title: 'Add New Address',
-              radius: 100.r,
-              color: AppColors.primary,
-              onTap: () {
-                Navigator.pushNamed(context, RouteNames.addressAddDetailScreen);
+            title: 'Add New Address',
+            radius: 100.r,
+            color: AppColors.primary,
+            onTap: () {
+              Navigator.pushNamed(context, RouteNames.addressAddDetailScreen);
 
-              },
-            ),
+            },
           ),
           24.ph,
         ],

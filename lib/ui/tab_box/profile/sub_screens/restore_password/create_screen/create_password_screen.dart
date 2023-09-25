@@ -1,10 +1,7 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:lottie/lottie.dart';
-import 'package:taxi_app/blocs/search_location_bloc/places_bloc.dart';
 import 'package:taxi_app/data/models/icon/icon_type.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/restore_password/create_screen/widgets/restorePasswordSuccess.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/restore_password/widgets/checkbox.dart';
@@ -16,6 +13,7 @@ import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
+import 'package:taxi_app/utils/ui_utils/utilitiy_function.dart';
 
 class CreatePasswordScreen extends StatefulWidget {
   const CreatePasswordScreen({super.key});
@@ -64,28 +62,10 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
           24.ph,
           GlobalTextField(
             focusNode: passwordFocusNode,
-            suffixIcon: IconButton(
-              splashColor: null,
-              splashRadius: 2,
-              onPressed: () {
-                setState(() {
-                  isPressed = !isPressed;
-                });
-              },
-              icon: SvgPicture.asset(
-                isPressed
-                    ? AppIcons.getSvg(
-                        name: AppIcons.show, iconType: IconType.bold)
-                    : AppIcons.getSvg(
-                        name: AppIcons.hide, iconType: IconType.bold),
-                colorFilter: ColorFilter.mode(
-                    AdaptiveTheme.of(context).theme ==
-                            AdaptiveTheme.of(context).darkTheme
-                        ? AppColors.white
-                        : AppColors.c_900,
-                    BlendMode.srcIn),
-              ),
-            ),
+            suffixIcon: getIcon(isPressed ? AppIcons.show : AppIcons.hide,
+                context: context, onTap: () {
+              isPressed = !isPressed;
+            }),
             hintText: 'Password',
             obscureText: !isPressed,
             keyboardType: TextInputType.visiblePassword,
@@ -108,27 +88,10 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
           24.ph,
           GlobalTextField(
             focusNode: repeatFocusNode,
-            suffixIcon: IconButton(
-                splashColor: null,
-                splashRadius: 2,
-                onPressed: () {
-                  setState(() {
-                    isPressed2 = !isPressed2;
-                  });
-                },
-                icon: SvgPicture.asset(
-                  isPressed2
-                      ? AppIcons.getSvg(
-                          name: AppIcons.show, iconType: IconType.bold)
-                      : AppIcons.getSvg(
-                          name: AppIcons.hide, iconType: IconType.bold),
-                  colorFilter: ColorFilter.mode(
-                      AdaptiveTheme.of(context).theme ==
-                              AdaptiveTheme.of(context).darkTheme
-                          ? AppColors.white
-                          : AppColors.c_900,
-                      BlendMode.srcIn),
-                )),
+            suffixIcon: getIcon(isPressed ? AppIcons.show : AppIcons.hide,
+                context: context, onTap: () {
+                  isPressed = !isPressed;
+                }),
             hintText: 'Repeat password',
             obscureText: !isPressed2,
             keyboardType: TextInputType.visiblePassword,
