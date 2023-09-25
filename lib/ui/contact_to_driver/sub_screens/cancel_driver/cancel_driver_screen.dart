@@ -29,7 +29,7 @@ class _CancelDriverScreenState extends State<CancelDriverScreen> {
         },
       ),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 24.h),
+        padding: EdgeInsets.symmetric(vertical: 24.h),
         child: Column(
           children: [
             Expanded(
@@ -37,12 +37,15 @@ class _CancelDriverScreenState extends State<CancelDriverScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      "Please select the reason for cancellation:",
-                      style: Theme.of(context)
-                          .textTheme
-                          .titleMedium!
-                          .copyWith(fontSize: 16.sp),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 24.w),
+                      child: Text(
+                        "Please select the reason for cancellation:",
+                        style: Theme.of(context)
+                            .textTheme
+                            .titleMedium!
+                            .copyWith(fontSize: 16.sp),
+                      ),
                     ),
                     24.ph,
                     const CancelDriverCheckBoxRow(
@@ -67,15 +70,21 @@ class _CancelDriverScreenState extends State<CancelDriverScreen> {
                       text: "The price is not reasonable",
                     ),
                     24.ph,
-                    Text(
-                      "Others",
-                      style: Theme.of(context).textTheme.titleLarge,
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 24.w),
+                      child: Text(
+                        "Others",
+                        style: Theme.of(context).textTheme.titleLarge,
+                      ),
                     ),
                     16.ph,
-                    GlobalTextField(
-                      hintText: "Others Reason",
-                      textInputAction: TextInputAction.done,
-                      controller: controller,
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 24.w),
+                      child: GlobalTextField(
+                        hintText: "Others Reason",
+                        textInputAction: TextInputAction.done,
+                        controller: controller,
+                      ),
                     ),
                     24.ph
                   ],
@@ -83,6 +92,7 @@ class _CancelDriverScreenState extends State<CancelDriverScreen> {
               ),
             ),
             GlobalButton(
+              padding: EdgeInsets.symmetric(horizontal: 24.w),
               title: "Submit",
               onTap: () {
                 showGlobalAlertDialog(

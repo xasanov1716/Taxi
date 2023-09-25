@@ -90,7 +90,7 @@ class _SearchingDriverScreenState extends State<SearchingDriverScreen> {
           Positioned(
             bottom: 36.h,
               left: (width-230.w)/2,
-              child: SideCalcelButton(
+              child: SideCancelButton(
                 title: ">> Slide to Cancel ",
                 icon: AppIcons.sideCancel,
                 onTap: (){
