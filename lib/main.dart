@@ -117,7 +117,7 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (context, child) {
         return AdaptiveTheme(
-          light: AppTheme.darkTheme,
+          light: AppTheme.lightTheme,
           dark: AppTheme.darkTheme,
           initial: AdaptiveThemeMode.system,
           builder: (theme, darkTheme) {
@@ -125,9 +125,8 @@ class MyApp extends StatelessWidget {
               debugShowCheckedModeBanner: false,
               theme: theme,
               darkTheme: darkTheme,
-              home: HelpCenterScreen(),
-              /*initialRoute: RouteNames.splashScreen,
-              onGenerateRoute: AppRoutes.generateRoute,*/
+              initialRoute: RouteNames.splashScreen,
+              onGenerateRoute: AppRoutes.generateRoute,
               localizationsDelegates: context.localizationDelegates,
               supportedLocales: context.supportedLocales,
               locale: context.locale,
