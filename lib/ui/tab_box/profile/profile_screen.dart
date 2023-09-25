@@ -2,23 +2,19 @@ import 'dart:io';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:taxi_app/cubits/user/user_cubit.dart';
 import 'package:taxi_app/data/models/icon/icon_type.dart';
-import 'package:taxi_app/data/models/user/user_field_keys.dart';
 import 'package:taxi_app/ui/app_routes.dart';
+import 'package:taxi_app/ui/tab_box/profile/sub_screens/help_center/widgets/search_widget.dart';
 import 'package:taxi_app/ui/tab_box/profile/widgets/profile_dialog.dart';
 import 'package:taxi_app/ui/widgets/user_image.dart';
 import 'package:taxi_app/ui/tab_box/profile/widgets/log_out.dart';
 import 'package:taxi_app/ui/tab_box/profile/widgets/profile_button.dart';
 import 'package:taxi_app/ui/tab_box/profile/widgets/theme_changer_button.dart';
-import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
-import 'package:taxi_app/utils/theme/get_theme.dart';
 import 'package:taxi_app/utils/ui_utils/utilitiy_function.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -158,7 +154,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ProfileButton(
                     text: "Help Center",
                     icon: AppIcons.infoSquare,
-                    onTap: () {}),
+                    onTap: () {
+                      Navigator.pushNamed(context, RouteNames.helpCenterScreen);
+                    }),
                 ProfileButton(
                     text: "Invite Friends",
                     icon: AppIcons.user3,

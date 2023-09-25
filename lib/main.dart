@@ -13,6 +13,7 @@ import 'package:taxi_app/blocs/social_auth_bloc/social_auth_bloc.dart';
 import 'package:taxi_app/cubits/code_input_cubit/code_input_cubit.dart';
 import 'package:taxi_app/cubits/auth_cubit/auth_cubit.dart';
 import 'package:taxi_app/cubits/notifications_cubit/notification_cubit.dart';
+import 'package:taxi_app/cubits/search/search_cubit.dart';
 import 'package:taxi_app/cubits/security_cubit/security_cubit.dart';
 import 'package:taxi_app/cubits/tab/tab_cubit.dart';
 import 'package:taxi_app/data/local/search_location/places_db.dart';
@@ -27,8 +28,9 @@ import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/theme/app_theme.dart';
 import 'cubits/category_cubit/category_cubit.dart';
+import 'cubits/help_center/help_center_category_cubit.dart';
 import 'cubits/user/user_cubit.dart';
-
+import 'ui/tab_box/profile/sub_screens/help_center/help_center_screen.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await StorageRepository.getInstance();
@@ -87,6 +89,8 @@ class App extends StatelessWidget {
             create: (_) => CategoryCubit(),
           ),
           BlocProvider(create: (context) => MessageBloc()),
+          BlocProvider(create: (context) => SearchCubit()),
+          BlocProvider(create: (context) => HelpCenterCategoryCubit()),
         ],
         child: EasyLocalization(
             supportedLocales: const [

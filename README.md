@@ -4,7 +4,7 @@ In today's world, “on-demand ” has become a popular practice. People can boo
 
 According to Statista, the ride-hailing market in the United States will generate $30,839 million in revenue in 2020. By 2025, revenue is estimated to expand at an annual rate of 18.8 percent, resulting in a market volume of $73,120 million.
 
-Both companies and passengers benefit from cab booking applications. It assists customers in having a pleasant journey, as well as companies in expanding and strengthening their brands. Let's start with the customer-side benefits of on-demand taxi app development before moving on to the company benefits.
+Both companies and passengers benefit from cab booking applications.  It assists customers in having a pleasant journey, as well as companies in expanding and strengthening their brands. Let's start with the customer-side benefits of on-demand taxi app development before moving on to the company benefits.
 
 Customers' Benefits of Taxi Booking Apps
 Check out why people prefer taking cab rides from different places.

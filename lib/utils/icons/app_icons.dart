@@ -212,7 +212,16 @@ class AppIcons {
   static const String rateStar = "assets/svg/others/rate_star.svg";
   static const String copy = "assets/svg/others/copy.svg";
   static const String visa = "assets/svg/others/visa.svg";
+  static const String arrowDownTwo="assets/svg/others/arrow_down2.svg";
   static const String copyTransaction = "assets/svg/others/copy_transaction.svg";
+
+  //help_screen_social_icons
+  static const String head="assets/svg/others/help_screen_head.svg";
+  static const String instagram="assets/svg/others/help_screen_instagram.svg";
+  static const String twitter="assets/svg/others/help_screen_twitter.svg";
+  static const String web="assets/svg/others/help_screen_web.svg";
+  static const String whatsapp="assets/svg/others/help_screen_whatsapp.svg";
+  static const String helpfacebook="assets/svg/others/help_scren_facebook.svg";
 
 
   // additional icons
