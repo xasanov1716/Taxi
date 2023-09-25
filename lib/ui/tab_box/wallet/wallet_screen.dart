@@ -60,21 +60,21 @@ class WalletScreen extends StatelessWidget {
           SliverList(
             delegate: SliverChildListDelegate([
               12.ph,
-              ...List.generate(
-                15,
-                (index) => TransactionItem(
-                  onTap: () {
-                    Navigator.pushNamed(context, RouteNames.transactionsDetail);
-                  },
-                  name: "Daniel Austin",
-                  date: "Dec 20, 2024 | 10:00 AM",
-                  price: 14,
-                  expense: "Taxi Expense",
-                  iconName: AppIcons.arrowUpSquare,
-                  iconColor: AppColors.error,
-
-                ),
-              )
+              // ...List.generate(
+              //   15,
+              //   // (index) => TransactionItem(
+              //   //   onTap: () {
+              //   //     Navigator.pushNamed(context, RouteNames.transactionsDetail);
+              //   //   },
+              //   //   name: "Daniel Austin",
+              //   //   date: "Dec 20, 2024 | 10:00 AM",
+              //   //   price: 14,
+              //   //   expense: "Taxi Expense",
+              //   //   iconName: AppIcons.arrowUpSquare,
+              //   //   iconColor: AppColors.error,
+              //   //
+              //   // ),
+              // )
             ]),
           ),
         ],
