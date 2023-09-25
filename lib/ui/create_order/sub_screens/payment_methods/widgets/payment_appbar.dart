@@ -1,28 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:taxi_app/utils/ui_utils/utilitiy_function.dart';
 
-import '../../../../../utils/colors/app_colors.dart';
 import '../../../../../utils/icons/app_icons.dart';
-import '../../../../../utils/theme/get_theme.dart';
 
-class PaymentAppbar extends StatelessWidget implements PreferredSize{
+class PaymentAppbar extends StatelessWidget implements PreferredSize {
   const PaymentAppbar({super.key, required this.onTap});
+
   final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-        leading: IconButton(
-          padding: EdgeInsets.zero,
-          onPressed: (){ Navigator.pop(context); },
-          icon: SvgPicture.asset(
-            AppIcons.arrowLeft,
-            colorFilter: ColorFilter.mode(
-                getTheme(context) ? AppColors.white : AppColors.c_900,
-                BlendMode.srcIn),
-          ),
-        ),
+        leading: getIcon(AppIcons.arrowLeft, context: context, onTap: () {
+          Navigator.pop(context);
+        }),
         elevation: 0,
         title: Text(
           "Payment Methods",
@@ -31,10 +23,12 @@ class PaymentAppbar extends StatelessWidget implements PreferredSize{
               .titleMedium!
               .copyWith(fontSize: 24.sp, fontWeight: FontWeight.w700),
         ),
-        actions: [IconButton(onPressed: onTap, icon: SizedBox(height: 24.w, width: 24.w,child: SvgPicture.asset(AppIcons.plus, colorFilter: ColorFilter.mode(
-            getTheme(context) ? AppColors.white : AppColors.c_900,
-            BlendMode.srcIn),),),), SizedBox(width: 10.w,)]
-    );
+        actions: [
+          getIcon(AppIcons.plus, context: context, onTap: onTap),
+          SizedBox(
+            width: 10.w,
+          )
+        ]);
   }
 
   @override

@@ -8,13 +8,13 @@ import 'package:taxi_app/ui/widgets/global_button.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
+import 'package:taxi_app/utils/ui_utils/utilitiy_function.dart';
 
 class PaymentsListScreen extends StatelessWidget {
   const PaymentsListScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-
     List<List> payments = [
       [AppIcons.payPal, 'PayPal', 'Connected'],
       [AppIcons.googlePay, 'Google Pay', 'Connected'],
@@ -27,8 +27,7 @@ class PaymentsListScreen extends StatelessWidget {
       appBar: GlobalAppBar(
         title: 'Payment',
         action: [
-          IconButton(
-              onPressed: () {}, icon: SvgPicture.asset(AppIcons.moreCircle))
+          getIcon(AppIcons.moreCircle, context: context, onTap: () {}),
         ],
       ),
       body: Column(
@@ -39,16 +38,21 @@ class PaymentsListScreen extends StatelessWidget {
                 12.ph,
                 ...List.generate(
                     payments.length,
-                    (index) =>
-                        PaymentContainer(icon: payments[index][0], title: payments[index][1], state: payments[index][2]))
+                    (index) => PaymentContainer(
+                        icon: payments[index][0],
+                        title: payments[index][1],
+                        state: payments[index][2]))
               ],
             ),
           ),
-          Padding(
+          GlobalButton(
             padding: EdgeInsets.symmetric(horizontal: 24.w),
-            child: GlobalButton(onTap: () {
+            onTap: () {
               Navigator.pushNamed(context, RouteNames.paymentAddCard);
-            },title: 'Add New Card',color: AppColors.primary,radius: 100,),
+            },
+            title: 'Add New Card',
+            color: AppColors.primary,
+            radius: 100,
           ),
           48.ph
         ],

@@ -10,14 +10,14 @@ import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/ui_utils/error_message_dialog.dart';
 
-class BiometricsScreen extends StatefulWidget {
-  const BiometricsScreen({super.key});
+class SetBiometricsScreen extends StatefulWidget {
+  const SetBiometricsScreen({super.key});
 
   @override
-  State<BiometricsScreen> createState() => _BiometricsScreenState();
+  State<SetBiometricsScreen> createState() => _SetBiometricsScreenState();
 }
 
-class _BiometricsScreenState extends State<BiometricsScreen> {
+class _SetBiometricsScreenState extends State<SetBiometricsScreen> {
   bool isAuth = false;
   final LocalAuthentication auth = LocalAuthentication();
 
@@ -50,10 +50,9 @@ class _BiometricsScreenState extends State<BiometricsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: GlobalAppBar(
-          onTap: () {
-            Navigator.pop(context);
-          },
-          title: "Barmoq izingizni oʻrnating"),
+        onTap: null,
+        title: "Barmoq izingizni oʻrnating",
+      ),
       body: Padding(
         padding: const EdgeInsets.only(left: 24, right: 24, bottom: 48),
         child: Column(

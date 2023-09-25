@@ -4,6 +4,7 @@ class StorageKeys {
   static const String pinCode = "code";
   static const String themeKey = "theme_mode";
   static const String languageKey = 'language_key';
+  static const String welcomeDone = 'welcomeDone';
   static const String generalNotifications = "General Notification";
   static final String soundNotifications = tr("sound");
   static const String vibrateNotifications = "Vibrate";

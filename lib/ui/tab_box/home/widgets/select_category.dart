@@ -6,6 +6,8 @@ import 'package:taxi_app/cubits/category_cubit/category_cubit.dart';
 import 'category_tile.dart';
 
 class CategoryOfAddress extends StatelessWidget {
+  const CategoryOfAddress({super.key});
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<CategoryCubit, String>(

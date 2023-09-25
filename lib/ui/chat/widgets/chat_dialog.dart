@@ -1,24 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:taxi_app/cubits/user/user_cubit.dart';
-import 'package:taxi_app/data/models/user/user_field_keys.dart';
+import 'package:taxi_app/blocs/messages/message_bloc.dart';
+import 'package:taxi_app/blocs/messages/message_event.dart';
+import 'package:taxi_app/data/models/message/message_model.dart';
+import 'package:taxi_app/utils/colors/app_colors.dart';
+import 'package:taxi_app/utils/theme/get_theme.dart';
 
-import '../colors/app_colors.dart';
-import '../size/screen_size.dart';
-import '../theme/get_theme.dart';
-
-void showBottomSheetDialog(
-    BuildContext context, ImagePicker picker, String image) {
+void chatDialog(BuildContext context,{required ImagePicker picker}) {
   showModalBottomSheet(
     backgroundColor: Colors.transparent,
     context: context,
     builder: (BuildContext context) {
       return Container(
         padding: EdgeInsets.all(24.w),
-        height: 250 * height / figmaHeight,
         decoration: BoxDecoration(
           color: getTheme(context) ? AppColors.c_900 : AppColors.c_700,
           borderRadius: const BorderRadius.only(
@@ -27,6 +23,7 @@ void showBottomSheetDialog(
           ),
         ),
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -36,8 +33,7 @@ void showBottomSheetDialog(
                     borderRadius: BorderRadius.circular(16)),
                 child: ListTile(
                   onTap: () {
-                    _getFromCamera(context, picker, image);
-                    Navigator.pop(context);
+                    _getFromCamera(picker: picker,context: context);
                   },
                   leading: const Icon(
                     Icons.camera_alt,
@@ -58,8 +54,7 @@ void showBottomSheetDialog(
                     border: Border.all(color: Colors.white, width: 2)),
                 child: ListTile(
                   onTap: () {
-                    _getFromGallery(context, picker, image);
-                    Navigator.pop(context);
+                    _getFromGallery(picker: picker,context: context);
                   },
                   leading: const Icon(
                     Icons.photo,
@@ -79,51 +74,43 @@ void showBottomSheetDialog(
   );
 }
 
-Future<void> _getFromCamera(
-    BuildContext context, ImagePicker picker, String image) async {
-  XFile? xFile = await picker.pickImage(
-    source: ImageSource.camera,
-    maxHeight: 512 * height / figmaHeight,
-    maxWidth: 512 * width / figmaWidth,
-  );
-
-  if (xFile != null && context.mounted) {
-    context.read<UserCubit>().updateCurrentUserField(
-          fieldKey: UserFieldKeys.image,
-          value: xFile.path,
-        );
-    image = xFile.path;
-  }
-}
-
-Future<void> _getFromGallery(
-    BuildContext context, ImagePicker picker, String image) async {
-  XFile? xFile = await picker.pickImage(
-    source: ImageSource.gallery,
-    maxHeight: 512 * height / figmaHeight,
-    maxWidth: 512 * width / figmaWidth,
-  );
-  if (xFile != null && context.mounted) {
-    context.read<UserCubit>().updateCurrentUserField(
-          fieldKey: UserFieldKeys.image,
-          value: xFile.path,
-        );
-    image = xFile.path;
-  }
-}
-
-IconButton getIcon(
-  String iconName, {
-  required BuildContext context,
-  required VoidCallback? onTap,
-}) =>
-    IconButton(
-      onPressed: onTap,
-      icon: SvgPicture.asset(
-        iconName,
-        width: 24.w,
-        colorFilter: ColorFilter.mode(
-            getTheme(context) ? AppColors.white : AppColors.c_900,
-            BlendMode.srcIn),
+Future<void> _getFromGallery({required ImagePicker picker, required BuildContext context}) async {
+  List<String> images = [];
+  List<XFile>? xFiles = await picker.pickMultiImage();
+  if (context.mounted) {
+    images = xFiles.map((file) => file.path).toList();
+    context.read<MessageBloc>().add(
+      SendMessage(
+        messageModel: MessageModel(
+          receiverName: '',
+          senderName: '',
+          dateTime: DateTime.now().toString(),
+          image: images,
+        ),
       ),
     );
+    images = [];
+  }
+}
+
+Future<void> _getFromCamera({required ImagePicker picker, required BuildContext context}) async {
+  List<String> images = [];
+  XFile? xFile = await picker.pickImage(
+    source: ImageSource.camera,
+  );
+
+  if (xFile != null && context.mounted) {
+    images.add(xFile.path);
+    context.read<MessageBloc>().add(
+      SendMessage(
+        messageModel: MessageModel(
+          receiverName: '',
+          senderName: '',
+          dateTime: DateTime.now().toString(),
+          image: images,
+        ),
+      ),
+    );
+    images = [];
+  }
+}

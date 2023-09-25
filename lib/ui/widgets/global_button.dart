@@ -14,6 +14,7 @@ class GlobalButton extends StatelessWidget {
     this.rightIcon = "",
     this.borderColor = Colors.transparent,
     required this.onTap,
+    this.padding,
   });
 
   final Color color;
@@ -25,10 +26,12 @@ class GlobalButton extends StatelessWidget {
   final String leftIcon;
   final Color borderColor;
   final VoidCallback onTap;
+  final EdgeInsets? padding;
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: padding,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(radius),
           boxShadow: [

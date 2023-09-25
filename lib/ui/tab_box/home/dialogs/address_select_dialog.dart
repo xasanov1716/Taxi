@@ -4,7 +4,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:taxi_app/ui/tab_box/home/widgets/saved_places.dart';
 import 'package:taxi_app/ui/tab_box/home/widgets/text_field_item.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
-import 'package:taxi_app/utils/theme/get_theme.dart';
 import '../../../../data/models/icon/icon_type.dart';
 import '../../../../utils/colors/app_colors.dart';
 import '../../../../utils/icons/app_icons.dart';
@@ -122,16 +121,14 @@ addressSelectDialog(BuildContext context) {
                   ),
                 ),
                 12.ph,
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 24.w),
-                  child: GlobalButton(
-                      textColor: AppColors.black,
-                      color: AppColors.primary,
-                      title: "Keyingisi",
-                      onTap: () {
-                        Navigator.pop(context);
-                      }),
-                ),
+                GlobalButton(
+                    padding: EdgeInsets.symmetric(horizontal: 24.w),
+                    textColor: AppColors.black,
+                    color: AppColors.primary,
+                    title: "Keyingisi",
+                    onTap: () {
+                      Navigator.pop(context);
+                    }),
                 16.ph
               ],
             ),

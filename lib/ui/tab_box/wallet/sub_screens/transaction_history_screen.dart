@@ -7,6 +7,8 @@ import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/ui_utils/utilitiy_function.dart';
 
+import '../../../../data/models/transaction/transaction_model.dart';
+
 class TransactionHistoryScreen extends StatelessWidget {
   const TransactionHistoryScreen({super.key});
 
