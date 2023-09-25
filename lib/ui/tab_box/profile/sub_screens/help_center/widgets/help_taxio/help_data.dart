@@ -33,7 +33,7 @@ class _HelpDataState extends State<HelpData> {
       child: Stack(
         children: [
           Container(
-            height: 70,
+            height: 70.h,
             width: double.infinity,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16),
@@ -73,7 +73,7 @@ class _HelpDataState extends State<HelpData> {
                         margin:EdgeInsets.only(left: 24*width/figmaWidth ,top: 15*width/figmaWidth,right: 24*width/figmaWidth, ),
                         height: 2,
                         width: double.infinity,
-                        color: AppColors.black.withOpacity(0.2),
+                        color: (getTheme(context) ? AppColors.white : AppColors.black).withOpacity(0.2),
                       ),
                       Padding(
                         padding:EdgeInsets.only(left: 24*width/figmaWidth ,top: 15*width/figmaWidth,right: 24*width/figmaWidth, bottom: 9*width/figmaWidth,),
