@@ -103,11 +103,7 @@ class _AddressAddDetailScreenState extends State<AddressAddDetailScreen> {
             initialCameraPosition: initialCameraPosition,
           ),
           Align(
-            child: Icon(
-              Icons.location_pin,
-              color: Colors.red,
-              size: onCameraMoveStarted ? 50.w : 32.w,
-            ),
+            child: Image.asset(AppIcons.myLocation,height: onCameraMoveStarted ? 50.w : 40.w,width: onCameraMoveStarted ? 50.w : 32.w,)
           ),
           Align(
             alignment: Alignment.topCenter,
