@@ -213,6 +213,17 @@ class AppIcons {
   static const String arrowDownTwo="assets/svg/others/arrow_down2.svg";
 
 
+
+  //help_screen_social_icons
+  static const String head="assets/svg/others/help_screen_head.svg";
+  static const String instagram="assets/svg/others/help_screen_instagram.svg";
+  static const String twitter="assets/svg/others/help_screen_twitter.svg";
+  static const String web="assets/svg/others/help_screen_web.svg";
+  static const String whatsapp="assets/svg/others/help_screen_whatsapp.svg";
+  static const String helpfacebook="assets/svg/others/help_scren_facebook.svg";
+
+
+
   // additional icons
   static const String bank = "assets/svg/additional_icons/bank.svg";
   static const String bike2 = "assets/svg/additional_icons/bike.svg";
