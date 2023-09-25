@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:taxi_app/blocs/payment_add/payment_add_bloc.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/payments/payment_add_card_screen.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/payments/widgets/payment_container.dart';
@@ -9,6 +10,7 @@ import 'package:taxi_app/ui/widgets/global_button.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
+import 'package:taxi_app/utils/theme/get_theme.dart';
 import 'package:taxi_app/utils/ui_utils/utilitiy_function.dart';
 
 class PaymentsListScreen extends StatefulWidget {
@@ -23,10 +25,32 @@ class _PaymentsListScreenState extends State<PaymentsListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-        appBar: GlobalAppBar(
-          title: 'Payment',
-          action: [
-            getIcon(AppIcons.moreCircle, context: context, onTap: () {}),
+        appBar: AppBar(
+          scrolledUnderElevation: 0,
+          elevation: 0,
+          leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: SvgPicture.asset(
+              AppIcons.arrowLeft,
+              colorFilter: ColorFilter.mode(
+                  getTheme(context) ? AppColors.white : AppColors.black,
+                  BlendMode.srcIn),
+            ),
+          ),
+          title: Text("Payment",
+              style: Theme.of(context).appBarTheme.titleTextStyle),
+          actions: [
+            IconButton(
+              onPressed: () {},
+              icon: SvgPicture.asset(
+                AppIcons.moreCircle,
+                colorFilter: ColorFilter.mode(
+                    getTheme(context) ? AppColors.white : AppColors.black,
+                    BlendMode.srcIn),
+              ),
+            ),
           ],
         ),
         body: BlocBuilder<PaymentAddBloc, PaymentAddState>(
