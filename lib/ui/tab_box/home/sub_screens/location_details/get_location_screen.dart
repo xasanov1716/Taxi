@@ -9,7 +9,8 @@ import 'package:taxi_app/data/models/icon/icon_type.dart';
 import 'package:taxi_app/ui/widgets/global_button.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
-import 'package:taxi_app/utils/theme/get_theme.dart';
+import 'package:taxi_app/utils/size/screen_size.dart';
+import 'package:taxi_app/utils/ui_utils/utilitiy_function.dart';
 
 class GetLocationScreen extends StatefulWidget {
   const GetLocationScreen({Key? key, required this.text}) : super(key: key);
@@ -30,19 +31,11 @@ class _GetLocationScreenState extends State<GetLocationScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          padding: EdgeInsets.zero,
-          onPressed: () {Navigator.pop(context);},
-          icon: Platform.isIOS
-              ? Icon(
-                  Icons.arrow_back_ios,
-                  color: getTheme(context) ? AppColors.white : AppColors.c_900,
-                )
-              : SvgPicture.asset(
-                  AppIcons.arrowLeft,
-                  color: getTheme(context) ? AppColors.white : AppColors.c_900,
-                ),
-        ),
+        leading: getIcon(
+            Platform.isIOS ? AppIcons.arrowLeft : AppIcons.arrowLeft,
+            context: context, onTap: () {
+          Navigator.pop(context);
+        }),
         title: Text(
           "Location Details",
           style: Theme.of(context)
@@ -51,13 +44,11 @@ class _GetLocationScreenState extends State<GetLocationScreen> {
               .copyWith(fontSize: 24.sp, fontWeight: FontWeight.w700),
         ),
         actions: [
-          IconButton(
-            onPressed: () {
-              // Handle more button press here.
-            },
-            icon: SvgPicture.asset(AppIcons.moreCircle),
-            color: getTheme(context) ? AppColors.white : AppColors.c_900,
-          )
+          getIcon(
+              AppIcons.moreCircle,
+              context: context, onTap: () {
+            Navigator.pop(context);
+          }),
         ],
       ),
       body: AnnotatedRegion(
@@ -84,9 +75,9 @@ class _GetLocationScreenState extends State<GetLocationScreen> {
               children: [
                 Center(
                   child: SvgPicture.asset(
-                  AppIcons.frame,
-                  width: svgWidth,
-                    ),
+                    AppIcons.frame,
+                    width: svgWidth,
+                  ),
                 ),
                 Positioned.fill(
                   child: Center(
@@ -140,23 +131,20 @@ class _GetLocationScreenState extends State<GetLocationScreen> {
               child: Container(
                 height: 118.h,
                 decoration: BoxDecoration(
-                  borderRadius:  BorderRadius.only(
+                  borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(24.r),
                       topRight: Radius.circular(24.r)),
                   color: Theme.of(context).scaffoldBackgroundColor,
                 ),
-                child: Padding(
-                  padding: EdgeInsets.only(
-                      left: 24.0.w, right: 24.0.w, top: 24.0.h, bottom: 36.0.h),
-                  child: GlobalButton(
-                    color: AppColors.primary,
-                    title: 'Continue',
-                    radius: 100.r,
-                    textColor: AppColors.black,
-                    onTap: () {
-                      // Handle button tap here.
-                    },
-                  ),
+                child: GlobalButton(
+                  padding: EdgeInsets.all(width/16),
+                  color: AppColors.primary,
+                  title: 'Continue',
+                  radius: 100.r,
+                  textColor: AppColors.black,
+                  onTap: () {
+                    // Handle button tap here.
+                  },
                 ),
               ),
             ),

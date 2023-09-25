@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:taxi_app/data/models/transaction/transaction_model.dart';
 import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/ui/tab_box/wallet/widgets/card_item.dart';
 import 'package:taxi_app/ui/tab_box/wallet/widgets/transaction_item.dart';
@@ -24,6 +25,7 @@ class WalletScreen extends StatelessWidget {
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
+            automaticallyImplyLeading: false,
             scrolledUnderElevation: 0,
             expandedHeight: 320 * height / figmaHeight,
             collapsedHeight: 86,
@@ -62,12 +64,14 @@ class WalletScreen extends StatelessWidget {
                 15,
                 (index) => TransactionItem(
                   onTap: () {},
-                  name: "Daniel Austin",
-                  date: "Dec 20, 2024 | 10:00 AM",
-                  price: 14,
-                  expense: "Taxi Expense",
-                  iconName: AppIcons.arrowUpSquare,
-                  iconColor: AppColors.error,
+                  transactionModel: TransactionModel(
+                    name: "Daniel Austin",
+                    date: "Dec 20, 2024 | 10:00 AM",
+                    price: 14,
+                    expense: "Taxi Expense",
+                    iconName: AppIcons.arrowUpSquare,
+                    iconColor: AppColors.error,
+                  ),
                 ),
               )
             ]),

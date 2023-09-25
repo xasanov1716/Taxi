@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:taxi_app/data/models/icon/icon_type.dart';
 import 'package:taxi_app/ui/widgets/date_formatter.dart';
-import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
+import 'package:taxi_app/utils/ui_utils/utilitiy_function.dart';
 
 class InboxCallScreen extends StatelessWidget {
   const InboxCallScreen({super.key, required this.onTapCall});
@@ -49,15 +49,7 @@ class InboxCallScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                  trailing: IconButton(
-                    onPressed: onTapCall,
-                    icon: SvgPicture.asset(
-                      AppIcons.call,
-                      colorFilter: const ColorFilter.mode(
-                          AppColors.primary, BlendMode.srcIn),
-                    ),
-
-                  ),
+                  trailing: getIcon(AppIcons.call, context: context, onTap: onTapCall),
                 ),
               ),
             ],

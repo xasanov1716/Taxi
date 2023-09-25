@@ -6,7 +6,6 @@ import 'package:taxi_app/blocs/create_order/create_order_bloc.dart';
 import 'package:taxi_app/data/models/icon/icon_type.dart';
 import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/ui/create_order/sub_screens/select_transport/widgets/select_transport_functions.dart';
-import 'package:taxi_app/ui/widgets/global_button.dart';
 import 'package:taxi_app/ui/widgets/global_input.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';

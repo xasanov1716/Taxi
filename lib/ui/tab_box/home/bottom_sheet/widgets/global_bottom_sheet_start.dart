@@ -4,7 +4,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 import '../../../../../utils/colors/app_colors.dart';
 import '../../../../../utils/icons/app_icons.dart';
-import '../../../../../utils/size/screen_size.dart';
 import '../../../../../utils/theme/get_theme.dart';
 
 class GlobalBottomSheetStart extends StatelessWidget {

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:taxi_app/utils/ui_utils/utilitiy_function.dart';
 
-import '../../../utils/colors/app_colors.dart';
-import '../../../utils/size/screen_size.dart';
+import '../../utils/colors/app_colors.dart';
+import '../../utils/size/screen_size.dart';
 
 class UserImage extends StatefulWidget {
   const UserImage({
@@ -43,16 +43,7 @@ class _UserImageState extends State<UserImage> {
               Positioned(
                 bottom: 0.h,
                 right: 0,
-                child: IconButton(
-                  onPressed: widget.onTap,
-                  icon: SvgPicture.asset(
-                    widget.edit,
-                    colorFilter: const ColorFilter.mode(
-                        AppColors.primary, BlendMode.srcIn),
-                    width: 25 * width / figmaWidth,
-                    height: 25 * height / figmaHeight,
-                  ),
-                ),
+                child: getIcon(widget.edit, context: context, onTap: widget.onTap),
               ),
             ],
           ),

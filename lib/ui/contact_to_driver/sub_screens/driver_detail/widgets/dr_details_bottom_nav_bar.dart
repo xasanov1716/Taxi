@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taxi_app/data/models/icon/icon_type.dart';
-import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/ui/contact_to_driver/sub_screens/driver_detail/widgets/icons_container/icons_container_screen.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';

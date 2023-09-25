@@ -6,6 +6,8 @@ import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/ui_utils/utilitiy_function.dart';
 
+import '../../../../data/models/transaction/transaction_model.dart';
+
 class TransactionHistoryScreen extends StatelessWidget {
   const TransactionHistoryScreen({super.key});
 
@@ -29,12 +31,14 @@ class TransactionHistoryScreen extends StatelessWidget {
             100,
             (index) => TransactionItem(
               onTap: () {},
-              name: "Daniel Austin",
-              date: "Dec 20, 2024 | 10:00 AM",
-              price: 14,
-              expense: "Taxi Expense",
-              iconName: AppIcons.arrowUpSquare,
-              iconColor: AppColors.error,
+              transactionModel: TransactionModel(
+                name: "Daniel Austin",
+                date: "Dec 20, 2024 | 10:00 AM",
+                price: 14,
+                expense: "Taxi Expense",
+                iconName: AppIcons.arrowUpSquare,
+                iconColor: AppColors.error,
+              ),
             ),
           )
         ],

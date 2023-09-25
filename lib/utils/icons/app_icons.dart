@@ -210,6 +210,7 @@ class AppIcons {
   static const String rateStar = "assets/svg/others/rate_star.svg";
   static const String copy = "assets/svg/others/copy.svg";
   static const String visa = "assets/svg/others/visa.svg";
+  static const String arrowDownTwo="assets/svg/others/arrow_down2.svg";
 
 
   // additional icons
@@ -256,4 +257,5 @@ class AppIcons {
   static const String redOffer = "assets/svg/others/red_offer.svg";
   static const String yellowOffer = "assets/svg/others/yellow_offer.svg";
   static const String promoCode = "assets/svg/others/promo_code.svg";
+  static const String pinFilled = "assets/svg/others/pin_filled.svg";
 }
