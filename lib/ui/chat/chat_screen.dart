@@ -7,6 +7,7 @@ import 'package:taxi_app/blocs/messages/message_event.dart';
 import 'package:taxi_app/blocs/messages/message_state.dart';
 import 'package:taxi_app/data/models/message/message_model.dart';
 import 'package:taxi_app/ui/chat/widgets/audio_container.dart';
+import 'package:taxi_app/ui/chat/widgets/chat_dialog.dart';
 import 'package:taxi_app/ui/chat/widgets/image_container.dart';
 import 'package:taxi_app/ui/chat/widgets/message_container.dart';
 import 'package:taxi_app/ui/chat/widgets/send_message_textfield.dart';
@@ -26,8 +27,6 @@ class ChatScreen extends StatefulWidget {
 
 class _ChatScreenState extends State<ChatScreen> {
   ImagePicker picker = ImagePicker();
-
-  List<String> images = [];
 
   String value = '';
 
@@ -116,7 +115,7 @@ class _ChatScreenState extends State<ChatScreen> {
               ),
               SendMessageTextField(
                 onSuffixIconTap: () {
-                  showBottomSheetDialog(context);
+                  chatDialog(context,picker: picker);
                 },
                 onChanged: (v) {
                   setState(() {
@@ -144,110 +143,5 @@ class _ChatScreenState extends State<ChatScreen> {
         },
       ),
     );
-  }
-
-  void showBottomSheetDialog(BuildContext context) {
-    showModalBottomSheet(
-      backgroundColor: Colors.transparent,
-      context: context,
-      builder: (BuildContext context) {
-        return Container(
-          padding: EdgeInsets.all(24.w),
-          decoration: BoxDecoration(
-            color: getTheme(context) ? AppColors.c_900 : AppColors.c_700,
-            borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(16),
-              topRight: Radius.circular(16),
-            ),
-          ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                      border: Border.all(color: Colors.white, width: 2),
-                      borderRadius: BorderRadius.circular(16)),
-                  child: ListTile(
-                    onTap: () {
-                      _getFromCamera();
-                    },
-                    leading: const Icon(
-                      Icons.camera_alt,
-                      color: AppColors.white,
-                    ),
-                    title: const Text(
-                      "Select from Camera",
-                      style: TextStyle(color: AppColors.white, fontSize: 20),
-                    ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16),
-                      border: Border.all(color: Colors.white, width: 2)),
-                  child: ListTile(
-                    onTap: () {
-                      _getFromGallery();
-                    },
-                    leading: const Icon(
-                      Icons.photo,
-                      color: AppColors.white,
-                    ),
-                    title: const Text(
-                      "Select from Gallery",
-                      style: TextStyle(color: AppColors.white, fontSize: 20),
-                    ),
-                  ),
-                ),
-              )
-            ],
-          ),
-        );
-      },
-    );
-  }
-
-  Future<void> _getFromCamera() async {
-    XFile? xFile = await picker.pickImage(
-      source: ImageSource.camera,
-    );
-
-    if (xFile != null && context.mounted) {
-      images.add(xFile.path);
-      context.read<MessageBloc>().add(
-            SendMessage(
-              messageModel: MessageModel(
-                receiverName: '',
-                senderName: '',
-                dateTime: DateTime.now().toString(),
-                image: images,
-              ),
-            ),
-          );
-      images = [];
-    }
-  }
-
-  Future<void> _getFromGallery() async {
-    List<XFile>? xFiles = await picker.pickMultiImage();
-    if (context.mounted) {
-      images = xFiles.map((file) => file.path).toList();
-      context.read<MessageBloc>().add(
-            SendMessage(
-              messageModel: MessageModel(
-                receiverName: '',
-                senderName: '',
-                dateTime: DateTime.now().toString(),
-                image: images,
-              ),
-            ),
-          );
-      images = [];
-    }
   }
 }
