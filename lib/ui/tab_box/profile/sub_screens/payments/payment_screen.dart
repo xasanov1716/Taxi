@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:taxi_app/ui/app_routes.dart';
+import 'package:taxi_app/blocs/payment_add/payment_add_bloc.dart';
+import 'package:taxi_app/ui/tab_box/profile/sub_screens/payments/payment_add_card_screen.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/payments/widgets/payment_container.dart';
 import 'package:taxi_app/ui/widgets/global_appbar.dart';
 import 'package:taxi_app/ui/widgets/global_button.dart';
@@ -10,18 +11,16 @@ import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/ui_utils/utilitiy_function.dart';
 
-class PaymentsListScreen extends StatelessWidget {
+class PaymentsListScreen extends StatefulWidget {
   const PaymentsListScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    List<List> payments = [
-      [AppIcons.payPal, 'PayPal', 'Connected'],
-      [AppIcons.googlePay, 'Google Pay', 'Connected'],
-      [AppIcons.applePay, 'Apple Pay', 'Connected'],
-      [AppIcons.masterCard, 'masterCard', 'Connected'],
-    ];
+  State<PaymentsListScreen> createState() => _PaymentsListScreenState();
+}
 
+class _PaymentsListScreenState extends State<PaymentsListScreen> {
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: GlobalAppBar(
@@ -30,33 +29,42 @@ class PaymentsListScreen extends StatelessWidget {
           getIcon(AppIcons.moreCircle, context: context, onTap: () {}),
         ],
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: ListView(
-              children: [
-                12.ph,
-                ...List.generate(
-                    payments.length,
-                    (index) => PaymentContainer(
-                        icon: payments[index][0],
-                        title: payments[index][1],
-                        state: payments[index][2]))
-              ],
-            ),
-          ),
-          GlobalButton(
-            padding: EdgeInsets.symmetric(horizontal: 24.w),
-            onTap: () {
-              Navigator.pushNamed(context, RouteNames.paymentAddCard);
-            },
-            title: 'Add New Card',
-            color: AppColors.primary,
-            radius: 100,
-          ),
-          48.ph
-        ],
-      ),
+      body: BlocBuilder<PaymentAddBloc, PaymentAddState>(
+        builder: (context, state) {
+          return Column(
+            children: [
+              Expanded(
+                child: ListView(
+                  children: [
+                    12.ph,
+                    ...List.generate(
+                        state.cards.length,
+                            (index) => PaymentContainer(
+                            icon: state.cards[index].paymentIcon,
+                            title: state.cards[index].title,
+                            state: "Connected"))
+                  ],
+                ),
+              ),
+              GlobalButton(
+                padding: EdgeInsets.symmetric(horizontal: 24.w),
+                onTap: () {
+                  // Navigator.pushNamed(context, RouteNames.paymentAddCard);
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return PaymentAddCardScreen(
+                    );
+                  }));
+                },
+                title: 'Add New Card',
+                color: AppColors.primary,
+                radius: 100,
+              ),
+              48.ph
+            ],
+          );
+        },
+      )
     );
   }
 }
+
