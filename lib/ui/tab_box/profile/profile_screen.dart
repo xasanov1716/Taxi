@@ -155,10 +155,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     text: "Help Center",
                     icon: AppIcons.infoSquare,
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => SearchScreen()));
+                      Navigator.pushNamed(context, RouteNames.helpCenterScreen);
                     }),
                 ProfileButton(
                     text: "Invite Friends",
