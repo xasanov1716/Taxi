@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
+import 'package:taxi_app/utils/theme/get_theme.dart';
 
 import '../../../../../../../utils/size/screen_size.dart';
 
@@ -36,7 +37,7 @@ class _HelpDataState extends State<HelpData> {
             width: double.infinity,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16),
-                color: AppColors.white),
+                color: getTheme(context) ? AppColors.black : AppColors.white,),
           ),
           Column(
             children: [
@@ -63,7 +64,7 @@ class _HelpDataState extends State<HelpData> {
                       bottomLeft: Radius.circular(12.r),
                       bottomRight: Radius.circular(12.r),
                     ),
-                    color: AppColors.white,
+                    color: getTheme(context) ? AppColors.black : AppColors.white,
                   ),
                   width: double.infinity,
                   child: Column(
@@ -75,7 +76,7 @@ class _HelpDataState extends State<HelpData> {
                         color: AppColors.black.withOpacity(0.2),
                       ),
                       Padding(
-                        padding:EdgeInsets.only(left: 24*width/figmaWidth ,top: 15*width/figmaWidth,right: 24*width/figmaWidth, ),
+                        padding:EdgeInsets.only(left: 24*width/figmaWidth ,top: 15*width/figmaWidth,right: 24*width/figmaWidth, bottom: 9*width/figmaWidth,),
                         child: Text(widget.texTwo,style:  Theme.of(context).textTheme.headlineMedium!.copyWith(fontWeight: FontWeight.w500,fontSize: 14.sp),),
                       )
                     ],
