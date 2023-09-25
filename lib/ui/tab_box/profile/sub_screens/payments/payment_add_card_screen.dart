@@ -23,8 +23,6 @@ class PaymentAddCardScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          systemOverlayStyle:
-              const SystemUiOverlayStyle(statusBarColor: Colors.white),
           scrolledUnderElevation: 0,
           elevation: 0,
           leading: IconButton(
@@ -52,43 +50,61 @@ class PaymentAddCardScreen extends StatelessWidget {
             ),
           ],
         ),
-        body: ListView(
+        body: Column(
           children: [
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 24.h),
-              child: Column(
+            Expanded(
+              child: ListView(
                 children: [
-                  BlocBuilder<PaymentBloc, PaymentState>(
-                    builder: (context, state) {
-                      return Container(
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(24.r),
-                          color: const Color(0xFFFEBB1B),
-                        ),
-                        child: Padding(
-                          padding: EdgeInsets.all(30.r),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  state.cardName.isEmpty
-                                      ? Text(
-                                          "Card Name",
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .titleSmall
-                                              ?.copyWith(
-                                                  color: Colors.white,
-                                                  fontWeight: FontWeight.w700,
-                                                  fontSize: 16.sp,
-                                                  fontFamily: "Urbanist"),
-                                        )
-                                      : Text(
-                                          state.cardName,
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 24.h),
+                    child: Column(
+                      children: [
+                        BlocBuilder<PaymentBloc, PaymentState>(
+                          builder: (context, state) {
+                            return Container(
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(24.r),
+                                color: const Color(0xFFFEBB1B),
+                              ),
+                              child: Padding(
+                                padding: EdgeInsets.all(30.r),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        state.cardName.isEmpty
+                                            ? Text(
+                                                "Card Name",
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .titleSmall
+                                                    ?.copyWith(
+                                                        color: Colors.white,
+                                                        fontWeight: FontWeight.w700,
+                                                        fontSize: 16.sp,
+                                                        fontFamily: "Urbanist"),
+                                              )
+                                            : Text(
+                                                state.cardName,
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .titleSmall
+                                                    ?.copyWith(
+                                                        color: Colors.white,
+                                                        fontWeight: FontWeight.w700,
+                                                        fontSize: 16.sp,
+                                                        fontFamily: "Urbanist"),
+                                              ),
+                                        Text(
+                                          state.cardNumber.startsWith('8600')
+                                              ? "UzCard"
+                                              : state.cardNumber.startsWith('9860')
+                                              ? "Humo"
+                                              : 'Card Name',
                                           style: Theme.of(context)
                                               .textTheme
                                               .titleSmall
@@ -98,178 +114,166 @@ class PaymentAddCardScreen extends StatelessWidget {
                                                   fontSize: 16.sp,
                                                   fontFamily: "Urbanist"),
                                         ),
-                                  Text(
-                                    state.cardNumber.startsWith('8600')
-                                        ? "UzCard"
-                                        : state.cardNumber.startsWith('9860')
-                                        ? "Humo"
-                                        : 'Card Name',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .titleSmall
-                                        ?.copyWith(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.w700,
-                                            fontSize: 16.sp,
-                                            fontFamily: "Urbanist"),
-                                  ),
-                                ],
-                              ),
-                              24.ph,
-                              state.cardNumber.isEmpty
-                                  ? Text(
-                                      "•••• •••• •••• ••••",
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .titleSmall
-                                          ?.copyWith(
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.w700,
-                                              fontSize: 48.sp,
-                                              fontFamily: "Urbanist"),
-                                    )
-                                  : Text(
-                                      state.cardNumber,
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .titleSmall
-                                          ?.copyWith(
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.w700,
-                                              fontSize: 30.sp,
-                                              fontFamily: "Urbanist"),
+                                      ],
                                     ),
-                              24.ph,
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        "Card Holder name",
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .titleSmall
-                                            ?.copyWith(
-                                                color: Colors.white,
-                                                fontWeight: FontWeight.w500,
-                                                fontSize: 10.sp,
-                                                fontFamily: "Urbanist"),
-                                      ),
-                                      4.ph,
-                                      SizedBox(
-                                        width: 100.w,
-                                        child: Text(
-                                          "•••• ••••",
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .titleSmall
-                                              ?.copyWith(
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.w600,
-                                              fontSize: 14.sp,
-                                              fontFamily: "Urbanist"),
-                                          maxLines: 1,
-                                          overflow: TextOverflow.ellipsis,
+                                    24.ph,
+                                    state.cardNumber.isEmpty
+                                        ? Text(
+                                            "•••• •••• •••• ••••",
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .titleSmall
+                                                ?.copyWith(
+                                                    color: Colors.white,
+                                                    fontWeight: FontWeight.w700,
+                                                    fontSize: 48.sp,
+                                                    fontFamily: "Urbanist"),
+                                          )
+                                        : Text(
+                                            state.cardNumber,
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .titleSmall
+                                                ?.copyWith(
+                                                    color: Colors.white,
+                                                    fontWeight: FontWeight.w700,
+                                                    fontSize: 30.sp,
+                                                    fontFamily: "Urbanist"),
+                                          ),
+                                    24.ph,
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              "Card Holder name",
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .titleSmall
+                                                  ?.copyWith(
+                                                      color: Colors.white,
+                                                      fontWeight: FontWeight.w500,
+                                                      fontSize: 10.sp,
+                                                      fontFamily: "Urbanist"),
+                                            ),
+                                            4.ph,
+                                            SizedBox(
+                                              width: 100.w,
+                                              child: Text(
+                                                "•••• ••••",
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .titleSmall
+                                                    ?.copyWith(
+                                                    color: Colors.white,
+                                                    fontWeight: FontWeight.w600,
+                                                    fontSize: 14.sp,
+                                                    fontFamily: "Urbanist"),
+                                                maxLines: 1,
+                                                overflow: TextOverflow.ellipsis,
+                                              ),
+                                            ),
+                                          ],
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        "Expiry date",
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .titleSmall
-                                            ?.copyWith(
-                                                color: Colors.white,
-                                                fontWeight: FontWeight.w500,
-                                                fontSize: 10.sp,
-                                                fontFamily: "Urbanist"),
-                                      ),
-                                      4.ph,
-                                      state.expireDate.isEmpty?Text(
-                                        "••••/••••",
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .titleSmall
-                                            ?.copyWith(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: 14.sp,
-                                            fontFamily: "Urbanist"),
-                                      ):Text(
-                                        state.expireDate,
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .titleSmall
-                                            ?.copyWith(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: 14.sp,
-                                            fontFamily: "Urbanist"),
-                                      ),
-                                    ],
-                                  ),
-                                  SvgPicture.asset(AppIcons.masterCard)
-                                ],
+                                        Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              "Expiry date",
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .titleSmall
+                                                  ?.copyWith(
+                                                      color: Colors.white,
+                                                      fontWeight: FontWeight.w500,
+                                                      fontSize: 10.sp,
+                                                      fontFamily: "Urbanist"),
+                                            ),
+                                            4.ph,
+                                            state.expireDate.isEmpty?Text(
+                                              "••••/••••",
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .titleSmall
+                                                  ?.copyWith(
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.w600,
+                                                  fontSize: 14.sp,
+                                                  fontFamily: "Urbanist"),
+                                            ):Text(
+                                              state.expireDate,
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .titleSmall
+                                                  ?.copyWith(
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.w600,
+                                                  fontSize: 14.sp,
+                                                  fontFamily: "Urbanist"),
+                                            ),
+                                          ],
+                                        ),
+                                        SvgPicture.asset(AppIcons.masterCard)
+                                      ],
+                                    ),
+                                  ],
+                                ),
                               ),
-                            ],
-                          ),
+                            );
+                          },
                         ),
-                      );
-                    },
-                  ),
-                  24.ph,
-                  PaymentTextField(
-                    textInputType: TextInputType.name,
-                      textInputAction: TextInputAction.next,
-                      maskFormatter: MaskTextInputFormatter(
-                        mask: '################',
-                        filter: {"#": RegExp(r'[a-zA-z]')},
-                      ),
-                      text: "Card Name",
-                      hintText: "Card Name",
-                      onChanged: (value) {
-                        context
-                            .read<PaymentBloc>()
-                            .add(CardName(cardName: value));
-                      }),
-                  24.ph,
-                  PaymentTextField(
-                    textInputType: TextInputType.phone,
-                    textInputAction: TextInputAction.next,
-                    maskFormatter: MaskTextInputFormatter(
-                      mask: '#### #### #### ####',
-                      filter: {"#": RegExp(r'[0-9]')},
+                        24.ph,
+                        PaymentTextField(
+                          textInputType: TextInputType.name,
+                            textInputAction: TextInputAction.next,
+                            maskFormatter: MaskTextInputFormatter(
+                              mask: '################',
+                              filter: {"#": RegExp(r'[a-zA-z]')},
+                            ),
+                            text: "Card Name",
+                            hintText: "Card Name",
+                            onChanged: (value) {
+                              context
+                                  .read<PaymentBloc>()
+                                  .add(CardName(cardName: value));
+                            }),
+                        24.ph,
+                        PaymentTextField(
+                          textInputType: TextInputType.phone,
+                          textInputAction: TextInputAction.next,
+                          maskFormatter: MaskTextInputFormatter(
+                            mask: '#### #### #### ####',
+                            filter: {"#": RegExp(r'[0-9]')},
+                          ),
+                          text: "Card Number",
+                          hintText: "1234 5678 1234 5678",
+                          onChanged: (value) {
+                            context
+                                .read<PaymentBloc>()
+                                .add(CardNumber(cardNumber: value));
+                          },
+                        ),
+                        24.ph,
+                        PaymentTextField(
+                          textInputType: TextInputType.phone,
+                          textInputAction: TextInputAction.done,
+                          maskFormatter: MaskTextInputFormatter(
+                            mask: "##/##",
+                            filter: {"#": RegExp(r'[0-9]')},
+                          ),
+                          text: "Expiry Date",
+                          hintText: "01/01",
+                          onChanged: (value) {
+                            context
+                                .read<PaymentBloc>()
+                                .add(ExpireDate(expireDate: value));
+                          },
+                        ),
+                      ],
                     ),
-                    text: "Card Number",
-                    hintText: "1234 5678 1234 5678",
-                    onChanged: (value) {
-                      context
-                          .read<PaymentBloc>()
-                          .add(CardNumber(cardNumber: value));
-                    },
-                  ),
-                  24.ph,
-                  PaymentTextField(
-                    textInputType: TextInputType.phone,
-                    textInputAction: TextInputAction.done,
-                    maskFormatter: MaskTextInputFormatter(
-                      mask: "##/##",
-                      filter: {"#": RegExp(r'[0-9]')},
-                    ),
-                    text: "Expiry Date",
-                    hintText: "01/01",
-                    onChanged: (value) {
-                      context
-                          .read<PaymentBloc>()
-                          .add(ExpireDate(expireDate: value));
-                    },
                   ),
                 ],
               ),
@@ -279,7 +283,7 @@ class PaymentAddCardScreen extends StatelessWidget {
               onTap: () {
                 context.read<PaymentAddBloc>().add(AddCards(
                     name: PaymentModel(
-                      title: context.watch<PaymentBloc>().state.cardName,
+                        title: context.watch<PaymentBloc>().state.cardName,
                         paymentIcon: AppIcons.masterCard,
                         price: 100)));
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
@@ -292,7 +296,9 @@ class PaymentAddCardScreen extends StatelessWidget {
             ),
             48.ph
           ],
-        ));
+        ),
+
+    );
   }
 
 }
