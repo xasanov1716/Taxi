@@ -144,57 +144,78 @@ class PaymentAddCardScreen extends StatelessWidget {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text(
-                                    "Card Holder name",
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .titleSmall
-                                        ?.copyWith(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 10.sp,
-                                            fontFamily: "Urbanist"),
+                                  Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "Card Holder name",
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .titleSmall
+                                            ?.copyWith(
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.w500,
+                                                fontSize: 10.sp,
+                                                fontFamily: "Urbanist"),
+                                      ),
+                                      4.ph,
+                                      SizedBox(
+                                        width: 100.w,
+                                        child: Text(
+                                          "•••• ••••",
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .titleSmall
+                                              ?.copyWith(
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.w600,
+                                              fontSize: 14.sp,
+                                              fontFamily: "Urbanist"),
+                                          maxLines: 1,
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
+                                      ),
+                                    ],
                                   ),
-                                  Text(
-                                    "Expiry date",
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .titleSmall
-                                        ?.copyWith(
+                                  Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "Expiry date",
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .titleSmall
+                                            ?.copyWith(
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.w500,
+                                                fontSize: 10.sp,
+                                                fontFamily: "Urbanist"),
+                                      ),
+                                      4.ph,
+                                      state.expireDate.isEmpty?Text(
+                                        "••••/••••",
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .titleSmall
+                                            ?.copyWith(
                                             color: Colors.white,
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 10.sp,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 14.sp,
                                             fontFamily: "Urbanist"),
+                                      ):Text(
+                                        state.expireDate,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .titleSmall
+                                            ?.copyWith(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 14.sp,
+                                            fontFamily: "Urbanist"),
+                                      ),
+                                    ],
                                   ),
                                   SvgPicture.asset(AppIcons.masterCard)
-                                ],
-                              ),
-                              4.ph,
-                              Row(
-                                children: [
-                                  Text(
-                                    "•••• ••••",
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .titleSmall
-                                        ?.copyWith(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: 14.sp,
-                                            fontFamily: "Urbanist"),
-                                  ),
-                                  const Spacer(),
-                                  Text(
-                                    "••••/••••",
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .titleSmall
-                                        ?.copyWith(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: 14.sp,
-                                            fontFamily: "Urbanist"),
-                                  ),
                                 ],
                               ),
                             ],
@@ -247,7 +268,7 @@ class PaymentAddCardScreen extends StatelessWidget {
                     onChanged: (value) {
                       context
                           .read<PaymentBloc>()
-                          .add(CardNumber(cardNumber: value));
+                          .add(ExpireDate(expireDate: value));
                     },
                   ),
                 ],
@@ -256,10 +277,11 @@ class PaymentAddCardScreen extends StatelessWidget {
             GlobalButton(
               padding: EdgeInsets.symmetric(horizontal: 24.w),
               onTap: () {
-                // context.read<PaymentAddBloc>().add(AddCards(
-                //     name: PaymentModel(
-                //         paymentIcon: AppIcons.masterCard,
-                //         price: 100)));
+                context.read<PaymentAddBloc>().add(AddCards(
+                    name: PaymentModel(
+                      title: context.watch<PaymentBloc>().state.cardName,
+                        paymentIcon: AppIcons.masterCard,
+                        price: 100)));
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
                   return const PaymentsListScreen();
                 }));
