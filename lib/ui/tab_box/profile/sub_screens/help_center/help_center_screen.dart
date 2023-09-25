@@ -16,12 +16,12 @@ class HelpCenterScreen extends StatefulWidget {
 class _HelpCenterScreenState extends State<HelpCenterScreen> {
   @override
   Widget build(BuildContext context) {
-    double height=MediaQuery.of(context).size.height;
-    double width=MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: AppColors.greysCale,
       appBar: GlobalAppBar(
-        title: "Help Center",onTap: (){},action: [
+        title: "Help Center",onTap: (){
+          Navigator.pop(context);
+      },action: [
         IconButton(onPressed: (){}, icon: SvgPicture.asset(AppIcons.moreCircle )),
       ],),
       body:Container(
