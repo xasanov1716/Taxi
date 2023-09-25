@@ -12,8 +12,8 @@ class UserModel {
   final String phone;
   final String gender;
 
-  UserModel(
-      {required this.image,
+  UserModel({
+      required this.image,
       required this.fullName,
       required this.nickName,
       required this.emailAddress,
@@ -24,7 +24,7 @@ class UserModel {
       required this.fcmToken,
       required this.userId,
       required this.gender, 
-      });
+    });
 
   UserModel copyWith({
     String? fullName,
@@ -66,6 +66,24 @@ class UserModel {
       userId: json['userId'] as String? ??'',
       gender: json['gender'] as String? ??''
     );
+
+
+
+  @override
+  String toString()=>'''
+    image: $image,
+    fullName: $fullName,
+    nickName: $nickName,
+    userId: $userId,
+    fcmToken: $fcmToken,
+    createdAt: $createdAt,
+    addressText: $addressText,
+    emailAddress: $emailAddress,
+    birthDate: $birthDate,
+    phone: $phone,
+    gender: $gender,
+  ''';
+
 
     Map<String, dynamic> toJson()=>{
       'image' : image,
