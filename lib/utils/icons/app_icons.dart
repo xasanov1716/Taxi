@@ -210,6 +210,8 @@ class AppIcons {
   static const String rateStar = "assets/svg/others/rate_star.svg";
   static const String copy = "assets/svg/others/copy.svg";
   static const String visa = "assets/svg/others/visa.svg";
+  static const String humo = "assets/svg/others/humo.svg";
+  static const String uzCard = "assets/svg/others/uzCard.svg";
 
 
   // additional icons
