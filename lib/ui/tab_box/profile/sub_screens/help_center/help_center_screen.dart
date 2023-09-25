@@ -25,7 +25,7 @@ class _HelpCenterScreenState extends State<HelpCenterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.greysCale,
+      backgroundColor: getTheme(context) ? AppColors.dark2 : AppColors.greysCale,
       appBar: GlobalAppBar(
         title: "Help Center",
         onTap: () {

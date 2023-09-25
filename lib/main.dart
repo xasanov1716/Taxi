@@ -30,6 +30,7 @@ import 'package:taxi_app/utils/theme/app_theme.dart';
 import 'cubits/category_cubit/category_cubit.dart';
 import 'cubits/help_center/help_center_category_cubit.dart';
 import 'cubits/user/user_cubit.dart';
+import 'ui/tab_box/profile/sub_screens/help_center/help_center_screen.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await StorageRepository.getInstance();
@@ -116,7 +117,7 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (context, child) {
         return AdaptiveTheme(
-          light: AppTheme.lightTheme,
+          light: AppTheme.darkTheme,
           dark: AppTheme.darkTheme,
           initial: AdaptiveThemeMode.system,
           builder: (theme, darkTheme) {
@@ -124,8 +125,9 @@ class MyApp extends StatelessWidget {
               debugShowCheckedModeBanner: false,
               theme: theme,
               darkTheme: darkTheme,
-              initialRoute: RouteNames.splashScreen,
-              onGenerateRoute: AppRoutes.generateRoute,
+              home: HelpCenterScreen(),
+              /*initialRoute: RouteNames.splashScreen,
+              onGenerateRoute: AppRoutes.generateRoute,*/
               localizationsDelegates: context.localizationDelegates,
               supportedLocales: context.supportedLocales,
               locale: context.locale,
