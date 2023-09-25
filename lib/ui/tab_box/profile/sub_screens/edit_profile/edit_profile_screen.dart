@@ -65,6 +65,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
           children: [
             Expanded(
               child: ListView(
+                physics: const BouncingScrollPhysics(),
                 children: [
                   UserImage(
                       userImage: image.isEmpty
@@ -80,7 +81,6 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                 fit: BoxFit.cover,
                               ),
                             ),
-                      edit: AppIcons.editSquare,
                       onTap: () {
                         showBottomSheetDialog(context, picker, image);
                       }),
@@ -199,6 +199,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 ],
               ),
             ),
+            12.ph,
             GlobalButton(
               title: "Update",
               onTap: () {

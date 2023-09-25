@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:taxi_app/data/models/icon/icon_type.dart';
+import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/ui_utils/utilitiy_function.dart';
 
 import '../../utils/colors/app_colors.dart';
@@ -10,12 +12,10 @@ class UserImage extends StatefulWidget {
   const UserImage({
     super.key,
     required this.userImage,
-    required this.edit,
     required this.onTap,
   });
 
   final Widget userImage;
-  final String edit;
   final VoidCallback onTap;
 
   @override
@@ -41,9 +41,15 @@ class _UserImageState extends State<UserImage> {
                 child: widget.userImage,
               ),
               Positioned(
-                bottom: 0.h,
-                right: 0,
-                child: getIcon(widget.edit, context: context, onTap: widget.onTap),
+                bottom: -12.h,
+                right: 3.w,
+                child: getIcon(
+                  AppIcons.editSquare,
+                  context: context,
+                  onTap: widget.onTap,
+                  color: AppColors.primary,
+                  iconType: IconType.bold,
+                ),
               ),
             ],
           ),
