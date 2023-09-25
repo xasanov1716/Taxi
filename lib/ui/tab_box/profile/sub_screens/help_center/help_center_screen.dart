@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:taxi_app/cubits/search/search_cubit.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/help_center/widgets/categories.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/help_center/widgets/search_widget.dart';
 import 'package:taxi_app/ui/widgets/global_appbar.dart';
@@ -42,6 +43,8 @@ class _HelpCenterScreenState extends State<HelpCenterScreen> {
         ),
         child: ListView(
           children: [
+            24.ph,
+            const Categories(),
             SearchScreen(
               onChanged: (hasFocus) {
                 if (hasFocus) {
@@ -73,7 +76,7 @@ class _HelpCenterScreenState extends State<HelpCenterScreen> {
                         ...List.generate(
                             state.length,
                             (index) => ListTile(
-                                  subtitle: Divider(),
+                                  subtitle: const Divider(),
                                   title: Text(
                                     state[index],
                                   ),
