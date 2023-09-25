@@ -28,20 +28,23 @@ class TransactionHistoryScreen extends StatelessWidget {
       ),
       body: ListView(
         children: [
-          // ...List.generate(
-          //   100,
-          //   (index) => TransactionItem(
-          //     onTap: () {
-          //       Navigator.pushNamed(context, RouteNames.transactionsDetail);
-          //     },
-          //     name: "Daniel Austin",
-          //     date: "Dec 20, 2024 | 10:00 AM",
-          //     price: 14,
-          //     expense: "Taxi Expense",
-          //     iconName: AppIcons.arrowUpSquare,
-          //     iconColor: AppColors.error, transactionModel: null,
-          //   ),
-          // )
+          ...List.generate(
+            100,
+            (index) => TransactionItem(
+              onTap: () {
+                Navigator.pushNamed(context, RouteNames.transactionsDetail);
+              },
+              transactionModel: TransactionModel(
+                name: "Daniel Austin",
+                date: "Dec 20, 2024 | 10:00 AM",
+                price: 14,
+                expense: "Taxi Expense",
+                iconName: AppIcons.arrowUpSquare,
+                iconColor: AppColors.error,
+              ),
+            ),
+          )
+
         ],
       ),
     );
