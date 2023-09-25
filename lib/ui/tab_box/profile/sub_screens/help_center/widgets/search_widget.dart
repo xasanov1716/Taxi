@@ -11,37 +11,35 @@ class SearchScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: BlocBuilder<SearchCubit, List<String>>(
-        builder: (context, state) {
-          return Column(
-            children: [
-              30.ph,
-              GlobalTextField(
-                hintText: 'Search',
-                controller: _searchController,
-                onChanged: (value) {
-                  context.read<SearchCubit>().search(value);
-                },
-              ),
-              Expanded(
-                child: ListView.builder(
-                  itemCount: state.isNotEmpty
-                      ? state.length
-                      : context.read<SearchCubit>().list.length,
-                  itemBuilder: (context, index) {
-                    return ListTile(
-                      title: Text(state.isNotEmpty
-                          ? state[index]
-                          : context.read<SearchCubit>().list[index]),
-                    );
-                  },
-                ),
-              ),
-            ],
-          );
-        },
-      ),
+    return BlocBuilder<SearchCubit, List<String>>(
+      builder: (context, state) {
+        return Column(
+          children: [
+            30.ph,
+            GlobalTextField(
+              hintText: 'Search',
+              controller: _searchController,
+              onChanged: (value) {
+                context.read<SearchCubit>().search(value);
+              },
+            ),
+            // Expanded(
+            //   child: ListView.builder(
+            //     itemCount: state.isNotEmpty
+            //         ? state.length
+            //         : context.read<SearchCubit>().list.length,
+            //     itemBuilder: (context, index) {
+            //       return ListTile(
+            //         title: Text(state.isNotEmpty
+            //             ? state[index]
+            //             : context.read<SearchCubit>().list[index]),
+            //       );
+            //     },
+            //   ),
+            // ),
+          ],
+        );
+      },
     );
   }
 }

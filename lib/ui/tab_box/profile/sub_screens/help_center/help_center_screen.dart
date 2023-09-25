@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:taxi_app/ui/tab_box/profile/sub_screens/help_center/widgets/search_widget.dart';
 import 'package:taxi_app/ui/widgets/global_appbar.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
@@ -28,16 +29,17 @@ class _HelpCenterScreenState extends State<HelpCenterScreen> {
         margin: EdgeInsets.only(left: 24*width/figmaWidth,right: 24*width/figmaWidth, ),
         child:   ListView(
           children:  [
-            231.ph,
-            const Helpdata(textOne: 'What is Taxio?', texTwo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",),
+            SearchScreen(),
             24.ph,
-            const Helpdata(textOne: 'How to use Taxio?', texTwo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",),
+            const HelpData(textOne: 'What is Taxio?', texTwo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",),
             24.ph,
-            const Helpdata(textOne: 'How do I cancel a taxi booking?', texTwo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",),
+            const HelpData(textOne: 'How to use Taxio?', texTwo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",),
             24.ph,
-            const Helpdata(textOne: 'Is Taxio free to use?', texTwo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",),
+            const HelpData(textOne: 'How do I cancel a taxi booking?', texTwo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",),
             24.ph,
-            const Helpdata(textOne: 'How to add promo on Taxio?', texTwo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",),
+            const HelpData(textOne: 'Is Taxio free to use?', texTwo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",),
+            24.ph,
+            const HelpData(textOne: 'How to add promo on Taxio?', texTwo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",),
           ],
         ),
       ),

@@ -6,8 +6,8 @@ import 'package:taxi_app/utils/icons/app_icons.dart';
 
 import '../../../../../../../utils/size/screen_size.dart';
 
-class Helpdata extends StatefulWidget {
-  const Helpdata(
+class HelpData extends StatefulWidget {
+  const HelpData(
       {super.key,
       required this.textOne,
         required this.texTwo,
@@ -16,15 +16,13 @@ class Helpdata extends StatefulWidget {
   final String texTwo;
 
   @override
-  State<Helpdata> createState() => _HelpdataState();
+  State<HelpData> createState() => _HelpDataState();
 }
 
-class _HelpdataState extends State<Helpdata> {
+class _HelpDataState extends State<HelpData> {
   bool isAccordionOpen = false;
   @override
   Widget build(BuildContext context) {
-    double height=MediaQuery.of(context).size.height;
-    double width=MediaQuery.of(context).size.width;
     return GestureDetector(
       onTap: () {
         setState(() {
