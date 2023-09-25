@@ -36,7 +36,7 @@ class _AddressScreenState extends State<AddressScreen> {
             itemCount: addres.length,
             itemBuilder: (context, index) {
               AddressModel addressModel = addres[index];
-              return AddressItem(image: AppIcons.locationInSearchDb, title: addressModel.name, subtitle: addressModel.appartment, onTap: (){});
+              return AddressItem(image: AppIcons.locationInSearchDb, title: addressModel.name, subtitle: addressModel.apartment, onTap: (){});
             }, separatorBuilder: (BuildContext context, int index) {
               return Divider(
                 color: AppColors.c_200,
