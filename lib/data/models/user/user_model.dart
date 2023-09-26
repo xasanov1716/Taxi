@@ -87,14 +87,14 @@ class UserModel {
 
     Map<String, dynamic> toJson()=>{
       'image' : image,
-      'fullName':fullName,
-      'nickName':nickName,
-      'userId':userId,
-      'fcmToken':fcmToken,
-      'createdAt':createdAt,
-      'addressText':addressText,
-      'emailAddress':emailAddress,
-      'birthDate':birthDate,
+      'full_name':fullName,
+      'nick_name':nickName,
+      'user_id':userId,
+      'fcm_token':fcmToken,
+      'created_at':createdAt,
+      'address_text':addressText,
+      'email_address':emailAddress,
+      'birth_date':birthDate,
       'phone':phone,
       'gender':gender,
     };

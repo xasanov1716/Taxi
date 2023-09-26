@@ -14,7 +14,7 @@ class LogOutItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: getTheme(context)?AppColors.dark2:AppColors.white,
+      color: getTheme(context)?AppColors.dark1:AppColors.white,
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24.w),
         child: Column(
@@ -35,7 +35,7 @@ class LogOutItem extends StatelessWidget {
             24.ph,
             Row(
               children: [
-                Expanded(child: GlobalButton(textColor: getTheme(context)?AppColors.white:AppColors.dark3,title: "Cancel", onTap: (){
+                Expanded(child: GlobalButton(textColor: getTheme(context)?AppColors.white:AppColors.dark1,title: "Cancel", onTap: (){
                   Navigator.pop(context);
                 },color:getTheme(context)?AppColors.dark3: AppColors.orangeBackground,radius: 100.r,)),
                 12.pw,

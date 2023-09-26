@@ -1,22 +1,22 @@
-class UserRoleModel {
+class UserRole {
   final String driver;
   final String client;
 
-  UserRoleModel({
+  UserRole({
     required this.driver,
     required this.client,
   });
 
-  UserRoleModel copyWith({
+  UserRole copyWith({
     String? driver,
     String? client,
   }) =>
-      UserRoleModel(
+      UserRole(
         driver: driver ?? this.driver,
         client: client ?? this.client,
       );
 
-  factory UserRoleModel.fromJson(Map<String, dynamic> json) => UserRoleModel(
+  factory UserRole.fromJson(Map<String, dynamic> json) => UserRole(
         driver: json['driver'] as String? ?? '',
         client: json['client'] as String? ?? '',
       );

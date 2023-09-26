@@ -50,9 +50,13 @@ class _PaymentMethodsScreenState extends State<PaymentMethodsScreen> {
                 border: Border(top: BorderSide(style: BorderStyle.solid,width: 1, color: getTheme(context) ? AppColors.dark3 : AppColors.c_100)),
                 // borderRadius: BorderRadius.only(topLeft: Radius.circular(24.r), topRight: Radius.circular(24.r)),
               ),
-              child: GlobalButton(onTap: (){
-                Navigator.pushNamed(context, RouteNames.searchingDriver);
-              },title: "Continue", color: AppColors.primary,radius: 24.r),
+              child: GlobalButton(
+                  onTap: (){
+                    Navigator.pushNamed(context, RouteNames.searchingDriver);
+                  },
+                  title: "Continue", color: AppColors.primary,
+                  radius: 100.r,
+              ),
             ),
           )
         ],
