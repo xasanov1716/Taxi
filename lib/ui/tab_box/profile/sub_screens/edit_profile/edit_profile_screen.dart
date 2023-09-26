@@ -23,7 +23,7 @@ class EditProfileScreen extends StatefulWidget {
 
 class _EditProfileScreenState extends State<EditProfileScreen> {
   PageController pageController = PageController();
-  int currentPage=0;
+  int currentPage = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +40,11 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     scrollDirection: Axis.horizontal,
                     controller: pageController,
                     physics: const NeverScrollableScrollPhysics(),
-                    children: [FirstPage(), SecondPage(), ThirdPage()],
+                    children: [
+                      FirstPage(),
+                      SecondPage(),
+                      ThirdPage(),
+                    ],
                   ),
                 ),
                 12.ph,
@@ -51,12 +55,11 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       context
                           .read<SocialAuthBloc>()
                           .add(AuthFirstStepSuccessEvent());
-                    } else if (currentPage ==
-                        1) {
+                    } else if (currentPage == 1) {
                       context
                           .read<SocialAuthBloc>()
                           .add(AuthSecondStepSuccessEvent());
-                    } else if(currentPage==2){
+                    } else if (currentPage == 2) {
                       context
                           .read<SocialAuthBloc>()
                           .add(AuthThirdStepSuccessEvent());
@@ -91,10 +94,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
             if (widget.navigateFromAuth) {
               Navigator.pushReplacementNamed(
                   context, RouteNames.setPinCodeScreen);
-            }else{
+            } else {
               Navigator.pop(context);
             }
-
           }
         },
       ),

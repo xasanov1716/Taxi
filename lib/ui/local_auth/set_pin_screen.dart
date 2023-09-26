@@ -70,7 +70,7 @@ class _SetPinScreenState extends State<SetPinScreen> {
             radius: 100,
             textColor: AppColors.black,
             onTap: () {
-              Navigator.pushNamed(context, RouteNames.tabBox);
+              _onPinSubmit(pinController.text);
             },
           ),
         ],
@@ -79,7 +79,7 @@ class _SetPinScreenState extends State<SetPinScreen> {
   }
 
   void _onPinSubmit(String pin) {
-    if (widget.previousPin == null) {
+    if ((widget.previousPin == null)&&(pin.length==4)) {
       Navigator.pop(context);
       Navigator.pushNamed(
         context,
