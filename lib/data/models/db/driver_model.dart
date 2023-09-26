@@ -1,31 +1,31 @@
 class DriverModel {
-  String driverId;
-  String fcmToken;
-  String fullName;
-  String createdAt;
-  String birthDate;
-  String phoneNumber;
-  String telegramLink;
-  String email;
-  String gender;
-  String imageUrl;
-  String currentLocation;
-  String fromToText;
-  int from;
-  int to;
-  int emptyPlaces;
-  String aboutDriver;
-  String carModel;
-  String passangerType;
-  int price;
-  bool hasDelivery;
-  bool hasRoofTop;
-  bool isOnline;
-  String lastOnlineTime;
-  double longitude;
-  double latitide;
-  bool hasFilled;
-  String carNumber;
+  final String driverId;
+  final String fcmToken;
+  final String fullName;
+  final String createdAt;
+  final String birthDate;
+  final String phoneNumber;
+  final String telegramLink;
+  final String email;
+  final String gender;
+  final String imageUrl;
+  final String currentLocation;
+  final String fromToText;
+  final int from;
+  final int to;
+  final int emptyPlaces;
+  final String aboutDriver;
+  final String carModel;
+  final String passangerType;
+  final int price;
+  final bool hasDelivery;
+  final bool hasRoofTop;
+  final bool isOnline;
+  final String lastOnlineTime;
+  final double longitude;
+  final double latitide;
+  final bool hasFilled;
+  final String carNumber;
 
   DriverModel({
     required this.driverId,
@@ -117,33 +117,33 @@ class DriverModel {
       );
 
   factory DriverModel.fromJson(Map<String, dynamic> json) => DriverModel(
-        driverId: json["driverId"],
-        fcmToken: json["fcmToken"],
-        fullName: json["fullName"],
+        driverId: json["driver_id"] as String? ?? "",
+        fcmToken: json["fcm_token"],
+        fullName: json["full_name"],
         createdAt: json["created_at"],
-        birthDate: json["birthDate"],
-        phoneNumber: json["phoneNumber"],
-        telegramLink: json["telegramLink"],
+        birthDate: json["birth_date"],
+        phoneNumber: json["phone_number"],
+        telegramLink: json["telegram_link"],
         email: json["email"],
         gender: json["gender"],
-        imageUrl: json["imageUrl"],
-        currentLocation: json["currentLocation"],
-        fromToText: json["fromToText"],
+        imageUrl: json["image_url"],
+        currentLocation: json["current_location"],
+        fromToText: json["from_to_text"],
         from: json["from"],
         to: json["to"],
-        emptyPlaces: json["emptyPlaces"],
-        aboutDriver: json["aboutDriver"],
-        carModel: json["carModel"],
-        passangerType: json["passangerType"],
+        emptyPlaces: json["empty_places"],
+        aboutDriver: json["about_driver"],
+        carModel: json["car_model"],
+        passangerType: json["passanger_type"],
         price: json["price"],
-        hasDelivery: json["hasDelivery"],
-        hasRoofTop: json["hasRoofTop"],
-        isOnline: json["isOnline"],
-        lastOnlineTime: json["lastOnlineTime"],
+        hasDelivery: json["has_delivery"],
+        hasRoofTop: json["has_roof_top"],
+        isOnline: json["is_online"],
+        lastOnlineTime: json["last_online_time"],
         longitude: json["longitude"],
         latitide: json["latitide"],
-        hasFilled: json["hasFilled"],
-        carNumber: json["carNumber"],
+        hasFilled: json["has_filled"],
+        carNumber: json["car_number"],
       );
 
   Map<String, dynamic> toJson() => {
