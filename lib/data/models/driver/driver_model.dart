@@ -16,14 +16,14 @@ class DriverModel {
   final int emptyPlaces;
   final String aboutDriver;
   final String carModel;
-  final String passangerType;
+  final String passengerType;
   final int price;
   final bool hasDelivery;
   final bool hasRoofTop;
   final bool isOnline;
   final String lastOnlineTime;
   final double longitude;
-  final double latitide;
+  final double latitude;
   final bool hasFilled;
   final String carNumber;
 
@@ -45,14 +45,14 @@ class DriverModel {
     required this.emptyPlaces,
     required this.aboutDriver,
     required this.carModel,
-    required this.passangerType,
+    required this.passengerType,
     required this.price,
     required this.hasDelivery,
     required this.hasRoofTop,
     required this.isOnline,
     required this.lastOnlineTime,
     required this.longitude,
-    required this.latitide,
+    required this.latitude,
     required this.hasFilled,
     required this.carNumber,
   });
@@ -75,14 +75,14 @@ class DriverModel {
     int? emptyPlaces,
     String? aboutDriver,
     String? carModel,
-    String? passangerType,
+    String? passengerType,
     int? price,
     bool? hasDelivery,
     bool? hasRoofTop,
     bool? isOnline,
     String? lastOnlineTime,
     double? longitude,
-    double? latitide,
+    double? latitude,
     bool? hasFilled,
     String? carNumber,
   }) =>
@@ -104,14 +104,14 @@ class DriverModel {
         emptyPlaces: emptyPlaces ?? this.emptyPlaces,
         aboutDriver: aboutDriver ?? this.aboutDriver,
         carModel: carModel ?? this.carModel,
-        passangerType: passangerType ?? this.passangerType,
+        passengerType: passengerType ?? this.passengerType,
         price: price ?? this.price,
         hasDelivery: hasDelivery ?? this.hasDelivery,
         hasRoofTop: hasRoofTop ?? this.hasRoofTop,
         isOnline: isOnline ?? this.isOnline,
         lastOnlineTime: lastOnlineTime ?? this.lastOnlineTime,
         longitude: longitude ?? this.longitude,
-        latitide: latitide ?? this.latitide,
+        latitude: latitude ?? this.latitude,
         hasFilled: hasFilled ?? this.hasFilled,
         carNumber: carNumber ?? this.carNumber,
       );
@@ -134,46 +134,46 @@ class DriverModel {
         emptyPlaces: json["empty_places"],
         aboutDriver: json["about_driver"],
         carModel: json["car_model"],
-        passangerType: json["passanger_type"],
+        passengerType: json["passenger_type"],
         price: json["price"],
         hasDelivery: json["has_delivery"],
         hasRoofTop: json["has_roof_top"],
         isOnline: json["is_online"],
         lastOnlineTime: json["last_online_time"],
         longitude: json["longitude"],
-        latitide: json["latitide"],
+        latitude: json["latitude"],
         hasFilled: json["has_filled"],
         carNumber: json["car_number"],
       );
 
   Map<String, dynamic> toJson() => {
-        "driverId": driverId,
-        "fcmToken": fcmToken,
-        "fullName": fullName,
+        "driver_id": driverId,
+        "fcm_token": fcmToken,
+        "full_name": fullName,
         "created_at": createdAt,
-        "birthDate": birthDate,
-        "phoneNumber": phoneNumber,
-        "telegramLink": telegramLink,
+        "birth_date": birthDate,
+        "phone_number": phoneNumber,
+        "telegram_link": telegramLink,
         "email": email,
         "gender": gender,
-        "imageUrl": imageUrl,
-        "currentLocation": currentLocation,
-        "fromToText": fromToText,
+        "image_url": imageUrl,
+        "current_location": currentLocation,
+        "from_to_text": fromToText,
         "from": from,
         "to": to,
-        "emptyPlaces": emptyPlaces,
-        "aboutDriver": aboutDriver,
-        "carModel": carModel,
-        "passangerType": passangerType,
+        "empty_places": emptyPlaces,
+        "about_driver": aboutDriver,
+        "car_model": carModel,
+        "passenger_type": passengerType,
         "price": price,
-        "hasDelivery": hasDelivery,
-        "hasRoofTop": hasRoofTop,
-        "isOnline": isOnline,
-        "lastOnlineTime": lastOnlineTime,
+        "has_delivery": hasDelivery,
+        "has_roof_top": hasRoofTop,
+        "is_online": isOnline,
+        "last_online_time": lastOnlineTime,
         "longitude": longitude,
-        "latitide": latitide,
-        "hasFilled": hasFilled,
-        "carNumber": carNumber,
+        "latitude": latitude,
+        "has_filled": hasFilled,
+        "car_number": carNumber,
       };
 
   @override
@@ -196,14 +196,14 @@ class DriverModel {
     "emptyPlaces": $emptyPlaces,
     "aboutDriver": $aboutDriver,
     "carModel": $carModel,
-    "passangerType": $passangerType,
+    "passengerType": $passengerType,
     "price": $price,
     "hasDelivery": $hasDelivery,
     "hasRoofTop": $hasRoofTop,
     "isOnline": $isOnline,
     "lastOnlineTime": $lastOnlineTime,
     "longitude": $longitude,
-    "latitide": $latitide,
+    "latitude": $latitude,
     "hasFilled": $hasFilled,
     "carNumber": $carNumber,
     """;
