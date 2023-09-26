@@ -12,6 +12,8 @@ class AppIcons {
   // images
 
   static const String myLocation = "assets/images/my_location.png";
+  static const String eReceipt = "assets/images/e_receipt.png";
+  static const String eReceiptDark = "assets/images/e_receipt_dark.png";
   static const String taxiLogotip = "assets/images/taxi_logotip.png";
   static const String mapAtBooking = "assets/images/map_at_booking.png";
   static const String emptyBookings = "assets/images/empty_bookings.png";
@@ -33,6 +35,8 @@ class AppIcons {
   static const String successPassword = "assets/images/success_password.png";
   static const String taxiLogo = "assets/images/taxi_logo.png";
   static const String uzbFlag = "assets/images/uzb.png";
+  static const String humoPng = "assets/images/humo_card.png";
+  static const String uzCardPng = "assets/images/uzCard_card.png";
   static const String createNewPasswordDialog =
       "assets/images/create_new_password_dialog.png";
   static const String forgotPasswordDarkImage =
@@ -202,14 +206,26 @@ class AppIcons {
   static const String cancel = "assets/svg/others/cancel.svg";
   static const String bike='assets/svg/others/catgory_bike.svg';
   static const String premium='assets/svg/others/premium.svg';
-  static const String standart='assets/svg/others/standard.svg';
+  static const String standard='assets/svg/others/standard.svg';
   static const String circle='assets/svg/others/circle.svg';
   static const String circleTwo='assets/svg/others/circle_two.svg';
   static const String frame = "assets/svg/others/fram.svg";
-  static const String rateStarUser = "assets/svg/others/rate_star_user.svg";
+  static const String rateStarUser = "assets/svg/others/rate_star_quser.svg";
   static const String rateStar = "assets/svg/others/rate_star.svg";
   static const String copy = "assets/svg/others/copy.svg";
   static const String visa = "assets/svg/others/visa.svg";
+  static const String humo = "assets/svg/others/humo.svg";
+  static const String uzCard = "assets/svg/others/uzCard.svg";
+  static const String arrowDownTwo="assets/svg/others/arrow_down2.svg";
+  static const String copyTransaction = "assets/svg/others/copy_transaction.svg";
+
+  //help_screen_social_icons
+  static const String head="assets/svg/others/help_screen_head.svg";
+  static const String instagram="assets/svg/others/help_screen_instagram.svg";
+  static const String twitter="assets/svg/others/help_screen_twitter.svg";
+  static const String web="assets/svg/others/help_screen_web.svg";
+  static const String whatsapp="assets/svg/others/help_screen_whatsapp.svg";
+  static const String helpfacebook="assets/svg/others/help_scren_facebook.svg";
 
 
   // additional icons
@@ -256,4 +272,5 @@ class AppIcons {
   static const String redOffer = "assets/svg/others/red_offer.svg";
   static const String yellowOffer = "assets/svg/others/yellow_offer.svg";
   static const String promoCode = "assets/svg/others/promo_code.svg";
+  static const String pinFilled = "assets/svg/others/pin_filled.svg";
 }

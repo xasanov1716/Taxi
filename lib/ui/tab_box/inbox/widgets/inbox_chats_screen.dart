@@ -12,7 +12,7 @@ class InboxChatScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print({width, height});
+    debugPrint({width.toString(), height.toString()}.toString());
     return Column(
       children: [
         Expanded(
@@ -21,7 +21,7 @@ class InboxChatScreen extends StatelessWidget {
             children: [
               ...List.generate(
                 15,
-                (index) => ListTile(
+                    (index) => ListTile(
                   leading: Image.asset(AppIcons.taxiLogotip),
                   title: Text(
                     "Tanner Stafford",
@@ -39,8 +39,8 @@ class InboxChatScreen extends StatelessWidget {
                   trailing: Column(
                     children: [
                       Container(
-                        height: 30.h,
-                        width: 30.h,
+                        height: 29.h,
+                        width: 29.h,
                         decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                           color: AppColors.primary,
@@ -55,7 +55,7 @@ class InboxChatScreen extends StatelessWidget {
                       width >= 600 ? 0.0005.ph : 10.ph,
                       Text(
                         DateTime.now().toString().substring(10, 16),
-                        style: Theme.of(context).textTheme.bodyMedium,
+                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontSize: width>=1800?8.sp:10.sp ),
                       )
                     ],
                   ),

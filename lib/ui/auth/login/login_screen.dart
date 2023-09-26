@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:taxi_app/data/models/icon/icon_type.dart';
 import 'package:taxi_app/ui/app_routes.dart';
-import 'package:taxi_app/ui/auth/register/register_screen.dart';
+import 'package:taxi_app/ui/auth/login/widgets/forgot_password_button.dart';
+import 'package:taxi_app/ui/auth/widgets/social_auth_buttons.dart';
 import 'package:taxi_app/ui/auth/widgets/auth_navigator_button.dart';
 import 'package:taxi_app/ui/auth/widgets/custom_auth_divider.dart';
-import 'package:taxi_app/ui/auth/widgets/custom_auth_social_network_button.dart';
-
 import 'package:taxi_app/ui/auth/widgets/remember_me.dart';
-
 import 'package:taxi_app/ui/widgets/global_appbar.dart';
-
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
@@ -93,46 +89,19 @@ class _LoginScreenState extends State<LoginScreen> {
                         onTap: () {
                           Navigator.pushReplacementNamed(
                             context,
-                            RouteNames.fillProfile,
+                            RouteNames.editProfile,
+                            arguments: true,
                           );
                         }),
                     24.ph,
-                    Center(
-                      child: TextButton(
-                          onPressed: () {
-                            Navigator.pushReplacementNamed(
-                                context, RouteNames.forgotPassword);
-                          },
-                          child: Text(
-                            "Parolni unutdingizmi?",
-                            textAlign: TextAlign.center,
-                            style: Theme.of(context)
-                                .textTheme
-                                .labelLarge
-                                ?.copyWith(
-                                    fontWeight: FontWeight.w600,
-                                    color: AppColors.primary),
-                          )),
-                    ),
+                    const ForgotPasswordButton(),
                     45.ph,
                     Column(
                       children: [
-                        const CustomAuthDividerWidget(label: "yoki davom eting"),
+                        const CustomAuthDividerWidget(
+                            label: "yoki davom eting"),
                         20.ph,
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            CustomAuthButton(
-                                imageUrl: AppIcons.facebook, onTap: () {}),
-                            20.pw,
-                            CustomAuthButton(
-                                imageUrl: AppIcons.google, onTap: () {}),
-                            20.pw,
-                            CustomAuthButton(
-                                imageUrl: AppIcons.apple, onTap: () {}),
-                          ],
-                        )
+                        const SocialAuthButtons(),
                       ],
                     ),
                     25.ph,

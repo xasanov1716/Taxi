@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:taxi_app/ui/tab_box/wallet/widgets/transaction_item.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 
 import '../../../../../data/models/icon/icon_type.dart';

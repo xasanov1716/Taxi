@@ -51,17 +51,15 @@ class TopUpAmountScreen extends StatelessWidget {
                 ],
               ),
             ),
-            Padding(
+            GlobalButton(
               padding: EdgeInsets.symmetric(vertical: 24.h),
-              child: GlobalButton(
-                title: "Continue",
-                color: AppColors.primary,
-                textColor: AppColors.dark3,
-                radius: 100.r,
-                onTap: () {
-                  Navigator.pushNamed(context, RouteNames.topUpPaymentScreen);
-                },
-              ),
+              title: "Continue",
+              color: AppColors.primary,
+              textColor: AppColors.dark3,
+              radius: 100.r,
+              onTap: () {
+                Navigator.pushNamed(context, RouteNames.topUpPaymentScreen);
+              },
             ),
           ],
         ),

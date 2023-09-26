@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:taxi_app/data/models/address/address_model.dart';
 import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/address/widgets/address_item.dart';
 import 'package:taxi_app/ui/widgets/global_appbar.dart';
@@ -8,7 +9,6 @@ import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 
-import '../../../../../data/models/address/address_model.dart';
 
 
 class AddressScreen extends StatefulWidget {
@@ -36,8 +36,8 @@ class _AddressScreenState extends State<AddressScreen> {
             itemCount: addres.length,
             itemBuilder: (context, index) {
               AddressModel addressModel = addres[index];
-              return AddressItem(image: AppIcons.locationInSearchDb, title: addressModel.name, subtitle: addressModel.appartment, onTap: (){});
-            }, separatorBuilder: (BuildContext context, int index) { 
+              return AddressItem(image: AppIcons.locationInSearchDb, title: addressModel.street, subtitle: addressModel.apartment, onTap: (){});
+            }, separatorBuilder: (BuildContext context, int index) {
               return Divider(
                 color: AppColors.c_200,
                 endIndent:24.w,
@@ -45,17 +45,15 @@ class _AddressScreenState extends State<AddressScreen> {
               );
              },
           )),
-          Padding(
+          GlobalButton(
             padding: EdgeInsets.all(24.h),
-            child: GlobalButton(
-              title: 'Add New Address',
-              radius: 100.r,
-              color: AppColors.primary,
-              onTap: () {
-                Navigator.pushNamed(context, RouteNames.addressAddDetailScreen);
+            title: 'Add New Address',
+            radius: 100.r,
+            color: AppColors.primary,
+            onTap: () {
+              Navigator.pushNamed(context, RouteNames.addressAddDetailScreen);
 
-              },
-            ),
+            },
           ),
           24.ph,
         ],

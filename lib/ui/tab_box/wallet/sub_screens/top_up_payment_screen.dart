@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:taxi_app/ui/create_order/sub_screens/payment_methods/widgets/payment_appbar.dart';
 import 'package:taxi_app/ui/tab_box/wallet/sub_screens/widgets/top_up_button.dart';
 import 'package:taxi_app/ui/tab_box/wallet/sub_screens/widgets/top_up_payment_appbar.dart';
-import 'package:taxi_app/ui/widgets/global_appbar.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 
 import '../../../../data/models/payment/payment_model.dart';
@@ -26,7 +24,7 @@ class _TopUpPaymentScreenState extends State<TopUpPaymentScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: TopUpPaymentAppbar(title: "Top Up E-Wallet"),
+      appBar: const TopUpPaymentAppbar(title: "Top Up E-Wallet"),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -50,7 +48,7 @@ class _TopUpPaymentScreenState extends State<TopUpPaymentScreen> {
                 padding: EdgeInsets.symmetric(horizontal: 24.w),
                 child: TopUpGlobalButton(
                   onTap: (){
-                    Navigator.pushNamed(context, RouteNames.pinCodeScreen);
+                    Navigator.pushNamed(context, RouteNames.enterPinScreen);
                   },title: "Add New Card", color: getTheme(context) ? AppColors.dark3 : const Color(0xFFFFF8E8) ,radius: 40.r, textColor: getTheme(context) ? AppColors.white : AppColors.dark3,),
               ),
             ],
@@ -65,7 +63,7 @@ class _TopUpPaymentScreenState extends State<TopUpPaymentScreen> {
               ),
               child: GlobalButton(
                   onTap: (){
-                Navigator.pushNamed(context, RouteNames.pinCodeScreen);
+                Navigator.pushNamed(context, RouteNames.enterPinScreen);
               },title: "Continue", color: AppColors.primary,radius: 40.r),
             ),
           )

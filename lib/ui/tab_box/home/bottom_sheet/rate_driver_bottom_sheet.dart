@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:taxi_app/ui/tab_box/home/bottom_sheet/tip_for_driver_bottom_sheet.dart';
 import 'package:taxi_app/ui/tab_box/home/bottom_sheet/widgets/global_bottom_sheet_bottom.dart';
 import 'package:taxi_app/ui/tab_box/home/bottom_sheet/widgets/global_bottom_sheet_start.dart';
+import 'package:taxi_app/ui/tab_box/home/bottom_sheet/widgets/rate_driver_star.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
-import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
 
-Future rateDriverBottomSheet(BuildContext context){
-  int selectRate=0;
-  return showModalBottomSheet(
+rateDriverBottomSheet(BuildContext context) {
+
+  showModalBottomSheet(
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.only(
         topLeft: Radius.circular(32.r),
@@ -38,36 +37,9 @@ Future rateDriverBottomSheet(BuildContext context){
                     carNumber: "HSW 4736 XK",
                     commentTitle: "Wow 5 Star!",
                     commentSubtitle:
-                    "Do you want to add additional tip for Daniel?"),
+                        "Do you want to add additional tip for Daniel?"),
                 24.ph,
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ...List.generate(
-                      5,
-                          (index) => Padding(
-                        padding: EdgeInsets.symmetric(
-                            horizontal: 12.w),
-                        child: GestureDetector(
-                          onTap: () {
-                            state(() {
-                              selectRate = index + 1;
-                            });
-                          },
-                          child: index < selectRate
-                              ? SvgPicture.asset(
-                              AppIcons.rateStar,width: 40.w,)
-                              : SvgPicture.asset(
-                            AppIcons.star,
-                            // ignore: deprecated_member_use
-                            color: AppColors.primary,
-                            width: 40.w,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+                const RateDriverStars(),
                 24.ph,
                 const Divider(),
                 24.ph,
@@ -75,19 +47,17 @@ Future rateDriverBottomSheet(BuildContext context){
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     GlobalBottomSheetBottom(
-                      onTap: (){
+                      onTap: () {
                         Navigator.pop(context);
                       },
                       text: "Cancel",
-                      colorText: getTheme(context)
-                          ? AppColors.white
-                          : AppColors.dark3,
-                      colorContainer: getTheme(context)
-                          ? AppColors.dark3
-                          : AppColors.white,
+                      colorText:
+                          getTheme(context) ? AppColors.white : AppColors.dark3,
+                      colorContainer:
+                          getTheme(context) ? AppColors.dark3 : AppColors.white,
                     ),
                     GlobalBottomSheetBottom(
-                        onTap: (){
+                        onTap: () {
                           Navigator.pop(context);
                           tipForDriverBottomSheet(context);
                         },

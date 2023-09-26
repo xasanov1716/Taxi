@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:taxi_app/cubits/auth_cubit/auth_cubit.dart';
 import 'package:taxi_app/cubits/tab/tab_cubit.dart';
 import 'package:taxi_app/data/models/icon/icon_type.dart';
+import 'package:taxi_app/data/models/status/form_status.dart';
+import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/ui/tab_box/bookings/bookings_screen.dart';
 import 'package:taxi_app/ui/tab_box/home/home_screen.dart';
 import 'package:taxi_app/ui/tab_box/inbox/inbox_screen.dart';
@@ -39,42 +42,52 @@ class _TabBoxState extends State<TabBox> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: IndexedStack(
-        index: context.watch<TabCubit>().state,
-        children: screens,
-      ),
-      bottomNavigationBar: ClipRRect(
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(16.r),
-          topRight: Radius.circular(16.r),
+        body: IndexedStack(
+          index: context.watch<TabCubit>().state,
+          children: screens,
         ),
-        child: BottomNavigationBar(
-          selectedLabelStyle: const TextStyle(
-            fontFamily: "Urbanist",
-            fontSize: 10,
-            fontWeight: FontWeight.w700,
-            color: AppColors.primary,
-            height: 12 / 10,
+        bottomNavigationBar: BlocListener<AuthCubit, AuthState>(
+          listener: (context, state) {
+            if (state.status == FormStatus.unauthenticated) {
+              Navigator.pushNamedAndRemoveUntil(
+                context,
+                RouteNames.appRoute,
+                (route) => false,
+              );
+            }
+          },
+          child: ClipRRect(
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(16.r),
+              topRight: Radius.circular(16.r),
+            ),
+            child: BottomNavigationBar(
+              selectedLabelStyle: const TextStyle(
+                fontFamily: "Urbanist",
+                fontSize: 10,
+                fontWeight: FontWeight.w700,
+                color: AppColors.primary,
+                height: 12 / 10,
+              ),
+              unselectedLabelStyle: const TextStyle(
+                fontFamily: "Urbanist",
+                fontSize: 10,
+                fontWeight: FontWeight.w500,
+                color: AppColors.c_500,
+                height: 12 / 10,
+              ),
+              items: <BottomNavigationBarItem>[
+                _getItem(icon: AppIcons.home, label: "Home"),
+                _getItem(icon: AppIcons.paper, label: "Bookings"),
+                _getItem(icon: AppIcons.chat, label: "Inbox"),
+                _getItem(icon: AppIcons.wallet, label: "Wallet"),
+                _getItem(icon: AppIcons.profile, label: "Profile"),
+              ],
+              currentIndex: context.watch<TabCubit>().state,
+              onTap: context.read<TabCubit>().changeTabIndex,
+            ),
           ),
-          unselectedLabelStyle: const TextStyle(
-            fontFamily: "Urbanist",
-            fontSize: 10,
-            fontWeight: FontWeight.w500,
-            color: AppColors.c_500,
-            height: 12 / 10,
-          ),
-          items: <BottomNavigationBarItem>[
-            _getItem(icon: AppIcons.home, label: "Home"),
-            _getItem(icon: AppIcons.paper, label: "Bookings"),
-            _getItem(icon: AppIcons.chat, label: "Inbox"),
-            _getItem(icon: AppIcons.wallet, label: "Wallet"),
-            _getItem(icon: AppIcons.profile, label: "Profile"),
-          ],
-          currentIndex: context.watch<TabCubit>().state,
-          onTap: context.read<TabCubit>().changeTabIndex,
-        ),
-      ),
-    );
+        ));
   }
 
   BottomNavigationBarItem _getItem({
