@@ -17,21 +17,16 @@ class ContactUsScreen extends StatelessWidget {
         24.ph,
         ContactUsItem(title: 'Whatsapp', icon: AppIcons.whatsapp, onTap: () {}),
         24.ph,
-
         ContactUsItem(title: 'Website', icon: AppIcons.web, onTap: () {}),
         24.ph,
-
         ContactUsItem(
             title: 'Facebook', icon: AppIcons.helpfacebook, onTap: () {}),
         24.ph,
-
         ContactUsItem(title: 'Twitter', icon: AppIcons.twitter, onTap: () {}),
         24.ph,
-
         ContactUsItem(
             title: 'Instagram', icon: AppIcons.instagram, onTap: () {}),
         24.ph,
-
       ],
     );
   }

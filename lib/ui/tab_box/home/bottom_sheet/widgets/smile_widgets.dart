@@ -16,17 +16,6 @@ class SmileWidgets extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<String> smiles = [
-      AppIcons.smileUnhappy,
-      AppIcons.smileCry,
-      AppIcons.smileTired,
-      AppIcons.smileAngry,
-      AppIcons.smileQuiet,
-      AppIcons.smileVeryHappy,
-      AppIcons.smileExcited,
-      AppIcons.smileHappy,
-      AppIcons.smileEyeGlass
-    ];
     return Column(
       children: [
         Row(

@@ -10,7 +10,8 @@ import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
 
 class SearchHistoryScreen extends StatelessWidget {
-  const SearchHistoryScreen({super.key});
+  const SearchHistoryScreen({super.key, required this.onClearAllTap});
+  final VoidCallback onClearAllTap;
 
   @override
   Widget build(BuildContext context) {
@@ -26,11 +27,7 @@ class SearchHistoryScreen extends StatelessWidget {
                 style: Theme.of(context).textTheme.headlineSmall,
               ),
               TextButton(
-                onPressed: () {
-                  context
-                      .read<SearchLocationBloc>()
-                      .add(ClearSearchHistoryEvent());
-                },
+                onPressed:onClearAllTap,
                 child: const Text(
                   "Clear All",
                 ),

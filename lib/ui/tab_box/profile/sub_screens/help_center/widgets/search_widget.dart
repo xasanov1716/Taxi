@@ -5,7 +5,7 @@ import 'package:taxi_app/ui/widgets/global_input.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 
 class SearchScreen extends StatefulWidget {
-  SearchScreen({super.key, required this.onChanged});
+  const SearchScreen({super.key, required this.onChanged});
   final ValueChanged onChanged;
 
   @override
