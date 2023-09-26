@@ -64,12 +64,14 @@ class _SecurityScreenState extends State<SecurityScreen> {
                       arguments: true);
                 },
                 color: AppColors.primary,
+                radius: 100.r,
               ),
               GlobalButton(
                 padding: EdgeInsets.symmetric(horizontal: 24.w),
                 title: 'Change Password',
                 onTap: () {},
                 color: AppColors.primary,
+                radius: 100.r,
               ),
             ],
           );

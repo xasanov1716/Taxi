@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pinput/pinput.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
-import 'package:taxi_app/utils/icons/app_icons.dart';
 
 class LocalAuthPinput extends StatelessWidget {
   const LocalAuthPinput({

@@ -1,0 +1,4 @@
+enum UserFieldKeys {
+  driver,
+  client,
+}

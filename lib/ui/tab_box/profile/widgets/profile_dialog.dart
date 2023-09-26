@@ -8,7 +8,10 @@ import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
 
-void profileDialog({required ImagePicker picker, required BuildContext context, required ValueChanged<String> valueChanged}) {
+void profileDialog(
+    {required ImagePicker picker,
+    required BuildContext context,
+    required ValueChanged<String> valueChanged}) {
   showModalBottomSheet(
     backgroundColor: Colors.transparent,
     context: context,
@@ -32,11 +35,14 @@ void profileDialog({required ImagePicker picker, required BuildContext context, 
                     border: Border.all(color: Colors.white, width: 2),
                     borderRadius: BorderRadius.circular(16.r)),
                 child: ListTile(
-                  onTap: () {
-                    _getFromCamera(picker: picker,context: context,valueChanged: (v){
-                      valueChanged(v);
-                    });
-                    Navigator.pop(context);
+                  onTap: () async {
+                    await _getFromCamera(
+                        picker: picker,
+                        context: context,
+                        valueChanged: (v) {
+                          valueChanged(v);
+                        });
+                    if (context.mounted) Navigator.pop(context);
                   },
                   leading: const Icon(
                     Icons.camera_alt,
@@ -56,11 +62,14 @@ void profileDialog({required ImagePicker picker, required BuildContext context, 
                     borderRadius: BorderRadius.circular(16.r),
                     border: Border.all(color: Colors.white, width: 2)),
                 child: ListTile(
-                  onTap: () {
-                    _getFromGallery(picker: picker,context: context,valueChanged: (v){
-                      valueChanged(v);
-                    });
-                    Navigator.pop(context);
+                  onTap: () async {
+                    await _getFromGallery(
+                        picker: picker,
+                        context: context,
+                        valueChanged: (v) {
+                          valueChanged(v);
+                        });
+                    if (context.mounted) Navigator.pop(context);
                   },
                   leading: const Icon(
                     Icons.photo,
@@ -80,7 +89,10 @@ void profileDialog({required ImagePicker picker, required BuildContext context, 
   );
 }
 
-Future<void> _getFromCamera({required ImagePicker picker, required BuildContext context, required ValueChanged<String> valueChanged}) async {
+Future<void> _getFromCamera(
+    {required ImagePicker picker,
+    required BuildContext context,
+    required ValueChanged<String> valueChanged}) async {
   XFile? xFile = await picker.pickImage(
     source: ImageSource.camera,
     maxHeight: 512 * height / figmaHeight,
@@ -89,14 +101,17 @@ Future<void> _getFromCamera({required ImagePicker picker, required BuildContext 
 
   if (xFile != null && context.mounted) {
     context.read<UserCubit>().updateCurrentUserField(
-      fieldKey: UserFieldKeys.image,
-      value: xFile.path,
-    );
+          fieldKey: UserFieldKeys.image,
+          value: xFile.path,
+        );
     valueChanged(xFile.path);
   }
 }
 
-Future<void> _getFromGallery({required ImagePicker picker, required BuildContext context, required ValueChanged<String> valueChanged}) async {
+Future<void> _getFromGallery(
+    {required ImagePicker picker,
+    required BuildContext context,
+    required ValueChanged<String> valueChanged}) async {
   XFile? xFile = await picker.pickImage(
     source: ImageSource.gallery,
     maxHeight: 512 * height / figmaHeight,
@@ -104,9 +119,10 @@ Future<void> _getFromGallery({required ImagePicker picker, required BuildContext
   );
   if (xFile != null && context.mounted) {
     context.read<UserCubit>().updateCurrentUserField(
-      fieldKey: UserFieldKeys.image,
-      value: xFile.path,
-    );
+          fieldKey: UserFieldKeys.image,
+          value: xFile.path,
+        );
     valueChanged(xFile.path);
+    debugPrint("Success");
   }
 }

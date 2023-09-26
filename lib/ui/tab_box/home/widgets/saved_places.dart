@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:taxi_app/data/models/icon/icon_type.dart';
+import 'package:taxi_app/utils/colors/app_colors.dart';
+import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 
-import '../../../../data/models/icon/icon_type.dart';
-import '../../../../utils/colors/app_colors.dart';
-import '../../../../utils/icons/app_icons.dart';
 
 class SavedPlaces extends StatelessWidget {
   const SavedPlaces({super.key});

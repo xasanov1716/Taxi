@@ -5,6 +5,7 @@ class PaymentModel{
   final String title;
   final num price;
 
+
   PaymentModel({
     required this.paymentIcon,
     required this.title,

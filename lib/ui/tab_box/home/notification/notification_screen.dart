@@ -76,13 +76,13 @@ class NotificationScreen extends StatelessWidget {
                           : AppColors.c_900),
                 ),
                 24.ph,
-                GlobalNotificationContainer(
+                const GlobalNotificationContainer(
                   title: "Payment Successful!",
                   text: "You have made a taxi payment",
                   icon: AppIcons.money,
                 ),
                 24.ph,
-                GlobalNotificationContainer(
+                const GlobalNotificationContainer(
                   title: "Credit Card Connected!",
                   text: "Credit Card has been linked!",
                   icon: AppIcons.card,
