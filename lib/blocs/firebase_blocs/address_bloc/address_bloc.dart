@@ -14,7 +14,7 @@ class AddressBloc extends Bloc<AddressEvent, AddressState> {
   final AddressRepo addressRepo;
   AddressBloc({required this.addressRepo})
       : super(AddressState(
-            addresses: [],
+            addresses: const [],
             addressModel: AddressModel(
                 addressText: '', addressId: '', longitude: 0.0, latitude: 0.0),
             status: FormStatus.pure,

@@ -1,4 +1,4 @@
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:taxi_app/data/models/db/driver_model.dart';
@@ -12,7 +12,7 @@ class DriverBloc extends Bloc<DriverEvent, DriverState> {
   final DriverRepo driverRepo;
   DriverBloc({required this.driverRepo})
       : super(DriverState(
-            drivers: [], status: FormStatus.pure, driversById: [])) {
+            drivers: const [], status: FormStatus.pure, driversById: const [])) {
     on<AddDriverEvent>(addDriver);
     on<UpdateDriverEvent>(updateDriver);
     on<DeleteDriverEvent>(deleteDriver);
