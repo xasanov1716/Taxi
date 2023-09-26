@@ -1,3 +1,4 @@
+import 'package:taxi_app/data/models/order/order_model.dart';
 import 'package:taxi_app/data/models/universal_data.dart';
 import 'package:taxi_app/services/firebase/order_model_service.dart';
 

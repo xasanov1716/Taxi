@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:taxi_app/data/models/universal_data.dart';
+import 'package:taxi_app/data/models/user/user_model.dart';
 class UserService {
   static String usersCollection = 'users';
    Future<UniversalData> addUser(
@@ -29,7 +30,7 @@ Future<UniversalData> updateUser(
     try {
       await FirebaseFirestore.instance
           .collection(usersCollection)
-          .doc(userModel.productId)
+          .doc(userModel.userId)
           .update(userModel.toJson());
 
       return UniversalData(data: "User updated!");

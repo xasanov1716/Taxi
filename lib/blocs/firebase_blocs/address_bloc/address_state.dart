@@ -1,11 +1,11 @@
 part of 'address_bloc.dart';
 
 class AddressState extends Equatable {
-  final List<AddressModela> address;
+  final List<AddressModel> address;
   final AddressModel addressModel;
   final FormStatus status;
 
-  AddressState(
+  const AddressState(
       {required this.addressModel,
       required this.status,
       required this.address});
