@@ -1,25 +1,22 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:planeta_uz/data/model/product_model.dart';
-import 'package:planeta_uz/data/model/universal.dart';
-
-
-class ProductService {
-  final String productsCollection = 'products';
-  static Future<UniversalData> addProduct(
-      {required ProductModel productModel}) async {
+import 'package:taxi_app/data/models/universal_data.dart';
+class UserService {
+  static String usersCollection = 'users';
+   Future<UniversalData> addUser(
+      {required UserModel userModel}) async {
     try {
       DocumentReference newProduct = await FirebaseFirestore.instance
-          .collection(productsCollection)
-          .add(productModel.toJson());
+          .collection(usersCollection)
+          .add(userModel.toJson());
 
       await FirebaseFirestore.instance
-          .collection(productsCollection)
+          .collection(usersCollection)
           .doc(newProduct.id)
           .update({
-        "productId": newProduct.id,
+        "userId": newProduct.id,
       });
 
-      return UniversalData(data: "Product added!");
+      return UniversalData(data: "User added!");
     } on FirebaseException catch (e) {
       return UniversalData(error: e.code);
     } catch (error) {
@@ -27,15 +24,15 @@ class ProductService {
     }
   }
 
-  static Future<UniversalData> updateProduct(
-      {required ProductModel productModel}) async {
+Future<UniversalData> updateUser(
+      {required UserModel userModel}) async {
     try {
       await FirebaseFirestore.instance
-          .collection(productsCollection)
-          .doc(productModel.productId)
-          .update(productModel.toJson());
+          .collection(usersCollection)
+          .doc(userModel.productId)
+          .update(userModel.toJson());
 
-      return UniversalData(data: "Product updated!");
+      return UniversalData(data: "User updated!");
     } on FirebaseException catch (e) {
       return UniversalData(error: e.code);
     } catch (error) {
@@ -43,15 +40,15 @@ class ProductService {
     }
   }
 
-  static Future<UniversalData> deleteProduct(
-      {required String productId}) async {
+   Future<UniversalData> deleteUser(
+      {required String userId}) async {
     try {
       await FirebaseFirestore.instance
-          .collection(productsCollection)
-          .doc(productId)
+          .collection(usersCollection)
+          .doc(userId)
           .delete();
 
-      return UniversalData(data: "Product deleted!");
+      return UniversalData(data: "User deleted!");
     } on FirebaseException catch (e) {
       return UniversalData(error: e.code);
     } catch (error) {
