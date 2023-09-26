@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:taxi_app/cubits/auth_cubit/auth_cubit.dart';
+import 'package:taxi_app/data/models/status/form_status.dart';
 import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/ui/auth/login/widgets/forgot_password_button.dart';
 import 'package:taxi_app/ui/auth/widgets/social_auth_buttons.dart';
@@ -10,6 +13,7 @@ import 'package:taxi_app/ui/widgets/global_appbar.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
+import 'package:taxi_app/utils/ui_utils/error_message_dialog.dart';
 
 import '../../../utils/colors/app_colors.dart';
 import '../../widgets/global_button.dart';
@@ -35,89 +39,113 @@ class _LoginScreenState extends State<LoginScreen> {
               Navigator.pop(context);
             },
             title: ""),
-        body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 24.w),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Expanded(
-                child: ListView(
-                  physics: const BouncingScrollPhysics(),
-                  children: [
-                    45.ph,
-                    Text("Xush kelibsiz! Akkauntga kirish",
-                        textAlign: TextAlign.left,
-                        style: Theme.of(context)
-                            .textTheme
-                            .displayMedium
-                            ?.copyWith(fontSize: width > 450 ? 48.sp : 30.sp)),
-                    45.ph,
-                    AuthTextField(
-                      focusNode: phoneFocus,
-                      hintText: 'Telefon Raqami',
-                      prefixIcon: AppIcons.call,
-                      onChanged: (v) {
-                        if (v.length == 12) {
-                          phoneFocus.unfocus();
-                          FocusScope.of(context).requestFocus(passwordFocus);
-                        }
-                      },
-                    ),
-                    20.ph,
-                    AuthTextField(
-                      focusNode: passwordFocus,
-                      hintText: 'Parol',
-                      prefixIcon: AppIcons.lock,
-                      isPassword: true,
-                      onChanged: (v) {},
-                    ),
-                    24.ph,
-                    RememberCheckBox(
-                        label: "Meni eslab qol",
-                        value: isChecked,
-                        onChanged: (v) {
-                          setState(() {
-                            isChecked = v;
-                          });
-                        }),
-                    24.ph,
-                    GlobalButton(
-                        color: AppColors.primary,
-                        radius: 100.r,
-                        textColor: AppColors.dark3,
-                        title: "Kirish",
-                        onTap: () {
-                          Navigator.pushReplacementNamed(
-                            context,
-                            RouteNames.editProfile,
-                            arguments: true,
-                          );
-                        }),
-                    24.ph,
-                    const ForgotPasswordButton(),
-                    45.ph,
-                    Column(
+        body: BlocConsumer<AuthCubit, AuthState>(
+          builder: (context, state) {
+            return Padding(
+              padding: EdgeInsets.symmetric(horizontal: 24.w),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: ListView(
+                      physics: const BouncingScrollPhysics(),
                       children: [
-                        const CustomAuthDividerWidget(
-                            label: "yoki davom eting"),
+                        45.ph,
+                        Text("Xush kelibsiz! Akkauntga kirish",
+                            textAlign: TextAlign.left,
+                            style: Theme.of(context)
+                                .textTheme
+                                .displayMedium
+                                ?.copyWith(
+                                    fontSize: width > 450 ? 48.sp : 30.sp)),
+                        45.ph,
+                        AuthTextField(
+                          focusNode: phoneFocus,
+                          hintText: 'Telefon Raqami',
+                          prefixIcon: AppIcons.call,
+                          onChanged: (v) {
+                            if (v.length == 12) {
+                              phoneFocus.unfocus();
+                              context.read<AuthCubit>().updatePhone(v.replaceAll(' ', ''));
+                              FocusScope.of(context)
+                                  .requestFocus(passwordFocus);
+                            }
+                          },
+                        ),
                         20.ph,
-                        const SocialAuthButtons(),
+                        AuthTextField(
+                          focusNode: passwordFocus,
+                          hintText: 'Parol',
+                          prefixIcon: AppIcons.lock,
+                          isPassword: true,
+                          onChanged: (v) {
+                            context
+                                .read<AuthCubit>()
+                                .updatePassword(v.replaceAll(" ", ""));
+                          },
+                        ),
+                        24.ph,
+                        RememberCheckBox(
+                            label: "Meni eslab qol",
+                            value: isChecked,
+                            onChanged: (v) {
+                              setState(() {
+                                isChecked = v;
+                              });
+                            }),
+                        24.ph,
+                        GlobalButton(
+                            color: AppColors.primary,
+                            radius: 100.r,
+                            textColor: AppColors.dark3,
+                            title: "Kirish",
+                            onTap: () {
+                              String canAuthText =
+                                  context.read<AuthCubit>().canAuthenticate();
+                              if (canAuthText.isEmpty) {
+                                context.read<AuthCubit>().logIn(context);
+                              } else {
+                                showErrorMessage(
+                                    message: canAuthText, context: context);
+                              }
+                            }),
+                        24.ph,
+                        const ForgotPasswordButton(),
+                        45.ph,
+                        Column(
+                          children: [
+                            const CustomAuthDividerWidget(
+                                label: "yoki davom eting"),
+                            20.ph,
+                            const SocialAuthButtons(),
+                          ],
+                        ),
+                        25.ph,
                       ],
                     ),
-                    25.ph,
-                  ],
-                ),
+                  ),
+                  20.ph,
+                  AuthNavigatorButton(
+                    title: "Akkauntingiz yo'qmi?",
+                    onTapTitle: "Ro'yxatdan o'ting",
+                    onTap: () {
+                      Navigator.pushReplacementNamed(
+                          context, RouteNames.signUp);
+                    },
+                  )
+                ],
               ),
-              20.ph,
-              AuthNavigatorButton(
-                title: "Akkauntingiz yo'qmi?",
-                onTapTitle: "Ro'yxatdan o'ting",
-                onTap: () {
-                  Navigator.pushReplacementNamed(context, RouteNames.signUp);
-                },
-              )
-            ],
-          ),
-        ));
+            );
+          },
+          listener: (context, state) {
+            if(state.status ==FormStatus.authenticated){
+              Navigator.pushNamedAndRemoveUntil(context, RouteNames.tabBox, (route) => false);
+            }
+            if(state.status ==FormStatus.failure){
+              showErrorMessage(message: state.statusMessage, context: context);
+            }
+          },
+        )
+    );
   }
 }
