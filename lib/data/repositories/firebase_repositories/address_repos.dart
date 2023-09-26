@@ -1,4 +1,4 @@
-import 'package:taxi_app/data/models/address/address_model.dart';
+import 'package:taxi_app/data/models/address_model/adders_model.dart';
 import 'package:taxi_app/data/models/universal_data.dart';
 import 'package:taxi_app/services/firebase/address_model_service.dart';
 

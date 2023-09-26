@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:planeta_uz/data/model/product_model.dart';
 import 'package:planeta_uz/data/model/universal.dart';
+import 'package:taxi_app/data/models/universal_data.dart';
 
 
 class ProductService {
