@@ -22,10 +22,7 @@ class _FaQScreenState extends State<FaQScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(
-        left: 24 * width / figmaWidth,
-        right: 24 * width / figmaWidth,
-      ),
+      margin: EdgeInsets.symmetric(horizontal: 24 * width / figmaWidth),
       child: ListView(
         children: [
           24.ph,
@@ -48,24 +45,25 @@ class _FaQScreenState extends State<FaQScreen> {
               return Visibility(
                 visible: isTapped,
                 child: Container(
-                  height: 250,
+                  height: 250* height / figmaHeight,
                   padding:
-                  EdgeInsets.symmetric(horizontal: 20.w, vertical: 6.h),
+                      EdgeInsets.symmetric(horizontal: 20.w, vertical: 6.h),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12.r),
                     color:
-                    getTheme(context) ? AppColors.dark2 : AppColors.white,
+                        getTheme(context) ? AppColors.dark2 : AppColors.white,
                   ),
                   child: ListView(
                     children: [
                       ...List.generate(
-                          state.length,
-                              (index) => ListTile(
-                            subtitle: const Divider(),
-                            title: Text(
-                              state[index],
-                            ),
-                          ))
+                        state.length,
+                        (index) => ListTile(
+                          subtitle: const Divider(),
+                          title: Text(
+                            state[index],
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -76,31 +74,31 @@ class _FaQScreenState extends State<FaQScreen> {
           const HelpData(
             textOne: 'What is Taxio?',
             texTwo:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
           ),
           24.ph,
           const HelpData(
             textOne: 'How to use Taxio?',
             texTwo:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
           ),
           24.ph,
           const HelpData(
             textOne: 'How do I cancel a taxi booking?',
             texTwo:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
           ),
           24.ph,
           const HelpData(
             textOne: 'Is Taxio free to use?',
             texTwo:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
           ),
           24.ph,
           const HelpData(
             textOne: 'How to add promo on Taxio?',
             texTwo:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
           ),
         ],
       ),

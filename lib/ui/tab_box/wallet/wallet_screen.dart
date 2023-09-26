@@ -32,19 +32,20 @@ class WalletScreen extends StatelessWidget {
             floating: true,
             snap: true,
             flexibleSpace: FlexibleSpaceBar(
-                background: SingleChildScrollView(
-              physics: const NeverScrollableScrollPhysics(),
-              child: Column(
-                children: [
-                  CardItem(
-                    onTap: () {
-                      Navigator.pushNamed(
-                          context, RouteNames.topUpAmountScreen);
-                    },
-                  ),
-                ],
+              background: SingleChildScrollView(
+                physics: const NeverScrollableScrollPhysics(),
+                child: Column(
+                  children: [
+                    CardItem(
+                      onTap: () {
+                        Navigator.pushNamed(
+                            context, RouteNames.topUpAmountScreen);
+                      },
+                    ),
+                  ],
+                ),
               ),
-            )),
+            ),
           ),
           SliverPersistentHeader(
             pinned: true,
@@ -58,27 +59,28 @@ class WalletScreen extends StatelessWidget {
             ),
           ),
           SliverList(
-            delegate: SliverChildListDelegate([
-              12.ph,
-              ...List.generate(
-                15,
-                (index) => TransactionItem(
-                  onTap: () {
-                    Navigator.pushNamed(context, RouteNames.transactionsDetail);
-                  },
-
-                  transactionModel: TransactionModel(
-                    name: "Daniel Austin",
-                    date: "Dec 20, 2024 | 10:00 AM",
-                    price: 14,
-                    expense: "Taxi Expense",
-                    iconName: AppIcons.arrowUpSquare,
-                    iconColor: AppColors.error,
+            delegate: SliverChildListDelegate(
+              [
+                12.ph,
+                ...List.generate(
+                  15,
+                  (index) => TransactionItem(
+                    onTap: () {
+                      Navigator.pushNamed(
+                          context, RouteNames.transactionsDetail);
+                    },
+                    transactionModel: TransactionModel(
+                      name: "Daniel Austin",
+                      date: "Dec 20, 2024 | 10:00 AM",
+                      price: 14,
+                      expense: "Taxi Expense",
+                      iconName: AppIcons.arrowUpSquare,
+                      iconColor: AppColors.error,
+                    ),
                   ),
-                ),
-              )
-
-            ]),
+                )
+              ],
+            ),
           ),
         ],
       ),

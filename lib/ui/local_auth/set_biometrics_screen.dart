@@ -49,7 +49,7 @@ class _SetBiometricsScreenState extends State<SetBiometricsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: GlobalAppBar(
+      appBar: const GlobalAppBar(
         onTap: null,
         title: "Barmoq izingizni oʻrnating",
       ),

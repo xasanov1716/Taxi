@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:taxi_app/ui/tab_box/home/bottom_sheet/tip_for_driver_bottom_sheet.dart';
 import 'package:taxi_app/ui/tab_box/home/bottom_sheet/widgets/global_bottom_sheet_bottom.dart';
 import 'package:taxi_app/ui/tab_box/home/bottom_sheet/widgets/global_bottom_sheet_start.dart';
+import 'package:taxi_app/ui/tab_box/home/bottom_sheet/widgets/rate_driver_star.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
-import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
 
 rateDriverBottomSheet(BuildContext context) {
-  int selectRate = 0;
+
   showModalBottomSheet(
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.only(
@@ -40,35 +39,7 @@ rateDriverBottomSheet(BuildContext context) {
                     commentSubtitle:
                         "Do you want to add additional tip for Daniel?"),
                 24.ph,
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ...List.generate(
-                      5,
-                      (index) => Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 12.w),
-                        child: GestureDetector(
-                          onTap: () {
-                            state(() {
-                              selectRate = index + 1;
-                            });
-                          },
-                          child: index < selectRate
-                              ? SvgPicture.asset(
-                                  AppIcons.rateStar,
-                                  width: 40.w,
-                                )
-                              : SvgPicture.asset(
-                                  AppIcons.star,
-                                  // ignore: deprecated_member_use
-                                  color: AppColors.primary,
-                                  width: 40.w,
-                                ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+                const RateDriverStars(),
                 24.ph,
                 const Divider(),
                 24.ph,

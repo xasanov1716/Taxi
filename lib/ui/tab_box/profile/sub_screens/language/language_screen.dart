@@ -36,13 +36,6 @@ class _LanguageScreenState extends State<LanguageScreen> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Padding(
-          //   padding: EdgeInsets.symmetric(horizontal: 24.w),
-          //   child: Text(
-          //     tr('suggested'),
-          //     style: Theme.of(context).textTheme.titleMedium,
-          //   ),
-          // ),
           16.ph,
           LanguageSelector(
             onTap: () {

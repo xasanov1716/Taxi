@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:taxi_app/ui/widgets/global_input.dart';
 
-import '../../../widgets/global_input.dart';
 
 class TextFieldItem extends StatelessWidget {
   const TextFieldItem({super.key, required this.hintText, required this.startIcon, required this.endIcon});

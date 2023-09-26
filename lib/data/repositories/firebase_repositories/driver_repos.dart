@@ -1,6 +1,6 @@
 import 'package:taxi_app/data/models/address/address_model.dart';
+import 'package:taxi_app/data/models/db/driver_model.dart';
 import 'package:taxi_app/data/models/universal_data.dart';
-import 'package:taxi_app/services/firebase/address_model_service.dart';
 import 'package:taxi_app/services/firebase/driver_model_service.dart';
 
 class DriverRepo {
