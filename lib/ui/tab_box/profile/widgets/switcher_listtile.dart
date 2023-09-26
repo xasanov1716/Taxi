@@ -15,7 +15,7 @@ class SwitcherListTile extends StatefulWidget {
     required this.text,
   });
 
-  bool isSwitched;
+   bool isSwitched;
   final VoidCallback onTap;
   final String text;
 

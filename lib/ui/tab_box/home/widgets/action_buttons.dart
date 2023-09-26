@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
+import 'package:taxi_app/utils/size/size_extension.dart';
 
 import 'global_action_button.dart';
 
@@ -29,7 +30,7 @@ class ActionButtons extends StatelessWidget {
               );
             },
           ),
-          const SizedBox(width: 16),
+          16.pw,
           GlobalActionButtons(
             color: AppColors.dimYellow,
             icon: SvgPicture.asset(
@@ -41,7 +42,7 @@ class ActionButtons extends StatelessWidget {
               Navigator.pushNamed(context, RouteNames.notificationScreen);
             },
           ),
-          const SizedBox(width: 16),
+          16.pw,
           GlobalActionButtons(
             color: AppColors.dimYellow,
             icon: SvgPicture.asset(

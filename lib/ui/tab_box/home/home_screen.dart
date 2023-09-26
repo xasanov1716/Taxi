@@ -19,6 +19,7 @@ class HomeScreen extends StatefulWidget {
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
+
 class _HomeScreenState extends State<HomeScreen> {
   late GoogleMapController mapController;
 
@@ -67,20 +68,20 @@ class _HomeScreenState extends State<HomeScreen> {
               bottom: height / 6,
               left: 0,
               right: 0,
-              child: CategoryOfAddress(),
+              child: const CategoryOfAddress(),
             ),
             Positioned(
               bottom: 0,
               left: 0,
               right: 0,
               child: HomeAddressSelector(
-                onTab: (){
+                onTab: () {
                   addressSelectDialog(context);
                 },
               ),
             ),
             const Visibility(
-              visible: true, // <= Ko'rish
+              visible: true,
               child: Positioned(
                 bottom: 0,
                 left: 0,
@@ -99,6 +100,8 @@ class _HomeScreenState extends State<HomeScreen> {
       String style =
           await rootBundle.loadString('assets/styles/map_style.json');
       mapController.setMapStyle(style);
-    } catch (e) {}
+    } catch (e) {
+      throw ();
+    }
   }
 }
