@@ -6,6 +6,7 @@ import 'package:taxi_app/cubits/security_cubit/security_cubit.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/constants/constants.dart';
 
+// ignore: must_be_immutable
 class SwitcherListTile extends StatefulWidget {
   SwitcherListTile({
     super.key,

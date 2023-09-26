@@ -38,6 +38,5 @@ class ThirdItemContainer extends StatelessWidget {
         ),
       ),
     );
-    ;
   }
 }

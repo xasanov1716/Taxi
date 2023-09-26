@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:taxi_app/ui/contact_to_driver/sub_screens/cancel_driver/widgets/checkbox_row.dart';
+import 'package:taxi_app/ui/contact_to_driver/sub_screens/cancel_driver/widgets/cancellation_reasons.dart';
 import 'package:taxi_app/ui/widgets/global_alert_dialog.dart';
 import 'package:taxi_app/ui/widgets/global_appbar.dart';
 import 'package:taxi_app/ui/widgets/global_button.dart';
@@ -44,34 +44,7 @@ class _CancelDriverScreenState extends State<CancelDriverScreen> {
                           .titleMedium!
                           .copyWith(fontSize: 16.sp),
                     ),
-                    24.ph,
-                    const CancelDriverCheckBoxRow(
-                      text: "Waiting for long time",
-                    ),
-                    const CancelDriverCheckBoxRow(
-                      text: "Unable to contact driver",
-                    ),
-                    const CancelDriverCheckBoxRow(
-                      text: "Driver denied to go to destination",
-                    ),
-                    const CancelDriverCheckBoxRow(
-                      text: "Driver denied to come to pickup",
-                    ),
-                    const CancelDriverCheckBoxRow(
-                      text: "Wrong address shown",
-                    ),
-                    const CancelDriverCheckBoxRow(
-                      text: "The price is not reasonable",
-                    ),
-                    const CancelDriverCheckBoxRow(
-                      text: "The price is not reasonable",
-                    ),
-                    24.ph,
-                    Text(
-                      "Others",
-                      style: Theme.of(context).textTheme.titleLarge,
-                    ),
-                    16.ph,
+                    const CancellationReasons(),
                     GlobalTextField(
                       hintText: "Others Reason",
                       textInputAction: TextInputAction.done,
@@ -88,7 +61,8 @@ class _CancelDriverScreenState extends State<CancelDriverScreen> {
                 showGlobalAlertDialog(
                     context: context,
                     title: "We’re so sad about your cancellation",
-                    text: "We will continue to improve our service & satisfy you on the next trip.",
+                    text:
+                        "We will continue to improve our service & satisfy you on the next trip.",
                     image: AppIcons.smileUnhappy,
                     onTap: () {
                       Navigator.pop(context);
