@@ -10,7 +10,19 @@ class UserCubit extends Cubit<UserState> {
   UserCubit()
       : super(
           UserState(
-            userModel: UserModel(image: '', fullName: '', nickName: '', emailAddress: '', date: '', phone: '', gender: ''),
+            userModel: UserModel(
+            image: '',
+            fullName: '',
+            nickName: '',
+            emailAddress: '',
+            birthDate: '',
+            phone: '',
+            gender: '',
+            addressText: '',
+            createdAt: '',
+            fcmToken: '',
+            userId: ''
+             ),
             errorText: "",
           ),
         );
@@ -48,9 +60,29 @@ class UserCubit extends Cubit<UserState> {
           currentUser = currentUser.copyWith(emailAddress: value as String);
           break;
         }
-      case UserFieldKeys.date:
+      case UserFieldKeys.birthDate:
         {
-          currentUser = currentUser.copyWith(date: value as String);
+          currentUser = currentUser.copyWith(birthDate: value as String);
+          break;
+        }
+      case UserFieldKeys.addressText:
+        {
+          currentUser = currentUser.copyWith(addressText: value as String);
+          break;
+        }
+      case UserFieldKeys.fcmToken:
+        {
+          currentUser = currentUser.copyWith(fcmToken: value as String);
+          break;
+        }
+      case UserFieldKeys.userId:
+        {
+          currentUser = currentUser.copyWith(userId: value as String);
+          break;
+        }
+      case UserFieldKeys.createdAt:
+        {
+          currentUser = currentUser.copyWith(createdAt: value as String);
           break;
         }
       case UserFieldKeys.nickName:
@@ -67,12 +99,27 @@ class UserCubit extends Cubit<UserState> {
 
   bool canRegister() {
     UserModel currentUser = state.userModel;
-
     if (currentUser.phone.length < 9) {
       return false;
     }
 
     if (currentUser.image.isEmpty) {
+      return false;
+    }
+
+    if (currentUser.createdAt.isEmpty) {
+      return false;
+    }
+
+    if (currentUser.fcmToken.isEmpty) {
+      return false;
+    }
+
+    if (currentUser.addressText.isEmpty) {
+      return false;
+    }
+
+    if (currentUser.userId.isEmpty) {
       return false;
     }
 
@@ -87,7 +134,7 @@ class UserCubit extends Cubit<UserState> {
       return false;
     }
 
-    if (currentUser.date.isEmpty) {
+    if (currentUser.birthDate.isEmpty) {
       return false;
     }
      if (currentUser.nickName.isEmpty) {
@@ -99,7 +146,19 @@ class UserCubit extends Cubit<UserState> {
   clearData() {
     emit(
       UserState(
-        userModel: UserModel(image: '', fullName: '', nickName: '', emailAddress: '', date: '', phone: '', gender: ''),
+        userModel: UserModel(
+            image: '',
+            fullName: '',
+            nickName: '',
+            emailAddress: '',
+            birthDate: '',
+            phone: '',
+            gender: '',
+            addressText: '',
+            createdAt: '',
+            fcmToken: '',
+            userId: ''
+             ),
         errorText: "",
       ),
     );
