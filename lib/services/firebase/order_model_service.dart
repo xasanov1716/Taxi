@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:taxi_app/data/models/order/order_model.dart';
 import 'package:taxi_app/data/models/universal_data.dart';
 
 class OrderService {
