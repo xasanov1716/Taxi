@@ -72,8 +72,7 @@ class WalletScreen extends StatelessWidget {
                   expense: "Taxi Expense",
                   iconName: AppIcons.arrowUpSquare,
                   iconColor: AppColors.error,
-
-                ),
+                 ),
               )
             ]),
           ),
