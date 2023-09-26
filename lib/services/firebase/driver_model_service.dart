@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:taxi_app/data/models/db/driver_model.dart';
 import 'package:taxi_app/data/models/universal_data.dart';
+const String driverCollection = 'drivers';
 
 class DriverModelService {
-  final String driverCollection = 'drivers';
 
   Future<UniversalData> addDriver({required DriverModel driverModel}) async {
     try {

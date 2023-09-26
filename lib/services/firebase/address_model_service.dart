@@ -2,15 +2,18 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:taxi_app/data/models/address_model/adders_model.dart';
 import 'package:taxi_app/data/models/universal_data.dart';
 
+
+const String addressCollection = 'address';
+
 class AddressModelService {
-  final String addressCollection = 'address';
+  final FirebaseFirestore base=FirebaseFirestore.instance;
   Future<UniversalData> addAddress({required AddressModel addressModel}) async {
     try {
-      DocumentReference newAddress = await FirebaseFirestore.instance
+      DocumentReference newAddress = await base
           .collection(addressCollection)
           .add(addressModel.toJson());
 
-      await FirebaseFirestore.instance
+      await base
           .collection(addressCollection)
           .doc(newAddress.id)
           .update({
@@ -28,7 +31,7 @@ class AddressModelService {
   Future<UniversalData> updateAddress(
       {required AddressModel addressModel}) async {
     try {
-      await FirebaseFirestore.instance
+      await base
           .collection(addressCollection)
           .doc(addressModel.addressId)
           .update(addressModel.toJson());
@@ -43,7 +46,7 @@ class AddressModelService {
 
   Future<UniversalData> deleteAddress({required String addressId}) async {
     try {
-      await FirebaseFirestore.instance
+      await base
           .collection(addressCollection)
           .doc(addressId)
           .delete();
@@ -55,4 +58,7 @@ class AddressModelService {
       return UniversalData(error: error.toString());
     }
   }
+
+
+
 }
