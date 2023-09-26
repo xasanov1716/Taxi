@@ -8,11 +8,12 @@ class OrderRepo {
   Future<UniversalData> addOrder({required OrderModel orderModel}) async {
     return await orderService.addOrder(orderModel: orderModel);
   }
+
   Future<UniversalData> updateOrder({required OrderModel orderModel}) async {
     return await orderService.updateOrder(orderModel: orderModel);
   }
 
   Future<UniversalData> deleteOrder({required String orderId}) async {
-    return await orderService.deleteOrder(orderId: orderId);
+    return await orderService.deleteProduct(orderId: orderId);
   }
 }

@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:taxi_app/data/models/universal_data.dart';
 class UserService {
   static String usersCollection = 'users';
-  static Future<UniversalData> addUser(
+   Future<UniversalData> addUser(
       {required UserModel userModel}) async {
     try {
       DocumentReference newProduct = await FirebaseFirestore.instance
@@ -24,7 +24,7 @@ class UserService {
     }
   }
 
-  static Future<UniversalData> updateUser(
+Future<UniversalData> updateUser(
       {required UserModel userModel}) async {
     try {
       await FirebaseFirestore.instance
@@ -40,7 +40,7 @@ class UserService {
     }
   }
 
-  static Future<UniversalData> deleteUser(
+   Future<UniversalData> deleteUser(
       {required String userId}) async {
     try {
       await FirebaseFirestore.instance
