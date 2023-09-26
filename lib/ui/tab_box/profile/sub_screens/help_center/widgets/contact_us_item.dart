@@ -21,7 +21,7 @@ class ContactUsItem extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(20.r)),
-          color: (getTheme(context) ? AppColors.black : AppColors.white)
+          color: (getTheme(context) ? AppColors.dark2 : AppColors.white)
               ,
         ),
         child: ListTile(
