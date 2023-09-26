@@ -19,6 +19,7 @@ class HomeScreen extends StatefulWidget {
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
+
 class _HomeScreenState extends State<HomeScreen> {
   late GoogleMapController mapController;
 
@@ -74,7 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
               left: 0,
               right: 0,
               child: HomeAddressSelector(
-                onTab: (){
+                onTab: () {
                   addressSelectDialog(context);
                 },
               ),
