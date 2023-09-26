@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:taxi_app/ui/app/app.dart';
 import 'package:taxi_app/ui/chat/chat_screen.dart';
 import 'package:taxi_app/ui/contact_to_driver/sub_screens/cancel_driver/cancel_driver_screen.dart';
 import 'package:taxi_app/ui/contact_to_driver/sub_screens/driver_detail/driver_detail_screen.dart';
@@ -46,6 +47,7 @@ import 'tab_box/home/sub_screens/special_offers/special_offers_screen.dart';
 class RouteNames {
   static const String splashScreen = "/";
   static const String conFirmCodeScreen = "/confirm_code_screen";
+  static const String appRoute = "/app_route";
   static const String forgotPassword = "/forgot_password";
   static const String createPassword = "/create_password";
   static const String letsIn = "/lets_in_screen";
@@ -111,6 +113,10 @@ class AppRoutes {
       case RouteNames.specialOffers:
         return MaterialPageRoute(
           builder: (context) => const SpecialOffersScreen(),
+        );
+      case RouteNames.appRoute:
+        return MaterialPageRoute(
+          builder: (context) => const App(),
         );
       case RouteNames.inviteFriends:
         return MaterialPageRoute(

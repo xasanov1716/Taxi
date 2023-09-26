@@ -5,7 +5,7 @@ import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 import 'package:taxi_app/data/models/status/form_status.dart';
 import 'package:taxi_app/data/models/user/user_model.dart';
-import 'package:taxi_app/data/repositories/firebase_repositories/user_repository.dart';
+import 'package:taxi_app/data/repositories/user_repository.dart';
 
 part 'user_event.dart';
 part 'user_state.dart';

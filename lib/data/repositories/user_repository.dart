@@ -1,18 +1,17 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:taxi_app/data/models/universal_data.dart';
 import 'package:taxi_app/data/models/user/user_model.dart';
-const String usersCollection = 'users';
+import 'package:taxi_app/utils/constants/constants.dart';
 
-class UserService {
-   Future<UniversalData> addUser(
-      {required UserModel userModel}) async {
+class UserRepo {
+  Future<UniversalData> addUser({required UserModel userModel}) async {
     try {
       DocumentReference newProduct = await FirebaseFirestore.instance
-          .collection(usersCollection)
+          .collection(FirebaseCollections.users)
           .add(userModel.toJson());
 
       await FirebaseFirestore.instance
-          .collection(usersCollection)
+          .collection(FirebaseCollections.users)
           .doc(newProduct.id)
           .update({
         "userId": newProduct.id,
@@ -26,11 +25,10 @@ class UserService {
     }
   }
 
-Future<UniversalData> updateUser(
-      {required UserModel userModel}) async {
+  Future<UniversalData> updateUser({required UserModel userModel}) async {
     try {
       await FirebaseFirestore.instance
-          .collection(usersCollection)
+          .collection(FirebaseCollections.users)
           .doc(userModel.userId)
           .update(userModel.toJson());
 
@@ -42,11 +40,10 @@ Future<UniversalData> updateUser(
     }
   }
 
-   Future<UniversalData> deleteUser(
-      {required String userId}) async {
+  Future<UniversalData> deleteUser({required String userId}) async {
     try {
       await FirebaseFirestore.instance
-          .collection(usersCollection)
+          .collection(FirebaseCollections.users)
           .doc(userId)
           .delete();
 
@@ -57,6 +54,4 @@ Future<UniversalData> updateUser(
       return UniversalData(error: error.toString());
     }
   }
-
-
 }

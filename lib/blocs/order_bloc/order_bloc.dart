@@ -5,13 +5,15 @@ import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 import 'package:taxi_app/data/models/order/order_model.dart';
 import 'package:taxi_app/data/models/status/form_status.dart';
-import 'package:taxi_app/data/repositories/firebase_repositories/order_repo.dart';
+import 'package:taxi_app/data/repositories/order_repo.dart';
 
 part 'order_event.dart';
+
 part 'order_state.dart';
 
 class OrderBloc extends Bloc<OrderEvent, OrderState> {
   final OrderRepo orderRepo;
+
   OrderBloc({required this.orderRepo})
       : super(OrderState(
           statusText: '',
@@ -25,7 +27,8 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
               createdAt: '',
               orderStatus: ''),
           status: FormStatus.pure,
-          orders: const [], orderById: const [],
+          orders: const [],
+          orderById: const [],
         )) {
     on<AddOrderEvent>(addOrder);
     on<UpdateOrderEvent>(upDateOrder);
@@ -33,8 +36,9 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
     on<GetOrderEvent>(listenOrders);
     on<GetOrderByIdEvent>(listenOrdersById);
   }
+
   Future<void> addOrder(
-      AddOrderEvent addOrderEvent, Emitter<OrderState> emitter) async {
+      AddOrderEvent addOrderEvent, Emitter<OrderState> emit) async {
     emit(state.copyWith(statusText: "loading...", status: FormStatus.loading));
     await orderRepo.addOrder(orderModel: addOrderEvent.orderModel);
     emit(state.copyWith(
@@ -42,7 +46,7 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
   }
 
   Future<void> upDateOrder(
-      UpdateOrderEvent updateOrderEvent, Emitter<OrderState> emitter) async {
+      UpdateOrderEvent updateOrderEvent, Emitter<OrderState> emit) async {
     emit(state.copyWith(statusText: "loading...", status: FormStatus.loading));
     await orderRepo.updateOrder(orderModel: updateOrderEvent.orderModel);
     emit(state.copyWith(
@@ -50,7 +54,7 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
   }
 
   Future<void> deleteOrder(
-      DeleteOrderEvent deleteOrderEvent, Emitter<OrderState> emitter) async {
+      DeleteOrderEvent deleteOrderEvent, Emitter<OrderState> emit) async {
     emit(state.copyWith(statusText: "loading...", status: FormStatus.loading));
     await orderRepo.deleteOrder(orderId: deleteOrderEvent.orderId);
     emit(state.copyWith(
@@ -58,22 +62,12 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
   }
 
   Future<void> listenOrders(
-      GetOrderEvent event, Emitter<OrderState> emitter) async {
+      GetOrderEvent event, Emitter<OrderState> emit) async {
     emit(state.copyWith(status: FormStatus.loading));
-
-    orderRepo.getOrders().listen((drivers) {
-      emit(state.copyWith(status: FormStatus.success, orders: drivers));
-    });
   }
 
   Future<void> listenOrdersById(
-      GetOrderByIdEvent event, Emitter<OrderState> emitter) async {
-    emit(state.copyWith(
-      status: FormStatus.loading,
-    ));
-
-    orderRepo.getOrdersById(orderId: event.orderId).listen((driversById) {
-      emit(state.copyWith(status: FormStatus.success, orderById: driversById));
-    });
+      GetOrderByIdEvent event, Emitter<OrderState> emit) async {
+    emit(state.copyWith(status: FormStatus.loading));
   }
 }
