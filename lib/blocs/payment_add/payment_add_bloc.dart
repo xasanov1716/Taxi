@@ -25,11 +25,11 @@ class PaymentAddBloc extends Bloc<PaymentAddEvent, PaymentAddState> {
         paymentIcon: AppIcons.masterCard, title: "masterCard", price: 180),
   ];
 
-  void getCard(GetCards event, Emitter<PaymentAddState> emitter) {
+  void getCard(GetCards event, Emitter<PaymentAddState> emit) {
     emit(state.copyWith(cards: payments));
   }
 
-  void addCards(AddCards event, Emitter<PaymentAddState> emitter) {
+  void addCards(AddCards event, Emitter<PaymentAddState> emit) {
     payments.add(event.name);
     add(GetCards());
   }

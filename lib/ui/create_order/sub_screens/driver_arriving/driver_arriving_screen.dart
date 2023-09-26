@@ -87,7 +87,7 @@ class _DriverArrivingScreenState extends State<DriverArrivingScreen> {
           Positioned(
               bottom: 24.h,
               left: (width - 230.w) / 2,
-              child: SideCalcelButton(
+              child: SideCancelButton(
                 icon: AppIcons.image,
                 title: "Driver arrive",
                 onTap: () {
