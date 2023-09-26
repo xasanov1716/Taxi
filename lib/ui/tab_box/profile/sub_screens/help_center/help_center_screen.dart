@@ -9,7 +9,6 @@ import 'package:taxi_app/ui/tab_box/profile/sub_screens/help_center/f_a_q.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
-import 'package:taxi_app/utils/theme/get_theme.dart';
 import 'package:taxi_app/utils/ui_utils/utilitiy_function.dart';
 
 class HelpCenterScreen extends StatefulWidget {
@@ -26,7 +25,7 @@ class _HelpCenterScreenState extends State<HelpCenterScreen> {
       initialIndex: 0,
       length: 2,
       child: Scaffold(
-        backgroundColor: getTheme(context) ? AppColors.black : AppColors.white,
+        backgroundColor: AppColors.c_200,
         appBar: AppBar(
           elevation: 0,
           bottom: const TabBar(

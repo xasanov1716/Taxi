@@ -7,6 +7,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taxi_app/blocs/create_order/create_order_bloc.dart';
 import 'package:taxi_app/blocs/home/home_bloc.dart';
 import 'package:taxi_app/blocs/messages/message_bloc.dart';
+import 'package:taxi_app/blocs/payment/payment_bloc.dart';
+import 'package:taxi_app/blocs/payment_add/payment_add_bloc.dart';
 import 'package:taxi_app/blocs/search_location_bloc/places_bloc.dart';
 import 'package:taxi_app/cubits/address_cubit/address_cubit.dart';
 import 'package:taxi_app/blocs/social_auth_bloc/social_auth_bloc.dart';
@@ -34,7 +36,7 @@ import 'ui/tab_box/profile/sub_screens/help_center/help_center_screen.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await StorageRepository.getInstance();
-  await  EasyLocalization.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
 
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
@@ -85,6 +87,8 @@ class App extends StatelessWidget {
           BlocProvider(create: (context) => SocialAuthBloc()),
           BlocProvider(create: (context) => UserCubit()),
           BlocProvider(create: (context) => CreateOrderBloc()),
+          BlocProvider(create: (context) => PaymentBloc()),
+          BlocProvider(create: (context) => PaymentAddBloc()),
           BlocProvider(
             create: (_) => CategoryCubit(),
           ),
@@ -93,14 +97,14 @@ class App extends StatelessWidget {
           BlocProvider(create: (context) => HelpCenterCategoryCubit()),
         ],
         child: EasyLocalization(
-          supportedLocales: const [
-            Locale('ru', 'RU'),
-            Locale('uz','UZ'),
-            Locale('uz', 'Cyrl'),
-          ],
-          path: 'assets/translations',
-          fallbackLocale: const Locale('uz','UZ'),
-          child: const MyApp()),
+            supportedLocales: const [
+              Locale('ru', 'RU'),
+              Locale('uz', 'UZ'),
+              Locale('uz', 'Cyrl'),
+            ],
+            path: 'assets/translations',
+            fallbackLocale: const Locale('uz', 'UZ'),
+            child: const MyApp()),
       ),
     );
   }

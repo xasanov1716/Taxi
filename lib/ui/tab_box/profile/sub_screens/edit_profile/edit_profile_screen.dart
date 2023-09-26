@@ -12,6 +12,7 @@ import 'package:taxi_app/data/models/icon/icon_type.dart';
 import 'package:taxi_app/data/models/user/user_field_keys.dart';
 import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/edit_profile/widgets/edit_appbar.dart';
+import 'package:taxi_app/ui/tab_box/profile/widgets/profile_dialog.dart';
 import 'package:taxi_app/ui/widgets/user_image.dart';
 import 'package:taxi_app/ui/widgets/global_button.dart';
 import 'package:taxi_app/ui/widgets/global_input.dart';
@@ -39,7 +40,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   TextEditingController dateController = TextEditingController();
   String gender = "Male";
   ImagePicker picker = ImagePicker();
-  String image = '';
+  String image = "";
 
   var phoneFormatter = MaskTextInputFormatter(
       mask: '## ### ## ##',
@@ -65,25 +66,21 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
           children: [
             Expanded(
               child: ListView(
+                physics: const BouncingScrollPhysics(),
                 children: [
                   UserImage(
-                      userImage: image.isEmpty
-                          ? Image.asset(
-                              AppIcons.emptyProfile,
-                            )
-                          : ClipRRect(
-                              borderRadius: BorderRadius.circular(100.r),
-                              child: Image.file(
-                                File(image),
-                                width: 142 * width / figmaWidth,
-                                height: 142 * width / figmaWidth,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                      edit: AppIcons.editSquare,
-                      onTap: () {
-                        showBottomSheetDialog(context, picker, image);
-                      }),
+                    onTap: () {
+                      // showBottomSheetDialog(
+                      //   context,
+                      //   picker
+                      // );
+                      profileDialog(picker: picker, context: context, valueChanged: (v){
+                        setState(() {
+                          image = v;
+                        });
+                      });
+                    },
+                  ),
                   24.ph,
                   GlobalTextField(
                     focusNode: fullNameFocusNode,
@@ -145,13 +142,13 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   24.ph,
                   Container(
                     padding:
-                    EdgeInsets.symmetric(horizontal: 20.w, vertical: 6.h),
+                        EdgeInsets.symmetric(horizontal: 20.w, vertical: 6.h),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12.r),
                       color: getTheme(context)
                           ? AppColors.dark2
                           : AppColors
-                          .greysCale, // Use the desired background color
+                              .greysCale, // Use the desired background color
                     ),
                     child: DropdownButton<String>(
                       isExpanded: true,
@@ -199,11 +196,13 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 ],
               ),
             ),
+            12.ph,
             GlobalButton(
               title: "Update",
               onTap: () {
-                if(widget.navigateFromAuth){
-                  Navigator.pushReplacementNamed(context, RouteNames.setPinCodeScreen);
+                if (widget.navigateFromAuth) {
+                  Navigator.pushReplacementNamed(
+                      context, RouteNames.setPinCodeScreen);
                 }
               },
               radius: 100.r,

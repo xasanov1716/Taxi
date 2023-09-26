@@ -9,7 +9,14 @@ class UserModel {
   final String phone;
   final String gender;
 
-  UserModel({required this.image,required this.fullName,required this.nickName,required this.emailAddress,required this.date,required this.phone,required this.gender});
+  UserModel(
+      {required this.image,
+      required this.fullName,
+      required this.nickName,
+      required this.emailAddress,
+      required this.date,
+      required this.phone,
+      required this.gender});
 
   UserModel copyWith({
     String? fullName,
@@ -19,6 +26,14 @@ class UserModel {
     String? image,
     String? gender,
     String? date,
-  })=>UserModel(image: image ?? this.image, fullName: fullName ?? this.fullName, nickName: nickName ?? this.nickName, emailAddress: emailAddress ?? this.emailAddress, date: date ?? this.date, phone: phone ?? this.phone, gender: gender ?? this.gender);
-
+  }) =>
+      UserModel(
+        image: image ?? this.image,
+        fullName: fullName ?? this.fullName,
+        nickName: nickName ?? this.nickName,
+        emailAddress: emailAddress ?? this.emailAddress,
+        date: date ?? this.date,
+        phone: phone ?? this.phone,
+        gender: gender ?? this.gender,
+      );
 }
