@@ -6,7 +6,6 @@ class AddressState extends Equatable {
   List<AddressModel> address;
 
   final FormStatus status;
-
   AddressState(
       {required this.addresses,
       required this.addressModel,
