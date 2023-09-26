@@ -24,7 +24,7 @@ import 'package:taxi_app/ui/tab_box/profile/sub_screens/address/address_screen.d
 import 'package:taxi_app/ui/auth/login/login_screen.dart';
 import 'package:taxi_app/ui/auth/register/register_screen.dart';
 import 'package:taxi_app/ui/splash/splash_screen.dart';
-import 'package:taxi_app/ui/tab_box/profile/sub_screens/edit_profile/edit_profile_screen.dart';
+import 'package:taxi_app/ui/tab_box/profile/sub_screens/edit_profile_driver/edit_profile_screen.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/help_center/help_center_screen.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/invite_friends/invite_friends.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/language/language_screen.dart';
