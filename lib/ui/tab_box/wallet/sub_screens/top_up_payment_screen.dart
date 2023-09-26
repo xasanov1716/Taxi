@@ -24,7 +24,7 @@ class _TopUpPaymentScreenState extends State<TopUpPaymentScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: TopUpPaymentAppbar(title: "Top Up E-Wallet"),
+      appBar: const TopUpPaymentAppbar(title: "Top Up E-Wallet"),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
