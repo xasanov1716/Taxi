@@ -18,7 +18,7 @@ class SocialAuthBloc extends Bloc<SocialAuthEvent, SocialAuthState> {
     emit(AuthFirstStepSuccessState());
   }
 
-  void secondStep(AuthSecondStepSuccessEvent first,Emitter<SocialAuthState> emit){
+   secondStep(AuthSecondStepSuccessEvent first,Emitter<SocialAuthState> emit){
     emit(AuthSecondStepSuccessState());
   }
   thirdStep(AuthThirdStepSuccessEvent first,Emitter<SocialAuthState> emit){

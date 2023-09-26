@@ -55,6 +55,39 @@ class _FirstPageState extends State<FirstPage> {
     return ListView(
       physics: const BouncingScrollPhysics(),
       children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              width: 30.w,
+              height: 30.w,
+              decoration: BoxDecoration(
+                color: AppColors.green,
+                borderRadius: BorderRadius.circular(100.r),
+                border: Border.all(width: 1,color: AppColors.dark2)
+              ),
+            ),
+            20.pw,
+            Container(
+              width: 30.w,
+              height: 30.w,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(100.r),
+                border: Border.all(width: 1,color: AppColors.dark2)
+              ),
+            ),
+            20.pw,
+            Container(
+              width: 30.w,
+              height: 30.w,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(100.r),
+                border: Border.all(width: 1,color: AppColors.dark2)
+              ),
+            ),
+          ],
+        ),
+        24.ph,
         UserImage(
           onTap: () {
             // showBottomSheetDialog(

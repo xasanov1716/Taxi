@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:taxi_app/cubits/user/user_cubit.dart';
 import 'package:taxi_app/data/local/search_location/places_db.dart';
 import 'package:taxi_app/data/models/icon/icon_type.dart';
 import 'package:taxi_app/data/models/places/district_model.dart';
 import 'package:taxi_app/data/models/places/quarter_model.dart';
 import 'package:taxi_app/data/models/places/region_model.dart';
-import 'package:taxi_app/data/models/user/user_field_keys.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/fonts/text_styles.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
@@ -23,53 +20,111 @@ class ThirdPage extends StatefulWidget {
 }
 
 class _ThirdPageState extends State<ThirdPage> {
-  String region = "Tashkent";
-  String district = "Tashkent";
-  String quarter = "Tashkent";
-  List<String> regions = [];
-  List<RegionModel> regionModels= [];
-  List<DistrictModel> districtsModel = [];
-  List<String> districts = [];
-  List<QuarterModel> quartersModel = [];
-  List<String> quarters = [];
-  int regionId=0;
-  int districtId=0;
-  bool isDistrictVisible=false;
-  bool isQuarterVisible=false;
+  String fromRegion = "Tashkent";
+  String fromDistrict = "Tashkent";
+  String fromQuarter = "Tashkent";
+  List<String> fromRegions = [];
+  List<RegionModel> fromRegionModels= [];
+  List<DistrictModel> fromDistrictsModel = [];
+  List<String> fromDistricts = [];
+  List<QuarterModel> fromQuartersModel = [];
+  List<String> fromQuarters = [];
+  int fromRegionId=0;
+  int fromDistrictId=0;
+  bool isFromDistrictVisible=false;
+  bool isFromQuarterVisible=false;
+
+  String toRegion = "Tashkent";
+  String toDistrict = "Tashkent";
+  String toQuarter = "Tashkent";
+  List<String> toRegions = [];
+  List<RegionModel> toRegionModels= [];
+  List<DistrictModel> toDistrictsModel = [];
+  List<String> toDistricts = [];
+  List<QuarterModel> toQuartersModel = [];
+  List<String> toQuarters = [];
+  int toRegionId=0;
+  int toDistrictId=0;
+  bool istoDistrictVisible=false;
+  bool istoQuarterVisible=false;
+
+
   _init()async{
-    regionModels= (await PlacesDatabase.instance.getAllRegions()as List<RegionModel>).map((e) => e).toList();
+    fromRegionModels= (await PlacesDatabase.instance.getAllRegions()as List<RegionModel>).map((e) => e).toList();
+    toRegionModels= (await PlacesDatabase.instance.getAllRegions()as List<RegionModel>).map((e) => e).toList();
     _getStringLists();
   }
 
   _getStringLists(){
-    regions=regionModels.map((e) => e.name).toList();
-    districts=districtsModel.map((e) => e.name).toList();
-    quarters=quartersModel.map((e) => e.name).toList();
+    fromRegions=fromRegionModels.map((e) => e.name).toList();
+    fromDistricts=fromDistrictsModel.map((e) => e.name).toList();
+    fromQuarters=fromQuartersModel.map((e) => e.name).toList();
+    toRegions=fromRegionModels.map((e) => e.name).toList();
+    toDistricts=fromDistrictsModel.map((e) => e.name).toList();
+    toQuarters=fromQuartersModel.map((e) => e.name).toList();
     setState(() {
 
     });
   }
 
-  _getDistricts({required int id})async{
-    districts= (await PlacesDatabase.instance.getDistrictById(id: id)as List<DistrictModel>).map((e) => e.name).toList();
-    district=districts.first;
+  _getFromDistricts({required int id})async{
+    fromDistricts= (await PlacesDatabase.instance.getDistrictById(id: id)as List<DistrictModel>).map((e) => e.name).toList();
+    fromDistrict=fromDistricts.first;
     setState(() {
 
     });
   }
 
-  _getQuarter({required int id})async{
-    quarters = (await PlacesDatabase.instance.getQuarterById(id: id)as List<QuarterModel>).map((e) => e.name).toList();
-    quarter=quarters.first;
+  _getFromQuarter({required int id})async{
+    fromQuarters = (await PlacesDatabase.instance.getQuarterById(id: id)as List<QuarterModel>).map((e) => e.name).toList();
+    fromQuarter=fromQuarters.first;
     setState(() {
 
     });
   }
 
-  _getRegionId(String name){
-     for (var element in regionModels) {
+  _getFromRegionId(String name){
+    for (var element in fromRegionModels) {
+      if(element.name==name){
+        fromRegionId=element.id;
+      }
+    }
+    setState(() {
+
+    });
+  }
+
+  _getFromDistrictId(String name){
+    for (var element in fromDistrictsModel) {
+      if(element.name==name){
+        fromDistrictId=element.id;
+      }
+    }
+    setState(() {
+
+    });
+  }
+
+  _getToDistricts({required int id})async{
+    toDistricts= (await PlacesDatabase.instance.getDistrictById(id: id)as List<DistrictModel>).map((e) => e.name).toList();
+    toDistrict=toDistricts.first;
+    setState(() {
+
+    });
+  }
+
+  _getToQuarter({required int id})async{
+    toQuarters = (await PlacesDatabase.instance.getQuarterById(id: id)as List<QuarterModel>).map((e) => e.name).toList();
+    toQuarter=toQuarters.first;
+    setState(() {
+
+    });
+  }
+
+  _getToRegionId(String name){
+     for (var element in toRegionModels) {
        if(element.name==name){
-         regionId=element.id;
+         toRegionId=element.id;
        }
      }
      setState(() {
@@ -77,10 +132,10 @@ class _ThirdPageState extends State<ThirdPage> {
      });
   }
 
-  _getDistrictId(String name){
-    for (var element in districtsModel) {
+  _getToDistrictId(String name){
+    for (var element in toDistrictsModel) {
       if(element.name==name){
-        districtId=element.id;
+        toDistrictId=element.id;
       }
     }
     setState(() {
@@ -100,6 +155,41 @@ class _ThirdPageState extends State<ThirdPage> {
     return ListView(
       physics: const BouncingScrollPhysics(),
       children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              width: 30.w,
+              height: 30.w,
+              decoration: BoxDecoration(
+                  color: AppColors.green,
+                  borderRadius: BorderRadius.circular(100.r),
+                  border: Border.all(width: 1,color: AppColors.dark2)
+              ),
+            ),
+            20.pw,
+            Container(
+              width: 30.w,
+              height: 30.w,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(100.r),
+                  color: AppColors.green,
+                  border: Border.all(width: 1,color: AppColors.dark2)
+              ),
+            ),
+            20.pw,
+            Container(
+              width: 30.w,
+              height: 30.w,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(100.r),
+                  color: AppColors.green,
+                  border: Border.all(width: 1,color: AppColors.dark2)
+              ),
+            ),
+          ],
+        ),
+        24.ph,
         Text("From",style: AppTextStyle.bodyMediumSemibold.copyWith(
           fontSize: 20.sp,
             color: getTheme(context)
@@ -132,7 +222,7 @@ class _ThirdPageState extends State<ThirdPage> {
                   BlendMode.srcIn),
             ),
             borderRadius: BorderRadius.circular(12.r),
-            items: regions.map((String items) {
+            items: fromRegions.map((String items) {
               return DropdownMenuItem(
                 value: items,
                 child: Text(
@@ -146,15 +236,15 @@ class _ThirdPageState extends State<ThirdPage> {
             }).toList(),
             onChanged: (String? newValue) {
               setState(()  {
-                region = newValue!;
-                _getRegionId(region);
-                _getDistricts(id: regionId);
-                isDistrictVisible=true;
+                fromRegion = newValue!;
+                _getFromRegionId(fromRegion);
+                _getFromDistricts(id: fromRegionId);
+                isFromDistrictVisible=true;
               });
               // context.read<UserCubit>().updateCurrentUserField(
               //     fieldKey: UserFieldKeys.gender, value: newValue);
             },
-            hint: Text(region,
+            hint: Text(fromRegion,
                 style: AppTextStyle.bodyMediumSemibold.copyWith(
                     color: getTheme(context)
                         ? AppColors.white
@@ -163,7 +253,7 @@ class _ThirdPageState extends State<ThirdPage> {
         ),
         24.ph,
         Visibility(
-          visible: isDistrictVisible,
+          visible: isFromDistrictVisible,
           child: Text("District",style: AppTextStyle.bodyMediumSemibold.copyWith(
               color: getTheme(context)
                   ? AppColors.white
@@ -171,7 +261,7 @@ class _ThirdPageState extends State<ThirdPage> {
         ),
         24.ph,
         Visibility(
-          visible: isDistrictVisible,
+          visible: isFromDistrictVisible,
           child: Container(
             padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 6.h),
             decoration: BoxDecoration(
@@ -193,7 +283,7 @@ class _ThirdPageState extends State<ThirdPage> {
                     BlendMode.srcIn),
               ),
               borderRadius: BorderRadius.circular(12.r),
-              items: districts.map((String items) {
+              items: fromDistricts.map((String items) {
                 return DropdownMenuItem(
                   value: items,
                   child: Text(
@@ -207,15 +297,15 @@ class _ThirdPageState extends State<ThirdPage> {
               }).toList(),
               onChanged: (String? newValue) {
                 setState(() {
-                  district = newValue!;
-                  _getDistrictId(district);
-                  _getQuarter(id: districtId);
-                  isQuarterVisible=true;
+                  fromDistrict = newValue!;
+                  _getFromDistrictId(fromDistrict);
+                  _getFromQuarter(id: fromDistrictId);
+                  isFromQuarterVisible=true;
                 });
                 // context.read<UserCubit>().updateCurrentUserField(
                 //     fieldKey: UserFieldKeys.gender, value: newValue);
               },
-              hint: Text(district,
+              hint: Text(fromDistrict,
                   style: AppTextStyle.bodyMediumSemibold.copyWith(
                       color: getTheme(context)
                           ? AppColors.white
@@ -225,7 +315,7 @@ class _ThirdPageState extends State<ThirdPage> {
         ),
         24.ph,
         Visibility(
-          visible: isQuarterVisible,
+          visible: isFromQuarterVisible,
           child: Text("Quarter",style: AppTextStyle.bodyMediumSemibold.copyWith(
               color: getTheme(context)
                   ? AppColors.white
@@ -233,7 +323,7 @@ class _ThirdPageState extends State<ThirdPage> {
         ),
         24.ph,
         Visibility(
-          visible: isQuarterVisible,
+          visible: isFromQuarterVisible,
           child: Container(
             padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 6.h),
             decoration: BoxDecoration(
@@ -255,7 +345,7 @@ class _ThirdPageState extends State<ThirdPage> {
                     BlendMode.srcIn),
               ),
               borderRadius: BorderRadius.circular(12.r),
-              items: quarters.map((String items) {
+              items: fromQuarters.map((String items) {
                 return DropdownMenuItem(
                   value: items,
                   child: Text(
@@ -269,12 +359,191 @@ class _ThirdPageState extends State<ThirdPage> {
               }).toList(),
               onChanged: (String? newValue) {
                 setState(() {
-                  quarter = newValue!;
+                  fromQuarter = newValue!;
                 });
-                context.read<UserCubit>().updateCurrentUserField(
-                    fieldKey: UserFieldKeys.gender, value: newValue);
               },
-              hint: Text(quarter,
+              hint: Text(fromQuarter,
+                  style: AppTextStyle.bodyMediumSemibold.copyWith(
+                      color: getTheme(context)
+                          ? AppColors.white
+                          : AppColors.c_900)), // Placeholder text
+            ),
+          ),
+        ),
+        24.ph,
+        Text("To",style: AppTextStyle.bodyMediumSemibold.copyWith(
+            fontSize: 20.sp,
+            color: getTheme(context)
+                ? AppColors.white
+                : AppColors.c_900)),
+        24.ph,
+        Text("Region",style: AppTextStyle.bodyMediumSemibold.copyWith(
+            color: getTheme(context)
+                ? AppColors.white
+                : AppColors.c_900)),
+        24.ph,
+        Container(
+          padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 6.h),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(12.r),
+            color: getTheme(context)
+                ? AppColors.dark2
+                : AppColors.greysCale, // Use the desired background color
+          ),
+          child: DropdownButton<String>(
+            isExpanded: true,
+            underline: const SizedBox(),
+            dropdownColor:
+            getTheme(context) ? AppColors.dark2 : AppColors.greysCale,
+            icon: SvgPicture.asset(
+              AppIcons.getSvg(
+                  name: AppIcons.arrowDown2, iconType: IconType.bold),
+              colorFilter: ColorFilter.mode(
+                  getTheme(context) ? AppColors.white : AppColors.c_900,
+                  BlendMode.srcIn),
+            ),
+            borderRadius: BorderRadius.circular(12.r),
+            items: toRegions.map((String items) {
+              return DropdownMenuItem(
+                value: items,
+                child: Text(
+                  items,
+                  style: AppTextStyle.bodyMediumSemibold.copyWith(
+                      color: getTheme(context)
+                          ? AppColors.white
+                          : AppColors.c_900),
+                ),
+              );
+            }).toList(),
+            onChanged: (String? newValue) {
+              setState(()  {
+                toRegion = newValue!;
+                _getToRegionId(toRegion);
+                _getToDistricts(id: toRegionId);
+                istoDistrictVisible=true;
+              });
+              // context.read<UserCubit>().updateCurrentUserField(
+              //     fieldKey: UserFieldKeys.gender, value: newValue);
+            },
+            hint: Text(toRegion,
+                style: AppTextStyle.bodyMediumSemibold.copyWith(
+                    color: getTheme(context)
+                        ? AppColors.white
+                        : AppColors.c_900)), // Placeholder text
+          ),
+        ),
+        24.ph,
+        Visibility(
+          visible: istoDistrictVisible,
+          child: Text("District",style: AppTextStyle.bodyMediumSemibold.copyWith(
+              color: getTheme(context)
+                  ? AppColors.white
+                  : AppColors.c_900)),
+        ),
+        24.ph,
+        Visibility(
+          visible: istoDistrictVisible,
+          child: Container(
+            padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 6.h),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(12.r),
+              color: getTheme(context)
+                  ? AppColors.dark2
+                  : AppColors.greysCale, // Use the desired background color
+            ),
+            child: DropdownButton<String>(
+              isExpanded: true,
+              underline: const SizedBox(),
+              dropdownColor:
+              getTheme(context) ? AppColors.dark2 : AppColors.greysCale,
+              icon: SvgPicture.asset(
+                AppIcons.getSvg(
+                    name: AppIcons.arrowDown2, iconType: IconType.bold),
+                colorFilter: ColorFilter.mode(
+                    getTheme(context) ? AppColors.white : AppColors.c_900,
+                    BlendMode.srcIn),
+              ),
+              borderRadius: BorderRadius.circular(12.r),
+              items: toDistricts.map((String items) {
+                return DropdownMenuItem(
+                  value: items,
+                  child: Text(
+                    items,
+                    style: AppTextStyle.bodyMediumSemibold.copyWith(
+                        color: getTheme(context)
+                            ? AppColors.white
+                            : AppColors.c_900),
+                  ),
+                );
+              }).toList(),
+              onChanged: (String? newValue) {
+                setState(() {
+                  toDistrict = newValue!;
+                  _getToDistrictId(toDistrict);
+                  _getToQuarter(id: toDistrictId);
+                  istoQuarterVisible=true;
+                });
+                // context.read<UserCubit>().updateCurrentUserField(
+                //     fieldKey: UserFieldKeys.gender, value: newValue);
+              },
+              hint: Text(toDistrict,
+                  style: AppTextStyle.bodyMediumSemibold.copyWith(
+                      color: getTheme(context)
+                          ? AppColors.white
+                          : AppColors.c_900)), // Placeholder text
+            ),
+          ),
+        ),
+        24.ph,
+        Visibility(
+          visible: istoQuarterVisible,
+          child: Text("Quarter",style: AppTextStyle.bodyMediumSemibold.copyWith(
+              color: getTheme(context)
+                  ? AppColors.white
+                  : AppColors.c_900)),
+        ),
+        24.ph,
+        Visibility(
+          visible: istoQuarterVisible,
+          child: Container(
+            padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 6.h),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(12.r),
+              color: getTheme(context)
+                  ? AppColors.dark2
+                  : AppColors.greysCale, // Use the desired background color
+            ),
+            child: DropdownButton<String>(
+              isExpanded: true,
+              underline: const SizedBox(),
+              dropdownColor:
+              getTheme(context) ? AppColors.dark2 : AppColors.greysCale,
+              icon: SvgPicture.asset(
+                AppIcons.getSvg(
+                    name: AppIcons.arrowDown2, iconType: IconType.bold),
+                colorFilter: ColorFilter.mode(
+                    getTheme(context) ? AppColors.white : AppColors.c_900,
+                    BlendMode.srcIn),
+              ),
+              borderRadius: BorderRadius.circular(12.r),
+              items: toQuarters.map((String items) {
+                return DropdownMenuItem(
+                  value: items,
+                  child: Text(
+                    items,
+                    style: AppTextStyle.bodyMediumSemibold.copyWith(
+                        color: getTheme(context)
+                            ? AppColors.white
+                            : AppColors.c_900),
+                  ),
+                );
+              }).toList(),
+              onChanged: (String? newValue) {
+                setState(() {
+                  toQuarter = newValue!;
+                });
+              },
+              hint: Text(toQuarter,
                   style: AppTextStyle.bodyMediumSemibold.copyWith(
                       color: getTheme(context)
                           ? AppColors.white
