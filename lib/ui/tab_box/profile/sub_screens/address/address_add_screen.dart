@@ -2,15 +2,14 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:taxi_app/cubits/address_cubit/address_cubit.dart';
 import 'package:taxi_app/data/models/address/address_model.dart';
+import 'package:taxi_app/ui/widgets/global_appbar.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/ui_utils/utilitiy_function.dart';
 
-import '../../../../widgets/global_appbar.dart';
 
 
 class AddressAddDetailScreen extends StatefulWidget {

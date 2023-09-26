@@ -55,15 +55,15 @@ class UserModel {
 
     factory UserModel.fromJson(Map<String, dynamic> json)=>UserModel(
       image: json['image'] as String? ??'',
-      fullName: json['fullName'] as String? ??'',
-      nickName: json['nickName'] as String? ??'',
-      emailAddress: json['emailAddress'] as String? ??'',
-      birthDate: json['birthDate'] as String? ??'',
+      fullName: json['full_name'] as String? ??'',
+      nickName: json['nick_name'] as String? ??'',
+      emailAddress: json['email_address'] as String? ??'',
+      birthDate: json['birth_date'] as String? ??'',
       phone: json['phone'] as String? ??'',
-      addressText: json['addressText'] as String? ??'',
-      createdAt: json['createdAt'] as String? ??'',
-      fcmToken: json['fcmToken'] as String? ??'',
-      userId: json['userId'] as String? ??'',
+      addressText: json['address_text'] as String? ??'',
+      createdAt: json['created_at'] as String? ??'',
+      fcmToken: json['fcm_token'] as String? ??'',
+      userId: json['user_id'] as String? ??'',
       gender: json['gender'] as String? ??''
     );
 
@@ -87,14 +87,14 @@ class UserModel {
 
     Map<String, dynamic> toJson()=>{
       'image' : image,
-      'fullName':fullName,
-      'nickName':nickName,
-      'userId':userId,
-      'fcmToken':fcmToken,
-      'createdAt':createdAt,
-      'addressText':addressText,
-      'emailAddress':emailAddress,
-      'birthDate':birthDate,
+      'full_name':fullName,
+      'nick_name':nickName,
+      'user_id':userId,
+      'fcm_token':fcmToken,
+      'created_at':createdAt,
+      'address_text':addressText,
+      'email_address':emailAddress,
+      'birth_date':birthDate,
       'phone':phone,
       'gender':gender,
     };

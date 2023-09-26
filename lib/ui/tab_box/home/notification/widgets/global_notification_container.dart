@@ -4,7 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
-import '../../../../../utils/theme/get_theme.dart';
+import 'package:taxi_app/utils/theme/get_theme.dart';
 
 class GlobalNotificationContainer extends StatelessWidget {
   const GlobalNotificationContainer(
@@ -22,10 +22,10 @@ class GlobalNotificationContainer extends StatelessWidget {
         color: getTheme(context) ? AppColors.dark2 : AppColors.white,
         boxShadow: const [
           BoxShadow(
-            offset: Offset(0, 4), // Horizontal and vertical offset
-            blurRadius: 60, // Blur radius
-            spreadRadius: 0, // Spread radius
-            color: Color.fromRGBO(4, 6, 15, 0.05), // Color with opacity
+            offset: Offset(0, 4),
+            blurRadius: 60,
+            spreadRadius: 0,
+            color: Color.fromRGBO(4, 6, 15, 0.05),
           ),
         ],
       ),

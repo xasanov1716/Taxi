@@ -18,15 +18,6 @@ class InboxScreen extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           elevation: 0,
-          bottom: const TabBar(
-            indicator: null,
-            tabAlignment: TabAlignment.fill,
-            isScrollable: false,
-            tabs: <Widget>[
-              Tab(text: "Chats"),
-              Tab(text: "Calls"),
-            ],
-          ),
           leading: Padding(
             padding: EdgeInsets.only(left: 24.w),
             child: Image.asset(
@@ -51,6 +42,15 @@ class InboxScreen extends StatelessWidget {
             ),
             12.pw,
           ],
+          bottom: const TabBar(
+            indicator: null,
+            tabAlignment: TabAlignment.fill,
+            isScrollable: false,
+            tabs: <Widget>[
+              Tab(text: "Chats"),
+              Tab(text: "Calls"),
+            ],
+          ),
         ),
         body: TabBarView(
           children: <Widget>[

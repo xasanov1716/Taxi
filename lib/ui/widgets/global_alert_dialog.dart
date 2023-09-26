@@ -17,6 +17,7 @@ void showGlobalAlertDialog(
     context: context,
     builder: (context) {
       return AlertDialog(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24.r)),
         content: Container(
           padding:
               EdgeInsets.only(top: 40.h, left: 32.w, right: 32.w, bottom: 32.h),

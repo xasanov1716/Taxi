@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:taxi_app/ui/app/app.dart';
 import 'package:taxi_app/ui/chat/chat_screen.dart';
 import 'package:taxi_app/ui/contact_to_driver/sub_screens/cancel_driver/cancel_driver_screen.dart';
 import 'package:taxi_app/ui/contact_to_driver/sub_screens/driver_detail/driver_detail_screen.dart';
@@ -6,10 +7,14 @@ import 'package:taxi_app/ui/create_order/sub_screens/add_promo/add_promo_screen.
 import 'package:taxi_app/ui/create_order/sub_screens/driver_arriving/driver_arriving_screen.dart';
 import 'package:taxi_app/ui/create_order/sub_screens/payment_methods/payment_methods_screen.dart';
 import 'package:taxi_app/ui/create_order/sub_screens/searching_driver/searching_driver_screen.dart';
+
+import 'package:taxi_app/ui/create_order/sub_screens/select_transport/select_transport_screen.dart';
+
 import 'package:taxi_app/ui/enterance/welcome/welcome_screen.dart';
 import 'package:taxi_app/ui/local_auth/enter_pin_screen.dart';
 import 'package:taxi_app/ui/local_auth/set_biometrics_screen.dart';
 import 'package:taxi_app/ui/local_auth/set_pin_screen.dart';
+
 import 'package:taxi_app/ui/tab_box/home/bottom_sheet/bottom_sheet_screen.dart';
 import 'package:taxi_app/ui/tab_box/home/notification/notification_screen.dart';
 import 'package:taxi_app/ui/tab_box/home/sub_screens/search_location/search_location_screen.dart';
@@ -37,12 +42,12 @@ import 'package:taxi_app/ui/tab_box/wallet/sub_screens/top_up_payment_screen.dar
 import 'package:taxi_app/ui/tab_box/wallet/sub_screens/transaction_detail_screen.dart';
 import 'package:taxi_app/ui/tab_box/wallet/sub_screens/transaction_history_screen.dart';
 import 'auth/lets_in/lets_in_screen.dart';
-import 'create_order/sub_screens/select_transport/select_transport_screen.dart';
 import 'tab_box/home/sub_screens/special_offers/special_offers_screen.dart';
 
 class RouteNames {
   static const String splashScreen = "/";
   static const String conFirmCodeScreen = "/confirm_code_screen";
+  static const String appRoute = "/app_route";
   static const String forgotPassword = "/forgot_password";
   static const String createPassword = "/create_password";
   static const String letsIn = "/lets_in_screen";
@@ -94,7 +99,8 @@ class AppRoutes {
       case RouteNames.welcomeScreen:
         return MaterialPageRoute(
           builder: (context) => const WelcomeScreen(),
-        ); case RouteNames.helpCenterScreen:
+        );
+      case RouteNames.helpCenterScreen:
         return MaterialPageRoute(
           builder: (context) => const HelpCenterScreen(),
         );
@@ -107,6 +113,10 @@ class AppRoutes {
       case RouteNames.specialOffers:
         return MaterialPageRoute(
           builder: (context) => const SpecialOffersScreen(),
+        );
+      case RouteNames.appRoute:
+        return MaterialPageRoute(
+          builder: (context) => const App(),
         );
       case RouteNames.inviteFriends:
         return MaterialPageRoute(
@@ -146,7 +156,7 @@ class AppRoutes {
         );
       case RouteNames.setPinCodeScreen:
         return MaterialPageRoute(
-          builder: (context) =>  SetPinScreen(
+          builder: (context) => SetPinScreen(
             previousPin: settings.arguments as String?,
           ),
         );

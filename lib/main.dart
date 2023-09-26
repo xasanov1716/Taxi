@@ -27,6 +27,7 @@ import 'package:taxi_app/data/repositories/auth_repository.dart';
 import 'package:taxi_app/data/repositories/places_db_repository.dart';
 import 'package:taxi_app/data/repositories/search_history_db.dart';
 import 'package:taxi_app/services/api_service.dart';
+import 'package:taxi_app/services/fcm.dart';
 import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/theme/app_theme.dart';
@@ -34,8 +35,10 @@ import 'cubits/category_cubit/category_cubit.dart';
 import 'cubits/help_center/help_center_category_cubit.dart';
 import 'cubits/user/user_cubit.dart';
 import 'ui/tab_box/profile/sub_screens/help_center/help_center_screen.dart';
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await initFirebase();
   await StorageRepository.getInstance();
   await EasyLocalization.ensureInitialized();
 
@@ -73,7 +76,7 @@ class App extends StatelessWidget {
             create: (context) => AddressCubit(
                 addressApiRepository: context.read<AddressApiRepository>()),
           ),
-          BlocProvider(create: (context) => AuthCubit()),
+          BlocProvider(create: (context) => AuthCubit(context.read<AuthRepository>())),
           BlocProvider(
             create: (context) => SearchLocationBloc(
               searchHistoryRepository: context.read<SearchHistoryRepository>(),

@@ -22,14 +22,14 @@ class OrderModel {
 
 
   factory OrderModel.fromJson(Map<String, dynamic> json)=>OrderModel(
-      orderId: json['orderId'] as String? ??'',
-      clientId: json['clientId'] as String? ??'',
-      driverId: json['driverId'] as String? ??'',
-      fromLocation: json['fromLocation'] as String? ??'',
-      toLocation: json['toLocation'] as String? ??'',
-      orderPrice: json['orderPrice'] as int? ?? 0,
-      createdAt: json['createdAt'] as String? ??'',
-      orderStatus: json['orderStatus'] as String? ??''
+      orderId: json['order_id'] as String? ??'',
+      clientId: json['client_id'] as String? ??'',
+      driverId: json['driver_id'] as String? ??'',
+      fromLocation: json['from_location'] as String? ??'',
+      toLocation: json['to_location'] as String? ??'',
+      orderPrice: json['order_price'] as int? ?? 0,
+      createdAt: json['created_at'] as String? ??'',
+      orderStatus: json['order_status'] as String? ??''
     );
 
   OrderModel copyWith({
@@ -65,14 +65,14 @@ class OrderModel {
   ''';
 
   Map<String, dynamic> toJson()=>{
-    'orderId':orderId,
-    'clientId':clientId,
-    'driverId':driverId,
-    'fromLocation': fromLocation,
-    'toLocation':toLocation,
-    'orderPrice':orderPrice,
-    'createdAt':createdAt,
-    'orderStatus':orderStatus,
+    'order_id':orderId,
+    'client_id':clientId,
+    'driver_id':driverId,
+    'from_location': fromLocation,
+    'to_location':toLocation,
+    'order_price':orderPrice,
+    'created_at':createdAt,
+    'order_status':orderStatus,
   };
 
 }

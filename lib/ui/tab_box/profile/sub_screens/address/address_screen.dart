@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:taxi_app/data/models/address/address_model.dart';
 import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/address/widgets/address_item.dart';
 import 'package:taxi_app/ui/widgets/global_appbar.dart';
@@ -8,7 +9,6 @@ import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 
-import '../../../../../data/models/address/address_model.dart';
 
 
 class AddressScreen extends StatefulWidget {
