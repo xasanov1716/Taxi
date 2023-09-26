@@ -1,31 +1,29 @@
-   import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:taxi_app/data/models/universal_data.dart';
 
-class  DriverModelService{
-  final String driverCollection='drivers';
+class DriverModelService {
+  final String driverCollection = 'drivers';
 
-   Future<UniversalData> addDriver({required DriverModel driverModel})async{
-    try{
-      DocumentReference newDriver = await FirebaseFirestore
-          .instance.collection(driverCollection)
+  Future<UniversalData> addDriver({required DriverModel driverModel}) async {
+    try {
+      DocumentReference newDriver = await FirebaseFirestore.instance
+          .collection(driverCollection)
           .add(driverModel.toJson());
 
-
-      await FirebaseFirestore.instance.collection(driverCollection)
+      await FirebaseFirestore.instance
+          .collection(driverCollection)
           .doc(newDriver.id)
-      .update({'driverId':newDriver.id});
+          .update({'driverId': newDriver.id});
 
       return UniversalData(data: 'Driver Added!');
-    }on FirebaseException catch (e){
+    } on FirebaseException catch (e) {
       return UniversalData(error: e.code);
-
-    }catch (error){
+    } catch (error) {
       return UniversalData(error: error.toString());
     }
   }
 
-   Future<UniversalData> updateDriver(
-      {required DriverModel driverModel}) async {
+  Future<UniversalData> updateDriver({required DriverModel driverModel}) async {
     try {
       await FirebaseFirestore.instance
           .collection(driverCollection)
@@ -40,8 +38,7 @@ class  DriverModelService{
     }
   }
 
-   Future<UniversalData> deleteDriver(
-      {required String driverId}) async {
+  Future<UniversalData> deleteDriver({required String driverId}) async {
     try {
       await FirebaseFirestore.instance
           .collection(driverCollection)
@@ -55,4 +52,4 @@ class  DriverModelService{
       return UniversalData(error: error.toString());
     }
   }
-   }
+}

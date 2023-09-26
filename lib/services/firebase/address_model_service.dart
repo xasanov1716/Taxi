@@ -1,11 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:taxi_app/data/models/universal_data.dart';
 
-
 class AddressModelService {
   final String addressCollection = 'address';
-   Future<UniversalData> addAddress(
-      {required AddressModel addressModel}) async {
+  Future<UniversalData> addAddress({required AddressModel addressModel}) async {
     try {
       DocumentReference newAddress = await FirebaseFirestore.instance
           .collection(addressCollection)
@@ -26,7 +24,7 @@ class AddressModelService {
     }
   }
 
-   Future<UniversalData> updateAddress(
+  Future<UniversalData> updateAddress(
       {required AddressModel addressModel}) async {
     try {
       await FirebaseFirestore.instance
@@ -42,8 +40,7 @@ class AddressModelService {
     }
   }
 
-   Future<UniversalData> deleteAddress(
-      {required String addressId}) async {
+  Future<UniversalData> deleteAddress({required String addressId}) async {
     try {
       await FirebaseFirestore.instance
           .collection(addressCollection)
