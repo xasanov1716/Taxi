@@ -2,10 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:taxi_app/data/models/order/order_model.dart';
 import 'package:taxi_app/data/models/universal_data.dart';
 
+const String orderCollection = 'order';
+
 class OrderService {
- static  String orderCollection = 'order';
-  Future<UniversalData> addOrder(
-      {required OrderModel orderModel}) async {
+  Future<UniversalData> addOrder({required OrderModel orderModel}) async {
     try {
       DocumentReference newOrder = await FirebaseFirestore.instance
           .collection(orderCollection)
@@ -26,8 +26,7 @@ class OrderService {
     }
   }
 
-  Future<UniversalData> updateOrder(
-      {required OrderModel orderModel}) async {
+  Future<UniversalData> updateOrder({required OrderModel orderModel}) async {
     try {
       await FirebaseFirestore.instance
           .collection(orderCollection)
@@ -42,8 +41,7 @@ class OrderService {
     }
   }
 
-   Future<UniversalData> deleteProduct(
-      {required String orderId}) async {
+  Future<UniversalData> deleteProduct({required String orderId}) async {
     try {
       await FirebaseFirestore.instance
           .collection(orderCollection)

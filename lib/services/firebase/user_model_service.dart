@@ -1,8 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:taxi_app/data/models/universal_data.dart';
 import 'package:taxi_app/data/models/user/user_model.dart';
+const String usersCollection = 'users';
+
 class UserService {
-  static String usersCollection = 'users';
    Future<UniversalData> addUser(
       {required UserModel userModel}) async {
     try {
@@ -56,4 +57,6 @@ Future<UniversalData> updateUser(
       return UniversalData(error: error.toString());
     }
   }
+
+
 }
