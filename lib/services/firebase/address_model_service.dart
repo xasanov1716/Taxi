@@ -2,8 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:taxi_app/data/models/address_model/adders_model.dart';
 import 'package:taxi_app/data/models/universal_data.dart';
 
+
+const String addressCollection = 'address';
+
 class AddressModelService {
-  final String addressCollection = 'address';
   final FirebaseFirestore base=FirebaseFirestore.instance;
   Future<UniversalData> addAddress({required AddressModel addressModel}) async {
     try {
@@ -58,23 +60,5 @@ class AddressModelService {
   }
 
 
-  Stream<List<AddressModel>> getAddresses() async* {
-    yield* base.collection(addressCollection).snapshots().map(
-          (querySnapshot) => querySnapshot.docs
-          .map((doc) => AddressModel.fromJson(doc.data()))
-          .toList(),
-    );
-  }
 
-  Stream<List<AddressModel>> getAddressById({required String addressId}) async* {
-    yield* base
-        .collection(addressCollection)
-        .where("addressId", isEqualTo: addressId)
-        .snapshots()
-        .map(
-          (querySnapshot) => querySnapshot.docs
-          .map((doc) => AddressModel.fromJson(doc.data()))
-          .toList(),
-    );
-  }
 }

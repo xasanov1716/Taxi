@@ -20,6 +20,7 @@ class AddressBloc extends Bloc<AddressEvent, AddressState> {
             address: const [])) {
     on<AddAddressEvent>(addAddress);
     on<UpdateAddressEvent>(updateAddress);
+    on<GetAddressEvent>(listenAddress);
   }
 
   Future<void> addAddress(
@@ -39,6 +40,8 @@ class AddressBloc extends Bloc<AddressEvent, AddressState> {
 
     emit(state.copyWhith(status: FormStatus.success));
   }
+
+
   Future<void> deleteAddress(
       DeleteAddressEvent event, Emitter<AddressState> emitter) async {
     emit(state.copyWhith(status: FormStatus.loading));
@@ -46,5 +49,17 @@ class AddressBloc extends Bloc<AddressEvent, AddressState> {
     await addressRepo.deleteAddress(addressId: event.addressId);
 
     emit(state.copyWhith(status: FormStatus.success));
+  }
+
+ Future<void> listenAddress(GetAddressEvent event, Emitter<AddressState> emitter) async {
+    emit(state.copyWhith(status: FormStatus.loading));
+
+    await addressRepo
+        .getAddresses()
+        .listen((allAddresses) {
+      print("ALL PRODUCTS LENGTH:${allAddresses.length}");
+      emit(state.copyWhith(status: FormStatus.success,address: allAddresses));
+
+    });
   }
 }
