@@ -8,9 +8,22 @@ class SocialAuthBloc extends Bloc<SocialAuthEvent, SocialAuthState> {
     on<LoginWithFacebook>(loginWithFacebook);
     on<LoginWithGoogle>(loginWithGoogle);
     on<LoginWithApple>(loginWithApple);
+    on<AuthFirstStepSuccessEvent>(firstStep);
+    on<AuthSecondStepSuccessEvent>(secondStep);
+    on<AuthThirdStepSuccessEvent>(thirdStep);
   }
   final bool response = true;
 
+  firstStep(AuthFirstStepSuccessEvent first,Emitter<SocialAuthState> emit)async{
+    emit(AuthFirstStepSuccessState());
+  }
+
+  void secondStep(AuthSecondStepSuccessEvent first,Emitter<SocialAuthState> emit){
+    emit(AuthSecondStepSuccessState());
+  }
+  thirdStep(AuthThirdStepSuccessEvent first,Emitter<SocialAuthState> emit){
+    emit(AuthThirdStepSuccessState());
+  }
 
    loginWithFacebook(LoginWithFacebook productsEvent,Emitter<SocialAuthState> emit) async {
     emit(AuthLoading());
