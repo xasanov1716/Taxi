@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:taxi_app/data/models/icon/icon_type.dart';
+import 'package:taxi_app/ui/tab_box/home/dialogs/widgets/address_select_item_padding.dart';
+import 'package:taxi_app/ui/tab_box/home/dialogs/widgets/address_selection_dialog_list_view.dart';
 import 'package:taxi_app/ui/tab_box/home/widgets/saved_places.dart';
-import 'package:taxi_app/ui/tab_box/home/widgets/text_field_item.dart';
+import 'package:taxi_app/ui/widgets/global_button.dart';
+import 'package:taxi_app/utils/colors/app_colors.dart';
+import 'package:taxi_app/utils/icons/app_icons.dart';
+import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
-import '../../../../data/models/icon/icon_type.dart';
-import '../../../../utils/colors/app_colors.dart';
-import '../../../../utils/icons/app_icons.dart';
-import '../../../../utils/size/screen_size.dart';
-import '../../../widgets/global_button.dart';
 
 addressSelectDialog(BuildContext context) {
   showModalBottomSheet<void>(
     isScrollControlled: true,
-    shape: RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(32.r))),
+    shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(32.r))),
     context: context,
     showDragHandle: true,
     backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -44,82 +45,37 @@ addressSelectDialog(BuildContext context) {
                   child: const Divider(),
                 ),
                 20.ph,
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 24.w),
-                  child: TextFieldItem(
-                    hintText: "Form",
-                    startIcon: SvgPicture.asset(
-                      AppIcons.getSvg(name: AppIcons.circle),
-                      width: 24.w,
-                      colorFilter: const ColorFilter.mode(
-                        AppColors.primary,
-                        BlendMode.srcIn,
-                      ),
-                    ),
-                    endIcon: SvgPicture.asset(
-                      AppIcons.getSvg(
-                        name: AppIcons.gps,
-                        iconType: IconType.bold,
-                      ),
-                      colorFilter: const ColorFilter.mode(
-                        AppColors.c_500,
-                        BlendMode.srcIn,
-                      ),
-                    ),
+                AddressSelectionItem(
+                  hintText: "Form",
+                  startIconName: AppIcons.getSvg(name: AppIcons.circle),
+                  endIconName: AppIcons.getSvg(
+                    name: AppIcons.gps,
+                    iconType: IconType.bold,
                   ),
                 ),
                 Row(
                   children: [
                     35.pw,
-                    Container(height: 30.h,width:1.w,color: Theme.of(context).hintColor),
+                    Container(
+                        height: 30.h,
+                        width: 1.w,
+                        color: Theme.of(context).hintColor),
                     const Spacer(),
                   ],
                 ),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 24.w),
-                  child: TextFieldItem(
-                    hintText: "Destination",
-                    startIcon: SvgPicture.asset(
-                      AppIcons.getSvg(
-                        name: AppIcons.location,
-                        iconType: IconType.bold,
-                      ),
-                      colorFilter: const ColorFilter.mode(
-                        AppColors.primary,
-                        BlendMode.srcIn,
-                      ),
-                    ),
-                    endIcon: SvgPicture.asset(
-                      AppIcons.getSvg(
-                        name: AppIcons.location,
-                        iconType: IconType.bold,
-                      ),
-                      colorFilter: const ColorFilter.mode(
-                        AppColors.c_500,
-                        BlendMode.srcIn,
-                      ),
-                    ),
+                AddressSelectionItem(
+                  hintText: "Destination",
+                  startIconName: AppIcons.getSvg(
+                    name: AppIcons.location,
+                    iconType: IconType.bold,
+                  ),
+                  endIconName: AppIcons.getSvg(
+                    name: AppIcons.location,
+                    iconType: IconType.bold,
                   ),
                 ),
                 const SavedPlaces(),
-                Expanded(
-                  child: ListView(
-                    children: [
-                      ...List.generate(
-                        10,
-                        (index) => ListTile(
-                          leading: const Icon(Icons.watch_later_outlined),
-                          trailing: Text(
-                            "2.9 km",
-                            style: Theme.of(context).textTheme.bodyMedium,
-                          ),
-                          title: const Text("Eleonora Hotel"),
-                          subtitle: const Text("6 Glendale St. Worcester, MA 01604"),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
+                const AddressSelectionDialogListView(),
                 12.ph,
                 GlobalButton(
                     padding: EdgeInsets.symmetric(horizontal: 24.w),

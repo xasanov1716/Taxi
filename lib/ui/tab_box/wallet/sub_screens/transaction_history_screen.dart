@@ -44,6 +44,7 @@ class TransactionHistoryScreen extends StatelessWidget {
               ),
             ),
           )
+
         ],
       ),
     );

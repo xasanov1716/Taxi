@@ -1,14 +1,14 @@
 class AddressModel {
   final String addressText;
-  final String id;
+  final String addressId;
   final double longitude;
-  final double latitide;
+  final double latitude;
 
   AddressModel({
     required this.addressText,
-    required this.id,
+    required this.addressId,
     required this.longitude,
-    required this.latitide,
+    required this.latitude,
   });
 
   AddressModel copyWith({
@@ -19,30 +19,30 @@ class AddressModel {
   }) =>
       AddressModel(
         addressText: addressText ?? this.addressText,
-        id: id ?? this.id,
+        addressId: id ?? this.addressId,
         longitude: longitude ?? this.longitude,
-        latitide: latitide ?? this.latitide,
+        latitude: latitide ?? this.latitude,
       );
 
   factory AddressModel.fromJson(Map<String, dynamic> json) => AddressModel(
         addressText: json['address_text'] as String? ?? '',
-        id: json['fullName'] as String? ?? '',
+        addressId: json['fullName'] as String? ?? '',
         longitude: json['longitude'] as double? ?? 0,
-        latitide: json['latitide'] as double? ?? 0,
+        latitude: json['latitide'] as double? ?? 0,
       );
 
   @override
   String toString() => '''
     addressText: $addressText,
-    id: $id,
+    id: $addressId,
     longitude: $longitude,
-    latitide: $latitide,
+    latitide: $latitude,
   ''';
 
   Map<String, dynamic> toJson() => {
         'addressText': addressText,
-        'id': id,
+        'id': addressId,
         'longitude': longitude,
-        'latitide': latitide,
+        'latitide': latitude,
       };
 }
