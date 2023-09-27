@@ -1,10 +1,14 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import 'package:taxi_app/data/local/storage_repository/storage_repository.dart';
 import 'package:taxi_app/data/models/driver/driver_fields.dart';
 import 'package:taxi_app/data/models/driver/driver_model.dart';
 import 'package:taxi_app/data/models/status/form_status.dart';
 import 'package:taxi_app/data/repositories/driver_repos.dart';
+import 'package:taxi_app/utils/constants/constants.dart';
+import 'package:taxi_app/utils/constants/storage_keys.dart';
 
 part 'driver_event.dart';
 part 'driver_state.dart';
@@ -54,6 +58,7 @@ class DriverBloc extends Bloc<DriverEvent, DriverState> {
     on<AddDriverEvent>(addDriver);
     on<UpdateDriverEvent>(updateDriver);
     on<DeleteDriverEvent>(deleteDriver);
+    getDriverByDocId();
   }
 
   Future<void> addDriver(
@@ -85,6 +90,18 @@ class DriverBloc extends Bloc<DriverEvent, DriverState> {
 
   updateDriverModel(DriverModel driver) {
     emit(state.copyWith(driverModel: driver));
+  }
+
+  Future<DriverModel> getDriverByDocId() async {
+    var data = await FirebaseFirestore.instance
+        .collection(FirebaseCollections.drivers)
+        .doc(StorageRepository.getString(StorageKeys.userId))
+        .get();
+    DriverModel driverModel =
+        DriverModel.fromJson(data.data() as Map<String, dynamic>);
+    // ignore: invalid_use_of_visible_for_testing_member
+    emit(state.copyWith(driverModel: driverModel));
+    return driverModel;
   }
 
   void updateDriverField({

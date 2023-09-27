@@ -1,10 +1,14 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:taxi_app/data/local/storage_repository/storage_repository.dart';
 import 'package:taxi_app/data/models/status/form_status.dart';
 import 'package:taxi_app/data/models/user/user_field_keys.dart';
 import 'package:taxi_app/data/models/user/user_model.dart';
 import 'package:taxi_app/data/repositories/user_repository.dart';
+import 'package:taxi_app/utils/constants/constants.dart';
+import 'package:taxi_app/utils/constants/storage_keys.dart';
 
 part 'user_event.dart';
 part 'user_state.dart';
@@ -80,6 +84,18 @@ class UserBloc extends Bloc<UserEvent, UserState> {
         status: FormStatus.unauthenticated,
       ),
     );
+  }
+
+  Future<UserModel> getUserByDocId() async {
+    var data = await FirebaseFirestore.instance
+        .collection(FirebaseCollections.drivers)
+        .doc(StorageRepository.getString(StorageKeys.userId))
+        .get();
+    UserModel userModel =
+    UserModel.fromJson(data.data() as Map<String, dynamic>);
+    // ignore: invalid_use_of_visible_for_testing_member
+    emit(state.copyWith(userModel: userModel));
+    return userModel;
   }
 
   updateUserModel(UserModel user) {
