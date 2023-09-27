@@ -5,6 +5,7 @@ import 'package:location/location.dart';
 import 'package:meta/meta.dart';
 
 part 'location_event.dart';
+
 part 'location_state.dart';
 
 class LocationBloc extends Bloc<LocationEvent, LocationState> {
@@ -13,16 +14,15 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
     on<UpdateLocationEvent>(updateLatLong);
   }
 
-  LatLng? latLong;
-  LatLng? initialLatLong;
+  LatLng latLong = const LatLng(41.234,69.71);
+  LatLng initialLatLong = const LatLng(41.234,69.71);
 
-
-  _getLocation(GetLocationEvent getLocationEvent,Emitter<LocationState> emit) async {
+  _getLocation(
+      GetLocationEvent getLocationEvent, Emitter<LocationState> emit) async {
     Location location = Location();
     bool serviceEnabled;
     PermissionStatus permissionGranted;
     LocationData locationData;
-
 
     serviceEnabled = await location.serviceEnabled();
     if (!serviceEnabled) {
@@ -40,11 +40,10 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
       }
     }
 
-
-    try{
+    try {
       emit(LocationLoadingState());
       locationData = await location.getLocation();
-      initialLatLong=LatLng(
+      initialLatLong = LatLng(
         locationData.latitude!,
         locationData.longitude!,
       );
@@ -53,9 +52,8 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
         locationData.longitude!,
       );
 
-      debugPrint("SUCCESS ERROR:${latLong!.longitude}");
       emit(LocationSuccessState());
-    }catch(er){
+    } catch (er) {
       emit(LocationErrorState(errorText: er.toString()));
       debugPrint("LOCATION ERROR:$er");
     }
@@ -68,10 +66,10 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
     //   // addNewMarker(latLng);
     //   debugPrint("LONGITUDE:${newLocation.longitude}");
     // });
-
   }
 
-  updateLatLong(UpdateLocationEvent updateLocationEvent,Emitter<LocationState> emit) {
+  updateLatLong(
+      UpdateLocationEvent updateLocationEvent, Emitter<LocationState> emit) {
     emit(LocationLoadingState());
     latLong = updateLocationEvent.newLatLng;
     emit(LocationSuccessState());
