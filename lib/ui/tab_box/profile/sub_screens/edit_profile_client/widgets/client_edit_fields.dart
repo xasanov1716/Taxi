@@ -29,6 +29,14 @@ class ClientEditFields extends StatefulWidget {
 }
 
 class _ClientEditFieldsState extends State<ClientEditFields> {
+
+  @override
+  void initState() {
+    initStateToText();
+    super.initState();
+  }
+
+
   DateTime selectedDate = DateTime.now();
   TextEditingController dateController = TextEditingController();
   String gender = "Male";
@@ -42,7 +50,6 @@ class _ClientEditFieldsState extends State<ClientEditFields> {
 
   var genders = ['Male', 'Female'];
 
-  String selectItem = '';
   final FocusNode focusNode = FocusNode();
   final FocusNode phoneFocusNode = FocusNode();
   final FocusNode fullNameFocusNode = FocusNode();
@@ -50,7 +57,16 @@ class _ClientEditFieldsState extends State<ClientEditFields> {
   final FocusNode emailFocusNode = FocusNode();
   final FocusNode aboutFocusNode = FocusNode();
   final FocusNode telegramFocusNode = FocusNode();
+  initStateToText() {
+    UserState state = context.read<UserBloc>().state;
 
+    dateController.text = state.userModel.birthDate;
+    fullNameController.text = state.userModel.fullName;
+    nicknameController.text = state.userModel.nickName;
+    addressController.text = state.userModel.addressText;
+    phoneController.text = state.userModel.phone;
+    gender = state.userModel.gender;
+  }
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController fullNameController = TextEditingController();
   final TextEditingController nicknameController = TextEditingController();

@@ -71,11 +71,8 @@ class App extends StatelessWidget {
         ),
         RepositoryProvider(
             create: (context) => AddressApiRepository(apiService: apiService)),
-             RepositoryProvider(
-            create: (context) => UserRepo()),
-         RepositoryProvider(
-            create: (context) => DriverRepo())
-        ),
+        RepositoryProvider(create: (context) => UserRepo()),
+        RepositoryProvider(create: (context) => DriverRepo()),
         RepositoryProvider(
             create: (context) => AddressApiRepository(apiService: apiService))
       ],
@@ -107,7 +104,9 @@ class App extends StatelessWidget {
           BlocProvider(create: (context) => CreateOrderBloc()),
           BlocProvider(create: (context) => PaymentBloc()),
           BlocProvider(create: (context) => PaymentAddBloc()),
-          BlocProvider(create: (context) => UserBloc(userRepo: context.read<UserRepo>())),
+          BlocProvider(
+              create: (context) =>
+                  UserBloc(userRepo: context.read<UserRepo>())),
           BlocProvider(
             create: (_) => CategoryCubit(),
           ),

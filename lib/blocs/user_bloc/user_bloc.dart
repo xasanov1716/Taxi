@@ -60,8 +60,6 @@ class UserBloc extends Bloc<UserEvent, UserState> {
         status: FormStatus.success, statusText: "User deleted successfully"));
   }
 
-
-
   void clearData(DeleteUserEvent deleteUserEvent, Emitter<UserState> emit) {
     emit(
       UserState(
@@ -82,6 +80,10 @@ class UserBloc extends Bloc<UserEvent, UserState> {
         status: FormStatus.unauthenticated,
       ),
     );
+  }
+
+  updateUserModel(UserModel user) {
+    emit(state.copyWith(userModel: user));
   }
 
   updateCurrentUserField(

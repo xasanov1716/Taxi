@@ -83,6 +83,10 @@ class DriverBloc extends Bloc<DriverEvent, DriverState> {
     emit(state.copyWith(status: FormStatus.success));
   }
 
+  updateDriverModel(DriverModel driver) {
+    emit(state.copyWith(driverModel: driver));
+  }
+
   void updateDriverField({
     required DriverFieldKeys fieldKey,
     required dynamic value,
