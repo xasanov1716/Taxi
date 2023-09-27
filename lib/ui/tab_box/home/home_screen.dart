@@ -60,6 +60,11 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Stack(
             children: [
               GoogleMap(
+                onCameraMoveStarted: () {
+                  setState(() {
+                    onCameraMoveStarted = true;
+                  });
+                },
                 onCameraMove: (CameraPosition cameraPosition) {
                   currentCameraPosition = cameraPosition;
                 },
