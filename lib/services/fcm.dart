@@ -7,7 +7,7 @@ import 'package:taxi_app/data/local/local_database/database_helper.dart';
 import 'package:taxi_app/data/models/notification_model/notification_model.dart';
 import 'package:taxi_app/services/local_notification_service.dart';
 
-Future<void> initFirebase(VoidCallback? onChanged) async {
+Future<void> initFirebase([VoidCallback? onChanged]) async {
   await Firebase.initializeApp();
   String? fcmToken = await FirebaseMessaging.instance.getToken();
   debugPrint("FCM USER TOKEN: $fcmToken");
