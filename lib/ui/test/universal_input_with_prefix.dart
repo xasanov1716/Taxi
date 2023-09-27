@@ -5,27 +5,30 @@ import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/fonts/text_styles.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 
-class CustomPasswordTextField extends StatefulWidget {
+class CustomNormalTextField extends StatefulWidget {
   final TextEditingController? controller;
   final String hintText;
   final FormFieldValidator<String?>? validator;
   final ValueChanged? onChanged;
+  final String prefix;
+  final TextInputType? inputType;
 
-  const CustomPasswordTextField({
+  const CustomNormalTextField({
     super.key,
     this.controller,
     required this.hintText,
     this.validator,
     this.onChanged,
+    required this.prefix,
+    this.inputType,
   });
 
   @override
   // ignore: library_private_types_in_public_api
-  _CustomPasswordTextFieldState createState() => _CustomPasswordTextFieldState();
+  _CustomNormalTextFieldState createState() => _CustomNormalTextFieldState();
 }
 
-class _CustomPasswordTextFieldState extends State<CustomPasswordTextField> {
-  bool _obscureText = true;
+class _CustomNormalTextFieldState extends State<CustomNormalTextField> {
   bool isFocus = false;
   bool hasInput = false;
   late TextEditingController _controller;
@@ -56,15 +59,15 @@ class _CustomPasswordTextFieldState extends State<CustomPasswordTextField> {
     return TextFormField(
       controller: _controller,
       onChanged: widget.onChanged,
+      keyboardType: widget.inputType,
       focusNode: _focusNode,
-      obscureText: _obscureText,
       style: AppTextStyle.bodyMediumSemibold,
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.all(20),
         hintText: widget.hintText,
         fillColor: isFocus ? AppColors.orangeTransparent : null,
         prefixIcon: SvgPicture.asset(
-          AppIcons.lock,
+          widget.prefix,
           fit: BoxFit.scaleDown,
           colorFilter: ColorFilter.mode(
               isFocus
@@ -75,22 +78,6 @@ class _CustomPasswordTextFieldState extends State<CustomPasswordTextField> {
                           : AppColors.c_900)
                       : AppColors.c_500,
               BlendMode.srcIn),
-        ),
-        suffixIcon: IconButton(
-          onPressed: () => setState(() => _obscureText = !_obscureText),
-          icon: SvgPicture.asset(
-            _obscureText ? AppIcons.hide : AppIcons.show,
-            fit: BoxFit.scaleDown,
-            colorFilter: ColorFilter.mode(
-                isFocus
-                    ? AppColors.primary
-                    : hasInput
-                        ? (AdaptiveTheme.of(context).theme == AdaptiveTheme.of(context).darkTheme
-                            ? AppColors.white
-                            : AppColors.c_900)
-                        : AppColors.c_500,
-                BlendMode.srcIn),
-          ),
         ),
       ),
       validator: widget.validator,

@@ -57,12 +57,14 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
-  Future<void> signIn() async {
+  Future<void> logIn(context) async {
     emit(state.copyWith(status: FormStatus.loading));
-    UniversalData data = await authRepository.signUpUser(
+    showLoading(context: context);
+    UniversalData data = await authRepository.loginUser(
       email: "${state.phoneNumber}@gmail.com",
       password: state.password,
     );
+    hideLoading(context: context);
     if (data.error.isEmpty) {
       emit(state.copyWith(status: FormStatus.authenticated));
     } else {
@@ -73,6 +75,7 @@ class AuthCubit extends Cubit<AuthState> {
         ),
       );
     }
+    emit(state.copyWith(status: FormStatus.pure));
   }
 
   String canAuthenticate() {
