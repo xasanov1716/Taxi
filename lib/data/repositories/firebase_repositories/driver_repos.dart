@@ -1,4 +1,4 @@
-import 'package:taxi_app/data/models/address/address_model.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:taxi_app/data/models/db/driver_model.dart';
 import 'package:taxi_app/data/models/universal_data.dart';
 import 'package:taxi_app/services/firebase/driver_model_service.dart';
@@ -20,7 +20,29 @@ class DriverRepo {
       {required String driverId}) async =>
       await driverModelService.deleteDriver( driverId: driverId);
 
+  Stream<List<DriverModel>> getDrivers() async* {
+    yield* FirebaseFirestore.instance
+        .collection(driverCollection)
+        .snapshots()
+        .map(
+          (querySnapshot) => querySnapshot.docs
+          .map((doc) => DriverModel.fromJson(doc.data()))
+          .toList(),
+    );
+  }
 
+  Stream<List<DriverModel>> getDriverById(
+      {required String driverId}) async* {
+    yield* FirebaseFirestore.instance
+        .collection(driverCollection)
+        .where("driverId", isEqualTo: driverId)
+        .snapshots()
+        .map(
+          (querySnapshot) => querySnapshot.docs
+          .map((doc) => DriverModel.fromJson(doc.data()))
+          .toList(),
+    );
+  }
 
 
 

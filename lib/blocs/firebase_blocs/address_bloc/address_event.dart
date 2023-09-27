@@ -22,3 +22,8 @@ class DeleteAddressEvent extends AddressEvent {
 
   DeleteAddressEvent({required this.addressId});
 }
+class GetAddressByIdEvent extends AddressEvent {
+  final String addressId;
+
+  GetAddressByIdEvent({required this.addressId});
+}
