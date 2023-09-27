@@ -1,5 +1,6 @@
 import 'package:taxi_app/data/models/driver/driver_model.dart';
 import 'package:taxi_app/utils/constants/storage_keys.dart';
+import 'package:taxi_app/utils/icons/app_icons.dart';
 
 const baseUrl = "https://geocode-maps.yandex.ru";
 const String apiKey = "0966317a-0c56-4ae7-a7ee-eda74212af4d";
@@ -75,3 +76,12 @@ class FirebaseCollections {
   static const String drivers = "drivers";
   static const String users = "clients";
 }
+
+Map<String, String> iconMapping = {
+  "discount": AppIcons.discount,
+  "wallet": AppIcons.wallet,
+  "location": AppIcons.location,
+  "money": AppIcons.money,
+  "card": AppIcons.card,
+  "profile": AppIcons.profile,
+};
