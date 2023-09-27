@@ -28,6 +28,7 @@ import 'package:taxi_app/data/repositories/places_db_repository.dart';
 import 'package:taxi_app/data/repositories/search_history_db.dart';
 import 'package:taxi_app/services/api_service.dart';
 import 'package:taxi_app/services/fcm.dart';
+import 'package:taxi_app/services/locator_service.dart';
 import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/theme/app_theme.dart';
@@ -41,7 +42,7 @@ Future<void> main() async {
   await initFirebase();
   await StorageRepository.getInstance();
   await EasyLocalization.ensureInitialized();
-
+  ServiceLocator.setup();
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
@@ -66,29 +67,27 @@ class App extends StatelessWidget {
         RepositoryProvider(
           create: (context) => PlacesDatabaseRepository(PlacesDatabase()),
         ),
-        RepositoryProvider(
-            create: (context) => AddressApiRepository(apiService: apiService))
+        RepositoryProvider(create: (context) => AddressApiRepository(apiService: apiService))
       ],
       child: MultiBlocProvider(
         providers: [
           BlocProvider(create: (context) => CodeInputCubit()),
           BlocProvider(
-            create: (context) => AddressCubit(
-                addressApiRepository: context.read<AddressApiRepository>()),
+            create: (context) =>
+                AddressCubit(addressApiRepository: context.read<AddressApiRepository>()),
           ),
           BlocProvider(create: (context) => AuthCubit(context.read<AuthRepository>())),
           BlocProvider(
             create: (context) => SearchLocationBloc(
               searchHistoryRepository: context.read<SearchHistoryRepository>(),
-              placesDatabaseRepository:
-                  context.read<PlacesDatabaseRepository>(),
+              placesDatabaseRepository: context.read<PlacesDatabaseRepository>(),
             ),
           ),
           BlocProvider(create: (context) => TabCubit()),
           BlocProvider(create: (context) => NotificationCubit()),
           BlocProvider(create: (context) => SecurityCubit()),
           BlocProvider(create: (context) => HomeBloc()),
-          BlocProvider(create: (context) => SocialAuthBloc()),
+          BlocProvider(create: (context) => SocialAuthBloc(AuthRepository())),
           BlocProvider(create: (context) => UserCubit()),
           BlocProvider(create: (context) => CreateOrderBloc()),
           BlocProvider(create: (context) => PaymentBloc()),
