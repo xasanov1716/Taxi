@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taxi_app/blocs/create_order/create_order_bloc.dart';
 import 'package:taxi_app/blocs/home/home_bloc.dart';
+import 'package:taxi_app/blocs/location_bloc/location_bloc.dart';
 import 'package:taxi_app/blocs/messages/message_bloc.dart';
 import 'package:taxi_app/blocs/payment/payment_bloc.dart';
 import 'package:taxi_app/blocs/payment_add/payment_add_bloc.dart';
@@ -34,7 +35,6 @@ import 'package:taxi_app/utils/theme/app_theme.dart';
 import 'cubits/category_cubit/category_cubit.dart';
 import 'cubits/help_center/help_center_category_cubit.dart';
 import 'cubits/user/user_cubit.dart';
-import 'ui/tab_box/profile/sub_screens/help_center/help_center_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -100,6 +100,7 @@ class App extends StatelessWidget {
           BlocProvider(create: (context) => SearchCubit()),
           BlocProvider(create: (context) => OrderCubit()),
           BlocProvider(create: (context) => HelpCenterCategoryCubit()),
+          BlocProvider(create: (context) => LocationBloc()),
         ],
         child: EasyLocalization(
             supportedLocales: const [
