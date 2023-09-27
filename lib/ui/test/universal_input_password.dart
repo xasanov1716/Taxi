@@ -60,6 +60,7 @@ class _CustomPasswordTextFieldState extends State<CustomPasswordTextField> {
       obscureText: _obscureText,
       style: AppTextStyle.bodyMediumSemibold,
       decoration: InputDecoration(
+        contentPadding: const EdgeInsets.all(20),
         hintText: widget.hintText,
         fillColor: isFocus ? AppColors.orangeTransparent : null,
         prefixIcon: SvgPicture.asset(

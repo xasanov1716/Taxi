@@ -21,7 +21,10 @@ class CustomDefaultTextField extends StatelessWidget {
       style: AppTextStyle.bodyMediumSemibold,
       controller: controller,
       onChanged: onChanged,
-      decoration: InputDecoration(hintText: hintText),
+      decoration: InputDecoration(
+        hintText: hintText,
+        contentPadding: const EdgeInsets.all(20),
+      ),
       validator: validator,
     );
   }

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
-import '../../../../../../utils/size/screen_size.dart';
+import 'package:taxi_app/utils/ui_utils/utilitiy_function.dart';
 
 class IconsContainer extends StatelessWidget {
   const IconsContainer({super.key, required this.icon, required this.onTap});
@@ -13,18 +12,13 @@ class IconsContainer extends StatelessWidget {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Container(
-      width: (width >= figmaWidth || width >= 1800) ? 72.w : 56.w,
-      height: (height >= figmaHeight || height >= 2560) ? 72.w : 56.w,
+      width: height >= 900 && width >= 600 ? 72.w : 56.w,
+      height: height >= 900 && width >= 600  ? 72.w : 56.w,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(
-              (width >= figmaWidth || width >= 1800) ? 100 : 36),
+              (height >= 900 && width >= 600) ? 100 : 36),
           color: AppColors.amber),
-      child: IconButton(
-        onPressed: onTap,
-        icon: SvgPicture.asset(icon,
-            height: (height >= figmaHeight || height >= 2560) ? 40.w : 24.w,
-            width: (width >= figmaWidth || width >= 1800) ? 40.w : 24.w),
-      ),
+      child: getIcon(icon, context: context, onTap: onTap),
     );
   }
 }

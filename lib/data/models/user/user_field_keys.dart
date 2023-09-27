@@ -2,8 +2,12 @@ enum UserFieldKeys {
   fullName,
   nickName,
   emailAddress,
-  date,
+  birthDate,
   image,
   phone,
   gender,
+  createdAt,
+  addressText,
+  fcmToken,
+  userId
 }

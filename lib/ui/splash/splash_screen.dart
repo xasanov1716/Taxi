@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lottie/lottie.dart';
-import 'package:taxi_app/data/local/storage_repository/storage_repository.dart';
 import 'package:taxi_app/ui/app_routes.dart';
-import 'package:taxi_app/ui/auth/lets_in/lets_in_screen.dart';
-import 'package:taxi_app/ui/enterance/welcome/welcome_screen.dart';
-import 'package:taxi_app/ui/local_auth/pin_code_screen.dart';
-import 'package:taxi_app/ui/local_auth/pin_code_set_screen_.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 
 import '../../utils/size/screen_size.dart';
@@ -21,17 +16,11 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   Future<void> _init() async {
     await Future.delayed(
-      const Duration(seconds: 4),
+      const Duration(seconds: 3),
       () {
-        Navigator.pushReplacement(
+        Navigator.pushReplacementNamed(
           context,
-          MaterialPageRoute(
-            builder: (BuildContext context) {
-              return !StorageRepository.getBool("isFirst")
-                  ? const WelcomeScreen()
-                  : const PinCodeScreen();
-            },
-          ),
+          RouteNames.appRoute,
         );
       },
     );

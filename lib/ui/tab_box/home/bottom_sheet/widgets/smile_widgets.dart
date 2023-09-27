@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:taxi_app/utils/size/size_extension.dart';
-
 import '../../../../../utils/icons/app_icons.dart';
 
 class SmileWidgets extends StatelessWidget {
-  const SmileWidgets(
-      {super.key,
-      required this.icon1,
-      required this.icon2,
-      required this.icon3});
+  const SmileWidgets({
+    super.key,
+    required this.icon1,
+    required this.icon2,
+    required this.icon3,
+  });
 
   final String icon1;
   final String icon2;
   final String icon3;
-
 
   @override
   Widget build(BuildContext context) {
@@ -41,6 +39,7 @@ class SmileWidgets extends StatelessWidget {
     );
   }
 }
+
 List<String> smiles = [
   AppIcons.smileUnhappy,
   AppIcons.smileCry,

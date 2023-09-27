@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
+import 'package:taxi_app/utils/ui_utils/utilitiy_function.dart';
 
 // ignore: must_be_immutable
 class ForgotPasswordSelector extends StatefulWidget {
@@ -16,6 +16,7 @@ class ForgotPasswordSelector extends StatefulWidget {
     required this.onTap,
     required this.pressed,
   });
+
   final String svg;
   final bool pressed;
   final String title;
@@ -62,14 +63,7 @@ class _ForgotPasswordSelectorState extends State<ForgotPasswordSelector> {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(150.r),
                       color: AppColors.yellowTransparent),
-                  child: IconButton(
-                    onPressed: null,
-                    icon: SvgPicture.asset(
-                      widget.svg,
-                      colorFilter: const ColorFilter.mode(
-                          AppColors.disabledButton, BlendMode.srcIn),
-                    ),
-                  )),
+                  child: getIcon(widget.svg, context: context, onTap: () {})),
               20.pw,
               RichText(
                 text: TextSpan(

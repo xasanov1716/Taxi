@@ -12,7 +12,20 @@
           "package_name": "uz.dastyor.taxi"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "804885756836-24k83eabbnrpfs7b7v65hguun2tlm6su.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "uz.dastyor.taxi",
+            "certificate_hash": "b38c23f4189d467096c6bea9cf236c04cf22334e"
+          }
+        },
+        {
+          "client_id": "804885756836-romgsgng7ptbo8upna4r5mq4f95k9r04.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBxS8AE12qyXZEhSqiEbwAVIZd-FlFfWkY"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "804885756836-romgsgng7ptbo8upna4r5mq4f95k9r04.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
