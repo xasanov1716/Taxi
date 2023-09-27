@@ -11,6 +11,7 @@ import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
 import 'package:taxi_app/utils/ui_utils/utilitiy_function.dart';
+import 'package:taxi_app/utils/util_functions/group_notifications_by_date.dart';
 
 class NotificationScreen extends StatelessWidget {
   const NotificationScreen({super.key});
@@ -94,104 +95,3 @@ class NotificationScreen extends StatelessWidget {
     );
   }
 }
-
-Map<String, List<NotificationModel>> groupNotificationsByDate(
-    List<NotificationModel> notifications) {
-  final Map<String, List<NotificationModel>> groupedNotifications = {};
-
-  for (final notification in notifications) {
-    final date = DateTime.fromMillisecondsSinceEpoch(notification.timestamp);
-    final dateString = _getDateString(date);
-
-    if (!groupedNotifications.containsKey(dateString)) {
-      groupedNotifications[dateString] = [];
-    }
-
-    groupedNotifications[dateString]!.add(notification);
-  }
-
-  return groupedNotifications;
-}
-
-String _getDateString(DateTime date) {
-  final now = DateTime.now();
-  if (date.year == now.year && date.month == now.month && date.day == now.day) {
-    return 'Today';
-  } else if (date.year == now.year && date.month == now.month && date.day == now.day - 1) {
-    return 'Yesterday';
-  } else {
-    return '${date.day}/${date.month}/${date.year}';
-  }
-}
-
-/*
-* body: ListView(
-        children: [
-          24.ph,
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 24.w),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "Today",
-                  style: Theme.of(context).dialogTheme.titleTextStyle!.copyWith(
-                      fontSize: 18.sp,
-                      color: getTheme(context)
-                           ? AppColors.white
-                          : AppColors.c_900),
-                ),
-                24.ph,
-                GlobalNotificationContainer(
-                    title: "30% Special Discount!",
-                    text: "Special promotion only valid today",
-                    icon: AppIcons.getSvg(
-                        name: AppIcons.discount, iconType: IconType.bold)),
-                24.ph,
-                GlobalNotificationContainer(
-                    title: "Top Up E-Wallet Successful!",
-                    text: "You have to top up your e-wallet",
-                    icon: AppIcons.getSvg(
-                        name: AppIcons.wallet, iconType: IconType.bold)),
-                24.ph,
-                Text(
-                  "Yesterday",
-                  style: Theme.of(context).dialogTheme.titleTextStyle!.copyWith(
-                      fontSize: 18.sp,
-                      color: getTheme(context)
-                          ? AppColors.white
-                          : AppColors.c_900),
-                ),
-                24.ph,
-                GlobalNotificationContainer(
-                    title: "New Services Available!",
-                    text: "Now you can track drivers in real time",
-                    icon: AppIcons.getSvg(
-                        name: AppIcons.location, iconType: IconType.bold)),
-                24.ph,
-                Text(
-                  "December 22, 2024",
-                  style: Theme.of(context).dialogTheme.titleTextStyle!.copyWith(
-                      fontSize: 18.sp,
-                      color: getTheme(context)
-                          ? AppColors.white
-                          : AppColors.c_900),
-                ),
-                24.ph,
-                const GlobalNotificationContainer(
-                  title: "Payment Successful!",
-                  text: "You have made a taxi payment",
-                  icon: AppIcons.money,
-                ),
-                24.ph,
-                const GlobalNotificationContainer(
-                  title: "Credit Card Connected!",
-                  text: "Credit Card has been linked!",
-                  icon: AppIcons.card,
-                ),
-              ],
-            ),
-          ),
-          30.ph
-        ],
-      ),*/

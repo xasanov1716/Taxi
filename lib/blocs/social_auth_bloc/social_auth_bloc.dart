@@ -45,15 +45,13 @@ class SocialAuthBloc extends Bloc<SocialAuthEvent, SocialAuthState> {
   loginWithGoogle(LoginWithGoogle productsEvent, Emitter<SocialAuthState> emit) async {
     print('login with google');
     emit(AuthLoading());
-    await Future.delayed(Duration(seconds: 2), () {
-      emit(AuthSuccess('successText'));
-    });
-    // final response = await authRepository.signInWithGoogle();
-    // if (response.error.isEmpty) {
-    //   emit(AuthSuccess(response.data));
-    // } else {
-    //   emit(AuthError(errorText: response.error));
-    // }
+
+    final response = await authRepository.signInWithGoogle();
+    if (response.error.isEmpty) {
+      emit(AuthSuccess(response.data));
+    } else {
+      emit(AuthError(errorText: response.error));
+    }
   }
 
   loginWithApple(LoginWithApple productsEvent, Emitter<SocialAuthState> emit) async {

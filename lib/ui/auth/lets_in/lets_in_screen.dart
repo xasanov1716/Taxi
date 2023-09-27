@@ -38,6 +38,7 @@ class LetsInScreen extends StatelessWidget {
                 });
           }
           if (state is AuthSuccess) {
+            Navigator.pop(context);
             showDialog(
                 context: context,
                 builder: (context) {
