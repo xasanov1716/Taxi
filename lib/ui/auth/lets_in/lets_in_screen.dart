@@ -5,12 +5,12 @@ import 'package:taxi_app/blocs/social_auth_bloc/social_auth_bloc.dart';
 import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/ui/widgets/global_button.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
+import 'package:taxi_app/utils/ui_utils/custom_circular.dart';
 import '../../../utils/colors/app_colors.dart';
 import '../../../utils/icons/app_icons.dart';
 import '../widgets/auth_navigator_button.dart';
 import '../widgets/custom_auth_divider.dart';
 import '../widgets/custom_auth_social_network_button.dart';
-
 
 class LetsInScreen extends StatelessWidget {
   const LetsInScreen({Key? key}) : super(key: key);
@@ -25,7 +25,16 @@ class LetsInScreen extends StatelessWidget {
             showDialog(
                 context: context,
                 builder: (context) {
-                  return const Dialog(child: Text("Kutmoqda"));
+                  return Dialog(
+                      shape: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
+                      child: SizedBox(
+                        height: 300.h,
+                        child: const Center(
+                          child: CircularProgressIndicator(
+                            color: AppColors.primary,
+                          ),
+                        ),
+                      ));
                 });
           }
           if (state is AuthSuccess) {
@@ -66,19 +75,15 @@ class LetsInScreen extends StatelessWidget {
                     30.25.ph,
                     Center(
                       child: Text("Dastyorga Kirish",
-                          style: Theme.of(context)
-                              .textTheme
-                              .displayMedium!
-                              .copyWith(fontSize: 42.sp)),
+                          style:
+                              Theme.of(context).textTheme.displayMedium!.copyWith(fontSize: 42.sp)),
                     ),
                     30.25.ph,
                     CustomAuthButton(
                         imageUrl: AppIcons.facebook,
                         label: "Facebook bilan davom eting",
                         onTap: () {
-                          context
-                              .read<SocialAuthBloc>()
-                              .add(LoginWithFacebook());
+                          context.read<SocialAuthBloc>().add(LoginWithFacebook());
                         }),
                     16.ph,
                     CustomAuthButton(
