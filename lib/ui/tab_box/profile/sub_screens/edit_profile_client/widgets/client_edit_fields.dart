@@ -1,3 +1,4 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -5,7 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-import 'package:taxi_app/cubits/user/user_cubit.dart';
+import 'package:taxi_app/blocs/user_bloc/user_bloc.dart';
 import 'package:taxi_app/data/models/icon/icon_type.dart';
 import 'package:taxi_app/data/models/user/user_field_keys.dart';
 import 'package:taxi_app/ui/tab_box/profile/widgets/profile_dialog.dart';
@@ -20,14 +21,14 @@ import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
 
-class FirstPage extends StatefulWidget {
-  const FirstPage({super.key});
+class ClientEditFields extends StatefulWidget {
+  const ClientEditFields({super.key});
 
   @override
-  State<FirstPage> createState() => _FirstPageState();
+  State<ClientEditFields> createState() => _ClientEditFieldsState();
 }
 
-class _FirstPageState extends State<FirstPage> {
+class _ClientEditFieldsState extends State<ClientEditFields> {
   DateTime selectedDate = DateTime.now();
   TextEditingController dateController = TextEditingController();
   String gender = "Male";
@@ -50,50 +51,19 @@ class _FirstPageState extends State<FirstPage> {
   final FocusNode aboutFocusNode = FocusNode();
   final FocusNode telegramFocusNode = FocusNode();
 
+  final TextEditingController phoneController = TextEditingController();
+  final TextEditingController fullNameController = TextEditingController();
+  final TextEditingController nicknameController = TextEditingController();
+  final TextEditingController addressController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return ListView(
+      padding: EdgeInsets.symmetric(vertical: 24.h),
       physics: const BouncingScrollPhysics(),
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              width: 30.w,
-              height: 30.w,
-              decoration: BoxDecoration(
-                color: AppColors.green,
-                borderRadius: BorderRadius.circular(100.r),
-                border: Border.all(width: 1,color: AppColors.dark2)
-              ),
-            ),
-            20.pw,
-            Container(
-              width: 30.w,
-              height: 30.w,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(100.r),
-                border: Border.all(width: 1,color: AppColors.dark2)
-              ),
-            ),
-            20.pw,
-            Container(
-              width: 30.w,
-              height: 30.w,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(100.r),
-                border: Border.all(width: 1,color: AppColors.dark2)
-              ),
-            ),
-          ],
-        ),
-        24.ph,
         UserImage(
           onTap: () {
-            // showBottomSheetDialog(
-            //   context,
-            //   picker
-            // );
             profileDialog(
                 picker: picker,
                 context: context,
@@ -108,22 +78,29 @@ class _FirstPageState extends State<FirstPage> {
         GlobalTextField(
           focusNode: fullNameFocusNode,
           hintText: 'Full Name',
+          controller: fullNameController,
           keyboardType: TextInputType.text,
           textInputAction: TextInputAction.next,
-          onChanged: (value) {
-            context.read<UserCubit>().updateCurrentUserField(
-                fieldKey: UserFieldKeys.fullName, value: value);
+          onChanged: (value) async {
+            context.read<UserBloc>().add(UpdateCurrentUserEvent(
+                fieldKey: UserFieldKeys.fullName, value: value));
+            context.read<UserBloc>().add(
+                  UpdateCurrentUserEvent(
+                      fieldKey: UserFieldKeys.fcmToken,
+                      value: await FirebaseMessaging.instance.getToken()),
+                );
           },
         ),
         24.ph,
         GlobalTextField(
           focusNode: nicknameFocusNode,
           hintText: 'Nickname',
+          controller: nicknameController,
           keyboardType: TextInputType.text,
           textInputAction: TextInputAction.next,
           onChanged: (value) {
-            context.read<UserCubit>().updateCurrentUserField(
-                fieldKey: UserFieldKeys.nickName, value: value);
+            context.read<UserBloc>().add(UpdateCurrentUserEvent(
+                fieldKey: UserFieldKeys.nickName, value: value));
           },
         ),
         24.ph,
@@ -141,7 +118,10 @@ class _FirstPageState extends State<FirstPage> {
               },
               rightImage: AppIcons.calendar,
               controller: dateController,
-              onChanged: (value) {},
+              onChanged: (value) {
+                context.read<UserBloc>().add(UpdateCurrentUserEvent(
+                    fieldKey: UserFieldKeys.birthDate, value: value));
+              },
               keyboardType: TextInputType.number,
               textInputAction: TextInputAction.next,
             ),
@@ -153,10 +133,13 @@ class _FirstPageState extends State<FirstPage> {
           keyboardType: TextInputType.phone,
           focusNode: phoneFocusNode,
           maskFormatter: phoneFormatter,
+          controller: phoneController,
           onChanged: (value) {
-            context.read<UserCubit>().updateCurrentUserField(
-                fieldKey: UserFieldKeys.phone, value: value);
+            context.read<UserBloc>().add(UpdateCurrentUserEvent(
+                fieldKey: UserFieldKeys.phone, value: value));
             if (value.length == 12) {
+              context.read<UserBloc>().add(UpdateCurrentUserEvent(
+                fieldKey: UserFieldKeys.emailAddress, value: '$value@gmail.com'));
               phoneFocusNode.unfocus();
             }
           },
@@ -200,8 +183,8 @@ class _FirstPageState extends State<FirstPage> {
               setState(() {
                 gender = newValue!;
               });
-              context.read<UserCubit>().updateCurrentUserField(
-                  fieldKey: UserFieldKeys.gender, value: newValue);
+              context.read<UserBloc>().add(UpdateCurrentUserEvent(
+                  fieldKey: UserFieldKeys.gender, value: newValue));
             },
             hint: Text(gender,
                 style: AppTextStyle.bodyMediumSemibold.copyWith(
@@ -213,26 +196,15 @@ class _FirstPageState extends State<FirstPage> {
         24.ph,
         GlobalTextField(
           focusNode: aboutFocusNode,
-          hintText: 'About Driver',
+          hintText: 'Address',
           keyboardType: TextInputType.text,
+          controller: addressController,
           textInputAction: TextInputAction.next,
           onChanged: (value) {
-            context.read<UserCubit>().updateCurrentUserField(
-                fieldKey: UserFieldKeys.fullName, value: value);
+            context.read<UserBloc>().add(UpdateCurrentUserEvent(
+                fieldKey: UserFieldKeys.addressText, value: value));
           },
         ),
-        24.ph,
-        GlobalTextField(
-          focusNode: telegramFocusNode,
-          hintText: 'Telegram link',
-          keyboardType: TextInputType.text,
-          textInputAction: TextInputAction.next,
-          onChanged: (value) {
-            context.read<UserCubit>().updateCurrentUserField(
-                fieldKey: UserFieldKeys.fullName, value: value);
-          },
-        ),
-        24.ph
       ],
     );
   }
@@ -249,7 +221,7 @@ class _FirstPageState extends State<FirstPage> {
           height: 300 * height / figmaHeight,
           child: CupertinoDatePicker(
             mode: CupertinoDatePickerMode.date,
-            initialDateTime: selectedDate,
+            initialDateTime: DateTime(2000),
             minimumDate: DateTime(1950),
             maximumDate: DateTime(2101),
             onDateTimeChanged: (DateTime newDate) {
@@ -258,9 +230,10 @@ class _FirstPageState extends State<FirstPage> {
                   dateController.text =
                       newDate.toLocal().toString().split(' ')[0];
                   selectedDate = newDate;
-                  context.read<UserCubit>().updateCurrentUserField(
+
+                  context.read<UserBloc>().add(UpdateCurrentUserEvent(
                       fieldKey: UserFieldKeys.birthDate,
-                      value: dateController.text);
+                      value: dateController.text));
                 });
               }
             },

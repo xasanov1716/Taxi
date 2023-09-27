@@ -1,7 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taxi_app/cubits/auth_cubit/auth_cubit.dart';
+import 'package:taxi_app/data/local/storage_repository/storage_repository.dart';
 import 'package:taxi_app/data/models/status/form_status.dart';
 import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/ui/auth/widgets/auth_navigator_button.dart';
@@ -11,6 +13,7 @@ import 'package:taxi_app/ui/auth/widgets/social_auth_buttons.dart';
 import 'package:taxi_app/ui/widgets/global_appbar.dart';
 import 'package:taxi_app/ui/widgets/global_button.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
+import 'package:taxi_app/utils/constants/storage_keys.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/ui_utils/error_message_dialog.dart';
@@ -96,7 +99,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         radius: 100,
                         textColor: AppColors.dark3,
                         onTap: () {
-                          String canAuthText = context.read<AuthCubit>().canAuthenticate();
+                          String canAuthText =
+                              context.read<AuthCubit>().canAuthenticate();
                           if (canAuthText.isEmpty) {
                             context.read<AuthCubit>().signUp(context);
                           } else {
@@ -130,13 +134,18 @@ class _RegisterScreenState extends State<RegisterScreen> {
             ),
           );
         },
-        listener: (context, state) {
+        listener: (context, state) async {
           if (state.status == FormStatus.authenticated) {
-            Navigator.pushNamedAndRemoveUntil(
-              context,
-              RouteNames.tabBox,
-              (route) => false,
-            );
+            await StorageRepository.putString(
+                StorageKeys.userId, FirebaseAuth.instance.currentUser!.uid);
+            debugPrint('Firebase${FirebaseAuth.instance.currentUser!.uid}');
+            if (context.mounted) {
+              Navigator.pushNamedAndRemoveUntil(
+                context,
+                RouteNames.tabBox,
+                (route) => false,
+              );
+            }
           }
         },
       ),

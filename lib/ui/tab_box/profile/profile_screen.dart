@@ -1,7 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:taxi_app/data/models/user/user_model.dart';
+import 'package:taxi_app/data/repositories/user_repository.dart';
 import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/ui/tab_box/profile/widgets/profile_dialog.dart';
 import 'package:taxi_app/ui/widgets/user_image.dart';
@@ -53,30 +56,40 @@ class _ProfileScreenState extends State<ProfileScreen> {
         physics: const BouncingScrollPhysics(),
         children: [
           30.ph,
-          UserImage(
-            onTap: () {
-              profileDialog(
-                picker: picker,
-                context: context,
-                valueChanged: (v) {
-                  image = v;
-                  setState(() {});
-                },
-              );
-            },
-          ),
-          12.ph,
-          Text(
-            "Andrew Ainsley",
-            textAlign: TextAlign.center,
-            style: Theme.of(context).textTheme.headlineMedium,
-          ),
-          8.ph,
-          Text(
-            "+1 111 467 378 399",
-            textAlign: TextAlign.center,
-            style: Theme.of(context).textTheme.labelLarge,
-          ),
+          StreamBuilder(
+              stream: context.read<UserRepo>().getUserById(),
+              builder: (context, snapshot) {
+                debugPrint('Snapshot data: ${snapshot.data}');
+                UserModel user = snapshot.data!;
+                return Column(
+                  children: [
+                    UserImage(
+                      onTap: () {
+                        profileDialog(
+                          picker: picker,
+                          context: context,
+                          valueChanged: (v) {
+                            image = v;
+                            setState(() {});
+                          },
+                        );
+                      },
+                    ),
+                    12.ph,
+                    Text(
+                      user.fullName,
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context).textTheme.headlineMedium,
+                    ),
+                    8.ph,
+                    Text(
+                      "+998 ${user.phone}",
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context).textTheme.labelLarge,
+                    ),
+                  ],
+                );
+              }),
           20.ph,
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 24.w),

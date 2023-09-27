@@ -24,6 +24,7 @@ import 'package:taxi_app/ui/tab_box/profile/sub_screens/address/address_screen.d
 import 'package:taxi_app/ui/auth/login/login_screen.dart';
 import 'package:taxi_app/ui/auth/register/register_screen.dart';
 import 'package:taxi_app/ui/splash/splash_screen.dart';
+import 'package:taxi_app/ui/tab_box/profile/sub_screens/edit_profile_client/edit_profile_client.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/edit_profile_driver/edit_profile_screen.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/help_center/help_center_screen.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/invite_friends/invite_friends.dart';
@@ -84,6 +85,7 @@ class RouteNames {
   static const String payment = "/payment_screen";
   static const String paymentAddCard = "/payment_add_card_screen";
   static const String editProfile = "/edit_profile";
+  static const String editProfileClient = "/edit_profile_client";
   static const String inviteFriends = "/invite_friends";
   static const String welcomeScreen = "/welcome";
   static const String helpCenterScreen = "/helpCenterScreen";
@@ -256,6 +258,12 @@ class AppRoutes {
       case RouteNames.paymentAddCard:
         return MaterialPageRoute(
           builder: (context) => const PaymentAddCardScreen(),
+        );
+      case RouteNames.editProfileClient:
+        return MaterialPageRoute(
+          builder: (context) => EditProfileClientScreen(
+            navigateFromAuth: settings.arguments as bool,
+          ),
         );
       default:
         return MaterialPageRoute(
