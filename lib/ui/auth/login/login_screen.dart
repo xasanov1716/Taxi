@@ -87,11 +87,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         textColor: AppColors.dark3,
                         title: "Kirish",
                         onTap: () {
-                          Navigator.pushReplacementNamed(
-                            context,
-                            RouteNames.editProfileClient,
-                            arguments: true,
-                          );
+                        
                         }),
                     24.ph,
                     const ForgotPasswordButton(),
