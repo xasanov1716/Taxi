@@ -73,45 +73,6 @@ class _AddressScreenState extends State<AddressScreen> {
           return const Center(child: CircularProgressIndicator());
         },
       ),
-
-
-
-      // BlocConsumer<AddressBloc,AddressStates>(
-      //   builder: (context, state){
-      //     return Column(
-      //       children: [
-      //         Expanded(
-      //             child: ListView.separated(
-      //               physics: const BouncingScrollPhysics(),
-      //               itemCount: addresses.length,
-      //               itemBuilder: (context, index) {
-      //                 AddressModel addressModel = addresses[index];
-      //                 return AddressItem(image: AppIcons.locationInSearchDb, title: addressModel.orientation, subtitle: addressModel.apartment, onTap: (){});
-      //               }, separatorBuilder: (BuildContext context, int index) {
-      //               return Divider(
-      //                 color: AppColors.c_200,
-      //                 endIndent:24.w,
-      //                 indent: 24.w,
-      //               );
-      //             },
-      //             )),
-      //         GlobalButton(
-      //           padding: EdgeInsets.all(24.h),
-      //           title: 'Add New Address',
-      //           radius: 100.r,
-      //           color: AppColors.primary,
-      //           onTap: () {
-      //             Navigator.pushNamed(context, RouteNames.addressAddDetailScreen);
-      //           },
-      //         ),
-      //         24.ph,
-      //       ],
-      //     );
-      //   },
-      //   listener: (context, state){
-      //
-      //   },
-      // )
     );
   }
 }
