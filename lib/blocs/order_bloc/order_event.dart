@@ -14,4 +14,8 @@ class DeleteOrderEvent extends OrderEvent{
   final String orderId;
   DeleteOrderEvent({required this.orderId});
 }
-class DeleteAllOrderEvent extends OrderEvent{}
+
+class GetOrderByIdEvent extends OrderEvent{
+  final String orderId;
+  GetOrderByIdEvent({required this.orderId});
+}

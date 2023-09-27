@@ -35,6 +35,8 @@ class AppIcons {
   static const String successPassword = "assets/images/success_password.png";
   static const String taxiLogo = "assets/images/taxi_logo.png";
   static const String uzbFlag = "assets/images/uzb.png";
+  static const String humoPng = "assets/images/humo_card.png";
+  static const String uzCardPng = "assets/images/uzCard_card.png";
   static const String createNewPasswordDialog =
       "assets/images/create_new_password_dialog.png";
   static const String forgotPasswordDarkImage =

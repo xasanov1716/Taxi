@@ -1,18 +1,18 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:taxi_app/data/models/db/driver_model.dart';
 import 'package:taxi_app/data/models/universal_data.dart';
-const String driverCollection = 'drivers';
+import 'package:taxi_app/utils/constants/constants.dart';
 
-class DriverModelService {
+class DriverRepo {
 
   Future<UniversalData> addDriver({required DriverModel driverModel}) async {
     try {
       DocumentReference newDriver = await FirebaseFirestore.instance
-          .collection(driverCollection)
+          .collection(FirebaseCollections.drivers)
           .add(driverModel.toJson());
 
       await FirebaseFirestore.instance
-          .collection(driverCollection)
+          .collection(FirebaseCollections.drivers)
           .doc(newDriver.id)
           .update({'driverId': newDriver.id});
 
@@ -27,7 +27,7 @@ class DriverModelService {
   Future<UniversalData> updateDriver({required DriverModel driverModel}) async {
     try {
       await FirebaseFirestore.instance
-          .collection(driverCollection)
+          .collection(FirebaseCollections.drivers)
           .doc(driverModel.driverId)
           .update(driverModel.toJson());
 
@@ -42,7 +42,7 @@ class DriverModelService {
   Future<UniversalData> deleteDriver({required String driverId}) async {
     try {
       await FirebaseFirestore.instance
-          .collection(driverCollection)
+          .collection(FirebaseCollections.drivers)
           .doc(driverId)
           .delete();
 
@@ -53,4 +53,28 @@ class DriverModelService {
       return UniversalData(error: error.toString());
     }
   }
+  Stream<List<DriverModel>> getDrivers() async* {
+    yield* FirebaseFirestore.instance
+        .collection(FirebaseCollections.drivers)
+        .snapshots()
+        .map(
+          (querySnapshot) => querySnapshot.docs
+          .map((doc) => DriverModel.fromJson(doc.data()))
+          .toList(),
+    );
+  }
+  Stream<DriverModel?> getDriverById({required String driverId}) {
+    return FirebaseFirestore.instance
+        .collection(FirebaseCollections.drivers)
+        .doc(driverId)
+        .snapshots()
+        .map((documentSnapshot) {
+      if (documentSnapshot.exists) {
+        return DriverModel.fromJson(documentSnapshot.data() ?? {});
+      } else {
+        return null;
+      }
+    });
+  }
+
 }

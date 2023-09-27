@@ -230,11 +230,11 @@ class PaymentAddCardScreen extends StatelessWidget {
                                         ],
                                       ),
                                       state.cardNumber.startsWith("8600")
-                                          ? SvgPicture.asset(AppIcons.uzCard,
-                                              width: 100.w, height: 60.h)
+                                          ? Image.asset(AppIcons.uzCardPng,
+                                        width: 55.w,height: 55.h)
                                           : state.cardNumber.startsWith("9860")
-                                              ? SvgPicture.asset(AppIcons.humo,
-                                                  width: 100.w, height: 60.h)
+                                              ? Image.asset(AppIcons.humoPng,
+                                                  width: 55.w,height: 55.h)
                                               : const Icon(Icons.add_card),
                                     ],
                                   ),

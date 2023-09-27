@@ -30,3 +30,17 @@ class AuthError extends SocialAuthState {
   List<Object> get props => [errorText];
 }
 
+class AuthFirstStepSuccessState extends SocialAuthState{
+  @override
+  List<Object> get props=>[];
+}
+
+class AuthSecondStepSuccessState extends SocialAuthState{
+  @override
+  List<Object> get props=>[];
+}
+class AuthThirdStepSuccessState extends SocialAuthState{
+  @override
+  List<Object> get props=>[];
+}
+

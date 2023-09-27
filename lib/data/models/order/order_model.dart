@@ -65,14 +65,14 @@ class OrderModel {
   ''';
 
   Map<String, dynamic> toJson()=>{
-    'orderId':orderId,
-    'clientId':clientId,
-    'driverId':driverId,
-    'fromLocation': fromLocation,
-    'toLocation':toLocation,
-    'orderPrice':orderPrice,
-    'createdAt':createdAt,
-    'orderStatus':orderStatus,
+    'order_id':orderId,
+    'client_id':clientId,
+    'driver_id':driverId,
+    'from_location': fromLocation,
+    'to_location':toLocation,
+    'order_price':orderPrice,
+    'created_at':createdAt,
+    'order_status':orderStatus,
   };
 
 }
