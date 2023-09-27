@@ -58,6 +58,7 @@ class LogOutItem extends StatelessWidget {
                   title: "Yes, Logout",
                   onTap: () async {
                     StorageRepository.deleteString(StorageKeys.userId);
+                    StorageRepository.deleteInt(StorageKeys.userRole);
                     await context.read<AuthCubit>().logOutUser();
 
                     if (context.mounted) {
