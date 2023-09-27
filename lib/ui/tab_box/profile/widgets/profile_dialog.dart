@@ -2,11 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:taxi_app/blocs/driver_bloc/driver_bloc.dart';
 import 'package:taxi_app/cubits/user/user_cubit.dart';
+import 'package:taxi_app/data/models/driver/driver_fields.dart';
+import 'package:taxi_app/data/models/universal_data.dart';
 import 'package:taxi_app/data/models/user/user_field_keys.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
+import 'package:taxi_app/utils/ui_utils/loading_dialog.dart';
+import 'package:taxi_app/utils/ui_utils/upload_image.dart';
 
 void profileDialog(
     {required ImagePicker picker,
@@ -100,10 +105,14 @@ Future<void> _getFromCamera(
   );
 
   if (xFile != null && context.mounted) {
-    context.read<UserCubit>().updateCurrentUserField(
-          fieldKey: UserFieldKeys.image,
-          value: xFile.path,
-        );
+    showLoading(context: context);
+    UniversalData data = await imageUploader(xFile);
+    if (context.mounted) {
+      context.read<DriverBloc>().updateDriverField(
+          fieldKey: DriverFieldKeys.imageUrl, value: data.data);
+      hideLoading(context: context);
+    }
+
     valueChanged(xFile.path);
   }
 }
@@ -118,10 +127,14 @@ Future<void> _getFromGallery(
     maxWidth: 512 * width / figmaWidth,
   );
   if (xFile != null && context.mounted) {
-    context.read<UserCubit>().updateCurrentUserField(
-          fieldKey: UserFieldKeys.image,
-          value: xFile.path,
-        );
+    showLoading(context: context);
+    UniversalData data = await imageUploader(xFile);
+    if (context.mounted) {
+      context.read<DriverBloc>().updateDriverField(
+          fieldKey: DriverFieldKeys.imageUrl, value: data.data);
+      hideLoading(context: context);
+    }
+
     valueChanged(xFile.path);
     debugPrint("Success");
   }

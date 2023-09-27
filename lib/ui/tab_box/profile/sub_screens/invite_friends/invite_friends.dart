@@ -13,30 +13,68 @@ class InviteFriendsScreen extends StatefulWidget {
 }
 
 class _InviteFriendsScreenState extends State<InviteFriendsScreen> {
-  List<FakeUser> users= [
-    const FakeUser(displayName: "Tynisha Obey\n",email:"+1-300-555-0135",photoUrl: AppIcons.drFake1),
-    const FakeUser(displayName: "Florencio Dorrance\n",email:"+1-202-555-0136",photoUrl: AppIcons.drFake2),
-    const FakeUser(displayName: "Chantal Shelburne\n",email:"+1-300-555-0119",photoUrl: AppIcons.drFake3),
-    const FakeUser(displayName: "Maryland Winkles\n",email:"+1-300-555-0161",photoUrl: AppIcons.drFake4),
-    const FakeUser(displayName: "Rodolfo Goode\n",email:"+1-300-555-0136",photoUrl: AppIcons.drFake5),
-    const FakeUser(displayName: "Benny Spanbauer\n",email:"+1-202-555-0167",photoUrl: AppIcons.drFake1),
-    const FakeUser(displayName: "Tyra Dhillon\n",email:"+1-202-555-0119",photoUrl: AppIcons.drFake2),
-    const FakeUser(displayName: "Jamel Eusebio\n",email:"+1-300-555-0171",photoUrl: AppIcons.drFake3),
-    const FakeUser(displayName: "Pedro Huard\n",email:"+1-202-555-0171",photoUrl: AppIcons.drFake4),
-    const FakeUser(displayName: "Clinton Mcclure\n",email:"+1-300-555-0135",photoUrl: AppIcons.drFake5),
+  List<FakeUser> users = [
+    const FakeUser(
+        displayName: "Tynisha Obey\n",
+        email: "+1-300-555-0135",
+        photoUrl: AppIcons.drFake1),
+    const FakeUser(
+        displayName: "Florencio Dorrance\n",
+        email: "+1-202-555-0136",
+        photoUrl: AppIcons.drFake2),
+    const FakeUser(
+        displayName: "Chantal Shelburne\n",
+        email: "+1-300-555-0119",
+        photoUrl: AppIcons.drFake3),
+    const FakeUser(
+        displayName: "Maryland Winkles\n",
+        email: "+1-300-555-0161",
+        photoUrl: AppIcons.drFake4),
+    const FakeUser(
+        displayName: "Rodolfo Goode\n",
+        email: "+1-300-555-0136",
+        photoUrl: AppIcons.drFake5),
+    const FakeUser(
+        displayName: "Benny Spanbauer\n",
+        email: "+1-202-555-0167",
+        photoUrl: AppIcons.drFake1),
+    const FakeUser(
+        displayName: "Tyra Dhillon\n",
+        email: "+1-202-555-0119",
+        photoUrl: AppIcons.drFake2),
+    const FakeUser(
+        displayName: "Jamel Eusebio\n",
+        email: "+1-300-555-0171",
+        photoUrl: AppIcons.drFake3),
+    const FakeUser(
+        displayName: "Pedro Huard\n",
+        email: "+1-202-555-0171",
+        photoUrl: AppIcons.drFake4),
+    const FakeUser(
+        displayName: "Clinton Mcclure\n",
+        email: "+1-300-555-0135",
+        photoUrl: AppIcons.drFake5),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:const EditAppBar(title: "Invite Friends"),
+      appBar: EditAppBar(
+        title: "Invite Friends",
+       onTap: (){
+          Navigator.pop(context);
+       },
+      ),
       body: ListView(
-        physics:const BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         children: [
           12.ph,
           ...List.generate(users.length, (index) {
-            FakeUser user=users[index];
-           return InviteListViewItem(name: user.displayName!, phone: user.email!, image: user.photoUrl!);
+            FakeUser user = users[index];
+            return InviteListViewItem(
+                name: user.displayName!,
+                phone: user.email!,
+                image: user.photoUrl!);
           })
         ],
       ),

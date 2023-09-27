@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -7,9 +6,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-import 'package:taxi_app/blocs/driver_bloc/driver_bloc.dart';
-import 'package:taxi_app/data/models/driver/driver_fields.dart';
+import 'package:taxi_app/blocs/user_bloc/user_bloc.dart';
 import 'package:taxi_app/data/models/icon/icon_type.dart';
+import 'package:taxi_app/data/models/user/user_field_keys.dart';
 import 'package:taxi_app/ui/tab_box/profile/widgets/profile_dialog.dart';
 import 'package:taxi_app/ui/widgets/global_input.dart';
 import 'package:taxi_app/ui/widgets/global_search_input.dart';
@@ -22,49 +21,35 @@ import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
 
-class FirstPage extends StatefulWidget {
-  const FirstPage({super.key, required this.isFromAuth});
-  final bool isFromAuth;
+class ClientEditFields extends StatefulWidget {
+  const ClientEditFields({super.key});
 
   @override
-  State<FirstPage> createState() => _FirstPageState();
+  State<ClientEditFields> createState() => _ClientEditFieldsState();
 }
 
-class _FirstPageState extends State<FirstPage> {
-  DateTime selectedDate = DateTime.now();
-  TextEditingController dateController = TextEditingController();
-  TextEditingController fullNameController = TextEditingController();
-  TextEditingController phoneNumberController = TextEditingController();
-  TextEditingController aboutDriverController = TextEditingController();
-  TextEditingController carNumberController = TextEditingController();
-  TextEditingController telegramLinkController = TextEditingController();
-
-  initStateToText() {
-    DriverState state = context.read<DriverBloc>().state;
-
-    dateController.text = state.driverModel.birthDate;
-    fullNameController.text = state.driverModel.fullName;
-    phoneNumberController.text = state.driverModel.phoneNumber;
-    aboutDriverController.text = state.driverModel.aboutDriver;
-    carNumberController.text = state.driverModel.carNumber;
-    telegramLinkController.text = state.driverModel.telegramLink;
-    gender = state.driverModel.gender;
-  }
+class _ClientEditFieldsState extends State<ClientEditFields> {
 
   @override
   void initState() {
-    if (!widget.isFromAuth) initStateToText();
+    initStateToText();
     super.initState();
   }
 
+
+  DateTime selectedDate = DateTime.now();
+  TextEditingController dateController = TextEditingController();
   String gender = "Male";
   ImagePicker picker = ImagePicker();
+  String image = "";
 
   var phoneFormatter = MaskTextInputFormatter(
       mask: '## ### ## ##',
       filter: {"#": RegExp(r'[0-9]')},
       type: MaskAutoCompletionType.lazy);
+
   var genders = ['Male', 'Female'];
+
   final FocusNode focusNode = FocusNode();
   final FocusNode phoneFocusNode = FocusNode();
   final FocusNode fullNameFocusNode = FocusNode();
@@ -72,36 +57,66 @@ class _FirstPageState extends State<FirstPage> {
   final FocusNode emailFocusNode = FocusNode();
   final FocusNode aboutFocusNode = FocusNode();
   final FocusNode telegramFocusNode = FocusNode();
+  initStateToText() {
+    UserState state = context.read<UserBloc>().state;
+
+    dateController.text = state.userModel.birthDate;
+    fullNameController.text = state.userModel.fullName;
+    nicknameController.text = state.userModel.nickName;
+    addressController.text = state.userModel.addressText;
+    phoneController.text = state.userModel.phone;
+    gender = state.userModel.gender;
+  }
+  final TextEditingController phoneController = TextEditingController();
+  final TextEditingController fullNameController = TextEditingController();
+  final TextEditingController nicknameController = TextEditingController();
+  final TextEditingController addressController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return ListView(
+      padding: EdgeInsets.symmetric(vertical: 24.h),
       physics: const BouncingScrollPhysics(),
       children: [
-        24.ph,
         UserImage(
           onTap: () {
             profileDialog(
-                picker: picker, context: context, valueChanged: (v) {});
+                picker: picker,
+                context: context,
+                valueChanged: (v) {
+                  setState(() {
+                    image = v;
+                  });
+                });
           },
         ),
         24.ph,
         GlobalTextField(
-          controller: fullNameController,
           focusNode: fullNameFocusNode,
           hintText: 'Full Name',
+          controller: fullNameController,
           keyboardType: TextInputType.text,
           textInputAction: TextInputAction.next,
           onChanged: (value) async {
-            context.read<DriverBloc>().updateDriverField(
-                fieldKey: DriverFieldKeys.fullName, value: value);
-
-            context.read<DriverBloc>().updateDriverField(
-                fieldKey: DriverFieldKeys.driverId,
-                value: FirebaseAuth.instance.currentUser!.uid);
-            context.read<DriverBloc>().updateDriverField(
-                fieldKey: DriverFieldKeys.fcmToken,
-                value: await FirebaseMessaging.instance.getToken());
+            context.read<UserBloc>().add(UpdateCurrentUserEvent(
+                fieldKey: UserFieldKeys.fullName, value: value));
+            context.read<UserBloc>().add(
+                  UpdateCurrentUserEvent(
+                      fieldKey: UserFieldKeys.fcmToken,
+                      value: await FirebaseMessaging.instance.getToken()),
+                );
+          },
+        ),
+        24.ph,
+        GlobalTextField(
+          focusNode: nicknameFocusNode,
+          hintText: 'Nickname',
+          controller: nicknameController,
+          keyboardType: TextInputType.text,
+          textInputAction: TextInputAction.next,
+          onChanged: (value) {
+            context.read<UserBloc>().add(UpdateCurrentUserEvent(
+                fieldKey: UserFieldKeys.nickName, value: value));
           },
         ),
         24.ph,
@@ -119,7 +134,10 @@ class _FirstPageState extends State<FirstPage> {
               },
               rightImage: AppIcons.calendar,
               controller: dateController,
-              onChanged: (value) {},
+              onChanged: (value) {
+                context.read<UserBloc>().add(UpdateCurrentUserEvent(
+                    fieldKey: UserFieldKeys.birthDate, value: value));
+              },
               keyboardType: TextInputType.number,
               textInputAction: TextInputAction.next,
             ),
@@ -127,16 +145,17 @@ class _FirstPageState extends State<FirstPage> {
         ),
         24.ph,
         PhoneNumberInput(
-          controller: phoneNumberController,
           hintText: 'Phone Number',
           keyboardType: TextInputType.phone,
           focusNode: phoneFocusNode,
           maskFormatter: phoneFormatter,
+          controller: phoneController,
           onChanged: (value) {
-            context.read<DriverBloc>().updateDriverField(
-                fieldKey: DriverFieldKeys.phoneNumber,
-                value: value.replaceAll(" ", ""));
+            context.read<UserBloc>().add(UpdateCurrentUserEvent(
+                fieldKey: UserFieldKeys.phone, value: value));
             if (value.length == 12) {
+              context.read<UserBloc>().add(UpdateCurrentUserEvent(
+                fieldKey: UserFieldKeys.emailAddress, value: '$value@gmail.com'));
               phoneFocusNode.unfocus();
             }
           },
@@ -180,8 +199,8 @@ class _FirstPageState extends State<FirstPage> {
               setState(() {
                 gender = newValue!;
               });
-              context.read<DriverBloc>().updateDriverField(
-                  fieldKey: DriverFieldKeys.gender, value: newValue);
+              context.read<UserBloc>().add(UpdateCurrentUserEvent(
+                  fieldKey: UserFieldKeys.gender, value: newValue));
             },
             hint: Text(gender,
                 style: AppTextStyle.bodyMediumSemibold.copyWith(
@@ -192,41 +211,16 @@ class _FirstPageState extends State<FirstPage> {
         ),
         24.ph,
         GlobalTextField(
-          controller: aboutDriverController,
           focusNode: aboutFocusNode,
-          hintText: 'About Driver',
+          hintText: 'Address',
           keyboardType: TextInputType.text,
+          controller: addressController,
           textInputAction: TextInputAction.next,
           onChanged: (value) {
-            context.read<DriverBloc>().updateDriverField(
-                fieldKey: DriverFieldKeys.aboutDriver, value: value);
+            context.read<UserBloc>().add(UpdateCurrentUserEvent(
+                fieldKey: UserFieldKeys.addressText, value: value));
           },
         ),
-        24.ph,
-        GlobalTextField(
-          controller: carNumberController,
-          focusNode: nicknameFocusNode,
-          hintText: 'Car number',
-          keyboardType: TextInputType.text,
-          textInputAction: TextInputAction.next,
-          onChanged: (value) {
-            context.read<DriverBloc>().updateDriverField(
-                fieldKey: DriverFieldKeys.carNumber, value: value);
-          },
-        ),
-        24.ph,
-        GlobalTextField(
-          controller: telegramLinkController,
-          focusNode: telegramFocusNode,
-          hintText: 'Telegram link',
-          keyboardType: TextInputType.text,
-          textInputAction: TextInputAction.next,
-          onChanged: (value) {
-            context.read<DriverBloc>().updateDriverField(
-                fieldKey: DriverFieldKeys.telegramLink, value: value);
-          },
-        ),
-        24.ph
       ],
     );
   }
@@ -243,7 +237,7 @@ class _FirstPageState extends State<FirstPage> {
           height: 300 * height / figmaHeight,
           child: CupertinoDatePicker(
             mode: CupertinoDatePickerMode.date,
-            initialDateTime: selectedDate,
+            initialDateTime: DateTime(2000),
             minimumDate: DateTime(1950),
             maximumDate: DateTime(2101),
             onDateTimeChanged: (DateTime newDate) {
@@ -252,9 +246,10 @@ class _FirstPageState extends State<FirstPage> {
                   dateController.text =
                       newDate.toLocal().toString().split(' ')[0];
                   selectedDate = newDate;
-                  context.read<DriverBloc>().updateDriverField(
-                      fieldKey: DriverFieldKeys.birthDate,
-                      value: dateController.text);
+
+                  context.read<UserBloc>().add(UpdateCurrentUserEvent(
+                      fieldKey: UserFieldKeys.birthDate,
+                      value: dateController.text));
                 });
               }
             },
