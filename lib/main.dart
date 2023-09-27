@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taxi_app/blocs/create_order/create_order_bloc.dart';
+import 'package:taxi_app/blocs/driver_bloc/driver_bloc.dart';
 import 'package:taxi_app/blocs/home/home_bloc.dart';
 import 'package:taxi_app/blocs/messages/message_bloc.dart';
 import 'package:taxi_app/blocs/payment/payment_bloc.dart';
@@ -24,6 +25,7 @@ import 'package:taxi_app/data/local/search_location/search_history_db.dart';
 import 'package:taxi_app/data/local/storage_repository/storage_repository.dart';
 import 'package:taxi_app/data/repositories/address_api_repository.dart';
 import 'package:taxi_app/data/repositories/auth_repository.dart';
+import 'package:taxi_app/data/repositories/driver_repos.dart';
 import 'package:taxi_app/data/repositories/places_db_repository.dart';
 import 'package:taxi_app/data/repositories/search_history_db.dart';
 import 'package:taxi_app/services/api_service.dart';
@@ -67,6 +69,9 @@ class App extends StatelessWidget {
           create: (context) => PlacesDatabaseRepository(PlacesDatabase()),
         ),
         RepositoryProvider(
+          create: (context) => DriverRepo(),
+        ),
+        RepositoryProvider(
             create: (context) => AddressApiRepository(apiService: apiService))
       ],
       child: MultiBlocProvider(
@@ -76,7 +81,8 @@ class App extends StatelessWidget {
             create: (context) => AddressCubit(
                 addressApiRepository: context.read<AddressApiRepository>()),
           ),
-          BlocProvider(create: (context) => AuthCubit(context.read<AuthRepository>())),
+          BlocProvider(
+              create: (context) => AuthCubit(context.read<AuthRepository>())),
           BlocProvider(
             create: (context) => SearchLocationBloc(
               searchHistoryRepository: context.read<SearchHistoryRepository>(),
@@ -85,6 +91,9 @@ class App extends StatelessWidget {
             ),
           ),
           BlocProvider(create: (context) => TabCubit()),
+          BlocProvider(
+              create: (context) =>
+                  DriverBloc(driverRepo: context.read<DriverRepo>())),
           BlocProvider(create: (context) => NotificationCubit()),
           BlocProvider(create: (context) => SecurityCubit()),
           BlocProvider(create: (context) => HomeBloc()),
