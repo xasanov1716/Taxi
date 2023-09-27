@@ -138,7 +138,7 @@ String _getDateString(DateTime date) {
                   style: Theme.of(context).dialogTheme.titleTextStyle!.copyWith(
                       fontSize: 18.sp,
                       color: getTheme(context)
-                          ? AppColors.white
+                           ? AppColors.white
                           : AppColors.c_900),
                 ),
                 24.ph,
