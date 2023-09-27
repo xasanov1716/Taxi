@@ -1,5 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:taxi_app/data/local/storage_repository/storage_repository.dart';
 import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/ui/auth/login/widgets/forgot_password_button.dart';
 import 'package:taxi_app/ui/auth/widgets/social_auth_buttons.dart';
@@ -7,6 +9,7 @@ import 'package:taxi_app/ui/auth/widgets/auth_navigator_button.dart';
 import 'package:taxi_app/ui/auth/widgets/custom_auth_divider.dart';
 import 'package:taxi_app/ui/auth/widgets/remember_me.dart';
 import 'package:taxi_app/ui/widgets/global_appbar.dart';
+import 'package:taxi_app/utils/constants/storage_keys.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
@@ -86,8 +89,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         radius: 100.r,
                         textColor: AppColors.dark3,
                         title: "Kirish",
-                        onTap: () {
-                        
+                        onTap: () async {
+                          await StorageRepository.putString(StorageKeys.userId,
+                              FirebaseAuth.instance.currentUser!.uid);
                         }),
                     24.ph,
                     const ForgotPasswordButton(),

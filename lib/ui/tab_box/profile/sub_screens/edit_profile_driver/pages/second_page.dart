@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:taxi_app/blocs/driver_bloc/driver_bloc.dart';
 import 'package:taxi_app/cubits/user/user_cubit.dart';
+import 'package:taxi_app/data/models/driver/driver_fields.dart';
 import 'package:taxi_app/data/models/icon/icon_type.dart';
 import 'package:taxi_app/data/models/user/user_field_keys.dart';
 import 'package:taxi_app/ui/widgets/global_input.dart';
@@ -13,21 +15,55 @@ import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
 
 class SecondPage extends StatefulWidget {
-  const SecondPage({super.key});
+  const SecondPage({super.key,required this.isFromAuth});
+  final bool isFromAuth;
 
   @override
   State<SecondPage> createState() => _SecondPageState();
 }
 
 class _SecondPageState extends State<SecondPage> {
+  TextEditingController priceController = TextEditingController();
+  initStateToText() {
+    DriverState state = context.read<DriverBloc>().state;
+
+    priceController.text = state.driverModel.price.toString();
+    gender = state.driverModel.gender;
+    carModel = state.driverModel.carModel;
+    emptyPlace = state.driverModel.emptyPlaces.toString();
+    hasRoof = state.driverModel.hasRoofTop ? "Yes" : "No";
+  }
+
+
+  @override
+  void initState() {
+    if(widget.isFromAuth) initStateToText();
+    super.initState();
+  }
+
   String gender = "Male";
   String carModel = "Damas";
-  String hasRuf = "Have";
+  String hasRoof = "Yes";
   String emptyPlace = "1";
-  var genders = ['Male', 'Female','Mix'];
-  var hasRufs = ['Have', 'Haven\'t',];
-  var emptyPlaces = ['1', '2','3','4','5','6','7'];
-  var carModels = ['Damas', 'Tiko','Matiz','Nexia','Nexia 2','Nexia 3','Cobalt','Lacetti','Gentera','Malibu','Spark'];
+  var genders = ['Male', 'Female', 'Mixed'];
+  var hasRoofs = [
+    'Yes',
+    'No',
+  ];
+  var emptyPlaces = ['1', '2', '3', '4', '5', '6', '7'];
+  var carModels = [
+    'Damas',
+    'Tiko',
+    'Matiz',
+    'Nexia',
+    'Nexia 2',
+    'Nexia 3',
+    'Cobalt',
+    'Lacetti',
+    'Gentra',
+    'Malibu',
+    'Spark'
+  ];
 
   final FocusNode priceFocusNode = FocusNode();
   @override
@@ -35,39 +71,6 @@ class _SecondPageState extends State<SecondPage> {
     return ListView(
       physics: const BouncingScrollPhysics(),
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              width: 30.w,
-              height: 30.w,
-              decoration: BoxDecoration(
-                  color: AppColors.green,
-                  borderRadius: BorderRadius.circular(100.r),
-                  border: Border.all(width: 1,color: AppColors.dark2)
-              ),
-            ),
-            20.pw,
-            Container(
-              width: 30.w,
-              height: 30.w,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(100.r),
-                  color: AppColors.green,
-                  border: Border.all(width: 1,color: AppColors.dark2)
-              ),
-            ),
-            20.pw,
-            Container(
-              width: 30.w,
-              height: 30.w,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(100.r),
-                  border: Border.all(width: 1,color: AppColors.dark2)
-              ),
-            ),
-          ],
-        ),
         24.ph,
         GlobalTextField(
           focusNode: priceFocusNode,
@@ -75,15 +78,14 @@ class _SecondPageState extends State<SecondPage> {
           keyboardType: TextInputType.text,
           textInputAction: TextInputAction.next,
           onChanged: (value) {
-            context.read<UserCubit>().updateCurrentUserField(
-                fieldKey: UserFieldKeys.fullName, value: value);
+            context.read<DriverBloc>().updateDriverField(
+                fieldKey: DriverFieldKeys.price, value: int.parse(value));
           },
         ),
         24.ph,
-        Text("Passenger Type",style: AppTextStyle.bodyMediumSemibold.copyWith(
-            color: getTheme(context)
-                ? AppColors.white
-                : AppColors.c_900)),
+        Text("Passenger Type",
+            style: AppTextStyle.bodyMediumSemibold.copyWith(
+                color: getTheme(context) ? AppColors.white : AppColors.c_900)),
         24.ph,
         Container(
           padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 6.h),
@@ -97,7 +99,7 @@ class _SecondPageState extends State<SecondPage> {
             isExpanded: true,
             underline: const SizedBox(),
             dropdownColor:
-            getTheme(context) ? AppColors.dark2 : AppColors.greysCale,
+                getTheme(context) ? AppColors.dark2 : AppColors.greysCale,
             icon: SvgPicture.asset(
               AppIcons.getSvg(
                   name: AppIcons.arrowDown2, iconType: IconType.bold),
@@ -122,8 +124,8 @@ class _SecondPageState extends State<SecondPage> {
               setState(() {
                 gender = newValue!;
               });
-              context.read<UserCubit>().updateCurrentUserField(
-                  fieldKey: UserFieldKeys.gender, value: newValue);
+              context.read<DriverBloc>().updateDriverField(
+                  fieldKey: DriverFieldKeys.passengerType, value: gender);
             },
             hint: Text(gender,
                 style: AppTextStyle.bodyMediumSemibold.copyWith(
@@ -133,10 +135,9 @@ class _SecondPageState extends State<SecondPage> {
           ),
         ),
         24.ph,
-        Text("Car Model",style: AppTextStyle.bodyMediumSemibold.copyWith(
-            color: getTheme(context)
-                ? AppColors.white
-                : AppColors.c_900)),
+        Text("Car Model",
+            style: AppTextStyle.bodyMediumSemibold.copyWith(
+                color: getTheme(context) ? AppColors.white : AppColors.c_900)),
         24.ph,
         Container(
           padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 6.h),
@@ -150,7 +151,7 @@ class _SecondPageState extends State<SecondPage> {
             isExpanded: true,
             underline: const SizedBox(),
             dropdownColor:
-            getTheme(context) ? AppColors.dark2 : AppColors.greysCale,
+                getTheme(context) ? AppColors.dark2 : AppColors.greysCale,
             icon: SvgPicture.asset(
               AppIcons.getSvg(
                   name: AppIcons.arrowDown2, iconType: IconType.bold),
@@ -175,8 +176,8 @@ class _SecondPageState extends State<SecondPage> {
               setState(() {
                 carModel = newValue!;
               });
-              context.read<UserCubit>().updateCurrentUserField(
-                  fieldKey: UserFieldKeys.gender, value: newValue);
+              context.read<DriverBloc>().updateDriverField(
+                  fieldKey: DriverFieldKeys.carModel, value: carModel);
             },
             hint: Text(carModel,
                 style: AppTextStyle.bodyMediumSemibold.copyWith(
@@ -186,10 +187,9 @@ class _SecondPageState extends State<SecondPage> {
           ),
         ),
         24.ph,
-        Text("Has Ruf",style: AppTextStyle.bodyMediumSemibold.copyWith(
-            color: getTheme(context)
-                ? AppColors.white
-                : AppColors.c_900)),
+        Text("Has Roof",
+            style: AppTextStyle.bodyMediumSemibold.copyWith(
+                color: getTheme(context) ? AppColors.white : AppColors.c_900)),
         24.ph,
         Container(
           padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 6.h),
@@ -203,7 +203,7 @@ class _SecondPageState extends State<SecondPage> {
             isExpanded: true,
             underline: const SizedBox(),
             dropdownColor:
-            getTheme(context) ? AppColors.dark2 : AppColors.greysCale,
+                getTheme(context) ? AppColors.dark2 : AppColors.greysCale,
             icon: SvgPicture.asset(
               AppIcons.getSvg(
                   name: AppIcons.arrowDown2, iconType: IconType.bold),
@@ -212,7 +212,7 @@ class _SecondPageState extends State<SecondPage> {
                   BlendMode.srcIn),
             ),
             borderRadius: BorderRadius.circular(12.r),
-            items: hasRufs.map((String items) {
+            items: hasRoofs.map((String items) {
               return DropdownMenuItem(
                 value: items,
                 child: Text(
@@ -226,12 +226,13 @@ class _SecondPageState extends State<SecondPage> {
             }).toList(),
             onChanged: (String? newValue) {
               setState(() {
-                hasRuf = newValue!;
+                hasRoof = newValue!;
               });
-              context.read<UserCubit>().updateCurrentUserField(
-                  fieldKey: UserFieldKeys.gender, value: newValue);
+              context.read<DriverBloc>().updateDriverField(
+                  fieldKey: DriverFieldKeys.hasRoofTop,
+                  value: hasRoof == "Yes" ? true : false);
             },
-            hint: Text(hasRuf,
+            hint: Text(hasRoof,
                 style: AppTextStyle.bodyMediumSemibold.copyWith(
                     color: getTheme(context)
                         ? AppColors.white
@@ -239,10 +240,9 @@ class _SecondPageState extends State<SecondPage> {
           ),
         ),
         24.ph,
-        Text("Empty Places",style: AppTextStyle.bodyMediumSemibold.copyWith(
-            color: getTheme(context)
-                ? AppColors.white
-                : AppColors.c_900)),
+        Text("Empty Places",
+            style: AppTextStyle.bodyMediumSemibold.copyWith(
+                color: getTheme(context) ? AppColors.white : AppColors.c_900)),
         24.ph,
         Container(
           padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 6.h),
@@ -256,7 +256,7 @@ class _SecondPageState extends State<SecondPage> {
             isExpanded: true,
             underline: const SizedBox(),
             dropdownColor:
-            getTheme(context) ? AppColors.dark2 : AppColors.greysCale,
+                getTheme(context) ? AppColors.dark2 : AppColors.greysCale,
             icon: SvgPicture.asset(
               AppIcons.getSvg(
                   name: AppIcons.arrowDown2, iconType: IconType.bold),
@@ -281,8 +281,9 @@ class _SecondPageState extends State<SecondPage> {
               setState(() {
                 emptyPlace = newValue!;
               });
-              context.read<UserCubit>().updateCurrentUserField(
-                  fieldKey: UserFieldKeys.gender, value: newValue);
+              context.read<DriverBloc>().updateDriverField(
+                  fieldKey: DriverFieldKeys.emptyPlaces,
+                  value: int.parse(emptyPlace));
             },
             hint: Text(emptyPlace,
                 style: AppTextStyle.bodyMediumSemibold.copyWith(

@@ -138,13 +138,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
           if (state.status == FormStatus.authenticated) {
             await StorageRepository.putString(
                 StorageKeys.userId, FirebaseAuth.instance.currentUser!.uid);
-            debugPrint('Firebase${FirebaseAuth.instance.currentUser!.uid}');
             if (context.mounted) {
               Navigator.pushNamedAndRemoveUntil(
-                context,
-                RouteNames.tabBox,
-                (route) => false,
-              );
+                  context,
+                  RouteNames.editProfile,
+                  arguments: true,
+                  (route) => false);
             }
           }
         },
