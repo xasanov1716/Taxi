@@ -42,9 +42,9 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     initialCameraPosition = CameraPosition(
-        target: BlocProvider.of<LocationBloc>(context).latLong, zoom: 13);
+        target: BlocProvider.of<LocationBloc>(context).latLong, zoom: 15);
     currentCameraPosition = CameraPosition(
-        target: BlocProvider.of<LocationBloc>(context).latLong, zoom: 13);
+        target: BlocProvider.of<LocationBloc>(context).latLong, zoom: 15);
     super.initState();
   }
 
@@ -113,10 +113,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 Align(
                     child: Image.asset(
-                  AppIcons.myLocation,
-                  height: onCameraMoveStarted ? 50.w : 40.w,
-                  width: onCameraMoveStarted ? 50.w : 32.w,
-                )),
+                      AppIcons.myLocation,
+                      height: onCameraMoveStarted ? 70.w : 60.w,
+                      width: onCameraMoveStarted ? 70.w : 52.w,
+                    )),
                 const ActionButtons(),
                 Positioned(
                   bottom: height / 4,
