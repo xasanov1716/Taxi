@@ -11,6 +11,8 @@ import 'package:taxi_app/ui/widgets/global_button.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 
+import 'widgets/rol_dialog.dart';
+
 class EditProfileScreen extends StatefulWidget {
   const EditProfileScreen({super.key, required this.navigateFromAuth});
 
@@ -49,7 +51,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 12.ph,
                 GlobalButton(
                   title: "Update",
-                  onTap: () {
+                  onTap: (){
+                    ShowRoleDialog(context);
+                  } /*{
                     if (currentPage == 0) {
                       context
                           .read<SocialAuthBloc>()
@@ -63,7 +67,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                           .read<SocialAuthBloc>()
                           .add(AuthThirdStepSuccessEvent());
                     }
-                  },
+                  }*/,
                   radius: 100.r,
                   color: AppColors.primary,
                 )

@@ -34,7 +34,7 @@ import 'package:taxi_app/utils/theme/app_theme.dart';
 import 'cubits/category_cubit/category_cubit.dart';
 import 'cubits/help_center/help_center_category_cubit.dart';
 import 'cubits/user/user_cubit.dart';
-import 'ui/tab_box/profile/sub_screens/help_center/help_center_screen.dart';
+
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
