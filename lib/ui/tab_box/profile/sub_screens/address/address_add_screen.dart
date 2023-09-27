@@ -5,8 +5,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:taxi_app/blocs/address_bloc/address_bloc.dart';
 import 'package:taxi_app/cubits/address_cubit/address_cubit.dart';
-import 'package:taxi_app/data/models/address_model/adders_model.dart';
+import 'package:taxi_app/data/local/storage_repository/storage_repository.dart';
+import 'package:taxi_app/data/models/address_model/address_model.dart';
 import 'package:taxi_app/ui/widgets/global_appbar.dart';
+import 'package:taxi_app/utils/constants/storage_keys.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/ui_utils/utilitiy_function.dart';
@@ -140,8 +142,8 @@ class _AddressAddDetailScreenState extends State<AddressAddDetailScreen> {
                         addAddressDialog(context, apartmentController,
                             regionController, currentCameraPosition, () {
                               AddressModel addressModel = AddressModel(
-                                userId: "1",
-                                userType: "Driver",
+                                userId: StorageRepository.getString(StorageKeys.userId),
+                                userType: StorageRepository.getString(StorageKeys.userRole),
                                 addressId: "1",
                                 addressText: scrollAddress,
                                 apartment: apartmentController.text,

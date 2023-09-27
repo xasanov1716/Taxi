@@ -139,7 +139,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
         listener: (context, state) async {
           if (state.status == FormStatus.authenticated) {
             await StorageRepository.putString(
-                StorageKeys.userId, FirebaseAuth.instance.currentUser!.uid);
+              StorageKeys.userId,
+              FirebaseAuth.instance.currentUser?.uid ?? "",
+            );
             if (context.mounted) {
               showRoleDialog();
             }
@@ -164,7 +166,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             actions: [
               TextButton(
                 onPressed: () {
-                  StorageRepository.putInt(StorageKeys.userRole, 1);
+                  StorageRepository.putString(StorageKeys.userRole, "driver");
                   Navigator.pushNamedAndRemoveUntil(
                     context,
                     RouteNames.editProfileDriver,
@@ -179,8 +181,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               ),
               TextButton(
                 onPressed: () {
-                  StorageRepository.putInt(StorageKeys.userRole, 0);
-
+                  StorageRepository.putString(StorageKeys.userRole, "client");
                   Navigator.pushNamedAndRemoveUntil(
                     context,
                     RouteNames.editProfileClient,

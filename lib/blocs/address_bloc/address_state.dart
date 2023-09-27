@@ -3,27 +3,29 @@ part of 'address_bloc.dart';
 class AddressStates extends Equatable {
   final List<AddressModel> addresses;
   final AddressModel addressModel;
-  List<AddressModel> address;
-
   final FormStatus status;
-  AddressStates(
-      {required this.addresses,
-      required this.addressModel,
-      required this.status,
-      required this.address});
+
+  const AddressStates({
+    required this.addresses,
+    required this.addressModel,
+    required this.status,
+  });
 
   @override
-  List<Object?> get props => [address, addressModel, status];
+  List<Object?> get props => [
+        addressModel,
+        status,
+        addresses
+      ];
+
   AddressStates copyWith({
     AddressModel? addressModel,
     FormStatus? status,
     List<AddressModel>? addresses,
-    List<AddressModel>? address,
   }) {
     return AddressStates(
       addressModel: addressModel ?? this.addressModel,
       status: status ?? this.status,
-      address: address ?? this.address,
       addresses: addresses ?? this.addresses,
     );
   }

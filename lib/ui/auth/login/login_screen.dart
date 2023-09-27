@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:taxi_app/blocs/driver_bloc/driver_bloc.dart';
 import 'package:taxi_app/data/local/storage_repository/storage_repository.dart';
 import 'package:taxi_app/cubits/auth_cubit/auth_cubit.dart';
 import 'package:taxi_app/data/models/status/form_status.dart';
@@ -109,10 +110,6 @@ class _LoginScreenState extends State<LoginScreen> {
                             textColor: AppColors.dark3,
                             title: "Kirish",
                             onTap: () async {
-                              await StorageRepository.putString(
-                                StorageKeys.userId,
-                                FirebaseAuth.instance.currentUser!.uid,
-                              );
                               if (context.mounted) {
                                 String canAuthText =
                                     context.read<AuthCubit>().canAuthenticate();
@@ -154,8 +151,16 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             );
           },
-          listener: (context, state) {
+          listener: (context, state) async {
             if (state.status == FormStatus.authenticated) {
+              await StorageRepository.putString(
+                StorageKeys.userId,
+                FirebaseAuth.instance.currentUser!.uid,
+              );
+              context.read<DriverBloc>().state.driverModel.role == "driver"
+                  ? StorageRepository.putString(StorageKeys.userRole, "driver")
+                  : StorageRepository.putString(StorageKeys.userRole, "client");
+
               Navigator.pushNamedAndRemoveUntil(
                   context, RouteNames.tabBox, (route) => false);
             }

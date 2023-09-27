@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:taxi_app/data/models/address_model/adders_model.dart';
+import 'package:taxi_app/data/models/address_model/address_model.dart';
 import 'package:taxi_app/data/repositories/address_repos.dart';
 import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/address/widgets/address_item.dart';

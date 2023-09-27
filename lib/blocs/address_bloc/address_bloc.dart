@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:taxi_app/data/models/address_model/adders_model.dart';
+import 'package:taxi_app/data/models/address_model/address_model.dart';
 import 'package:taxi_app/data/models/status/form_status.dart';
 import 'package:taxi_app/data/models/universal_data.dart';
 import 'package:taxi_app/data/repositories/address_repos.dart';
@@ -16,26 +16,37 @@ class AddressBloc extends Bloc<AddressEvent, AddressStates> {
   final AddressRepo addressRepo;
 
   AddressBloc({required this.addressRepo})
-      : super(AddressStates(
+      : super(
+          AddressStates(
             addresses: const [],
             addressModel: AddressModel(
-                addressText: '', addressId: '', longitude: 0.0, latitude: 0.0, apartment: '',orientation: '',userId: '',userType: ''),
+              addressText: '',
+              addressId: '',
+              longitude: 0.0,
+              latitude: 0.0,
+              apartment: '',
+              orientation: '',
+              userId: '',
+              userType: '',
+            ),
             status: FormStatus.pure,
-            address: const [])) {
+          ),
+        ) {
     on<AddAddressEvent>(addAddress);
     on<UpdateAddressEvent>(updateAddress);
     on<DeleteAddressEvent>(deleteAddress);
-    on<GetAddressByIdEvent>(listenAddressById);
   }
 
-  Future<void> addAddress(AddAddressEvent event, Emitter<AddressStates> emit) async {
+  Future<void> addAddress(
+      AddAddressEvent event, Emitter<AddressStates> emit) async {
     emit(state.copyWith(status: FormStatus.loading));
-    UniversalData data = await addressRepo.addAddress(addressModel: event.addressModel);
-    if(data.error.isEmpty){
+    UniversalData data =
+        await addressRepo.addAddress(addressModel: event.addressModel);
+    if (data.error.isEmpty) {
       emit(state.copyWith(
         status: FormStatus.success,
       ));
-    }else{
+    } else {
       emit(state.copyWith(
         status: FormStatus.failure,
       ));
@@ -45,12 +56,13 @@ class AddressBloc extends Bloc<AddressEvent, AddressStates> {
   Future<void> updateAddress(
       UpdateAddressEvent event, Emitter<AddressStates> emit) async {
     emit(state.copyWith(status: FormStatus.loading));
-    UniversalData data = await addressRepo.updateAddress(addressModel: event.addressModel);
-    if(data.error.isEmpty){
+    UniversalData data =
+        await addressRepo.updateAddress(addressModel: event.addressModel);
+    if (data.error.isEmpty) {
       emit(state.copyWith(
         status: FormStatus.success,
       ));
-    }else{
+    } else {
       emit(state.copyWith(
         status: FormStatus.failure,
       ));
@@ -60,20 +72,18 @@ class AddressBloc extends Bloc<AddressEvent, AddressStates> {
   Future<void> deleteAddress(
       DeleteAddressEvent event, Emitter<AddressStates> emit) async {
     emit(state.copyWith(status: FormStatus.loading));
-    UniversalData data = await addressRepo.deleteAddress(addressId: event.addressId);
-    if(data.error.isEmpty){
-      emit(state.copyWith(
-        status: FormStatus.success,
-      ));
-    }else{
+    UniversalData data =
+        await addressRepo.deleteAddress(addressId: event.addressId);
+    if (data.error.isEmpty) {
+      emit(
+        state.copyWith(
+          status: FormStatus.success,
+        ),
+      );
+    } else {
       emit(state.copyWith(
         status: FormStatus.failure,
       ));
     }
-  }
-
-    Future<void> listenAddressById(
-        GetAddressByIdEvent event, Emitter<AddressStates> emit) async {
-      emit(state.copyWith(status: FormStatus.loading));
   }
 }

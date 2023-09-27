@@ -1,16 +1,20 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:taxi_app/data/local/storage_repository/storage_repository.dart';
 import 'package:taxi_app/data/models/status/form_status.dart';
 import 'package:taxi_app/data/models/user/user_field_keys.dart';
 import 'package:taxi_app/data/models/user/user_model.dart';
 import 'package:taxi_app/data/repositories/user_repository.dart';
+import 'package:taxi_app/utils/constants/storage_keys.dart';
 
 part 'user_event.dart';
+
 part 'user_state.dart';
 
 class UserBloc extends Bloc<UserEvent, UserState> {
   final UserRepo userRepo;
+
   UserBloc({required this.userRepo})
       : super(UserState(
           statusText: '',
@@ -35,6 +39,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     on<DeleteUserEvent>(deleteUser);
     on<UpdateCurrentUserEvent>(updateCurrentUserField);
   }
+
   Future<void> addUser(
       AddUserEvent addUserEvent, Emitter<UserState> emit) async {
     emit(state.copyWith(statusText: "loading...", status: FormStatus.loading));
@@ -165,6 +170,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
         }
     }
 
+    currentUser = currentUser.copyWith(role: StorageRepository.getString(StorageKeys.userRole));
     debugPrint("USER BLOC: ${currentUser.toString()}");
 
     emit(state.copyWith(userModel: currentUser));

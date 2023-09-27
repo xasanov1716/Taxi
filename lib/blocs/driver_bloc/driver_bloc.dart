@@ -1,12 +1,15 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import 'package:taxi_app/data/local/storage_repository/storage_repository.dart';
 import 'package:taxi_app/data/models/driver/driver_fields.dart';
 import 'package:taxi_app/data/models/driver/driver_model.dart';
 import 'package:taxi_app/data/models/status/form_status.dart';
 import 'package:taxi_app/data/repositories/driver_repos.dart';
+import 'package:taxi_app/utils/constants/storage_keys.dart';
 
 part 'driver_event.dart';
+
 part 'driver_state.dart';
 
 class DriverBloc extends Bloc<DriverEvent, DriverState> {
@@ -240,6 +243,8 @@ class DriverBloc extends Bloc<DriverEvent, DriverState> {
     }
 
     debugPrint("DRIVER: ${currentDriver.toString()}");
+
+    currentDriver = currentDriver.copyWith(role: StorageRepository.getString(StorageKeys.userRole));
 
     // ignore: invalid_use_of_visible_for_testing_member
     emit(state.copyWith(driverModel: currentDriver));
