@@ -14,6 +14,7 @@ import 'package:taxi_app/ui/local_auth/set_biometrics_screen.dart';
 import 'package:taxi_app/ui/local_auth/set_pin_screen.dart';
 import 'package:taxi_app/ui/tab_box/home/bottom_sheet/bottom_sheet_screen.dart';
 import 'package:taxi_app/ui/tab_box/home/notification/notification_screen.dart';
+import 'package:taxi_app/ui/tab_box/home/notification/screen/notification_test_screen.dart';
 import 'package:taxi_app/ui/tab_box/home/sub_screens/search_location/search_location_screen.dart';
 import 'package:taxi_app/ui/tab_box/profile/profile_screen.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/address/address_add_screen.dart';
@@ -87,6 +88,8 @@ class RouteNames {
   static const String welcomeScreen = "/welcome";
   static const String helpCenterScreen = "/helpCenterScreen";
   static const String askRoleDialog = "/askRoleDialog";
+
+
 }
 
 class AppRoutes {
@@ -94,7 +97,7 @@ class AppRoutes {
     switch (settings.name) {
       case RouteNames.splashScreen:
         return MaterialPageRoute(
-          builder: (context) => const SplashScreen(),
+          builder: (context) =>  NotificationTestScreen(),
         );
       case RouteNames.welcomeScreen:
         return MaterialPageRoute(

@@ -78,10 +78,10 @@ class FirebaseCollections {
 }
 
 Map<String, String> iconMapping = {
-  "discount": AppIcons.discount,
-  "wallet": AppIcons.wallet,
-  "location": AppIcons.location,
-  "money": AppIcons.money,
-  "card": AppIcons.card,
-  "profile": AppIcons.profile,
+  "discount" : AppIcons.discount,
+  "wallet"   : AppIcons.wallet,
+  "location" : AppIcons.location,
+  "money"   : AppIcons.money,
+  "card"    : AppIcons.card,
+  "profile" : AppIcons.profile,
 };
