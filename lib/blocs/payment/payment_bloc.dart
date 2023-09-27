@@ -15,15 +15,15 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
     on<ExpireDate>(updateExpireDate);
   }
 
-  void updateCardNumber(CardNumber event, Emitter<PaymentState> emitter) {
+  void updateCardNumber(CardNumber event, Emitter<PaymentState> emit) {
     emit(state.copyWith(cardNumber: event.cardNumber));
   }
 
-  void updateCardName(CardName event, Emitter<PaymentState> emitter) {
+  void updateCardName(CardName event, Emitter<PaymentState> emit) {
     emit(state.copyWith(cardName: event.cardName));
   }
 
-  void updateExpireDate(ExpireDate event, Emitter<PaymentState> emitter) {
+  void updateExpireDate(ExpireDate event, Emitter<PaymentState> emit) {
     emit(state.copyWith(expireDate: event.expireDate));
   }
 }

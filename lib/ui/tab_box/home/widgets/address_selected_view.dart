@@ -91,6 +91,7 @@ class AddressSelectedView extends StatelessWidget {
             GlobalButton(
               textColor: AppColors.dark2,
               color: AppColors.primary,
+              radius: 100.r,
               title: "Buyurtma berishda davom eting",
               onTap: () {
                 Navigator.pushNamed(

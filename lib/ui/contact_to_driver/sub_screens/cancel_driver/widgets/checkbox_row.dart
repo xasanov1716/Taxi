@@ -26,7 +26,7 @@ class _CancelDriverCheckBoxRowState extends State<CancelDriverCheckBoxRow> {
               });
             },
             child: Padding(
-              padding: EdgeInsets.symmetric(vertical: 12.h),
+              padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 24.w),
               child: Row(
                 children: [
                   CustomCheckbox(

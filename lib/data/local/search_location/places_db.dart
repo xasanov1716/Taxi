@@ -154,33 +154,53 @@ class PlacesDatabase {
     return maps.map((e) => QuarterModel.fromJson(e)).toList();
   }
 
-  // Future<List<RegionModel>> getAllRegions() async {
-  //   List<RegionModel> allRegions = [];
-  //   final db = await instance.database;
-  //   allRegions = (await db.query('regions'))
-  //       .map((e) => RegionModel.fromJson(e))
-  //       .toList();
-  //
-  //   return allRegions;
-  // }
-  //
-  // Future<List<DistrictModel>> getAllDistricts() async {
-  //   List<DistrictModel> allDistricts = [];
-  //   final db = await instance.database;
-  //   allDistricts = (await db.query('districts'))
-  //       .map((e) => DistrictModel.fromJson(e))
-  //       .toList();
-  //
-  //   return allDistricts;
-  // }
-  //
-  // Future<List<QuarterModel>> getAllQuarters() async {
-  //   List<QuarterModel> allQuarters = [];
-  //   final db = await instance.database;
-  //   allQuarters = (await db.query('quarters'))
-  //       .map((e) => QuarterModel.fromJson(e))
-  //       .toList();
-  //
-  //   return allQuarters;
-  // }
+  Future<List<DistrictModel>> getDistrictById({required int id})async{
+    List<DistrictModel> districtsById = [];
+    final db = await instance.database;
+    districtsById = (await db.query('districts',where: 'region_id LIKE ?',whereArgs: ['%$id']))
+        .map((e) => DistrictModel.fromJson(e))
+        .toList();
+    return districtsById;
+  }
+
+  Future<List<QuarterModel>> getQuarterById({required int id}) async {
+    List<QuarterModel> quarterById = [];
+    final db = await instance.database;
+    quarterById = (await db.query('quarters',where: 'district_id LIKE ?',whereArgs: ['%$id']))
+        .map((e) => QuarterModel.fromJson(e))
+        .toList();
+
+    return quarterById;
+  }
+  Future<List<RegionModel>> getAllRegions() async {
+    List<RegionModel> allRegions = [];
+    final db = await instance.database;
+    allRegions = (await db.query('regions'))
+        .map((e) => RegionModel.fromJson(e))
+        .toList();
+
+    return allRegions;
+  }
+
+  Future<List<DistrictModel>> getAllDistricts() async {
+    List<DistrictModel> allDistricts = [];
+    final db = await instance.database;
+    allDistricts = (await db.query('districts'))
+        .map((e) => DistrictModel.fromJson(e))
+        .toList();
+
+    return allDistricts;
+  }
+
+  Future<List<QuarterModel>> getAllQuarters() async {
+    List<QuarterModel> allQuarters = [];
+    final db = await instance.database;
+    allQuarters = (await db.query('quarters'))
+        .map((e) => QuarterModel.fromJson(e))
+        .toList();
+
+    return allQuarters;
+  }
+
+
 }

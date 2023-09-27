@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/testing.dart';
-import 'package:taxi_app/ui/tab_box/profile/sub_screens/edit_profile/widgets/edit_appbar.dart';
+import 'package:taxi_app/ui/tab_box/profile/sub_screens/edit_profile_driver/widgets/edit_appbar.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/invite_friends/widgets/list_view_item_invite.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
