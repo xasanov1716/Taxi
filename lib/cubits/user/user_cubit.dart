@@ -21,7 +21,8 @@ class UserCubit extends Cubit<UserState> {
             addressText: '',
             createdAt: '',
             fcmToken: '',
-            userId: ''
+            userId: '',
+            role: ''
              ),
             errorText: "",
           ),
@@ -34,7 +35,7 @@ class UserCubit extends Cubit<UserState> {
   }) {
     UserModel currentUser = state.userModel;
 
-    switch (fieldKey) {
+    switch (fieldKey) { 
       case UserFieldKeys.fullName:
         {
           currentUser = currentUser.copyWith(fullName: value as String);
@@ -88,6 +89,11 @@ class UserCubit extends Cubit<UserState> {
       case UserFieldKeys.nickName:
         {
           currentUser = currentUser.copyWith(nickName: value as String);
+          break;
+        }
+        case UserFieldKeys.role:
+        {
+          currentUser = currentUser.copyWith(role: value as String);
           break;
         }
     }
@@ -157,7 +163,8 @@ class UserCubit extends Cubit<UserState> {
             addressText: '',
             createdAt: '',
             fcmToken: '',
-            userId: ''
+            userId: '',
+            role: '',
              ),
         errorText: "",
       ),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:taxi_app/blocs/driver_bloc/driver_bloc.dart';
 import 'package:taxi_app/blocs/social_auth_bloc/social_auth_bloc.dart';
 import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/edit_profile_driver/pages/first_page.dart';
@@ -27,7 +29,37 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const EditAppBar(title: "Edit Profile"),
+      appBar: EditAppBar(
+        title: widget.navigateFromAuth ? "Create Profile" : "Edit Profile",
+        onTap: () {
+          if (currentPage > 0) {
+            setState(() {
+              currentPage--;
+              pageController.animateToPage(
+                currentPage,
+                duration: const Duration(seconds: 1),
+                curve: Curves.linear,
+              );
+            });
+          } else {
+            Navigator.pop(context);
+          }
+        },
+        bottom: PreferredSize(
+          preferredSize: Size(100.w, 50.h),
+          child: SmoothPageIndicator(
+            controller: pageController,
+            count: 3,
+            effect: const JumpingDotEffect(
+              dotHeight: 16,
+              activeDotColor: AppColors.primary,
+              dotWidth: 25,
+              jumpScale: .7,
+              verticalOffset: 15,
+            ),
+          ),
+        ),
+      ),
       body: BlocConsumer<SocialAuthBloc, SocialAuthState>(
         builder: (context, state) {
           return Padding(
@@ -40,9 +72,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     controller: pageController,
                     physics: const NeverScrollableScrollPhysics(),
                     children: [
-                      FirstPage(),
-                      SecondPage(),
-                      ThirdPage(),
+                      FirstPage(isFromAuth: widget.navigateFromAuth),
+                      SecondPage(isFromAuth: widget.navigateFromAuth),
+                      ThirdPage(isFromAuth: widget.navigateFromAuth),
                     ],
                   ),
                 ),
@@ -51,17 +83,34 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   title: "Update",
                   onTap: () {
                     if (currentPage == 0) {
-                      context
-                          .read<SocialAuthBloc>()
-                          .add(AuthFirstStepSuccessEvent());
+                      setState(() {
+                        currentPage = 1;
+                        pageController.animateToPage(
+                          currentPage,
+                          duration: const Duration(seconds: 1),
+                          curve: Curves.linear,
+                        );
+                      });
                     } else if (currentPage == 1) {
-                      context
-                          .read<SocialAuthBloc>()
-                          .add(AuthSecondStepSuccessEvent());
+                      setState(() {
+                        currentPage = 2;
+                        pageController.animateToPage(
+                          currentPage,
+                          duration: const Duration(seconds: 1),
+                          curve: Curves.linear,
+                        );
+                      });
                     } else if (currentPage == 2) {
-                      context
-                          .read<SocialAuthBloc>()
-                          .add(AuthThirdStepSuccessEvent());
+                      if (widget.navigateFromAuth) {
+                        Navigator.pushReplacementNamed(
+                          context,
+                          RouteNames.setPinCodeScreen,
+                        );
+                        context.read<DriverBloc>().add(AddDriverEvent());
+                      } else {
+                        Navigator.pop(context);
+                        context.read<DriverBloc>().add(UpdateDriverEvent());
+                      }
                     }
                   },
                   radius: 100.r,
@@ -71,33 +120,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
             ),
           );
         },
-        listener: (context, state) {
-          if (state is AuthFirstStepSuccessState) {
-            currentPage = 1;
-            pageController.animateToPage(
-              1,
-              duration: const Duration(seconds: 1),
-              curve: Curves.linear,
-            );
-          }
-          if (state is AuthSecondStepSuccessState) {
-            currentPage = 2;
-            print('ANIMET');
-            pageController.animateToPage(
-              2,
-              duration: const Duration(seconds: 1),
-              curve: Curves.linear,
-            );
-          }
-          if (state is AuthThirdStepSuccessState) {
-            if (widget.navigateFromAuth) {
-              Navigator.pushReplacementNamed(
-                  context, RouteNames.setPinCodeScreen);
-            } else {
-              Navigator.pop(context);
-            }
-          }
-        },
+        listener: (context, state) {},
       ),
     );
   }
