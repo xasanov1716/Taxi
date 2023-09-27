@@ -38,10 +38,11 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: GlobalAppBar(
-            onTap: () {
-              Navigator.pop(context);
-            },
-            title: "",),
+          onTap: () {
+            Navigator.pop(context);
+          },
+          title: "",
+        ),
         body: BlocConsumer<AuthCubit, AuthState>(
           builder: (context, state) {
             return Padding(
@@ -54,13 +55,16 @@ class _LoginScreenState extends State<LoginScreen> {
                       physics: const BouncingScrollPhysics(),
                       children: [
                         45.ph,
-                        Text("Xush kelibsiz! Akkauntga kirish",
-                            textAlign: TextAlign.left,
-                            style: Theme.of(context)
-                                .textTheme
-                                .displayMedium
-                                ?.copyWith(
-                                    fontSize: width > 450 ? 48.sp : 30.sp)),
+                        Text(
+                          "Xush kelibsiz! Akkauntga kirish",
+                          textAlign: TextAlign.left,
+                          style: Theme.of(context)
+                              .textTheme
+                              .displayMedium
+                              ?.copyWith(
+                                fontSize: width > 450 ? 48.sp : 30.sp,
+                              ),
+                        ),
                         45.ph,
                         AuthTextField(
                           focusNode: phoneFocus,
@@ -69,7 +73,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           onChanged: (v) {
                             if (v.length == 12) {
                               phoneFocus.unfocus();
-                              context.read<AuthCubit>().updatePhone(v.replaceAll(' ', ''));
+                              context
+                                  .read<AuthCubit>()
+                                  .updatePhone(v.replaceAll(' ', ''));
                               FocusScope.of(context)
                                   .requestFocus(passwordFocus);
                             }
@@ -103,19 +109,21 @@ class _LoginScreenState extends State<LoginScreen> {
                             textColor: AppColors.dark3,
                             title: "Kirish",
                             onTap: () async {
-                              
-                               
-                          await StorageRepository.putString(StorageKeys.userId,
-                              FirebaseAuth.instance.currentUser!.uid);
-                        
-                            
-                              String canAuthText =
-                                  context.read<AuthCubit>().canAuthenticate();
-                              if (canAuthText.isEmpty) {
-                                context.read<AuthCubit>().logIn(context);
-                              } else {
-                                showErrorMessage(
-                                    message: canAuthText, context: context);
+                              await StorageRepository.putString(
+                                StorageKeys.userId,
+                                FirebaseAuth.instance.currentUser!.uid,
+                              );
+                              if (context.mounted) {
+                                String canAuthText =
+                                    context.read<AuthCubit>().canAuthenticate();
+                                if (canAuthText.isEmpty) {
+                                  context.read<AuthCubit>().logIn(context);
+                                } else {
+                                  showErrorMessage(
+                                    message: canAuthText,
+                                    context: context,
+                                  );
+                                }
                               }
                             }),
                         24.ph,
@@ -147,14 +155,14 @@ class _LoginScreenState extends State<LoginScreen> {
             );
           },
           listener: (context, state) {
-            if(state.status ==FormStatus.authenticated){
-              Navigator.pushNamedAndRemoveUntil(context, RouteNames.tabBox, (route) => false);
+            if (state.status == FormStatus.authenticated) {
+              Navigator.pushNamedAndRemoveUntil(
+                  context, RouteNames.tabBox, (route) => false);
             }
-            if(state.status ==FormStatus.failure){
+            if (state.status == FormStatus.failure) {
               showErrorMessage(message: state.statusMessage, context: context);
             }
           },
-        )
-    );
+        ));
   }
 }

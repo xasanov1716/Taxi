@@ -157,7 +157,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           data: getTheme(context) ? ThemeData.dark() : ThemeData.light(),
           child: CupertinoAlertDialog(
             content: Text(
-              "Siz kimsiz ?haydovchi yoki yo'lovchi",
+              "Haydovchi yoki Yo'lovchimisiz?",
               style: Theme.of(context).textTheme.titleLarge,
             ),
             title: Image.asset(AppIcons.taxiLogotip),
@@ -166,10 +166,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 onPressed: () {
                   StorageRepository.putInt(StorageKeys.userRole, 1);
                   Navigator.pushNamedAndRemoveUntil(
-                      context,
-                      RouteNames.editProfileDriver,
-                      arguments: true,
-                      (route) => false);
+                    context,
+                    RouteNames.editProfileDriver,
+                    arguments: true,
+                    (route) => false,
+                  );
                 },
                 child: Text(
                   "Haydovchi",
@@ -181,10 +182,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   StorageRepository.putInt(StorageKeys.userRole, 0);
 
                   Navigator.pushNamedAndRemoveUntil(
-                      context,
-                      RouteNames.editProfileClient,
-                      arguments: true,
-                      (route) => false);
+                    context,
+                    RouteNames.editProfileClient,
+                    arguments: true,
+                    (route) => false,
+                  );
                 },
                 child: Text(
                   "Yo'lovchi",
