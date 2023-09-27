@@ -65,6 +65,12 @@ class AppIcons {
     return name;
   }
 
+  // map types images
+  static const String hybrid = "assets/images/map_types/hybrid.png";
+  static const String normal = "assets/images/map_types/normal.png";
+  static const String satellite = "assets/images/map_types/satellite.png";
+  static const String terrain = "assets/images/map_types/terrain.png";
+
   // svg
   static IconType it = IconType.lightOutline;
   static final String search = "assets/svg/${it.name}/search.svg";

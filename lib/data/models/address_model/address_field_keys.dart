@@ -1,6 +1,6 @@
-enum AdderssFieldKeys {
+enum AddressFieldKeys {
   addressText,
   id,
   longitude,
-  latitide,
+  latitude,
 }

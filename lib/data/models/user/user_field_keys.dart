@@ -9,5 +9,6 @@ enum UserFieldKeys {
   createdAt,
   addressText,
   fcmToken,
-  userId
+  userId,
+  role,
 }

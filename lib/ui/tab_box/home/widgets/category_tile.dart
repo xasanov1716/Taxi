@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:taxi_app/cubits/address_cubit/address_cubit.dart';
 import 'package:taxi_app/cubits/category_cubit/category_cubit.dart';
 import 'package:taxi_app/data/models/icon/icon_type.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
@@ -12,11 +14,13 @@ import 'package:taxi_app/utils/icons/app_icons.dart';
 class CategoryTile extends StatelessWidget {
   final String categoryName;
   final String selectedCategory;
+  final String kind;
+  final LatLng latLng;
 
   const CategoryTile(
     this.categoryName,
     this.selectedCategory, {
-    Key? key,
+    Key? key, required this.kind, required this.latLng,
   }) : super(key: key);
 
   @override
@@ -26,6 +30,8 @@ class CategoryTile extends StatelessWidget {
 
     return GestureDetector(
       onTap: () {
+        context.read<AddressCubit>().updateKind(kind);
+        context.read<AddressCubit>().getAddressByLatLong(latLng: latLng);
         categoryCubit.selectCategory(categoryName);
       },
       child: Container(

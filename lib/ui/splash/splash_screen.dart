@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
+import 'package:taxi_app/blocs/location_bloc/location_bloc.dart';
 import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 
@@ -14,16 +16,11 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  Future<void> _init() async {
-    await Future.delayed(
-      const Duration(seconds: 3),
-      () {
-        Navigator.pushReplacementNamed(
-          context,
-          RouteNames.appRoute,
-        );
-      },
-    );
+  _init(BuildContext context) async {
+    Future.microtask(() {
+      context.read<LocationBloc>().add(GetLocationEvent());
+    });
+
   }
 
   @override
@@ -32,7 +29,7 @@ class _SplashScreenState extends State<SplashScreen> {
       SystemUiOverlay.top,
       SystemUiOverlay.bottom,
     ]);
-    _init();
+    _init(context);
     super.initState();
   }
 
@@ -42,30 +39,39 @@ class _SplashScreenState extends State<SplashScreen> {
     height = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      body: Column(
-        children: [
-          SizedBox(
-            height: 213 * height / 926,
-          ),
-          Container(
-            margin: EdgeInsets.symmetric(horizontal: 30 * width / 428),
-            height: 419 * height / 926,
-            width: 367 * width / 428,
-            child: Image.asset(AppIcons.taxiLogo),
-          ),
-          SizedBox(
-            height: 114 * height / 812,
-          ),
-          SizedBox(
-            height: 125 * width / 428,
-            width: 125 * width / 428,
-            child: Lottie.asset(
-              AppIcons.splashCircular,
-              fit: BoxFit.cover,
+      body: BlocConsumer<LocationBloc,LocationState>(builder: (context, state) {
+        return Column(
+          children: [
+            SizedBox(
+              height: 213 * height / 926,
             ),
-          )
-        ],
-      ),
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 30 * width / 428),
+              height: 419 * height / 926,
+              width: 367 * width / 428,
+              child: Image.asset(AppIcons.taxiLogo),
+            ),
+            SizedBox(
+              height: 114 * height / 812,
+            ),
+            SizedBox(
+              height: 125 * width / 428,
+              width: 125 * width / 428,
+              child: Lottie.asset(
+                AppIcons.splashCircular,
+                fit: BoxFit.cover,
+              ),
+            )
+          ],
+        );
+      }, listener: (context, state) {
+        if(state is LocationSuccessState){
+          Navigator.pushReplacementNamed(
+            context,
+            RouteNames.appRoute,
+          );
+        }
+      },),
     );
   }
 }

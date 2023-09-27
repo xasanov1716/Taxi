@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taxi_app/cubits/auth_cubit/auth_cubit.dart';
@@ -31,7 +30,7 @@ class LogOutItem extends StatelessWidget {
                   .copyWith(color: AppColors.error),
             ),
             24.ph,
-            Divider(),
+            const Divider(),
             24.ph,
             Text(
               "Are you sure you want to log out?",
@@ -58,7 +57,10 @@ class LogOutItem extends StatelessWidget {
                     child: GlobalButton(
                   title: "Yes, Logout",
                   onTap: () async {
+                    StorageRepository.deleteString(StorageKeys.userId);
+                    StorageRepository.deleteString(StorageKeys.userRole);
                     await context.read<AuthCubit>().logOutUser();
+
                     if (context.mounted) {
                       Navigator.pop(context);
                     }

@@ -1,7 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taxi_app/cubits/auth_cubit/auth_cubit.dart';
+import 'package:taxi_app/data/local/storage_repository/storage_repository.dart';
 import 'package:taxi_app/data/models/status/form_status.dart';
 import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/ui/auth/widgets/auth_navigator_button.dart';
@@ -11,8 +14,10 @@ import 'package:taxi_app/ui/auth/widgets/social_auth_buttons.dart';
 import 'package:taxi_app/ui/widgets/global_appbar.dart';
 import 'package:taxi_app/ui/widgets/global_button.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
+import 'package:taxi_app/utils/constants/storage_keys.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
+import 'package:taxi_app/utils/theme/get_theme.dart';
 import 'package:taxi_app/utils/ui_utils/error_message_dialog.dart';
 import '../widgets/remember_me.dart';
 
@@ -96,7 +101,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         radius: 100,
                         textColor: AppColors.dark3,
                         onTap: () {
-                          String canAuthText = context.read<AuthCubit>().canAuthenticate();
+                          String canAuthText =
+                              context.read<AuthCubit>().canAuthenticate();
                           if (canAuthText.isEmpty) {
                             context.read<AuthCubit>().signUp(context);
                           } else {
@@ -130,16 +136,68 @@ class _RegisterScreenState extends State<RegisterScreen> {
             ),
           );
         },
-        listener: (context, state) {
+        listener: (context, state) async {
           if (state.status == FormStatus.authenticated) {
-            Navigator.pushNamedAndRemoveUntil(
-              context,
-              RouteNames.tabBox,
-              (route) => false,
+            await StorageRepository.putString(
+              StorageKeys.userId,
+              FirebaseAuth.instance.currentUser?.uid ?? "",
             );
+            if (context.mounted) {
+              showRoleDialog();
+            }
           }
         },
       ),
+    );
+  }
+
+  void showRoleDialog() {
+    showCupertinoDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Theme(
+          data: getTheme(context) ? ThemeData.dark() : ThemeData.light(),
+          child: CupertinoAlertDialog(
+            content: Text(
+              "Haydovchi yoki Yo'lovchimisiz?",
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
+            title: Image.asset(AppIcons.taxiLogotip),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  StorageRepository.putString(StorageKeys.userRole, "driver");
+                  Navigator.pushNamedAndRemoveUntil(
+                    context,
+                    RouteNames.editProfileDriver,
+                    arguments: true,
+                    (route) => false,
+                  );
+                },
+                child: Text(
+                  "Haydovchi",
+                  style: Theme.of(context).textTheme.titleLarge,
+                ),
+              ),
+              TextButton(
+                onPressed: () {
+                  StorageRepository.putString(StorageKeys.userRole, "client");
+                  Navigator.pushNamedAndRemoveUntil(
+                    context,
+                    RouteNames.editProfileClient,
+                    arguments: true,
+                    (route) => false,
+                  );
+                },
+                child: Text(
+                  "Yo'lovchi",
+                  style: Theme.of(context).textTheme.titleLarge,
+                ),
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 }
