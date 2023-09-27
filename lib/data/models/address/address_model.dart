@@ -1,45 +1,45 @@
 class AddressModel {
-  final String name;
-  final String street;
+  final String addressText;
   final String apartment;
   final double lat;
   final double long;
+  final String orientation;
 
 
   AddressModel(
-      {required this.name, required this.street,
+      {required this.addressText, required this.orientation,
         required this.lat, required this.long,required this.apartment});
 
   factory AddressModel.fromJson(Map<String, dynamic> json)=>
       AddressModel(
-          name: json['name'],
-          street:json['street'],
+          addressText: json['address_text'],
+          orientation:json['orientation'],
           lat: json['lat'],
           long: json['long'],
           apartment: json['apartment']
       );
 
   AddressModel copyWith({
-    String? name,
-    String? street,
+    String? addressText,
+    String? orientation,
     String? apartment,
     double? lat,
     double? long
   }) =>
       AddressModel(
-          name: name ?? this.name,
-          street:street ?? this.street,
+          addressText: addressText ?? this.addressText,
+          orientation:orientation ?? this.orientation,
           apartment: apartment ?? this.apartment,
           lat: lat ?? this.lat,
           long: long ?? this.long);
 }
 
 
-List<AddressModel> addres = [
-  AddressModel(apartment: 'Home', street:'364 Stillwater Ave. Attleboro, MA 02703', lat: 43.42, long: 54.21, name: ''),
-  AddressModel(apartment: 'Office', street:'73 Virginia Rd. Cuyahoga Falls, OH 44221', lat: 43.42, long: 54.21, name: ''),
-  AddressModel(apartment: 'Mall Plaza', street:'55 Summerhouse Dr. Apopka, FL 32703', lat: 43.42, long: 54.21, name: ''),
-  AddressModel(apartment: 'Grand City Park', street:'26 State St. Daphne, AL 36526', lat: 43.42, long: 54.21, name: ''),
-  AddressModel(apartment: 'Town Square', street:' 20 Applegate St. Hoboken, NJ 07030', lat: 43.42, long: 54.21, name: ''),
-  AddressModel(apartment: 'Bank', street:'917 W. Pine Street Easton, PA 18042', lat: 43.42, long: 54.21, name: ''),
+List<AddressModel> addresses = [
+  AddressModel(apartment: 'Home', orientation:'364 Stillwater Ave. Attleboro, MA 02703', lat: 43.42, long: 54.21, addressText: ''),
+  AddressModel(apartment: 'Office', orientation:'73 Virginia Rd. Cuyahoga Falls, OH 44221', lat: 43.42, long: 54.21, addressText: ''),
+  AddressModel(apartment: 'Mall Plaza', orientation:'55 Summerhouse Dr. Apopka, FL 32703', lat: 43.42, long: 54.21, addressText: ''),
+  AddressModel(apartment: 'Grand City Park', orientation:'26 State St. Daphne, AL 36526', lat: 43.42, long: 54.21, addressText: ''),
+  AddressModel(apartment: 'Town Square', orientation:' 20 Applegate St. Hoboken, NJ 07030', lat: 43.42, long: 54.21, addressText: ''),
+  AddressModel(apartment: 'Bank', orientation:'917 W. Pine Street Easton, PA 18042', lat: 43.42, long: 54.21, addressText: ''),
 ];

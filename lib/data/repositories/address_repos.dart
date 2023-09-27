@@ -17,7 +17,6 @@ class AddressRepo {
           .update({
         "addressId": newAddress.id,
       });
-
       return UniversalData(data: "Address added!");
     } on FirebaseException catch (e) {
       return UniversalData(error: e.code);
@@ -56,4 +55,13 @@ class AddressRepo {
       return UniversalData(error: error.toString());
     }
   }
+
+  Stream<List<AddressModel>> getAddresses() =>
+      FirebaseFirestore.instance.collection(FirebaseCollections.addresses).snapshots().map(
+            (event1) => event1.docs
+            .map((doc) => AddressModel.fromJson(doc.data()))
+            .toList(),
+      );
+
+
 }
