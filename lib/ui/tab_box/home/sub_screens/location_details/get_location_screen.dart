@@ -3,13 +3,12 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:taxi_app/data/models/icon/icon_type.dart';
+import 'package:taxi_app/ui/tab_box/home/sub_screens/location_details/widgets/get_location_middle_stack.dart';
+import 'package:taxi_app/ui/tab_box/home/sub_screens/location_details/widgets/location_detail_appbar.dart';
 import 'package:taxi_app/ui/widgets/global_button.dart';
-import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
-import 'package:taxi_app/utils/theme/get_theme.dart';
+import 'package:taxi_app/utils/size/screen_size.dart';
 
 class GetLocationScreen extends StatefulWidget {
   const GetLocationScreen({Key? key, required this.text}) : super(key: key);
@@ -25,40 +24,13 @@ class _GetLocationScreenState extends State<GetLocationScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final textLength = widget.text.length;
-    final svgWidth = 50.w + (textLength * 5.0);
-
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          padding: EdgeInsets.zero,
-          onPressed: () {Navigator.pop(context);},
-          icon: Platform.isIOS
-              ? Icon(
-                  Icons.arrow_back_ios,
-                  color: getTheme(context) ? AppColors.white : AppColors.c_900,
-                )
-              : SvgPicture.asset(
-                  AppIcons.arrowLeft,
-                  color: getTheme(context) ? AppColors.white : AppColors.c_900,
-                ),
-        ),
-        title: Text(
-          "Location Details",
-          style: Theme.of(context)
-              .textTheme
-              .titleMedium!
-              .copyWith(fontSize: 24.sp, fontWeight: FontWeight.w700),
-        ),
-        actions: [
-          IconButton(
-            onPressed: () {
-              // Handle more button press here.
-            },
-            icon: SvgPicture.asset(AppIcons.moreCircle),
-            color: getTheme(context) ? AppColors.white : AppColors.c_900,
-          )
-        ],
+      appBar: GetLocationAppBar(
+        arrowLeftOnTap: () {
+          Navigator.pop(context);
+        },
+        moreOnTap: () {},
+        title: "Location Details",
       ),
       body: AnnotatedRegion(
         value: const SystemUiOverlayStyle(
@@ -80,59 +52,7 @@ class _GetLocationScreenState extends State<GetLocationScreen> {
                 });
               },
             ),
-            Stack(
-              children: [
-                Center(
-                  child: SvgPicture.asset(
-                  AppIcons.frame,
-                  width: svgWidth,
-                    ),
-                ),
-                Positioned.fill(
-                  child: Center(
-                    child: Padding(
-                      padding: const EdgeInsets.all(5.0),
-                      child: Text(
-                        widget.text,
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                            color: AppColors.black,
-                            fontSize: 12.0.sp,
-                            fontWeight: FontWeight.w700),
-                      ),
-                    ),
-                  ),
-                ),
-                Center(
-                  child: Container(
-                    margin: EdgeInsets.only(top: 150.h),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30.r),
-                      color: AppColors.primaryBackground.withOpacity(0.5),
-                    ),
-                    height: 52,
-                    width: 52,
-                    child: Container(
-                      margin: EdgeInsets.all(8.0),
-                      padding: EdgeInsets.all(8.0),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30.r),
-                        color: AppColors.primaryBackground.withOpacity(0.9),
-                      ),
-                      height: 36.h,
-                      width: 36.w,
-                      child: SvgPicture.asset(
-                        AppIcons.getSvg(
-                          name: AppIcons.location,
-                          iconType: IconType.bold,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
+            GetLocationMiddleStack(text: widget.text),
             Positioned(
               bottom: 0,
               right: 0,
@@ -140,23 +60,20 @@ class _GetLocationScreenState extends State<GetLocationScreen> {
               child: Container(
                 height: 118.h,
                 decoration: BoxDecoration(
-                  borderRadius:  BorderRadius.only(
+                  borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(24.r),
                       topRight: Radius.circular(24.r)),
                   color: Theme.of(context).scaffoldBackgroundColor,
                 ),
-                child: Padding(
-                  padding: EdgeInsets.only(
-                      left: 24.0.w, right: 24.0.w, top: 24.0.h, bottom: 36.0.h),
-                  child: GlobalButton(
-                    color: AppColors.primary,
-                    title: 'Continue',
-                    radius: 100.r,
-                    textColor: AppColors.black,
-                    onTap: () {
-                      // Handle button tap here.
-                    },
-                  ),
+                child: GlobalButton(
+                  padding: EdgeInsets.all(width / 16),
+                  color: AppColors.primary,
+                  title: 'Continue',
+                  radius: 100.r,
+                  textColor: AppColors.black,
+                  onTap: () {
+                    // Handle button tap here.
+                  },
                 ),
               ),
             ),

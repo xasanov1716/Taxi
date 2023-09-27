@@ -76,11 +76,12 @@ class DriverItem extends StatelessWidget {
               color: getTheme(context) ? AppColors.dark3 : AppColors.c_200,
             ),
           ),
-          GestureDetector(
-            onTap: onDriverDetailTap,
-            child: Container(
-              margin: EdgeInsets.all(24.r),
-              width: double.infinity,
+        Material(
+          color: getTheme(context) ? AppColors.dark1 : AppColors.white,
+          child: InkWell(
+            onTap: (){ },
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 12.h),
               child: Row(
                 children: [
                   SizedBox(
@@ -95,20 +96,20 @@ class DriverItem extends StatelessWidget {
                       Text(
                         "Daniel Austin",
                         style:
-                            Theme.of(context).textTheme.titleMedium?.copyWith(
-                                  fontFamily: "Urbanist",
-                                  fontSize: 18.sp,
-                                  fontWeight: FontWeight.w700,
-                                ),
+                        Theme.of(context).textTheme.titleMedium?.copyWith(
+                          fontFamily: "Urbanist",
+                          fontSize: 18.sp,
+                          fontWeight: FontWeight.w700,
+                        ),
                       ),
                       Text(
                         "Mercedes-Benz E-Class",
                         style:
-                            Theme.of(context).textTheme.titleMedium?.copyWith(
-                                  fontFamily: "Urbanist",
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.w400,
-                                ),
+                        Theme.of(context).textTheme.titleMedium?.copyWith(
+                          fontFamily: "Urbanist",
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w400,
+                        ),
                       )
                     ],
                   ),
@@ -135,21 +136,21 @@ class DriverItem extends StatelessWidget {
                                 .textTheme
                                 .titleMedium
                                 ?.copyWith(
-                                  fontFamily: "Urbanist",
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.w500,
-                                ),
+                              fontFamily: "Urbanist",
+                              fontSize: 14.sp,
+                              fontWeight: FontWeight.w500,
+                            ),
                           ),
                         ],
                       ),
                       Text(
                         "HSW 4736 XK",
                         style:
-                            Theme.of(context).textTheme.titleMedium?.copyWith(
-                                  fontFamily: "Urbanist",
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.w600,
-                                ),
+                        Theme.of(context).textTheme.titleMedium?.copyWith(
+                          fontFamily: "Urbanist",
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w600,
+                        ),
                       )
                     ],
                   )
@@ -157,6 +158,7 @@ class DriverItem extends StatelessWidget {
               ),
             ),
           ),
+        ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

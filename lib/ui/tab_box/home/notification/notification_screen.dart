@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:taxi_app/data/models/icon/icon_type.dart';
 import 'package:taxi_app/ui/tab_box/home/notification/widgets/global_notification_container.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
+import 'package:taxi_app/utils/ui_utils/utilitiy_function.dart';
 
 class NotificationScreen extends StatelessWidget {
   const NotificationScreen({super.key});
@@ -16,29 +16,11 @@ class NotificationScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: SvgPicture.asset(
-            AppIcons.arrowLeft,
-            colorFilter: ColorFilter.mode(
-                getTheme(context) ? AppColors.white : AppColors.black,
-                BlendMode.srcIn),
-          ),
-        ),
+        leading: getIcon(AppIcons.arrowLeft, context: context, onTap: (){Navigator.pop(context);}),
         title: Text("Notification",
             style: Theme.of(context).appBarTheme.titleTextStyle),
         actions: [
-          IconButton(
-            onPressed: () {},
-            icon: SvgPicture.asset(
-              AppIcons.moreCircle,
-              colorFilter: ColorFilter.mode(
-                  getTheme(context) ? AppColors.white : AppColors.black,
-                  BlendMode.srcIn),
-            ),
-          ),
+          getIcon(AppIcons.moreCircle, context: context, onTap: (){}),
         ],
       ),
       body: ListView(
@@ -94,13 +76,13 @@ class NotificationScreen extends StatelessWidget {
                           : AppColors.c_900),
                 ),
                 24.ph,
-                GlobalNotificationContainer(
+                const GlobalNotificationContainer(
                   title: "Payment Successful!",
                   text: "You have made a taxi payment",
                   icon: AppIcons.money,
                 ),
                 24.ph,
-                GlobalNotificationContainer(
+                const GlobalNotificationContainer(
                   title: "Credit Card Connected!",
                   text: "Credit Card has been linked!",
                   icon: AppIcons.card,
