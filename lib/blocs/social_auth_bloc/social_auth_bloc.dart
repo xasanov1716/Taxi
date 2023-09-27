@@ -43,7 +43,6 @@ class SocialAuthBloc extends Bloc<SocialAuthEvent, SocialAuthState> {
   }
 
   loginWithGoogle(LoginWithGoogle productsEvent, Emitter<SocialAuthState> emit) async {
-    print('login with google');
     emit(AuthLoading());
 
     final response = await authRepository.signInWithGoogle();
