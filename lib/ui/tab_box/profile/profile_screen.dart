@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:taxi_app/data/models/user/user_model.dart';
+import 'package:taxi_app/data/repositories/user_repository.dart';
 import 'package:taxi_app/blocs/driver_bloc/driver_bloc.dart';
 import 'package:taxi_app/data/models/driver/driver_model.dart';
 import 'package:taxi_app/data/repositories/driver_repos.dart';

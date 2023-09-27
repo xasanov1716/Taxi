@@ -11,6 +11,7 @@ import 'package:taxi_app/blocs/messages/message_bloc.dart';
 import 'package:taxi_app/blocs/payment/payment_bloc.dart';
 import 'package:taxi_app/blocs/payment_add/payment_add_bloc.dart';
 import 'package:taxi_app/blocs/search_location_bloc/places_bloc.dart';
+import 'package:taxi_app/blocs/user_bloc/user_bloc.dart';
 import 'package:taxi_app/cubits/address_cubit/address_cubit.dart';
 import 'package:taxi_app/blocs/social_auth_bloc/social_auth_bloc.dart';
 import 'package:taxi_app/cubits/code_input_cubit/code_input_cubit.dart';
@@ -28,6 +29,7 @@ import 'package:taxi_app/data/repositories/auth_repository.dart';
 import 'package:taxi_app/data/repositories/driver_repos.dart';
 import 'package:taxi_app/data/repositories/places_db_repository.dart';
 import 'package:taxi_app/data/repositories/search_history_db.dart';
+import 'package:taxi_app/data/repositories/user_repository.dart';
 import 'package:taxi_app/services/api_service.dart';
 import 'package:taxi_app/services/fcm.dart';
 import 'package:taxi_app/ui/app_routes.dart';
@@ -36,7 +38,6 @@ import 'package:taxi_app/utils/theme/app_theme.dart';
 import 'cubits/category_cubit/category_cubit.dart';
 import 'cubits/help_center/help_center_category_cubit.dart';
 import 'cubits/user/user_cubit.dart';
-import 'ui/tab_box/profile/sub_screens/help_center/help_center_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -69,7 +70,11 @@ class App extends StatelessWidget {
           create: (context) => PlacesDatabaseRepository(PlacesDatabase()),
         ),
         RepositoryProvider(
-          create: (context) => DriverRepo(),
+            create: (context) => AddressApiRepository(apiService: apiService)),
+             RepositoryProvider(
+            create: (context) => UserRepo()),
+         RepositoryProvider(
+            create: (context) => DriverRepo())
         ),
         RepositoryProvider(
             create: (context) => AddressApiRepository(apiService: apiService))
@@ -102,6 +107,7 @@ class App extends StatelessWidget {
           BlocProvider(create: (context) => CreateOrderBloc()),
           BlocProvider(create: (context) => PaymentBloc()),
           BlocProvider(create: (context) => PaymentAddBloc()),
+          BlocProvider(create: (context) => UserBloc(userRepo: context.read<UserRepo>())),
           BlocProvider(
             create: (_) => CategoryCubit(),
           ),
