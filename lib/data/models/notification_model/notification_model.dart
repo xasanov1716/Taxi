@@ -16,7 +16,6 @@ class NotificationModel {
       'title': title,
       'body': body,
       'iconCode': iconCode,
-      'timestamp': timestamp,
     };
   }
 

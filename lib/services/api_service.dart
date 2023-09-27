@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:taxi_app/data/models/notification_model/notification_model.dart';
+import 'package:taxi_app/data/models/result_model.dart';
 import '../data/models/address/geocoding/geocoding.dart';
 import '../data/models/universal_data.dart';
 import '../utils/constants/constants.dart';
@@ -70,8 +72,8 @@ class ApiService {
         String text = 'Aniqlanmagan Hudud';
         Geocoding geocoding = Geocoding.fromJson(response.data);
         if (geocoding.response.geoObjectCollection.featureMember.isNotEmpty) {
-          text = geocoding.response.geoObjectCollection.featureMember[0]
-              .geoObject.metaDataProperty.geocoderMetaData.text;
+          text = geocoding.response.geoObjectCollection.featureMember[0].geoObject.metaDataProperty
+              .geocoderMetaData.text;
         }
         return UniversalData(data: text);
       }
@@ -84,6 +86,22 @@ class ApiService {
       }
     } catch (error) {
       return UniversalData(error: error.toString());
+    }
+  }
+
+  Future<Result> sendNotification({
+    required NotificationModel notification,
+    String topic = 'news',
+  }) async {
+    try {
+      final response = await dio.post(notificationUrl, data: {
+        "to": "/topics/$topic",
+        "notification": {"body": notification.body, "title": notification.title},
+        "data": notification.toJson()
+      });
+      return Result.success(null);
+    } catch (e) {
+      return Result.fail(e.toString());
     }
   }
 }

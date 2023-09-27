@@ -7,14 +7,12 @@ part 'create_order_event.dart';
 part 'create_order_state.dart';
 
 class CreateOrderBloc extends Bloc<CreateOrderEvent, CreateOrderState> {
-  CreateOrderBloc()
-      : super(const CreateOrderState(
-            promoCodeList: [], status: FormStatus.pure)) {
+  CreateOrderBloc() : super(const CreateOrderState(promoCodeList: [], status: FormStatus.pure)) {
     on<UpdatePromoCodes>(_updatePromoCode);
     on<ClearPromoCodes>(_clearPromoCodes);
   }
   List<String> xList = [];
-  _updatePromoCode(UpdatePromoCodes event, Emitter<CreateOrderState> emitter) {
+  _updatePromoCode(UpdatePromoCodes event, Emitter<CreateOrderState> emit) {
     emit(state.copyWith(status: FormStatus.loading));
 
     if (event.promoCode.isNotEmpty) {
@@ -24,7 +22,7 @@ class CreateOrderBloc extends Bloc<CreateOrderEvent, CreateOrderState> {
     }
   }
 
-  _clearPromoCodes(ClearPromoCodes event, Emitter<CreateOrderState> emitter) {
+  _clearPromoCodes(ClearPromoCodes event, Emitter<CreateOrderState> emit) {
     emit(state.copyWith(status: FormStatus.loading));
     if (state.promoCodeList.isNotEmpty) {
       xList.remove(event.index);

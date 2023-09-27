@@ -26,6 +26,7 @@ class NotificationScreen extends StatelessWidget {
         }),
         title: Text("Notification", style: Theme.of(context).appBarTheme.titleTextStyle),
         actions: [
+          getIcon(AppIcons.notification, context: context, onTap: () {}),
           getIcon(AppIcons.moreCircle, context: context, onTap: () {}),
         ],
       ),
