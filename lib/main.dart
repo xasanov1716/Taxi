@@ -8,6 +8,7 @@ import 'package:taxi_app/blocs/address_bloc/address_bloc.dart';
 import 'package:taxi_app/blocs/create_order/create_order_bloc.dart';
 import 'package:taxi_app/blocs/driver_bloc/driver_bloc.dart';
 import 'package:taxi_app/blocs/home/home_bloc.dart';
+import 'package:taxi_app/blocs/location_bloc/location_bloc.dart';
 import 'package:taxi_app/blocs/messages/message_bloc.dart';
 import 'package:taxi_app/blocs/payment/payment_bloc.dart';
 import 'package:taxi_app/blocs/payment_add/payment_add_bloc.dart';
@@ -117,6 +118,7 @@ class App extends StatelessWidget {
           BlocProvider(create: (context) => SearchCubit()),
           BlocProvider(create: (context) => OrderCubit()),
           BlocProvider(create: (context) => HelpCenterCategoryCubit()),
+          BlocProvider(create: (context) => LocationBloc()),
           BlocProvider(create: (context) => AddressBloc(addressRepo: context.read<AddressRepo>()))
         ],
         child: EasyLocalization(

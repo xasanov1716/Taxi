@@ -14,6 +14,7 @@ class AddressCubit extends Cubit<AddressState> {
 
   String kind = "house";
   String lang = "uz_UZ";
+  MapType mapType=MapType.hybrid;
 
   getAddressByLatLong({required LatLng latLng}) async{
     emit(AddressLoadingState());
@@ -35,5 +36,11 @@ class AddressCubit extends Cubit<AddressState> {
 
   void updateLang(String newLang) {
     lang = newLang;
+  }
+
+  void updateMapType(MapType newMapType){
+    mapType=newMapType;
+    emit(AddressLoadingState());
+    emit(AddressInitial());
   }
 }
