@@ -7,14 +7,11 @@ import 'package:taxi_app/ui/create_order/sub_screens/add_promo/add_promo_screen.
 import 'package:taxi_app/ui/create_order/sub_screens/driver_arriving/driver_arriving_screen.dart';
 import 'package:taxi_app/ui/create_order/sub_screens/payment_methods/payment_methods_screen.dart';
 import 'package:taxi_app/ui/create_order/sub_screens/searching_driver/searching_driver_screen.dart';
-
 import 'package:taxi_app/ui/create_order/sub_screens/select_transport/select_transport_screen.dart';
-
 import 'package:taxi_app/ui/enterance/welcome/welcome_screen.dart';
 import 'package:taxi_app/ui/local_auth/enter_pin_screen.dart';
 import 'package:taxi_app/ui/local_auth/set_biometrics_screen.dart';
 import 'package:taxi_app/ui/local_auth/set_pin_screen.dart';
-
 import 'package:taxi_app/ui/tab_box/home/bottom_sheet/bottom_sheet_screen.dart';
 import 'package:taxi_app/ui/tab_box/home/notification/notification_screen.dart';
 import 'package:taxi_app/ui/tab_box/home/sub_screens/search_location/search_location_screen.dart';
@@ -24,6 +21,7 @@ import 'package:taxi_app/ui/tab_box/profile/sub_screens/address/address_screen.d
 import 'package:taxi_app/ui/auth/login/login_screen.dart';
 import 'package:taxi_app/ui/auth/register/register_screen.dart';
 import 'package:taxi_app/ui/splash/splash_screen.dart';
+import 'package:taxi_app/ui/tab_box/profile/sub_screens/edit_profile_client/edit_profile_client.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/edit_profile_driver/edit_profile_screen.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/help_center/help_center_screen.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/invite_friends/invite_friends.dart';
@@ -83,10 +81,12 @@ class RouteNames {
   static const String privacyPolicy = "/privacy_policy";
   static const String payment = "/payment_screen";
   static const String paymentAddCard = "/payment_add_card_screen";
-  static const String editProfile = "/edit_profile";
+  static const String editProfileDriver = "/edit_profile";
+  static const String editProfileClient = "/edit_profile_client";
   static const String inviteFriends = "/invite_friends";
   static const String welcomeScreen = "/welcome";
   static const String helpCenterScreen = "/helpCenterScreen";
+  static const String askRoleDialog = "/askRoleDialog";
 }
 
 class AppRoutes {
@@ -104,7 +104,7 @@ class AppRoutes {
         return MaterialPageRoute(
           builder: (context) => const HelpCenterScreen(),
         );
-      case RouteNames.editProfile:
+      case RouteNames.editProfileDriver:
         return MaterialPageRoute(
           builder: (context) => EditProfileScreen(
             navigateFromAuth: settings.arguments as bool,
@@ -256,6 +256,12 @@ class AppRoutes {
       case RouteNames.paymentAddCard:
         return MaterialPageRoute(
           builder: (context) => const PaymentAddCardScreen(),
+        );
+      case RouteNames.editProfileClient:
+        return MaterialPageRoute(
+          builder: (context) => EditProfileClientScreen(
+            navigateFromAuth: settings.arguments as bool,
+          ),
         );
       default:
         return MaterialPageRoute(

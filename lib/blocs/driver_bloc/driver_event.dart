@@ -6,15 +6,10 @@ abstract class DriverEvent {}
 class GetDriverEvent extends DriverEvent {}
 
 class AddDriverEvent extends DriverEvent {
-  final DriverModel driverModel;
-
-  AddDriverEvent({required this.driverModel});
 }
 
 class UpdateDriverEvent extends DriverEvent {
-  final DriverModel driverModel;
 
-  UpdateDriverEvent({required this.driverModel});
 }
 
 class DeleteDriverEvent extends DriverEvent {
