@@ -47,7 +47,7 @@ class SocialAuthBloc extends Bloc<SocialAuthEvent, SocialAuthState> {
 
     final response = await authRepository.signInWithGoogle();
     if (response.error.isEmpty) {
-      emit(AuthSuccess(response.data));
+      emit(AuthSuccess(response.data.toString()));
     } else {
       emit(AuthError(errorText: response.error));
     }

@@ -14,7 +14,7 @@ Future<void> initFirebase([VoidCallback? onChanged]) async {
   await FirebaseMessaging.instance.subscribeToTopic("news");
 
   // FOREGROUND MESSAGE HANDLING.
-  FirebaseMessaging.onMessage.listen((RemoteMessage message) async{
+  FirebaseMessaging.onMessage.listen((RemoteMessage message) async {
     debugPrint(
         "NOTIFICATION FOREGROUND MODE: ${message.data["news_image"]} va ${message.notification!.title} in foreground");
     LocalNotificationService.instance.showFlutterNotification(message);
@@ -22,8 +22,7 @@ Future<void> initFirebase([VoidCallback? onChanged]) async {
     final NotificationModel notificationModel = NotificationModel.fromJson(message.data);
     await GetIt.I<DBHelper>().insertNotification(notificationModel);
     //LocalDatabase.insertNews(NewsModel.fromJson(jsonDecode(message.data)))
-    //  if(onChanged!=null) onChanged.call();
-
+    if (onChanged != null) onChanged.call();
   });
 
   // BACkGROUND MESSAGE HANDLING
@@ -35,7 +34,6 @@ Future<void> initFirebase([VoidCallback? onChanged]) async {
     debugPrint(
         "NOTIFICATION FROM TERMINATED MODE: ${message.data["news_image"]} va ${message.notification!.title} in terminated");
     LocalNotificationService.instance.showFlutterNotification(message);
-
   }
 
   RemoteMessage? remoteMessage = await FirebaseMessaging.instance.getInitialMessage();
