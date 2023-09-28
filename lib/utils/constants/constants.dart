@@ -78,6 +78,8 @@ class FirebaseCollections {
   static const String orders = "orders";
   static const String drivers = "drivers";
   static const String users = "clients";
+  static const String requestDriver = 'requestDriver';
+  static const String requestClient = 'requestClient';
 }
 
 Map<String, String> iconMapping = {
