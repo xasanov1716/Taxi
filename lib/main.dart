@@ -4,12 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get_it/get_it.dart';
 import 'package:taxi_app/blocs/address_bloc/address_bloc.dart';
 import 'package:taxi_app/blocs/create_order/create_order_bloc.dart';
 import 'package:taxi_app/blocs/driver_bloc/driver_bloc.dart';
 import 'package:taxi_app/blocs/home/home_bloc.dart';
 import 'package:taxi_app/blocs/location_bloc/location_bloc.dart';
 import 'package:taxi_app/blocs/messages/message_bloc.dart';
+import 'package:taxi_app/blocs/notification_bloc/notification_bloc.dart';
 import 'package:taxi_app/blocs/payment/payment_bloc.dart';
 import 'package:taxi_app/blocs/payment_add/payment_add_bloc.dart';
 import 'package:taxi_app/blocs/search_location_bloc/places_bloc.dart';
@@ -18,6 +20,7 @@ import 'package:taxi_app/cubits/address_cubit/address_cubit.dart';
 import 'package:taxi_app/blocs/social_auth_bloc/social_auth_bloc.dart';
 import 'package:taxi_app/cubits/code_input_cubit/code_input_cubit.dart';
 import 'package:taxi_app/cubits/auth_cubit/auth_cubit.dart';
+import 'package:taxi_app/cubits/notification_send_cubit/notification_send_cubit.dart';
 import 'package:taxi_app/cubits/notifications_cubit/notification_cubit.dart';
 import 'package:taxi_app/cubits/order_cubit/order_cubit.dart';
 import 'package:taxi_app/cubits/search/search_cubit.dart';
@@ -75,12 +78,10 @@ class App extends StatelessWidget {
         RepositoryProvider(
           create: (context) => PlacesDatabaseRepository(PlacesDatabase()),
         ),
-        RepositoryProvider(
-            create: (context) => AddressApiRepository(apiService: apiService)),
+        RepositoryProvider(create: (context) => AddressApiRepository(apiService: apiService)),
         RepositoryProvider(create: (context) => UserRepo()),
         RepositoryProvider(create: (context) => DriverRepo()),
-        RepositoryProvider(
-            create: (context) => AddressApiRepository(apiService: apiService))
+        RepositoryProvider(create: (context) => AddressApiRepository(apiService: apiService))
       ],
       child: MultiBlocProvider(
         providers: [
@@ -90,8 +91,7 @@ class App extends StatelessWidget {
             create: (context) =>
                 AddressCubit(addressApiRepository: context.read<AddressApiRepository>()),
           ),
-          BlocProvider(
-              create: (context) => AuthCubit(context.read<AuthRepository>())),
+          BlocProvider(create: (context) => AuthCubit(context.read<AuthRepository>())),
           BlocProvider(
             create: (context) => SearchLocationBloc(
               searchHistoryRepository: context.read<SearchHistoryRepository>(),
@@ -99,20 +99,18 @@ class App extends StatelessWidget {
             ),
           ),
           BlocProvider(create: (context) => TabCubit()),
-          BlocProvider(
-              create: (context) =>
-                  DriverBloc(driverRepo: context.read<DriverRepo>())),
+          BlocProvider(create: (context) => DriverBloc(driverRepo: context.read<DriverRepo>())),
           BlocProvider(create: (context) => NotificationCubit()),
           BlocProvider(create: (context) => SecurityCubit()),
           BlocProvider(create: (context) => HomeBloc()),
           BlocProvider(create: (context) => SocialAuthBloc(AuthRepository())),
           BlocProvider(create: (context) => UserCubit()),
+          BlocProvider(create: (context) => NotificationBloc()),
+          BlocProvider(create: (context) => NotificationSendCubit()),
           BlocProvider(create: (context) => CreateOrderBloc()),
           BlocProvider(create: (context) => PaymentBloc()),
           BlocProvider(create: (context) => PaymentAddBloc()),
-          BlocProvider(
-              create: (context) =>
-                  UserBloc(userRepo: context.read<UserRepo>())),
+          BlocProvider(create: (context) => UserBloc(userRepo: context.read<UserRepo>())),
           BlocProvider(
             create: (_) => CategoryCubit(),
           ),

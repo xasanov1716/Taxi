@@ -19,6 +19,20 @@ mixin FormValidationMixin {
     return null;
   }
 
+  String? validateString(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Please enter data';
+    }
+    return null;
+  }
+
+  String? validateDropDown(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Please select something';
+    }
+    return null;
+  }
+
   String? validateJob(String? value) {
     if (value == null || value.isEmpty) {
       return 'Please enter your Job';

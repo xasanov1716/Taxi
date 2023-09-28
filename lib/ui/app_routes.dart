@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:taxi_app/data/models/notification_model/notification_model.dart';
 import 'package:taxi_app/ui/app/app.dart';
 import 'package:taxi_app/ui/chat/chat_screen.dart';
 import 'package:taxi_app/ui/contact_to_driver/sub_screens/cancel_driver/cancel_driver_screen.dart';
@@ -13,8 +14,9 @@ import 'package:taxi_app/ui/local_auth/enter_pin_screen.dart';
 import 'package:taxi_app/ui/local_auth/set_biometrics_screen.dart';
 import 'package:taxi_app/ui/local_auth/set_pin_screen.dart';
 import 'package:taxi_app/ui/tab_box/home/bottom_sheet/bottom_sheet_screen.dart';
+import 'package:taxi_app/ui/tab_box/home/notification/notification_detail_screen.dart';
 import 'package:taxi_app/ui/tab_box/home/notification/notification_screen.dart';
-import 'package:taxi_app/ui/tab_box/home/notification/screen/notification_test_screen.dart';
+import 'package:taxi_app/ui/tab_box/home/notification/screen/send_notification_screen.dart';
 import 'package:taxi_app/ui/tab_box/home/sub_screens/search_location/search_location_screen.dart';
 import 'package:taxi_app/ui/tab_box/profile/profile_screen.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/address/address_add_screen.dart';
@@ -88,8 +90,8 @@ class RouteNames {
   static const String welcomeScreen = "/welcome";
   static const String helpCenterScreen = "/helpCenterScreen";
   static const String askRoleDialog = "/askRoleDialog";
-
-
+  static const String notificationDetail = "/notificationDetail";
+  static const String sendNotificationScreen = "/sendNotificationScreen";
 }
 
 class AppRoutes {
@@ -97,7 +99,7 @@ class AppRoutes {
     switch (settings.name) {
       case RouteNames.splashScreen:
         return MaterialPageRoute(
-          builder: (context) =>const  SplashScreen(),
+          builder: (context) => const SplashScreen(),
         );
       case RouteNames.welcomeScreen:
         return MaterialPageRoute(
@@ -165,8 +167,7 @@ class AppRoutes {
         );
       case RouteNames.enterPinScreen:
         return MaterialPageRoute(
-          builder: (context) =>
-              EnterPinScreen(isFromSecurity: settings.arguments as bool?),
+          builder: (context) => EnterPinScreen(isFromSecurity: settings.arguments as bool?),
         );
       case RouteNames.driverDetail:
         return MaterialPageRoute(
@@ -179,8 +180,7 @@ class AppRoutes {
         );
 
       case RouteNames.setBiometrics:
-        return MaterialPageRoute(
-            builder: (context) => const SetBiometricsScreen());
+        return MaterialPageRoute(builder: (context) => const SetBiometricsScreen());
       case RouteNames.conFirmCodeScreen:
         return MaterialPageRoute(
           builder: (context) => const ConfirmCodeScreen(),
@@ -218,8 +218,7 @@ class AppRoutes {
           builder: (context) => const DriverArrivingScreen(),
         );
       case RouteNames.selectTransportScreen:
-        return MaterialPageRoute(
-            builder: (context) => const SelectTransportScreen());
+        return MaterialPageRoute(builder: (context) => const SelectTransportScreen());
       case RouteNames.chatWithDriver:
         return MaterialPageRoute(
           builder: (context) => const ChatScreen(),
@@ -259,6 +258,15 @@ class AppRoutes {
       case RouteNames.paymentAddCard:
         return MaterialPageRoute(
           builder: (context) => const PaymentAddCardScreen(),
+        );
+      case RouteNames.sendNotificationScreen:
+        return MaterialPageRoute(
+          builder: (context) => SendNotificationScreen(),
+        );
+      case RouteNames.notificationDetail:
+        return MaterialPageRoute(
+          builder: (context) =>
+              NotificationDetailScreen(notification: settings.arguments as NotificationModel),
         );
       case RouteNames.editProfileClient:
         return MaterialPageRoute(
