@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get_it/get_it.dart';
 import 'package:taxi_app/data/local/local_database/database_helper.dart';
+import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/ui/tab_box/home/notification/widgets/global_notification_container.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
@@ -23,7 +24,9 @@ class NotificationScreen extends StatelessWidget {
         }),
         title: Text("Notification", style: Theme.of(context).appBarTheme.titleTextStyle),
         actions: [
-          getIcon(AppIcons.notification, context: context, onTap: () {}),
+          getIcon(AppIcons.notification, context: context, onTap: () {
+            Navigator.pushNamed(context, RouteNames.sendNotificationScreen);
+          }),
           getIcon(AppIcons.moreCircle, context: context, onTap: () {}),
         ],
       ),

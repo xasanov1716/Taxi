@@ -94,12 +94,23 @@ class ApiService {
     String topic = 'news',
   }) async {
     try {
-      final response = await dio.post(notificationUrl, data: {
-        "to": "/topics/$topic",
-        "notification": {"body": notification.body, "title": notification.title},
-        "data": notification.toJson()
-      });
-      return Result.success(null);
+      final response = await dio.post(notificationUrl,
+          options: Options(headers: {"Authorization": firebaseApiKey}),
+          data: {
+            "to": "/topics/news",
+            "notification": {
+              "body": "This is a Firebase Cloud Messaging Topic Test Message!",
+              "title": "Test Notification"
+            },
+            "data": {"title": "test Title", "body": "test Body", "iconCode": "wallet"}
+          });
+      print(response.statusCode);
+      if (response.statusCode == 200) {
+        print('ok');
+        return Result.success(null);
+      }
+      print([response.data]);
+      return Result.fail(response.data);
     } catch (e) {
       return Result.fail(e.toString());
     }
