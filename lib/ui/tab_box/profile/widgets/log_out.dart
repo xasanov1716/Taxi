@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:taxi_app/blocs/driver_bloc/driver_bloc.dart';
+import 'package:taxi_app/blocs/user_bloc/user_bloc.dart';
 import 'package:taxi_app/cubits/auth_cubit/auth_cubit.dart';
 import 'package:taxi_app/data/local/storage_repository/storage_repository.dart';
 import 'package:taxi_app/ui/widgets/global_button.dart';
@@ -57,6 +59,14 @@ class LogOutItem extends StatelessWidget {
                     child: GlobalButton(
                   title: "Yes, Logout",
                   onTap: () async {
+                    context.read<DriverBloc>().clear();
+                    StorageRepository.getString(StorageKeys.userRole) ==
+                            "driver"
+                        ? context.read<DriverBloc>().add(UpdateDriverEvent())
+                        : context.read<UserBloc>().add(UpdateUserEvent());
+
+                    context.read<DriverBloc>().clearDriverState();
+                    context.read<UserBloc>().clearUserModelState();
                     StorageRepository.deleteString(StorageKeys.userId);
                     StorageRepository.deleteString(StorageKeys.userRole);
                     await context.read<AuthCubit>().logOutUser();

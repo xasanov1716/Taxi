@@ -12,6 +12,7 @@ import 'package:taxi_app/ui/tab_box/profile/sub_screens/edit_profile_driver/widg
 import 'package:taxi_app/ui/widgets/global_button.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
+import 'package:taxi_app/utils/ui_utils/show_snackbar.dart';
 
 import 'widgets/rol_dialog.dart';
 
@@ -44,7 +45,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
               );
             });
           } else {
-            Navigator.pop(context);
+            widget.navigateFromAuth ? null : Navigator.pop(context);
           }
         },
         bottom: PreferredSize(
@@ -82,34 +83,55 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 ),
                 12.ph,
                 GlobalButton(
-                  title: "Update",
-                  onTap: (){
-                   /* ShowRoleDialog(context);*/
+                  title: "Next",
+                  onTap: () {
                     if (currentPage == 0) {
-                      setState(() {
-                        currentPage = 1;
-                        pageController.animateToPage(
-                          currentPage,
-                          duration: const Duration(seconds: 1),
-                          curve: Curves.linear,
-                        );
-                      });
+                      if (context.read<DriverBloc>().canRegister1().isEmpty) {
+                        debugPrint(
+                            'can register 1 ${context.read<DriverBloc>().state.driverModel.fullName}');
+                        setState(() {
+                          currentPage = 1;
+                          pageController.animateToPage(
+                            currentPage,
+                            duration: const Duration(seconds: 1),
+                            curve: Curves.linear,
+                          );
+                        });
+                      } else {
+                        showSnackBar(
+                            context: context,
+                            text:
+                                '${context.read<DriverBloc>().canRegister1()} is required');
+                      }
                     } else if (currentPage == 1) {
-                      setState(() {
-                        currentPage = 2;
-                        pageController.animateToPage(
-                          currentPage,
-                          duration: const Duration(seconds: 1),
-                          curve: Curves.linear,
-                        );
-                      });
+                      if (context.read<DriverBloc>().canRegister2().isEmpty) {
+                        setState(() {
+                          currentPage = 2;
+                          pageController.animateToPage(
+                            currentPage,
+                            duration: const Duration(seconds: 1),
+                            curve: Curves.linear,
+                          );
+                        });
+                      } else {
+                        showSnackBar(
+                            context: context,
+                            text:
+                                '${context.read<DriverBloc>().canRegister2()} is required');
+                      }
                     } else if (currentPage == 2) {
                       if (widget.navigateFromAuth) {
-                        Navigator.pushReplacementNamed(
-                          context,
-                          RouteNames.setPinCodeScreen,
-                        );
-                        context.read<DriverBloc>().add(AddDriverEvent());
+                        if (context.read<DriverBloc>().state.driverModel.from !=
+                            0) {
+                          Navigator.pushReplacementNamed(
+                            context,
+                            RouteNames.setPinCodeScreen,
+                          );
+                          context.read<DriverBloc>().add(AddDriverEvent());
+                        } else {
+                          showSnackBar(
+                              context: context, text: 'Addresses are required');
+                        }
                       } else {
                         Navigator.pop(context);
                         context.read<DriverBloc>().add(UpdateDriverEvent());
