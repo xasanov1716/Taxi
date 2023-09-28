@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taxi_app/blocs/driver_bloc/driver_bloc.dart';
+import 'package:taxi_app/blocs/user_bloc/user_bloc.dart';
 import 'package:taxi_app/data/local/storage_repository/storage_repository.dart';
 import 'package:taxi_app/cubits/auth_cubit/auth_cubit.dart';
 import 'package:taxi_app/data/models/status/form_status.dart';
@@ -157,15 +158,19 @@ class _LoginScreenState extends State<LoginScreen> {
                 StorageKeys.userId,
                 FirebaseAuth.instance.currentUser!.uid,
               );
-              context.read<DriverBloc>().state.driverModel.role == "driver"
-                  ? StorageRepository.putString(StorageKeys.userRole, "driver")
-                  : StorageRepository.putString(StorageKeys.userRole, "client");
+              if (context.mounted) {
 
-              Navigator.pushNamedAndRemoveUntil(
-                  context, RouteNames.tabBox, (route) => false);
-            }
-            if (state.status == FormStatus.failure) {
-              showErrorMessage(message: state.statusMessage, context: context);
+                context.read<DriverBloc>().getDriverByDocId();
+                context.read<UserBloc>().getUserByDocId();
+
+
+                Navigator.pushNamedAndRemoveUntil(
+                    context, RouteNames.tabBox, (route) => false);
+              }
+              if (state.status == FormStatus.failure && context.mounted) {
+                showErrorMessage(
+                    message: state.statusMessage, context: context);
+              }
             }
           },
         ));

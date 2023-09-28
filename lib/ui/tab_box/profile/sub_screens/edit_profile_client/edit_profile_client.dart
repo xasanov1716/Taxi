@@ -30,7 +30,7 @@ class _EditProfileClientScreenState extends State<EditProfileClientScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const EditAppBar(title: "Edit Client Profile"),
-      body: BlocConsumer<UserBloc, UserState>(
+      body: BlocConsumer<UserBloc, UsersState>(
         builder: (context, state) {
           return Padding(
             padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 24.h),

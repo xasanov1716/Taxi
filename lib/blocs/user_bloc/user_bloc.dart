@@ -13,10 +13,10 @@ import 'package:taxi_app/utils/constants/storage_keys.dart';
 part 'user_event.dart';
 part 'user_state.dart';
 
-class UserBloc extends Bloc<UserEvent, UserState> {
+class UserBloc extends Bloc<UserEvent, UsersState> {
   final UserRepo userRepo;
   UserBloc({required this.userRepo})
-      : super(UserState(
+      : super(UsersState(
           statusText: '',
           userModel: UserModel(
               image: '',
@@ -40,7 +40,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     on<UpdateCurrentUserEvent>(updateCurrentUserField);
   }
   Future<void> addUser(
-      AddUserEvent addUserEvent, Emitter<UserState> emit) async {
+      AddUserEvent addUserEvent, Emitter<UsersState> emit) async {
     emit(state.copyWith(statusText: "loading...", status: FormStatus.loading));
     await userRepo.addUser(userModel: state.userModel);
     debugPrint('added');
@@ -49,24 +49,24 @@ class UserBloc extends Bloc<UserEvent, UserState> {
   }
 
   Future<void> updateUser(
-      UpdateUserEvent updateUserEvent, Emitter<UserState> emit) async {
+      UpdateUserEvent updateUserEvent, Emitter<UsersState> emit) async {
     emit(state.copyWith(statusText: "loading...", status: FormStatus.loading));
-    await userRepo.updateUser(userModel: updateUserEvent.userModel);
+    await userRepo.updateUser(userModel: state.userModel);
     emit(state.copyWith(
         status: FormStatus.success, statusText: "User updated successfully"));
   }
 
   Future<void> deleteUser(
-      DeleteUserEvent deleteUserEvent, Emitter<UserState> emit) async {
+      DeleteUserEvent deleteUserEvent, Emitter<UsersState> emit) async {
     emit(state.copyWith(statusText: "loading...", status: FormStatus.loading));
     await userRepo.deleteUser(userId: deleteUserEvent.userId);
     emit(state.copyWith(
         status: FormStatus.success, statusText: "User deleted successfully"));
   }
 
-  void clearData(DeleteUserEvent deleteUserEvent, Emitter<UserState> emit) {
+  void clearData(DeleteUserEvent deleteUserEvent, Emitter<UsersState> emit) {
     emit(
-      UserState(
+      UsersState(
         userModel: UserModel(
             image: '',
             fullName: '',
@@ -87,23 +87,48 @@ class UserBloc extends Bloc<UserEvent, UserState> {
   }
 
   Future<UserModel> getUserByDocId() async {
-    var data = await FirebaseFirestore.instance
-        .collection(FirebaseCollections.drivers)
-        .doc(StorageRepository.getString(StorageKeys.userId))
-        .get();
-    UserModel userModel =
-    UserModel.fromJson(data.data() as Map<String, dynamic>);
-    // ignore: invalid_use_of_visible_for_testing_member
-    emit(state.copyWith(userModel: userModel));
-    return userModel;
+    final userId = StorageRepository.getString(StorageKeys.userId);
+    final docRef = FirebaseFirestore.instance
+        .collection(FirebaseCollections
+            .users) // Assuming the collection name is "users" for clients
+        .doc(userId);
+
+    final data = await docRef.get();
+
+    if (data.exists) {
+      final userModel = UserModel.fromJson(data.data() as Map<String, dynamic>);
+      // ignore: invalid_use_of_visible_for_testing_member
+      emit(state.copyWith(userModel: userModel));
+      StorageRepository.putString(StorageKeys.userRole, "client");
+      return userModel;
+    } else {
+      debugPrint(
+          "Documnet does not exist ---------------------------------------------------------------------");
+      throw Exception("User document does not exist for userId: $userId");
+    }
   }
 
-  updateUserModel(UserModel user) {
-    emit(state.copyWith(userModel: user));
+  clearUserModelState() {
+    // ignore: invalid_use_of_visible_for_testing_member
+    emit(state.copyWith(
+      userModel: UserModel(
+          image: '',
+          fullName: '',
+          nickName: '',
+          emailAddress: '',
+          birthDate: '',
+          phone: '',
+          gender: '',
+          addressText: '',
+          createdAt: '',
+          fcmToken: '',
+          userId: '',
+          role: ''),
+    ));
   }
 
   updateCurrentUserField(
-      UpdateCurrentUserEvent updateCurrentUserEvent, Emitter<UserState> emit) {
+      UpdateCurrentUserEvent updateCurrentUserEvent, Emitter<UsersState> emit) {
     UserModel currentUser = state.userModel;
 
     switch (updateCurrentUserEvent.fieldKey) {
@@ -182,7 +207,8 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     }
 
     debugPrint("USER BLOC: ${currentUser.toString()}");
-
+    currentUser = currentUser.copyWith(
+        role: StorageRepository.getString(StorageKeys.userRole));
     emit(state.copyWith(userModel: currentUser));
   }
 }
