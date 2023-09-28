@@ -159,13 +159,15 @@ class _LoginScreenState extends State<LoginScreen> {
                 FirebaseAuth.instance.currentUser!.uid,
               );
               if (context.mounted) {
+                await context.read<DriverBloc>().getDriverByDocId();
+                if (context.mounted) {
+                  await context.read<UserBloc>().getUserByDocId();
+                }
 
-                context.read<DriverBloc>().getDriverByDocId();
-                context.read<UserBloc>().getUserByDocId();
-
-
-                Navigator.pushNamedAndRemoveUntil(
-                    context, RouteNames.tabBox, (route) => false);
+                if (context.mounted) {
+                  Navigator.pushNamedAndRemoveUntil(
+                      context, RouteNames.tabBox, (route) => false);
+                }
               }
               if (state.status == FormStatus.failure && context.mounted) {
                 showErrorMessage(

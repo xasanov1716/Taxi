@@ -86,7 +86,7 @@ class UserBloc extends Bloc<UserEvent, UsersState> {
     );
   }
 
-  Future<UserModel> getUserByDocId() async {
+  Future<void> getUserByDocId() async {
     final userId = StorageRepository.getString(StorageKeys.userId);
     final docRef = FirebaseFirestore.instance
         .collection(FirebaseCollections
@@ -100,11 +100,11 @@ class UserBloc extends Bloc<UserEvent, UsersState> {
       // ignore: invalid_use_of_visible_for_testing_member
       emit(state.copyWith(userModel: userModel));
       StorageRepository.putString(StorageKeys.userRole, "client");
-      return userModel;
+
     } else {
       debugPrint(
           "Documnet does not exist ---------------------------------------------------------------------");
-      throw Exception("User document does not exist for userId: $userId");
+      // throw Exception("User document does not exist for userId: $userId");
     }
   }
 

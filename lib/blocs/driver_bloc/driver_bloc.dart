@@ -88,7 +88,7 @@ class DriverBloc extends Bloc<DriverEvent, DriverState> {
     emit(state.copyWith(status: FormStatus.success));
   }
 
-  Future<DriverModel> getDriverByDocId() async {
+  Future<void> getDriverByDocId() async {
     final userId = StorageRepository.getString(StorageKeys.userId);
     final docRef = FirebaseFirestore.instance
         .collection(FirebaseCollections.drivers)
@@ -102,12 +102,10 @@ class DriverBloc extends Bloc<DriverEvent, DriverState> {
       // ignore: invalid_use_of_visible_for_testing_member
       emit(state.copyWith(driverModel: driverModel));
       StorageRepository.putString(StorageKeys.userRole, "driver");
-      return driverModel;
     } else {
 
       debugPrint("Documnet does not exist ---------------------------------------------------------------------");
 
-      throw Exception("Driver document does not exist for userId: $userId");
     }
   }
 
