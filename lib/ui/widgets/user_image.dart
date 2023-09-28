@@ -50,9 +50,10 @@ class UserImage extends StatelessWidget {
                                 )
                               : ClipRRect(
                                   borderRadius: BorderRadius.circular(100.r),
-                                  child: Image.network(
+                                  child: Image.network(height: 100 * width / figmaWidth,
+                                    width: 100 * width / figmaWidth,
                                     state.driverModel.imageUrl,
-                                    fit: BoxFit.cover,
+                                    fit: BoxFit.fill,
                                   ),
                                 ),
                         );
@@ -68,8 +69,10 @@ class UserImage extends StatelessWidget {
                               : ClipRRect(
                                   borderRadius: BorderRadius.circular(100.r),
                                   child: Image.network(
+                                    height: 100 * width / figmaWidth,
+                                    width: 100 * width / figmaWidth,
                                     state.userModel.image,
-                                    fit: BoxFit.cover,
+                                    fit: BoxFit.fill,
                                   ),
                                 ),
                         );
