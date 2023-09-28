@@ -26,6 +26,7 @@ class DriverModel {
   final double latitude;
   final bool hasFilled;
   final String carNumber;
+  final String role;
 
   DriverModel({
     required this.driverId,
@@ -55,6 +56,7 @@ class DriverModel {
     required this.latitude,
     required this.hasFilled,
     required this.carNumber,
+    required this.role,
   });
 
   DriverModel copyWith({
@@ -85,6 +87,7 @@ class DriverModel {
     double? latitude,
     bool? hasFilled,
     String? carNumber,
+    String? role,
   }) =>
       DriverModel(
         driverId: driverId ?? this.driverId,
@@ -114,6 +117,7 @@ class DriverModel {
         latitude: latitude ?? this.latitude,
         hasFilled: hasFilled ?? this.hasFilled,
         carNumber: carNumber ?? this.carNumber,
+        role: role ?? this.role,
       );
 
   factory DriverModel.fromJson(Map<String, dynamic> json) => DriverModel(
@@ -144,6 +148,7 @@ class DriverModel {
         latitude: json["latitude"],
         hasFilled: json["has_filled"],
         carNumber: json["car_number"],
+    role: json["role"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -174,6 +179,7 @@ class DriverModel {
         "latitude": latitude,
         "has_filled": hasFilled,
         "car_number": carNumber,
+        "role": role,
       };
 
   @override
@@ -206,6 +212,7 @@ class DriverModel {
     "latitude": $latitude,
     "hasFilled": $hasFilled,
     "carNumber": $carNumber,
+    "role": $role,
     """;
   }
 }

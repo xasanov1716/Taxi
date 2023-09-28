@@ -2,20 +2,28 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
+import 'package:get_it/get_it.dart';
+import 'package:taxi_app/data/local/local_database/database_helper.dart';
+import 'package:taxi_app/data/models/notification_model/notification_model.dart';
 import 'package:taxi_app/services/local_notification_service.dart';
 
-Future<void> initFirebase() async {
+Future<void> initFirebase([VoidCallback? onChanged]) async {
   await Firebase.initializeApp();
   String? fcmToken = await FirebaseMessaging.instance.getToken();
   debugPrint("FCM USER TOKEN: $fcmToken");
   await FirebaseMessaging.instance.subscribeToTopic("news");
 
   // FOREGROUND MESSAGE HANDLING.
-  FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-    debugPrint("NOTIFICATION FOREGROUND MODE: ${message.data["news_image"]} va ${message.notification!.title} in foreground");
+  FirebaseMessaging.onMessage.listen((RemoteMessage message) async{
+    debugPrint(
+        "NOTIFICATION FOREGROUND MODE: ${message.data["news_image"]} va ${message.notification!.title} in foreground");
     LocalNotificationService.instance.showFlutterNotification(message);
+
+    final NotificationModel notificationModel = NotificationModel.fromJson(message.data);
+    await GetIt.I<DBHelper>().insertNotification(notificationModel);
     //LocalDatabase.insertNews(NewsModel.fromJson(jsonDecode(message.data)))
-    // context.read<NewsProvider>().readNews();
+    //  if(onChanged!=null) onChanged.call();
+
   });
 
   // BACkGROUND MESSAGE HANDLING
@@ -45,10 +53,6 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
 
   //LocalDatabase.insertNews(NewsModel.fromJson(jsonDecode(message.data)))
 
-
   debugPrint(
       "NOTIFICATION BACKGROUND MODE: ${message.data["news_image"]} va ${message.notification!.title} in background");
 }
-
-
-

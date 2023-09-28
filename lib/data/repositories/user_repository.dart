@@ -1,29 +1,29 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:taxi_app/data/local/storage_repository/storage_repository.dart';
 import 'package:taxi_app/data/models/universal_data.dart';
 import 'package:taxi_app/data/models/user/user_model.dart';
 import 'package:taxi_app/utils/constants/constants.dart';
+import 'package:taxi_app/utils/constants/storage_keys.dart';
 
 class UserRepo {
-  Future<UniversalData> addUser({required UserModel userModel}) async {
-    try {
-      DocumentReference newProduct = await FirebaseFirestore.instance
-          .collection(FirebaseCollections.users)
-          .add(userModel.toJson());
+ 
 
+Future<UniversalData> addUser({required UserModel userModel}) async {
+    try {
       await FirebaseFirestore.instance
           .collection(FirebaseCollections.users)
-          .doc(newProduct.id)
-          .update({
-        "userId": newProduct.id,
-      });
+          .doc(userModel.userId)
+          .set(userModel.toJson());
 
-      return UniversalData(data: "User added!");
+      return UniversalData(data: 'User Added!');
     } on FirebaseException catch (e) {
       return UniversalData(error: e.code);
     } catch (error) {
       return UniversalData(error: error.toString());
     }
   }
+
+
 
   Future<UniversalData> updateUser({required UserModel userModel}) async {
     try {
@@ -54,26 +54,18 @@ class UserRepo {
       return UniversalData(error: error.toString());
     }
   }
-  Stream<List<UserModel>> getDrivers() async* {
-    yield* FirebaseFirestore.instance
-        .collection(FirebaseCollections.orders)
-        .snapshots()
-        .map(
-          (querySnapshot) => querySnapshot.docs
-          .map((doc) => UserModel.fromJson(doc.data()))
-          .toList(),
-    );
-  }
-  Stream<UserModel?> getDriverById({required String userId}) {
+
+  Stream<UserModel?> getUserById() {
     return FirebaseFirestore.instance
-        .collection(FirebaseCollections.orders)
-        .doc(userId)
+        .collection(FirebaseCollections.users)
+        .doc(StorageRepository.getString(
+            StorageKeys.userId)) // Assuming driverId is the document ID
         .snapshots()
         .map((documentSnapshot) {
       if (documentSnapshot.exists) {
         return UserModel.fromJson(documentSnapshot.data() ?? {});
       } else {
-        return null;
+        return null; // Return null if the document doesn't exist
       }
     });
   }

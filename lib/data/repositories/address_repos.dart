@@ -1,11 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:taxi_app/data/models/address_model/adders_model.dart';
-import 'package:taxi_app/data/models/order/order_model.dart';
+import 'package:taxi_app/data/local/storage_repository/storage_repository.dart';
+import 'package:taxi_app/data/models/address_model/address_model.dart';
 import 'package:taxi_app/data/models/universal_data.dart';
 import 'package:taxi_app/utils/constants/constants.dart';
+import 'package:taxi_app/utils/constants/storage_keys.dart';
 
 class AddressRepo {
-  final FirebaseFirestore base=FirebaseFirestore.instance;
+  final FirebaseFirestore base = FirebaseFirestore.instance;
+
   Future<UniversalData> addAddress({required AddressModel addressModel}) async {
     try {
       DocumentReference newAddress = await base
@@ -18,15 +20,14 @@ class AddressRepo {
           .update({
         "addressId": newAddress.id,
       });
-
       return UniversalData(data: "Address added!");
     } on FirebaseException catch (e) {
       return UniversalData(error: e.code);
     } catch (error) {
       return UniversalData(error: error.toString());
     }
-
   }
+
   Future<UniversalData> updateAddress(
       {required AddressModel addressModel}) async {
     try {
@@ -57,28 +58,15 @@ class AddressRepo {
       return UniversalData(error: error.toString());
     }
   }
-  Stream<List<AddressModel>> getAddresses() async* {
-    yield* FirebaseFirestore.instance
-        .collection(FirebaseCollections.addresses)
-        .snapshots()
-        .map(
-          (querySnapshot) => querySnapshot.docs
-          .map((doc) => AddressModel.fromJson(doc.data()))
-          .toList(),
-    );
-  }
 
-  Stream<AddressModel?> getAddressById({required String addressId}) {
-    return FirebaseFirestore.instance
-        .collection(FirebaseCollections.addresses)
-        .doc(addressId)
-        .snapshots()
-        .map((documentSnapshot) {
-      if (documentSnapshot.exists) {
-        return AddressModel.fromJson(documentSnapshot.data() ?? {});
-      } else {
-        return null;
-      }
-    });
-  }
+  Stream<List<AddressModel>> getAddresses() => FirebaseFirestore.instance
+      .collection(FirebaseCollections.addresses)
+      .where("user_id",
+          isEqualTo: StorageRepository.getString(StorageKeys.userId))
+      .snapshots()
+      .map(
+        (event1) => event1.docs
+            .map((doc) => AddressModel.fromJson(doc.data()))
+            .toList(),
+      );
 }
