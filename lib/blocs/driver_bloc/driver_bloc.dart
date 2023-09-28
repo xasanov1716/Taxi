@@ -109,6 +109,17 @@ class DriverBloc extends Bloc<DriverEvent, DriverState> {
     }
   }
 
+  String canRegister1() {
+    return state.canRegister1();
+  }
+
+  String canRegister2() {
+    return state.canRegister2();
+  }
+
+  clear(){
+    state.clear();
+  }
 
   clearDriverState(){
     // ignore: invalid_use_of_visible_for_testing_member
@@ -143,7 +154,6 @@ class DriverBloc extends Bloc<DriverEvent, DriverState> {
       carNumber: '',
     )));
   }
-
 
   void updateDriverField({
     required DriverFieldKeys fieldKey,

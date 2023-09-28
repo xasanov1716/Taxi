@@ -99,6 +99,7 @@ class _FirstPageState extends State<FirstPage> {
             context.read<DriverBloc>().updateDriverField(
                 fieldKey: DriverFieldKeys.driverId,
                 value: FirebaseAuth.instance.currentUser!.uid);
+
             context.read<DriverBloc>().updateDriverField(
                 fieldKey: DriverFieldKeys.fcmToken,
                 value: await FirebaseMessaging.instance.getToken());

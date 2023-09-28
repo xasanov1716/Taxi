@@ -127,6 +127,10 @@ class UserBloc extends Bloc<UserEvent, UsersState> {
     ));
   }
 
+  String canRequest() {
+    return state.canRequest();
+  }
+
   updateCurrentUserField(
       UpdateCurrentUserEvent updateCurrentUserEvent, Emitter<UsersState> emit) {
     UserModel currentUser = state.userModel;

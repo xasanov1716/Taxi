@@ -59,6 +59,7 @@ class LogOutItem extends StatelessWidget {
                     child: GlobalButton(
                   title: "Yes, Logout",
                   onTap: () async {
+                    context.read<DriverBloc>().clear();
                     StorageRepository.getString(StorageKeys.userRole) ==
                             "driver"
                         ? context.read<DriverBloc>().add(UpdateDriverEvent())
