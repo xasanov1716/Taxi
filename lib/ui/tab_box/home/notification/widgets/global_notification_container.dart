@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:taxi_app/data/models/icon/icon_type.dart';
+import 'package:taxi_app/data/models/notification_model/notification_model.dart';
 import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
+import 'package:taxi_app/utils/constants/constants.dart';
+import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
 
 class GlobalNotificationContainer extends StatelessWidget {
-  const GlobalNotificationContainer(
-      {super.key, required this.title, required this.text, required this.icon});
+  const GlobalNotificationContainer({super.key, required this.notificationModel});
 
-  final String title;
-  final String text;
-  final String icon;
+  final NotificationModel notificationModel;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +32,7 @@ class GlobalNotificationContainer extends StatelessWidget {
       ),
       child: InkWell(
         onTap: () {
-          Navigator.pushNamed(context, RouteNames.bottomSheetDialog);
+          Navigator.pushNamed(context, RouteNames.notificationDetail, arguments: notificationModel);
         },
         borderRadius: BorderRadius.circular(16.r),
         child: Container(
@@ -42,19 +43,23 @@ class GlobalNotificationContainer extends StatelessWidget {
                 width: 68.w,
                 height: 68.w,
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(100.r),
-                    color: AppColors.primary),
-                child: Center(child: SvgPicture.asset(icon, width: 24.w)),
+                    borderRadius: BorderRadius.circular(100.r), color: AppColors.primary),
+                child: Center(
+                    child: SvgPicture.asset(
+                        AppIcons.getSvg(
+                            name: iconMapping[notificationModel.iconCode] ?? AppIcons.infoCircle,
+                            iconType: IconType.bold),
+                        width: 24.w)),
               ),
               20.pw,
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(title,
+                  Text(notificationModel.title,
                       style: Theme.of(context).textTheme.titleLarge,
                       overflow: TextOverflow.ellipsis),
                   8.ph,
-                  Text(text,
+                  Text(notificationModel.body,
                       style: Theme.of(context).textTheme.bodyMedium,
                       overflow: TextOverflow.ellipsis)
                 ],

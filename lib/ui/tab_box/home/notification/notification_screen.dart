@@ -2,11 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get_it/get_it.dart';
 import 'package:taxi_app/data/local/local_database/database_helper.dart';
-import 'package:taxi_app/data/models/icon/icon_type.dart';
-import 'package:taxi_app/data/models/notification_model/notification_model.dart';
 import 'package:taxi_app/ui/tab_box/home/notification/widgets/global_notification_container.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
-import 'package:taxi_app/utils/constants/constants.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
@@ -69,12 +66,8 @@ class NotificationScreen extends StatelessWidget {
                             itemBuilder: (context, innerIndex) {
                               final notification = notifications[innerIndex];
                               return GlobalNotificationContainer(
-                                  title: notification.title,
-                                  text: notification.body,
-                                  icon: AppIcons.getSvg(
-                                      name:
-                                          iconMapping[notification.iconCode] ?? AppIcons.infoCircle,
-                                      iconType: IconType.bold));
+                                notificationModel: notification,
+                              );
                             },
                             separatorBuilder: (BuildContext context, int index) => 24.ph,
                           )
