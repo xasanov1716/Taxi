@@ -32,7 +32,7 @@ class UserPhoto extends StatelessWidget {
             ),
             child: Stack(
               children: [
-                BlocBuilder<UserBloc, UserState>(
+                BlocBuilder<UserBloc, UsersState>(
                   builder: (context, state) {
                     return Center(
                       child: state.userModel.image.isEmpty

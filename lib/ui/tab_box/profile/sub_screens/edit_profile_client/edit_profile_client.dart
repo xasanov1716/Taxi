@@ -32,7 +32,7 @@ class _EditProfileClientScreenState extends State<EditProfileClientScreen> {
     return Scaffold(
       appBar: EditAppBar(
           title: widget.navigateFromAuth ? "Create Profile" : "Edit Profile"),
-      body: BlocConsumer<UserBloc, UserState>(
+      body: BlocConsumer<UserBloc, UsersState>(
         builder: (context, state) {
           return Padding(
             padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 24.h),
