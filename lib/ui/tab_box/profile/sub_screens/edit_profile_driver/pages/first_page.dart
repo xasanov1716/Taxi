@@ -64,6 +64,12 @@ class _FirstPageState extends State<FirstPage> {
       mask: '## ### ## ##',
       filter: {"#": RegExp(r'[0-9]')},
       type: MaskAutoCompletionType.lazy);
+  var carnumberFormatter = MaskTextInputFormatter(
+      mask: '## ## ### ##',
+      filter: {"#": RegExp(r'[0-9]-[a-z]')},
+      type: MaskAutoCompletionType.lazy);
+
+
   var genders = ['Male', 'Female'];
   final FocusNode focusNode = FocusNode();
   final FocusNode phoneFocusNode = FocusNode();
@@ -71,7 +77,9 @@ class _FirstPageState extends State<FirstPage> {
   final FocusNode nicknameFocusNode = FocusNode();
   final FocusNode emailFocusNode = FocusNode();
   final FocusNode aboutFocusNode = FocusNode();
-  final FocusNode telegramFocusNode = FocusNode();
+  final FocusNode telegramFocusNode = FocusNode(
+
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -208,6 +216,7 @@ class _FirstPageState extends State<FirstPage> {
           controller: carNumberController,
           focusNode: nicknameFocusNode,
           hintText: 'Car number',
+          maskFormatter: carnumberFormatter,
           keyboardType: TextInputType.text,
           textInputAction: TextInputAction.next,
           onChanged: (value) {
@@ -224,7 +233,7 @@ class _FirstPageState extends State<FirstPage> {
           textInputAction: TextInputAction.next,
           onChanged: (value) {
             context.read<DriverBloc>().updateDriverField(
-                fieldKey: DriverFieldKeys.telegramLink, value: value);
+                fieldKey: DriverFieldKeys.telegramLink, value:'https//:t.me$value');
           },
         ),
         24.ph
