@@ -5,11 +5,19 @@ class NotificationModel {
   int timestamp;
 
   NotificationModel({
+   required this.timestamp,
     required this.title,
     required this.body,
     required this.iconCode,
-    required this.timestamp,
+
   });
+
+  // NotificationModel.initial():this(
+  //     title:'',
+  //     body:'',
+  //     iconCode:'',
+  //     timestamp:0
+  // );
 
   Map<String, dynamic> toJson() {
     return {

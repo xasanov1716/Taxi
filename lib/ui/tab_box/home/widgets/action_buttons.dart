@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:taxi_app/ui/app_routes.dart';
+import 'package:taxi_app/ui/tab_box/home/widgets/type_of_map.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
@@ -18,6 +19,8 @@ class ActionButtons extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
+         const TypeOfMap(),
+          8.pw,
           GlobalActionButtons(
             color: AppColors.dimYellow,
             icon: SvgPicture.asset(AppIcons.search),
@@ -54,6 +57,7 @@ class ActionButtons extends StatelessWidget {
               Navigator.pushNamed(context, RouteNames.specialOffers);
             },
           ),
+
         ],
       ),
     );

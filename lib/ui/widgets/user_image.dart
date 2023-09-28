@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:taxi_app/blocs/driver_bloc/driver_bloc.dart';
 import 'package:taxi_app/cubits/user/user_cubit.dart';
 import 'package:taxi_app/cubits/user/user_state.dart';
 import 'package:taxi_app/data/models/icon/icon_type.dart';
@@ -36,20 +37,24 @@ class UserImage extends StatelessWidget {
             ),
             child: Stack(
               children: [
-                BlocBuilder<UserCubit,UserState>(builder: (context,state){
+                BlocBuilder<DriverBloc, DriverState>(builder: (context, state) {
                   return Center(
-                    child: state.userModel.image.isEmpty
+                    child: state
+                        .driverModel
+                        .imageUrl.isEmpty
                         ? Image.asset(
-                      AppIcons.emptyProfile,
-                      height: 100 * width / figmaWidth,
-                    )
+                            AppIcons.emptyProfile,
+                            height: 100 * width / figmaWidth,
+                          )
                         : ClipRRect(
-                      borderRadius: BorderRadius.circular(100.r),
-                      child: Image.file(
-                        File(state.userModel.image),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
+                            borderRadius: BorderRadius.circular(100.r),
+                            child: Image.network(
+                              state
+                                  .driverModel
+                                  .imageUrl,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
                   );
                 }),
                 Positioned(

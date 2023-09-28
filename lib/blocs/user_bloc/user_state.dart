@@ -1,14 +1,16 @@
 part of 'user_bloc.dart';
 
-@immutable
 class UserState extends Equatable {
   final String statusText;
   final UserModel userModel;
   final FormStatus status;
-  UserState(
-      {required this.statusText,
-      required this.userModel,
-      required this.status});
+
+  const UserState({
+    required this.statusText,
+    required this.userModel,
+    required this.status,
+  });
+  
   UserState copyWith({
     String? statusText,
     UserModel? userModel,
