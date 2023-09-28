@@ -7,26 +7,29 @@ class DropDownButton extends StatefulWidget {
   @override
   State<DropDownButton> createState() => _DropDownButtonState();
 }
-
 class _DropDownButtonState extends State<DropDownButton> {
-  String _value = "discount";
-
+  String _selectedValue = "discount";
+  String get selectedValue => _selectedValue;
   @override
   Widget build(BuildContext context) {
     return DropdownButton(
-      value: _value,
+
+      value: _selectedValue,
       items: iconMapping.keys
           .map((e) => DropdownMenuItem(
-                value: e,
-                child: Text(e),
-              ))
-          .toList(),
+        value: e,
+        child: Text(e),
+      )).toList(),
       icon: const Icon(Icons.keyboard_arrow_down),
       onChanged: (value) {
         setState(() {
-          _value = value!;
+          _selectedValue = value!;
+
         });
       },
     );
   }
+
 }
+
+
