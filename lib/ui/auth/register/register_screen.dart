@@ -144,6 +144,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
             if (context.mounted) {
               showRoleDialog(context);
             }
+          } else if (state.status == FormStatus.failure) {
+            showErrorMessage(message: state.statusMessage, context: context);
           }
         },
       ),
