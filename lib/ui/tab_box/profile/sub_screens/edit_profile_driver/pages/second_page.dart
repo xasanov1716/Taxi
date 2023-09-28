@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:taxi_app/blocs/driver_bloc/driver_bloc.dart';
-import 'package:taxi_app/cubits/user/user_cubit.dart';
 import 'package:taxi_app/data/models/driver/driver_fields.dart';
 import 'package:taxi_app/data/models/icon/icon_type.dart';
-import 'package:taxi_app/data/models/user/user_field_keys.dart';
 import 'package:taxi_app/ui/widgets/global_input.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/fonts/text_styles.dart';
@@ -75,7 +74,11 @@ class _SecondPageState extends State<SecondPage> {
         GlobalTextField(
           focusNode: priceFocusNode,
           hintText: 'Price',
-          keyboardType: TextInputType.text,
+          keyboardType: TextInputType.number,
+          suffixIcon: Padding(
+            padding:  EdgeInsets.only(right: 10.w,top: 10.h),
+            child: Text("so'm",style: Theme.of(context).textTheme.titleLarge,),
+          ),
           textInputAction: TextInputAction.next,
           onChanged: (value) {
             context.read<DriverBloc>().updateDriverField(

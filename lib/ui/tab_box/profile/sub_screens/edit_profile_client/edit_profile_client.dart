@@ -11,6 +11,7 @@ import 'package:taxi_app/ui/tab_box/profile/sub_screens/edit_profile_client/widg
 import 'package:taxi_app/ui/widgets/global_button.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/constants/storage_keys.dart';
+import 'package:taxi_app/utils/ui_utils/show_snackbar.dart';
 
 class EditProfileClientScreen extends StatefulWidget {
   const EditProfileClientScreen({super.key, required this.navigateFromAuth});
@@ -29,8 +30,9 @@ class _EditProfileClientScreenState extends State<EditProfileClientScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const EditAppBar(title: "Edit Client Profile"),
-      body: BlocConsumer<UserBloc, UserState>(
+      appBar: EditAppBar(
+          title: widget.navigateFromAuth ? "Create Profile" : "Edit Profile"),
+      body: BlocConsumer<UserBloc, UsersState>(
         builder: (context, state) {
           return Padding(
             padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 24.h),
@@ -45,13 +47,20 @@ class _EditProfileClientScreenState extends State<EditProfileClientScreen> {
                     context.read<UserBloc>().add(UpdateCurrentUserEvent(
                         fieldKey: UserFieldKeys.createdAt,
                         value: DateTime.now().toString()));
+
                     context.read<UserBloc>().add(UpdateCurrentUserEvent(
                         fieldKey: UserFieldKeys.userId,
                         value:
                             StorageRepository.getString(StorageKeys.userId)));
 
-                    context.read<UserBloc>().add(AddUserEvent());
-                    debugPrint('button');
+                    if (context.read<UserBloc>().canRequest().isEmpty) {
+                      context.read<UserBloc>().add(AddUserEvent());
+                    } else {
+                      showSnackBar(
+                          context: context,
+                          text:
+                              '${context.read<UserBloc>().canRequest()} is required');
+                    }
                   },
                   radius: 100.r,
                   color: AppColors.primary,

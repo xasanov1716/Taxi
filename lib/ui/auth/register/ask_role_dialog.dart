@@ -1,0 +1,57 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:taxi_app/data/local/storage_repository/storage_repository.dart';
+import 'package:taxi_app/ui/app_routes.dart';
+import 'package:taxi_app/utils/constants/storage_keys.dart';
+import 'package:taxi_app/utils/icons/app_icons.dart';
+import 'package:taxi_app/utils/theme/get_theme.dart';
+
+void showRoleDialog(BuildContext context) {
+  showCupertinoDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return Theme(
+        data: getTheme(context) ? ThemeData.dark() : ThemeData.light(),
+        child: CupertinoAlertDialog(
+          content: Text(
+            "Haydovchi yoki Yo'lovchimisiz?",
+            style: Theme.of(context).textTheme.titleLarge,
+          ),
+          title: Image.asset(AppIcons.taxiLogotip),
+          actions: [
+            TextButton(
+              onPressed: () {
+                StorageRepository.putString(StorageKeys.userRole, "driver");
+                Navigator.pushNamedAndRemoveUntil(
+                  context,
+                  RouteNames.editProfileDriver,
+                  arguments: true,
+                      (route) => false,
+                );
+              },
+              child: Text(
+                "Haydovchi",
+                style: Theme.of(context).textTheme.titleLarge,
+              ),
+            ),
+            TextButton(
+              onPressed: () {
+                StorageRepository.putString(StorageKeys.userRole, "client");
+                Navigator.pushNamedAndRemoveUntil(
+                  context,
+                  RouteNames.editProfileClient,
+                  arguments: true,
+                      (route) => false,
+                );
+              },
+              child: Text(
+                "Yo'lovchi",
+                style: Theme.of(context).textTheme.titleLarge,
+              ),
+            ),
+          ],
+        ),
+      );
+    },
+  );
+}
