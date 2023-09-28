@@ -21,7 +21,6 @@ Future<void> initFirebase([VoidCallback? onChanged]) async {
 
     final NotificationModel notificationModel = NotificationModel.fromJson(message.data);
     await GetIt.I<DBHelper>().insertNotification(notificationModel);
-    //LocalDatabase.insertNews(NewsModel.fromJson(jsonDecode(message.data)))
     if (onChanged != null) onChanged.call();
   });
 
