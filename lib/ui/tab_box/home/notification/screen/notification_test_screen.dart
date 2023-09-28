@@ -47,7 +47,7 @@ class NotificationTestScreen extends StatelessWidget {
                     timestamp: DateTime.now().millisecondsSinceEpoch,
                     title: titleController.text,
                     body: bodyController.text,
-                    iconCode:'discount', // Tanlangan qiymatni iconCode ga yozish
+                    iconCode:'discount',
                   )
               );
             },
