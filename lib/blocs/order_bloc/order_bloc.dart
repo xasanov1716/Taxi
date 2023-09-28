@@ -33,8 +33,6 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
     on<AddOrderEvent>(addOrder);
     on<UpdateOrderEvent>(upDateOrder);
     on<DeleteOrderEvent>(deleteOrder);
-    on<GetOrderEvent>(listenOrders);
-    on<GetOrderByIdEvent>(listenOrdersById);
   }
 
   Future<void> addOrder(
@@ -61,13 +59,4 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
         status: FormStatus.success, statusText: "success delete order"));
   }
 
-  Future<void> listenOrders(
-      GetOrderEvent event, Emitter<OrderState> emit) async {
-    emit(state.copyWith(status: FormStatus.loading));
-  }
-
-  Future<void> listenOrdersById(
-      GetOrderByIdEvent event, Emitter<OrderState> emit) async {
-    emit(state.copyWith(status: FormStatus.loading));
-  }
 }

@@ -76,6 +76,7 @@ class AuthRepository{
     }
   }
 
+
   Stream<User?> listenAuthState() => FirebaseAuth.instance.authStateChanges();
 
 }

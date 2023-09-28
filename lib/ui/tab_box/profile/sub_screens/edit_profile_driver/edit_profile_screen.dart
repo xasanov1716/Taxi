@@ -14,6 +14,8 @@ import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/ui_utils/show_snackbar.dart';
 
+import 'widgets/rol_dialog.dart';
+
 class EditProfileScreen extends StatefulWidget {
   const EditProfileScreen({super.key, required this.navigateFromAuth});
 
@@ -83,7 +85,6 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 GlobalButton(
                   title: "Next",
                   onTap: () {
-
                     if (currentPage == 0) {
                       if (context.read<DriverBloc>().canRegister1().isEmpty) {
                         debugPrint(
