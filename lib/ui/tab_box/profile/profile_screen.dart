@@ -1,15 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:taxi_app/blocs/user_bloc/user_bloc.dart';
 import 'package:taxi_app/data/local/storage_repository/storage_repository.dart';
-import 'package:taxi_app/data/models/user/user_model.dart';
-import 'package:taxi_app/data/repositories/user_repository.dart';
-import 'package:taxi_app/blocs/driver_bloc/driver_bloc.dart';
-import 'package:taxi_app/data/models/driver/driver_model.dart';
-import 'package:taxi_app/data/repositories/driver_repos.dart';
 import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/ui/tab_box/profile/widgets/profile_dialog.dart';
 import 'package:taxi_app/ui/widgets/user_image.dart';
@@ -61,82 +54,34 @@ class _ProfileScreenState extends State<ProfileScreen> {
       body: ListView(
         physics: const BouncingScrollPhysics(),
         children: [
-          StorageRepository.getString(StorageKeys.userRole) == "driver"
-              ? StreamBuilder(
-                  stream: context.read<DriverRepo>().getDriverById(),
-                  builder: (context, snapshot) {
-                    DriverModel driver = snapshot.data!;
-
-
-                    context.read<DriverBloc>().updateDriverModel(driver);
-                    return Column(
-                      children: [
-                        30.ph,
-                        UserImage(
-                          onTap: () {
-                            profileDialog(
-                              picker: picker,
-                              context: context,
-                              valueChanged: (v) {
-                                image = v;
-                                setState(() {});
-                              },
-                            );
-                          },
-                        ),
-                        12.ph,
-                        Text(
-                          driver.fullName,
-                          textAlign: TextAlign.center,
-                          style: Theme.of(context).textTheme.headlineMedium,
-                        ),
-                        8.ph,
-                        Text(
-                          "+998${driver.phoneNumber}",
-                          textAlign: TextAlign.center,
-                          style: Theme.of(context).textTheme.labelLarge,
-                        ),
-                        20.ph,
-                      ],
-                    );
-                  },
-                )
-              : StreamBuilder(
-                  stream: context.read<UserRepo>().getUserById(),
-                  builder: (context, snapshot) {
-                    debugPrint('Snapshot data: ${snapshot.data}');
-                    UserModel user = snapshot.data!;
-                    context.read<UserBloc>().updateUserModel(user);
-
-                    return Column(
-                      children: [
-                        UserImage(
-                          onTap: () {
-                            profileDialog(
-                              picker: picker,
-                              context: context,
-                              valueChanged: (v) {
-                                image = v;
-                                setState(() {});
-                              },
-                            );
-                          },
-                        ),
-                        12.ph,
-                        Text(
-                          user.fullName,
-                          textAlign: TextAlign.center,
-                          style: Theme.of(context).textTheme.headlineMedium,
-                        ),
-                        8.ph,
-                        Text(
-                          "+998 ${user.phone}",
-                          textAlign: TextAlign.center,
-                          style: Theme.of(context).textTheme.labelLarge,
-                        ),
-                      ],
-                    );
-                  }),
+          Column(
+            children: [
+              UserImage(
+                onTap: () {
+                  profileDialog(
+                    picker: picker,
+                    context: context,
+                    valueChanged: (v) {
+                      image = v;
+                      setState(() {});
+                    },
+                  );
+                },
+              ),
+              12.ph,
+              Text(
+                'Andrew Ainsley',
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.headlineMedium,
+              ),
+              8.ph,
+              Text(
+                "+1 111 467 378 399",
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.labelLarge,
+              ),
+            ],
+          ),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 24.w),
             child: const Divider(),

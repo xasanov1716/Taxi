@@ -91,6 +91,10 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     emit(state.copyWith(userModel: user));
   }
 
+  String canRequest() {
+    return state.canRequest();
+  }
+
   updateCurrentUserField(
       UpdateCurrentUserEvent updateCurrentUserEvent, Emitter<UserState> emit) {
     UserModel currentUser = state.userModel;
@@ -170,7 +174,8 @@ class UserBloc extends Bloc<UserEvent, UserState> {
         }
     }
 
-    currentUser = currentUser.copyWith(role: StorageRepository.getString(StorageKeys.userRole));
+    currentUser = currentUser.copyWith(
+        role: StorageRepository.getString(StorageKeys.userRole));
     debugPrint("USER BLOC: ${currentUser.toString()}");
 
     emit(state.copyWith(userModel: currentUser));

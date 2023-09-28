@@ -90,6 +90,18 @@ class DriverBloc extends Bloc<DriverEvent, DriverState> {
     emit(state.copyWith(driverModel: driver));
   }
 
+  String canRegister1() {
+    return state.canRegister1();
+  }
+
+  String canRegister2() {
+    return state.canRegister2();
+  }
+
+  clear(){
+    state.clear();
+  }
+
   void updateDriverField({
     required DriverFieldKeys fieldKey,
     required dynamic value,
@@ -244,7 +256,8 @@ class DriverBloc extends Bloc<DriverEvent, DriverState> {
 
     debugPrint("DRIVER: ${currentDriver.toString()}");
 
-    currentDriver = currentDriver.copyWith(role: StorageRepository.getString(StorageKeys.userRole));
+    currentDriver = currentDriver.copyWith(
+        role: StorageRepository.getString(StorageKeys.userRole));
 
     // ignore: invalid_use_of_visible_for_testing_member
     emit(state.copyWith(driverModel: currentDriver));

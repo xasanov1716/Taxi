@@ -1,17 +1,15 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:taxi_app/blocs/driver_bloc/driver_bloc.dart';
+import 'package:taxi_app/blocs/user_bloc/user_bloc.dart';
 import 'package:taxi_app/data/models/icon/icon_type.dart';
+import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
+import 'package:taxi_app/utils/size/screen_size.dart';
 
-import '../../utils/colors/app_colors.dart';
-import '../../utils/size/screen_size.dart';
-
-class UserImage extends StatelessWidget {
-  const UserImage({
+class UserPhoto extends StatelessWidget {
+  const UserPhoto({
     super.key,
     required this.onTap,
   });
@@ -34,24 +32,26 @@ class UserImage extends StatelessWidget {
             ),
             child: Stack(
               children: [
-                BlocBuilder<DriverBloc, DriverState>(builder: (context, state) {
-                  return Center(
-                    child: state.driverModel.imageUrl.isEmpty
-                        ? Image.asset(
-                            AppIcons.emptyProfile,
-                            height: 100 * width / figmaWidth,
-                          )
-                        : ClipRRect(
-                            borderRadius: BorderRadius.circular(100.r),
-                            child: Image.network(
-                              state.driverModel.imageUrl,
+                BlocBuilder<UserBloc, UserState>(
+                  builder: (context, state) {
+                    return Center(
+                      child: state.userModel.image.isEmpty
+                          ? Image.asset(
+                              AppIcons.emptyProfile,
                               height: 100 * width / figmaWidth,
-                              width: 100*width/figmaWidth,
-                              fit: BoxFit.fill,
+                            )
+                          : ClipRRect(
+                              borderRadius: BorderRadius.circular(100.r),
+                              child: Image.network(
+                                state.userModel.image,
+                                height: 100 * width / figmaWidth,
+                                width: 100 * width / figmaWidth,
+                                fit: BoxFit.fill,
+                              ),
                             ),
-                          ),
-                  );
-                }),
+                    );
+                  },
+                ),
                 Positioned(
                   bottom: 0,
                   right: 0,

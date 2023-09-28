@@ -9,11 +9,11 @@ import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:taxi_app/blocs/user_bloc/user_bloc.dart';
 import 'package:taxi_app/data/models/icon/icon_type.dart';
 import 'package:taxi_app/data/models/user/user_field_keys.dart';
+import 'package:taxi_app/ui/tab_box/profile/sub_screens/edit_profile_client/widgets/user_photo.dart';
 import 'package:taxi_app/ui/tab_box/profile/widgets/profile_dialog.dart';
 import 'package:taxi_app/ui/widgets/global_input.dart';
 import 'package:taxi_app/ui/widgets/global_search_input.dart';
 import 'package:taxi_app/ui/widgets/phone_number_text_field.dart';
-import 'package:taxi_app/ui/widgets/user_image.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/fonts/text_styles.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
@@ -78,7 +78,7 @@ class _ClientEditFieldsState extends State<ClientEditFields> {
       padding: EdgeInsets.symmetric(vertical: 24.h),
       physics: const BouncingScrollPhysics(),
       children: [
-        UserImage(
+        UserPhoto(
           onTap: () {
             profileDialog(
                 picker: picker,
@@ -152,10 +152,10 @@ class _ClientEditFieldsState extends State<ClientEditFields> {
           controller: phoneController,
           onChanged: (value) {
             context.read<UserBloc>().add(UpdateCurrentUserEvent(
-                fieldKey: UserFieldKeys.phone, value: value));
+                fieldKey: UserFieldKeys.phone, value: value.replaceAll(" ", "")));
             if (value.length == 12) {
               context.read<UserBloc>().add(UpdateCurrentUserEvent(
-                fieldKey: UserFieldKeys.emailAddress, value: '$value@gmail.com'));
+                fieldKey: UserFieldKeys.emailAddress, value: '${value.replaceAll(" ", "")}@gmail.com'));
               phoneFocusNode.unfocus();
             }
           },
