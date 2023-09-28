@@ -2,7 +2,7 @@ class NotificationModel {
   String title;
   String body;
   String iconCode;
-  int? timestamp;
+  int timestamp;
 
   NotificationModel({
    required this.timestamp,
@@ -12,12 +12,12 @@ class NotificationModel {
 
   });
 
-  NotificationModel.initial():this(
-      title:'',
-      body:'',
-      iconCode:'',
-      timestamp:null
-  );
+  // NotificationModel.initial():this(
+  //     title:'',
+  //     body:'',
+  //     iconCode:'',
+  //     timestamp:0
+  // );
 
   Map<String, dynamic> toJson() {
     return {
