@@ -7,22 +7,23 @@ import 'package:taxi_app/data/local/local_database/database_helper.dart';
 import 'package:taxi_app/data/models/notification_model/notification_model.dart';
 import 'package:taxi_app/services/local_notification_service.dart';
 
-Future<void> initFirebase() async {
+Future<void> initFirebase([VoidCallback? onChanged]) async {
   await Firebase.initializeApp();
   String? fcmToken = await FirebaseMessaging.instance.getToken();
   debugPrint("FCM USER TOKEN: $fcmToken");
   await FirebaseMessaging.instance.subscribeToTopic("news");
 
   // FOREGROUND MESSAGE HANDLING.
-  FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+  FirebaseMessaging.onMessage.listen((RemoteMessage message) async{
     debugPrint(
         "NOTIFICATION FOREGROUND MODE: ${message.data["news_image"]} va ${message.notification!.title} in foreground");
     LocalNotificationService.instance.showFlutterNotification(message);
 
     final NotificationModel notificationModel = NotificationModel.fromJson(message.data);
-    GetIt.I<DBHelper>().insertNotification(notificationModel);
+    await GetIt.I<DBHelper>().insertNotification(notificationModel);
     //LocalDatabase.insertNews(NewsModel.fromJson(jsonDecode(message.data)))
-    // context.read<NewsProvider>().readNews();
+    //  if(onChanged!=null) onChanged.call();
+
   });
 
   // BACkGROUND MESSAGE HANDLING
@@ -34,6 +35,7 @@ Future<void> initFirebase() async {
     debugPrint(
         "NOTIFICATION FROM TERMINATED MODE: ${message.data["news_image"]} va ${message.notification!.title} in terminated");
     LocalNotificationService.instance.showFlutterNotification(message);
+
   }
 
   RemoteMessage? remoteMessage = await FirebaseMessaging.instance.getInitialMessage();

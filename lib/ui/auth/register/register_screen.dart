@@ -139,7 +139,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
         listener: (context, state) async {
           if (state.status == FormStatus.authenticated) {
             await StorageRepository.putString(
-                StorageKeys.userId, FirebaseAuth.instance.currentUser!.uid);
+              StorageKeys.userId,
+              FirebaseAuth.instance.currentUser?.uid ?? "",
+            );
             if (context.mounted) {
               showRoleDialog();
             }
@@ -157,19 +159,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
           data: getTheme(context) ? ThemeData.dark() : ThemeData.light(),
           child: CupertinoAlertDialog(
             content: Text(
-              "Siz kimsiz ?haydovchi yoki yo'lovchi",
+              "Haydovchi yoki Yo'lovchimisiz?",
               style: Theme.of(context).textTheme.titleLarge,
             ),
             title: Image.asset(AppIcons.taxiLogotip),
             actions: [
               TextButton(
                 onPressed: () {
-                  StorageRepository.putInt(StorageKeys.userRole, 1);
+                  StorageRepository.putString(StorageKeys.userRole, "driver");
                   Navigator.pushNamedAndRemoveUntil(
-                      context,
-                      RouteNames.editProfileDriver,
-                      arguments: true,
-                      (route) => false);
+                    context,
+                    RouteNames.editProfileDriver,
+                    arguments: true,
+                    (route) => false,
+                  );
                 },
                 child: Text(
                   "Haydovchi",
@@ -178,13 +181,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
               ),
               TextButton(
                 onPressed: () {
-                  StorageRepository.putInt(StorageKeys.userRole, 0);
-
+                  StorageRepository.putString(StorageKeys.userRole, "client");
                   Navigator.pushNamedAndRemoveUntil(
-                      context,
-                      RouteNames.editProfileClient,
-                      arguments: true,
-                      (route) => false);
+                    context,
+                    RouteNames.editProfileClient,
+                    arguments: true,
+                    (route) => false,
+                  );
                 },
                 child: Text(
                   "Yo'lovchi",

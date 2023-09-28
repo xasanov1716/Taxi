@@ -61,11 +61,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
       body: ListView(
         physics: const BouncingScrollPhysics(),
         children: [
-          StorageRepository.getInt(StorageKeys.userRole) == 1
+          StorageRepository.getString(StorageKeys.userRole) == "driver"
               ? StreamBuilder(
                   stream: context.read<DriverRepo>().getDriverById(),
                   builder: (context, snapshot) {
                     DriverModel driver = snapshot.data!;
+
 
                     context.read<DriverBloc>().updateDriverModel(driver);
                     return Column(
@@ -144,7 +145,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             text: "Edit Profile",
             icon: AppIcons.profile,
             onTap: () {
-              StorageRepository.getInt(StorageKeys.userRole) == 1
+              StorageRepository.getString(StorageKeys.userRole) == "driver"
                   ? Navigator.pushNamed(
                       context,
                       RouteNames.editProfileDriver,

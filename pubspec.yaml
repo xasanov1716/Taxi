@@ -91,6 +91,7 @@ flutter:
     - assets/places/
     - assets/svg/additional_icons/
     - assets/images/fake_images/
+    - assets/images/map_types/
 
 
 
