@@ -224,7 +224,7 @@ class _FirstPageState extends State<FirstPage> {
           textInputAction: TextInputAction.next,
           onChanged: (value) {
             context.read<DriverBloc>().updateDriverField(
-                fieldKey: DriverFieldKeys.telegramLink, value: value);
+                fieldKey: DriverFieldKeys.telegramLink, value: "https//:t.me/$value");
           },
         ),
         24.ph
