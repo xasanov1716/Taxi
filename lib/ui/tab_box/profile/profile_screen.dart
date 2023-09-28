@@ -28,6 +28,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
   String image = "";
   ImagePicker picker = ImagePicker();
 
+
+  init()async{
+    if (context.mounted) {
+      await context.read<DriverBloc>().getDriverByDocId();
+      if (context.mounted) {
+        await context.read<UserBloc>().getUserByDocId();
+      }
+  }}
+
+  @override
+  void initState() {
+    init();
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
