@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:taxi_app/data/local/storage_repository/storage_repository.dart';
+import 'package:taxi_app/blocs/driver_bloc/driver_bloc.dart';
 import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/ui/tab_box/profile/widgets/profile_dialog.dart';
 import 'package:taxi_app/ui/widgets/user_image.dart';
@@ -54,34 +55,75 @@ class _ProfileScreenState extends State<ProfileScreen> {
       body: ListView(
         physics: const BouncingScrollPhysics(),
         children: [
-          Column(
-            children: [
-              UserImage(
-                onTap: () {
-                  profileDialog(
-                    picker: picker,
-                    context: context,
-                    valueChanged: (v) {
-                      image = v;
-                      setState(() {});
-                    },
-                  );
-                },
-              ),
-              12.ph,
-              Text(
-                'Andrew Ainsley',
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.headlineMedium,
-              ),
-              8.ph,
-              Text(
-                "+1 111 467 378 399",
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.labelLarge,
-              ),
-            ],
-          ),
+          Builder(builder: (context)  {
+           return  StorageRepository.getString(StorageKeys.userRole) == "driver"
+                ? BlocConsumer<DriverBloc, DriverState>(
+              builder: (context, state) {
+                StorageRepository.putString(StorageKeys.userRole, "driver");
+
+                return Column(
+                  children: [
+                    UserImage(
+                      onTap: () {
+                        profileDialog(
+                          picker: picker,
+                          context: context,
+                          valueChanged: (v) {},
+                        );
+                      },
+                    ),
+                    12.ph,
+                    Text(
+                      state.driverModel.fullName,
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context).textTheme.headlineMedium,
+                    ),
+                    8.ph,
+                    Text(
+                      "+998 ${state.driverModel.phoneNumber}",
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context).textTheme.labelLarge,
+                    ),
+                  ],
+                );
+              },
+              listener: (context, state) {
+                setState(() {});
+              },
+            )
+                : BlocConsumer<UserBloc, UsersState>(
+              builder: (context, state) {
+                return Column(
+                  children: [
+                    UserImage(
+                      onTap: () {
+                        profileDialog(
+                          picker: picker,
+                          context: context,
+                          valueChanged: (v) {},
+                        );
+                      },
+                    ),
+                    12.ph,
+                    Text(
+                      state.userModel.fullName,
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context).textTheme.headlineMedium,
+                    ),
+                    8.ph,
+                    Text(
+                      "+998 ${state.userModel.phone}",
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context).textTheme.labelLarge,
+                    ),
+                  ],
+                );
+              },
+              listener: (context, state) {
+                setState(() {});
+              },
+            );
+          },),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 24.w),
             child: const Divider(),

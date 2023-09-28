@@ -58,7 +58,7 @@ class _ClientEditFieldsState extends State<ClientEditFields> {
   final FocusNode aboutFocusNode = FocusNode();
   final FocusNode telegramFocusNode = FocusNode();
   initStateToText() {
-    UserState state = context.read<UserBloc>().state;
+    UsersState state = context.read<UserBloc>().state;
 
     dateController.text = state.userModel.birthDate;
     fullNameController.text = state.userModel.fullName;
