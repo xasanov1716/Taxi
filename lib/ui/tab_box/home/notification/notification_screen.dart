@@ -75,7 +75,7 @@ class NotificationScreen extends StatelessWidget {
                                       name:
                                           iconMapping[notification.iconCode] ?? AppIcons.infoCircle,
                                       iconType: IconType.bold));
-                            },
+                             },
                             separatorBuilder: (BuildContext context, int index) => 24.ph,
                           )
                         ],

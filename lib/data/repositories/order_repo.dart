@@ -4,6 +4,7 @@ import 'package:taxi_app/data/models/universal_data.dart';
 import 'package:taxi_app/utils/constants/constants.dart';
 
 class OrderRepo {
+
   Future<UniversalData> addOrder({required OrderModel orderModel}) async {
     try {
       DocumentReference newOrder = await FirebaseFirestore.instance
