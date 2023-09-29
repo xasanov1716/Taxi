@@ -55,4 +55,28 @@ class OrderRepo {
       return UniversalData(error: error.toString());
     }
   }
+  Stream<List<OrderModel>> getDrivers() async* {
+    yield* FirebaseFirestore.instance
+        .collection(FirebaseCollections.orders)
+        .snapshots()
+        .map(
+          (querySnapshot) => querySnapshot.docs
+          .map((doc) => OrderModel.fromJson(doc.data()))
+          .toList(),
+    );
+  }
+  Stream<OrderModel?> getDriverById({required String orderId}) {
+    return FirebaseFirestore.instance
+        .collection(FirebaseCollections.orders)
+        .doc(orderId)
+        .snapshots()
+        .map((documentSnapshot) {
+      if (documentSnapshot.exists) {
+        return OrderModel.fromJson(documentSnapshot.data() ?? {});
+      } else {
+        return null;
+      }
+    });
+  }
+
 }

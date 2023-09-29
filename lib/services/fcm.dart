@@ -20,7 +20,6 @@ Future<void> initFirebase([NotificationBloc? notificationBloc]) async {
     debugPrint(
         "NOTIFICATION FOREGROUND MODE: ${message.data["news_image"]} va ${message.notification!.title} in foreground");
     LocalNotificationService.instance.showFlutterNotification(message);
-
     await notificationMethod(message, notificationBloc);
   });
   Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {

@@ -235,10 +235,10 @@ class AppRoutes {
         return MaterialPageRoute(
           builder: (context) => const TopUpPaymentScreen(),
         );
-      case RouteNames.addressAddDetailScreen:
-        return MaterialPageRoute(
-          builder: (context) => const AddressAddDetailScreen(),
-        );
+      // case RouteNames.addressAddDetailScreen:
+      //   return MaterialPageRoute(
+      //     builder: (context) => const AddressAddDetailScreen(),
+      //   );
       case RouteNames.transactionsHistory:
         return MaterialPageRoute(
           builder: (context) => const TransactionHistoryScreen(),

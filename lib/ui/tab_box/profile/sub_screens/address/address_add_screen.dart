@@ -33,21 +33,30 @@ class _AddressAddDetailScreenState extends State<AddressAddDetailScreen> {
   bool onCameraMoveStarted = false;
   String scrollAddress = '';
   TextEditingController apartmentController = TextEditingController();
-  TextEditingController regionController = TextEditingController();
+  TextEditingController orientationController = TextEditingController();
   final Completer<GoogleMapController> _controller =
       Completer<GoogleMapController>();
 
   @override
   void initState() {
     widget.addressModel != null
-        ? regionController.text = widget.addressModel!.orientation
+        ? orientationController.text = widget.addressModel!.orientation
         : null;
-    initialCameraPosition = const CameraPosition(
+    widget.addressModel != null
+        ? apartmentController.text = widget.addressModel!.apartment
+        : null;
+    initialCameraPosition = widget.addressModel != null ? CameraPosition(
+      target: LatLng(widget.addressModel!.latitude, widget.addressModel!.longitude),
+      zoom: 15,
+    ) : const CameraPosition(
       target: LatLng(41.26465, 69.21627),
       zoom: 15,
     );
 
-    currentCameraPosition = const CameraPosition(
+    currentCameraPosition = widget.addressModel != null ? CameraPosition(
+      target: LatLng(widget.addressModel!.latitude, widget.addressModel!.longitude),
+      zoom: 15,
+    ) : const CameraPosition(
       target: LatLng(41.26465, 69.21627),
       zoom: 13,
     );
@@ -58,12 +67,16 @@ class _AddressAddDetailScreenState extends State<AddressAddDetailScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: GlobalAppBar(
-        title: 'Add New Address',
+        title:  widget.addressModel != null ? 'Update Address' : 'Add New Address',
         onTap: () {
           Navigator.pop(context);
         },
         action: [
-          getIcon(
+          widget.addressModel != null
+              ? getIcon(AppIcons.delete, context: context, onTap: (){
+                BlocProvider.of<AddressBloc>(context).add(DeleteAddressEvent(addressId: widget.addressModel!.addressId));
+                Navigator.pop(context);
+          }) : getIcon(
             AppIcons.moreCircle,
             context: context,
             onTap: () {},
@@ -137,24 +150,43 @@ class _AddressAddDetailScreenState extends State<AddressAddDetailScreen> {
                   child: SizedBox(
                     height: 70.h,
                     child: GlobalButton(
-                      title: 'Add Address',
+                      title: widget.addressModel != null ? 'Update Address' : 'Add Address',
                       onTap: () {
-                        addAddressDialog(context, apartmentController,
-                            regionController, currentCameraPosition, () {
-                              AddressModel addressModel = AddressModel(
-                                userId: StorageRepository.getString(StorageKeys.userId),
-                                userType: StorageRepository.getString(StorageKeys.userRole),
-                                addressId: "1",
-                                addressText: scrollAddress,
-                                apartment: apartmentController.text,
-                                latitude: currentCameraPosition.target.latitude,
-                                longitude: currentCameraPosition.target.longitude,
-                                orientation: scrollAddress,
-                              );
-                              BlocProvider.of<AddressBloc>(context).add(AddAddressEvent(addressModel: addressModel));
-                              Navigator.of(context).pop();
-                              setState(() {});
-                            });
+                        if(widget.addressModel == null){
+                          addAddressDialog(context, apartmentController,
+                              orientationController, currentCameraPosition, () {
+                                AddressModel addressModel = AddressModel(
+                                  userId: StorageRepository.getString(StorageKeys.userId),
+                                  userType: StorageRepository.getString(StorageKeys.userRole),
+                                  addressId: "",
+                                  addressText: scrollAddress,
+                                  apartment: apartmentController.text,
+                                  latitude: currentCameraPosition.target.latitude,
+                                  longitude: currentCameraPosition.target.longitude,
+                                  orientation: orientationController.text,
+                                );
+                                BlocProvider.of<AddressBloc>(context).add(AddAddressEvent(addressModel: addressModel));
+                                Navigator.of(context).pop();
+                                setState(() {});
+                              });
+                        }else{
+                          addAddressDialog(context, apartmentController,
+                              orientationController, currentCameraPosition, () {
+                                AddressModel addressModel = AddressModel(
+                                  userId: StorageRepository.getString(StorageKeys.userId),
+                                  userType: StorageRepository.getString(StorageKeys.userRole),
+                                  addressId: widget.addressModel!.addressId,
+                                  addressText: scrollAddress,
+                                  apartment: apartmentController.text,
+                                  latitude: currentCameraPosition.target.latitude,
+                                  longitude: currentCameraPosition.target.longitude,
+                                  orientation: orientationController.text,
+                                );
+                                BlocProvider.of<AddressBloc>(context).add(UpdateAddressEvent(addressModel: addressModel));
+                                Navigator.of(context).pop();
+                                setState(() {});
+                              });
+                        }
                       },
                       radius: 100.r,
                       color: AppColors.primary,

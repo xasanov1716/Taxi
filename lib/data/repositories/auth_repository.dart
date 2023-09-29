@@ -3,20 +3,21 @@ import 'package:taxi_app/data/models/universal_data.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:taxi_app/utils/constants/storage_keys.dart';
-class AuthRepository{
+
+class AuthRepository {
   Future<UniversalData> signUpUser({
     required String email,
     required String password,
   }) async {
     try {
       UserCredential userCredential =
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
       return UniversalData(data: userCredential);
     } on FirebaseAuthException catch (e) {
-      return UniversalData(error: e.code);
+      return UniversalData(error: e.message ?? "");
     } catch (error) {
       return UniversalData(error: error.toString());
     }
@@ -28,13 +29,13 @@ class AuthRepository{
   }) async {
     try {
       UserCredential userCredential =
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
+          await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: email,
         password: password,
       );
       return UniversalData(data: userCredential);
     } on FirebaseAuthException catch (e) {
-      return UniversalData(error: e.code);
+      return UniversalData(error: e.message ?? "");
     } catch (error) {
       return UniversalData(error: error.toString());
     }
@@ -59,7 +60,7 @@ class AuthRepository{
 
     // Obtain the auth details from the request
     final GoogleSignInAuthentication? googleAuth =
-    await googleUser?.authentication;
+        await googleUser?.authentication;
 
     // Create a new credential
     final credential = GoogleAuthProvider.credential(
@@ -67,7 +68,8 @@ class AuthRepository{
       idToken: googleAuth?.idToken,
     );
     try {
-      UserCredential userCredential = await FirebaseAuth.instance.signInWithCredential(credential);
+      UserCredential userCredential =
+          await FirebaseAuth.instance.signInWithCredential(credential);
       return UniversalData(data: userCredential);
     } on FirebaseAuthException catch (e) {
       return UniversalData(error: e.code);
@@ -77,5 +79,4 @@ class AuthRepository{
   }
 
   Stream<User?> listenAuthState() => FirebaseAuth.instance.authStateChanges();
-
 }

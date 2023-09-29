@@ -7,8 +7,7 @@ class GetUserEvent extends UserEvent {}
 class AddUserEvent extends UserEvent {}
 
 class UpdateUserEvent extends UserEvent {
-  final UserModel userModel;
-  UpdateUserEvent({required this.userModel});
+
 }
 
 class UpdateCurrentUserEvent extends UserEvent {

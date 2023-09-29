@@ -7,7 +7,7 @@ class OrderState extends Equatable {
   final List<OrderModel> orders;
   final List<OrderModel> orderById;
   final FormStatus status;
-  OrderState(
+ const OrderState(
       {required this.orders,
       required this.statusText,
       required this.orderModel,
