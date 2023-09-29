@@ -5,11 +5,10 @@ class NotificationModel {
   int timestamp;
 
   NotificationModel({
-   required this.timestamp,
+    required this.timestamp,
     required this.title,
     required this.body,
     required this.iconCode,
-
   });
 
   // NotificationModel.initial():this(
@@ -24,6 +23,7 @@ class NotificationModel {
       'title': title,
       'body': body,
       'iconCode': iconCode,
+      'timestamp': timestamp,
     };
   }
 
@@ -32,7 +32,7 @@ class NotificationModel {
       title: map['title'] as String? ?? '',
       body: map['body'] as String? ?? "",
       iconCode: map['iconCode'] as String,
-      timestamp: DateTime.now().millisecondsSinceEpoch,
+      timestamp: map['timestamp'] ?? DateTime.now().millisecondsSinceEpoch,
     );
   }
 
