@@ -28,7 +28,7 @@ class RequestClientRepo{
         'userId': newRequestClient.id,
       });
 
-      return UniversalData(data: 'request added for client');
+      return UniversalData(data: 'Request added for client');
     } on FirebaseException catch (e) {
       return UniversalData(error: e.code);
     } catch (error) {
@@ -43,7 +43,7 @@ class RequestClientRepo{
           .doc(requestModelClient.userId)
           .update(requestModelClient.toJson());
 
-      return UniversalData(data: "request updated for client");
+      return UniversalData(data: "Request updated for client");
     } on FirebaseException catch (e) {
       return UniversalData(error: e.code);
     } catch (error) {
@@ -58,7 +58,7 @@ class RequestClientRepo{
           .doc(userId)
           .delete();
 
-      return UniversalData(data: 'request deleted from client');
+      return UniversalData(data: 'Request deleted from client');
     } on FirebaseException catch (e) {
       return UniversalData(error: e.code);
     } catch (error) {

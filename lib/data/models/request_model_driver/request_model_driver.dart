@@ -1,24 +1,26 @@
 class RequestModelDriver {
-  RequestModelDriver(
-      {required this.userId,
-      required this.fromId,
-      required this.toId,
-      required this.description,
-      required this.requestPrice,
-      required this.emptyPlaces,
-      required this.tripTime,
-      required this.createdAt});
+  RequestModelDriver({
+    required this.userId,
+    required this.fromId,
+    required this.toId,
+    required this.description,
+    required this.requestPrice,
+    required this.emptyPlaces,
+    required this.tripTime,
+    required this.createdAt,
+  });
 
   RequestModelDriver.initial()
       : this(
-            userId: '',
-            fromId: 0,
-            toId: 0,
-            description: '',
-            requestPrice: 0,
-            emptyPlaces: 0,
-            tripTime: '',
-            createdAt: 0);
+          userId: '',
+          fromId: 0,
+          toId: 0,
+          description: '',
+          requestPrice: 0,
+          emptyPlaces: 0,
+          tripTime: '',
+          createdAt: 0,
+        );
 
   RequestModelDriver copyWith({
     String? userId,

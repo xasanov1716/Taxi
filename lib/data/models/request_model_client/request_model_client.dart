@@ -1,24 +1,26 @@
 class RequestModelClient {
-  RequestModelClient(
-      {required this.userId,
-        required this.fromId,
-        required this.toId,
-        required this.description,
-        required this.requestPrice,
-        required this.passengerCount,
-        required this.tripTime,
-        required this.createdAt});
+  RequestModelClient({
+    required this.userId,
+    required this.fromId,
+    required this.toId,
+    required this.description,
+    required this.requestPrice,
+    required this.passengerCount,
+    required this.tripTime,
+    required this.createdAt,
+  });
 
   RequestModelClient.initial()
       : this(
-      userId: '',
-      fromId: 0,
-      toId: 0,
-      description: '',
-      requestPrice: 0,
-      passengerCount: 0,
-      tripTime: '',
-      createdAt: 0);
+          userId: '',
+          fromId: 0,
+          toId: 0,
+          description: '',
+          requestPrice: 0,
+          passengerCount: 0,
+          tripTime: '',
+          createdAt: 0,
+        );
 
   RequestModelClient copyWith({
     String? userId,
@@ -54,15 +56,15 @@ class RequestModelClient {
       );
 
   Map<String, dynamic> toJson() => {
-    'user_id': userId,
-    'from_id': fromId,
-    'to_id': toId,
-    'description': description,
-    'request_price': requestPrice,
-    'passenger_count': passengerCount,
-    'trip_time': tripTime,
-    'created_at': createdAt,
-  };
+        'user_id': userId,
+        'from_id': fromId,
+        'to_id': toId,
+        'description': description,
+        'request_price': requestPrice,
+        'passenger_count': passengerCount,
+        'trip_time': tripTime,
+        'created_at': createdAt,
+      };
 
   @override
   String toString() {
