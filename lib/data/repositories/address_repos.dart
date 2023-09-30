@@ -13,7 +13,6 @@ class AddressRepo {
       DocumentReference newAddress = await base
           .collection(FirebaseCollections.addresses)
           .add(addressModel.toJson());
-
       await base
           .collection(FirebaseCollections.addresses)
           .doc(newAddress.id)

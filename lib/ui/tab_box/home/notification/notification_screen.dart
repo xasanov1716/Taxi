@@ -80,9 +80,12 @@ class NotificationScreen extends StatelessWidget {
                             itemBuilder: (context, innerIndex) {
                               final notification = notifications[innerIndex];
                               return GlobalNotificationContainer(
+
+
                                 notificationModel: notification,
                               );
                             },
+
                             separatorBuilder: (BuildContext context, int index) => 24.ph,
                           )
                         ],
