@@ -21,17 +21,13 @@ Future<void> initFirebase([NotificationBloc? notificationBloc]) async {
         "NOTIFICATION FOREGROUND MODE: ${message.data["news_image"]} va ${message.notification!.title} in foreground");
     LocalNotificationService.instance.showFlutterNotification(message);
 
-    final NotificationModel notificationModel = NotificationModel.fromJson(message.data);
-    await GetIt.I<DBHelper>().insertNotification(notificationModel);
-    if (notificationBloc != null) notificationBloc.add(UpdateNotifications());
+    await notificationMethod(message, notificationBloc);
   });
   Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
     await Firebase.initializeApp();
 
     //LocalDatabase.insertNews(NewsModel.fromJson(jsonDecode(message.data)))
-    final NotificationModel notificationModel = NotificationModel.fromJson(message.data);
-    await GetIt.I<DBHelper>().insertNotification(notificationModel);
-    if (notificationBloc != null) notificationBloc.add(UpdateNotifications());
+    await notificationMethod(message, notificationBloc);
     debugPrint(
         "NOTIFICATION BACKGROUND MODE: ${message.data["news_image"]} va ${message.notification!.title} in background");
   }
@@ -45,9 +41,7 @@ Future<void> initFirebase([NotificationBloc? notificationBloc]) async {
     debugPrint(
         "NOTIFICATION FROM TERMINATED MODE: ${message.data["news_image"]} va ${message.notification!.title} in terminated");
     LocalNotificationService.instance.showFlutterNotification(message);
-    final NotificationModel notificationModel = NotificationModel.fromJson(message.data);
-    await GetIt.I<DBHelper>().insertNotification(notificationModel);
-    if (notificationBloc != null) notificationBloc.add(UpdateNotifications());
+    await notificationMethod(message, notificationBloc);
   }
 
   RemoteMessage? remoteMessage = await FirebaseMessaging.instance.getInitialMessage();
@@ -58,4 +52,10 @@ Future<void> initFirebase([NotificationBloc? notificationBloc]) async {
   }
 
   FirebaseMessaging.onMessageOpenedApp.listen(handleMessage);
+}
+
+Future<void> notificationMethod(RemoteMessage message, NotificationBloc? notificationBloc) async {
+  final NotificationModel notificationModel = NotificationModel.fromJson(message.data);
+  await GetIt.I<DBHelper>().insertNotification(notificationModel);
+  if (notificationBloc != null) notificationBloc.add(UpdateNotifications());
 }
