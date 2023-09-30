@@ -3,11 +3,13 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get_it/get_it.dart';
+import 'package:taxi_app/blocs/notification_bloc/notification_bloc.dart';
 import 'package:taxi_app/data/local/local_database/database_helper.dart';
 import 'package:taxi_app/data/models/notification_model/notification_model.dart';
+import 'package:taxi_app/main.dart';
 import 'package:taxi_app/services/local_notification_service.dart';
 
-Future<void> initFirebase([VoidCallback? onChanged]) async {
+Future<void> initFirebase([NotificationBloc? notificationBloc]) async {
   await Firebase.initializeApp();
   String? fcmToken = await FirebaseMessaging.instance.getToken();
   debugPrint("FCM USER TOKEN: $fcmToken");
@@ -22,7 +24,7 @@ Future<void> initFirebase([VoidCallback? onChanged]) async {
     final NotificationModel notificationModel = NotificationModel.fromJson(message.data);
     await GetIt.I<DBHelper>().insertNotification(notificationModel);
     //LocalDatabase.insertNews(NewsModel.fromJson(jsonDecode(message.data)))
-    if (onChanged != null) onChanged.call();
+    if (notificationBloc != null) notificationBloc.add(UpdateNotifications());
   });
 
   // BACkGROUND MESSAGE HANDLING

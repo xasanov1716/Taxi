@@ -49,7 +49,6 @@ import 'cubits/user/user_cubit.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await initFirebase();
   await StorageRepository.getInstance();
   await EasyLocalization.ensureInitialized();
   ServiceLocator.setup();
@@ -58,8 +57,11 @@ Future<void> main() async {
     DeviceOrientation.portraitDown,
   ]);
 
+  await initFirebase(notificationsBloc..add(UpdateNotifications()));
   runApp(App(apiService: ApiService()));
 }
+
+final notificationsBloc = NotificationBloc();
 
 class App extends StatelessWidget {
   const App({super.key, required this.apiService});
@@ -105,7 +107,7 @@ class App extends StatelessWidget {
           BlocProvider(create: (context) => HomeBloc()),
           BlocProvider(create: (context) => SocialAuthBloc(AuthRepository())),
           BlocProvider(create: (context) => UserCubit()),
-          BlocProvider(create: (context) => NotificationBloc()),
+          BlocProvider(create: (context) => notificationsBloc),
           BlocProvider(create: (context) => NotificationSendCubit()),
           BlocProvider(create: (context) => CreateOrderBloc()),
           BlocProvider(create: (context) => PaymentBloc()),

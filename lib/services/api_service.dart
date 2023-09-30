@@ -102,14 +102,11 @@ class ApiService {
               "body": "This is a Firebase Cloud Messaging Topic Test Message!",
               "title": "Test Notification"
             },
-            "data": {"title": "test Title", "body": "test Body", "iconCode": "wallet"}
+            "data": notification.toJson()
           });
-      print(response.statusCode);
       if (response.statusCode == 200) {
-        print('ok');
         return Result.success(null);
       }
-      print([response.data]);
       return Result.fail(response.data);
     } catch (e) {
       return Result.fail(e.toString());

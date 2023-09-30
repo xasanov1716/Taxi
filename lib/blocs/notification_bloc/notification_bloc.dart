@@ -18,6 +18,7 @@ class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
 
   _updateNotifications(event, emit) async {
     emit(NotificationUploadLoading());
+
     try {
       final response = await GetIt.I<DBHelper>().getAllNotifications();
       emit(NotificationUploadSuccess(response));
