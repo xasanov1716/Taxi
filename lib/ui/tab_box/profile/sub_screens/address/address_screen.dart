@@ -44,7 +44,7 @@ class _AddressScreenState extends State<AddressScreen> {
                             itemBuilder: (context, index) {
                               AddressModel addressModel = snapshot.data![index];
                               return AddressItem(image: AppIcons.locationInSearchDb, title: addressModel.addressText, subtitle: addressModel.apartment, onTap: (){
-                                Navigator.pushNamed(context,RouteNames.addAddressScreen);
+                                Navigator.pushNamed(context,RouteNames.addAddressScreen,arguments: addressModel);
                               });
                             }, separatorBuilder: (BuildContext context, int index) {
                             return Divider(
@@ -75,7 +75,7 @@ class _AddressScreenState extends State<AddressScreen> {
                       radius: 100.r,
                       color: AppColors.primary,
                       onTap: () {
-                        Navigator.pushNamed(context, RouteNames.addressAddDetailScreen);
+                        Navigator.pushNamed(context, RouteNames.addAddressScreen);
                       },
                     ),
                     24.ph,
