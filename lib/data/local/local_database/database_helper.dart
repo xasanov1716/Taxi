@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 import 'package:taxi_app/data/models/notification_model/notification_model.dart';
@@ -40,7 +41,9 @@ class DBHelper {
 
   Future<int> insertNotification(NotificationModel notification) async {
     final db = await database;
-    return await db.insert('notifications', notification.toJson());
+    int id = await db.insert('notifications', notification.toJson());
+    debugPrint("ADDED NOTIFICATION ID:$id");
+    return id;
   }
 
   Future<List<NotificationModel>> getAllNotifications() async {

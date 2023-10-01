@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
@@ -6,10 +7,10 @@ import 'package:taxi_app/data/models/driver/driver_fields.dart';
 import 'package:taxi_app/data/models/driver/driver_model.dart';
 import 'package:taxi_app/data/models/status/form_status.dart';
 import 'package:taxi_app/data/repositories/driver_repos.dart';
+import 'package:taxi_app/utils/constants/constants.dart';
 import 'package:taxi_app/utils/constants/storage_keys.dart';
 
 part 'driver_event.dart';
-
 part 'driver_state.dart';
 
 class DriverBloc extends Bloc<DriverEvent, DriverState> {
@@ -57,6 +58,7 @@ class DriverBloc extends Bloc<DriverEvent, DriverState> {
     on<AddDriverEvent>(addDriver);
     on<UpdateDriverEvent>(updateDriver);
     on<DeleteDriverEvent>(deleteDriver);
+    getDriverByDocId();
   }
 
   Future<void> addDriver(
@@ -86,8 +88,71 @@ class DriverBloc extends Bloc<DriverEvent, DriverState> {
     emit(state.copyWith(status: FormStatus.success));
   }
 
-  updateDriverModel(DriverModel driver) {
-    emit(state.copyWith(driverModel: driver));
+  Future<void> getDriverByDocId() async {
+    final userId = StorageRepository.getString(StorageKeys.userId);
+    final docRef = FirebaseFirestore.instance
+        .collection(FirebaseCollections.drivers)
+        .doc(userId);
+
+    final data = await docRef.get();
+
+    if (data.exists) {
+      final driverModel =
+      DriverModel.fromJson(data.data() as Map<String, dynamic>);
+      // ignore: invalid_use_of_visible_for_testing_member
+      emit(state.copyWith(driverModel: driverModel));
+      StorageRepository.putString(StorageKeys.userRole, "driver");
+    } else {
+
+      debugPrint("Documnet does not exist ---------------------------------------------------------------------");
+
+    }
+  }
+
+  String canRegister1() {
+    return state.canRegister1();
+  }
+
+  String canRegister2() {
+    return state.canRegister2();
+  }
+
+  clear(){
+    state.clear();
+  }
+
+  clearDriverState(){
+    // ignore: invalid_use_of_visible_for_testing_member
+    emit(state.copyWith(driverModel: DriverModel(
+      role: '',
+      driverId: '',
+      fcmToken: '',
+      fullName: '',
+      createdAt: '',
+      birthDate: '',
+      phoneNumber: '',
+      telegramLink: '',
+      email: '',
+      gender: '',
+      imageUrl: '',
+      currentLocation: '',
+      fromToText: '',
+      from: 0,
+      to: 0,
+      emptyPlaces: 0,
+      aboutDriver: '',
+      carModel: '',
+      passengerType: '',
+      price: 0,
+      hasDelivery: false,
+      hasRoofTop: false,
+      isOnline: false,
+      lastOnlineTime: '',
+      longitude: 0,
+      latitude: 0,
+      hasFilled: false,
+      carNumber: '',
+    )));
   }
 
   void updateDriverField({
@@ -243,9 +308,8 @@ class DriverBloc extends Bloc<DriverEvent, DriverState> {
     }
 
     debugPrint("DRIVER: ${currentDriver.toString()}");
-
-    currentDriver = currentDriver.copyWith(role: StorageRepository.getString(StorageKeys.userRole));
-
+    currentDriver = currentDriver.copyWith(
+        role: StorageRepository.getString(StorageKeys.userRole));
     // ignore: invalid_use_of_visible_for_testing_member
     emit(state.copyWith(driverModel: currentDriver));
   }

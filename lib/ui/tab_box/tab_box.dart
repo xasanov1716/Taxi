@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:taxi_app/blocs/notification_bloc/notification_bloc.dart';
 import 'package:taxi_app/cubits/auth_cubit/auth_cubit.dart';
 import 'package:taxi_app/cubits/tab/tab_cubit.dart';
 import 'package:taxi_app/data/models/icon/icon_type.dart';

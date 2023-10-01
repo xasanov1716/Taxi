@@ -54,23 +54,7 @@ class _SendNotificationScreenState extends State<SendNotificationScreen> with Fo
       body: BlocListener<NotificationSendCubit, NotificationSendState>(
         listener: (context, state) {
           if (state is NotificationSendLoading) {
-            showDialog(
-              context: context,
-              barrierDismissible: false,
-              builder: (context) {
-                return const Dialog(
-                  child: SizedBox(
-                    height: 300,
-                    width: 300,
-                    child: Center(
-                      child: CircularProgressIndicator(
-                        color: AppColors.primary,
-                      ),
-                    ),
-                  ),
-                );
-              },
-            );
+            showLoader(context);
           } else if (state is NotificationSendError) {
             Navigator.pop(context);
             showErrorMessage(message: state.errorMessage, context: context);
@@ -119,6 +103,26 @@ class _SendNotificationScreenState extends State<SendNotificationScreen> with Fo
           ),
         ),
       ),
+    );
+  }
+
+  Future<dynamic> showLoader(BuildContext context) {
+    return showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) {
+        return const Dialog(
+          child: SizedBox(
+            height: 300,
+            width: 300,
+            child: Center(
+              child: CircularProgressIndicator(
+                color: AppColors.primary,
+              ),
+            ),
+          ),
+        );
+      },
     );
   }
 }
