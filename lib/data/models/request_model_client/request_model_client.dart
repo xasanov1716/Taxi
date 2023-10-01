@@ -18,7 +18,8 @@ class RequestModelClient {
       requestPrice: 0,
       passengerCount: 0,
       tripTime: '',
-      createdAt: 0);
+      createdAt: 0,
+  );
 
   RequestModelClient copyWith({
     String? userId,
