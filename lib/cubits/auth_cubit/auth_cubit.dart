@@ -55,6 +55,7 @@ class AuthCubit extends Cubit<AuthState> {
         ),
       );
     }
+    emit(state.copyWith(status: FormStatus.pure));
   }
 
   Future<void> logIn(context) async {
