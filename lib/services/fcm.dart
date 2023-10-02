@@ -23,8 +23,6 @@ Future<void> initFirebase([NotificationBloc? notificationBloc]) async {
     await notificationMethod(message, notificationBloc);
   });
   Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-    await Firebase.initializeApp();
-
     //LocalDatabase.insertNews(NewsModel.fromJson(jsonDecode(message.data)))
     await notificationMethod(message, notificationBloc);
     debugPrint(
