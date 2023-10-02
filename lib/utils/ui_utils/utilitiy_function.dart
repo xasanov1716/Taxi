@@ -147,7 +147,7 @@ IconButton getIcon(
 void addAddressDialog(
     BuildContext context,
     TextEditingController apartmentController,
-    TextEditingController controller,
+    TextEditingController orientationController,
     CameraPosition currentCameraPosition,
     VoidCallback onTap) {
   showModalBottomSheet(
@@ -210,7 +210,7 @@ void addAddressDialog(
                 ),
                 16.ph,
                 GlobalTextField(
-                  controller: controller,
+                  controller: orientationController,
                   hintText: '931 Indian Summer Drive Taylor, MI 48180kg',
                   suffixIcon: Padding(
                     padding: const EdgeInsets.all(10),

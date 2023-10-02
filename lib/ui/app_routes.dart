@@ -77,7 +77,6 @@ class RouteNames {
   static const String topUpAmountScreen = "/top_up_amount_screen";
   static const String addressScreen = "/address";
   static const String topUpPaymentScreen = "/top_up_payment_screen";
-  static const String addressAddDetailScreen = "/address_add_detail_screen";
   static const String transactionsHistory = "/transaction_histories";
   static const String transactionsDetail = "/transaction_detail";
   static const String languageScreen = "/language_screen";
