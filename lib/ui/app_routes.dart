@@ -18,6 +18,7 @@ import 'package:taxi_app/ui/tab_box/home/bottom_sheet/bottom_sheet_screen.dart';
 import 'package:taxi_app/ui/tab_box/home/notification/notification_detail_screen.dart';
 import 'package:taxi_app/ui/tab_box/home/notification/notification_screen.dart';
 import 'package:taxi_app/ui/tab_box/home/notification/screen/send_notification_screen.dart';
+import 'package:taxi_app/ui/tab_box/home/sub_screens/request_screens/request_screen.dart';
 import 'package:taxi_app/ui/tab_box/home/sub_screens/search_location/search_location_screen.dart';
 import 'package:taxi_app/ui/tab_box/profile/profile_screen.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/address/address_add_screen.dart';
@@ -94,6 +95,7 @@ class RouteNames {
   static const String notificationDetail = "/notificationDetail";
   static const String sendNotificationScreen = "/sendNotificationScreen";
   static const String addAddressScreen = "/add_address_screen";
+  static const String requestScreen = "/request_screen";
 }
 
 class AppRoutes {
@@ -102,6 +104,10 @@ class AppRoutes {
       case RouteNames.splashScreen:
         return MaterialPageRoute(
           builder: (context) => const SplashScreen(),
+        );
+      case RouteNames.requestScreen:
+        return MaterialPageRoute(
+          builder: (context) => const RequestScreen(),
         );
       case RouteNames.welcomeScreen:
         return MaterialPageRoute(

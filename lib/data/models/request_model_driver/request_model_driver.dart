@@ -65,7 +65,7 @@ class RequestModelDriver extends Equatable {
         'request_price': requestPrice,
         'empty_places': emptyPlaces,
         'trip_time': tripTime,
-        'created_at': createdAt,
+        'created_at': createdAt
       };
 
   @override
@@ -78,8 +78,7 @@ class RequestModelDriver extends Equatable {
  requestPrice: $requestPrice
  emptyPlaces: $emptyPlaces
  tripTime: $tripTime
- createdAt: $createdAt
-    ''';
+ createdAt: $createdAt''';
   }
 
   final String userId;
@@ -92,7 +91,6 @@ class RequestModelDriver extends Equatable {
   final int createdAt;
 
   @override
-  // TODO: implement props
   List<Object?> get props => [
     userId,
     fromId,

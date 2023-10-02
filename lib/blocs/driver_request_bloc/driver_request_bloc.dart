@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:taxi_app/data/models/request_model_driver/request_model_driver.dart';
@@ -25,6 +26,7 @@ class DriverRequestBloc extends Bloc<DriverRequestEvent, DriverRequestState> {
     emit(state.copyWith(statusRequest: FormStatus.loading));
     UniversalData data = await _requestDriverRepo.addRequestDriver(
         requestModelDriver: event.requestModelDriver);
+    debugPrint(event.requestModelDriver.toString());
     if (data.error.isEmpty) {
       emit(state.copyWith(
         statusRequest: FormStatus.success,
@@ -44,8 +46,7 @@ class DriverRequestBloc extends Bloc<DriverRequestEvent, DriverRequestState> {
         requestModelDriver: event.requestModelDriver);
     if (data.error.isEmpty) {
       emit(state.copyWith(
-        statusRequest: FormStatus.success,
-
+        statusRequest: FormStatus.success
       ));
     } else {
       emit(state.copyWith(

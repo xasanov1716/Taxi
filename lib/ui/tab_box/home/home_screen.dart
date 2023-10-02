@@ -8,7 +8,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:taxi_app/blocs/location_bloc/location_bloc.dart';
 import 'package:taxi_app/cubits/address_cubit/address_cubit.dart';
-import 'package:taxi_app/ui/tab_box/home/dialogs/address_select_dialog.dart';
+import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/ui/tab_box/home/widgets/action_buttons.dart';
 import 'package:taxi_app/ui/tab_box/home/widgets/address_selected_view.dart';
 import 'package:taxi_app/ui/tab_box/home/widgets/global_action_button.dart';
@@ -147,7 +147,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   right: 0,
                   child: HomeAddressSelector(
                     onTab: () {
-                      addressSelectDialog(context);
+                      // addressSelectDialog(context);
+                      Navigator.pushNamed(context, RouteNames.requestScreen);
                     },
                   ),
                 ),
