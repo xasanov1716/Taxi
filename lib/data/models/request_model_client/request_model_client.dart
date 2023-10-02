@@ -1,5 +1,7 @@
-class RequestModelClient {
-  RequestModelClient(
+import 'package:equatable/equatable.dart';
+
+class RequestModelClient  extends Equatable {
+  const RequestModelClient(
       {required this.userId,
         required this.fromId,
         required this.toId,
@@ -7,9 +9,10 @@ class RequestModelClient {
         required this.requestPrice,
         required this.passengerCount,
         required this.tripTime,
-        required this.createdAt});
+        required this.createdAt,
+      });
 
-  RequestModelClient.initial()
+  const RequestModelClient.initial()
       : this(
       userId: '',
       fromId: 0,
@@ -87,4 +90,19 @@ class RequestModelClient {
   final int passengerCount;
   final String tripTime;
   final int createdAt;
+
+  @override
+
+  List<Object?> get props => [
+
+    userId,
+    fromId,
+    toId,
+    description,
+    requestPrice,
+    passengerCount,
+    tripTime,
+    createdAt,
+
+  ];
 }

@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get_it/get_it.dart';
 import 'package:taxi_app/blocs/address_bloc/address_bloc.dart';
+import 'package:taxi_app/blocs/client_request_bloc/client_request_bloc.dart';
 import 'package:taxi_app/blocs/create_order/create_order_bloc.dart';
 import 'package:taxi_app/blocs/driver_bloc/driver_bloc.dart';
 import 'package:taxi_app/blocs/home/home_bloc.dart';
@@ -34,6 +35,8 @@ import 'package:taxi_app/data/repositories/address_repos.dart';
 import 'package:taxi_app/data/repositories/auth_repository.dart';
 import 'package:taxi_app/data/repositories/driver_repos.dart';
 import 'package:taxi_app/data/repositories/places_db_repository.dart';
+import 'package:taxi_app/data/repositories/request_client_repo.dart';
+import 'package:taxi_app/data/repositories/request_driver_repo.dart';
 import 'package:taxi_app/data/repositories/search_history_db.dart';
 import 'package:taxi_app/data/repositories/user_repository.dart';
 import 'package:taxi_app/services/api_service.dart';
@@ -42,6 +45,7 @@ import 'package:taxi_app/services/locator_service.dart';
 import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/theme/app_theme.dart';
+import 'blocs/dirver_request_bloc/driver_request_bloc.dart';
 import 'cubits/category_cubit/category_cubit.dart';
 import 'cubits/help_center/help_center_category_cubit.dart';
 import 'cubits/push_notification_cubit/push_notification_cubit.dart';
@@ -74,34 +78,44 @@ class App extends StatelessWidget {
       providers: [
         RepositoryProvider(create: (context) => AuthRepository()),
         RepositoryProvider(create: (context) => AddressRepo()),
+        RepositoryProvider(create: (context) => RequestClientRepo()),
+        RepositoryProvider(create: (context) => RequestDriverRepo()),
         RepositoryProvider(
           create: (context) => SearchHistoryRepository(SearchHistoryDatabase()),
         ),
         RepositoryProvider(
           create: (context) => PlacesDatabaseRepository(PlacesDatabase()),
         ),
-        RepositoryProvider(create: (context) => AddressApiRepository(apiService: apiService)),
+        RepositoryProvider(
+            create: (context) => AddressApiRepository(apiService: apiService)),
         RepositoryProvider(create: (context) => UserRepo()),
         RepositoryProvider(create: (context) => DriverRepo()),
-        RepositoryProvider(create: (context) => AddressApiRepository(apiService: apiService))
+        RepositoryProvider(
+            create: (context) => AddressApiRepository(apiService: apiService))
       ],
       child: MultiBlocProvider(
         providers: [
           BlocProvider(create: (context) => CodeInputCubit()),
-          BlocProvider(create: (context) => PushNotificationCubit(apiService: apiService)),
           BlocProvider(
-            create: (context) =>
-                AddressCubit(addressApiRepository: context.read<AddressApiRepository>()),
+              create: (context) =>
+                  PushNotificationCubit(apiService: apiService)),
+          BlocProvider(
+            create: (context) => AddressCubit(
+                addressApiRepository: context.read<AddressApiRepository>()),
           ),
-          BlocProvider(create: (context) => AuthCubit(context.read<AuthRepository>())),
+          BlocProvider(
+              create: (context) => AuthCubit(context.read<AuthRepository>())),
           BlocProvider(
             create: (context) => SearchLocationBloc(
               searchHistoryRepository: context.read<SearchHistoryRepository>(),
-              placesDatabaseRepository: context.read<PlacesDatabaseRepository>(),
+              placesDatabaseRepository:
+                  context.read<PlacesDatabaseRepository>(),
             ),
           ),
           BlocProvider(create: (context) => TabCubit()),
-          BlocProvider(create: (context) => DriverBloc(driverRepo: context.read<DriverRepo>())),
+          BlocProvider(
+              create: (context) =>
+                  DriverBloc(driverRepo: context.read<DriverRepo>())),
           BlocProvider(create: (context) => NotificationCubit()),
           BlocProvider(create: (context) => SecurityCubit()),
           BlocProvider(create: (context) => HomeBloc()),
@@ -112,16 +126,24 @@ class App extends StatelessWidget {
           BlocProvider(create: (context) => CreateOrderBloc()),
           BlocProvider(create: (context) => PaymentBloc()),
           BlocProvider(create: (context) => PaymentAddBloc()),
-          BlocProvider(create: (context) => UserBloc(userRepo: context.read<UserRepo>())),
           BlocProvider(
-            create: (_) => CategoryCubit(),
-          ),
+              create: (context) =>
+                  UserBloc(userRepo: context.read<UserRepo>())),
+          BlocProvider(
+              create: (context) => DriverRequestBloc(
+                  requestDriverRepo: context.read<RequestDriverRepo>())),
+          BlocProvider(
+              create: (context) => ClientRequestBloc(
+                  requestClientRepo: context.read<RequestClientRepo>())),
+          BlocProvider(create: (context) => CategoryCubit()),
           BlocProvider(create: (context) => MessageBloc()),
           BlocProvider(create: (context) => SearchCubit()),
           BlocProvider(create: (context) => OrderCubit()),
           BlocProvider(create: (context) => HelpCenterCategoryCubit()),
           BlocProvider(create: (context) => LocationBloc()),
-          BlocProvider(create: (context) => AddressBloc(addressRepo: context.read<AddressRepo>()))
+          BlocProvider(
+              create: (context) =>
+                  AddressBloc(addressRepo: context.read<AddressRepo>()))
         ],
         child: EasyLocalization(
             supportedLocales: const [
