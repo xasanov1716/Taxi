@@ -34,22 +34,22 @@ class RequestScreen extends StatefulWidget {
 class _RequestScreenState extends State<RequestScreen> {
   var emptyPlaces = ['1', '2', '3', '4', '5', '6', '7'];
   String emptyPlace = "1";
-  String fromRegion = "Tashkent";
+  String fromRegion = "Tashkent shahri";
   List<String> fromRegions = [];
   List<RegionModel> fromRegionModels = [];
   List<int> from = [];
   List<int> to = [];
-  int fromRegionId = 1;
+  int fromRegionId = 13;
   TextEditingController desc = TextEditingController();
   TextEditingController price = TextEditingController();
   RequestModelDriver requestModelDriver = const RequestModelDriver.initial();
   RequestModelClient requestModelClient = const RequestModelClient.initial();
   bool isDriver = StorageRepository.getString(StorageKeys.userRole) == "driver";
 
-  String toRegion = "Tashkent";
+  String toRegion = "Tashkent shahri";
   List<String> toRegions = [];
   List<RegionModel> toRegionModels = [];
-  int toRegionId = 1;
+  int toRegionId = 13;
 
   var pricerFormatter = MaskTextInputFormatter(
       mask: '#########',
