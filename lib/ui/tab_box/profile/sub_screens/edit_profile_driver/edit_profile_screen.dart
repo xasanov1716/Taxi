@@ -45,7 +45,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
               );
             });
           } else {
-            widget.navigateFromAuth ? null : Navigator.pop(context);
+            widget.navigateFromAuth ? Navigator.pushNamed(context, RouteNames.letsIn) : Navigator.pop(context);
           }
         },
         bottom: PreferredSize(
