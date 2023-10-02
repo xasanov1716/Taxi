@@ -4,18 +4,29 @@ import 'package:taxi_app/data/models/request_model_driver/request_model_driver.d
 import 'package:taxi_app/data/models/universal_data.dart';
 import 'package:taxi_app/utils/constants/constants.dart';
 
-
 class RequestDriverRepo {
-
   Stream<List<RequestModelDriver>> getDriverRequest() =>
       FirebaseFirestore.instance
           .collection(FirebaseCollections.requestDriver)
           .snapshots()
           .map(
-            (event1) => event1.docs
+            (requestDriver) => requestDriver.docs
                 .map((doc) => RequestModelDriver.fromJson(doc.data()))
                 .toList(),
           );
+
+  Stream<RequestModelDriver?> getRequestDriverById({required String userId}) =>
+      FirebaseFirestore.instance
+          .collection(FirebaseCollections.requestDriver)
+          .doc(userId)
+          .snapshots()
+          .map((requestDriver) {
+        if(requestDriver.exists){
+          return RequestModelDriver.fromJson(requestDriver.data() ?? {});
+        }else{
+          return null;
+        }
+      });
 
   Future<UniversalData> addRequestDriver(
       {required RequestModelDriver requestModelDriver}) async {

@@ -3,19 +3,32 @@ import 'package:taxi_app/data/models/request_model_client/request_model_client.d
 import 'package:taxi_app/data/models/universal_data.dart';
 import 'package:taxi_app/utils/constants/constants.dart';
 
-class RequestClientRepo{
-
+class RequestClientRepo {
   Stream<List<RequestModelClient>> getClientRequest() =>
       FirebaseFirestore.instance
           .collection(FirebaseCollections.requestClient)
           .snapshots()
           .map(
-            (event1) => event1.docs
-            .map((doc) => RequestModelClient.fromJson(doc.data()))
-            .toList(),
-      );
+            (requestClient) => requestClient.docs
+                .map((doc) => RequestModelClient.fromJson(doc.data()))
+                .toList(),
+          );
 
-  Future<UniversalData> addRequestClient({required RequestModelClient requestModelClient}) async {
+  Stream<RequestModelClient?> getClientRequestById({required String userId}) =>
+      FirebaseFirestore.instance
+          .collection(FirebaseCollections.requestClient)
+          .doc(userId)
+          .snapshots()
+          .map((requestClientById) {
+        if (requestClientById.exists) {
+          return RequestModelClient.fromJson(requestClientById.data() ?? {});
+        } else {
+          return null;
+        }
+      });
+
+  Future<UniversalData> addRequestClient(
+      {required RequestModelClient requestModelClient}) async {
     try {
       DocumentReference newRequestClient = await FirebaseFirestore.instance
           .collection(FirebaseCollections.requestClient)
@@ -36,7 +49,8 @@ class RequestClientRepo{
     }
   }
 
-  Future<UniversalData> updateRequestClient({required RequestModelClient requestModelClient}) async {
+  Future<UniversalData> updateRequestClient(
+      {required RequestModelClient requestModelClient}) async {
     try {
       await FirebaseFirestore.instance
           .collection(FirebaseCollections.requestClient)
@@ -65,8 +79,4 @@ class RequestClientRepo{
       return UniversalData(error: error.toString());
     }
   }
-
-
-
-
 }
