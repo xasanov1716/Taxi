@@ -25,7 +25,7 @@ class RequestClientRepo{
           .collection(FirebaseCollections.requestClient)
           .doc(newRequestClient.id)
           .update({
-        'userId': newRequestClient.id,
+        'user_id': newRequestClient.id,
       });
 
       return UniversalData(data: 'Request added for client');
