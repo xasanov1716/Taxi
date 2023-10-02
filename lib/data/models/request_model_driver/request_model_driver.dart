@@ -1,24 +1,28 @@
-class RequestModelDriver {
-  RequestModelDriver(
-      {required this.userId,
-      required this.fromId,
-      required this.toId,
-      required this.description,
-      required this.requestPrice,
-      required this.emptyPlaces,
-      required this.tripTime,
-      required this.createdAt});
+import 'package:equatable/equatable.dart';
 
-  RequestModelDriver.initial()
+class RequestModelDriver extends Equatable {
+  const RequestModelDriver({
+    required this.userId,
+    required this.fromId,
+    required this.toId,
+    required this.description,
+    required this.requestPrice,
+    required this.emptyPlaces,
+    required this.tripTime,
+    required this.createdAt,
+  });
+
+  const RequestModelDriver.initial()
       : this(
-            userId: '',
-            fromId: 0,
-            toId: 0,
-            description: '',
-            requestPrice: 0,
-            emptyPlaces: 0,
-            tripTime: '',
-            createdAt: 0);
+          userId: '',
+          fromId: 0,
+          toId: 0,
+          description: '',
+          requestPrice: 0,
+          emptyPlaces: 0,
+          tripTime: '',
+          createdAt: 0,
+        );
 
   RequestModelDriver copyWith({
     String? userId,
@@ -86,4 +90,17 @@ class RequestModelDriver {
   final int emptyPlaces;
   final String tripTime;
   final int createdAt;
+
+  @override
+  // TODO: implement props
+  List<Object?> get props => [
+    userId,
+    fromId,
+    toId,
+    description,
+    requestPrice,
+    emptyPlaces,
+    tripTime,
+    createdAt,
+  ];
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:taxi_app/data/models/address_model/address_model.dart';
 import 'package:taxi_app/data/models/notification_model/notification_model.dart';
 import 'package:taxi_app/ui/app/app.dart';
 import 'package:taxi_app/ui/chat/chat_screen.dart';
@@ -92,6 +93,7 @@ class RouteNames {
   static const String askRoleDialog = "/askRoleDialog";
   static const String notificationDetail = "/notificationDetail";
   static const String sendNotificationScreen = "/sendNotificationScreen";
+  static const String addAddressScreen = "/add_address_screen";
 }
 
 class AppRoutes {
@@ -179,6 +181,14 @@ class AppRoutes {
           builder: (context) => const TopUpAmountScreen(),
         );
 
+      case RouteNames.addAddressScreen:
+        return MaterialPageRoute(
+          builder: (context) =>  AddressAddDetailScreen(
+            addressModel: settings.arguments as AddressModel?,
+          ),
+        );
+
+
       case RouteNames.setBiometrics:
         return MaterialPageRoute(builder: (context) => const SetBiometricsScreen());
       case RouteNames.conFirmCodeScreen:
@@ -235,10 +245,6 @@ class AppRoutes {
         return MaterialPageRoute(
           builder: (context) => const TopUpPaymentScreen(),
         );
-      // case RouteNames.addressAddDetailScreen:
-      //   return MaterialPageRoute(
-      //     builder: (context) => const AddressAddDetailScreen(),
-      //   );
       case RouteNames.transactionsHistory:
         return MaterialPageRoute(
           builder: (context) => const TransactionHistoryScreen(),

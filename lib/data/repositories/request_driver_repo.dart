@@ -30,7 +30,7 @@ class RequestDriverRepo {
         'userId': newRequestDriver.id,
       });
 
-      return UniversalData(data: 'request added for driver');
+      return UniversalData(data: 'Request added for driver');
     } on FirebaseException catch (e) {
       return UniversalData(error: e.code);
     } catch (error) {
@@ -46,7 +46,7 @@ class RequestDriverRepo {
           .doc(requestModelDriver.userId)
           .update(requestModelDriver.toJson());
 
-      return UniversalData(data: "Order updated!");
+      return UniversalData(data: "Request updated!");
     } on FirebaseException catch (e) {
       return UniversalData(error: e.code);
     } catch (error) {
@@ -61,7 +61,7 @@ class RequestDriverRepo {
           .doc(userId)
           .delete();
 
-      return UniversalData(data: 'request deleted from driver');
+      return UniversalData(data: 'Request deleted from driver');
     } on FirebaseException catch (e) {
       return UniversalData(error: e.code);
     } catch (error) {

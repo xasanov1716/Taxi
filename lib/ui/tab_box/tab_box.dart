@@ -30,10 +30,6 @@ class _TabBoxState extends State<TabBox> {
 
   @override
   void initState() {
-    initFirebase((){
-      debugPrint("NEW .... NOTIFICATION ADDED");
-      BlocProvider.of<NotificationBloc>(context).add(UpdateNotifications());
-    });
     screens = [
       const HomeScreen(),
       const BookingsScreen(),
