@@ -34,28 +34,35 @@ class RequestScreen extends StatefulWidget {
 class _RequestScreenState extends State<RequestScreen> {
   var emptyPlaces = ['1', '2', '3', '4', '5', '6', '7'];
   String emptyPlace = "1";
-  String fromRegion = "Tashkent";
+  String fromRegion = "Tashkent shahri";
   List<String> fromRegions = [];
   List<RegionModel> fromRegionModels = [];
   List<int> from = [];
   List<int> to = [];
-  int fromRegionId = 1;
+  int fromRegionId = 13;
   TextEditingController desc = TextEditingController();
   TextEditingController price = TextEditingController();
-  TextEditingController tripTime = TextEditingController();
   RequestModelDriver requestModelDriver = const RequestModelDriver.initial();
   RequestModelClient requestModelClient = const RequestModelClient.initial();
   bool isDriver = StorageRepository.getString(StorageKeys.userRole) == "driver";
 
-  String toRegion = "Tashkent";
+  String toRegion = "Tashkent shahri";
   List<String> toRegions = [];
   List<RegionModel> toRegionModels = [];
-  int toRegionId = 1;
+  int toRegionId = 13;
 
   var pricerFormatter = MaskTextInputFormatter(
       mask: '#########',
       filter: {"#": RegExp(r'[0-9]')},
       type: MaskAutoCompletionType.lazy);
+   String tripTime="Choose a departure time";
+
+  Future<void> _show()async{
+   tripTime = (await showTimePicker(context: context, initialTime: TimeOfDay.now(),initialEntryMode: TimePickerEntryMode.input,)).toString().substring(10,15);
+   setState(() {
+
+   });
+  }
 
   @override
   void initState() {
@@ -85,19 +92,14 @@ class _RequestScreenState extends State<RequestScreen> {
                         children: [
                           GlobalTextField(
                             hintText: "Description",
-                            // onChanged: (v) {
-                            //   requestModelDriver.copyWith(description: v);
-                            // },
                             controller: desc,
                           ),
                           24.ph,
                           GlobalTextField(
                             maskFormatter: pricerFormatter,
                             hintText: "Request Price",
-                            // onChanged: (v) {
-                            //   requestModelDriver.copyWith(requestPrice:int.parse(v));
-                            // },
                             controller: price,
+                            keyboardType: TextInputType.number,
                           ),
                           24.ph,
                           Text(isDriver ? "Empty Places" : "PassengerCount",
@@ -163,23 +165,13 @@ class _RequestScreenState extends State<RequestScreen> {
                             ),
                           ),
                           24.ph,
-                          GlobalTextField(
-                            hintText: "Trip time",
-                            // onChanged: (v) {
-                            //   requestModelDriver.copyWith(tripTime: v);
-                            // },
-                            controller: tripTime,
-                          ),
+                          GlobalButton(title: tripTime, onTap: (){
+                           _show();
+                          }, radius: 100.r,color: AppColors.primary,),
                           24.ph,
                           Text("From",
                               style: AppTextStyle.bodyMediumSemibold.copyWith(
                                   fontSize: 20.sp,
-                                  color: getTheme(context)
-                                      ? AppColors.white
-                                      : AppColors.c_900)),
-                          24.ph,
-                          Text("Region",
-                              style: AppTextStyle.bodyMediumSemibold.copyWith(
                                   color: getTheme(context)
                                       ? AppColors.white
                                       : AppColors.c_900)),
@@ -244,12 +236,6 @@ class _RequestScreenState extends State<RequestScreen> {
                           Text("To",
                               style: AppTextStyle.bodyMediumSemibold.copyWith(
                                   fontSize: 20.sp,
-                                  color: getTheme(context)
-                                      ? AppColors.white
-                                      : AppColors.c_900)),
-                          24.ph,
-                          Text("Region",
-                              style: AppTextStyle.bodyMediumSemibold.copyWith(
                                   color: getTheme(context)
                                       ? AppColors.white
                                       : AppColors.c_900)),
@@ -323,9 +309,8 @@ class _RequestScreenState extends State<RequestScreen> {
                 child: GlobalButton(
                   title: "Send Request",
                   onTap: () {
-                    if (desc.text.isNotEmpty) {
                       if (price.text.isNotEmpty) {
-                        if (tripTime.text.isNotEmpty) {
+                        if (tripTime.isNotEmpty) {
                           debugPrint(requestModelDriver.toString());
                    isDriver?context.read<DriverRequestBloc>().add(
                                 AddDriverRequest(
@@ -336,7 +321,7 @@ class _RequestScreenState extends State<RequestScreen> {
                                     requestPrice: int.parse(price.text),
                                     fromId: fromRegionId,
                                     toId: toRegionId,
-                                    tripTime: tripTime.text,
+                                    tripTime: tripTime,
                                     emptyPlaces: int.parse(emptyPlace),
                                   ),
                                 ),
@@ -349,7 +334,7 @@ class _RequestScreenState extends State<RequestScreen> {
                               requestPrice: int.parse(price.text),
                               fromId: fromRegionId,
                               toId: toRegionId,
-                              tripTime: tripTime.text,
+                              tripTime: tripTime,
                               passengerCount: int.parse(emptyPlace),
                             ),
                           ));
@@ -373,14 +358,7 @@ class _RequestScreenState extends State<RequestScreen> {
                           ),
                         );
                       }
-                    } else {
-                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                          content: Text(
-                        "Description is Empty!!!",
-                        style: TextStyle(color: AppColors.white),
-                      )));
-                    }
-                  },
+                    },
                   color: AppColors.primary,
                   radius: 100.r,
                 ),
@@ -393,7 +371,7 @@ class _RequestScreenState extends State<RequestScreen> {
           if (state.statusRequest == FormStatus.success) {
             hideLoading(context: context);
             Navigator.pop(context);
-            showErrorMessage(message: "Request Sent", context: context);
+            showConfirmMessage(message: "Request Sent", context: context);
           }
           if(BlocProvider.of<ClientRequestBloc>(context).state.statusRequest == FormStatus.success){
               hideLoading(context: context);
