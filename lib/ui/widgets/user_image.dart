@@ -9,6 +9,7 @@ import 'package:taxi_app/cubits/user/user_cubit.dart';
 import 'package:taxi_app/cubits/user/user_state.dart';
 import 'package:taxi_app/data/local/storage_repository/storage_repository.dart';
 import 'package:taxi_app/data/models/icon/icon_type.dart';
+import 'package:taxi_app/utils/constants/constants.dart';
 import 'package:taxi_app/utils/constants/storage_keys.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 
@@ -39,7 +40,7 @@ class UserImage extends StatelessWidget {
             ),
             child: Stack(
               children: [
-                StorageRepository.getString(StorageKeys.userRole) == "driver"
+                StorageRepository.getString(StorageKeys.userRole) == AppConstants.driver
                     ? BlocBuilder<DriverBloc, DriverState>(
                         builder: (context, state) {
                         return Center(

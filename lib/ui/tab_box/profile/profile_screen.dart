@@ -12,6 +12,7 @@ import 'package:taxi_app/ui/widgets/user_image.dart';
 import 'package:taxi_app/ui/tab_box/profile/widgets/log_out.dart';
 import 'package:taxi_app/ui/tab_box/profile/widgets/profile_button.dart';
 import 'package:taxi_app/ui/tab_box/profile/widgets/theme_changer_button.dart';
+import 'package:taxi_app/utils/constants/constants.dart';
 import 'package:taxi_app/utils/constants/storage_keys.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
@@ -72,10 +73,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
         physics: const BouncingScrollPhysics(),
         children: [
           Builder(builder: (context)  {
-           return  StorageRepository.getString(StorageKeys.userRole) == "driver"
+           return  StorageRepository.getString(StorageKeys.userRole) == AppConstants.driver
                 ? BlocConsumer<DriverBloc, DriverState>(
               builder: (context, state) {
-                StorageRepository.putString(StorageKeys.userRole, "driver");
+                StorageRepository.putString(StorageKeys.userRole, AppConstants.driver);
 
                 return Column(
                   children: [
@@ -148,7 +149,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             text: "Edit Profile",
             icon: AppIcons.profile,
             onTap: () {
-              StorageRepository.getString(StorageKeys.userRole) == "driver"
+              StorageRepository.getString(StorageKeys.userRole) == AppConstants.driver
                   ? Navigator.pushNamed(
                       context,
                       RouteNames.editProfileDriver,

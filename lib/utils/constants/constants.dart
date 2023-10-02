@@ -90,3 +90,8 @@ Map<String, String> iconMapping = {
   "card": AppIcons.card,
   "profile": AppIcons.profile,
 };
+
+class AppConstants{
+  static const String client = "client";
+  static const String driver = "driver";
+}

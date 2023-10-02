@@ -10,6 +10,7 @@ import 'package:taxi_app/data/models/driver/driver_fields.dart';
 import 'package:taxi_app/data/models/universal_data.dart';
 import 'package:taxi_app/data/models/user/user_field_keys.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
+import 'package:taxi_app/utils/constants/constants.dart';
 import 'package:taxi_app/utils/constants/storage_keys.dart';
 import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
@@ -111,7 +112,7 @@ Future<void> _getFromCamera(
     showLoading(context: context);
     UniversalData data = await imageUploader(xFile);
     if (context.mounted &&
-        StorageRepository.getString(StorageKeys.userRole) == "driver") {
+        StorageRepository.getString(StorageKeys.userRole) == AppConstants.driver) {
       context.read<DriverBloc>().updateDriverField(
           fieldKey: DriverFieldKeys.imageUrl, value: data.data);
       context.read<DriverBloc>().add(UpdateDriverEvent());
@@ -140,7 +141,7 @@ Future<void> _getFromGallery(
     showLoading(context: context);
     UniversalData data = await imageUploader(xFile);
     if (context.mounted &&
-        StorageRepository.getString(StorageKeys.userRole) == "driver") {
+        StorageRepository.getString(StorageKeys.userRole) == AppConstants.driver) {
       context.read<DriverBloc>().updateDriverField(
           fieldKey: DriverFieldKeys.imageUrl, value: data.data);
       hideLoading(context: context);

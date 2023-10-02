@@ -99,7 +99,7 @@ class UserBloc extends Bloc<UserEvent, UsersState> {
       final userModel = UserModel.fromJson(data.data() as Map<String, dynamic>);
       // ignore: invalid_use_of_visible_for_testing_member
       emit(state.copyWith(userModel: userModel));
-      StorageRepository.putString(StorageKeys.userRole, "client");
+      StorageRepository.putString(StorageKeys.userRole, AppConstants.client);
 
     } else {
       debugPrint(

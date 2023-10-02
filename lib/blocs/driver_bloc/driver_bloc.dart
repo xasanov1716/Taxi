@@ -101,7 +101,7 @@ class DriverBloc extends Bloc<DriverEvent, DriverState> {
       DriverModel.fromJson(data.data() as Map<String, dynamic>);
       // ignore: invalid_use_of_visible_for_testing_member
       emit(state.copyWith(driverModel: driverModel));
-      StorageRepository.putString(StorageKeys.userRole, "driver");
+      StorageRepository.putString(StorageKeys.userRole, AppConstants.driver);
     } else {
 
       debugPrint("Documnet does not exist ---------------------------------------------------------------------");

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:taxi_app/data/local/storage_repository/storage_repository.dart';
 import 'package:taxi_app/ui/app_routes.dart';
+import 'package:taxi_app/utils/constants/constants.dart';
 import 'package:taxi_app/utils/constants/storage_keys.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
@@ -21,12 +22,13 @@ void showRoleDialog(BuildContext context) {
           actions: [
             TextButton(
               onPressed: () {
-                StorageRepository.putString(StorageKeys.userRole, "driver");
+                StorageRepository.putString(
+                    StorageKeys.userRole, AppConstants.driver);
                 Navigator.pushNamedAndRemoveUntil(
                   context,
                   RouteNames.editProfileDriver,
                   arguments: true,
-                      (route) => false,
+                  (route) => false,
                 );
               },
               child: Text(
@@ -36,12 +38,13 @@ void showRoleDialog(BuildContext context) {
             ),
             TextButton(
               onPressed: () {
-                StorageRepository.putString(StorageKeys.userRole, "client");
+                StorageRepository.putString(
+                    StorageKeys.userRole, AppConstants.client);
                 Navigator.pushNamedAndRemoveUntil(
                   context,
                   RouteNames.editProfileClient,
                   arguments: true,
-                      (route) => false,
+                  (route) => false,
                 );
               },
               child: Text(
