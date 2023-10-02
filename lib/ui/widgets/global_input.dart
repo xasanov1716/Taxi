@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
@@ -70,6 +71,7 @@ class _GlobalTextFieldState extends State<GlobalTextField> {
       readOnly: widget.readOnly,
       controller: _internalController,
       focusNode: widget.focusNode ?? internalFocusNode,
+      inputFormatters:widget.maskFormatter !=null ? [widget.maskFormatter!] : [],
       obscureText: widget.obscureText ?? false,
       decoration: InputDecoration(
         hintStyle: TextStyle(

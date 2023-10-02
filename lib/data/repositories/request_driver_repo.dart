@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:taxi_app/data/models/request_model_driver/request_model_driver.dart';
 import 'package:taxi_app/data/models/universal_data.dart';
 import 'package:taxi_app/utils/constants/constants.dart';
@@ -27,8 +28,9 @@ class RequestDriverRepo {
           .collection(FirebaseCollections.requestDriver)
           .doc(newRequestDriver.id)
           .update({
-        'userId': newRequestDriver.id,
+        'user_id': newRequestDriver.id,
       });
+      debugPrint("RequestAdd");
 
       return UniversalData(data: 'Request added for driver');
     } on FirebaseException catch (e) {
