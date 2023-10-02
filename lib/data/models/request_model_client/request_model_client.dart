@@ -1,26 +1,28 @@
-class RequestModelClient {
-  RequestModelClient({
-    required this.userId,
-    required this.fromId,
-    required this.toId,
-    required this.description,
-    required this.requestPrice,
-    required this.passengerCount,
-    required this.tripTime,
-    required this.createdAt,
-  });
+import 'package:equatable/equatable.dart';
 
-  RequestModelClient.initial()
+class RequestModelClient  extends Equatable {
+  const RequestModelClient(
+      {required this.userId,
+        required this.fromId,
+        required this.toId,
+        required this.description,
+        required this.requestPrice,
+        required this.passengerCount,
+        required this.tripTime,
+        required this.createdAt,
+      });
+
+  const RequestModelClient.initial()
       : this(
-          userId: '',
-          fromId: 0,
-          toId: 0,
-          description: '',
-          requestPrice: 0,
-          passengerCount: 0,
-          tripTime: '',
-          createdAt: 0,
-        );
+      userId: '',
+      fromId: 0,
+      toId: 0,
+      description: '',
+      requestPrice: 0,
+      passengerCount: 0,
+      tripTime: '',
+      createdAt: 0,
+  );
 
   RequestModelClient copyWith({
     String? userId,
@@ -56,15 +58,15 @@ class RequestModelClient {
       );
 
   Map<String, dynamic> toJson() => {
-        'user_id': userId,
-        'from_id': fromId,
-        'to_id': toId,
-        'description': description,
-        'request_price': requestPrice,
-        'passenger_count': passengerCount,
-        'trip_time': tripTime,
-        'created_at': createdAt,
-      };
+    'user_id': userId,
+    'from_id': fromId,
+    'to_id': toId,
+    'description': description,
+    'request_price': requestPrice,
+    'passenger_count': passengerCount,
+    'trip_time': tripTime,
+    'created_at': createdAt,
+  };
 
   @override
   String toString() {
@@ -88,4 +90,19 @@ class RequestModelClient {
   final int passengerCount;
   final String tripTime;
   final int createdAt;
+
+  @override
+
+  List<Object?> get props => [
+
+    userId,
+    fromId,
+    toId,
+    description,
+    requestPrice,
+    passengerCount,
+    tripTime,
+    createdAt,
+
+  ];
 }

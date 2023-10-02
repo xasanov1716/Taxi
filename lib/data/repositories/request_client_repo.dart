@@ -51,7 +51,7 @@ class RequestClientRepo{
     }
   }
 
-  Future<UniversalData> deleteRequestDriver({required String userId}) async {
+  Future<UniversalData> deleteRequestClient({required String userId}) async {
     try {
       await FirebaseFirestore.instance
           .collection(FirebaseCollections.requestClient)
