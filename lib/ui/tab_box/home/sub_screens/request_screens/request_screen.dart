@@ -52,16 +52,21 @@ class _RequestScreenState extends State<RequestScreen> {
   int toRegionId = 13;
 
   var pricerFormatter = MaskTextInputFormatter(
-      mask: '#########',
-      filter: {"#": RegExp(r'[0-9]')},
-      type: MaskAutoCompletionType.lazy);
-   String tripTime="Choose a departure time";
+    mask: '#########',
+    filter: {"#": RegExp(r'[0-9]')},
+    type: MaskAutoCompletionType.lazy,
+  );
+  String tripTime = "Choose a departure time";
 
-  Future<void> _show()async{
-   tripTime = (await showTimePicker(context: context, initialTime: TimeOfDay.now(),initialEntryMode: TimePickerEntryMode.input,)).toString().substring(10,15);
-   setState(() {
-
-   });
+  Future<void> _show() async {
+    tripTime = (await showTimePicker(
+      context: context,
+      initialTime: TimeOfDay.now(),
+      initialEntryMode: TimePickerEntryMode.input,
+    ))
+        .toString()
+        .substring(10, 15);
+    setState(() {});
   }
 
   @override
@@ -76,9 +81,9 @@ class _RequestScreenState extends State<RequestScreen> {
       appBar: const GlobalAppBar(
         title: "Request",
       ),
-      body: BlocConsumer<DriverRequestBloc,DriverRequestState>(
+      body: BlocConsumer<DriverRequestBloc, DriverRequestState>(
         builder: (context, state) {
-            return Column(
+          return Column(
             children: [
               Expanded(
                 child: ListView(
@@ -165,9 +170,14 @@ class _RequestScreenState extends State<RequestScreen> {
                             ),
                           ),
                           24.ph,
-                          GlobalButton(title: tripTime, onTap: (){
-                           _show();
-                          }, radius: 100.r,color: AppColors.primary,),
+                          GlobalButton(
+                            title: tripTime,
+                            onTap: () {
+                              _show();
+                            },
+                            radius: 100.r,
+                            color: AppColors.primary,
+                          ),
                           24.ph,
                           Text("From",
                               style: AppTextStyle.bodyMediumSemibold.copyWith(
@@ -309,56 +319,57 @@ class _RequestScreenState extends State<RequestScreen> {
                 child: GlobalButton(
                   title: "Send Request",
                   onTap: () {
-                      if (price.text.isNotEmpty) {
-                        if (tripTime.isNotEmpty) {
-                          debugPrint(requestModelDriver.toString());
-                   isDriver?context.read<DriverRequestBloc>().add(
-                                AddDriverRequest(
-                                  requestModelDriver:
-                                      requestModelDriver.copyWith(
-                                    createdAt: DateTime.now().second,
-                                    description: desc.text,
-                                    requestPrice: int.parse(price.text),
-                                    fromId: fromRegionId,
-                                    toId: toRegionId,
-                                    tripTime: tripTime,
-                                    emptyPlaces: int.parse(emptyPlace),
+                    if (price.text.isNotEmpty) {
+                      if (tripTime.isNotEmpty) {
+                        debugPrint(requestModelDriver.toString());
+                        isDriver
+                            ? context.read<DriverRequestBloc>().add(
+                                  AddDriverRequest(
+                                    requestModelDriver:
+                                        requestModelDriver.copyWith(
+                                      createdAt: DateTime.now().second,
+                                      description: desc.text,
+                                      requestPrice: int.parse(price.text),
+                                      fromId: fromRegionId,
+                                      toId: toRegionId,
+                                      tripTime: tripTime,
+                                      emptyPlaces: int.parse(emptyPlace),
+                                    ),
                                   ),
+                                )
+                            : BlocProvider.of<ClientRequestBloc>(context)
+                                .add(AddClientRequest(
+                                requestModelClient: requestModelClient.copyWith(
+                                  createdAt: DateTime.now().second,
+                                  description: desc.text,
+                                  requestPrice: int.parse(price.text),
+                                  fromId: fromRegionId,
+                                  toId: toRegionId,
+                                  tripTime: tripTime,
+                                  passengerCount: int.parse(emptyPlace),
                                 ),
-                              ):
-                          BlocProvider.of<ClientRequestBloc>(context).add(AddClientRequest(
-                            requestModelClient:
-                            requestModelClient.copyWith(
-                              createdAt: DateTime.now().second,
-                              description: desc.text,
-                              requestPrice: int.parse(price.text),
-                              fromId: fromRegionId,
-                              toId: toRegionId,
-                              tripTime: tripTime,
-                              passengerCount: int.parse(emptyPlace),
-                            ),
-                          ));
-                        } else {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text(
-                                "Trip Time is Empty!!!",
-                                style: TextStyle(color: AppColors.white),
-                              ),
-                            ),
-                          );
-                        }
+                              ));
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
                             content: Text(
-                              "Request Price is Empty!!!",
+                              "Trip Time is Empty!!!",
                               style: TextStyle(color: AppColors.white),
                             ),
                           ),
                         );
                       }
-                    },
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text(
+                            "Request Price is Empty!!!",
+                            style: TextStyle(color: AppColors.white),
+                          ),
+                        ),
+                      );
+                    }
+                  },
                   color: AppColors.primary,
                   radius: 100.r,
                 ),
@@ -373,18 +384,19 @@ class _RequestScreenState extends State<RequestScreen> {
             Navigator.pop(context);
             showConfirmMessage(message: "Request Sent", context: context);
           }
-          if(BlocProvider.of<ClientRequestBloc>(context).state.statusRequest == FormStatus.success){
-              hideLoading(context: context);
-              Navigator.pop(context);
-              showErrorMessage(message: "Request Sent", context: context);
+          if (BlocProvider.of<ClientRequestBloc>(context).state.statusRequest ==
+              FormStatus.success) {
+            hideLoading(context: context);
+            Navigator.pop(context);
+            showErrorMessage(message: "Request Sent", context: context);
           }
-          if(state.statusRequest == FormStatus.loading){
+          if (state.statusRequest == FormStatus.loading) {
             showLoading(context: context);
           }
-          if(BlocProvider.of<ClientRequestBloc>(context).state.statusRequest == FormStatus.loading){
+          if (BlocProvider.of<ClientRequestBloc>(context).state.statusRequest ==
+              FormStatus.loading) {
             showLoading(context: context);
           }
-
         },
       ),
     );
