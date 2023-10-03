@@ -19,13 +19,19 @@ class GlobalTextField extends StatefulWidget {
   final Widget? suffixIcon;
   final bool? obscureText;
   final EdgeInsets? contentPadding;
+  final int? maxLines;
+  final int? maxLength;
+  final TextCapitalization textCapitalization;
 
   const GlobalTextField({
     Key? key,
     required this.hintText,
+    this.textCapitalization=TextCapitalization.none,
     this.keyboardType = TextInputType.text,
     this.textInputAction = TextInputAction.next,
     this.prefixIcon,
+    this.maxLength=10000,
+    this.maxLines=1,
     this.caption = "",
     this.suffixIcon,
     this.readOnly = false,
@@ -70,6 +76,9 @@ class _GlobalTextFieldState extends State<GlobalTextField> {
       obscuringCharacter: '●',
       readOnly: widget.readOnly,
       controller: _internalController,
+      maxLines: widget.maxLines,
+      // maxLength: widget.maxLength,
+      textCapitalization: widget.textCapitalization,
       focusNode: widget.focusNode ?? internalFocusNode,
       inputFormatters:widget.maskFormatter !=null ? [widget.maskFormatter!] : [],
       obscureText: widget.obscureText ?? false,
