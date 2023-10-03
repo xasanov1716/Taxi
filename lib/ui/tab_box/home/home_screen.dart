@@ -17,6 +17,7 @@ import 'package:taxi_app/ui/tab_box/home/widgets/select_category.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/screen_size.dart';
+import 'package:taxi_app/utils/theme/get_theme.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -113,10 +114,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 Align(
                     child: Image.asset(
-                      AppIcons.myLocation,
-                      height: onCameraMoveStarted ? 70.w : 60.w,
-                      width: onCameraMoveStarted ? 70.w : 52.w,
-                    )),
+                  AppIcons.myLocation,
+                  height: onCameraMoveStarted ? 70.w : 60.w,
+                  width: onCameraMoveStarted ? 70.w : 52.w,
+                )),
                 const ActionButtons(),
                 Positioned(
                   bottom: height / 4,
@@ -189,7 +190,9 @@ class _HomeScreenState extends State<HomeScreen> {
     try {
       String style =
           await rootBundle.loadString('assets/styles/map_style.json');
-      mapController.setMapStyle(style);
+      String darkStyle =
+          await rootBundle.loadString('assets/styles/map_style_dark.json');
+      mapController.setMapStyle(getTheme(context)?darkStyle:style);
     } catch (e) {
       throw ();
     }

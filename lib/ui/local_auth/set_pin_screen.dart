@@ -36,11 +36,11 @@ class _SetPinScreenState extends State<SetPinScreen> {
         onTap: widget.previousPin != null
             ? () {
                 Navigator.pop(context);
-                Navigator.pushNamed(
-                  context,
-                  RouteNames.setPinCodeScreen,
-                  arguments: null,
-                );
+                // Navigator.pushNamed(
+                //   context,
+                //   RouteNames.setPinCodeScreen,
+                //   arguments: null,
+                // );
               }
             : null,
       ),
@@ -81,11 +81,11 @@ class _SetPinScreenState extends State<SetPinScreen> {
   void _onPinSubmit(String pin) {
     if ((widget.previousPin == null)&&(pin.length==4)) {
       Navigator.pop(context);
-      Navigator.pushNamed(
-        context,
-        RouteNames.setPinCodeScreen,
-        arguments: pin,
-      );
+      // Navigator.pushNamed(
+      //   context,
+      //   RouteNames.setPinCodeScreen,
+      //   arguments: pin,
+      // );
     } else {
       if (pin != widget.previousPin) {
         showErrorMessage(message: tr('forgot.wrong'), context: context);
@@ -95,7 +95,7 @@ class _SetPinScreenState extends State<SetPinScreen> {
             StorageKeys.pinCode,
             pin,
           );
-          Navigator.pushReplacementNamed(context, RouteNames.setBiometrics);
+          // Navigator.pushReplacementNamed(context, RouteNames.setBiometrics);
         } else {
           showErrorMessage(
             message: tr('set_pin_code.pin_is_empty'),
