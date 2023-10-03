@@ -40,7 +40,9 @@ class _HelpCenterScreenState extends State<HelpCenterScreen> {
           leading: getIcon(
             AppIcons.arrowLeft,
             context: context,
-            onTap: () {},
+            onTap: () {
+              Navigator.pop(context);
+            },
           ),
           title: Text(
             'Help Center',
