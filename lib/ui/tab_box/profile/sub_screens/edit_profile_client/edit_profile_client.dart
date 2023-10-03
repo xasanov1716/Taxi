@@ -77,7 +77,7 @@ class _EditProfileClientScreenState extends State<EditProfileClientScreen> {
           if (state.status == FormStatus.success) {
             if (widget.navigateFromAuth) {
               Navigator.pushReplacementNamed(
-                  context, RouteNames.setPinCodeScreen);
+                  context, RouteNames.tabBox);
             } else {
               Navigator.pop(context);
             }

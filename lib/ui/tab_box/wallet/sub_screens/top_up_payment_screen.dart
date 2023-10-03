@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taxi_app/ui/tab_box/wallet/sub_screens/widgets/top_up_button.dart';
 import 'package:taxi_app/ui/tab_box/wallet/sub_screens/widgets/top_up_payment_appbar.dart';
+import 'package:taxi_app/ui/widgets/global_alert_dialog.dart';
+import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 
 import '../../../../data/models/payment/payment_model.dart';
@@ -48,7 +50,7 @@ class _TopUpPaymentScreenState extends State<TopUpPaymentScreen> {
                 padding: EdgeInsets.symmetric(horizontal: 24.w),
                 child: TopUpGlobalButton(
                   onTap: (){
-                    Navigator.pushNamed(context, RouteNames.enterPinScreen);
+                    // Navigator.pushNamed(context, RouteNames.enterPinScreen);
                   },title: "Add New Card", color: getTheme(context) ? AppColors.dark3 : const Color(0xFFFFF8E8) ,radius: 40.r, textColor: getTheme(context) ? AppColors.white : AppColors.dark3,),
               ),
             ],
@@ -63,7 +65,13 @@ class _TopUpPaymentScreenState extends State<TopUpPaymentScreen> {
               ),
               child: GlobalButton(
                   onTap: (){
-                Navigator.pushNamed(context, RouteNames.enterPinScreen);
+                    showGlobalAlertDialog(
+                        context: context,
+                        title: "Top Up Successful!",
+                        image: AppIcons.successPassword,
+                        text: "You have successfully top upe-wallet for \$120",
+                        onTap: () {});
+                // Navigator.pushNamed(context, RouteNames.enterPinScreen);
               },title: "Continue", color: AppColors.primary,radius: 40.r),
             ),
           )

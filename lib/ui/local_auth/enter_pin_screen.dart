@@ -32,7 +32,7 @@ class _EnterPinScreenState extends State<EnterPinScreen> {
 
   @override
   void initState() {
-    _checkBiometric();
+    // _checkBiometric();
     super.initState();
   }
 

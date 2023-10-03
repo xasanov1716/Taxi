@@ -58,9 +58,9 @@ class RouteNames {
   static const String login = "/login_screen";
   static const String tabBox = "/tab_box";
   static const String profileScreen = "/profile_screen";
-  static const String setPinCodeScreen = "/set_pin_code_screen";
-  static const String enterPinScreen = "/pin_code_screen";
-  static const String setBiometrics = "/set_biometrics";
+  // static const String setPinCodeScreen = "/set_pin_code_screen";
+  // static const String enterPinScreen = "/pin_code_screen";
+  // static const String setBiometrics = "/set_biometrics";
   static const String code = "/code";
   static const String searchLocationScreen = "/search_location";
   static const String notificationScreen = "/notification_screen";
@@ -166,16 +166,16 @@ class AppRoutes {
         return MaterialPageRoute(
           builder: (context) => const ProfileScreen(),
         );
-      case RouteNames.setPinCodeScreen:
-        return MaterialPageRoute(
-          builder: (context) => SetPinScreen(
-            previousPin: settings.arguments as String?,
-          ),
-        );
-      case RouteNames.enterPinScreen:
-        return MaterialPageRoute(
-          builder: (context) => EnterPinScreen(isFromSecurity: settings.arguments as bool?),
-        );
+      // case RouteNames.setPinCodeScreen:
+      //   return MaterialPageRoute(
+      //     builder: (context) => SetPinScreen(
+      //       previousPin: settings.arguments as String?,
+      //     ),
+      //   );
+      // case RouteNames.enterPinScreen:
+      //   return MaterialPageRoute(
+      //     builder: (context) => EnterPinScreen(isFromSecurity: settings.arguments as bool?),
+      //   );
       case RouteNames.driverDetail:
         return MaterialPageRoute(
           builder: (context) => const DriverDetailScreen(),
@@ -188,14 +188,12 @@ class AppRoutes {
 
       case RouteNames.addAddressScreen:
         return MaterialPageRoute(
-          builder: (context) =>  AddressAddDetailScreen(
+          builder: (context) => AddressAddDetailScreen(
             addressModel: settings.arguments as AddressModel?,
           ),
         );
-
-
-      case RouteNames.setBiometrics:
-        return MaterialPageRoute(builder: (context) => const SetBiometricsScreen());
+      // case RouteNames.setBiometrics:
+      //   return MaterialPageRoute(builder: (context) => const SetBiometricsScreen());
       case RouteNames.conFirmCodeScreen:
         return MaterialPageRoute(
           builder: (context) => const ConfirmCodeScreen(),
@@ -233,7 +231,8 @@ class AppRoutes {
           builder: (context) => const DriverArrivingScreen(),
         );
       case RouteNames.selectTransportScreen:
-        return MaterialPageRoute(builder: (context) => const SelectTransportScreen());
+        return MaterialPageRoute(
+            builder: (context) => const SelectTransportScreen());
       case RouteNames.chatWithDriver:
         return MaterialPageRoute(
           builder: (context) => const ChatScreen(),
@@ -276,8 +275,8 @@ class AppRoutes {
         );
       case RouteNames.notificationDetail:
         return MaterialPageRoute(
-          builder: (context) =>
-              NotificationDetailScreen(notification: settings.arguments as NotificationModel),
+          builder: (context) => NotificationDetailScreen(
+              notification: settings.arguments as NotificationModel),
         );
       case RouteNames.editProfileClient:
         return MaterialPageRoute(
