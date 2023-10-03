@@ -125,7 +125,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                             0) {
                           Navigator.pushReplacementNamed(
                             context,
-                            RouteNames.setPinCodeScreen,
+                            RouteNames.tabBox,
                           );
                           context.read<DriverBloc>().add(AddDriverEvent());
                         } else {
