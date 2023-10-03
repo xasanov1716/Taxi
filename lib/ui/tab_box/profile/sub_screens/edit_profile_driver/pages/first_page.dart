@@ -64,6 +64,11 @@ class _FirstPageState extends State<FirstPage> {
       mask: '## ### ## ##',
       filter: {"#": RegExp(r'[0-9]')},
       type: MaskAutoCompletionType.lazy);
+  var carNumber = MaskTextInputFormatter(
+      mask: '##*###**',
+      filter: {"#": RegExp(r'[0-9]'),"*":RegExp(r'[A-Z]')},
+      type: MaskAutoCompletionType.lazy);
+
   var genders = ['Male', 'Female'];
   final FocusNode focusNode = FocusNode();
   final FocusNode phoneFocusNode = FocusNode();
@@ -196,6 +201,8 @@ class _FirstPageState extends State<FirstPage> {
           controller: aboutDriverController,
           focusNode: aboutFocusNode,
           hintText: 'About Driver',
+          maxLength: 100,
+          maxLines: 5,
           keyboardType: TextInputType.text,
           textInputAction: TextInputAction.next,
           onChanged: (value) {
@@ -205,8 +212,10 @@ class _FirstPageState extends State<FirstPage> {
         ),
         24.ph,
         GlobalTextField(
+          maskFormatter: carNumber,
           controller: carNumberController,
           focusNode: nicknameFocusNode,
+          textCapitalization: TextCapitalization.characters,
           hintText: 'Car number',
           keyboardType: TextInputType.text,
           textInputAction: TextInputAction.next,
@@ -219,7 +228,7 @@ class _FirstPageState extends State<FirstPage> {
         GlobalTextField(
           controller: telegramLinkController,
           focusNode: telegramFocusNode,
-          hintText: 'Telegram link',
+          hintText: 'Telegram username. Example:example_username',
           keyboardType: TextInputType.text,
           textInputAction: TextInputAction.next,
           onChanged: (value) {
