@@ -46,7 +46,10 @@ class _RequestScreenState extends State<RequestScreen> {
             colorScheme: getTheme(context)
                 ? const ColorScheme.dark()
                 : ColorScheme.fromSeed(seedColor: Colors.white)),
-        value: Time(hour: 12, minute: 0),
+        value: Time(
+
+            hour: int.parse(DateTime.now().toString().substring(10, 12)),
+            minute: int.parse(DateTime.now().toString().substring(14, 16))),
         sunrise: const TimeOfDay(hour: 6, minute: 0),
         sunset: const TimeOfDay(hour: 18, minute: 0),
         duskSpanInMinutes: 120,
