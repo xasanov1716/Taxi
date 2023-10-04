@@ -69,15 +69,15 @@ class RequestModelDriver extends Equatable {
       );
 
   Map<String, dynamic> toJson() => {
-        'user_id': userId,
-        'from_id': fromId,
-        'to_id': toId,
-        'description': description,
-        'request_price': requestPrice,
-        'empty_places': emptyPlaces,
-        'trip_time': tripTime,
-        'created_at': createdAt
-      };
+    'user_id': userId,
+    'from_id': fromId,
+    'to_id': toId,
+    'description': description,
+    'request_price': requestPrice,
+    'empty_places': emptyPlaces,
+    'trip_time': tripTime,
+    'created_at': createdAt
+  };
 
   @override
   String toString() {
