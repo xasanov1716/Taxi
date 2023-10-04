@@ -23,14 +23,14 @@ class RequestModelClient  extends Equatable {
 
   const RequestModelClient.initial()
       : this(
-    userId: '',
-    fromId: 0,
-    toId: 0,
-    description: '',
-    requestPrice: 0,
-    passengerCount: 0,
-    tripTime: '',
-    createdAt: '',
+      userId: '',
+      fromId: 0,
+      toId: 0,
+      description: '',
+      requestPrice: 0,
+      passengerCount: 0,
+      tripTime: '',
+      createdAt: '',
   );
 
   RequestModelClient copyWith({

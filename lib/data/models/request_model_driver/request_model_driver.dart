@@ -25,15 +25,15 @@ class RequestModelDriver extends Equatable {
 
   const RequestModelDriver.initial()
       : this(
-    userId: '',
-    fromId: 0,
-    toId: 0,
-    description: '',
-    requestPrice: 0,
-    emptyPlaces: 0,
-    tripTime: '',
-    createdAt: '',
-  );
+          userId: '',
+          fromId: 0,
+          toId: 0,
+          description: '',
+          requestPrice: 0,
+          emptyPlaces: 0,
+          tripTime: '',
+          createdAt: '',
+        );
 
   RequestModelDriver copyWith({
     String? userId,
