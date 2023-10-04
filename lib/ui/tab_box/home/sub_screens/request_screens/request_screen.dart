@@ -4,10 +4,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taxi_app/blocs/client_request_bloc/client_request_bloc.dart';
 import 'package:taxi_app/blocs/driver_request_bloc/driver_request_bloc.dart';
+import 'package:taxi_app/blocs/user_bloc/user_bloc.dart';
 import 'package:taxi_app/data/local/storage_repository/storage_repository.dart';
 import 'package:taxi_app/data/models/places/region_model.dart';
-import 'package:taxi_app/data/models/request_model_client/request_model_client.dart';
-import 'package:taxi_app/data/models/request_model_driver/request_model_driver.dart';
+import 'package:taxi_app/data/models/request_model/request_model.dart';
 import 'package:taxi_app/data/models/status/form_status.dart';
 import 'package:taxi_app/ui/tab_box/home/sub_screens/request_screens/widgets/dropdown_for_empty_place.dart';
 import 'package:taxi_app/ui/tab_box/home/sub_screens/request_screens/widgets/dropdown_for_request.dart';
@@ -227,7 +227,7 @@ class _RequestScreenState extends State<RequestScreen> {
                       title: "Send Request",
                       onTap: () {
                         if (state.requestModelDriver !=
-                                const RequestModelDriver.initial() &&
+                                const RequestModel.initial() &&
                             state.requestModelDriver.toId != 0 &&
                             state.requestModelDriver.fromId != 0) {
                           if (state.requestModelDriver.tripTime.isNotEmpty) {
@@ -237,7 +237,9 @@ class _RequestScreenState extends State<RequestScreen> {
                                     .add(AddDriverRequest())
                                 : context.read<ClientRequestBloc>().add(
                                     AddClientRequest(
-                                        requestModelClient: RequestModelClient(
+                                        requestModelClient: RequestModel(
+                                            status: 1,
+                                            creatorName: BlocProvider.of<UserBloc>(context).state.userModel.fullName,
                                             userId:
                                                 state.requestModelDriver.userId,
                                             fromId:
@@ -249,7 +251,7 @@ class _RequestScreenState extends State<RequestScreen> {
                                                 .requestModelDriver
                                                 .requestPrice,
                                             passengerCount: state
-                                                .requestModelDriver.emptyPlaces,
+                                                .requestModelDriver.passengerCount,
                                             tripTime: state
                                                 .requestModelDriver.tripTime,
                                             createdAt: state.requestModelDriver

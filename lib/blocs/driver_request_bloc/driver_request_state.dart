@@ -10,12 +10,12 @@ class DriverRequestState extends Equatable {
     required this.regionModels,
     required this.descriptionText,
     required this.priceText,
-    this.requestModelDriver = const RequestModelDriver.initial(),
+    this.requestModelDriver = const RequestModel.initial(),
   });
   final List<RegionModel> regionModels;
   final String errorText;
   final FormStatus statusRequest;
-  final RequestModelDriver requestModelDriver;
+  final RequestModel requestModelDriver;
   final String descriptionText;
   final String priceText;
 
@@ -24,7 +24,7 @@ class DriverRequestState extends Equatable {
     String? descriptionText,
     String? priceText,
     FormStatus? statusRequest,
-    RequestModelDriver? requestModelDriver,
+    RequestModel? requestModelDriver,
     List<RegionModel>? regionModels,
   }) =>
       DriverRequestState(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:taxi_app/data/models/icon/icon_type.dart';
-import 'package:taxi_app/data/models/request_model_client/request_model_client.dart';
+import 'package:taxi_app/data/models/request_model/request_model.dart';
 import 'package:taxi_app/ui/tab_box/bookings/widgets/expander_button.dart';
 import 'package:taxi_app/ui/tab_box/bookings/widgets/request_address.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
@@ -17,7 +17,7 @@ class LocationItem extends StatelessWidget {
     required this.mainButtonTap,
   });
 
-  final RequestModelClient? modelClient;
+  final RequestModel? modelClient;
   final VoidCallback expandTap;
   final VoidCallback mainButtonTap;
 

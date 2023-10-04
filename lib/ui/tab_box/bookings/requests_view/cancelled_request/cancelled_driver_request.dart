@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:taxi_app/ui/tab_box/bookings/widgets/request_view.dart';
-import '../../../../../data/models/request_model_client/request_model_client.dart';
-import '../../../../../data/models/request_model_driver/request_model_driver.dart';
+import 'package:taxi_app/data/models/request_model/request_model.dart';
 import '../../widgets/empty.dart';
 import '../../widgets/request_driver_view.dart';
 
 class CancelledDriverRequest extends StatelessWidget {
   const CancelledDriverRequest({super.key, this.requestDrivers});
-  final List<RequestModelDriver>? requestDrivers;
+  final List<RequestModel>? requestDrivers;
 
   @override
   Widget build(BuildContext context) {

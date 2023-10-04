@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taxi_app/data/models/booking/booking_status.dart';
-import 'package:taxi_app/data/models/request_model_client/request_model_client.dart';
+import 'package:taxi_app/data/models/request_model/request_model.dart';
 import 'package:taxi_app/ui/tab_box/bookings/widgets/expander_button.dart';
 import 'package:taxi_app/ui/tab_box/bookings/widgets/location_item.dart';
 import 'package:taxi_app/ui/tab_box/bookings/widgets/status_button.dart';
@@ -12,7 +12,7 @@ import 'package:taxi_app/utils/theme/get_theme.dart';
 class RequestView extends StatefulWidget {
   const RequestView({super.key, this.modelClient});
 
-  final RequestModelClient? modelClient;
+  final RequestModel? modelClient;
 
   @override
   State<RequestView> createState() => _RequestViewState();
@@ -39,7 +39,7 @@ class _RequestViewState extends State<RequestView> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Dilshodbek",
+                      widget.modelClient!.creatorName,
                       style: Theme.of(context).textTheme.titleLarge,
                     ),
                     6.ph,

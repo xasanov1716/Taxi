@@ -1,35 +1,25 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:taxi_app/data/models/request_model_driver/request_model_driver.dart';
+import 'package:taxi_app/data/models/request_model/request_model.dart';
 import 'package:taxi_app/data/models/universal_data.dart';
 import 'package:taxi_app/utils/constants/constants.dart';
 
-
 class RequestDriverRepo {
-
-  Stream<List<RequestModelDriver>> getDriverRequest() =>
-      FirebaseFirestore.instance
-          .collection(FirebaseCollections.requestDriver)
-          .snapshots()
-          .map(
-            (event1) => event1.docs
-                .map((doc) => RequestModelDriver.fromJson(doc.data()))
-                .toList(),
-          );
+  Stream<List<RequestModel>> getDriverRequest() => FirebaseFirestore.instance
+      .collection(FirebaseCollections.requestDriver)
+      .snapshots()
+      .map(
+        (event1) => event1.docs
+            .map((doc) => RequestModel.fromJson(doc.data()))
+            .toList(),
+      );
 
   Future<UniversalData> addRequestDriver(
-      {required RequestModelDriver requestModelDriver}) async {
+      {required RequestModel requestModelDriver}) async {
     try {
-      DocumentReference newRequestDriver = await FirebaseFirestore.instance
-          .collection(FirebaseCollections.requestDriver)
-          .add(requestModelDriver.toJson());
-
       await FirebaseFirestore.instance
           .collection(FirebaseCollections.requestDriver)
-          .doc(newRequestDriver.id)
-          .update({
-        'user_id': newRequestDriver.id,
-      });
+          .add(requestModelDriver.toJson());
       debugPrint("RequestAdd");
 
       return UniversalData(data: 'Request added for driver');
@@ -41,7 +31,7 @@ class RequestDriverRepo {
   }
 
   Future<UniversalData> updateRequestDriver(
-      {required RequestModelDriver requestModelDriver}) async {
+      {required RequestModel requestModelDriver}) async {
     try {
       await FirebaseFirestore.instance
           .collection(FirebaseCollections.requestDriver)

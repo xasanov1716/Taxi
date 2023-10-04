@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:taxi_app/data/models/icon/icon_type.dart';
-import 'package:taxi_app/data/models/request_model_driver/request_model_driver.dart';
+import 'package:taxi_app/data/models/request_model/request_model.dart';
 import 'package:taxi_app/ui/tab_box/bookings/widgets/expander_button.dart';
 import 'package:taxi_app/ui/tab_box/bookings/widgets/request_driver_address.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
@@ -17,7 +17,7 @@ class LocationDriverItem extends StatelessWidget {
     required this.mainButtonTap,
   });
 
-  final RequestModelDriver? modelDriver;
+  final RequestModel? modelDriver;
   final VoidCallback expandTap;
   final VoidCallback mainButtonTap;
 
@@ -34,7 +34,7 @@ class LocationDriverItem extends StatelessWidget {
               context,
               AppIcons.getSvg(
                   name: AppIcons.addUser, iconType: IconType.lightOutline),
-              "Bo'sh joy: ${modelDriver!.emptyPlaces}",
+              "Bo'sh joy: ${modelDriver!.passengerCount}",
             ),
             _rowMaker(
               context,

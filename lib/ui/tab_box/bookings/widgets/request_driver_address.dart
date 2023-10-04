@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:taxi_app/data/models/request_model_driver/request_model_driver.dart';
+import 'package:taxi_app/data/models/request_model/request_model.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
@@ -9,7 +9,7 @@ import 'package:taxi_app/utils/size/size_extension.dart';
 class RequestDriverAddress extends StatefulWidget {
   const RequestDriverAddress({super.key, this.modelDriver});
 
-  final RequestModelDriver? modelDriver;
+  final RequestModel? modelDriver;
 
   @override
   State<RequestDriverAddress> createState() => _RequestDriverAddressState();
