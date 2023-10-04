@@ -11,4 +11,5 @@ enum UserFieldKeys {
   fcmToken,
   userId,
   role,
+  password,
 }

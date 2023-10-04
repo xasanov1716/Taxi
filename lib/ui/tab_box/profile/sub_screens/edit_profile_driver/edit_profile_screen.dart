@@ -4,6 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:taxi_app/blocs/driver_bloc/driver_bloc.dart';
 import 'package:taxi_app/blocs/social_auth_bloc/social_auth_bloc.dart';
+import 'package:taxi_app/cubits/auth_cubit/auth_cubit.dart';
+import 'package:taxi_app/data/models/driver/driver_fields.dart';
 import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/edit_profile_driver/pages/first_page.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/edit_profile_driver/pages/second_page.dart';
@@ -45,7 +47,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
               );
             });
           } else {
-            widget.navigateFromAuth ? Navigator.pushNamed(context, RouteNames.letsIn) : Navigator.pop(context);
+            widget.navigateFromAuth
+                ? Navigator.pushNamed(context, RouteNames.letsIn)
+                : Navigator.pop(context);
           }
         },
         bottom: PreferredSize(
@@ -85,6 +89,22 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 GlobalButton(
                   title: "Next",
                   onTap: () {
+                    if (widget.navigateFromAuth) {
+                      context.read<DriverBloc>().updateDriverField(
+                            fieldKey: DriverFieldKeys.phoneNumber,
+                            value: BlocProvider.of<AuthCubit>(context)
+                                .state
+                                .phoneNumber,
+                          );
+
+                      context.read<DriverBloc>().updateDriverField(
+                            fieldKey: DriverFieldKeys.password,
+                            value: BlocProvider.of<AuthCubit>(context)
+                                .state
+                                .password,
+                          );
+                    }
+
                     if (currentPage == 0) {
                       if (context.read<DriverBloc>().canRegister1().isEmpty) {
                         debugPrint(

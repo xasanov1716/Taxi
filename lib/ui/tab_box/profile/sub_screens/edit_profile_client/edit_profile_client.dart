@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taxi_app/blocs/user_bloc/user_bloc.dart';
+import 'package:taxi_app/cubits/auth_cubit/auth_cubit.dart';
 import 'package:taxi_app/data/local/storage_repository/storage_repository.dart';
 import 'package:taxi_app/data/models/status/form_status.dart';
 import 'package:taxi_app/data/models/user/user_field_keys.dart';
@@ -38,12 +39,33 @@ class _EditProfileClientScreenState extends State<EditProfileClientScreen> {
             padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 24.h),
             child: Column(
               children: [
-                const Expanded(
-                  child: ClientEditFields(),
+                Expanded(
+                  child: ClientEditFields(
+                    isFromAuth: widget.navigateFromAuth,
+                  ),
                 ),
                 GlobalButton(
-                  title: "Update",
+                  title: widget.navigateFromAuth ? "Create User" : "Update",
                   onTap: () {
+                    if(widget.navigateFromAuth){
+                      context.read<UserBloc>().add(
+                        UpdateCurrentUserEvent(
+                          fieldKey: UserFieldKeys.phone,
+                          value: BlocProvider.of<AuthCubit>(context)
+                              .state
+                              .phoneNumber,
+                        ),
+                      );
+                      context.read<UserBloc>().add(
+                        UpdateCurrentUserEvent(
+                          fieldKey: UserFieldKeys.password,
+                          value: BlocProvider.of<AuthCubit>(context)
+                              .state
+                              .password,
+                        ),
+                      );
+                    }
+
                     context.read<UserBloc>().add(UpdateCurrentUserEvent(
                         fieldKey: UserFieldKeys.createdAt,
                         value: DateTime.now().toString()));
@@ -76,8 +98,7 @@ class _EditProfileClientScreenState extends State<EditProfileClientScreen> {
           }
           if (state.status == FormStatus.success) {
             if (widget.navigateFromAuth) {
-              Navigator.pushReplacementNamed(
-                  context, RouteNames.tabBox);
+              Navigator.pushReplacementNamed(context, RouteNames.tabBox);
             } else {
               Navigator.pop(context);
             }

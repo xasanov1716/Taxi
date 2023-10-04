@@ -131,22 +131,25 @@ class _FirstPageState extends State<FirstPage> {
             ),
           ),
         ),
-        24.ph,
-        PhoneNumberInput(
-          controller: phoneNumberController,
-          hintText: 'Phone Number',
-          keyboardType: TextInputType.phone,
-          focusNode: phoneFocusNode,
-          maskFormatter: phoneFormatter,
-          onChanged: (value) {
-            context.read<DriverBloc>().updateDriverField(
-                fieldKey: DriverFieldKeys.phoneNumber,
-                value: value.replaceAll(" ", ""));
-            if (value.length == 12) {
-              phoneFocusNode.unfocus();
-            }
-          },
-          textInputAction: TextInputAction.next,
+      if(!widget.isFromAuth)  24.ph,
+        Visibility(
+          visible: !widget.isFromAuth,
+          child: PhoneNumberInput(
+            controller: phoneNumberController,
+            hintText: 'Phone Number',
+            keyboardType: TextInputType.phone,
+            focusNode: phoneFocusNode,
+            maskFormatter: phoneFormatter,
+            onChanged: (value) {
+              context.read<DriverBloc>().updateDriverField(
+                  fieldKey: DriverFieldKeys.phoneNumber,
+                  value: value.replaceAll(" ", ""));
+              if (value.length == 12) {
+                phoneFocusNode.unfocus();
+              }
+            },
+            textInputAction: TextInputAction.next,
+          ),
         ),
         24.ph,
         Container(

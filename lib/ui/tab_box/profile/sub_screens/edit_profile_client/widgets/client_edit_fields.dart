@@ -22,7 +22,8 @@ import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
 
 class ClientEditFields extends StatefulWidget {
-  const ClientEditFields({super.key});
+  const ClientEditFields({super.key,required this.isFromAuth});
+  final bool isFromAuth;
 
   @override
   State<ClientEditFields> createState() => _ClientEditFieldsState();
@@ -143,23 +144,26 @@ class _ClientEditFieldsState extends State<ClientEditFields> {
             ),
           ),
         ),
-        24.ph,
-        PhoneNumberInput(
-          hintText: 'Phone Number',
-          keyboardType: TextInputType.phone,
-          focusNode: phoneFocusNode,
-          maskFormatter: phoneFormatter,
-          controller: phoneController,
-          onChanged: (value) {
-            context.read<UserBloc>().add(UpdateCurrentUserEvent(
-                fieldKey: UserFieldKeys.phone, value: value.replaceAll(" ", "")));
-            if (value.length == 12) {
+        if(!widget.isFromAuth) 24.ph,
+        Visibility(
+          visible: !widget.isFromAuth,
+          child: PhoneNumberInput(
+            hintText: 'Phone Number',
+            keyboardType: TextInputType.phone,
+            focusNode: phoneFocusNode,
+            maskFormatter: phoneFormatter,
+            controller: phoneController,
+            onChanged: (value) {
               context.read<UserBloc>().add(UpdateCurrentUserEvent(
-                fieldKey: UserFieldKeys.emailAddress, value: '${value.replaceAll(" ", "")}@gmail.com'));
-              phoneFocusNode.unfocus();
-            }
-          },
-          textInputAction: TextInputAction.next,
+                  fieldKey: UserFieldKeys.phone, value: value.replaceAll(" ", "")));
+              if (value.length == 12) {
+                context.read<UserBloc>().add(UpdateCurrentUserEvent(
+                  fieldKey: UserFieldKeys.emailAddress, value: '${value.replaceAll(" ", "")}@gmail.com'));
+                phoneFocusNode.unfocus();
+              }
+            },
+            textInputAction: TextInputAction.next,
+          ),
         ),
         24.ph,
         Container(

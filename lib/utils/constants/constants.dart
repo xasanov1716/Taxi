@@ -43,36 +43,6 @@ List<bool> securityValues = [
   false,
 ];
 
-DriverModel driverModel = DriverModel(
-    driverId: "driverId",
-    fcmToken: "fcmToken",
-    fullName: "fullName",
-    createdAt: "createdAt",
-    birthDate: "birthDate",
-    phoneNumber: "phoneNumber",
-    telegramLink: "telegramLink",
-    email: "email",
-    gender: "gender",
-    imageUrl: "imageUrl",
-    currentLocation: "currentLocation",
-    fromToText: "fromToText",
-    from: 0,
-    to: 0,
-    emptyPlaces: 0,
-    aboutDriver: "aboutDriver",
-    carModel: "carModel",
-    passengerType: "passengerType",
-    price: 0,
-    hasDelivery: true,
-    hasRoofTop: true,
-    isOnline: true,
-    lastOnlineTime: "lastOnlineTime",
-    longitude: 0.0,
-    latitude: 0.0,
-    hasFilled: true,
-    carNumber: "carNumber",
-    role: 'role');
-
 class FirebaseCollections {
   static const String addresses = "addresses";
   static const String orders = "orders";
