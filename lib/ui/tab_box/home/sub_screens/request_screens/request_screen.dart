@@ -1,24 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:taxi_app/blocs/client_request_bloc/client_request_bloc.dart';
 import 'package:taxi_app/blocs/driver_request_bloc/driver_request_bloc.dart';
-import 'package:taxi_app/data/local/search_location/places_db.dart';
 import 'package:taxi_app/data/local/storage_repository/storage_repository.dart';
-import 'package:taxi_app/data/models/icon/icon_type.dart';
 import 'package:taxi_app/data/models/places/region_model.dart';
 import 'package:taxi_app/data/models/request_model_client/request_model_client.dart';
 import 'package:taxi_app/data/models/request_model_driver/request_model_driver.dart';
 import 'package:taxi_app/data/models/status/form_status.dart';
+import 'package:taxi_app/ui/tab_box/home/sub_screens/request_screens/widgets/dropdown_for_empty_place.dart';
+import 'package:taxi_app/ui/tab_box/home/sub_screens/request_screens/widgets/dropdown_for_request.dart';
 import 'package:taxi_app/ui/widgets/global_appbar.dart';
 import 'package:taxi_app/ui/widgets/global_button.dart';
 import 'package:taxi_app/ui/widgets/global_input.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/constants/storage_keys.dart';
 import 'package:taxi_app/utils/fonts/text_styles.dart';
-import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
 import 'package:taxi_app/utils/ui_utils/error_message_dialog.dart';
@@ -35,27 +32,8 @@ class _RequestScreenState extends State<RequestScreen> {
   var emptyPlaces = ['1', '2', '3', '4', '5', '6', '7'];
   String emptyPlace = "1";
   String fromRegion = "Tashkent shahri";
-  List<String> fromRegions = [];
-  List<RegionModel> fromRegionModels = [];
-  List<int> from = [];
-  List<int> to = [];
-  int fromRegionId = 13;
-  TextEditingController desc = TextEditingController();
-  TextEditingController price = TextEditingController();
-  RequestModelDriver requestModelDriver = const RequestModelDriver.initial();
-  RequestModelClient requestModelClient = const RequestModelClient.initial();
   bool isDriver = StorageRepository.getString(StorageKeys.userRole) == "driver";
-
   String toRegion = "Tashkent shahri";
-  List<String> toRegions = [];
-  List<RegionModel> toRegionModels = [];
-  int toRegionId = 13;
-
-  var pricerFormatter = MaskTextInputFormatter(
-    mask: '#########',
-    filter: {"#": RegExp(r'[0-9]')},
-    type: MaskAutoCompletionType.lazy,
-  );
   String tripTime = "Choose a departure time";
 
   Future<void> _show() async {
@@ -66,13 +44,13 @@ class _RequestScreenState extends State<RequestScreen> {
     ))
         .toString()
         .substring(10, 15);
+    if (context.mounted) {
+      context.read<DriverRequestBloc>().add(
+            UpdateCurrentDriverField(
+                fieldKey: RequestField.tripTime, value: tripTime),
+          );
+    }
     setState(() {});
-  }
-
-  @override
-  void initState() {
-    _init();
-    super.initState();
   }
 
   @override
@@ -97,13 +75,23 @@ class _RequestScreenState extends State<RequestScreen> {
                         children: [
                           GlobalTextField(
                             hintText: "Description",
-                            controller: desc,
+                            onChanged: (value) {
+                              context.read<DriverRequestBloc>().add(
+                                    UpdateCurrentDriverField(
+                                        fieldKey: RequestField.description,
+                                        value: value),
+                                  );
+                            },
                           ),
                           24.ph,
                           GlobalTextField(
-                            maskFormatter: pricerFormatter,
                             hintText: "Request Price",
-                            controller: price,
+                            onChanged: (value) {
+                              context.read<DriverRequestBloc>().add(
+                                  UpdateCurrentDriverField(
+                                      fieldKey: RequestField.requestPrice,
+                                      value: int.parse(value)));
+                            },
                             keyboardType: TextInputType.number,
                           ),
                           24.ph,
@@ -113,61 +101,19 @@ class _RequestScreenState extends State<RequestScreen> {
                                       ? AppColors.white
                                       : AppColors.c_900)),
                           24.ph,
-                          Container(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 20.w, vertical: 6.h),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(12.r),
-                              color: getTheme(context)
-                                  ? AppColors.dark2
-                                  : AppColors
-                                      .greysCale, // Use the desired background color
-                            ),
-                            child: DropdownButton<String>(
-                              isExpanded: true,
-                              underline: const SizedBox(),
-                              dropdownColor: getTheme(context)
-                                  ? AppColors.dark2
-                                  : AppColors.greysCale,
-                              icon: SvgPicture.asset(
-                                AppIcons.getSvg(
-                                    name: AppIcons.arrowDown2,
-                                    iconType: IconType.bold),
-                                colorFilter: ColorFilter.mode(
-                                    getTheme(context)
-                                        ? AppColors.white
-                                        : AppColors.c_900,
-                                    BlendMode.srcIn),
-                              ),
-                              borderRadius: BorderRadius.circular(12.r),
-                              items: emptyPlaces.map((String items) {
-                                return DropdownMenuItem(
-                                  value: items,
-                                  child: Text(
-                                    items,
-                                    style: AppTextStyle.bodyMediumSemibold
-                                        .copyWith(
-                                            color: getTheme(context)
-                                                ? AppColors.white
-                                                : AppColors.c_900),
-                                  ),
-                                );
-                              }).toList(),
-                              onChanged: (String? newValue) {
-                                setState(() {
-                                  emptyPlace = newValue!;
-                                });
-                                requestModelDriver.copyWith(
-                                    emptyPlaces: int.parse(emptyPlace));
-                              },
-                              hint: Text(emptyPlace,
-                                  style: AppTextStyle.bodyMediumSemibold
-                                      .copyWith(
-                                          color: getTheme(context)
-                                              ? AppColors.white
-                                              : AppColors
-                                                  .c_900)), // Placeholder text
-                            ),
+                          DropDownForRequest(
+                            listFromOutside: emptyPlaces,
+                            itemFromOutside: emptyPlace,
+                            onChanged: (newValue) {
+                              setState(() {
+                                emptyPlace = newValue!;
+                              });
+                              context.read<DriverRequestBloc>().add(
+                                    UpdateCurrentDriverField(
+                                        fieldKey: RequestField.emptyPlaces,
+                                        value: int.parse(emptyPlace)),
+                                  );
+                            },
                           ),
                           24.ph,
                           GlobalButton(
@@ -179,68 +125,29 @@ class _RequestScreenState extends State<RequestScreen> {
                             color: AppColors.primary,
                           ),
                           24.ph,
-                          Text("From",
-                              style: AppTextStyle.bodyMediumSemibold.copyWith(
-                                  fontSize: 20.sp,
-                                  color: getTheme(context)
-                                      ? AppColors.white
-                                      : AppColors.c_900)),
-                          24.ph,
-                          Container(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 20.w, vertical: 6.h),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(12.r),
+                          Text(
+                            "From",
+                            style: AppTextStyle.bodyMediumSemibold.copyWith(
+                              fontSize: 20.sp,
                               color: getTheme(context)
-                                  ? AppColors.dark2
-                                  : AppColors.greysCale,
+                                  ? AppColors.white
+                                  : AppColors.c_900,
                             ),
-                            child: DropdownButton<String>(
-                              isExpanded: true,
-                              underline: const SizedBox(),
-                              dropdownColor: getTheme(context)
-                                  ? AppColors.dark2
-                                  : AppColors.greysCale,
-                              icon: SvgPicture.asset(
-                                AppIcons.getSvg(
-                                    name: AppIcons.arrowDown2,
-                                    iconType: IconType.bold),
-                                colorFilter: ColorFilter.mode(
-                                    getTheme(context)
-                                        ? AppColors.white
-                                        : AppColors.c_900,
-                                    BlendMode.srcIn),
-                              ),
-                              borderRadius: BorderRadius.circular(12.r),
-                              items: fromRegions.map((String items) {
-                                return DropdownMenuItem(
-                                  value: items,
-                                  child: Text(
-                                    items,
-                                    style: AppTextStyle.bodyMediumSemibold
-                                        .copyWith(
-                                            color: getTheme(context)
-                                                ? AppColors.white
-                                                : AppColors.c_900),
-                                  ),
-                                );
-                              }).toList(),
-                              onChanged: (String? newValue) {
-                                setState(() {
-                                  fromRegion = newValue!;
-                                  _getFromRegionId(fromRegion);
-                                });
-                                requestModelDriver.copyWith(
-                                    fromId: fromRegionId);
-                              },
-                              hint: Text(fromRegion,
-                                  style: AppTextStyle.bodyMediumSemibold
-                                      .copyWith(
-                                          color: getTheme(context)
-                                              ? AppColors.white
-                                              : AppColors
-                                                  .c_900)), // Placeholder text
-                            ),
+                          ),
+                          24.ph,
+                          DropDownForFromTo(
+                            listFromOutside: state.regionModels,
+                            itemFromOutside: fromRegion,
+                            onChanged: (RegionModel newValue) {
+                              setState(() {
+                                fromRegion = newValue.name;
+                                context.read<DriverRequestBloc>().add(
+                                      UpdateCurrentDriverField(
+                                          fieldKey: RequestField.fromId,
+                                          value: newValue.id),
+                                    );
+                              });
+                            },
                           ),
                           24.ph,
                           Text("To",
@@ -250,61 +157,19 @@ class _RequestScreenState extends State<RequestScreen> {
                                       ? AppColors.white
                                       : AppColors.c_900)),
                           24.ph,
-                          Container(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 20.w, vertical: 6.h),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(12.r),
-                              color: getTheme(context)
-                                  ? AppColors.dark2
-                                  : AppColors
-                                      .greysCale, // Use the desired background color
-                            ),
-                            child: DropdownButton<String>(
-                              isExpanded: true,
-                              underline: const SizedBox(),
-                              dropdownColor: getTheme(context)
-                                  ? AppColors.dark2
-                                  : AppColors.greysCale,
-                              icon: SvgPicture.asset(
-                                AppIcons.getSvg(
-                                    name: AppIcons.arrowDown2,
-                                    iconType: IconType.bold),
-                                colorFilter: ColorFilter.mode(
-                                    getTheme(context)
-                                        ? AppColors.white
-                                        : AppColors.c_900,
-                                    BlendMode.srcIn),
-                              ),
-                              borderRadius: BorderRadius.circular(12.r),
-                              items: toRegions.map((String items) {
-                                return DropdownMenuItem(
-                                  value: items,
-                                  child: Text(
-                                    items,
-                                    style: AppTextStyle.bodyMediumSemibold
-                                        .copyWith(
-                                            color: getTheme(context)
-                                                ? AppColors.white
-                                                : AppColors.c_900),
-                                  ),
-                                );
-                              }).toList(),
-                              onChanged: (String? newValue) {
-                                setState(() {
-                                  toRegion = newValue!;
-                                  _getToRegionId(toRegion);
-                                });
-                                requestModelDriver.copyWith(toId: toRegionId);
-                              },
-                              hint: Text(toRegion,
-                                  style: AppTextStyle.bodyMediumSemibold
-                                      .copyWith(
-                                          color: getTheme(context)
-                                              ? AppColors.white
-                                              : AppColors
-                                                  .c_900)), // Placeholder text
-                            ),
+                          DropDownForFromTo(
+                            listFromOutside: state.regionModels,
+                            itemFromOutside: toRegion,
+                            onChanged: (newValue) {
+                              setState(() {
+                                toRegion = newValue.name;
+                                context.read<DriverRequestBloc>().add(
+                                      UpdateCurrentDriverField(
+                                          fieldKey: RequestField.toId,
+                                          value: newValue.id),
+                                    );
+                              });
+                            },
                           ),
                           24.ph,
                         ],
@@ -319,36 +184,27 @@ class _RequestScreenState extends State<RequestScreen> {
                 child: GlobalButton(
                   title: "Send Request",
                   onTap: () {
-                    if (price.text.isNotEmpty) {
-                      if (tripTime.isNotEmpty) {
-                        debugPrint(requestModelDriver.toString());
+                    // if (state.priceText.isNotEmpty) {
+                      if (state.requestModelDriver.tripTime.isNotEmpty) {
                         isDriver
-                            ? context.read<DriverRequestBloc>().add(
-                                  AddDriverRequest(
-                                    requestModelDriver:
-                                        requestModelDriver.copyWith(
-                                      createdAt: DateTime.now().second,
-                                      description: desc.text,
-                                      requestPrice: int.parse(price.text),
-                                      fromId: fromRegionId,
-                                      toId: toRegionId,
-                                      tripTime: tripTime,
-                                      emptyPlaces: int.parse(emptyPlace),
-                                    ),
-                                  ),
-                                )
-                            : BlocProvider.of<ClientRequestBloc>(context)
-                                .add(AddClientRequest(
-                                requestModelClient: requestModelClient.copyWith(
-                                  createdAt: DateTime.now().second,
-                                  description: desc.text,
-                                  requestPrice: int.parse(price.text),
-                                  fromId: fromRegionId,
-                                  toId: toRegionId,
-                                  tripTime: tripTime,
-                                  passengerCount: int.parse(emptyPlace),
-                                ),
-                              ));
+                            ? context
+                                .read<DriverRequestBloc>()
+                                .add(AddDriverRequest())
+                            : context.read<ClientRequestBloc>().add(
+                                AddClientRequest(
+                                    requestModelClient: RequestModelClient(
+                                        userId: state.requestModelDriver.userId,
+                                        fromId: state.requestModelDriver.fromId,
+                                        toId: state.requestModelDriver.toId,
+                                        description: state.descriptionText,
+                                        requestPrice:
+                                            int.parse(state.priceText),
+                                        passengerCount: state
+                                            .requestModelDriver.emptyPlaces,
+                                        tripTime:
+                                            state.requestModelDriver.tripTime,
+                                        createdAt: state
+                                            .requestModelDriver.createdAt)));
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
@@ -359,16 +215,16 @@ class _RequestScreenState extends State<RequestScreen> {
                           ),
                         );
                       }
-                    } else {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text(
-                            "Request Price is Empty!!!",
-                            style: TextStyle(color: AppColors.white),
-                          ),
-                        ),
-                      );
-                    }
+                    // } else {
+                    //   ScaffoldMessenger.of(context).showSnackBar(
+                    //     const SnackBar(
+                    //       content: Text(
+                    //         "Request Price is Empty!!!",
+                    //         style: TextStyle(color: AppColors.white),
+                    //       ),
+                    //     ),
+                    //   );
+                    // }
                   },
                   color: AppColors.primary,
                   radius: 100.r,
@@ -400,37 +256,5 @@ class _RequestScreenState extends State<RequestScreen> {
         },
       ),
     );
-  }
-
-  _init() async {
-    fromRegionModels =
-        (await PlacesDatabase.instance.getAllRegions()).map((e) => e).toList();
-    toRegionModels =
-        (await PlacesDatabase.instance.getAllRegions()).map((e) => e).toList();
-    _getStringLists();
-  }
-
-  _getStringLists() {
-    fromRegions = fromRegionModels.map((e) => e.name).toList();
-    toRegions = fromRegionModels.map((e) => e.name).toList();
-    setState(() {});
-  }
-
-  _getFromRegionId(String name) {
-    for (var element in fromRegionModels) {
-      if (element.name == name) {
-        fromRegionId = element.id;
-      }
-    }
-    setState(() {});
-  }
-
-  _getToRegionId(String name) {
-    for (var element in toRegionModels) {
-      if (element.name == name) {
-        toRegionId = element.id;
-      }
-    }
-    setState(() {});
   }
 }
