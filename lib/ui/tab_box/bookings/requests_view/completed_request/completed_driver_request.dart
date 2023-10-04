@@ -1,0 +1,19 @@
+import 'package:flutter/material.dart';
+import 'package:taxi_app/data/models/request_model/request_model.dart';
+import 'package:taxi_app/ui/tab_box/bookings/widgets/request_driver_view.dart';
+import '../../widgets/empty.dart';
+
+class CompletedDriverRequest extends StatelessWidget {
+  const CompletedDriverRequest({super.key, this.requestDrivers});
+  final List<RequestModel>? requestDrivers;
+
+  @override
+  Widget build(BuildContext context) {
+    return requestDrivers != null ? ListView.builder(
+      itemCount: requestDrivers!.length,
+      itemBuilder: (context, index) {
+        return RequestDriverView(modelDriver: requestDrivers![index]);
+      },
+    ) : const EmptyBookings();
+  }
+}

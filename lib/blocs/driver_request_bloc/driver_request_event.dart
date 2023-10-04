@@ -22,7 +22,7 @@ class InitDBRegions extends DriverRequestEvent {
 class UpdateDriverRequest extends DriverRequestEvent {
   const UpdateDriverRequest({required this.requestModelDriver});
 
-  final RequestModelDriver requestModelDriver;
+  final RequestModel requestModelDriver;
 
   @override
   List<Object?> get props => [requestModelDriver];

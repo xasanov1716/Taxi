@@ -6,11 +6,12 @@ import 'package:equatable/equatable.dart';
 import 'package:taxi_app/data/local/search_location/places_db.dart';
 import 'package:taxi_app/data/local/storage_repository/storage_repository.dart';
 import 'package:taxi_app/data/models/places/region_model.dart';
-import 'package:taxi_app/data/models/request_model_driver/request_model_driver.dart';
 import 'package:taxi_app/data/models/status/form_status.dart';
 import 'package:taxi_app/data/models/universal_data.dart';
 import 'package:taxi_app/data/repositories/request_driver_repo.dart';
 import 'package:taxi_app/utils/constants/storage_keys.dart';
+
+import '../../data/models/request_model/request_model.dart';
 
 part 'driver_request_event.dart';
 part 'driver_request_state.dart';
@@ -45,7 +46,7 @@ class DriverRequestBloc extends Bloc<DriverRequestEvent, DriverRequestState> {
   clearAllState() {
     // ignore: invalid_use_of_visible_for_testing_member
     emit(state.copyWith(
-        requestModelDriver: const RequestModelDriver.initial(),
+        requestModelDriver: const RequestModel.initial(),
         priceText: '',
         errorText: '',
         descriptionText: '',
@@ -98,7 +99,7 @@ class DriverRequestBloc extends Bloc<DriverRequestEvent, DriverRequestState> {
 
   void updateRequestField(
       UpdateCurrentDriverField event, Emitter<DriverRequestState> emit) {
-    RequestModelDriver requestModel = state.requestModelDriver;
+    RequestModel requestModel = state.requestModelDriver;
 
     switch (event.fieldKey) {
       case RequestField.userId:
@@ -118,7 +119,7 @@ class DriverRequestBloc extends Bloc<DriverRequestEvent, DriverRequestState> {
         requestModel = requestModel.copyWith(requestPrice: event.value as int?);
         break;
       case RequestField.emptyPlaces:
-        requestModel = requestModel.copyWith(emptyPlaces: event.value as int?);
+        requestModel = requestModel.copyWith(passengerCount: event.value as int?);
         break;
       case RequestField.tripTime:
         requestModel = requestModel.copyWith(tripTime: event.value as String?);

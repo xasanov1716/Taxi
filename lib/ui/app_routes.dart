@@ -11,9 +11,6 @@ import 'package:taxi_app/ui/create_order/sub_screens/payment_methods/payment_met
 import 'package:taxi_app/ui/create_order/sub_screens/searching_driver/searching_driver_screen.dart';
 import 'package:taxi_app/ui/create_order/sub_screens/select_transport/select_transport_screen.dart';
 import 'package:taxi_app/ui/enterance/welcome/welcome_screen.dart';
-import 'package:taxi_app/ui/local_auth/enter_pin_screen.dart';
-import 'package:taxi_app/ui/local_auth/set_biometrics_screen.dart';
-import 'package:taxi_app/ui/local_auth/set_pin_screen.dart';
 import 'package:taxi_app/ui/tab_box/home/bottom_sheet/bottom_sheet_screen.dart';
 import 'package:taxi_app/ui/tab_box/home/notification/notification_detail_screen.dart';
 import 'package:taxi_app/ui/tab_box/home/notification/notification_screen.dart';

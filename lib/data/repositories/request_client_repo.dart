@@ -1,33 +1,25 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:taxi_app/data/models/request_model_client/request_model_client.dart';
+import 'package:taxi_app/data/models/request_model/request_model.dart';
 import 'package:taxi_app/data/models/universal_data.dart';
 import 'package:taxi_app/utils/constants/constants.dart';
 
-class RequestClientRepo{
-
-  Stream<List<RequestModelClient>> getClientRequest() =>
+class RequestClientRepo {
+  Stream<List<RequestModel>> getClientRequest() =>
       FirebaseFirestore.instance
           .collection(FirebaseCollections.requestClient)
           .snapshots()
           .map(
             (event1) => event1.docs
-            .map((doc) => RequestModelClient.fromJson(doc.data()))
-            .toList(),
-      );
+                .map((doc) => RequestModel.fromJson(doc.data()))
+                .toList(),
+          );
 
-  Future<UniversalData> addRequestClient({required RequestModelClient requestModelClient}) async {
+  Future<UniversalData> addRequestClient(
+      {required RequestModel requestModelClient}) async {
     try {
-      DocumentReference newRequestClient = await FirebaseFirestore.instance
-          .collection(FirebaseCollections.requestClient)
-          .add(requestModelClient.toJson());
-
       await FirebaseFirestore.instance
           .collection(FirebaseCollections.requestClient)
-          .doc(newRequestClient.id)
-          .update({
-        'user_id': newRequestClient.id,
-      });
-
+          .add(requestModelClient.toJson());
       return UniversalData(data: 'Request added for client');
     } on FirebaseException catch (e) {
       return UniversalData(error: e.code);
@@ -36,7 +28,8 @@ class RequestClientRepo{
     }
   }
 
-  Future<UniversalData> updateRequestClient({required RequestModelClient requestModelClient}) async {
+  Future<UniversalData> updateRequestClient(
+      {required RequestModel requestModelClient}) async {
     try {
       await FirebaseFirestore.instance
           .collection(FirebaseCollections.requestClient)
@@ -65,8 +58,4 @@ class RequestClientRepo{
       return UniversalData(error: error.toString());
     }
   }
-
-
-
-
 }

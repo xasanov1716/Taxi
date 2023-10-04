@@ -7,7 +7,7 @@ sealed class ClientRequestEvent extends Equatable {
 class AddClientRequest extends ClientRequestEvent {
   const AddClientRequest({required this.requestModelClient});
 
-  final RequestModelClient requestModelClient;
+  final RequestModel requestModelClient;
 
   @override
   List<Object?> get props => [requestModelClient];
@@ -16,7 +16,7 @@ class AddClientRequest extends ClientRequestEvent {
 class UpdateClientRequest extends ClientRequestEvent {
   const UpdateClientRequest({required this.requestModelClient});
 
-  final RequestModelClient requestModelClient;
+  final RequestModel requestModelClient;
 
   @override
   List<Object?> get props => [requestModelClient];

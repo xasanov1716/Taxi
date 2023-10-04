@@ -4,16 +4,16 @@ class ClientRequestState extends Equatable {
   const ClientRequestState(
       {this.errorText = '',
       this.statusRequest = FormStatus.pure,
-      this.requestModelClient = const RequestModelClient.initial()});
+      this.requestModelClient = const RequestModel.initial()});
 
   final String errorText;
   final FormStatus statusRequest;
-  final RequestModelClient requestModelClient;
+  final RequestModel requestModelClient;
 
   ClientRequestState copyWith({
     String? errorText,
     FormStatus? statusRequest,
-    RequestModelClient? requestModelClient,
+    RequestModel? requestModelClient,
   }) =>
       ClientRequestState(
         errorText: errorText ?? this.errorText,
@@ -25,8 +25,6 @@ class ClientRequestState extends Equatable {
   List<Object?> get props => [
         errorText,
         statusRequest,
-    requestModelClient,
+        requestModelClient,
       ];
 }
-
-

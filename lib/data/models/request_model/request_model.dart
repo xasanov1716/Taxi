@@ -1,71 +1,81 @@
 import 'package:equatable/equatable.dart';
 
-class RequestModelDriver extends Equatable {
-
+class RequestModel extends Equatable {
   final String userId;
   final int fromId;
   final int toId;
   final String description;
   final int requestPrice;
-  final int emptyPlaces;
+  final int passengerCount;
   final String tripTime;
   final String createdAt;
+  final String creatorName;
+  final int status;
 
-
-  const RequestModelDriver({
+  const RequestModel({
     required this.userId,
     required this.fromId,
     required this.toId,
     required this.description,
     required this.requestPrice,
-    required this.emptyPlaces,
+    required this.passengerCount,
     required this.tripTime,
     required this.createdAt,
+    required this.status,
+    required this.creatorName,
   });
 
-  const RequestModelDriver.initial()
+  const RequestModel.initial()
       : this(
           userId: '',
           fromId: 0,
           toId: 0,
           description: '',
           requestPrice: 0,
-          emptyPlaces: 0,
+          passengerCount: 0,
           tripTime: '',
           createdAt: '',
+          creatorName: "",
+          status: 1,
         );
 
-  RequestModelDriver copyWith({
+  RequestModel copyWith({
     String? userId,
     int? fromId,
     int? toId,
     String? description,
     int? requestPrice,
-    int? emptyPlaces,
+    int? passengerCount,
     String? tripTime,
     String? createdAt,
+    String? creatorName,
+    int? status,
   }) =>
-      RequestModelDriver(
+      RequestModel(
         userId: userId ?? this.userId,
         fromId: fromId ?? this.fromId,
         toId: toId ?? this.toId,
         description: description ?? this.description,
         requestPrice: requestPrice ?? this.requestPrice,
-        emptyPlaces: emptyPlaces ?? this.emptyPlaces,
+        passengerCount: passengerCount ?? this.passengerCount,
         tripTime: tripTime ?? this.tripTime,
         createdAt: createdAt ?? this.createdAt,
+        creatorName: creatorName ?? this.creatorName,
+        status: status ?? this.status,
       );
 
-  factory RequestModelDriver.fromJson(Map<String, dynamic> json) =>
-      RequestModelDriver(
+  factory RequestModel.fromJson(Map<String, dynamic> json) =>
+      RequestModel(
         userId: json['user_id'] as String? ?? '',
         fromId: json['from_id'] as int? ?? 0,
         toId: json['to_id'] as int? ?? 0,
         description: json['description'] as String? ?? '',
         requestPrice: json['request_price'] as int? ?? 0,
-        emptyPlaces: json['empty_places'] as int? ?? 0,
+        passengerCount: json['passenger_count'] as int? ?? 0,
         tripTime: json['trip_time'] as String? ?? '',
         createdAt: json['created_at'] as String? ?? '',
+        creatorName: json['creator_name'] as String? ?? '',
+        status: json['status'] as int? ?? 1,
       );
 
   Map<String, dynamic> toJson() => {
@@ -74,9 +84,11 @@ class RequestModelDriver extends Equatable {
         'to_id': toId,
         'description': description,
         'request_price': requestPrice,
-        'empty_places': emptyPlaces,
+        'passenger_count': passengerCount,
         'trip_time': tripTime,
-        'created_at': createdAt
+        'created_at': createdAt,
+        "creator_name": creatorName,
+        "status": status,
       };
 
   @override
@@ -87,24 +99,28 @@ class RequestModelDriver extends Equatable {
  toId: $toId
  description: $description
  requestPrice: $requestPrice
- emptyPlaces: $emptyPlaces
+ emptyPlaces: $passengerCount
  tripTime: $tripTime
- createdAt: $createdAt''';
+ createdAt: $createdAt
+ status: $status
+ creatorName: $creatorName
+    ''';
   }
-
 
   @override
   List<Object?> get props => [
-    userId,
-    fromId,
-    toId,
-    description,
-    requestPrice,
-    emptyPlaces,
-    tripTime,
-    createdAt,
-  ];
+        userId,
+        fromId,
+        toId,
+        description,
+        requestPrice,
+        passengerCount,
+        tripTime,
+        createdAt,
+      ];
 }
+
+
 enum RequestField {
   userId,
   fromId,
