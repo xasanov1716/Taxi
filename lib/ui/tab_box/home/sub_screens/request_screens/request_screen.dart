@@ -50,7 +50,7 @@ class _RequestScreenState extends State<RequestScreen> {
                 : ColorScheme.fromSeed(seedColor: Colors.white)),
         value: Time(
           hour: int.parse(
-            DateTime.now().toString().substring(10, 12),
+            DateTime.now().toString().substring(10, 13),
           ),
           minute: int.parse(
             DateTime.now().toString().substring(14, 16),
@@ -158,13 +158,22 @@ class _RequestScreenState extends State<RequestScreen> {
                                 },
                               ),
                               24.ph,
-                              GlobalButton(
-                                title: tripTime,
+                              InkWell(
                                 onTap: () {
                                   _show();
                                 },
-                                radius: 100.r,
-                                color: AppColors.primary,
+                                child: Center(
+                                  child: Container(
+                                    padding: EdgeInsets.symmetric(horizontal: 40.w, vertical: 20.h),
+
+                                    decoration: BoxDecoration(
+                                        color: getTheme(context) ? AppColors.dark2 : AppColors.greysCale,
+
+                                      borderRadius: BorderRadius.circular(12.r),
+                                    ),
+                                    child: Text(tripTime,style:tripTime.length>5 ? Theme.of(context).textTheme.titleMedium:Theme.of(context).textTheme.titleLarge,),
+                                  ),
+                                ),
                               ),
                               24.ph,
                               Text(

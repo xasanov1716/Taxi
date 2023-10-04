@@ -6,7 +6,7 @@ import 'package:taxi_app/utils/colors/app_colors.dart';
 class GlobalButton extends StatelessWidget {
   const GlobalButton({
     super.key,
-    this.color = Colors.blue,
+    this.color = AppColors.primary,
     required this.title,
     this.radius = 16,
     this.textColor = AppColors.dark3,
