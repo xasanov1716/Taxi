@@ -127,6 +127,9 @@ class DriverRequestBloc extends Bloc<DriverRequestEvent, DriverRequestState> {
       case RequestField.createdAt:
         requestModel = requestModel.copyWith(createdAt: event.value as String?);
         break;
+      case RequestField.creatorName:
+        requestModel = requestModel.copyWith(creatorName: event.value as String?);
+        break;
     }
     requestModel = requestModel.copyWith(
         createdAt: DateTime.now().toString().substring(0, 16));

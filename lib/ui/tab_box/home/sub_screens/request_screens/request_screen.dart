@@ -203,6 +203,11 @@ class _RequestScreenState extends State<RequestScreen> {
                                 listFromOutside: state.regionModels,
                                 itemFromOutside: toRegion,
                                 onChanged: (newValue) {
+                                  context.read<DriverRequestBloc>().add(
+                                    UpdateCurrentDriverField(
+                                        fieldKey: RequestField.creatorName,
+                                        value: BlocProvider.of<UserBloc>(context).state.userModel.fullName),
+                                  );
                                   setState(() {
                                     toRegion = newValue.name;
                                     context.read<DriverRequestBloc>().add(
