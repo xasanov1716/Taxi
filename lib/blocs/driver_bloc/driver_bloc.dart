@@ -24,6 +24,7 @@ class DriverBloc extends Bloc<DriverEvent, DriverState> {
             driversById: const [],
             statusText: '',
             driverModel: DriverModel(
+              password: "",
               role: '',
               driverId: '',
               fcmToken: '',
@@ -124,6 +125,7 @@ class DriverBloc extends Bloc<DriverEvent, DriverState> {
   clearDriverState(){
     // ignore: invalid_use_of_visible_for_testing_member
     emit(state.copyWith(driverModel: DriverModel(
+     password: "",
       role: '',
       driverId: '',
       fcmToken: '',
@@ -305,12 +307,16 @@ class DriverBloc extends Bloc<DriverEvent, DriverState> {
           currentDriver = currentDriver.copyWith(carNumber: value as String);
           break;
         }
+      case DriverFieldKeys.password:
+        {
+          currentDriver = currentDriver.copyWith(password: value as String);
+          break;
+        }
     }
 
     debugPrint("DRIVER: ${currentDriver.toString()}");
     currentDriver = currentDriver.copyWith(
         role: StorageRepository.getString(StorageKeys.userRole));
-    // ignore: invalid_use_of_visible_for_testing_member
     emit(state.copyWith(driverModel: currentDriver));
   }
 }

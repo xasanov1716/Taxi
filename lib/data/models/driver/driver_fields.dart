@@ -27,4 +27,5 @@ enum DriverFieldKeys {
   hasFilled,
   carNumber,
   role,
+  password,
 }

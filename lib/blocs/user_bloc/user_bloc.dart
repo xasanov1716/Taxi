@@ -11,26 +11,30 @@ import 'package:taxi_app/utils/constants/constants.dart';
 import 'package:taxi_app/utils/constants/storage_keys.dart';
 
 part 'user_event.dart';
+
 part 'user_state.dart';
 
 class UserBloc extends Bloc<UserEvent, UsersState> {
   final UserRepo userRepo;
+
   UserBloc({required this.userRepo})
       : super(UsersState(
           statusText: '',
           userModel: UserModel(
-              image: '',
-              fullName: '',
-              nickName: '',
-              emailAddress: '',
-              birthDate: '',
-              phone: '',
-              addressText: '',
-              createdAt: '',
-              fcmToken: '',
-              userId: '',
-              gender: '',
-              role: ''),
+            image: '',
+            fullName: '',
+            nickName: '',
+            emailAddress: '',
+            birthDate: '',
+            phone: '',
+            addressText: '',
+            createdAt: '',
+            fcmToken: '',
+            userId: '',
+            gender: '',
+            role: '',
+            password: "",
+          ),
           status: FormStatus.pure,
         )) {
     on<UserEvent>((event, emit) {});
@@ -39,6 +43,7 @@ class UserBloc extends Bloc<UserEvent, UsersState> {
     on<DeleteUserEvent>(deleteUser);
     on<UpdateCurrentUserEvent>(updateCurrentUserField);
   }
+
   Future<void> addUser(
       AddUserEvent addUserEvent, Emitter<UsersState> emit) async {
     emit(state.copyWith(statusText: "loading...", status: FormStatus.loading));
@@ -69,6 +74,7 @@ class UserBloc extends Bloc<UserEvent, UsersState> {
       UsersState(
         userModel: UserModel(
             image: '',
+            password: "",
             fullName: '',
             nickName: '',
             emailAddress: '',
@@ -100,7 +106,6 @@ class UserBloc extends Bloc<UserEvent, UsersState> {
       // ignore: invalid_use_of_visible_for_testing_member
       emit(state.copyWith(userModel: userModel));
       StorageRepository.putString(StorageKeys.userRole, AppConstants.client);
-
     } else {
       debugPrint(
           "Documnet does not exist ---------------------------------------------------------------------");
@@ -112,6 +117,7 @@ class UserBloc extends Bloc<UserEvent, UsersState> {
     // ignore: invalid_use_of_visible_for_testing_member
     emit(state.copyWith(
       userModel: UserModel(
+          password: "",
           image: '',
           fullName: '',
           nickName: '',
@@ -206,6 +212,12 @@ class UserBloc extends Bloc<UserEvent, UsersState> {
         {
           currentUser = currentUser.copyWith(
               role: updateCurrentUserEvent.value as String);
+          break;
+        }
+      case UserFieldKeys.password:
+        {
+          currentUser = currentUser.copyWith(
+              password: updateCurrentUserEvent.value as String);
           break;
         }
     }

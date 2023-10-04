@@ -53,6 +53,7 @@ class DriverState extends Equatable {
 
   clear() {
     DriverModel(
+      password: "",
       role: '',
       driverId: '',
       fcmToken: '',
