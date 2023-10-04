@@ -327,7 +327,7 @@ class _RequestScreenState extends State<RequestScreen> {
                                   AddDriverRequest(
                                     requestModelDriver:
                                         requestModelDriver.copyWith(
-                                      createdAt: DateTime.now().second,
+                                      createdAt: DateTime.now().toString(),
                                       description: desc.text,
                                       requestPrice: int.parse(price.text),
                                       fromId: fromRegionId,
@@ -340,7 +340,7 @@ class _RequestScreenState extends State<RequestScreen> {
                             : BlocProvider.of<ClientRequestBloc>(context)
                                 .add(AddClientRequest(
                                 requestModelClient: requestModelClient.copyWith(
-                                  createdAt: DateTime.now().second,
+                                  createdAt: DateTime.now().toString(),
                                   description: desc.text,
                                   requestPrice: int.parse(price.text),
                                   fromId: fromRegionId,

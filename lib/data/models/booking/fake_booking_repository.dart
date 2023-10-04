@@ -1,6 +1,8 @@
 import 'package:taxi_app/data/models/booking/booking_status.dart';
 import 'package:taxi_app/data/models/icon/icon_type.dart';
 import 'package:taxi_app/data/models/payment/payment_model.dart';
+import 'package:taxi_app/data/models/request_model_client/request_model_client.dart';
+import 'package:taxi_app/data/models/request_model_driver/request_model_driver.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 
 import 'booking_model.dart';
@@ -10,4 +12,22 @@ List<BookingModel> fakeBookings = [
   BookingModel(avatar: AppIcons.drFake3, driverName: "Jane Cooper", carName: "Toyota Vios Limo", carNumber: "HDY 291F GR", status: BookingStatus.completed, distance: 9.7, duration: 16, payment: PaymentModel(paymentIcon: AppIcons.getSvg(name: AppIcons.wallet, iconType: IconType.curved), title: "USD", price: 18.00), date: "Dec 24, 2024 | 16:00 AM", currentLocTitle:"National Grand Park",currentLocStreet: "35 Oak Ave. Antioch, TN 37013", arrivingLocTitle: "Soft Bank Buildings", arrivingLocStreet: "26 State St. Daphne, AL 36526"),
   BookingModel(avatar: AppIcons.drFake4, driverName: "Albert Flores", carName: "Toyota Alphard", carNumber: "HAY 2743 FK", status: BookingStatus.cancelled, distance: 5.7, duration: 12, payment: PaymentModel(paymentIcon: AppIcons.getSvg(name: AppIcons.wallet, iconType: IconType.curved), title: "USD", price: 20.00), date: "Dec 15, 2024 | 16:48 PM", currentLocTitle:"Town Square",currentLocStreet: "86 N. Ohio Court Norfolk, VA 23503", arrivingLocTitle: "Grand Mall Plaza", arrivingLocStreet: "9037 Spruce Avenue Nutley, NJ 07110"),
   BookingModel(avatar: AppIcons.drFake5, driverName: "Daniel Austin", carName: "Mercedes-Benz E-Cl..", carNumber: "HSW 4736 XK", status: BookingStatus.cancelled, distance: 4.5, duration: 4, payment: PaymentModel(paymentIcon: AppIcons.getSvg(name: AppIcons.wallet, iconType: IconType.curved), title: "USD", price: 7.00), date: "Dec 20, 2024 | 10:00 AM", currentLocTitle:"Current Location",currentLocStreet: "35 Oak Ave. Antioch, TN 37013", arrivingLocTitle: "Soft Bank Buildings", arrivingLocStreet: "26 State St. Daphne, AL 36526"),
+];
+
+
+List<RequestModelDriver> driversRequest = const [
+  RequestModelDriver(userId: "", fromId: 1, toId: 13, description: "Mashina juda yaxshi holatda", requestPrice: 180000, emptyPlaces: 2, tripTime: "17:30", createdAt: "23"),
+  RequestModelDriver(userId: "", fromId: 1, toId: 13, description: "Mashina juda yaxshi holatda", requestPrice: 180000, emptyPlaces: 2, tripTime: "17:30", createdAt: "23"),
+  RequestModelDriver(userId: "", fromId: 1, toId: 13, description: "Mashina juda yaxshi holatda", requestPrice: 180000, emptyPlaces: 2, tripTime: "17:30", createdAt: "23"),
+  RequestModelDriver(userId: "", fromId: 1, toId: 13, description: "Mashina juda yaxshi holatda", requestPrice: 180000, emptyPlaces: 2, tripTime: "17:30", createdAt: "23"),
+  RequestModelDriver(userId: "", fromId: 1, toId: 13, description: "Mashina juda yaxshi holatda", requestPrice: 180000, emptyPlaces: 2, tripTime: "17:30", createdAt: "23"),
+];
+
+
+List<RequestModelClient> clientsRequest = const [
+  RequestModelClient(userId: "", fromId: 1, toId: 13, description: "Yaxshi holatdagi mashina kerak", requestPrice: 160000, passengerCount: 2, tripTime: "18:00", createdAt: "23"),
+  RequestModelClient(userId: "", fromId: 1, toId: 13, description: "Yaxshi holatdagi mashina kerak", requestPrice: 160000, passengerCount: 2, tripTime: "18:00", createdAt: "23"),
+  RequestModelClient(userId: "", fromId: 1, toId: 13, description: "Yaxshi holatdagi mashina kerak", requestPrice: 160000, passengerCount: 2, tripTime: "18:00", createdAt: "23"),
+  RequestModelClient(userId: "", fromId: 1, toId: 13, description: "Yaxshi holatdagi mashina kerak", requestPrice: 160000, passengerCount: 2, tripTime: "18:00", createdAt: "23"),
+  RequestModelClient(userId: "", fromId: 1, toId: 13, description: "Yaxshi holatdagi mashina kerak", requestPrice: 160000, passengerCount: 2, tripTime: "18:00", createdAt: "23"),
 ];

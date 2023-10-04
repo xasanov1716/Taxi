@@ -1,6 +1,17 @@
 import 'package:equatable/equatable.dart';
 
 class RequestModelDriver extends Equatable {
+
+  final String userId;
+  final int fromId;
+  final int toId;
+  final String description;
+  final int requestPrice;
+  final int emptyPlaces;
+  final String tripTime;
+  final String createdAt;
+
+
   const RequestModelDriver({
     required this.userId,
     required this.fromId,
@@ -14,15 +25,15 @@ class RequestModelDriver extends Equatable {
 
   const RequestModelDriver.initial()
       : this(
-          userId: '',
-          fromId: 0,
-          toId: 0,
-          description: '',
-          requestPrice: 0,
-          emptyPlaces: 0,
-          tripTime: '',
-          createdAt: 0,
-        );
+    userId: '',
+    fromId: 0,
+    toId: 0,
+    description: '',
+    requestPrice: 0,
+    emptyPlaces: 0,
+    tripTime: '',
+    createdAt: '',
+  );
 
   RequestModelDriver copyWith({
     String? userId,
@@ -32,7 +43,7 @@ class RequestModelDriver extends Equatable {
     int? requestPrice,
     int? emptyPlaces,
     String? tripTime,
-    int? createdAt,
+    String? createdAt,
   }) =>
       RequestModelDriver(
         userId: userId ?? this.userId,
@@ -54,19 +65,19 @@ class RequestModelDriver extends Equatable {
         requestPrice: json['request_price'] as int? ?? 0,
         emptyPlaces: json['empty_places'] as int? ?? 0,
         tripTime: json['trip_time'] as String? ?? '',
-        createdAt: json['created_at'] as int? ?? 0,
+        createdAt: json['created_at'] as String? ?? '',
       );
 
   Map<String, dynamic> toJson() => {
-        'user_id': userId,
-        'from_id': fromId,
-        'to_id': toId,
-        'description': description,
-        'request_price': requestPrice,
-        'empty_places': emptyPlaces,
-        'trip_time': tripTime,
-        'created_at': createdAt
-      };
+    'user_id': userId,
+    'from_id': fromId,
+    'to_id': toId,
+    'description': description,
+    'request_price': requestPrice,
+    'empty_places': emptyPlaces,
+    'trip_time': tripTime,
+    'created_at': createdAt
+  };
 
   @override
   String toString() {
@@ -81,14 +92,6 @@ class RequestModelDriver extends Equatable {
  createdAt: $createdAt''';
   }
 
-  final String userId;
-  final int fromId;
-  final int toId;
-  final String description;
-  final int requestPrice;
-  final int emptyPlaces;
-  final String tripTime;
-  final int createdAt;
 
   @override
   List<Object?> get props => [
@@ -101,4 +104,14 @@ class RequestModelDriver extends Equatable {
     tripTime,
     createdAt,
   ];
+}
+enum RequestField {
+  userId,
+  fromId,
+  toId,
+  description,
+  requestPrice,
+  emptyPlaces,
+  tripTime,
+  createdAt,
 }

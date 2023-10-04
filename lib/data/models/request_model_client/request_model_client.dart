@@ -1,6 +1,15 @@
 import 'package:equatable/equatable.dart';
 
 class RequestModelClient  extends Equatable {
+  final String userId;
+  final int fromId;
+  final int toId;
+  final String description;
+  final int requestPrice;
+  final int passengerCount;
+  final String tripTime;
+  final String createdAt;
+
   const RequestModelClient(
       {required this.userId,
         required this.fromId,
@@ -14,14 +23,14 @@ class RequestModelClient  extends Equatable {
 
   const RequestModelClient.initial()
       : this(
-      userId: '',
-      fromId: 0,
-      toId: 0,
-      description: '',
-      requestPrice: 0,
-      passengerCount: 0,
-      tripTime: '',
-      createdAt: 0,
+    userId: '',
+    fromId: 0,
+    toId: 0,
+    description: '',
+    requestPrice: 0,
+    passengerCount: 0,
+    tripTime: '',
+    createdAt: '',
   );
 
   RequestModelClient copyWith({
@@ -32,7 +41,7 @@ class RequestModelClient  extends Equatable {
     int? requestPrice,
     int? passengerCount,
     String? tripTime,
-    int? createdAt,
+    String? createdAt,
   }) =>
       RequestModelClient(
         userId: userId ?? this.userId,
@@ -54,7 +63,7 @@ class RequestModelClient  extends Equatable {
         requestPrice: json['request_price'] as int? ?? 0,
         passengerCount: json['passenger_count'] as int? ?? 0,
         tripTime: json['trip_time'] as String? ?? '',
-        createdAt: json['created_at'] as int? ?? 0,
+        createdAt: json['created_at'] as String? ?? '',
       );
 
   Map<String, dynamic> toJson() => {
@@ -82,14 +91,7 @@ class RequestModelClient  extends Equatable {
     ''';
   }
 
-  final String userId;
-  final int fromId;
-  final int toId;
-  final String description;
-  final int requestPrice;
-  final int passengerCount;
-  final String tripTime;
-  final int createdAt;
+
 
   @override
 
