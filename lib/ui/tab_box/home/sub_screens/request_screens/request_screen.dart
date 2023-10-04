@@ -49,7 +49,7 @@ class _RequestScreenState extends State<RequestScreen> {
                 : ColorScheme.fromSeed(seedColor: Colors.white)),
         value: Time(
           hour: int.parse(
-            DateTime.now().toString().substring(10, 12),
+            DateTime.now().toString().substring(10, 13),
           ),
           minute: int.parse(
             DateTime.now().toString().substring(14, 16),
