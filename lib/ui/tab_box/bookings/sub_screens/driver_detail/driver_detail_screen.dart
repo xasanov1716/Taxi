@@ -16,10 +16,3 @@ class _DriverDetailScreenState extends State<DriverDetailScreen> {
 }
 
 
-_getFromQuarter({required int id}) async {
-  fromQuarters = (await PlacesDatabase.instance.getQuarterById(id: id))
-      .map((e) => e.name)
-      .toList();
-  fromQuarter = fromQuarters.first;
-  setState(() {});
-}
