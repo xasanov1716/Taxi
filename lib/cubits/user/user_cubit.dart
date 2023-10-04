@@ -5,29 +5,27 @@ import 'package:taxi_app/cubits/user/user_state.dart';
 import '../../data/models/user/user_field_keys.dart';
 import '../../data/models/user/user_model.dart';
 
-
 class UserCubit extends Cubit<UserState> {
   UserCubit()
       : super(
           UserState(
             userModel: UserModel(
-            image: '',
-            fullName: '',
-            nickName: '',
-            emailAddress: '',
-            birthDate: '',
-            phone: '',
-            gender: '',
-            addressText: '',
-            createdAt: '',
-            fcmToken: '',
-            userId: '',
-            role: ''
-             ),
+                password: "",
+                image: '',
+                fullName: '',
+                nickName: '',
+                emailAddress: '',
+                birthDate: '',
+                phone: '',
+                gender: '',
+                addressText: '',
+                createdAt: '',
+                fcmToken: '',
+                userId: '',
+                role: ''),
             errorText: "",
           ),
         );
-
 
   updateCurrentUserField({
     required UserFieldKeys fieldKey,
@@ -35,7 +33,7 @@ class UserCubit extends Cubit<UserState> {
   }) {
     UserModel currentUser = state.userModel;
 
-    switch (fieldKey) { 
+    switch (fieldKey) {
       case UserFieldKeys.fullName:
         {
           currentUser = currentUser.copyWith(fullName: value as String);
@@ -91,9 +89,14 @@ class UserCubit extends Cubit<UserState> {
           currentUser = currentUser.copyWith(nickName: value as String);
           break;
         }
-        case UserFieldKeys.role:
+      case UserFieldKeys.role:
         {
           currentUser = currentUser.copyWith(role: value as String);
+          break;
+        }
+      case UserFieldKeys.password:
+        {
+          currentUser = currentUser.copyWith(password: value as String);
           break;
         }
     }
@@ -143,7 +146,7 @@ class UserCubit extends Cubit<UserState> {
     if (currentUser.birthDate.isEmpty) {
       return false;
     }
-     if (currentUser.nickName.isEmpty) {
+    if (currentUser.nickName.isEmpty) {
       return false;
     }
     return true;
@@ -153,19 +156,20 @@ class UserCubit extends Cubit<UserState> {
     emit(
       UserState(
         userModel: UserModel(
-            image: '',
-            fullName: '',
-            nickName: '',
-            emailAddress: '',
-            birthDate: '',
-            phone: '',
-            gender: '',
-            addressText: '',
-            createdAt: '',
-            fcmToken: '',
-            userId: '',
-            role: '',
-             ),
+          password: "",
+          image: '',
+          fullName: '',
+          nickName: '',
+          emailAddress: '',
+          birthDate: '',
+          phone: '',
+          gender: '',
+          addressText: '',
+          createdAt: '',
+          fcmToken: '',
+          userId: '',
+          role: '',
+        ),
         errorText: "",
       ),
     );

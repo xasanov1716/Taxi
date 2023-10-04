@@ -11,6 +11,7 @@ class UserModel {
   final String phone;
   final String gender;
   final String role;
+  final String password;
 
   UserModel({
     required this.image,
@@ -25,6 +26,7 @@ class UserModel {
     required this.userId,
     required this.gender,
     required this.role,
+    required this.password,
   });
 
   UserModel copyWith({
@@ -40,6 +42,7 @@ class UserModel {
     String? userId,
     String? birthDate,
     String? role,
+    String? password,
   }) =>
       UserModel(
         image: image ?? this.image,
@@ -54,21 +57,23 @@ class UserModel {
         createdAt: createdAt ?? this.createdAt,
         userId: userId ?? this.userId,
         role: role ?? this.role,
+        password: password ?? this.password,
       );
 
   factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
-      image: json['image'] as String? ?? '',
-      fullName: json['full_name'] as String? ?? '',
-      nickName: json['nick_name'] as String? ?? '',
-      emailAddress: json['email_address'] as String? ?? '',
-      birthDate: json['birth_date'] as String? ?? '',
-      phone: json['phone'] as String? ?? '',
-      addressText: json['address_text'] as String? ?? '',
-      createdAt: json['created_at'] as String? ?? '',
-      fcmToken: json['fcm_token'] as String? ?? '',
-      userId: json['user_id'] as String? ?? '',
-      gender: json['gender'] as String? ?? '',
-      role: json['role'] as String? ?? '',
+        image: json['image'] as String? ?? '',
+        fullName: json['full_name'] as String? ?? '',
+        nickName: json['nick_name'] as String? ?? '',
+        emailAddress: json['email_address'] as String? ?? '',
+        birthDate: json['birth_date'] as String? ?? '',
+        phone: json['phone'] as String? ?? '',
+        addressText: json['address_text'] as String? ?? '',
+        createdAt: json['created_at'] as String? ?? '',
+        fcmToken: json['fcm_token'] as String? ?? '',
+        userId: json['user_id'] as String? ?? '',
+        gender: json['gender'] as String? ?? '',
+        role: json['role'] as String? ?? '',
+        password: json['password'] as String? ?? '',
       );
 
   @override
@@ -85,6 +90,7 @@ class UserModel {
     phone: $phone,
     gender: $gender,
     role: $role,
+    password: $password,
   ''';
 
   Map<String, dynamic> toJson() => {
@@ -100,5 +106,6 @@ class UserModel {
         'phone': phone,
         'gender': gender,
         'role': role,
+        'password': password,
       };
 }
