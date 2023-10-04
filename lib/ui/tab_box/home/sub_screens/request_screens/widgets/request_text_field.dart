@@ -61,7 +61,9 @@ class _RequestTextFieldState extends State<RequestTextField> {
   @override
   Widget build(BuildContext context) {
     return TextField(
-      onChanged: widget.onChanged,
+      onChanged: (String value) {
+        widget.onChanged!(value);
+      },
 
       controller: _internalController,
       maxLines: widget.maxLines,

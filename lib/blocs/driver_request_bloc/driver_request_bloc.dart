@@ -42,6 +42,16 @@ class DriverRequestBloc extends Bloc<DriverRequestEvent, DriverRequestState> {
     emit(state.copyWith(regionModels: regionModels));
   }
 
+  clearAllState() {
+    // ignore: invalid_use_of_visible_for_testing_member
+    emit(state.copyWith(
+        requestModelDriver: const RequestModelDriver.initial(),
+        priceText: '',
+        errorText: '',
+        descriptionText: '',
+        statusRequest: FormStatus.pure));
+  }
+
   Future<void> _addDriverRequest(
       AddDriverRequest event, Emitter<DriverRequestState> emit) async {
     emit(state.copyWith(statusRequest: FormStatus.loading));
@@ -117,8 +127,9 @@ class DriverRequestBloc extends Bloc<DriverRequestEvent, DriverRequestState> {
         requestModel = requestModel.copyWith(createdAt: event.value as String?);
         break;
     }
-    requestModel =  requestModel.copyWith(createdAt: DateTime.now().toString().substring(0,16));
-    requestModel =  requestModel.copyWith(
+    requestModel = requestModel.copyWith(
+        createdAt: DateTime.now().toString().substring(0, 16));
+    requestModel = requestModel.copyWith(
         userId: StorageRepository.getString(StorageKeys.userId));
 
     debugPrint(requestModel.toString());
