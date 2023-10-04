@@ -1,6 +1,4 @@
 import 'package:day_night_time_picker/day_night_time_picker.dart';
-import 'package:day_night_time_picker/lib/daynight_timepicker.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -32,7 +30,7 @@ class RequestScreen extends StatefulWidget {
 }
 
 class _RequestScreenState extends State<RequestScreen> {
-  var emptyPlaces = ['1', '2', '3', '4', '5', '6', '7'];
+  List<String> emptyPlaces = ['1', '2', '3', '4', '5', '6', '7'];
   String emptyPlace = "1";
   String fromRegion = "Tashkent shahri";
   bool isDriver = StorageRepository.getString(StorageKeys.userRole) == "driver";
@@ -45,12 +43,12 @@ class _RequestScreenState extends State<RequestScreen> {
         context: context,
         themeData: ThemeData.from(
             colorScheme: getTheme(context)
-                ? ColorScheme.dark()
+                ? const ColorScheme.dark()
                 : ColorScheme.fromSeed(seedColor: Colors.white)),
         value: Time(hour: 12, minute: 0),
-        sunrise: const TimeOfDay(hour: 6, minute: 0), // optional
-        sunset: const TimeOfDay(hour: 18, minute: 0), // optional
-        duskSpanInMinutes: 120, // optional
+        sunrise: const TimeOfDay(hour: 6, minute: 0),
+        sunset: const TimeOfDay(hour: 18, minute: 0),
+        duskSpanInMinutes: 120, 
         onChange: (value) {
           tripTime = "${value.hour}:${value.minute}";
           context.read<DriverRequestBloc>().add(
@@ -195,7 +193,6 @@ class _RequestScreenState extends State<RequestScreen> {
                 child: GlobalButton(
                   title: "Send Request",
                   onTap: () {
-                    // if (state.priceText.isNotEmpty) {
                     if (state.requestModelDriver.tripTime.isNotEmpty) {
                       isDriver
                           ? context
@@ -225,16 +222,6 @@ class _RequestScreenState extends State<RequestScreen> {
                         ),
                       );
                     }
-                    // } else {
-                    //   ScaffoldMessenger.of(context).showSnackBar(
-                    //     const SnackBar(
-                    //       content: Text(
-                    //         "Request Price is Empty!!!",
-                    //         style: TextStyle(color: AppColors.white),
-                    //       ),
-                    //     ),
-                    //   );
-                    // }
                   },
                   color: AppColors.primary,
                   radius: 100.r,
