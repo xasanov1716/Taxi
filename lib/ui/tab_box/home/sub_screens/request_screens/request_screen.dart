@@ -1,3 +1,4 @@
+import 'package:day_night_time_picker/day_night_time_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -10,12 +11,13 @@ import 'package:taxi_app/data/models/request_model_driver/request_model_driver.d
 import 'package:taxi_app/data/models/status/form_status.dart';
 import 'package:taxi_app/ui/tab_box/home/sub_screens/request_screens/widgets/dropdown_for_empty_place.dart';
 import 'package:taxi_app/ui/tab_box/home/sub_screens/request_screens/widgets/dropdown_for_request.dart';
+import 'package:taxi_app/ui/tab_box/home/sub_screens/request_screens/widgets/request_text_field.dart';
 import 'package:taxi_app/ui/widgets/global_appbar.dart';
 import 'package:taxi_app/ui/widgets/global_button.dart';
-import 'package:taxi_app/ui/widgets/global_input.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/constants/storage_keys.dart';
 import 'package:taxi_app/utils/fonts/text_styles.dart';
+import 'package:taxi_app/utils/formatter/price_formatter.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
 import 'package:taxi_app/utils/ui_utils/error_message_dialog.dart';
@@ -29,7 +31,7 @@ class RequestScreen extends StatefulWidget {
 }
 
 class _RequestScreenState extends State<RequestScreen> {
-  var emptyPlaces = ['1', '2', '3', '4', '5', '6', '7'];
+  List<String> emptyPlaces = ['1', '2', '3', '4', '5', '6', '7'];
   String emptyPlace = "1";
   String fromRegion = "Tashkent shahri";
   bool isDriver = StorageRepository.getString(StorageKeys.userRole) == "driver";
@@ -37,19 +39,27 @@ class _RequestScreenState extends State<RequestScreen> {
   String tripTime = "Choose a departure time";
 
   Future<void> _show() async {
-    tripTime = (await showTimePicker(
-      context: context,
-      initialTime: TimeOfDay.now(),
-      initialEntryMode: TimePickerEntryMode.input,
-    ))
-        .toString()
-        .substring(10, 15);
-    if (context.mounted) {
-      context.read<DriverRequestBloc>().add(
-            UpdateCurrentDriverField(
-                fieldKey: RequestField.tripTime, value: tripTime),
-          );
-    }
+    Navigator.of(context).push(
+      showPicker(
+        context: context,
+        themeData: ThemeData.from(
+            colorScheme: getTheme(context)
+                ? const ColorScheme.dark()
+                : ColorScheme.fromSeed(seedColor: Colors.white)),
+        value: Time(hour: 12, minute: 0),
+        sunrise: const TimeOfDay(hour: 6, minute: 0),
+        sunset: const TimeOfDay(hour: 18, minute: 0),
+        duskSpanInMinutes: 120,
+        onChange: (value) {
+          tripTime = "${value.hour}:${value.minute}";
+          context.read<DriverRequestBloc>().add(
+                UpdateCurrentDriverField(
+                    fieldKey: RequestField.tripTime, value: tripTime),
+              );
+        },
+      ),
+    );
+
     setState(() {});
   }
 
@@ -73,18 +83,24 @@ class _RequestScreenState extends State<RequestScreen> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          GlobalTextField(
-                            hintText: "Description",
-                            onChanged: (value) {
-                              context.read<DriverRequestBloc>().add(
-                                    UpdateCurrentDriverField(
-                                        fieldKey: RequestField.description,
-                                        value: value),
-                                  );
-                            },
+                          SizedBox(
+                            height: 140.h,
+                            width: MediaQuery.of(context).size.width,
+                            child: RequestTextField(
+                              maxLines: 3,
+                              maxLength: 60,
+                              hintText: "Description",
+                              onChanged: (value) {
+                                context.read<DriverRequestBloc>().add(
+                                      UpdateCurrentDriverField(
+                                          fieldKey: RequestField.description,
+                                          value: value),
+                                    );
+                              },
+                            ),
                           ),
                           24.ph,
-                          GlobalTextField(
+                          RequestTextField(
                             hintText: "Request Price",
                             onChanged: (value) {
                               context.read<DriverRequestBloc>().add(
@@ -93,6 +109,7 @@ class _RequestScreenState extends State<RequestScreen> {
                                       value: int.parse(value)));
                             },
                             keyboardType: TextInputType.number,
+                            textFormatter: NumberInputFormatter(),
                           ),
                           24.ph,
                           Text(isDriver ? "Empty Places" : "PassengerCount",
@@ -184,47 +201,35 @@ class _RequestScreenState extends State<RequestScreen> {
                 child: GlobalButton(
                   title: "Send Request",
                   onTap: () {
-                    // if (state.priceText.isNotEmpty) {
-                      if (state.requestModelDriver.tripTime.isNotEmpty) {
-                        isDriver
-                            ? context
-                                .read<DriverRequestBloc>()
-                                .add(AddDriverRequest())
-                            : context.read<ClientRequestBloc>().add(
-                                AddClientRequest(
-                                    requestModelClient: RequestModelClient(
-                                        userId: state.requestModelDriver.userId,
-                                        fromId: state.requestModelDriver.fromId,
-                                        toId: state.requestModelDriver.toId,
-                                        description: state.descriptionText,
-                                        requestPrice:
-                                            int.parse(state.priceText),
-                                        passengerCount: state
-                                            .requestModelDriver.emptyPlaces,
-                                        tripTime:
-                                            state.requestModelDriver.tripTime,
-                                        createdAt: state
-                                            .requestModelDriver.createdAt)));
-                      } else {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text(
-                              "Trip Time is Empty!!!",
-                              style: TextStyle(color: AppColors.white),
-                            ),
+                    if (state.requestModelDriver.tripTime.isNotEmpty) {
+                      isDriver
+                          ? context
+                              .read<DriverRequestBloc>()
+                              .add(AddDriverRequest())
+                          : context.read<ClientRequestBloc>().add(
+                              AddClientRequest(
+                                  requestModelClient: RequestModelClient(
+                                      userId: state.requestModelDriver.userId,
+                                      fromId: state.requestModelDriver.fromId,
+                                      toId: state.requestModelDriver.toId,
+                                      description: state.descriptionText,
+                                      requestPrice: int.parse(state.priceText),
+                                      passengerCount:
+                                          state.requestModelDriver.emptyPlaces,
+                                      tripTime:
+                                          state.requestModelDriver.tripTime,
+                                      createdAt:
+                                          state.requestModelDriver.createdAt)));
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text(
+                            "Trip Time is Empty!!!",
+                            style: TextStyle(color: AppColors.white),
                           ),
-                        );
-                      }
-                    // } else {
-                    //   ScaffoldMessenger.of(context).showSnackBar(
-                    //     const SnackBar(
-                    //       content: Text(
-                    //         "Request Price is Empty!!!",
-                    //         style: TextStyle(color: AppColors.white),
-                    //       ),
-                    //     ),
-                    //   );
-                    // }
+                        ),
+                      );
+                    }
                   },
                   color: AppColors.primary,
                   radius: 100.r,
