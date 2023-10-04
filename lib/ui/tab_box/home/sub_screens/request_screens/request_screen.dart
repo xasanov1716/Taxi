@@ -18,6 +18,7 @@ import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/constants/storage_keys.dart';
 import 'package:taxi_app/utils/fonts/text_styles.dart';
 import 'package:taxi_app/utils/formatter/price_formatter.dart';
+import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
 import 'package:taxi_app/utils/ui_utils/error_message_dialog.dart';
@@ -204,10 +205,14 @@ class _RequestScreenState extends State<RequestScreen> {
                                 itemFromOutside: toRegion,
                                 onChanged: (newValue) {
                                   context.read<DriverRequestBloc>().add(
-                                    UpdateCurrentDriverField(
-                                        fieldKey: RequestField.creatorName,
-                                        value: BlocProvider.of<UserBloc>(context).state.userModel.fullName),
-                                  );
+                                        UpdateCurrentDriverField(
+                                            fieldKey: RequestField.creatorName,
+                                            value: BlocProvider.of<UserBloc>(
+                                                    context)
+                                                .state
+                                                .userModel
+                                                .fullName),
+                                      );
                                   setState(() {
                                     toRegion = newValue.name;
                                     context.read<DriverRequestBloc>().add(
@@ -244,7 +249,11 @@ class _RequestScreenState extends State<RequestScreen> {
                                     AddClientRequest(
                                         requestModelClient: RequestModel(
                                             status: 1,
-                                            creatorName: BlocProvider.of<UserBloc>(context).state.userModel.fullName,
+                                            creatorName:
+                                                BlocProvider.of<UserBloc>(context)
+                                                    .state
+                                                    .userModel
+                                                    .fullName,
                                             userId:
                                                 state.requestModelDriver.userId,
                                             fromId:
@@ -253,10 +262,10 @@ class _RequestScreenState extends State<RequestScreen> {
                                             description: state
                                                 .requestModelDriver.description,
                                             requestPrice: state
-                                                .requestModelDriver
-                                                .requestPrice,
+                                                .requestModelDriver.requestPrice,
                                             passengerCount: state
-                                                .requestModelDriver.passengerCount,
+                                                .requestModelDriver
+                                                .passengerCount,
                                             tripTime: state
                                                 .requestModelDriver.tripTime,
                                             createdAt: state.requestModelDriver
