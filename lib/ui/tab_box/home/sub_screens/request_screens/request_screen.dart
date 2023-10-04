@@ -10,12 +10,13 @@ import 'package:taxi_app/data/models/request_model_driver/request_model_driver.d
 import 'package:taxi_app/data/models/status/form_status.dart';
 import 'package:taxi_app/ui/tab_box/home/sub_screens/request_screens/widgets/dropdown_for_empty_place.dart';
 import 'package:taxi_app/ui/tab_box/home/sub_screens/request_screens/widgets/dropdown_for_request.dart';
+import 'package:taxi_app/ui/tab_box/home/sub_screens/request_screens/widgets/request_text_field.dart';
 import 'package:taxi_app/ui/widgets/global_appbar.dart';
 import 'package:taxi_app/ui/widgets/global_button.dart';
-import 'package:taxi_app/ui/widgets/global_input.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/constants/storage_keys.dart';
 import 'package:taxi_app/utils/fonts/text_styles.dart';
+import 'package:taxi_app/utils/formatter/price_formatter.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
 import 'package:taxi_app/utils/ui_utils/error_message_dialog.dart';
@@ -73,18 +74,24 @@ class _RequestScreenState extends State<RequestScreen> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          GlobalTextField(
-                            hintText: "Description",
-                            onChanged: (value) {
-                              context.read<DriverRequestBloc>().add(
-                                    UpdateCurrentDriverField(
-                                        fieldKey: RequestField.description,
-                                        value: value),
-                                  );
-                            },
+                          SizedBox(
+                            height: 140.h,
+                            width: MediaQuery.of(context).size.width,
+                            child: RequestTextField(
+                              maxLines: 3,
+                              maxLength: 60,
+                              hintText: "Description",
+                              onChanged: (value) {
+                                context.read<DriverRequestBloc>().add(
+                                      UpdateCurrentDriverField(
+                                          fieldKey: RequestField.description,
+                                          value: value),
+                                    );
+                              },
+                            ),
                           ),
                           24.ph,
-                          GlobalTextField(
+                          RequestTextField(
                             hintText: "Request Price",
                             onChanged: (value) {
                               context.read<DriverRequestBloc>().add(
@@ -93,6 +100,7 @@ class _RequestScreenState extends State<RequestScreen> {
                                       value: int.parse(value)));
                             },
                             keyboardType: TextInputType.number,
+                            textFormatter: NumberInputFormatter(),
                           ),
                           24.ph,
                           Text(isDriver ? "Empty Places" : "PassengerCount",
