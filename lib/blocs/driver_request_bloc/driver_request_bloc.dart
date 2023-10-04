@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:taxi_app/data/models/places/region_model.dart';
 import 'package:taxi_app/data/models/request_model_driver/request_model_driver.dart';
 import 'package:taxi_app/data/models/status/form_status.dart';
 import 'package:taxi_app/data/models/universal_data.dart';
@@ -13,12 +14,33 @@ part 'driver_request_event.dart';
 part 'driver_request_state.dart';
 
 class DriverRequestBloc extends Bloc<DriverRequestEvent, DriverRequestState> {
+  final RequestDriverRepo _requestDriverRepo;
+
   DriverRequestBloc({required RequestDriverRepo requestDriverRepo})
       : _requestDriverRepo = requestDriverRepo,
-        super(const DriverRequestState()) {
+        super(
+          const DriverRequestState(
+            fromRegions: [],
+            toRegionModels: [],
+            fromRegionModels: [],
+            toRegions: [],
+            descriptionText: '',
+            priceText: '',
+          ),
+        ) {
     on<AddDriverRequest>(_addDriverRequest);
     on<UpdateDriverRequest>(_updateDriverRequest);
     on<DeleteDriverRequest>(_deleteDriverRequest);
+  }
+
+  void updatePriceFields(String v) {
+    // ignore: invalid_use_of_visible_for_testing_member
+    emit(state.copyWith(priceText: v));
+  }
+
+  void updateDescFields(String v) {
+    // ignore: invalid_use_of_visible_for_testing_member
+    emit(state.copyWith(descriptionText: v));
   }
 
   Future<void> _addDriverRequest(
@@ -33,9 +55,7 @@ class DriverRequestBloc extends Bloc<DriverRequestEvent, DriverRequestState> {
       ));
     } else {
       emit(state.copyWith(
-        statusRequest: FormStatus.failure,
-        errorText: "Request not added"
-      ));
+          statusRequest: FormStatus.failure, errorText: "Request not added"));
     }
   }
 
@@ -45,33 +65,25 @@ class DriverRequestBloc extends Bloc<DriverRequestEvent, DriverRequestState> {
     UniversalData data = await _requestDriverRepo.updateRequestDriver(
         requestModelDriver: event.requestModelDriver);
     if (data.error.isEmpty) {
-      emit(state.copyWith(
-        statusRequest: FormStatus.success
-      ));
+      emit(state.copyWith(statusRequest: FormStatus.success));
     } else {
       emit(state.copyWith(
-        statusRequest: FormStatus.failure,
-          errorText: "Request not update"
-      ));
+          statusRequest: FormStatus.failure, errorText: "Request not update"));
     }
   }
 
   Future<void> _deleteDriverRequest(
       DeleteDriverRequest event, Emitter<DriverRequestState> emit) async {
     emit(state.copyWith(statusRequest: FormStatus.loading));
-    UniversalData data = await _requestDriverRepo.deleteRequestDriver(userId: event.userId);
+    UniversalData data =
+        await _requestDriverRepo.deleteRequestDriver(userId: event.userId);
     if (data.error.isEmpty) {
       emit(state.copyWith(
         statusRequest: FormStatus.success,
       ));
     } else {
       emit(state.copyWith(
-        statusRequest: FormStatus.failure,
-          errorText: "Request not delete"
-      ));
+          statusRequest: FormStatus.failure, errorText: "Request not delete"));
     }
   }
-
-
-  final RequestDriverRepo _requestDriverRepo;
 }

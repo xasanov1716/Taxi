@@ -5,12 +5,9 @@ sealed class DriverRequestEvent extends Equatable {
 }
 
 class AddDriverRequest extends DriverRequestEvent {
-  const AddDriverRequest({required this.requestModelDriver});
-
-  final RequestModelDriver requestModelDriver;
 
   @override
-  List<Object?> get props => [requestModelDriver];
+  List<Object?> get props => [];
 }
 
 class UpdateDriverRequest extends DriverRequestEvent {
