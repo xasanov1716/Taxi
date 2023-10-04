@@ -32,7 +32,7 @@ class _BookingsScreenState extends State<BookingsScreen> {
         ),
         body: StorageRepository.getString(StorageKeys.userRole) != "client"
             ? StreamBuilder<List<RequestModel>>(
-          stream: context.read<RequestDriverRepo>().getDriverRequest(),
+          stream: context.read<RequestClientRepo>().getClientRequest(),
           builder: (BuildContext context,
               AsyncSnapshot<List<RequestModel>> snapshot) {
             if (snapshot.hasData) {
@@ -57,7 +57,7 @@ class _BookingsScreenState extends State<BookingsScreen> {
           },
         )
             : StreamBuilder<List<RequestModel>>(
-          stream: context.read<RequestClientRepo>().getClientRequest(),
+          stream: context.read<RequestDriverRepo>().getDriverRequest(),
           builder: (BuildContext context,
               AsyncSnapshot<List<RequestModel>> snapshot) {
             if (snapshot.hasData) {
