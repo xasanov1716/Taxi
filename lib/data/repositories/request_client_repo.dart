@@ -14,18 +14,6 @@ class RequestClientRepo {
                 .toList(),
           );
 
-  Stream<RequestModelClient?> getClientRequestById({required String userId}) =>
-      FirebaseFirestore.instance
-          .collection(FirebaseCollections.requestClient)
-          .doc(userId)
-          .snapshots()
-          .map((requestClientById) {
-        if (requestClientById.exists) {
-          return RequestModelClient.fromJson(requestClientById.data() ?? {});
-        } else {
-          return null;
-        }
-      });
 
   Future<UniversalData> addRequestClient(
       {required RequestModelClient requestModelClient}) async {

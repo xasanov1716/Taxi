@@ -15,18 +15,8 @@ class RequestDriverRepo {
                 .toList(),
           );
 
-  Stream<RequestModelDriver?> getRequestDriverById({required String userId}) =>
-      FirebaseFirestore.instance
-          .collection(FirebaseCollections.requestDriver)
-          .doc(userId)
-          .snapshots()
-          .map((requestDriver) {
-        if(requestDriver.exists){
-          return RequestModelDriver.fromJson(requestDriver.data() ?? {});
-        }else{
-          return null;
-        }
-      });
+
+
 
   Future<UniversalData> addRequestDriver(
       {required RequestModelDriver requestModelDriver}) async {
