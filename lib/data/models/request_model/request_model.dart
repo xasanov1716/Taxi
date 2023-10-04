@@ -130,4 +130,5 @@ enum RequestField {
   emptyPlaces,
   tripTime,
   createdAt,
+  creatorName,
 }
