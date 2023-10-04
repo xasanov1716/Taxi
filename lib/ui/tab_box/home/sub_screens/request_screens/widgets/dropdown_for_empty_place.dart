@@ -2,23 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:taxi_app/data/models/icon/icon_type.dart';
-import 'package:taxi_app/data/models/places/region_model.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/fonts/text_styles.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
 
-class DropDownForFromTo extends StatelessWidget {
-  const DropDownForFromTo({
-    super.key,
-    required this.listFromOutside,
-    required this.itemFromOutside,
-    required this.onChanged,
-  });
+class DropDownForRequest extends StatelessWidget {
+  const DropDownForRequest(
+      {super.key,
+      required this.listFromOutside,
+      required this.itemFromOutside,
+      required this.onChanged});
 
-  final List<RegionModel> listFromOutside;
+  final List<String> listFromOutside;
   final String itemFromOutside;
-  final ValueChanged<RegionModel> onChanged;
+  final ValueChanged onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +26,7 @@ class DropDownForFromTo extends StatelessWidget {
         borderRadius: BorderRadius.circular(12.r),
         color: getTheme(context) ? AppColors.dark2 : AppColors.greysCale,
       ),
-      child: DropdownButton<RegionModel>(
+      child: DropdownButton<String>(
         isExpanded: true,
         underline: const SizedBox(),
         dropdownColor:
@@ -40,32 +38,22 @@ class DropDownForFromTo extends StatelessWidget {
               BlendMode.srcIn),
         ),
         borderRadius: BorderRadius.circular(12.r),
-        value: listFromOutside.isEmpty
-            ? RegionModel(id: 484465, name: "Tashkent viloyati")
-            : listFromOutside.firstWhere(
-                (region) => region.name == itemFromOutside,
-                orElse: () => listFromOutside.first,
-              ),
-        items: listFromOutside.map((RegionModel region) {
-          return DropdownMenuItem<RegionModel>(
-            value: region,
+        items: listFromOutside.map((String items) {
+          return DropdownMenuItem(
+            value: items,
             child: Text(
-              region.name,
+              items,
               style: AppTextStyle.bodyMediumSemibold.copyWith(
-                color: getTheme(context) ? AppColors.white : AppColors.c_900,
-              ),
+                  color: getTheme(context) ? AppColors.white : AppColors.c_900),
             ),
           );
         }).toList(),
-        onChanged: (RegionModel? newValue) {
-          onChanged(newValue!);
-        },
-        hint: Text(
-          itemFromOutside,
-          style: AppTextStyle.bodyMediumSemibold.copyWith(
-            color: getTheme(context) ? AppColors.white : AppColors.c_900,
-          ),
-        ), // Placeholder text
+        onChanged: onChanged,
+        hint: Text(itemFromOutside,
+            style: AppTextStyle.bodyMediumSemibold.copyWith(
+                color: getTheme(context)
+                    ? AppColors.white
+                    : AppColors.c_900)), // Placeholder text
       ),
     );
   }

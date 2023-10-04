@@ -4,18 +4,15 @@ class DriverRequestState extends Equatable {
   const DriverRequestState({
     this.errorText = '',
     this.statusRequest = FormStatus.pure,
-    required this.fromRegions,
-    required this.fromRegionModels,
-    required this.toRegions,
-    required this.toRegionModels,
+
+
+
+    required this.regionModels,
     required this.descriptionText,
     required this.priceText,
     this.requestModelDriver = const RequestModelDriver.initial(),
   });
-  final List<String> fromRegions;
-  final List<RegionModel> fromRegionModels;
-  final List<String> toRegions;
-  final List<RegionModel> toRegionModels;
+  final List<RegionModel> regionModels;
   final String errorText;
   final FormStatus statusRequest;
   final RequestModelDriver requestModelDriver;
@@ -28,10 +25,7 @@ class DriverRequestState extends Equatable {
     String? priceText,
     FormStatus? statusRequest,
     RequestModelDriver? requestModelDriver,
-    List<String>? fromRegions,
-    List<RegionModel>? fromRegionModels,
-    List<String>? toRegions,
-    List<RegionModel>? toRegionModels,
+    List<RegionModel>? regionModels,
   }) =>
       DriverRequestState(
         errorText: errorText ?? this.errorText,
@@ -39,10 +33,7 @@ class DriverRequestState extends Equatable {
         descriptionText: descriptionText ?? this.descriptionText,
         statusRequest: statusRequest ?? this.statusRequest,
         requestModelDriver: requestModelDriver ?? this.requestModelDriver,
-        fromRegions: fromRegions ?? this.fromRegions,
-        fromRegionModels: fromRegionModels ?? this.fromRegionModels,
-        toRegions: toRegions ?? this.toRegions,
-        toRegionModels: toRegionModels ?? this.toRegionModels,
+        regionModels: regionModels ?? this.regionModels,
       );
 
   @override
@@ -52,9 +43,6 @@ class DriverRequestState extends Equatable {
         requestModelDriver,
         descriptionText,
         priceText,
-        toRegionModels,
-        toRegions,
-        fromRegions,
-        fromRegionModels,
+        regionModels,
       ];
 }

@@ -6,6 +6,15 @@ sealed class DriverRequestEvent extends Equatable {
 
 class AddDriverRequest extends DriverRequestEvent {
 
+
+
+  @override
+  List<Object?> get props => [];
+}
+class InitDBRegions extends DriverRequestEvent {
+
+
+
   @override
   List<Object?> get props => [];
 }
@@ -27,3 +36,14 @@ class DeleteDriverRequest extends DriverRequestEvent {
   @override
   List<Object?> get props => [userId];
 }
+
+class UpdateCurrentDriverField extends DriverRequestEvent{
+  final RequestField fieldKey;
+  final dynamic value;
+  UpdateCurrentDriverField({required this.fieldKey, required this.value});
+
+  @override
+
+  List<Object?> get props => throw UnimplementedError();
+}
+
