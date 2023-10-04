@@ -42,14 +42,19 @@ class _RequestScreenState extends State<RequestScreen> {
     Navigator.of(context).push(
       showPicker(
         context: context,
+        is24HrFormat: true,
         themeData: ThemeData.from(
             colorScheme: getTheme(context)
                 ? const ColorScheme.dark()
                 : ColorScheme.fromSeed(seedColor: Colors.white)),
         value: Time(
-
-            hour: int.parse(DateTime.now().toString().substring(10, 12)),
-            minute: int.parse(DateTime.now().toString().substring(14, 16))),
+          hour: int.parse(
+            DateTime.now().toString().substring(10, 12),
+          ),
+          minute: int.parse(
+            DateTime.now().toString().substring(14, 16),
+          ),
+        ),
         sunrise: const TimeOfDay(hour: 6, minute: 0),
         sunset: const TimeOfDay(hour: 18, minute: 0),
         duskSpanInMinutes: 120,
