@@ -48,7 +48,7 @@ class _RequestScreenState extends State<RequestScreen> {
         value: Time(hour: 12, minute: 0),
         sunrise: const TimeOfDay(hour: 6, minute: 0),
         sunset: const TimeOfDay(hour: 18, minute: 0),
-        duskSpanInMinutes: 120, 
+        duskSpanInMinutes: 120,
         onChange: (value) {
           tripTime = "${value.hour}:${value.minute}";
           context.read<DriverRequestBloc>().add(
