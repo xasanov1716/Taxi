@@ -112,6 +112,15 @@ class PlacesDatabase {
     return allRegions;
   }
 
+  Future<List<RegionModel>> getRegionById({required int id})async{
+    List<RegionModel> regionsById = [];
+    final db = await instance.database;
+    regionsById = (await db.query('regions',where: 'id LIKE ?',whereArgs: ['%$id']))
+        .map((e) => RegionModel.fromJson(e))
+        .toList();
+    return regionsById;
+  }
+
   Future<List<DistrictModel>> getAllDistricts() async {
     List<DistrictModel> allDistricts = [];
     final db = await instance.database;

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taxi_app/data/models/booking/booking_status.dart';
 import 'package:taxi_app/data/models/request_model/request_model.dart';
+import 'package:taxi_app/ui/tab_box/bookings/sub_screens/selected_request/selected_request_screen.dart';
 import 'package:taxi_app/ui/tab_box/bookings/widgets/expander_button.dart';
 import 'package:taxi_app/ui/tab_box/bookings/widgets/location_item.dart';
 import 'package:taxi_app/ui/tab_box/bookings/widgets/status_button.dart';
@@ -24,7 +25,11 @@ class _RequestViewState extends State<RequestView> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: (){ },
+      onTap: (){
+        Navigator.push(context, MaterialPageRoute(builder: (context){
+          return SelectedRequestScreen(fromId: widget.modelClient!.fromId, toId: widget.modelClient!.toId);
+        }));
+      },
       child: AnimatedContainer(
         margin: EdgeInsets.symmetric(horizontal: 24.w),
         duration: const Duration(milliseconds: 700),

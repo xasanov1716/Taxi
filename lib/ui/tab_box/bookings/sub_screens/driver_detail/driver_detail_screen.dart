@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:taxi_app/data/local/search_location/places_db.dart';
 
 class DriverDetailScreen extends StatefulWidget {
   const DriverDetailScreen({super.key});

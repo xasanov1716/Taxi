@@ -4,6 +4,9 @@ import 'package:taxi_app/data/models/request_model/request_model.dart';
 import 'package:taxi_app/data/models/universal_data.dart';
 import 'package:taxi_app/utils/constants/constants.dart';
 
+import '../../utils/constants/storage_keys.dart';
+import '../local/storage_repository/storage_repository.dart';
+
 class RequestDriverRepo {
   Stream<List<RequestModel>> getDriverRequest() => FirebaseFirestore.instance
       .collection(FirebaseCollections.requestDriver)
@@ -13,6 +16,27 @@ class RequestDriverRepo {
             .map((doc) => RequestModel.fromJson(doc.data()))
             .toList(),
       );
+
+  Stream<List<RequestModel>> getDriverRequestId() => FirebaseFirestore.instance
+      .collection(FirebaseCollections.requestDriver).where("user_id",
+      isEqualTo: StorageRepository.getString(StorageKeys.userId))
+      .snapshots()
+      .map(
+        (event1) => event1.docs
+        .map((doc) => RequestModel.fromJson(doc.data()))
+        .toList(),
+  );
+
+
+  Stream<List<RequestModel>> getDriverFromId({required int fromId, required int toId}) => FirebaseFirestore.instance
+      .collection(FirebaseCollections.requestDriver).where("from_id",
+      isEqualTo: fromId).where("to_id", isEqualTo: toId)
+      .snapshots()
+      .map(
+        (event1) => event1.docs
+        .map((doc) => RequestModel.fromJson(doc.data()))
+        .toList(),
+  );
 
   Future<UniversalData> addRequestDriver(
       {required RequestModel requestModelDriver}) async {
