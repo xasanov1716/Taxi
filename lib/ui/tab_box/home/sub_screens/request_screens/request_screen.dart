@@ -18,6 +18,7 @@ import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/constants/storage_keys.dart';
 import 'package:taxi_app/utils/fonts/text_styles.dart';
 import 'package:taxi_app/utils/formatter/price_formatter.dart';
+import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
 import 'package:taxi_app/utils/ui_utils/error_message_dialog.dart';
@@ -49,7 +50,7 @@ class _RequestScreenState extends State<RequestScreen> {
                 : ColorScheme.fromSeed(seedColor: Colors.white)),
         value: Time(
           hour: int.parse(
-            DateTime.now().toString().substring(10, 12),
+            DateTime.now().toString().substring(10, 13),
           ),
           minute: int.parse(
             DateTime.now().toString().substring(14, 16),
@@ -157,13 +158,22 @@ class _RequestScreenState extends State<RequestScreen> {
                                 },
                               ),
                               24.ph,
-                              GlobalButton(
-                                title: tripTime,
+                              InkWell(
                                 onTap: () {
                                   _show();
                                 },
-                                radius: 100.r,
-                                color: AppColors.primary,
+                                child: Center(
+                                  child: Container(
+                                    padding: EdgeInsets.symmetric(horizontal: 40.w, vertical: 20.h),
+
+                                    decoration: BoxDecoration(
+                                        color: getTheme(context) ? AppColors.dark2 : AppColors.greysCale,
+
+                                      borderRadius: BorderRadius.circular(12.r),
+                                    ),
+                                    child: Text(tripTime,style:tripTime.length>5 ? Theme.of(context).textTheme.titleMedium:Theme.of(context).textTheme.titleLarge,),
+                                  ),
+                                ),
                               ),
                               24.ph,
                               Text(
@@ -204,10 +214,14 @@ class _RequestScreenState extends State<RequestScreen> {
                                 itemFromOutside: toRegion,
                                 onChanged: (newValue) {
                                   context.read<DriverRequestBloc>().add(
-                                    UpdateCurrentDriverField(
-                                        fieldKey: RequestField.creatorName,
-                                        value: BlocProvider.of<UserBloc>(context).state.userModel.fullName),
-                                  );
+                                        UpdateCurrentDriverField(
+                                            fieldKey: RequestField.creatorName,
+                                            value: BlocProvider.of<UserBloc>(
+                                                    context)
+                                                .state
+                                                .userModel
+                                                .fullName),
+                                      );
                                   setState(() {
                                     toRegion = newValue.name;
                                     context.read<DriverRequestBloc>().add(
@@ -244,7 +258,11 @@ class _RequestScreenState extends State<RequestScreen> {
                                     AddClientRequest(
                                         requestModelClient: RequestModel(
                                             status: 1,
-                                            creatorName: BlocProvider.of<UserBloc>(context).state.userModel.fullName,
+                                            creatorName:
+                                                BlocProvider.of<UserBloc>(context)
+                                                    .state
+                                                    .userModel
+                                                    .fullName,
                                             userId:
                                                 state.requestModelDriver.userId,
                                             fromId:
@@ -253,10 +271,10 @@ class _RequestScreenState extends State<RequestScreen> {
                                             description: state
                                                 .requestModelDriver.description,
                                             requestPrice: state
-                                                .requestModelDriver
-                                                .requestPrice,
+                                                .requestModelDriver.requestPrice,
                                             passengerCount: state
-                                                .requestModelDriver.passengerCount,
+                                                .requestModelDriver
+                                                .passengerCount,
                                             tripTime: state
                                                 .requestModelDriver.tripTime,
                                             createdAt: state.requestModelDriver

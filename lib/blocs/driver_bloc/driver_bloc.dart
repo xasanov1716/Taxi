@@ -99,14 +99,13 @@ class DriverBloc extends Bloc<DriverEvent, DriverState> {
 
     if (data.exists) {
       final driverModel =
-      DriverModel.fromJson(data.data() as Map<String, dynamic>);
+          DriverModel.fromJson(data.data() as Map<String, dynamic>);
       // ignore: invalid_use_of_visible_for_testing_member
       emit(state.copyWith(driverModel: driverModel));
       StorageRepository.putString(StorageKeys.userRole, AppConstants.driver);
     } else {
-
-      debugPrint("Documnet does not exist ---------------------------------------------------------------------");
-
+      debugPrint(
+          "Documnet does not exist ---------------------------------------------------------------------");
     }
   }
 
@@ -118,14 +117,15 @@ class DriverBloc extends Bloc<DriverEvent, DriverState> {
     return state.canRegister2();
   }
 
-  clear(){
+  clear() {
     state.clear();
   }
 
-  clearDriverState(){
+  clearDriverState() {
     // ignore: invalid_use_of_visible_for_testing_member
-    emit(state.copyWith(driverModel: DriverModel(
-     password: "",
+    emit(state.copyWith(
+        driverModel: DriverModel(
+      password: "",
       role: '',
       driverId: '',
       fcmToken: '',
@@ -315,6 +315,9 @@ class DriverBloc extends Bloc<DriverEvent, DriverState> {
     }
 
     debugPrint("DRIVER: ${currentDriver.toString()}");
+    currentDriver =
+        currentDriver.copyWith(createdAt: DateTime.now().toString());
+
     currentDriver = currentDriver.copyWith(
         role: StorageRepository.getString(StorageKeys.userRole));
     emit(state.copyWith(driverModel: currentDriver));
