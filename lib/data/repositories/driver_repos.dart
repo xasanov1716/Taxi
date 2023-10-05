@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:taxi_app/data/local/storage_repository/storage_repository.dart';
 import 'package:taxi_app/data/models/driver/driver_model.dart';
+import 'package:taxi_app/data/models/result_model.dart';
 import 'package:taxi_app/data/models/universal_data.dart';
 import 'package:taxi_app/utils/constants/constants.dart';
 import 'package:taxi_app/utils/constants/storage_keys.dart';
@@ -63,5 +64,19 @@ class DriverRepo {
         return null; // Return null if the document doesn't exist
       }
     });
+  }
+
+  Future<Result> getDriverByDriverId(String userId) async {
+    try {
+      final client = await FirebaseFirestore.instance
+          .collection(FirebaseCollections.drivers)
+          .doc(userId)
+          .get();
+      return Result.success(DriverModel.fromJson(client.data()!));
+    } on FirebaseException catch (e) {
+      return Result.fail(e.code);
+    } catch (e) {
+      return Result.fail(e.toString());
+    }
   }
 }

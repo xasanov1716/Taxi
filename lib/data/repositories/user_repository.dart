@@ -1,14 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:taxi_app/data/local/storage_repository/storage_repository.dart';
+import 'package:taxi_app/data/models/result_model.dart';
 import 'package:taxi_app/data/models/universal_data.dart';
 import 'package:taxi_app/data/models/user/user_model.dart';
 import 'package:taxi_app/utils/constants/constants.dart';
 import 'package:taxi_app/utils/constants/storage_keys.dart';
 
 class UserRepo {
- 
-
-Future<UniversalData> addUser({required UserModel userModel}) async {
+  Future<UniversalData> addUser({required UserModel userModel}) async {
     try {
       await FirebaseFirestore.instance
           .collection(FirebaseCollections.users)
@@ -22,8 +21,6 @@ Future<UniversalData> addUser({required UserModel userModel}) async {
       return UniversalData(error: error.toString());
     }
   }
-
-
 
   Future<UniversalData> updateUser({required UserModel userModel}) async {
     try {
@@ -42,10 +39,7 @@ Future<UniversalData> addUser({required UserModel userModel}) async {
 
   Future<UniversalData> deleteUser({required String userId}) async {
     try {
-      await FirebaseFirestore.instance
-          .collection(FirebaseCollections.users)
-          .doc(userId)
-          .delete();
+      await FirebaseFirestore.instance.collection(FirebaseCollections.users).doc(userId).delete();
 
       return UniversalData(data: "User deleted!");
     } on FirebaseException catch (e) {
@@ -58,8 +52,8 @@ Future<UniversalData> addUser({required UserModel userModel}) async {
   Stream<UserModel?> getUserById() {
     return FirebaseFirestore.instance
         .collection(FirebaseCollections.users)
-        .doc(StorageRepository.getString(
-            StorageKeys.userId)) // Assuming driverId is the document ID
+        .doc(
+            StorageRepository.getString(StorageKeys.userId)) // Assuming driverId is the document ID
         .snapshots()
         .map((documentSnapshot) {
       if (documentSnapshot.exists) {
@@ -68,5 +62,17 @@ Future<UniversalData> addUser({required UserModel userModel}) async {
         return null; // Return null if the document doesn't exist
       }
     });
+  }
+
+  Future<Result> getUserByUserId(String userId) async {
+    try {
+      final client =
+          await FirebaseFirestore.instance.collection(FirebaseCollections.users).doc(userId).get();
+      return Result.success(UserModel.fromJson(client.data()!));
+    } on FirebaseException catch (e) {
+      return Result.fail(e.code);
+    } catch (e) {
+      return Result.fail(e.toString());
+    }
   }
 }
