@@ -217,7 +217,7 @@ class _FirstPageState extends State<FirstPage> {
           },
         ),
         24.ph,
-        Row(
+        if (widget.isFromAuth) Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
@@ -233,7 +233,7 @@ class _FirstPageState extends State<FirstPage> {
                 }),
           ],
         ),
-        10.ph,
+        if (widget.isFromAuth)10.ph,
 
        isCorp? CarNumberContainer2(
          isFromAuth: widget.isFromAuth,):
