@@ -10,6 +10,7 @@ import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:taxi_app/blocs/driver_bloc/driver_bloc.dart';
 import 'package:taxi_app/data/models/driver/driver_fields.dart';
 import 'package:taxi_app/data/models/icon/icon_type.dart';
+import 'package:taxi_app/ui/tab_box/profile/sub_screens/edit_profile_driver/widgets/car_number_template.dart';
 import 'package:taxi_app/ui/tab_box/profile/widgets/profile_dialog.dart';
 import 'package:taxi_app/ui/widgets/global_input.dart';
 import 'package:taxi_app/ui/widgets/global_search_input.dart';
@@ -214,19 +215,20 @@ class _FirstPageState extends State<FirstPage> {
           },
         ),
         24.ph,
-        GlobalTextField(
-          maskFormatter: carNumber,
-          controller: carNumberController,
-          focusNode: nicknameFocusNode,
-          textCapitalization: TextCapitalization.characters,
-          hintText: 'Car number',
-          keyboardType: TextInputType.text,
-          textInputAction: TextInputAction.next,
-          onChanged: (value) {
-            context.read<DriverBloc>().updateDriverField(
-                fieldKey: DriverFieldKeys.carNumber, value: value);
-          },
-        ),
+        CarNumberContainer(),
+        // GlobalTextField(
+        //   maskFormatter: carNumber,
+        //   controller: carNumberController,
+        //   focusNode: nicknameFocusNode,
+        //   textCapitalization: TextCapitalization.characters,
+        //   hintText: 'Car number',
+        //   keyboardType: TextInputType.text,
+        //   textInputAction: TextInputAction.next,
+        //   onChanged: (value) {
+        //     context.read<DriverBloc>().updateDriverField(
+        //         fieldKey: DriverFieldKeys.carNumber, value: value);
+        //   },
+        // ),
         24.ph,
         GlobalTextField(
           controller: telegramLinkController,
