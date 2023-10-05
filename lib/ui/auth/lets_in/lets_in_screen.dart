@@ -26,7 +26,8 @@ class LetsInScreen extends StatelessWidget {
                 context: context,
                 builder: (context) {
                   return Dialog(
-                      shape: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
+                      shape: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20)),
                       child: SizedBox(
                         height: 300.h,
                         child: const Center(
@@ -54,60 +55,55 @@ class LetsInScreen extends StatelessWidget {
           padding: const EdgeInsets.only(left: 24.0, right: 24.0, top: 24),
           child: Column(
             children: [
-              Expanded(
-                child: ListView(
-                  physics: const BouncingScrollPhysics(),
-                  // mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    30.ph,
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 71.w,
-                      ),
-                      child: Image.asset(AppIcons.signIn),
-                    ),
-                    30.25.ph,
-                    Center(
-                      child: Text("Dastyorga Kirish",
-                          style:
-                              Theme.of(context).textTheme.displayMedium!.copyWith(fontSize: 42.sp)),
-                    ),
-                    30.25.ph,
-                    CustomAuthButton(
-                        imageUrl: AppIcons.facebook,
-                        label: "Facebook bilan davom eting",
-                        onTap: () {
-                          context.read<SocialAuthBloc>().add(LoginWithFacebook());
-                        }),
-                    16.ph,
-                    CustomAuthButton(
-                        imageUrl: AppIcons.google,
-                        label: "Google bilan davom eting",
-                        onTap: () {
-                          context.read<SocialAuthBloc>().add(LoginWithGoogle());
-                        }),
-                    16.ph,
-                    CustomAuthButton(
-                        imageUrl: AppIcons.apple,
-                        label: "Apple bilan davom eting",
-                        onTap: () {
-                          context.read<SocialAuthBloc>().add(LoginWithApple());
-                        }),
-                    24.ph,
-                    const CustomAuthDividerWidget(label: "yoki"),
-                    24.ph,
-                    GlobalButton(
-                        color: AppColors.primary,
-                        title: "Parol bilan tizimga kiring",
-                        radius: 100,
-                        textColor: AppColors.dark3,
-                        onTap: () {
-                          Navigator.pushNamed(context, RouteNames.login);
-                        }),
-                    30.ph,
-                  ],
+              30.ph,
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 71.w,
                 ),
+                child: Image.asset(AppIcons.signIn),
               ),
+              30.25.ph,
+              Center(
+                child: Text("Dastyorga Kirish",
+                    style: Theme.of(context)
+                        .textTheme
+                        .displayMedium!
+                        .copyWith(fontSize: 42.sp)),
+              ),
+              // 30.25.ph,
+              // CustomAuthButton(
+              //     imageUrl: AppIcons.facebook,
+              //     label: "Facebook bilan davom eting",
+              //     onTap: () {
+              //       context.read<SocialAuthBloc>().add(LoginWithFacebook());
+              //     }),
+              // 16.ph,
+              // CustomAuthButton(
+              //     imageUrl: AppIcons.google,
+              //     label: "Google bilan davom eting",
+              //     onTap: () {
+              //       context.read<SocialAuthBloc>().add(LoginWithGoogle());
+              //     }),
+              // 16.ph,
+              // CustomAuthButton(
+              //     imageUrl: AppIcons.apple,
+              //     label: "Apple bilan davom eting",
+              //     onTap: () {
+              //       context.read<SocialAuthBloc>().add(LoginWithApple());
+              //     }),
+              // 24.ph,
+              // const CustomAuthDividerWidget(label: "yoki"),
+              24.ph,
+              const Spacer(),
+              GlobalButton(
+                  color: AppColors.primary,
+                  title: "Parol bilan tizimga kiring",
+                  radius: 100,
+                  textColor: AppColors.dark3,
+                  onTap: () {
+                    Navigator.pushNamed(context, RouteNames.login);
+                  }),
+              30.ph,
               AuthNavigatorButton(
                 title: "Hisobingiz yo'qmi?",
                 onTapTitle: "Ro'yxatdan o'tish",

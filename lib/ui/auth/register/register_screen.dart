@@ -37,10 +37,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: GlobalAppBar(
-          onTap: () {
-            Navigator.pop(context);
-          },
-          title: ""),
+        onTap: () {
+          Navigator.pop(context);
+        },
+        title: "Ro'yxatdan o'tish",
+      ),
       body: BlocConsumer<AuthCubit, AuthState>(
         builder: (context, state) {
           return Center(
@@ -84,16 +85,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               .updatePassword(v.replaceAll(" ", ""));
                         },
                       ),
-                      20.ph,
-                      RememberCheckBox(
-                        label: 'Meni eslab qol',
-                        value: isChecked,
-                        onChanged: (value) {
-                          isChecked = value;
-                          setState(() {});
-                        },
-                        // label: 'Remember me',
-                      ),
+                      // 20.ph,
+                      // RememberCheckBox(
+                      //   label: 'Meni eslab qol',
+                      //   value: isChecked,
+                      //   onChanged: (value) {
+                      //     isChecked = value;
+                      //     setState(() {});
+                      //   },
+                      //   // label: 'Remember me',
+                      // ),
                       20.ph,
                       GlobalButton(
                         color: AppColors.primary,
@@ -115,14 +116,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       )
                     ],
                   ),
-                  60.ph,
-                  Column(
-                    children: [
-                      const CustomAuthDividerWidget(label: 'yoki davom eting'),
-                      20.ph,
-                      const SocialAuthButtons(),
-                    ],
-                  ),
+                  // 60.ph,
+                  // Column(
+                  //   children: [
+                  //     const CustomAuthDividerWidget(label: 'yoki davom eting'),
+                  //     20.ph,
+                  //     const SocialAuthButtons(),
+                  //   ],
+                  // ),
                   60.ph,
                   AuthNavigatorButton(
                     title: "Hisobingiz bormi?",

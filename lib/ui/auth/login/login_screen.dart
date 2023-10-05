@@ -39,11 +39,12 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        resizeToAvoidBottomInset: false,
         appBar: GlobalAppBar(
           onTap: () {
             Navigator.pop(context);
           },
-          title: "",
+          title: "Login saxifasi",
         ),
         body: BlocConsumer<AuthCubit, AuthState>(
           builder: (context, state) {
@@ -52,95 +53,85 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Expanded(
-                    child: ListView(
-                      physics: const BouncingScrollPhysics(),
-                      children: [
-                        45.ph,
-                        Text(
-                          "Xush kelibsiz! Akkauntga kirish",
-                          textAlign: TextAlign.left,
-                          style: Theme.of(context)
-                              .textTheme
-                              .displayMedium
-                              ?.copyWith(
-                                fontSize: width > 450 ? 48.sp : 30.sp,
-                              ),
+                  45.ph,
+                  Text(
+                    "Xush kelibsiz! Akkauntga kirish",
+                    textAlign: TextAlign.left,
+                    style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                          fontSize: width > 450 ? 48.sp : 30.sp,
                         ),
-                        45.ph,
-                        AuthTextField(
-                          focusNode: phoneFocus,
-                          hintText: 'Telefon Raqami',
-                          prefixIcon: AppIcons.call,
-                          onChanged: (v) {
-                            if (v.length == 12) {
-                              phoneFocus.unfocus();
-                              context
-                                  .read<AuthCubit>()
-                                  .updatePhone(v.replaceAll(' ', ''));
-                              FocusScope.of(context)
-                                  .requestFocus(passwordFocus);
-                            }
-                          },
-                        ),
-                        20.ph,
-                        AuthTextField(
-                          focusNode: passwordFocus,
-                          hintText: 'Parol',
-                          parolkoz: ' ',
-                          prefixIcon: AppIcons.lock,
-                          isPassword: true,
-                          onChanged: (v) {
-                            context
-                                .read<AuthCubit>()
-                                .updatePassword(v.replaceAll(" ", ""));
-                          },
-                        ),
-                        24.ph,
-                        RememberCheckBox(
-                            label: "Meni eslab qol",
-                            value: isChecked,
-                            onChanged: (v) {
-                              setState(() {
-                                isChecked = v;
-                              });
-                            }),
-                        24.ph,
-                        GlobalButton(
-                            color: AppColors.primary,
-                            radius: 100.r,
-                            textColor: AppColors.dark3,
-                            title: "Kirish",
-                            onTap: () async {
-                              if (context.mounted) {
-                                String canAuthText =
-                                    context.read<AuthCubit>().canAuthenticate();
-                                if (canAuthText.isEmpty) {
-                                  context.read<AuthCubit>().logIn(context);
-                                } else {
-                                  showErrorMessage(
-                                    message: canAuthText,
-                                    context: context,
-                                  );
-                                }
-                              }
-                            }),
-                        24.ph,
-                        const ForgotPasswordButton(),
-                        45.ph,
-                        Column(
-                          children: [
-                            const CustomAuthDividerWidget(
-                                label: "yoki davom eting"),
-                            20.ph,
-                            const SocialAuthButtons(),
-                          ],
-                        ),
-                        25.ph,
-                      ],
-                    ),
+                  ),
+                  45.ph,
+                  AuthTextField(
+                    focusNode: phoneFocus,
+                    hintText: 'Telefon Raqami',
+                    prefixIcon: AppIcons.call,
+                    onChanged: (v) {
+                      if (v.length == 12) {
+                        phoneFocus.unfocus();
+                        context
+                            .read<AuthCubit>()
+                            .updatePhone(v.replaceAll(' ', ''));
+                        FocusScope.of(context).requestFocus(passwordFocus);
+                      }
+                    },
                   ),
                   20.ph,
+                  AuthTextField(
+                    focusNode: passwordFocus,
+                    hintText: 'Parol',
+                    parolkoz: ' ',
+                    prefixIcon: AppIcons.lock,
+                    isPassword: true,
+                    onChanged: (v) {
+                      context
+                          .read<AuthCubit>()
+                          .updatePassword(v.replaceAll(" ", ""));
+                    },
+                  ),
+                  // 24.ph,
+                  // RememberCheckBox(
+                  //     label: "Meni eslab qol",
+                  //     value: isChecked,
+                  //     onChanged: (v) {
+                  //       setState(() {
+                  //         isChecked = v;
+                  //       });
+                  //     }),
+                  24.ph,
+                  const Spacer(),
+                  GlobalButton(
+                      color: AppColors.primary,
+                      radius: 100.r,
+                      textColor: AppColors.dark3,
+                      title: "Kirish",
+                      onTap: () async {
+                        if (context.mounted) {
+                          String canAuthText =
+                              context.read<AuthCubit>().canAuthenticate();
+                          if (canAuthText.isEmpty) {
+                            context.read<AuthCubit>().logIn(context);
+                          } else {
+                            showErrorMessage(
+                              message: canAuthText,
+                              context: context,
+                            );
+                          }
+                        }
+                      }),
+                  // 24.ph,
+                  //  const ForgotPasswordButton(),
+                  // 45.ph,
+                  // Column(
+                  //   children: [
+                  //     const CustomAuthDividerWidget(
+                  //         label: "yoki davom eting"),
+                  //     20.ph,
+                  //     const SocialAuthButtons(),
+                  //   ],
+                  // ),
+                  //  25.ph,
+
                   AuthNavigatorButton(
                     title: "Akkauntingiz yo'qmi?",
                     onTapTitle: "Ro'yxatdan o'ting",

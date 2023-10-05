@@ -5,10 +5,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taxi_app/blocs/address_bloc/address_bloc.dart';
-import 'package:taxi_app/blocs/client_request_bloc/client_request_bloc.dart';
 import 'package:taxi_app/blocs/create_order/create_order_bloc.dart';
 import 'package:taxi_app/blocs/driver_bloc/driver_bloc.dart';
-import 'package:taxi_app/blocs/driver_request_bloc/driver_request_bloc.dart';
+import 'package:taxi_app/blocs/driver_request_bloc/request_bloc.dart';
 import 'package:taxi_app/blocs/home/home_bloc.dart';
 import 'package:taxi_app/blocs/location_bloc/location_bloc.dart';
 import 'package:taxi_app/blocs/messages/message_bloc.dart';
@@ -35,8 +34,7 @@ import 'package:taxi_app/data/repositories/address_repos.dart';
 import 'package:taxi_app/data/repositories/auth_repository.dart';
 import 'package:taxi_app/data/repositories/driver_repos.dart';
 import 'package:taxi_app/data/repositories/places_db_repository.dart';
-import 'package:taxi_app/data/repositories/request_client_repo.dart';
-import 'package:taxi_app/data/repositories/request_driver_repo.dart';
+import 'package:taxi_app/data/repositories/request_repo.dart';
 import 'package:taxi_app/data/repositories/search_history_db.dart';
 import 'package:taxi_app/data/repositories/user_repository.dart';
 import 'package:taxi_app/services/api_service.dart';
@@ -77,8 +75,7 @@ class App extends StatelessWidget {
       providers: [
         RepositoryProvider(create: (context) => AuthRepository()),
         RepositoryProvider(create: (context) => AddressRepo()),
-        RepositoryProvider(create: (context) => RequestClientRepo()),
-        RepositoryProvider(create: (context) => RequestDriverRepo()),
+        RepositoryProvider(create: (context) => RequestRepo()),
         RepositoryProvider(
           create: (context) => SearchHistoryRepository(SearchHistoryDatabase()),
         ),
@@ -129,11 +126,8 @@ class App extends StatelessWidget {
               create: (context) =>
                   UserBloc(userRepo: context.read<UserRepo>())),
           BlocProvider(
-              create: (context) => DriverRequestBloc(
-                  requestDriverRepo: context.read<RequestDriverRepo>())),
-          BlocProvider(
-              create: (context) => ClientRequestBloc(
-                  requestClientRepo: context.read<RequestClientRepo>())),
+              create: (context) =>
+                  RequestBloc(requestDriverRepo: context.read<RequestRepo>())),
           BlocProvider(create: (context) => CategoryCubit()),
           BlocProvider(create: (context) => MessageBloc()),
           BlocProvider(create: (context) => SearchCubit()),
