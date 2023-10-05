@@ -14,6 +14,7 @@ class CarNumberTextField extends StatelessWidget {
   final FocusNode? nextFocusNode;
   final FocusNode? previousFocusNode;
   final ValueChanged? valueChanged;
+  final TextInputType textInputType;
 
   CarNumberTextField({
     required this.hintText,
@@ -24,7 +25,7 @@ class CarNumberTextField extends StatelessWidget {
     required this.controller,
     this.nextFocusNode,
     this.previousFocusNode,
-    this.valueChanged,
+    this.valueChanged, required this.textInputType,
   });
 
   @override
@@ -39,7 +40,7 @@ class CarNumberTextField extends StatelessWidget {
         maxLines: 1,
         textAlign: TextAlign.center,
         maxLength: maxLength,
-        keyboardType: TextInputType.number,
+        keyboardType: textInputType,
         inputFormatters: inputFormatter,
         decoration: InputDecoration(
           fillColor: getTheme(context) ? AppColors.dark1 : AppColors.white,
