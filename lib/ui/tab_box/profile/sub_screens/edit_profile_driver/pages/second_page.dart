@@ -83,8 +83,9 @@ class _SecondPageState extends State<SecondPage> {
           ),
           textInputAction: TextInputAction.next,
           onChanged: (value) {
+            String a = value;
             context.read<DriverBloc>().updateDriverField(
-                fieldKey: DriverFieldKeys.price, value: int.parse(value));
+                fieldKey: DriverFieldKeys.price, value: int.parse(a.replaceAll(" ", '')));
           },
         ),
         24.ph,

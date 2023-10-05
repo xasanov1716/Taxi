@@ -71,7 +71,9 @@ class _GlobalTextFieldState extends State<GlobalTextField> {
   @override
   Widget build(BuildContext context) {
     return TextField(
-      onChanged: widget.onChanged,
+      onChanged: (String value) {
+        widget.onChanged!(value);
+      },
       obscuringCharacter: '●',
       readOnly: widget.readOnly,
       controller: _internalController,
