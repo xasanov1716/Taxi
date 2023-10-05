@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
 
@@ -14,7 +13,7 @@ class GlobalTextField extends StatefulWidget {
   final ValueChanged? onChanged;
   final FocusNode? focusNode;
   final bool readOnly;
-  final MaskTextInputFormatter? maskFormatter;
+  final TextInputFormatter? maskFormatter;
   final TextEditingController? controller;
   final Widget? suffixIcon;
   final bool? obscureText;
@@ -30,7 +29,7 @@ class GlobalTextField extends StatefulWidget {
     this.keyboardType = TextInputType.text,
     this.textInputAction = TextInputAction.next,
     this.prefixIcon,
-    this.maxLength=10000,
+    this.maxLength,
     this.maxLines=1,
     this.caption = "",
     this.suffixIcon,
@@ -77,12 +76,13 @@ class _GlobalTextFieldState extends State<GlobalTextField> {
       readOnly: widget.readOnly,
       controller: _internalController,
       maxLines: widget.maxLines,
-      // maxLength: widget.maxLength,
+      maxLength: widget.maxLength,
       textCapitalization: widget.textCapitalization,
       focusNode: widget.focusNode ?? internalFocusNode,
       inputFormatters:widget.maskFormatter !=null ? [widget.maskFormatter!] : [],
       obscureText: widget.obscureText ?? false,
       decoration: InputDecoration(
+        counterText: '',
         hintStyle: TextStyle(
           fontFamily: "Urbanist",
           fontSize: 16.sp,

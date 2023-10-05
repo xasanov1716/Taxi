@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:taxi_app/blocs/driver_bloc/driver_bloc.dart';
 import 'package:taxi_app/data/models/driver/driver_fields.dart';
 import 'package:taxi_app/data/models/icon/icon_type.dart';
 import 'package:taxi_app/ui/widgets/global_input.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/fonts/text_styles.dart';
+import 'package:taxi_app/utils/formatter/price_formatter.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
@@ -75,6 +75,8 @@ class _SecondPageState extends State<SecondPage> {
           focusNode: priceFocusNode,
           hintText: 'Price',
           keyboardType: TextInputType.number,
+          maskFormatter: NumberInputFormatter(),
+          maxLength: 10,
           suffixIcon: Padding(
             padding:  EdgeInsets.only(right: 10.w,top: 10.h),
             child: Text("so'm",style: Theme.of(context).textTheme.titleLarge,),
