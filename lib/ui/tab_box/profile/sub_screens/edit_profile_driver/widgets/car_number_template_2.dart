@@ -71,6 +71,7 @@ _init(){
             ),
           ),
           CarNumberTextField(
+            textInputType: TextInputType.number,
             hintText: "00",
             maxLength: 2,
             inputFormatter: [
@@ -82,6 +83,7 @@ _init(){
             nextFocusNode: _secondFocusNode,
           ),
           CarNumberTextField(
+            textInputType: TextInputType.number,
             hintText: "123",
             maxLength: 3,
             inputFormatter: [
@@ -94,6 +96,7 @@ _init(){
             previousFocusNode: _firstFocusNode,
           ),
           CarNumberTextField(
+            textInputType: TextInputType.text,
             valueChanged: (value) {
               context.read<DriverBloc>().updateDriverField(
                   fieldKey: DriverFieldKeys.carNumber,

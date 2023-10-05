@@ -45,7 +45,6 @@ import 'package:taxi_app/services/locator_service.dart';
 import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/theme/app_theme.dart';
-
 import 'cubits/category_cubit/category_cubit.dart';
 import 'cubits/help_center/help_center_category_cubit.dart';
 import 'cubits/push_notification_cubit/push_notification_cubit.dart';

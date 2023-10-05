@@ -76,6 +76,7 @@ class _CarNumberContainerState extends State<CarNumberContainer> {
             ),
           ),
           CarNumberTextField(
+            textInputType: TextInputType.number,
             hintText: "00",
             maxLength: 2,
             inputFormatter: [
@@ -87,6 +88,7 @@ class _CarNumberContainerState extends State<CarNumberContainer> {
             nextFocusNode: _secondFocusNode,
           ),
           CarNumberTextField(
+            textInputType: TextInputType. text,
             hintText: "A",
             maxLength: 1,
             inputFormatter: [
@@ -102,6 +104,7 @@ class _CarNumberContainerState extends State<CarNumberContainer> {
             previousFocusNode: _firstFocusNode,
           ),
           CarNumberTextField(
+            textInputType: TextInputType.number,
             hintText: "123",
             maxLength: 3,
             inputFormatter: [
@@ -114,6 +117,7 @@ class _CarNumberContainerState extends State<CarNumberContainer> {
             previousFocusNode: _secondFocusNode,
           ),
           CarNumberTextField(
+            textInputType: TextInputType.text,
             valueChanged: (value) {
               context.read<DriverBloc>().updateDriverField(
                   fieldKey: DriverFieldKeys.carNumber,
