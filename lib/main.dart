@@ -8,7 +8,6 @@ import 'package:taxi_app/blocs/address_bloc/address_bloc.dart';
 import 'package:taxi_app/blocs/create_order/create_order_bloc.dart';
 import 'package:taxi_app/blocs/driver_bloc/driver_bloc.dart';
 import 'package:taxi_app/blocs/driver_request_bloc/request_bloc.dart';
-import 'package:taxi_app/blocs/home/home_bloc.dart';
 import 'package:taxi_app/blocs/location_bloc/location_bloc.dart';
 import 'package:taxi_app/blocs/messages/message_bloc.dart';
 import 'package:taxi_app/blocs/notification_bloc/notification_bloc.dart';
@@ -114,7 +113,6 @@ class App extends StatelessWidget {
                   DriverBloc(driverRepo: context.read<DriverRepo>())),
           BlocProvider(create: (context) => NotificationCubit()),
           BlocProvider(create: (context) => SecurityCubit()),
-          BlocProvider(create: (context) => HomeBloc()),
           BlocProvider(create: (context) => SocialAuthBloc(AuthRepository())),
           BlocProvider(create: (context) => UserCubit()),
           BlocProvider(create: (context) => notificationsBloc),
