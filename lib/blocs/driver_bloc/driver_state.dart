@@ -6,7 +6,6 @@ class DriverState extends Equatable {
   final DriverModel driverModel;
   List<DriverModel> driversById;
   final String statusText;
-
   final FormStatus status;
 
   DriverState(
