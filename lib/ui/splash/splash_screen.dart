@@ -71,8 +71,14 @@ class _SplashScreenState extends State<SplashScreen> {
           if (state is LocationSuccessState) {
             context.read<DriverBloc>().updateDriverField(
                 fieldKey: DriverFieldKeys.currentLocation,
-                value: context.read<LocationBloc>().latLong);
-
+                value:
+                    "Lat: ${context.read<LocationBloc>().latLong.latitude.toString()}, Long:${context.read<LocationBloc>().latLong.longitude.toString()}");
+            context.read<DriverBloc>().updateDriverField(
+                fieldKey: DriverFieldKeys.latitude,
+                value: context.read<LocationBloc>().latLong.latitude);
+            context.read<DriverBloc>().updateDriverField(
+                fieldKey: DriverFieldKeys.longitude,
+                value: context.read<LocationBloc>().latLong.longitude);
             Navigator.pushReplacementNamed(
               context,
               RouteNames.appRoute,
