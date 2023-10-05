@@ -13,10 +13,9 @@ class IconsContainer extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
     return Container(
       width: height >= 900 && width >= 600 ? 72.w : 56.w,
-      height: height >= 900 && width >= 600  ? 72.w : 56.w,
+      height: height >= 900 && width >= 600 ? 72.w : 56.w,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(
-              (height >= 900 && width >= 600) ? 100 : 36),
+          borderRadius: BorderRadius.circular((height >= 900 && width >= 600) ? 100 : 36),
           color: AppColors.amber),
       child: getIcon(icon, context: context, onTap: onTap),
     );
