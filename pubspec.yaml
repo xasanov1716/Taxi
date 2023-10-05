@@ -114,5 +114,18 @@ flutter:
         - asset: assets/fonts/Urbanist/Urbanist-Thin.ttf
         - asset: assets/fonts/Urbanist/Urbanist-ThinItalic.ttf
           style: italic
+    - family: Chakra
+      fonts:
+        - asset: assets/fonts/Chakra/ChakraPetch-Bold.ttf
+        - asset: assets/fonts/Chakra/ChakraPetch-BoldItalic.ttf
+        - asset: assets/fonts/Chakra/ChakraPetch-Italic.ttf
+        - asset: assets/fonts/Chakra/ChakraPetch-Light.ttf
+        - asset: assets/fonts/Chakra/ChakraPetch-LightItalic.ttf
+        - asset: assets/fonts/Chakra/ChakraPetch-Medium.ttf
+        - asset: assets/fonts/Chakra/ChakraPetch-MediumItalic.ttf
+        - asset: assets/fonts/Chakra/ChakraPetch-Regular.ttf
+        - asset: assets/fonts/Chakra/ChakraPetch-SemiBold.ttf
+        - asset: assets/fonts/Chakra/ChakraPetch-SemiBoldItalic.ttf
+          style: italic
 
 
