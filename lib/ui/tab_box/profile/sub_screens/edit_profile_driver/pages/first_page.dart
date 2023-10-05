@@ -66,7 +66,7 @@ class _FirstPageState extends State<FirstPage> {
       type: MaskAutoCompletionType.lazy);
   var carNumber = MaskTextInputFormatter(
       mask: '##*###**',
-      filter: {"#": RegExp(r'[0-9]'),"*":RegExp(r'[A-Z]')},
+      filter: {"#": RegExp(r'[0-9]'), "*": RegExp(r'[A-Z]')},
       type: MaskAutoCompletionType.lazy);
 
   var genders = ['Male', 'Female'];
@@ -131,7 +131,7 @@ class _FirstPageState extends State<FirstPage> {
             ),
           ),
         ),
-      if(!widget.isFromAuth)  24.ph,
+        if (!widget.isFromAuth) 24.ph,
         Visibility(
           visible: !widget.isFromAuth,
           child: PhoneNumberInput(
@@ -236,7 +236,8 @@ class _FirstPageState extends State<FirstPage> {
           textInputAction: TextInputAction.next,
           onChanged: (value) {
             context.read<DriverBloc>().updateDriverField(
-                fieldKey: DriverFieldKeys.telegramLink, value: "https//:t.me/$value");
+                fieldKey: DriverFieldKeys.telegramLink,
+                value: "https//:t.me/$value");
           },
         ),
         24.ph
@@ -268,6 +269,9 @@ class _FirstPageState extends State<FirstPage> {
                   context.read<DriverBloc>().updateDriverField(
                       fieldKey: DriverFieldKeys.birthDate,
                       value: dateController.text);
+                  context.read<DriverBloc>().updateDriverField(
+                      fieldKey: DriverFieldKeys.email,
+                      value: FirebaseAuth.instance.currentUser!.email);
                 });
               }
             },
