@@ -50,6 +50,7 @@ class FirebaseCollections {
   static const String users = "clients";
   static const String requestDriver = 'requestDriver';
   static const String requestClient = 'requestClient';
+  static const String yandexApiKeys = 'yandex_api_keys';
 }
 
 Map<String, String> iconMapping = {

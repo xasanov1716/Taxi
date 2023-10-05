@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
@@ -8,57 +7,69 @@ import 'package:taxi_app/data/local/storage_repository/storage_repository.dart';
 import 'package:taxi_app/data/models/places/region_model.dart';
 import 'package:taxi_app/data/models/status/form_status.dart';
 import 'package:taxi_app/data/models/universal_data.dart';
-import 'package:taxi_app/data/repositories/request_driver_repo.dart';
+import 'package:taxi_app/data/repositories/request_repo.dart';
+import 'package:taxi_app/utils/constants/constants.dart';
 import 'package:taxi_app/utils/constants/storage_keys.dart';
 
 import '../../data/models/request_model/request_model.dart';
 
-part 'driver_request_event.dart';
-part 'driver_request_state.dart';
+part 'request_event.dart';
 
-class DriverRequestBloc extends Bloc<DriverRequestEvent, DriverRequestState> {
-  final RequestDriverRepo _requestDriverRepo;
+part 'request_state.dart';
 
-  DriverRequestBloc({required RequestDriverRepo requestDriverRepo})
-      : _requestDriverRepo = requestDriverRepo,
+class RequestBloc extends Bloc<RequestEvent, RequestState> {
+  final RequestRepo _requestRepo;
+
+  RequestBloc({required RequestRepo requestDriverRepo})
+      : _requestRepo = requestDriverRepo,
         super(
-          const DriverRequestState(
+          const RequestState(
             regionModels: [],
             descriptionText: '',
             priceText: '',
           ),
         ) {
-    on<AddDriverRequest>(_addDriverRequest);
-    on<UpdateDriverRequest>(_updateDriverRequest);
-    on<DeleteDriverRequest>(_deleteDriverRequest);
-    on<UpdateCurrentDriverField>(updateRequestField);
+    on<AddRequest>(_addRequest);
+    on<UpdateRequest>(_updateRequest);
+    on<DeleteRequest>(_deleteRequest);
+    on<UpdateCurrentField>(updateRequestField);
     on<InitDBRegions>(initializeRegions);
+    on<ClearAll>(clearAllState);
     add(InitDBRegions());
   }
 
   void initializeRegions(
-      InitDBRegions event, Emitter<DriverRequestState> emit) async {
+      InitDBRegions event, Emitter<RequestState> emit) async {
     List<RegionModel> regionModels =
         (await PlacesDatabase.instance.getAllRegions()).map((e) => e).toList();
     emit(state.copyWith(regionModels: regionModels));
   }
 
-  clearAllState() {
-    // ignore: invalid_use_of_visible_for_testing_member
+  clearAllState(ClearAll event, Emitter<RequestState> emit) {
     emit(state.copyWith(
-        requestModelDriver: const RequestModel.initial(),
-        priceText: '',
-        errorText: '',
-        descriptionText: '',
-        statusRequest: FormStatus.pure));
+      requestModel: const RequestModel.initial(),
+      priceText: '',
+      errorText: '',
+      descriptionText: '',
+      statusRequest: FormStatus.pure,
+    ));
   }
 
-  Future<void> _addDriverRequest(
-      AddDriverRequest event, Emitter<DriverRequestState> emit) async {
+  Future<void> _addRequest(
+    AddRequest event,
+    Emitter<RequestState> emit,
+  ) async {
     emit(state.copyWith(statusRequest: FormStatus.loading));
-    UniversalData data = await _requestDriverRepo.addRequestDriver(
-        requestModelDriver: state.requestModelDriver);
-
+    UniversalData data;
+    if (StorageRepository.getString(StorageKeys.userRole) == AppConstants.client) {
+      data = await _requestRepo.addRequestClient(
+        requestModelClient: state.requestModel,
+      );
+    } else {
+      data = await _requestRepo.addRequestDriver(
+        requestModelDriver: state.requestModel,
+      );
+    }
     if (data.error.isEmpty) {
       emit(state.copyWith(
         statusRequest: FormStatus.success,
@@ -69,11 +80,19 @@ class DriverRequestBloc extends Bloc<DriverRequestEvent, DriverRequestState> {
     }
   }
 
-  Future<void> _updateDriverRequest(
-      UpdateDriverRequest event, Emitter<DriverRequestState> emit) async {
+  Future<void> _updateRequest(
+      UpdateRequest event, Emitter<RequestState> emit) async {
     emit(state.copyWith(statusRequest: FormStatus.loading));
-    UniversalData data = await _requestDriverRepo.updateRequestDriver(
-        requestModelDriver: event.requestModelDriver);
+    UniversalData data;
+    if (StorageRepository.getString(StorageKeys.userRole) == AppConstants.client) {
+      data = await _requestRepo.updateRequestClient(
+        requestModelClient: state.requestModel,
+      );
+    } else {
+      data = await _requestRepo.updateRequestDriver(
+        requestModelDriver: state.requestModel,
+      );
+    }
     if (data.error.isEmpty) {
       emit(state.copyWith(statusRequest: FormStatus.success));
     } else {
@@ -82,11 +101,19 @@ class DriverRequestBloc extends Bloc<DriverRequestEvent, DriverRequestState> {
     }
   }
 
-  Future<void> _deleteDriverRequest(
-      DeleteDriverRequest event, Emitter<DriverRequestState> emit) async {
+  Future<void> _deleteRequest(
+      DeleteRequest event, Emitter<RequestState> emit) async {
     emit(state.copyWith(statusRequest: FormStatus.loading));
-    UniversalData data =
-        await _requestDriverRepo.deleteRequestDriver(userId: event.userId);
+    UniversalData data;
+    if (StorageRepository.getString(StorageKeys.userRole) == AppConstants.client) {
+      data = await _requestRepo.deleteRequestClient(
+        userId: event.userId,
+      );
+    } else {
+      data = await _requestRepo.deleteRequestDriver(
+        userId: event.userId,
+      );
+    }
     if (data.error.isEmpty) {
       emit(state.copyWith(
         statusRequest: FormStatus.success,
@@ -98,8 +125,8 @@ class DriverRequestBloc extends Bloc<DriverRequestEvent, DriverRequestState> {
   }
 
   void updateRequestField(
-      UpdateCurrentDriverField event, Emitter<DriverRequestState> emit) {
-    RequestModel requestModel = state.requestModelDriver;
+      UpdateCurrentField event, Emitter<RequestState> emit) {
+    RequestModel requestModel = state.requestModel;
 
     switch (event.fieldKey) {
       case RequestField.userId:
@@ -119,7 +146,8 @@ class DriverRequestBloc extends Bloc<DriverRequestEvent, DriverRequestState> {
         requestModel = requestModel.copyWith(requestPrice: event.value as int?);
         break;
       case RequestField.emptyPlaces:
-        requestModel = requestModel.copyWith(passengerCount: event.value as int?);
+        requestModel =
+            requestModel.copyWith(passengerCount: event.value as int?);
         break;
       case RequestField.tripTime:
         requestModel = requestModel.copyWith(tripTime: event.value as String?);
@@ -128,7 +156,8 @@ class DriverRequestBloc extends Bloc<DriverRequestEvent, DriverRequestState> {
         requestModel = requestModel.copyWith(createdAt: event.value as String?);
         break;
       case RequestField.creatorName:
-        requestModel = requestModel.copyWith(creatorName: event.value as String?);
+        requestModel =
+            requestModel.copyWith(creatorName: event.value as String?);
         break;
     }
     requestModel = requestModel.copyWith(
@@ -137,6 +166,6 @@ class DriverRequestBloc extends Bloc<DriverRequestEvent, DriverRequestState> {
         userId: StorageRepository.getString(StorageKeys.userId));
 
     debugPrint(requestModel.toString());
-    emit(state.copyWith(requestModelDriver: requestModel));
+    emit(state.copyWith(requestModel: requestModel));
   }
 }

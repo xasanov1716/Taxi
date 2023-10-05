@@ -6,7 +6,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:taxi_app/blocs/driver_bloc/driver_bloc.dart';
 import 'package:taxi_app/blocs/location_bloc/location_bloc.dart';
+import 'package:taxi_app/blocs/user_bloc/user_bloc.dart';
 import 'package:taxi_app/cubits/address_cubit/address_cubit.dart';
 import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/ui/tab_box/home/widgets/action_buttons.dart';
@@ -42,11 +44,17 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void initState() {
+    _init();
     initialCameraPosition = CameraPosition(
         target: BlocProvider.of<LocationBloc>(context).latLong, zoom: 15);
     currentCameraPosition = CameraPosition(
         target: BlocProvider.of<LocationBloc>(context).latLong, zoom: 15);
     super.initState();
+  }
+
+  _init() {
+    BlocProvider.of<DriverBloc>(context).getDriverByDocId();
+    BlocProvider.of<UserBloc>(context).getUserByDocId();
   }
 
   @override
@@ -192,7 +200,7 @@ class _HomeScreenState extends State<HomeScreen> {
           await rootBundle.loadString('assets/styles/map_style.json');
       String darkStyle =
           await rootBundle.loadString('assets/styles/map_style_dark.json');
-      mapController.setMapStyle(getTheme(context)?darkStyle:style);
+      mapController.setMapStyle(getTheme(context) ? darkStyle : style);
     } catch (e) {
       throw ();
     }
