@@ -235,21 +235,9 @@ class _FirstPageState extends State<FirstPage> {
         ),
         10.ph,
 
-       isCorp? CarNumberContainer2():
-        CarNumberContainer(),
-        // GlobalTextField(
-        //   maskFormatter: carNumber,
-        //   controller: carNumberController,
-        //   focusNode: nicknameFocusNode,
-        //   textCapitalization: TextCapitalization.characters,
-        //   hintText: 'Car number',
-        //   keyboardType: TextInputType.text,
-        //   textInputAction: TextInputAction.next,
-        //   onChanged: (value) {
-        //     context.read<DriverBloc>().updateDriverField(
-        //         fieldKey: DriverFieldKeys.carNumber, value: value);
-        //   },
-        // ),
+       isCorp? CarNumberContainer2(
+         isFromAuth: widget.isFromAuth,):
+       CarNumberContainer(isFromAuth: widget.isFromAuth,),
         24.ph,
         GlobalTextField(
           controller: telegramLinkController,

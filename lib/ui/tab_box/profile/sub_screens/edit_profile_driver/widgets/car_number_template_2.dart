@@ -10,8 +10,12 @@ import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
 
 class CarNumberContainer2 extends StatefulWidget {
+
   @override
+
   State<CarNumberContainer2> createState() => _CarNumberContainer2State();
+  const CarNumberContainer2({super.key, required this.isFromAuth, });
+  final bool isFromAuth;
 }
 
 class _CarNumberContainer2State extends State<CarNumberContainer2> {
@@ -22,6 +26,17 @@ class _CarNumberContainer2State extends State<CarNumberContainer2> {
   final FocusNode _thirdFocusNode = FocusNode();
   final TextEditingController _thirdController = TextEditingController();
 
+_init(){
+  String carNumberInitial = context.read<DriverBloc>().state.driverModel.carNumber;
+
+  _firstController.text=carNumberInitial.substring(0,2);
+  _secondController.text=carNumberInitial.substring(3,6);
+  _thirdController.text=carNumberInitial.substring(7,10);
+}
+@override
+  void initState() {
+  if (!widget.isFromAuth)_init();
+  }
   @override
   void dispose() {
     // Dispose of the controllers and focus nodes when the widget is disposed.
