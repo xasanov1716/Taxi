@@ -79,6 +79,7 @@ class _FirstPageState extends State<FirstPage> {
   final FocusNode emailFocusNode = FocusNode();
   final FocusNode aboutFocusNode = FocusNode();
   final FocusNode telegramFocusNode = FocusNode();
+  bool isCorp = false;
 
   @override
   Widget build(BuildContext context) {
@@ -216,7 +217,25 @@ class _FirstPageState extends State<FirstPage> {
           },
         ),
         24.ph,
-        CarNumberContainer2(),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              'Yuridik shaxs?',
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
+            CupertinoSwitch(
+                value: isCorp,
+                onChanged: (v) {
+                  setState(() {
+                    isCorp = v;
+                  });
+                }),
+          ],
+        ),
+        10.ph,
+
+       isCorp? CarNumberContainer2():
         CarNumberContainer(),
         // GlobalTextField(
         //   maskFormatter: carNumber,

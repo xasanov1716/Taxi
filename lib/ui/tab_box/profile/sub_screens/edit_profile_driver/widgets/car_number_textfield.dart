@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
+import 'package:taxi_app/utils/theme/get_theme.dart';
 
 class CarNumberTextField extends StatelessWidget {
   final String hintText;
@@ -41,7 +42,7 @@ class CarNumberTextField extends StatelessWidget {
         keyboardType: TextInputType.number,
         inputFormatters: inputFormatter,
         decoration: InputDecoration(
-          fillColor: AppColors.white,
+          fillColor: getTheme(context) ? AppColors.dark1 : AppColors.white,
           hintText: hintText,
           hintStyle: TextStyle(
             color: AppColors.c_500,
@@ -54,18 +55,17 @@ class CarNumberTextField extends StatelessWidget {
           counterText: '',
         ),
         style: TextStyle(
-          color: Colors.black,
-          fontSize: 48.sp,
+          color: getTheme(context)? AppColors.c_300:AppColors.dark2,
+
+        fontSize: 48.sp,
           fontFamily: 'Chakra',
           fontWeight: FontWeight.w700,
         ),
         onChanged: (value) {
-
           if (value.length == maxLength && nextFocusNode != null) {
             FocusScope.of(context).requestFocus(nextFocusNode);
           } else if (value.isEmpty && previousFocusNode != null) {
             FocusScope.of(context).requestFocus(previousFocusNode);
-
           }
           valueChanged!(value);
         },

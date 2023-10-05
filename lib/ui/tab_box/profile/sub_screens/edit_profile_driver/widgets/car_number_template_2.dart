@@ -7,6 +7,7 @@ import 'package:taxi_app/data/models/driver/driver_fields.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/edit_profile_driver/widgets/car_number_textfield.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
+import 'package:taxi_app/utils/theme/get_theme.dart';
 
 class CarNumberContainer2 extends StatefulWidget {
   @override
@@ -38,8 +39,9 @@ class _CarNumberContainer2State extends State<CarNumberContainer2> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
+        color: getTheme(context)? AppColors.dark1:AppColors.white,
         borderRadius: BorderRadius.circular(15),
-        border: Border.all(width: 4, color: AppColors.dark3),
+        border: Border.all(width: 4, color:getTheme(context)? AppColors.c_500:AppColors.dark3),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -48,9 +50,9 @@ class _CarNumberContainer2State extends State<CarNumberContainer2> {
           Container(
             width: 6.w,
             height: 6.w,
-            decoration: const BoxDecoration(
+            decoration:  BoxDecoration(
               shape: BoxShape.circle,
-              color: AppColors.dark3,
+              color: getTheme(context)? AppColors.c_500:AppColors.dark3,
             ),
           ),
           CarNumberTextField(
@@ -113,9 +115,9 @@ class _CarNumberContainer2State extends State<CarNumberContainer2> {
               Container(
                 width: 6.w,
                 height: 6.w,
-                decoration: const BoxDecoration(
+                decoration:  BoxDecoration(
                   shape: BoxShape.circle,
-                  color: AppColors.dark3,
+                  color: getTheme(context)? AppColors.c_500:AppColors.dark3,
                 ),
               ),
               const Text(
