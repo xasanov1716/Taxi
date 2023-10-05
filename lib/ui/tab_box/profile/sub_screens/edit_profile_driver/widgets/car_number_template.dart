@@ -11,7 +11,9 @@ import 'package:taxi_app/utils/icons/app_icons.dart';
 class CarNumberContainer extends StatefulWidget {
   @override
   State<CarNumberContainer> createState() => _CarNumberContainerState();
+
   CarNumberContainer({super.key, required this.isFromAuth});
+
   final bool isFromAuth;
 }
 
@@ -40,20 +42,18 @@ class _CarNumberContainerState extends State<CarNumberContainer> {
   }
 
   _init() {
-
-      String carNumberInitial =
-          context.read<DriverBloc>().state.driverModel.carNumber;
-
-        _firstController.text = carNumberInitial.substring(0, 2);
-        _secondController.text = carNumberInitial.substring(2, 4);
-        _thirdController.text = carNumberInitial.substring(4, 8);
-        _fourthController.text = carNumberInitial.substring(8, 11);
-
+    String carNumberInitial = context.read<DriverBloc>().state.driverModel.carNumber;
+    if (carNumberInitial.length > 10) {
+      _firstController.text = carNumberInitial.substring(0, 2);
+      _secondController.text = carNumberInitial.substring(2, 4);
+      _thirdController.text = carNumberInitial.substring(4, 8);
+      _fourthController.text = carNumberInitial.substring(8, 11);
+    }
   }
 
   @override
   void initState() {
-    if (!widget.isFromAuth)_init();
+    if (!widget.isFromAuth) _init();
   }
 
   @override
@@ -88,7 +88,7 @@ class _CarNumberContainerState extends State<CarNumberContainer> {
             nextFocusNode: _secondFocusNode,
           ),
           CarNumberTextField(
-            textInputType: TextInputType. text,
+            textInputType: TextInputType.text,
             hintText: "A",
             maxLength: 1,
             inputFormatter: [
