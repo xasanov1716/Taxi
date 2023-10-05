@@ -13,10 +13,11 @@ class AuthTextField extends StatefulWidget {
     required this.prefixIcon,
     this.isPassword = false,
     required this.onChanged,
-    required this.focusNode,
+    required this.focusNode, this.parolkoz,
   });
 
   final String hintText;
+  final String? parolkoz;
   final String prefixIcon;
   final FocusNode focusNode;
   final bool isPassword;
@@ -29,7 +30,6 @@ class AuthTextField extends StatefulWidget {
 class _AuthTextFieldState extends State<AuthTextField> {
   final TextEditingController _controller = TextEditingController();
   bool _isObscured = false;
-  bool hasValue = false;
   bool isFocused = false;
   Color _iconColor = AppColors.c_500;
   var maskFormatter = MaskTextInputFormatter(
@@ -75,7 +75,7 @@ class _AuthTextFieldState extends State<AuthTextField> {
       } else {
         if (_controller.text.isNotEmpty) {
           setState(() {
-            _iconColor = AppColors.c_900;
+            _iconColor = AppColors.c_500;
           });
         } else {
           setState(() {
@@ -96,7 +96,7 @@ class _AuthTextFieldState extends State<AuthTextField> {
           widget.isPassword ? TextInputAction.done : TextInputAction.go,
       focusNode: widget.focusNode,
       controller: _controller,
-      obscureText: _isObscured,
+      obscureText:widget.parolkoz==null? _isObscured:!_isObscured,
       onChanged: widget.onChanged,
       maxLength: widget.isPassword ? 20 : 12,
       inputFormatters: [if (!widget.isPassword) maskFormatter],
@@ -150,11 +150,11 @@ class _AuthTextFieldState extends State<AuthTextField> {
               ? IconButton(
                   onPressed: () {
                     setState(() {
-                      _isObscured = !_isObscured;
+                      _isObscured  =!_isObscured;
                     });
                   },
                   icon: SvgPicture.asset(
-                    _isObscured ? AppIcons.hide : AppIcons.show,
+                    _isObscured ? AppIcons.show : AppIcons.hide,
                     colorFilter: ColorFilter.mode(_iconColor, BlendMode.srcIn),
                   ))
               : const SizedBox(),

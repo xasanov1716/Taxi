@@ -56,16 +56,16 @@ class _SecurityScreenState extends State<SecurityScreen> {
                       BlendMode.srcIn),
                 ),
               ),
-              GlobalButton(
-                padding: const EdgeInsets.all(24),
-                title: 'Change PIN',
-                onTap: () {
-                  Navigator.pushNamed(context, RouteNames.enterPinScreen,
-                      arguments: true);
-                },
-                color: AppColors.primary,
-                radius: 100.r,
-              ),
+              // GlobalButton(
+              //   padding: const EdgeInsets.all(24),
+              //   title: 'Change PIN',
+              //   onTap: () {
+              //     Navigator.pushNamed(context, RouteNames.enterPinScreen,
+              //         arguments: true);
+              //   },
+              //   color: AppColors.primary,
+              //   radius: 100.r,
+              // ),
               GlobalButton(
                 padding: EdgeInsets.symmetric(horizontal: 24.w),
                 title: 'Change Password',

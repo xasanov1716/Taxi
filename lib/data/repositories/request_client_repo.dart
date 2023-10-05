@@ -1,34 +1,50 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:taxi_app/data/models/request_model_client/request_model_client.dart';
+import 'package:taxi_app/data/models/request_model/request_model.dart';
 import 'package:taxi_app/data/models/universal_data.dart';
 import 'package:taxi_app/utils/constants/constants.dart';
 
+import '../../utils/constants/storage_keys.dart';
+import '../local/storage_repository/storage_repository.dart';
+
 class RequestClientRepo {
-  Stream<List<RequestModelClient>> getClientRequest() =>
+  Stream<List<RequestModel>> getClientRequest() =>
       FirebaseFirestore.instance
           .collection(FirebaseCollections.requestClient)
           .snapshots()
           .map(
-            (requestClient) => requestClient.docs
-                .map((doc) => RequestModelClient.fromJson(doc.data()))
+            (event1) => event1.docs
+                .map((doc) => RequestModel.fromJson(doc.data()))
                 .toList(),
           );
 
+  Stream<List<RequestModel>> getClientRequestId() =>
+      FirebaseFirestore.instance
+          .collection(FirebaseCollections.requestClient).where("user_id",
+          isEqualTo: StorageRepository.getString(StorageKeys.userId))
+          .snapshots()
+          .map(
+            (event1) => event1.docs
+            .map((doc) => RequestModel.fromJson(doc.data()))
+            .toList(),
+      );
+
+  Stream<List<RequestModel>> getClientFromId({required int fromId, required int toId}) =>
+      FirebaseFirestore.instance
+          .collection(FirebaseCollections.requestClient).where("from_id",
+          isEqualTo: fromId).where("to_id", isEqualTo: toId)
+          .snapshots()
+          .map(
+            (event1) => event1.docs
+            .map((doc) => RequestModel.fromJson(doc.data()))
+            .toList(),
+      );
 
   Future<UniversalData> addRequestClient(
-      {required RequestModelClient requestModelClient}) async {
+      {required RequestModel requestModelClient}) async {
     try {
-      DocumentReference newRequestClient = await FirebaseFirestore.instance
-          .collection(FirebaseCollections.requestClient)
-          .add(requestModelClient.toJson());
-
       await FirebaseFirestore.instance
           .collection(FirebaseCollections.requestClient)
-          .doc(newRequestClient.id)
-          .update({
-        'user_id': newRequestClient.id,
-      });
-
+          .add(requestModelClient.toJson());
       return UniversalData(data: 'Request added for client');
     } on FirebaseException catch (e) {
       return UniversalData(error: e.code);
@@ -38,7 +54,7 @@ class RequestClientRepo {
   }
 
   Future<UniversalData> updateRequestClient(
-      {required RequestModelClient requestModelClient}) async {
+      {required RequestModel requestModelClient}) async {
     try {
       await FirebaseFirestore.instance
           .collection(FirebaseCollections.requestClient)

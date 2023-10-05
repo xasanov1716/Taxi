@@ -75,6 +75,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       AuthTextField(
                         focusNode: passwordFocus,
                         hintText: 'Parol',
+                        parolkoz: ' ',
                         prefixIcon: AppIcons.lock,
                         isPassword: true,
                         onChanged: (v) {

@@ -15,7 +15,7 @@ class ApiService {
       baseUrl: baseUrl,
       headers: {
         "Content-Type": "application/json",
-        "Authorization": apiKey,
+
       },
       connectTimeout: const Duration(seconds: 30),
       receiveTimeout: const Duration(seconds: 30),
@@ -52,13 +52,14 @@ class ApiService {
     required LatLng latLng,
     required String kind,
     required String lang,
+    required String key
   }) async {
     Response response;
     try {
       response = await dio.get(
         '/1.x/',
         queryParameters: {
-          "apikey": apiKey,
+          "apikey": key,
           "geocode": "${latLng.longitude}, ${latLng.latitude}",
           "lang": lang,
           "format": "json",

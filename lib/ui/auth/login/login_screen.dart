@@ -87,6 +87,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         AuthTextField(
                           focusNode: passwordFocus,
                           hintText: 'Parol',
+                          parolkoz: ' ',
                           prefixIcon: AppIcons.lock,
                           isPassword: true,
                           onChanged: (v) {
