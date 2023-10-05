@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,20 +8,18 @@ import 'package:taxi_app/ui/tab_box/profile/sub_screens/edit_profile_driver/widg
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 
-class CarNumberContainer extends StatefulWidget {
+class CarNumberContainer2 extends StatefulWidget {
   @override
-  State<CarNumberContainer> createState() => _CarNumberContainerState();
+  State<CarNumberContainer2> createState() => _CarNumberContainer2State();
 }
 
-class _CarNumberContainerState extends State<CarNumberContainer> {
+class _CarNumberContainer2State extends State<CarNumberContainer2> {
   final FocusNode _firstFocusNode = FocusNode();
   final TextEditingController _firstController = TextEditingController();
   final FocusNode _secondFocusNode = FocusNode();
   final TextEditingController _secondController = TextEditingController();
   final FocusNode _thirdFocusNode = FocusNode();
   final TextEditingController _thirdController = TextEditingController();
-  final FocusNode _fourthFocusNode = FocusNode();
-  final TextEditingController _fourthController = TextEditingController();
 
   @override
   void dispose() {
@@ -33,8 +30,7 @@ class _CarNumberContainerState extends State<CarNumberContainer> {
     _secondFocusNode.dispose();
     _thirdController.dispose();
     _thirdFocusNode.dispose();
-    _fourthController.dispose();
-    _fourthFocusNode.dispose();
+
     super.dispose();
   }
 
@@ -69,51 +65,35 @@ class _CarNumberContainerState extends State<CarNumberContainer> {
             nextFocusNode: _secondFocusNode,
           ),
           CarNumberTextField(
-            hintText: "A",
-            maxLength: 1,
-            inputFormatter: [
-              FilteringTextInputFormatter.allow(
-                RegExp(r'[a-zA-Z]'),
-              ),
-              UppercaseTextInputFormatter(),
-            ],
-            width: 50.w,
-            focusNode: _secondFocusNode,
-            controller: _secondController,
-            nextFocusNode: _thirdFocusNode,
-            previousFocusNode: _firstFocusNode,
-          ),
-          CarNumberTextField(
             hintText: "123",
             maxLength: 3,
             inputFormatter: [
               FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
             ],
             width: 90.w,
-            focusNode: _thirdFocusNode,
-            controller: _thirdController,
-            nextFocusNode: _fourthFocusNode,
-            previousFocusNode: _secondFocusNode,
+            focusNode: _secondFocusNode,
+            controller: _secondController,
+            nextFocusNode: _thirdFocusNode,
+            previousFocusNode: _firstFocusNode,
           ),
           CarNumberTextField(
             valueChanged: (value) {
-
               context.read<DriverBloc>().updateDriverField(
                   fieldKey: DriverFieldKeys.carNumber,
                   value:
-                      "${_firstController.text} ${_secondController.text} ${_thirdController.text} $value");
+                      "${_firstController.text} ${_secondController.text} $value");
             },
-            hintText: "NN",
-            maxLength: 2,
+            hintText: "ABC",
+            maxLength: 3,
             inputFormatter: [
               FilteringTextInputFormatter.allow(
                 RegExp(r'[a-zA-Z]'),
               ),
               UppercaseTextInputFormatter(),
             ],
-            width: 80.w,
-            focusNode: _fourthFocusNode,
-            controller: _fourthController,
+            width: 100.w,
+            focusNode: _thirdFocusNode,
+            controller: _thirdController,
             previousFocusNode: _thirdFocusNode,
           ),
           Column(

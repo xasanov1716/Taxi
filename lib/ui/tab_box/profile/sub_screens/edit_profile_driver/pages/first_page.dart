@@ -11,6 +11,7 @@ import 'package:taxi_app/blocs/driver_bloc/driver_bloc.dart';
 import 'package:taxi_app/data/models/driver/driver_fields.dart';
 import 'package:taxi_app/data/models/icon/icon_type.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/edit_profile_driver/widgets/car_number_template.dart';
+import 'package:taxi_app/ui/tab_box/profile/sub_screens/edit_profile_driver/widgets/car_number_template_2.dart';
 import 'package:taxi_app/ui/tab_box/profile/widgets/profile_dialog.dart';
 import 'package:taxi_app/ui/widgets/global_input.dart';
 import 'package:taxi_app/ui/widgets/global_search_input.dart';
@@ -215,6 +216,7 @@ class _FirstPageState extends State<FirstPage> {
           },
         ),
         24.ph,
+        CarNumberContainer2(),
         CarNumberContainer(),
         // GlobalTextField(
         //   maskFormatter: carNumber,
