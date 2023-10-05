@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:taxi_app/data/models/icon/icon_type.dart';
 import 'package:taxi_app/data/models/request_model/request_model.dart';
@@ -51,11 +52,13 @@ class LocationItem extends StatelessWidget {
             Text(
               "Yo'lga chiqish vaqti",
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                fontSize: 18.sp,
                   color: getTheme(context) ? AppColors.c_300 : AppColors.c_700),
             ),
             Text(
               modelClient!.tripTime,
               style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                  fontSize: 18.sp,
                   color: getTheme(context) ? AppColors.c_300 : AppColors.c_900),
             )
           ],

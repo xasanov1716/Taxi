@@ -5,6 +5,9 @@ import 'package:taxi_app/data/models/request_model/request_model.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
+import 'package:taxi_app/utils/theme/get_theme.dart';
+
+import '../../../../data/local/search_location/places_db.dart';
 
 class RequestDriverAddress extends StatefulWidget {
   const RequestDriverAddress({super.key, this.modelDriver});
@@ -16,14 +19,35 @@ class RequestDriverAddress extends StatefulWidget {
 }
 
 class _RequestDriverAddressState extends State<RequestDriverAddress> {
+  String fromRegion = "";
+  String toRegion = "";
+
+  @override
+  void initState() {
+    _getFromRegions(id: widget.modelDriver!.fromId);
+    _getToRegions(id: widget.modelDriver!.toId);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        _rowMaker(context, "Toshkent shahri"),
-        24.ph,
-        _rowMaker(context, "Samarqand shahri"),
+        12.ph,
+        Container(
+          padding: EdgeInsets.all(6.r),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(16.r),
+              border: Border.all(width: 1, color: getTheme(context) ? AppColors.white : AppColors.yellow)
+          ),
+          child: Row(
+            children: [
+              Expanded(child: Center(child: Text(fromRegion, textAlign: TextAlign.center,))),
+              SizedBox(height: 45.w, width: 45.w, child: ClipRRect(borderRadius: BorderRadius.circular(30.r), child: Image.asset(AppIcons.fromTo)),),
+              Expanded(child: Center(child: Text(toRegion, textAlign: TextAlign.center,))),
+            ],
+          ),
+        ),
       ],
     );
   }
@@ -51,5 +75,21 @@ class _RequestDriverAddressState extends State<RequestDriverAddress> {
         )
       ],
     );
+  }
+
+  _getFromRegions({required int id}) async {
+    List<String> fromRegions = (await PlacesDatabase.instance.getRegionById(id: id))
+        .map((e) => e.name)
+        .toList();
+    fromRegion = fromRegions.first;
+    setState(() { });
+  }
+
+  _getToRegions({required int id}) async {
+    List<String> toRegions = (await PlacesDatabase.instance.getRegionById(id: id))
+        .map((e) => e.name)
+        .toList();
+    toRegion = toRegions.first;
+    setState(() { });
   }
 }

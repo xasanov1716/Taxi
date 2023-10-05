@@ -9,6 +9,8 @@ import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
 
+import '../sub_screens/selected_request/selected_request_screen.dart';
+
 class RequestDriverView extends StatefulWidget {
   const RequestDriverView({super.key, this.modelDriver});
 
@@ -24,7 +26,11 @@ class _RequestDriverViewState extends State<RequestDriverView> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: (){ },
+      onTap: (){
+        Navigator.push(context, MaterialPageRoute(builder: (context){
+          return SelectedRequestScreen(fromId: widget.modelDriver!.fromId, toId: widget.modelDriver!.toId);
+        }));
+      },
       child: AnimatedContainer(
         margin: EdgeInsets.symmetric(horizontal: 24.w),
         duration: const Duration(milliseconds: 700),
