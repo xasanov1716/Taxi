@@ -134,7 +134,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   //  25.ph,
 
                   AuthNavigatorButton(
-                    title: tr("don't_have_an_account?"),
+                    title: "${tr("dont_have_an_account")}?",
                     onTapTitle: tr("create_your_account"),
                     onTap: () {
                       Navigator.pushReplacementNamed(

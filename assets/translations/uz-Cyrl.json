@@ -21,7 +21,7 @@
   "continue_with_google": "Гоогле билан давом этинг",
   "continue_with_apple": "Аппле билан давом этинг",
   "sign_in_with_password": "Пароль билан тизимга киринг",
-  "don't_have_an_account": "Ҳисобингиз йўқми",
+  "dont_have_an_account": "Ҳисобингиз йўқми",
   "or": "ёки",
   "sign_up": "Рўйхатдан ўтиш",
   "login_page": "Логин сахифаси",
@@ -58,19 +58,7 @@
   "congratulations_title": "",
 
 
-  "04": "SCREENLAR",
-
-
-
-
-
-
-
-
-
-
-
-
+  "04": "SCREENLAR"
 
 
 }
