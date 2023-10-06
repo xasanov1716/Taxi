@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:taxi_app/cubits/address_cubit/address_cubit.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
+import 'package:taxi_app/utils/theme/get_theme.dart';
 
 class TypeOfMap extends StatelessWidget {
   const TypeOfMap({super.key});
@@ -78,7 +79,7 @@ class TypeOfMap extends StatelessWidget {
         children: [
           Text(
             text,
-            style:Theme.of(context).textTheme.bodyLarge!.copyWith( color:context.read<AddressCubit>().mapType==mapType?Colors.blue: Colors.white),
+            style:Theme.of(context).textTheme.bodyLarge!.copyWith( color:context.read<AddressCubit>().mapType==mapType?Colors.blue:getTheme(context) ? AppColors.dark2 : AppColors.white),
           ),
           Image.asset(iconPath, height: 30, width: 30),
         ],
