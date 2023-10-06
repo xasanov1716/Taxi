@@ -1,10 +1,5 @@
 {
-  "language": "Til",
-  "language_type": "O'zbek",
-
-
   "01": "",
-
 
   "welcome_to": "Xush kelibsiz",
   "taxio": "Dastyor Taxi",
@@ -16,16 +11,14 @@
   "get_started": "Boshlash",
   "skip": "O'tkazib yuborish",
 
-
   "02": "",
-
 
   "lets_you_in": "Dastyorga Kirish",
   "continue_with_facebook": "Facebook bilan davom eting",
   "continue_with_google": "Google bilan davom eting",
   "continue_with_apple": "Apple bilan davom eting",
   "sign_in_with_password": "Parol bilan tizimga kiring",
-  "dont_have_an_account": "Hisobingiz yo'qmi",
+  "don't_have_an_account": "Hisobingiz yo'qmi",
   "or": "yoki",
   "sign_up": "Ro'yxatdan o'tish",
   "sign_in": "Kirish",
@@ -198,5 +191,46 @@
 
   "09": "",
 
-  "": ""
+  "edit_profile": "Profilni tahrirlash",
+  "address": "Manzil",
+  "payment": "To'lov",
+  "security": "Xavfsizlik",
+  "dark_mode": "Tungi rejim",
+  "privacy_policy": "Maxfiylik politikasi",
+  "help_center": "Yordam markazi",
+  "invite_friends": "Do'stlarni taklif qiling",
+  "logout": "Chiqish",
+  "update":"Yangilanish",
+  "add_new_address":"Yangi manzil qo'shish",
+  "add_address":"Manzil qo'shish",
+  "address_details":"Manzil tafsilotlari",
+  "name_address": "Manzil nomi",
+  "general_notification": "Umumiy xabarnoma",
+  "sound": "Ovoz",
+  "vibrate": "Vibratsiya",
+  "promo_discount": "Promo chegirma",
+  "payments": "To'lovlar",
+  "app_updates": "Ilova yangilanishlari",
+  "new_service_available": "Yangi xizmat mavjud",
+  "new_tips_available": "Yangi maslahatlar mavjud",
+  "connected": "Ulangan",
+  "card_name": "Karta nomi",
+  "card_number": "Karta raqami",
+  "expiry_date": "Karta muddati",
+  "face_id": "Face ID",
+  "biometric_id": "Biometrik ID",
+  "google_authenticator": "Google authenticator",
+  "change_pin": "PIN kodni o'zgartirish",
+  "change_password": "Parolni o'zgartirish",
+  "invite": "Taklif qiling",
+  "invited": "Taklif qilingan",
+  "contact_us": "Biz bilan bog'laning",
+  "general": "Umumiy",
+  "account": "Hisob",
+  "service": "Xizmat",
+  "customer_service": "Mijoz xizmati",
+  "website": "Veb-sayt",
+  "logout_title": "Siz tizimdan chiqmoqchimisiz?",
+  "language": "Til",
+  "language_type": "O'zbek"
 }

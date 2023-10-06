@@ -1,7 +1,4 @@
 {
-  "language": "Язык",
-  "language_type": "Русский",
-
   "01": "",
 
   "welcome_to": "Добро пожаловать",
@@ -14,23 +11,20 @@
   "get_started": "Начать",
   "skip": "Пропустить",
 
-
   "02": "",
 
   "lets_you_in": "Дастёр Войти",
-
   "continue_with_facebook": "Продолжить с Facebook",
   "continue_with_google": "Продолжить с Google",
   "continue_with_apple": "Продолжить с Apple",
   "sign_in_with_password": "Войти с паролем",
-  "dont_have_an_account": "Нет аккаунта",
-
+  "don't_have_an_account": "Нет учетной записи?",
   "or": "или",
   "sign_up": "Зарегистрируйтесь",
   "sign_in": "Войти",
   "login_page": "Страница входа",
   "already_have_an_account": "У вас уже есть учетная запись?",
-  "or_continue_with": "или продолжитьh",
+  "or_continue_with": "или продолжить",
   "remember_me": "Запомни меня",
   "password": "Пароль",
   "phone_number": "Номер телефона",
@@ -39,7 +33,6 @@
   "driver_or_client": "Вы водитель или пассажир",
   "driver": "Водитель",
   "client": "Пассажир",
-
   "forgot_password": "Забыли пароль?",
 
   "03": "",
@@ -183,7 +176,7 @@
   "payment_type": "Выберите способ пополнения, который вы хотите использовать.",
   "add_new_card": "Добавить новую карту",
   "top_up_successful": "Пополнение успешно!",
-  "dialog_title_payment": "You have successfully top up\ne-wallet for",
+  "dialog_title_payment": "Вы успешно пополнили баланс\nэлектронный кошелек для",
   "amount": "Количество",
   "total": "Общий",
   "promo": "Промо",
@@ -199,5 +192,46 @@
 
   "09": "",
 
-  "": ""
+  "edit_profile": "Редактировать профиль",
+  "address": "Адрес",
+  "payment": "Оплата",
+  "security": "Безопасность",
+  "dark_mode": "Темный режим",
+  "privacy_policy": "Политика конфиденциальности",
+  "help_center": "Справочный центр",
+  "invite_friends": "Пригласить друзей",
+  "logout": "Выход",
+  "update":"Обновить",
+  "add_new_address":"Добавить новый адрес",
+  "add_address":"Добавить адрес",
+  "address_details":"Подробности об адресе",
+  "name_address": "Имя Адрес",
+  "general_notification": "Общее уведомление",
+  "sound": "Звук",
+  "vibrate": "Вибрировать",
+  "promo_discount": "Промо-скидка",
+  "payments": "Платежи",
+  "app_updates": "Обновления приложений",
+  "new_service_available": "Доступна новая услуга",
+  "new_tips_available": "Доступны новые советы",
+  "connected": "Подключено",
+  "card_name": "Имя карты",
+  "card_number": "Номер карты",
+  "expiry_date": "Дата истечения срока действия",
+  "face_id": "Идентификатор лица",
+  "biometric_id": "Биометрический идентификатор",
+  "google_authenticator": "Google Аутентификатор",
+  "change_pin": "Изменить PIN-код",
+  "change_password": "Изменить пароль",
+  "invite": "Пригласить",
+  "invited": "Приглашен",
+  "contact_us": "Свяжитесь с нами",
+  "general": "Общий",
+  "account": "Аккаунт",
+  "service": "Сервис",
+  "customer_service": "Служба поддержки клиентов",
+  "website": "Веб-сайт",
+  "logout_title": "Вы уверены, что хотите выйти?",
+  "language": "Язык",
+  "language_type": "Русский"
 }
