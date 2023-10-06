@@ -199,6 +199,7 @@ class AppIcons {
   static const String fingerPrintTwo = "assets/lottie/fingerprint.json";
   static const String loader = "assets/lottie/loader.json";
   static const String error = "assets/lottie/error_lot.json";
+  static const String emptyLottie = "assets/lottie/empty_lottie.json";
 
   //others
   static const String checked = "assets/svg/others/checked.svg";

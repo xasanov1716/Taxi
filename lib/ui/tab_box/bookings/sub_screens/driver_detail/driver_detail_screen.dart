@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:taxi_app/cubits/get_driver_informations_cubit/get_driver_informations_cubit.dart';
-import 'package:taxi_app/data/models/request_model/request_model.dart';
 import 'package:taxi_app/ui/tab_box/bookings/sub_screens/widgets/widgets.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-class DriverDetailScreen extends StatelessWidget {
-  final RequestModel requestModel;
-
-  const DriverDetailScreen({super.key, required this.requestModel});
+class DriverDetailInfoScreen extends StatelessWidget {
+  const DriverDetailInfoScreen({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class DriverDetailScreen extends StatelessWidget {
       backgroundColor:
           getTheme(context) ? Theme.of(context).scaffoldBackgroundColor : AppColors.c_100,
       appBar: AppBar(
-        title: Text('Client detail', style: Theme.of(context).textTheme.headlineMedium),
+        title: Text('Driver detail', style: Theme.of(context).textTheme.headlineMedium),
       ),
       body: BlocBuilder<GetDriverInformationsCubit, GetDriverInformationsState>(
         builder: (context, state) {
@@ -50,7 +50,11 @@ class DriverDetailScreen extends StatelessWidget {
                       children: [
                         IconContainerWidget(icon: AppIcons.message, onTap: () {}),
                         24.pw,
-                        IconContainerWidget(icon: AppIcons.call, onTap: () {}),
+                        IconContainerWidget(
+                            icon: AppIcons.call,
+                            onTap: () {
+                              launch("tel:${state.driver.phoneNumber}");
+                            }),
                       ],
                     ),
                   )

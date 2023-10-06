@@ -9,7 +9,7 @@ class CompletedDriverRequest extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return requestDrivers != null ? ListView.builder(
+    return (requestDrivers != null && requestDrivers!.isNotEmpty) ? ListView.builder(
       itemCount: requestDrivers!.length,
       itemBuilder: (context, index) {
         return RequestDriverView(modelDriver: requestDrivers![index]);
