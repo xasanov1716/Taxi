@@ -40,7 +40,12 @@ class _RequestAddressState extends State<RequestAddress> {
           ),
           child: Row(
             children: [
-              Expanded(child: Center(child: Text(fromRegion, textAlign: TextAlign.center,))),
+              Expanded(child: Center(child: Column(
+                children: [
+                  Text("dan"),
+                  Text(fromRegion, textAlign: TextAlign.center,),
+                ],
+              ))),
               SizedBox(height: 45.w, width: 45.w, child: ClipRRect(borderRadius: BorderRadius.circular(30.r), child: Image.asset(AppIcons.fromTo)),),
               Expanded(child: Center(child: Text(toRegion, textAlign: TextAlign.center,))),
             ],

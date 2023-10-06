@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:lottie/lottie.dart';
 import 'package:taxi_app/data/models/address_model/address_model.dart';
 import 'package:taxi_app/data/repositories/address_repos.dart';
 import 'package:taxi_app/ui/app_routes.dart';
@@ -10,6 +11,7 @@ import 'package:taxi_app/ui/widgets/global_appbar.dart';
 import 'package:taxi_app/ui/widgets/global_button.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
+import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 
 class AddressScreen extends StatefulWidget {
@@ -68,7 +70,7 @@ class _AddressScreenState extends State<AddressScreen> {
                   )
                 : Column(
                   children: [
-                    const Expanded(child: Center(child: Text("Empty"))),
+                    Expanded(child: Center(child: Lottie.asset(AppIcons.emptyLottie, width: 350*height/figmaHeight))),
                     GlobalButton(
                       padding: EdgeInsets.all(24.h),
                       title: 'Add New Address',
@@ -84,7 +86,7 @@ class _AddressScreenState extends State<AddressScreen> {
           }
           if (snapshot.hasError) {
             return Center(
-              child: Text(snapshot.error.toString()),
+              child: Image.asset(AppIcons.emptyBookings),
             );
           }
           return const Center(child: CircularProgressIndicator());

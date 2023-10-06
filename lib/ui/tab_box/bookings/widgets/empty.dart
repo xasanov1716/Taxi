@@ -19,14 +19,14 @@ class EmptyBookings extends StatelessWidget {
           height: 220 * height / figmaHeight,
           width: 225 * width / figmaWidth,
         ),
-        48.ph,
-        Text(
-          "You have no active taxi booking",
-          style: Theme.of(context).textTheme.headlineSmall,
-        ),
-        12.ph,
-        Text("You don't have an active taxi booking at this time",
-            style: Theme.of(context).textTheme.bodyLarge)
+        // 48.ph,
+        // Text(
+        //   "You have no active taxi booking",
+        //   style: Theme.of(context).textTheme.headlineSmall,
+        // ),
+        // 12.ph,
+        // Text("You don't have an active taxi booking at this time",
+        //     style: Theme.of(context).textTheme.bodyLarge)
       ],
     );
   }

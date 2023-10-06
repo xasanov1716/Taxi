@@ -127,7 +127,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   // ),
                   60.ph,
                   AuthNavigatorButton(
-                    title:tr("already_have_an_account?"),
+                    title:"${tr("already_have_an_account")}?",
                     onTapTitle: tr('sign_in'),
                     onTap: () {
                       Navigator.pushReplacementNamed(context, RouteNames.login);

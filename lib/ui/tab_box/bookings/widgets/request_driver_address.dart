@@ -33,9 +33,25 @@ class _RequestDriverAddressState extends State<RequestDriverAddress> {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        Row(children: [
+          Expanded(child: Center(child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 10.r),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8.r),
+                  border: Border.all(width: 1, color: getTheme(context) ? AppColors.white : AppColors.yellow)
+              ),
+              child: const Text("Dan")))),
+          Expanded(child: Center(child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 10.r),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8.r),
+                  border: Border.all(width: 1, color: getTheme(context) ? AppColors.white : AppColors.yellow)
+              ),
+              child: const Text("Ga")))),
+        ],),
         12.ph,
         Container(
-          padding: EdgeInsets.all(6.r),
+          padding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 12.h),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(16.r),
               border: Border.all(width: 1, color: getTheme(context) ? AppColors.white : AppColors.yellow)
@@ -43,7 +59,7 @@ class _RequestDriverAddressState extends State<RequestDriverAddress> {
           child: Row(
             children: [
               Expanded(child: Center(child: Text(fromRegion, textAlign: TextAlign.center,))),
-              SizedBox(height: 45.w, width: 45.w, child: ClipRRect(borderRadius: BorderRadius.circular(30.r), child: Image.asset(AppIcons.fromTo)),),
+              SizedBox(height: 35.w, width: 35.w, child: ClipRRect(borderRadius: BorderRadius.circular(30.r), child: Image.asset(AppIcons.fromTo)),),
               Expanded(child: Center(child: Text(toRegion, textAlign: TextAlign.center,))),
             ],
           ),

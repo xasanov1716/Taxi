@@ -10,6 +10,7 @@ import 'package:taxi_app/ui/tab_box/bookings/requests_view/cancelled_request/can
 import 'package:taxi_app/ui/tab_box/bookings/requests_view/completed_request/completed_driver_request.dart';
 import 'package:taxi_app/ui/tab_box/bookings/requests_view/completed_request/completed_request_view.dart';
 import 'package:taxi_app/ui/tab_box/bookings/widgets/booking_appbar.dart';
+import 'package:taxi_app/ui/tab_box/bookings/widgets/empty.dart';
 import 'package:taxi_app/utils/constants/storage_keys.dart';
 
 class BookingsScreen extends StatefulWidget {
@@ -43,14 +44,10 @@ class _BookingsScreenState extends State<BookingsScreen> {
                             const CompletedDriverRequest(requestDrivers: []),
                             const CancelledDriverRequest(requestDrivers: [])
                           ])
-                        : const Center(
-                            child: Text("Empty"),
-                          );
+                        : const Center(child: EmptyBookings());
                   }
                   if (snapshot.hasError) {
-                    return Center(
-                      child: Text(snapshot.error.toString()),
-                    );
+                    return const Center(child: EmptyBookings());
                   }
                   return const Center(child: CircularProgressIndicator());
                 },
@@ -66,14 +63,10 @@ class _BookingsScreenState extends State<BookingsScreen> {
                             const CompletedRequestView(requestClients: []),
                             const CancelledRequestView(requestClients: [])
                           ])
-                        : const Center(
-                            child: Text("Empty"),
-                          );
+                        : const Center(child: EmptyBookings());
                   }
                   if (snapshot.hasError) {
-                    return Center(
-                      child: Text(snapshot.error.toString()),
-                    );
+                    return const Center(child: EmptyBookings());
                   }
                   return const Center(child: CircularProgressIndicator());
                 },
