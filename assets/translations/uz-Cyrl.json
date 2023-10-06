@@ -12,11 +12,13 @@
   "02": "",
 
   "lets_you_in": "Дастёрга Кириш",
-  "continue_with_facebook": "Фаcебоок билан давом етинг",
-  "continue_with_google": "Google билан давом етинг",
-  "continue_with_apple": "Apple билан давом етинг",
-  "sign_in_with_password": "Парол билан тизимга киринг",
-  "don't_have_an_account": "Ҳисобингиз йўқми?",
+  
+  "continue_with_facebook": "Фасебоок билан давом этинг",
+  "continue_with_google": "Google билан давом этинг",
+  "continue_with_apple": "Apple билан давом этинг",
+  "sign_in_with_password": "Пароль билан тизимга киринг",
+  "dont_have_an_account": "Ҳисобингиз йўқми",
+
   "or": "ёки",
   "sign_up": "Рўйхатдан ўтиш",
   "sign_in": "Кириш",

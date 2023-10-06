@@ -106,7 +106,7 @@ class LetsInScreen extends StatelessWidget {
                   }),
               30.ph,
               AuthNavigatorButton(
-                title: tr("don't_have_an_account?"),
+                title: "${tr("dont_have_an_account")}?",
                 onTapTitle: tr("sign_up"),
                 onTap: () {
                   Navigator.pushNamed(context, RouteNames.signUp);
