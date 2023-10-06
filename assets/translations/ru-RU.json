@@ -14,9 +14,11 @@
   "get_started": "Начать",
   "skip": "Пропустить",
 
+
   "02": "",
 
   "lets_you_in": "Дастёр Войти",
+
   "continue_with_facebook": "Продолжить с Facebook",
   "continue_with_google": "Продолжить с Google",
   "continue_with_apple": "Продолжить с Apple",
@@ -27,7 +29,7 @@
   "sign_in": "Войти",
   "login_page": "Страница входа",
   "already_have_an_account": "У вас уже есть учетная запись?",
-  "or_continue_with": "ёки давом етинг",
+  "or_continue_with": "или продолжитьh",
   "remember_me": "Запомни меня",
   "password": "Пароль",
   "phone_number": "Номер телефона",
@@ -36,6 +38,7 @@
   "driver_or_client": "Вы водитель или пассажир",
   "driver": "Водитель",
   "client": "Пассажир",
+
   "forgot_password": "Забыли пароль?",
 
   "03": "",

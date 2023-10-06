@@ -13,11 +13,12 @@ import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-class UserCard extends StatelessWidget {
-  final RequestModel requestModel;
-
-  const UserCard({super.key, required this.requestModel});
+class ClientDetail extends StatelessWidget {
+  const ClientDetail({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +55,11 @@ class UserCard extends StatelessWidget {
                     children: [
                       IconContainerWidget(icon: AppIcons.message, onTap: () {}),
                       24.pw,
-                      IconContainerWidget(icon: AppIcons.call, onTap: () {}),
+                      IconContainerWidget(
+                          icon: AppIcons.call,
+                          onTap: () {
+                            launch("tel:${state.user.phone}");
+                          }),
                     ],
                   ),
                 )

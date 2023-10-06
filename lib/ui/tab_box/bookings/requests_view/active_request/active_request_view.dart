@@ -9,7 +9,7 @@ class ActiveRequestView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return requestClients != null
+    return (requestClients != null && requestClients!.isNotEmpty)
         ? ListView.builder(
       itemCount: requestClients!.length,
       itemBuilder: (context, index) {

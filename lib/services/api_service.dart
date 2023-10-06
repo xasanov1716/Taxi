@@ -89,28 +89,4 @@ class ApiService {
       return UniversalData(error: error.toString());
     }
   }
-
-  Future<Result> sendNotification({
-    required NotificationModel notification,
-    String topic = 'news',
-  }) async {
-    try {
-      final response = await dio.post(notificationUrl,
-          options: Options(headers: {"Authorization": firebaseApiKey}),
-          data: {
-            "to": "/topics/news",
-            "notification": {
-              "body": "This is a Firebase Cloud Messaging Topic Test Message!",
-              "title": "Test Notification"
-            },
-            "data": notification.toJson()
-          });
-      if (response.statusCode == 200) {
-        return Result.success(null);
-      }
-      return Result.fail(response.data);
-    } catch (e) {
-      return Result.fail(e.toString());
-    }
-  }
 }

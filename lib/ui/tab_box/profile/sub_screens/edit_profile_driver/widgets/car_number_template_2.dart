@@ -89,7 +89,7 @@ _init(){
             inputFormatter: [
               FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
             ],
-            width: 90.w,
+            width: 100.w,
             focusNode: _secondFocusNode,
             controller: _secondController,
             nextFocusNode: _thirdFocusNode,
@@ -111,7 +111,7 @@ _init(){
               ),
               UppercaseTextInputFormatter(),
             ],
-            width: 100.w,
+            width: 130.w,
             focusNode: _thirdFocusNode,
             controller: _thirdController,
             previousFocusNode: _thirdFocusNode,

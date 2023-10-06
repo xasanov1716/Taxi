@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:taxi_app/data/local/storage_repository/storage_repository.dart';
@@ -37,20 +38,20 @@ class _CarouselPagesState extends State<CarouselPages> {
               controller: pageController,
               physics: const BouncingScrollPhysics(),
               scrollDirection: Axis.horizontal,
-              children: const [
+              children:  [
                 PageViewItem(
                   title:
-                      "Biz siz uchun professional taksi xizmatlarini taqdim etamiz",
+                      tr("on_boarding_first_text"),
                   img: AppIcons.onBoarding1,
                 ),
                 PageViewItem(
                   title:
-                      "Sizning mamnunligingiz bizning birinchi raqamli ustuvorligimizdir",
+                      tr("on_boarding_second_text"),
                   img: AppIcons.onBoarding2,
                 ),
                 PageViewItem(
                   title:
-                      "Keling, hozir Dastyor Taxi bilan kuningizni ajoyib o'tkazaylik!",
+                     tr("on_boarding_three_text!"),
                   img: AppIcons.onBoarding3,
                 ),
               ],
@@ -64,7 +65,7 @@ class _CarouselPagesState extends State<CarouselPages> {
             ),
             child: GlobalButton(
                 color: const Color(0xFFFEBB1B),
-                title: pageIndex != 2 ? "Keyingisi" : "Boshlash",
+                title: pageIndex != 2 ? tr( "next") : tr( "get_started"),
                 radius: 100,
                 textColor: Colors.black,
                 onTap: () async {
