@@ -32,6 +32,7 @@ class _EditProfileClientScreenState extends State<EditProfileClientScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: EditAppBar(
+        hideBackButton: widget.navigateFromAuth,
           title: widget.navigateFromAuth ? "Create Profile" : "Edit Profile"),
       body: BlocConsumer<UserBloc, UsersState>(
         builder: (context, state) {

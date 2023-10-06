@@ -98,10 +98,11 @@ void profileDialog(
   );
 }
 
-Future<void> _getFromCamera(
-    {required ImagePicker picker,
-    required BuildContext context,
-    required ValueChanged<String> valueChanged}) async {
+Future<void> _getFromCamera({
+  required ImagePicker picker,
+  required BuildContext context,
+  required ValueChanged<String> valueChanged,
+}) async {
   XFile? xFile = await picker.pickImage(
     source: ImageSource.camera,
     maxHeight: 512 * height / figmaHeight,
@@ -111,17 +112,18 @@ Future<void> _getFromCamera(
   if (xFile != null && context.mounted) {
     showLoading(context: context);
     UniversalData data = await imageUploader(xFile);
+    hideLoading(context: context);
+
     if (context.mounted &&
-        StorageRepository.getString(StorageKeys.userRole) == AppConstants.driver) {
+        StorageRepository.getString(StorageKeys.userRole) ==
+            AppConstants.driver) {
       context.read<DriverBloc>().updateDriverField(
           fieldKey: DriverFieldKeys.imageUrl, value: data.data);
       context.read<DriverBloc>().add(UpdateDriverEvent());
-      hideLoading(context: context);
     } else if (context.mounted) {
       context.read<UserBloc>().add(UpdateCurrentUserEvent(
           fieldKey: UserFieldKeys.image, value: data.data));
       context.read<UserBloc>().add(UpdateUserEvent());
-      hideLoading(context: context);
     }
 
     valueChanged(xFile.path);
@@ -140,15 +142,15 @@ Future<void> _getFromGallery(
   if (xFile != null && context.mounted) {
     showLoading(context: context);
     UniversalData data = await imageUploader(xFile);
+    hideLoading(context: context);
     if (context.mounted &&
-        StorageRepository.getString(StorageKeys.userRole) == AppConstants.driver) {
+        StorageRepository.getString(StorageKeys.userRole) ==
+            AppConstants.driver) {
       context.read<DriverBloc>().updateDriverField(
           fieldKey: DriverFieldKeys.imageUrl, value: data.data);
-      hideLoading(context: context);
     } else if (context.mounted) {
       context.read<UserBloc>().add(UpdateCurrentUserEvent(
           fieldKey: UserFieldKeys.image, value: data.data));
-      hideLoading(context: context);
     }
 
     valueChanged(xFile.path);

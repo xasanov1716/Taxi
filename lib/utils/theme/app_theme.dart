@@ -39,6 +39,7 @@ class AppTheme {
       systemOverlayStyle: const SystemUiOverlayStyle(
         statusBarBrightness: Brightness.light,
         statusBarIconBrightness: Brightness.dark,
+          statusBarColor:Colors.white,
       ),
     ),
     textTheme: TextTheme(

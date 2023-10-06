@@ -19,7 +19,7 @@ class LetsInScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar:  GlobalAppBar(),
+      appBar: AppBar(),
       body: BlocListener<SocialAuthBloc, SocialAuthState>(
         listener: (context, state) {
           if (state is AuthLoading) {
