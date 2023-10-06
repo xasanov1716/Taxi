@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -77,7 +78,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Text(
-                      "Xush kelibsiz 👋",
+                      tr("welcome_to 👋",),
                       style: Theme.of(context).textTheme.displayMedium?.copyWith(
                           fontSize: 30.sp,
                           fontWeight: FontWeight.w700,
@@ -90,7 +91,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                             .createShader(bounds);
                       },
                       child: Text(
-                        "Dastyor Taxi",
+                        tr("taxio"),
                         style: Theme.of(context).textTheme.displayLarge?.copyWith(
                             fontSize: 60.sp,
                             fontWeight: FontWeight.w900,
@@ -99,7 +100,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     ),
                     SizedBox(height: 24 * height / figmaHeight),
                     Text(
-                      "Kuningizni ajoyib qilish uchun asrning eng yaxshi taksi bron qilish ilovasi!",
+                      tr("welcome_screen_subtitle!"),
                       style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                           fontWeight: FontWeight.w600,
                           color: Colors.white,

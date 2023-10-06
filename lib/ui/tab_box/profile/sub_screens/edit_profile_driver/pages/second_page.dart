@@ -36,7 +36,7 @@ class _SecondPageState extends State<SecondPage> {
 
   @override
   void initState() {
-    if(widget.isFromAuth) initStateToText();
+    if(!widget.isFromAuth) initStateToText();
     super.initState();
   }
 
@@ -77,6 +77,7 @@ class _SecondPageState extends State<SecondPage> {
           keyboardType: TextInputType.number,
           maskFormatter: NumberInputFormatter(),
           maxLength: 10,
+          controller: priceController,
           suffixIcon: Padding(
             padding:  EdgeInsets.only(right: 10.w,top: 10.h),
             child: Text("so'm",style: Theme.of(context).textTheme.titleLarge,),

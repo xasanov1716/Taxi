@@ -8,6 +8,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:taxi_app/blocs/driver_bloc/driver_bloc.dart';
+import 'package:taxi_app/data/local/storage_repository/storage_repository.dart';
 import 'package:taxi_app/data/models/driver/driver_fields.dart';
 import 'package:taxi_app/data/models/icon/icon_type.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/edit_profile_driver/widgets/car_number_template.dart';
@@ -18,6 +19,7 @@ import 'package:taxi_app/ui/widgets/global_search_input.dart';
 import 'package:taxi_app/ui/widgets/phone_number_text_field.dart';
 import 'package:taxi_app/ui/widgets/user_image.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
+import 'package:taxi_app/utils/constants/storage_keys.dart';
 import 'package:taxi_app/utils/fonts/text_styles.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/screen_size.dart';
@@ -217,27 +219,32 @@ class _FirstPageState extends State<FirstPage> {
           },
         ),
         24.ph,
-        if (widget.isFromAuth) Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              'Yuridik shaxs?',
-              style: Theme.of(context).textTheme.titleLarge,
-            ),
-            CupertinoSwitch(
-                value: isCorp,
-                onChanged: (v) {
-                  setState(() {
-                    isCorp = v;
-                  });
-                }),
-          ],
-        ),
-        if (widget.isFromAuth)10.ph,
-
-       isCorp? CarNumberContainer2(
-         isFromAuth: widget.isFromAuth,):
-       CarNumberContainer(isFromAuth: widget.isFromAuth,),
+        if (widget.isFromAuth)
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Yuridik shaxs?',
+                style: Theme.of(context).textTheme.titleLarge,
+              ),
+              CupertinoSwitch(
+                  value: isCorp,
+                  onChanged: (v) {
+                    StorageRepository.putBool(StorageKeys.carNumberType, v);
+                    setState(() {
+                      isCorp = v;
+                    });
+                  }),
+            ],
+          ),
+        if (widget.isFromAuth) 10.ph,
+        StorageRepository.getBool(StorageKeys.carNumberType)
+            ? CarNumberContainer2(
+                isFromAuth: widget.isFromAuth,
+              )
+            : CarNumberContainer(
+                isFromAuth: widget.isFromAuth,
+              ),
         24.ph,
         GlobalTextField(
           controller: telegramLinkController,

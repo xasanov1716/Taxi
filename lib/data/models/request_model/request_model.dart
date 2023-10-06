@@ -32,7 +32,7 @@ class RequestModel extends Equatable {
           toId: 0,
           description: '',
           requestPrice: 0,
-          passengerCount: 0,
+          passengerCount: 1,
           tripTime: '',
           createdAt: '',
           creatorName: "",

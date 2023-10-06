@@ -111,9 +111,7 @@ class App extends StatelessWidget {
           BlocProvider(create: (context) => PaymentBloc()),
           BlocProvider(create: (context) => PaymentAddBloc()),
           BlocProvider(create: (context) => UserBloc(userRepo: context.read<UserRepo>())),
-          BlocProvider(
-              create: (context) =>
-                  DriverRequestBloc(requestDriverRepo: context.read<RequestDriverRepo>())),
+          BlocProvider(create: (context) => RequestBloc(requestDriverRepo: context.read<RequestRepo>())),
           BlocProvider(
               create: (context) =>
               RequestBloc(requestDriverRepo: context.read<RequestRepo>())),

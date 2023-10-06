@@ -68,6 +68,7 @@ class LogOutItem extends StatelessWidget {
                     context.read<DriverBloc>().clearDriverState();
                     context.read<UserBloc>().clearUserModelState();
                     StorageRepository.deleteString(StorageKeys.userId);
+                    StorageRepository.deleteString(StorageKeys.carNumberType);
                     StorageRepository.deleteString(StorageKeys.userRole);
                     await context.read<AuthCubit>().logOutUser();
 
