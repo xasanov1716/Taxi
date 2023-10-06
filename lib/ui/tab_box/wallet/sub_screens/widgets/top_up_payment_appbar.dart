@@ -13,6 +13,7 @@ class TopUpPaymentAppbar extends StatelessWidget implements PreferredSize {
   Widget build(BuildContext context) {
     return AppBar(
       elevation: 0,
+      scrolledUnderElevation: 0,
       leading: getIcon(AppIcons.arrowLeft, context: context, onTap: () {
         Navigator.pop(context);
       }),

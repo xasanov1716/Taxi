@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:taxi_app/data/models/icon/icon_type.dart';
 import 'package:taxi_app/ui/widgets/date_formatter.dart';
+import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/ui_utils/utilitiy_function.dart';
@@ -29,7 +30,7 @@ class InboxCallScreen extends StatelessWidget {
                     children: [
                       SvgPicture.asset(AppIcons.getSvg(
                           name: AppIcons.arrowDownSquare,
-                          iconType: IconType.bold)),
+                          iconType: IconType.bold),colorFilter: const ColorFilter.mode(AppColors.info, BlendMode.srcIn),),
                       4.pw,
                       RichText(
                         text: TextSpan(
