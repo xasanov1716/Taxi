@@ -9,6 +9,14 @@ import 'package:taxi_app/data/models/notification_model/notification_model.dart'
 import 'package:taxi_app/main.dart';
 import 'package:taxi_app/services/local_notification_service.dart';
 
+Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  //LocalDatabase.insertNews(NewsModel.fromJson(jsonDecode(message.data)))
+  // await notificationMethod(message, notificationBloc);
+  final NotificationModel notificationModel = NotificationModel.fromJson(message.data);
+  await GetIt.I<DBHelper>().insertNotification(notificationModel);
+  debugPrint("NOTIFICATION BACKGROUND MODE: ${message.data["news_image"]} va ${message.notification!.title} in background");
+}
+
 Future<void> initFirebase([NotificationBloc? notificationBloc]) async {
   await Firebase.initializeApp();
   String? fcmToken = await FirebaseMessaging.instance.getToken();
@@ -22,12 +30,6 @@ Future<void> initFirebase([NotificationBloc? notificationBloc]) async {
     LocalNotificationService.instance.showFlutterNotification(message);
     await notificationMethod(message, notificationBloc);
   });
-  Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-    //LocalDatabase.insertNews(NewsModel.fromJson(jsonDecode(message.data)))
-    await notificationMethod(message, notificationBloc);
-    debugPrint(
-        "NOTIFICATION BACKGROUND MODE: ${message.data["news_image"]} va ${message.notification!.title} in background");
-  }
 
   // BACkGROUND MESSAGE HANDLING
   FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);

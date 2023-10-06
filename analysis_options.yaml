@@ -1,5 +1,4 @@
 include: package:flutter_lints/flutter.yaml
-
 linter :
   rules :
     - always_use_package_imports # Enforces using explicit package imports instead of relative imports.
@@ -148,4 +147,3 @@ linter :
     - use_to_and_as_if_applicable # Encourages using `to` and `as` for type conversions when applicable.
     - valid_regexps # Encourages using valid regular expressions.
     - void_checks # Encourages performing checks for `void` return types in function calls.
-
