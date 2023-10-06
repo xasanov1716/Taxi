@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -30,7 +31,7 @@ class OnBoardingAppBar extends StatelessWidget implements PreferredSize {
               StorageRepository.deleteBool("isFirst");
             },
             child: Text(
-              "O'tkazib yuborish",
+              tr("skip"),
               style: Theme.of(context)
                   .textTheme
                   .titleMedium

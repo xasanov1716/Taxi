@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:taxi_app/data/local/storage_repository/storage_repository.dart';
@@ -15,7 +16,7 @@ void showRoleDialog(BuildContext context) {
         data: getTheme(context) ? ThemeData.dark() : ThemeData.light(),
         child: CupertinoAlertDialog(
           content: Text(
-            "Haydovchi yoki Yo'lovchimisiz?",
+            tr("driver_or_client?"),
             style: Theme.of(context).textTheme.titleLarge,
           ),
           title: Image.asset(AppIcons.taxiLogotip),
@@ -32,7 +33,7 @@ void showRoleDialog(BuildContext context) {
                 );
               },
               child: Text(
-                "Haydovchi",
+                tr('driver'),
                 style: Theme.of(context).textTheme.titleLarge,
               ),
             ),
@@ -48,7 +49,7 @@ void showRoleDialog(BuildContext context) {
                 );
               },
               child: Text(
-                "Yo'lovchi",
+               tr('client'),
                 style: Theme.of(context).textTheme.titleLarge,
               ),
             ),

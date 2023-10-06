@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -40,7 +41,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         onTap: () {
           Navigator.pop(context);
         },
-        title: "Ro'yxatdan o'tish",
+        title: tr("sign_up"),
       ),
       body: BlocConsumer<AuthCubit, AuthState>(
         builder: (context, state) {
@@ -52,7 +53,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Text(
-                    'Ro`yxatdan o`ting',
+                    tr("create_your_account"),
                     style: Theme.of(context).textTheme.displayMedium,
                   ),
                   60.ph,
@@ -60,7 +61,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     children: [
                       AuthTextField(
                         focusNode: phoneFocus,
-                        hintText: 'Telefon Raqami',
+                        hintText: tr('phone_number'),
                         prefixIcon: AppIcons.call,
                         onChanged: (v) {
                           if (v.length == 12) {
@@ -75,7 +76,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       20.ph,
                       AuthTextField(
                         focusNode: passwordFocus,
-                        hintText: 'Parol',
+                        hintText: tr('password'),
                         parolkoz: ' ',
                         prefixIcon: AppIcons.lock,
                         isPassword: true,
@@ -87,7 +88,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                       // 20.ph,
                       // RememberCheckBox(
-                      //   label: 'Meni eslab qol',
+                      //   label: tr('remember_me'),
                       //   value: isChecked,
                       //   onChanged: (value) {
                       //     isChecked = value;
@@ -98,7 +99,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       20.ph,
                       GlobalButton(
                         color: AppColors.primary,
-                        title: 'Ro\'yxatdan o\'tish',
+                        title: tr('sign_up'),
                         radius: 100,
                         textColor: AppColors.dark3,
                         onTap: () {
@@ -119,15 +120,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   // 60.ph,
                   // Column(
                   //   children: [
-                  //     const CustomAuthDividerWidget(label: 'yoki davom eting'),
+                  //     const CustomAuthDividerWidget(label: tr('or_continue_with')),
                   //     20.ph,
                   //     const SocialAuthButtons(),
                   //   ],
                   // ),
                   60.ph,
                   AuthNavigatorButton(
-                    title: "Hisobingiz bormi?",
-                    onTapTitle: "Kirish",
+                    title:tr("already_have_an_account?"),
+                    onTapTitle: tr('sign_in'),
                     onTap: () {
                       Navigator.pushReplacementNamed(context, RouteNames.login);
                     },
