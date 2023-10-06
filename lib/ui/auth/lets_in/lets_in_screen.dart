@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -64,7 +65,7 @@ class LetsInScreen extends StatelessWidget {
               ),
               30.25.ph,
               Center(
-                child: Text("Dastyorga Kirish",
+                child: Text(tr("lets_you_in"),
                     style: Theme.of(context)
                         .textTheme
                         .displayMedium!
@@ -73,31 +74,31 @@ class LetsInScreen extends StatelessWidget {
               // 30.25.ph,
               // CustomAuthButton(
               //     imageUrl: AppIcons.facebook,
-              //     label: "Facebook bilan davom eting",
+              //     label: tr("continue_with_facebook"),
               //     onTap: () {
               //       context.read<SocialAuthBloc>().add(LoginWithFacebook());
               //     }),
               // 16.ph,
               // CustomAuthButton(
               //     imageUrl: AppIcons.google,
-              //     label: "Google bilan davom eting",
+              //     label: tr("continue_with_google"),
               //     onTap: () {
               //       context.read<SocialAuthBloc>().add(LoginWithGoogle());
               //     }),
               // 16.ph,
               // CustomAuthButton(
               //     imageUrl: AppIcons.apple,
-              //     label: "Apple bilan davom eting",
+              //     label: tr("continue_with_apple"),
               //     onTap: () {
               //       context.read<SocialAuthBloc>().add(LoginWithApple());
               //     }),
               // 24.ph,
-              // const CustomAuthDividerWidget(label: "yoki"),
+              // const CustomAuthDividerWidget(label: tr("or")),
               24.ph,
               const Spacer(),
               GlobalButton(
                   color: AppColors.primary,
-                  title: "Parol bilan tizimga kiring",
+                  title: tr("sign_in_with_password"),
                   radius: 100,
                   textColor: AppColors.dark3,
                   onTap: () {
@@ -105,8 +106,8 @@ class LetsInScreen extends StatelessWidget {
                   }),
               30.ph,
               AuthNavigatorButton(
-                title: "Hisobingiz yo'qmi?",
-                onTapTitle: "Ro'yxatdan o'tish",
+                title: tr("don't_have_an_account?"),
+                onTapTitle: tr("sign_up"),
                 onTap: () {
                   Navigator.pushNamed(context, RouteNames.signUp);
                 },

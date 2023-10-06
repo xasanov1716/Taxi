@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -44,7 +45,7 @@ class _LoginScreenState extends State<LoginScreen> {
           onTap: () {
             Navigator.pop(context);
           },
-          title: "Login saxifasi",
+          title:tr( "login_page"),
         ),
         body: BlocConsumer<AuthCubit, AuthState>(
           builder: (context, state) {
@@ -55,7 +56,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 children: [
                   45.ph,
                   Text(
-                    "Xush kelibsiz! Akkauntga kirish",
+                    tr("login_to_your_account"),
                     textAlign: TextAlign.left,
                     style: Theme.of(context).textTheme.displayMedium?.copyWith(
                           fontSize: width > 450 ? 48.sp : 30.sp,
@@ -64,7 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   45.ph,
                   AuthTextField(
                     focusNode: phoneFocus,
-                    hintText: 'Telefon Raqami',
+                    hintText: tr("phone_number"),
                     prefixIcon: AppIcons.call,
                     onChanged: (v) {
                       if (v.length == 12) {
@@ -79,7 +80,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   20.ph,
                   AuthTextField(
                     focusNode: passwordFocus,
-                    hintText: 'Parol',
+                    hintText:tr("password"),
                     parolkoz: ' ',
                     prefixIcon: AppIcons.lock,
                     isPassword: true,
@@ -91,7 +92,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   // 24.ph,
                   // RememberCheckBox(
-                  //     label: "Meni eslab qol",
+                  //     label: tr("remember_me"),
                   //     value: isChecked,
                   //     onChanged: (v) {
                   //       setState(() {
@@ -104,7 +105,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       color: AppColors.primary,
                       radius: 100.r,
                       textColor: AppColors.dark3,
-                      title: "Kirish",
+                      title: tr("sign_in"),
                       onTap: () async {
                         if (context.mounted) {
                           String canAuthText =
@@ -125,7 +126,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   // Column(
                   //   children: [
                   //     const CustomAuthDividerWidget(
-                  //         label: "yoki davom eting"),
+                  //         label: tr("or_continue_with),
                   //     20.ph,
                   //     const SocialAuthButtons(),
                   //   ],
@@ -133,8 +134,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   //  25.ph,
 
                   AuthNavigatorButton(
-                    title: "Akkauntingiz yo'qmi?",
-                    onTapTitle: "Ro'yxatdan o'ting",
+                    title: tr("don't_have_an_account?"),
+                    onTapTitle: tr("create_your_account"),
                     onTap: () {
                       Navigator.pushReplacementNamed(
                           context, RouteNames.signUp);
