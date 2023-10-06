@@ -38,6 +38,7 @@ class AppIcons {
   static const String fromTo = "assets/images/from_to.png";
   static const String humoPng = "assets/images/humo_card.png";
   static const String uzCardPng = "assets/images/uzCard_card.png";
+  static const String uzbFlagCarNumber = "assets/images/uzb2.png";
   static const String createNewPasswordDialog =
       "assets/images/create_new_password_dialog.png";
   static const String forgotPasswordDarkImage =

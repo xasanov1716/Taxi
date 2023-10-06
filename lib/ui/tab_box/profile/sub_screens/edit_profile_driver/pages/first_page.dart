@@ -10,6 +10,8 @@ import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:taxi_app/blocs/driver_bloc/driver_bloc.dart';
 import 'package:taxi_app/data/models/driver/driver_fields.dart';
 import 'package:taxi_app/data/models/icon/icon_type.dart';
+import 'package:taxi_app/ui/tab_box/profile/sub_screens/edit_profile_driver/widgets/car_number_template.dart';
+import 'package:taxi_app/ui/tab_box/profile/sub_screens/edit_profile_driver/widgets/car_number_template_2.dart';
 import 'package:taxi_app/ui/tab_box/profile/widgets/profile_dialog.dart';
 import 'package:taxi_app/ui/widgets/global_input.dart';
 import 'package:taxi_app/ui/widgets/global_search_input.dart';
@@ -66,7 +68,7 @@ class _FirstPageState extends State<FirstPage> {
       type: MaskAutoCompletionType.lazy);
   var carNumber = MaskTextInputFormatter(
       mask: '##*###**',
-      filter: {"#": RegExp(r'[0-9]'),"*":RegExp(r'[A-Z]')},
+      filter: {"#": RegExp(r'[0-9]'), "*": RegExp(r'[A-Z]')},
       type: MaskAutoCompletionType.lazy);
 
   var genders = ['Male', 'Female'];
@@ -77,6 +79,7 @@ class _FirstPageState extends State<FirstPage> {
   final FocusNode emailFocusNode = FocusNode();
   final FocusNode aboutFocusNode = FocusNode();
   final FocusNode telegramFocusNode = FocusNode();
+  bool isCorp = false;
 
   @override
   Widget build(BuildContext context) {
@@ -131,7 +134,7 @@ class _FirstPageState extends State<FirstPage> {
             ),
           ),
         ),
-      if(!widget.isFromAuth)  24.ph,
+        if (!widget.isFromAuth) 24.ph,
         Visibility(
           visible: !widget.isFromAuth,
           child: PhoneNumberInput(
@@ -214,19 +217,27 @@ class _FirstPageState extends State<FirstPage> {
           },
         ),
         24.ph,
-        GlobalTextField(
-          maskFormatter: carNumber,
-          controller: carNumberController,
-          focusNode: nicknameFocusNode,
-          textCapitalization: TextCapitalization.characters,
-          hintText: 'Car number',
-          keyboardType: TextInputType.text,
-          textInputAction: TextInputAction.next,
-          onChanged: (value) {
-            context.read<DriverBloc>().updateDriverField(
-                fieldKey: DriverFieldKeys.carNumber, value: value);
-          },
+        if (widget.isFromAuth) Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              'Yuridik shaxs?',
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
+            CupertinoSwitch(
+                value: isCorp,
+                onChanged: (v) {
+                  setState(() {
+                    isCorp = v;
+                  });
+                }),
+          ],
         ),
+        if (widget.isFromAuth)10.ph,
+
+       isCorp? CarNumberContainer2(
+         isFromAuth: widget.isFromAuth,):
+       CarNumberContainer(isFromAuth: widget.isFromAuth,),
         24.ph,
         GlobalTextField(
           controller: telegramLinkController,
@@ -236,7 +247,8 @@ class _FirstPageState extends State<FirstPage> {
           textInputAction: TextInputAction.next,
           onChanged: (value) {
             context.read<DriverBloc>().updateDriverField(
-                fieldKey: DriverFieldKeys.telegramLink, value: "https//:t.me/$value");
+                fieldKey: DriverFieldKeys.telegramLink,
+                value: "https//:t.me/$value");
           },
         ),
         24.ph
@@ -268,6 +280,9 @@ class _FirstPageState extends State<FirstPage> {
                   context.read<DriverBloc>().updateDriverField(
                       fieldKey: DriverFieldKeys.birthDate,
                       value: dateController.text);
+                  context.read<DriverBloc>().updateDriverField(
+                      fieldKey: DriverFieldKeys.email,
+                      value: FirebaseAuth.instance.currentUser!.email);
                 });
               }
             },

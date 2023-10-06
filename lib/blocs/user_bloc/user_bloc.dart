@@ -58,7 +58,9 @@ class UserBloc extends Bloc<UserEvent, UsersState> {
     emit(state.copyWith(statusText: "loading...", status: FormStatus.loading));
     await userRepo.updateUser(userModel: state.userModel);
     emit(state.copyWith(
-        status: FormStatus.success, statusText: "User updated successfully"));
+      status: FormStatus.success,
+      statusText: "User updated successfully",
+    ));
   }
 
   Future<void> deleteUser(

@@ -10,5 +10,6 @@ class AddressApiRepository{
     required LatLng latLng,
     required String kind,
     required String lang,
-  }) async => apiService.getAddress(latLng: latLng, kind: kind, lang: lang);
+    required String key,
+  }) async => apiService.getAddress(latLng: latLng, kind: kind, lang: lang, key: key);
 }

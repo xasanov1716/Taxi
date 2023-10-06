@@ -3,8 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taxi_app/data/local/storage_repository/storage_repository.dart';
 import 'package:taxi_app/data/models/request_model/request_model.dart';
-import 'package:taxi_app/data/repositories/request_client_repo.dart';
-import 'package:taxi_app/data/repositories/request_driver_repo.dart';
+import 'package:taxi_app/data/repositories/request_repo.dart';
 import 'package:taxi_app/ui/tab_box/bookings/sub_screens/selected_request/widgets/select_request_client.dart';
 import 'package:taxi_app/ui/tab_box/bookings/sub_screens/selected_request/widgets/select_request_driver.dart';
 import 'package:taxi_app/utils/constants/storage_keys.dart';
@@ -51,7 +50,7 @@ class _SelectedRequestScreenState extends State<SelectedRequestScreen> {
         ],
       ),
       body: StorageRepository.getString(StorageKeys.userRole) == "client" ? StreamBuilder<List<RequestModel>>(
-        stream: context.read<RequestDriverRepo>().getDriverFromId(fromId: widget.fromId, toId: widget.toId),
+        stream: context.read<RequestRepo>().getDriverFromId(fromId: widget.fromId, toId: widget.toId),
         builder: (BuildContext context,
             AsyncSnapshot<List<RequestModel>> snapshot) {
           if (snapshot.hasData) {
@@ -87,7 +86,7 @@ class _SelectedRequestScreenState extends State<SelectedRequestScreen> {
           return const Center(child: CircularProgressIndicator());
         },
       ) : StreamBuilder<List<RequestModel>>(
-        stream: context.read<RequestClientRepo>().getClientFromId(fromId: widget.fromId, toId: widget.toId),
+        stream: context.read<RequestRepo>().getClientFromId(fromId: widget.fromId, toId: widget.toId),
         builder: (BuildContext context,
             AsyncSnapshot<List<RequestModel>> snapshot) {
           if (snapshot.hasData) {

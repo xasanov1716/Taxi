@@ -1,7 +1,7 @@
-part of 'driver_request_bloc.dart';
+part of 'request_bloc.dart';
 
-class DriverRequestState extends Equatable {
-  const DriverRequestState({
+class RequestState extends Equatable {
+  const RequestState({
     this.errorText = '',
     this.statusRequest = FormStatus.pure,
 
@@ -10,29 +10,29 @@ class DriverRequestState extends Equatable {
     required this.regionModels,
     required this.descriptionText,
     required this.priceText,
-    this.requestModelDriver = const RequestModel.initial(),
+    this.requestModel = const RequestModel.initial(),
   });
   final List<RegionModel> regionModels;
   final String errorText;
   final FormStatus statusRequest;
-  final RequestModel requestModelDriver;
+  final RequestModel requestModel;
   final String descriptionText;
   final String priceText;
 
-  DriverRequestState copyWith({
+  RequestState copyWith({
     String? errorText,
     String? descriptionText,
     String? priceText,
     FormStatus? statusRequest,
-    RequestModel? requestModelDriver,
+    RequestModel? requestModel,
     List<RegionModel>? regionModels,
   }) =>
-      DriverRequestState(
+      RequestState(
         errorText: errorText ?? this.errorText,
         priceText: priceText ?? this.priceText,
         descriptionText: descriptionText ?? this.descriptionText,
         statusRequest: statusRequest ?? this.statusRequest,
-        requestModelDriver: requestModelDriver ?? this.requestModelDriver,
+        requestModel: requestModel ?? this.requestModel,
         regionModels: regionModels ?? this.regionModels,
       );
 
@@ -40,7 +40,7 @@ class DriverRequestState extends Equatable {
   List<Object?> get props => [
         errorText,
         statusRequest,
-        requestModelDriver,
+        requestModel,
         descriptionText,
         priceText,
         regionModels,
