@@ -39,9 +39,9 @@ class _SelectedRequestScreenState extends State<SelectedRequestScreen> {
       appBar: AppBar(
         scrolledUnderElevation: 0,
         elevation: 0,
-        leading: Padding(
-            padding: EdgeInsets.only(left: 24.w),
-            child: Image.asset(AppIcons.taxiLogotip, height: 32.h)),
+        leading: getIcon(AppIcons.arrowLeft, context: context, onTap: (){
+          Navigator.pop(context);
+        }),
         title:
             Text("Requests", style: Theme.of(context).textTheme.headlineMedium),
         actions: [
