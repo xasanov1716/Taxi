@@ -2,7 +2,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taxi_app/data/local/storage_repository/storage_repository.dart';
-import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/ui/local_auth/widgets/local_auth_pinput.dart';
 import 'package:taxi_app/ui/widgets/global_appbar.dart';
 import 'package:taxi_app/ui/widgets/global_button.dart';
@@ -30,9 +29,7 @@ class _SetPinScreenState extends State<SetPinScreen> {
     return Scaffold(
       resizeToAvoidBottomInset: true,
       appBar: GlobalAppBar(
-        title: widget.previousPin == null
-            ? "Pinkodni o'rnatish"
-            : "Pinkodni tasdiqlang",
+        title: widget.previousPin == null ? "Pinkodni o'rnatish" : "Pinkodni tasdiqlang",
         onTap: widget.previousPin != null
             ? () {
                 Navigator.pop(context);
@@ -47,25 +44,21 @@ class _SetPinScreenState extends State<SetPinScreen> {
       body: ListView(
         padding: EdgeInsets.all(width / 16),
         children: [
-          (height/8).ph,
+          (height / 8).ph,
           Text(
             widget.previousPin == null
                 ? "Yangi parolni kiriting"
                 : "Yangi parolni tasdiqlash uchun qayta kiriting!",
             textAlign: TextAlign.center,
-            style: Theme.of(context)
-                .textTheme
-                .labelLarge!
-                .copyWith(fontSize: 20.sp),
+            style: Theme.of(context).textTheme.labelLarge!.copyWith(fontSize: 20.sp),
           ),
-          (height/8).ph,
+          (height / 8).ph,
           LocalAuthPinput(
             pinPutController: pinController,
             onCompleted: _onPinSubmit,
           ),
-          (height/20).ph,
+          (height / 20).ph,
           GlobalButton(
-            color: AppColors.primary,
             title: 'Continue',
             radius: 100,
             textColor: AppColors.black,
@@ -79,7 +72,7 @@ class _SetPinScreenState extends State<SetPinScreen> {
   }
 
   void _onPinSubmit(String pin) {
-    if ((widget.previousPin == null)&&(pin.length==4)) {
+    if ((widget.previousPin == null) && (pin.length == 4)) {
       Navigator.pop(context);
       // Navigator.pushNamed(
       //   context,

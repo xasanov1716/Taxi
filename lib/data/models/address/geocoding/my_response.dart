@@ -1,5 +1,5 @@
+import 'package:taxi_app/data/models/address/geocoding/geo_object_collection.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'geo_object_collection.dart';
 part 'my_response.g.dart';
 
 @JsonSerializable(explicitToJson: true)
@@ -9,7 +9,6 @@ class MyResponse {
 
   MyResponse({required this.geoObjectCollection});
 
-  factory MyResponse.fromJson(Map<String, dynamic> json) =>
-      _$MyResponseFromJson(json);
+  factory MyResponse.fromJson(Map<String, dynamic> json) => _$MyResponseFromJson(json);
   Map<String, dynamic> toJson() => _$MyResponseToJson(this);
 }

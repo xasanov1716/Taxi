@@ -42,10 +42,10 @@ import 'package:taxi_app/services/locator_service.dart';
 import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/theme/app_theme.dart';
-import 'cubits/category_cubit/category_cubit.dart';
-import 'cubits/get_driver_informations_cubit/get_driver_informations_cubit.dart';
-import 'cubits/help_center/help_center_category_cubit.dart';
-import 'cubits/user/user_cubit.dart';
+import 'package:taxi_app/cubits/category_cubit/category_cubit.dart';
+import 'package:taxi_app/cubits/get_driver_informations_cubit/get_driver_informations_cubit.dart';
+import 'package:taxi_app/cubits/help_center/help_center_category_cubit.dart';
+import 'package:taxi_app/cubits/user/user_cubit.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -88,6 +88,7 @@ class App extends StatelessWidget {
       ],
       child: MultiBlocProvider(
         providers: [
+          // Don't used
           BlocProvider(create: (context) => CodeInputCubit()),
           BlocProvider(
             create: (context) =>
@@ -111,19 +112,14 @@ class App extends StatelessWidget {
           BlocProvider(create: (context) => PaymentBloc()),
           BlocProvider(create: (context) => PaymentAddBloc()),
           BlocProvider(create: (context) => UserBloc(userRepo: context.read<UserRepo>())),
-          BlocProvider(create: (context) => RequestBloc(requestDriverRepo: context.read<RequestRepo>())),
           BlocProvider(
-              create: (context) =>
-              RequestBloc(requestDriverRepo: context.read<RequestRepo>())),
+              create: (context) => RequestBloc(requestDriverRepo: context.read<RequestRepo>())),
           BlocProvider(create: (context) => CategoryCubit()),
           BlocProvider(create: (context) => MessageBloc()),
           BlocProvider(create: (context) => SearchCubit()),
-          BlocProvider(
-              create: (context) => GetClientInfoCubit(context.read<UserRepo>())
-                ..fetchClientData('nTduKz4fvzT1xFpCXuRjNOJnIwe2')),
-          BlocProvider(
-              create: (context) => GetDriverInformationsCubit(context.read<DriverRepo>())
-                ..fetchDriverData('6XPYwVPumYhDcsZRE4O3gKisEjA3')),
+          BlocProvider(create: (context) => GetClientInfoCubit(context.read<UserRepo>())),
+          BlocProvider(create: (context) => GetDriverInformationsCubit(context.read<DriverRepo>())),
+          // Don't used
           BlocProvider(create: (context) => OrderCubit()),
           BlocProvider(create: (context) => HelpCenterCategoryCubit()),
           BlocProvider(create: (context) => LocationBloc()),

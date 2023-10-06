@@ -9,7 +9,6 @@ class SocialAuthButtons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         CustomAuthButton(imageUrl: AppIcons.facebook, onTap: () {}),

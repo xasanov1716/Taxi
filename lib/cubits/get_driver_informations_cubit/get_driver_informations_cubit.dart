@@ -1,9 +1,6 @@
 import 'package:taxi_app/data/models/driver/driver_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:taxi_app/data/models/user/user_model.dart';
 import 'package:taxi_app/data/repositories/driver_repos.dart';
-import 'package:taxi_app/data/repositories/user_repository.dart';
-import 'package:taxi_app/services/api_service.dart';
 part 'get_driver_informations_state.dart';
 
 class GetDriverInformationsCubit extends Cubit<GetDriverInformationsState> {

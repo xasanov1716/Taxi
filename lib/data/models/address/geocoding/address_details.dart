@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'country.dart';
+import 'package:taxi_app/data/models/address/geocoding/country.dart';
 part 'address_details.g.dart';
 
 @JsonSerializable(explicitToJson: true)
@@ -8,7 +8,6 @@ class AddressDetails {
   Country country;
   AddressDetails({required this.country});
 
-  factory AddressDetails.fromJson(Map<String, dynamic> json) =>
-      _$AddressDetailsFromJson(json);
+  factory AddressDetails.fromJson(Map<String, dynamic> json) => _$AddressDetailsFromJson(json);
   Map<String, dynamic> toJson() => _$AddressDetailsToJson(this);
 }

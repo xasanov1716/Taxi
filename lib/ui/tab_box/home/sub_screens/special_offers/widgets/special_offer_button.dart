@@ -28,12 +28,11 @@ class SpecialOfferButton extends StatelessWidget {
       child: Ink(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16.r),
-          color: getTheme(context)?AppColors.dark2:AppColors.white,
+          color: getTheme(context) ? AppColors.dark2 : AppColors.white,
           boxShadow: const [
             BoxShadow(
               offset: Offset(0, 4), // Horizontal and vertical offset
               blurRadius: 60, // Blur radius
-              spreadRadius: 0, // Spread radius
               color: Color.fromRGBO(4, 6, 15, 0.05), // Color with opacity
             ),
           ],
@@ -65,8 +64,7 @@ class SpecialOfferButton extends StatelessWidget {
                 });
           },
           child: Container(
-            padding: EdgeInsets.only(
-                left: 16.w, right: 20.w, top: 16.h, bottom: 16.h),
+            padding: EdgeInsets.only(left: 16.w, right: 20.w, top: 16.h, bottom: 16.h),
             child: Row(
               children: [
                 SvgPicture.asset(icon),

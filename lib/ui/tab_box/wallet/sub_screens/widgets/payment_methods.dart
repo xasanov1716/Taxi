@@ -3,9 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:taxi_app/ui/tab_box/wallet/sub_screens/widgets/status_button.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
-import '../../../../../utils/colors/app_colors.dart';
-import '../../../../../utils/icons/app_icons.dart';
-import '../../../../../utils/theme/get_theme.dart';
+import 'package:taxi_app/utils/colors/app_colors.dart';
+import 'package:taxi_app/utils/icons/app_icons.dart';
+import 'package:taxi_app/utils/theme/get_theme.dart';
 
 class DetailedPaymentMethods extends StatelessWidget {
   const DetailedPaymentMethods({super.key, required this.onCopyTap});
@@ -27,16 +27,13 @@ class DetailedPaymentMethods extends StatelessWidget {
             child: Column(
               children: [
                 Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
                       "Payments Methods",
                       overflow: TextOverflow.ellipsis,
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                            color: getTheme(context)
-                                ? AppColors.c_300
-                                : AppColors.c_700,
+                            color: getTheme(context) ? AppColors.c_300 : AppColors.c_700,
                             fontWeight: FontWeight.w500,
                             letterSpacing: 0.2,
                           ),
@@ -45,9 +42,7 @@ class DetailedPaymentMethods extends StatelessWidget {
                       "My E-Wallet",
                       overflow: TextOverflow.ellipsis,
                       style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                            color: getTheme(context)
-                                ? AppColors.c_100
-                                : AppColors.c_800,
+                            color: getTheme(context) ? AppColors.c_100 : AppColors.c_800,
                             fontWeight: FontWeight.w600,
                             letterSpacing: 0.2,
                           ),
@@ -56,16 +51,13 @@ class DetailedPaymentMethods extends StatelessWidget {
                 ),
                 20.ph,
                 Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
                       "Date",
                       overflow: TextOverflow.ellipsis,
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                            color: getTheme(context)
-                                ? AppColors.c_300
-                                : AppColors.c_700,
+                            color: getTheme(context) ? AppColors.c_300 : AppColors.c_700,
                             fontWeight: FontWeight.w500,
                             letterSpacing: 0.2,
                           ),
@@ -74,9 +66,7 @@ class DetailedPaymentMethods extends StatelessWidget {
                       "Dec 20, 2024 | 10:00:27 AM",
                       overflow: TextOverflow.ellipsis,
                       style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                            color: getTheme(context)
-                                ? AppColors.c_100
-                                : AppColors.c_800,
+                            color: getTheme(context) ? AppColors.c_100 : AppColors.c_800,
                             fontWeight: FontWeight.w600,
                             letterSpacing: 0.2,
                           ),
@@ -88,15 +78,13 @@ class DetailedPaymentMethods extends StatelessWidget {
             ),
           ),
           Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
                 "Transaction ID",
                 overflow: TextOverflow.ellipsis,
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color:
-                          getTheme(context) ? AppColors.c_300 : AppColors.c_700,
+                      color: getTheme(context) ? AppColors.c_300 : AppColors.c_700,
                       fontWeight: FontWeight.w500,
                       letterSpacing: 0.2,
                     ),
@@ -110,37 +98,32 @@ class DetailedPaymentMethods extends StatelessWidget {
                     "SK7263727399",
                     overflow: TextOverflow.ellipsis,
                     style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                          color: getTheme(context)
-                              ? AppColors.c_100
-                              : AppColors.c_800,
+                          color: getTheme(context) ? AppColors.c_100 : AppColors.c_800,
                           fontWeight: FontWeight.w600,
                           letterSpacing: 0.2,
                         ),
                   ),
                   IconButton(
                     onPressed: onCopyTap,
-                    icon: SvgPicture.asset(
-                        AppIcons.getSvg(name: AppIcons.copyTransaction)),
+                    icon: SvgPicture.asset(AppIcons.getSvg(name: AppIcons.copyTransaction)),
                   )
                 ],
               ),
             ],
           ),
           Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
                 "Status",
                 overflow: TextOverflow.ellipsis,
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color:
-                          getTheme(context) ? AppColors.c_300 : AppColors.c_700,
+                      color: getTheme(context) ? AppColors.c_300 : AppColors.c_700,
                       fontWeight: FontWeight.w500,
                       letterSpacing: 0.2,
                     ),
               ),
-              TransactionStatusButton()
+              const TransactionStatusButton()
             ],
           )
         ],

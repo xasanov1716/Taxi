@@ -1,9 +1,9 @@
-import 'package:bloc/bloc.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:taxi_app/cubits/user/user_state.dart';
 
-import '../../data/models/user/user_field_keys.dart';
-import '../../data/models/user/user_model.dart';
+import 'package:taxi_app/data/models/user/user_field_keys.dart';
+import 'package:taxi_app/data/models/user/user_model.dart';
 
 class UserCubit extends Cubit<UserState> {
   UserCubit()
@@ -29,7 +29,7 @@ class UserCubit extends Cubit<UserState> {
 
   updateCurrentUserField({
     required UserFieldKeys fieldKey,
-    required dynamic value,
+    required value,
   }) {
     UserModel currentUser = state.userModel;
 
@@ -101,7 +101,7 @@ class UserCubit extends Cubit<UserState> {
         }
     }
 
-    debugPrint("USER: ${currentUser.toString()}");
+    debugPrint("USER: $currentUser");
 
     emit(state.copyWith(userModel: currentUser));
   }

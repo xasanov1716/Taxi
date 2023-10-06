@@ -27,8 +27,6 @@ class _SetBiometricsScreenState extends State<SetBiometricsScreen> {
       authenticated = await auth.authenticate(
         localizedReason: 'Tasdiqlash uchun sensorga barmog\'ingizni bosing',
         options: const AuthenticationOptions(
-          useErrorDialogs: true,
-          stickyAuth: false,
           biometricOnly: true,
         ),
       );
@@ -36,12 +34,11 @@ class _SetBiometricsScreenState extends State<SetBiometricsScreen> {
     } catch (e) {
       debugPrint("error using biometric auth: $e");
       if (context.mounted) {
-        showErrorMessage(
-            message: "Barmoq izini skanerlash xato!", context: context);
+        showErrorMessage(message: "Barmoq izini skanerlash xato!", context: context);
       }
     }
     setState(() {
-      isAuth = authenticated ? true : false;
+      isAuth = authenticated;
       StorageRepository.putBool("isAuth", isAuth);
     });
   }
@@ -50,7 +47,6 @@ class _SetBiometricsScreenState extends State<SetBiometricsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const GlobalAppBar(
-        onTap: null,
         title: "Barmoq izingizni oʻrnating",
       ),
       body: Padding(
@@ -62,8 +58,7 @@ class _SetBiometricsScreenState extends State<SetBiometricsScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
-                    'Hisobingizni yaratish uchun barmoq \n                    izini qo\'shing.',
+                Text('Hisobingizni yaratish uchun barmoq \n                    izini qo\'shing.',
                     style: Theme.of(context).textTheme.titleMedium),
               ],
             ),
@@ -91,7 +86,6 @@ class _SetBiometricsScreenState extends State<SetBiometricsScreen> {
                   },
                   radius: 100,
                   color: AppColors.yellowBackground,
-                  textColor: AppColors.dark3,
                 )),
                 SizedBox(width: 12.w),
                 Expanded(
@@ -100,13 +94,10 @@ class _SetBiometricsScreenState extends State<SetBiometricsScreen> {
                     onTap: () {
                       _checkBiometric();
                       if (StorageRepository.getBool("isAuth")) {
-                        Navigator.pushReplacementNamed(
-                            context, RouteNames.tabBox);
+                        Navigator.pushReplacementNamed(context, RouteNames.tabBox);
                       }
                     },
                     radius: 100,
-                    color: AppColors.primary,
-                    textColor: AppColors.dark3,
                   ),
                 ),
               ],

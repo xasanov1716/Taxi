@@ -9,9 +9,9 @@ import 'package:taxi_app/ui/create_order/sub_screens/searching_driver/widgets/si
 import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
 
-import '../../../../utils/colors/app_colors.dart';
-import '../../../../utils/icons/app_icons.dart';
-import '../../../tab_box/home/widgets/global_action_button.dart';
+import 'package:taxi_app/utils/colors/app_colors.dart';
+import 'package:taxi_app/utils/icons/app_icons.dart';
+import 'package:taxi_app/ui/tab_box/home/widgets/global_action_button.dart';
 
 class DriverArrivingScreen extends StatefulWidget {
   const DriverArrivingScreen({super.key});
@@ -36,7 +36,6 @@ class _DriverArrivingScreenState extends State<DriverArrivingScreen> {
       body: Stack(
         children: [
           GoogleMap(
-            mapType: MapType.normal,
             initialCameraPosition: const CameraPosition(
               target: LatLng(37.7749, -122.4194),
               zoom: 12.0,
@@ -75,9 +74,7 @@ class _DriverArrivingScreenState extends State<DriverArrivingScreen> {
                   padding: EdgeInsets.all(12.r),
                   decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: getTheme(context)
-                          ? AppColors.primaryBackground
-                          : AppColors.dimYellow),
+                      color: getTheme(context) ? AppColors.primaryBackground : AppColors.dimYellow),
                   child: SvgPicture.asset(
                     AppIcons.arrowLeft2,
                     fit: BoxFit.cover,
@@ -125,10 +122,7 @@ class _DriverArrivingScreenState extends State<DriverArrivingScreen> {
   }
 
   Future<void> _applyCustomMapStyle() async {
-    try {
-      String style =
-          await rootBundle.loadString('assets/styles/map_style.json');
-      mapController.setMapStyle(style);
-    } catch (e) {}
+    String style = await rootBundle.loadString('assets/styles/map_style.json');
+    mapController.setMapStyle(style);
   }
 }

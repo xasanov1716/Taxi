@@ -8,7 +8,7 @@ import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
-import 'widgets/help_taxio/help_data.dart';
+import 'package:taxi_app/ui/tab_box/profile/sub_screens/help_center/widgets/help_taxio/help_data.dart';
 
 class FaQScreen extends StatefulWidget {
   const FaQScreen({super.key});
@@ -45,13 +45,11 @@ class _FaQScreenState extends State<FaQScreen> {
               return Visibility(
                 visible: isTapped,
                 child: Container(
-                  height: 250* height / figmaHeight,
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 20.w, vertical: 6.h),
+                  height: 250 * height / figmaHeight,
+                  padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 6.h),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12.r),
-                    color:
-                        getTheme(context) ? AppColors.dark2 : AppColors.white,
+                    color: getTheme(context) ? AppColors.dark2 : AppColors.white,
                   ),
                   child: ListView(
                     children: [

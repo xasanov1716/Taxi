@@ -1,11 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:taxi_app/data/models/notification_model/notification_model.dart';
-import 'package:taxi_app/data/models/result_model.dart';
-import '../data/models/address/geocoding/geocoding.dart';
-import '../data/models/universal_data.dart';
-import '../utils/constants/constants.dart';
+import 'package:taxi_app/data/models/address/geocoding/geocoding.dart';
+import 'package:taxi_app/data/models/universal_data.dart';
+import 'package:taxi_app/utils/constants/constants.dart';
 
 class ApiService {
   // DIO SETTINGS
@@ -15,7 +13,6 @@ class ApiService {
       baseUrl: baseUrl,
       headers: {
         "Content-Type": "application/json",
-
       },
       connectTimeout: const Duration(seconds: 30),
       receiveTimeout: const Duration(seconds: 30),
@@ -48,12 +45,11 @@ class ApiService {
     );
   }
 
-  Future<UniversalData> getAddress({
-    required LatLng latLng,
-    required String kind,
-    required String lang,
-    required String key
-  }) async {
+  Future<UniversalData> getAddress(
+      {required LatLng latLng,
+      required String kind,
+      required String lang,
+      required String key}) async {
     Response response;
     try {
       response = await dio.get(

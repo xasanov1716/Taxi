@@ -27,9 +27,9 @@ class _BottomModalSheetState extends State<BottomModalSheet> {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Container(
-        decoration:  BoxDecoration(
-          borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(40), topRight: Radius.circular(40)),
+        decoration: BoxDecoration(
+          borderRadius:
+              const BorderRadius.only(topLeft: Radius.circular(40), topRight: Radius.circular(40)),
           color: Theme.of(context).scaffoldBackgroundColor,
         ),
         padding: EdgeInsets.only(
@@ -41,7 +41,6 @@ class _BottomModalSheetState extends State<BottomModalSheet> {
               padding: const EdgeInsets.only(top: 8, bottom: 24),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Column(
@@ -50,8 +49,7 @@ class _BottomModalSheetState extends State<BottomModalSheet> {
                           width: 38,
                           height: 3,
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(100.r),
-                              color: AppColors.c_300))
+                              borderRadius: BorderRadius.circular(100.r), color: AppColors.c_300))
                     ],
                   )
                 ],

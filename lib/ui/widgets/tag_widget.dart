@@ -24,13 +24,12 @@ class TagWidget extends StatelessWidget {
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(radius),
           color: color,
-          border: Border.all(width: 1, color: borderColor)),
+          border: Border.all(color: borderColor)),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 6),
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
         child: Text(
           title,
-          style:
-              Theme.of(context).textTheme.labelSmall?.copyWith(color: textColor),
+          style: Theme.of(context).textTheme.labelSmall?.copyWith(color: textColor),
         ),
       ),
     );

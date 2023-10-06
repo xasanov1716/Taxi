@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taxi_app/utils/ui_utils/utility_function.dart';
 
-import '../../../../../utils/icons/app_icons.dart';
+import 'package:taxi_app/utils/icons/app_icons.dart';
 
 class PaymentAppbar extends StatelessWidget implements PreferredSize {
   const PaymentAppbar({super.key, required this.onTap});
@@ -32,10 +32,8 @@ class PaymentAppbar extends StatelessWidget implements PreferredSize {
   }
 
   @override
-  // TODO: implement child
   Widget get child => throw UnimplementedError();
 
   @override
-  // TODO: implement preferredSize
   Size get preferredSize => Size(double.infinity, 56.h);
 }

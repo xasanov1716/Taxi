@@ -1,4 +1,3 @@
-import 'package:taxi_app/data/models/driver/driver_model.dart';
 import 'package:taxi_app/utils/constants/storage_keys.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 
@@ -62,7 +61,7 @@ Map<String, String> iconMapping = {
   "profile": AppIcons.profile,
 };
 
-class AppConstants{
+class AppConstants {
   static const String client = "client";
   static const String driver = "driver";
 }

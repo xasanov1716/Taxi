@@ -9,7 +9,7 @@ import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
-import '../../../../utils/icons/app_icons.dart';
+import 'package:taxi_app/utils/icons/app_icons.dart';
 
 class BookingExpandedItems extends StatelessWidget {
   const BookingExpandedItems({
@@ -29,19 +29,16 @@ class BookingExpandedItems extends StatelessWidget {
       children: [
         16.ph,
         Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             _rowMaker(
               context,
-              AppIcons.getSvg(
-                  name: AppIcons.location, iconType: IconType.curved),
+              AppIcons.getSvg(name: AppIcons.location, iconType: IconType.curved),
               "${order.distance} km",
             ),
             _rowMaker(
               context,
-              AppIcons.getSvg(
-                  name: AppIcons.timeCircle, iconType: IconType.lightOutline),
+              AppIcons.getSvg(name: AppIcons.timeCircle, iconType: IconType.lightOutline),
               "${order.duration} min",
             ),
             _rowMaker(
@@ -53,18 +50,21 @@ class BookingExpandedItems extends StatelessWidget {
         ),
         16.ph,
         Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
               "Date & Time",
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: getTheme(context) ? AppColors.c_300 : AppColors.c_700),
+              style: Theme.of(context)
+                  .textTheme
+                  .bodyMedium
+                  ?.copyWith(color: getTheme(context) ? AppColors.c_300 : AppColors.c_700),
             ),
             Text(
               order.date,
-              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                  color: getTheme(context) ? AppColors.c_300 : AppColors.c_900),
+              style: Theme.of(context)
+                  .textTheme
+                  .bodyLarge
+                  ?.copyWith(color: getTheme(context) ? AppColors.c_300 : AppColors.c_900),
             )
           ],
         ),
@@ -88,13 +88,11 @@ class BookingExpandedItems extends StatelessWidget {
                     onPressed: () {},
                     child: Text(
                       "Track Driver",
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyMedium
-                          ?.copyWith(color: AppColors.dark3),
+                      style:
+                          Theme.of(context).textTheme.bodyMedium?.copyWith(color: AppColors.dark3),
                     )),
               )
-            : SizedBox(),
+            : const SizedBox(),
         BookingExpanderButton(
           expandTap: expandTap,
           isExpanded: true,
@@ -105,14 +103,12 @@ class BookingExpandedItems extends StatelessWidget {
 
   _rowMaker(BuildContext context, String svg, String title) {
     return Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         SvgPicture.asset(
           svg,
           colorFilter: ColorFilter.mode(
-              getTheme(context) ? AppColors.white : AppColors.c_900,
-              BlendMode.srcIn),
+              getTheme(context) ? AppColors.white : AppColors.c_900, BlendMode.srcIn),
         ),
         8.pw,
         Text(

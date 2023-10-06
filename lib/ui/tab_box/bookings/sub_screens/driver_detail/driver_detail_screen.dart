@@ -53,7 +53,7 @@ class DriverDetailInfoScreen extends StatelessWidget {
                         IconContainerWidget(
                             icon: AppIcons.call,
                             onTap: () {
-                              launch("tel:${state.driver.phoneNumber}");
+                              launchUrl(Uri(scheme: 'tel', path: state.driver.phoneNumber));
                             }),
                       ],
                     ),

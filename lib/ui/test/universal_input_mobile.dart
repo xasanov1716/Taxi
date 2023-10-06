@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/fonts/text_styles.dart';
-import 'package:taxi_app/utils/icons/app_icons.dart';
 
 class CustomSuffixTextField extends StatefulWidget {
   final TextEditingController? controller;

@@ -3,10 +3,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 
-import '../../../../data/models/icon/icon_type.dart';
-import '../../../../utils/colors/app_colors.dart';
-import '../../../../utils/icons/app_icons.dart';
-import '../../../../utils/theme/get_theme.dart';
+import 'package:taxi_app/data/models/icon/icon_type.dart';
+import 'package:taxi_app/utils/colors/app_colors.dart';
+import 'package:taxi_app/utils/icons/app_icons.dart';
+import 'package:taxi_app/utils/theme/get_theme.dart';
 
 class WalletAppbar extends StatelessWidget implements PreferredSize {
   const WalletAppbar({
@@ -43,8 +43,7 @@ class WalletAppbar extends StatelessWidget implements PreferredSize {
               iconType: IconType.lightOutline,
             ),
             colorFilter: ColorFilter.mode(
-                getTheme(context) ? AppColors.white : AppColors.c_900,
-                BlendMode.srcIn),
+                getTheme(context) ? AppColors.white : AppColors.c_900, BlendMode.srcIn),
           ),
         ),
         IconButton(
@@ -55,8 +54,7 @@ class WalletAppbar extends StatelessWidget implements PreferredSize {
               iconType: IconType.lightOutline,
             ),
             colorFilter: ColorFilter.mode(
-                getTheme(context) ? AppColors.white : AppColors.c_900,
-                BlendMode.srcIn),
+                getTheme(context) ? AppColors.white : AppColors.c_900, BlendMode.srcIn),
           ),
         ),
         12.pw,

@@ -1,4 +1,4 @@
-import '../../data/models/icon/icon_type.dart';
+import 'package:taxi_app/data/models/icon/icon_type.dart';
 
 class AppIcons {
   //fake images of drivers
@@ -7,7 +7,6 @@ class AppIcons {
   static const String drFake3 = "assets/images/fake_images/dr_fake3.png";
   static const String drFake4 = "assets/images/fake_images/dr_fake4.png";
   static const String drFake5 = "assets/images/fake_images/dr_fake5.png";
-
 
   // images
 
@@ -39,14 +38,10 @@ class AppIcons {
   static const String humoPng = "assets/images/humo_card.png";
   static const String uzCardPng = "assets/images/uzCard_card.png";
   static const String uzbFlagCarNumber = "assets/images/uzb2.png";
-  static const String createNewPasswordDialog =
-      "assets/images/create_new_password_dialog.png";
-  static const String forgotPasswordDarkImage =
-      "assets/images/forgot_password_dark.png";
-  static const String createNewPasswordDarkImage =
-      "assets/images/create_new_password_dark.png";
-  static const String locationInSearchDb =
-      "assets/images/location_in_search.png";
+  static const String createNewPasswordDialog = "assets/images/create_new_password_dialog.png";
+  static const String forgotPasswordDarkImage = "assets/images/forgot_password_dark.png";
+  static const String createNewPasswordDarkImage = "assets/images/create_new_password_dark.png";
+  static const String locationInSearchDb = "assets/images/location_in_search.png";
 
   // smile images
   static const String smileAngry = "assets/images/mood/smile_angry.png";
@@ -57,8 +52,7 @@ class AppIcons {
   static const String smileQuiet = "assets/images/mood/smile_quiet.png";
   static const String smileTired = "assets/images/mood/smile_tired.png";
   static const String smileUnhappy = "assets/images/mood/smile_unhappy.png";
-  static const String smileVeryHappy =
-      "assets/images/mood/smile_very_happy.png";
+  static const String smileVeryHappy = "assets/images/mood/smile_very_happy.png";
 
   static String getSvg({required String name, IconType? iconType}) {
     if (iconType != null) {
@@ -83,31 +77,23 @@ class AppIcons {
   static final String arrowDown = "assets/svg/${it.name}/arrow_down.svg";
   static final String arrowDown2 = "assets/svg/${it.name}/arrow_down_2.svg";
   static final String arrowDown3 = "assets/svg/${it.name}/arrow_down_3.svg";
-  static final String arrowDownCircle =
-      "assets/svg/${it.name}/arrow_down_circle.svg";
-  static final String arrowDownSquare =
-      "assets/svg/${it.name}/arrow_down_square.svg";
+  static final String arrowDownCircle = "assets/svg/${it.name}/arrow_down_circle.svg";
+  static final String arrowDownSquare = "assets/svg/${it.name}/arrow_down_square.svg";
   static final String arrowLeft = "assets/svg/${it.name}/arrow_left.svg";
   static final String arrowLeft2 = "assets/svg/${it.name}/arrow_left_2.svg";
   static final String arrowLeft3 = "assets/svg/${it.name}/arrow_left_3.svg";
-  static final String arrowLeftCircle =
-      "assets/svg/${it.name}/arrow_left_circle.svg";
-  static final String arrowLeftSquare =
-      "assets/svg/${it.name}/arrow_left_square.svg";
+  static final String arrowLeftCircle = "assets/svg/${it.name}/arrow_left_circle.svg";
+  static final String arrowLeftSquare = "assets/svg/${it.name}/arrow_left_square.svg";
   static final String arrowRight = "assets/svg/${it.name}/arrow_right.svg";
   static final String arrowRight2 = "assets/svg/${it.name}/arrow_right_2.svg";
   static final String arrowRight3 = "assets/svg/${it.name}/arrow_right_3.svg";
-  static final String arrowRightCircle =
-      "assets/svg/${it.name}/arrow_right_circle.svg";
-  static final String arrowRightSquare =
-      "assets/svg/${it.name}/arrow_right_square.svg";
+  static final String arrowRightCircle = "assets/svg/${it.name}/arrow_right_circle.svg";
+  static final String arrowRightSquare = "assets/svg/${it.name}/arrow_right_square.svg";
   static final String arrowUp = "assets/svg/${it.name}/arrow_up.svg";
   static final String arrowUp2 = "assets/svg/${it.name}/arrow_up_2.svg";
   static final String arrowUp3 = "assets/svg/${it.name}/arrow_up_3.svg";
-  static final String arrowUpCircle =
-      "assets/svg/${it.name}/arrow_up_circle.svg";
-  static final String arrowUpSquare =
-      "assets/svg/${it.name}/arrow_up_square.svg";
+  static final String arrowUpCircle = "assets/svg/${it.name}/arrow_up_circle.svg";
+  static final String arrowUpSquare = "assets/svg/${it.name}/arrow_up_square.svg";
   static final String bag = "assets/svg/${it.name}/bag.svg";
   static final String bag2 = "assets/svg/${it.name}/bag_2.svg";
   static final String bookmark = "assets/svg/${it.name}/bookmark.svg";
@@ -122,8 +108,7 @@ class AppIcons {
   static final String chart = "assets/svg/${it.name}/chart.svg";
   static final String chat = "assets/svg/${it.name}/chat.svg";
   static final String closeSquare = "assets/svg/${it.name}/close_square.svg";
-  static final String dangerTriangle =
-      "assets/svg/${it.name}/danger_triangle.svg";
+  static final String dangerTriangle = "assets/svg/${it.name}/danger_triangle.svg";
   static final String delete = "assets/svg/${it.name}/delete.svg";
   static final String discount = "assets/svg/${it.name}/discount.svg";
   static final String discovery = "assets/svg/${it.name}/discovery.svg";
@@ -152,11 +137,9 @@ class AppIcons {
   static final String moreSquare = "assets/svg/${it.name}/more_square.svg";
   static final String notification = "assets/svg/${it.name}/notification.svg";
   static final String paper = "assets/svg/${it.name}/paper.svg";
-  static final String paperDownload =
-      "assets/svg/${it.name}/paper_download.svg";
+  static final String paperDownload = "assets/svg/${it.name}/paper_download.svg";
   static final String paperFail = "assets/svg/${it.name}/paper_fail.svg";
-  static final String paperNegative =
-      "assets/svg/${it.name}/paper_negative.svg";
+  static final String paperNegative = "assets/svg/${it.name}/paper_negative.svg";
   static final String paperPlus = "assets/svg/${it.name}/paper_plus.svg";
   static final String paperUpload = "assets/svg/${it.name}/paper_upload.svg";
   static final String password = "assets/svg/${it.name}/password.svg";
@@ -214,11 +197,11 @@ class AppIcons {
   static const String unSelected = "assets/svg/others/unselected.svg";
   static const String sideCancel = "assets/svg/others/side_cancel.svg";
   static const String cancel = "assets/svg/others/cancel.svg";
-  static const String bike='assets/svg/others/catgory_bike.svg';
-  static const String premium='assets/svg/others/premium.svg';
-  static const String standard='assets/svg/others/standard.svg';
-  static const String circle='assets/svg/others/circle.svg';
-  static const String circleTwo='assets/svg/others/circle_two.svg';
+  static const String bike = 'assets/svg/others/catgory_bike.svg';
+  static const String premium = 'assets/svg/others/premium.svg';
+  static const String standard = 'assets/svg/others/standard.svg';
+  static const String circle = 'assets/svg/others/circle.svg';
+  static const String circleTwo = 'assets/svg/others/circle_two.svg';
   static const String frame = "assets/svg/others/fram.svg";
   static const String rateStarUser = "assets/svg/others/rate_star_quser.svg";
   static const String rateStar = "assets/svg/others/rate_star.svg";
@@ -226,17 +209,16 @@ class AppIcons {
   static const String visa = "assets/svg/others/visa.svg";
   static const String humo = "assets/svg/others/humo.svg";
   static const String uzCard = "assets/svg/others/uzCard.svg";
-  static const String arrowDownTwo="assets/svg/others/arrow_down2.svg";
+  static const String arrowDownTwo = "assets/svg/others/arrow_down2.svg";
   static const String copyTransaction = "assets/svg/others/copy_transaction.svg";
 
   //help_screen_social_icons
-  static const String head="assets/svg/others/help_screen_head.svg";
-  static const String instagram="assets/svg/others/help_screen_instagram.svg";
-  static const String twitter="assets/svg/others/help_screen_twitter.svg";
-  static const String web="assets/svg/others/help_screen_web.svg";
-  static const String whatsapp="assets/svg/others/help_screen_whatsapp.svg";
-  static const String helpfacebook="assets/svg/others/help_scren_facebook.svg";
-
+  static const String head = "assets/svg/others/help_screen_head.svg";
+  static const String instagram = "assets/svg/others/help_screen_instagram.svg";
+  static const String twitter = "assets/svg/others/help_screen_twitter.svg";
+  static const String web = "assets/svg/others/help_screen_web.svg";
+  static const String whatsapp = "assets/svg/others/help_screen_whatsapp.svg";
+  static const String helpfacebook = "assets/svg/others/help_scren_facebook.svg";
 
   // additional icons
   static const String bank = "assets/svg/additional_icons/bank.svg";

@@ -10,11 +10,12 @@ import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
 
 class CarNumberContainer2 extends StatefulWidget {
-
   @override
-
   State<CarNumberContainer2> createState() => _CarNumberContainer2State();
-  const CarNumberContainer2({super.key, required this.isFromAuth, });
+  const CarNumberContainer2({
+    super.key,
+    required this.isFromAuth,
+  });
   final bool isFromAuth;
 }
 
@@ -26,17 +27,20 @@ class _CarNumberContainer2State extends State<CarNumberContainer2> {
   final FocusNode _thirdFocusNode = FocusNode();
   final TextEditingController _thirdController = TextEditingController();
 
-_init(){
-  String carNumberInitial = context.read<DriverBloc>().state.driverModel.carNumber;
+  _init() {
+    String carNumberInitial = context.read<DriverBloc>().state.driverModel.carNumber;
 
-  _firstController.text=carNumberInitial.substring(0,2);
-  _secondController.text=carNumberInitial.substring(3,6);
-  _thirdController.text=carNumberInitial.substring(7,10);
-}
-@override
-  void initState() {
-  if (!widget.isFromAuth)_init();
+    _firstController.text = carNumberInitial.substring(0, 2);
+    _secondController.text = carNumberInitial.substring(3, 6);
+    _thirdController.text = carNumberInitial.substring(7, 10);
   }
+
+  @override
+  void initState() {
+    super.initState();
+    if (!widget.isFromAuth) _init();
+  }
+
   @override
   void dispose() {
     // Dispose of the controllers and focus nodes when the widget is disposed.
@@ -54,20 +58,19 @@ _init(){
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: getTheme(context)? AppColors.dark1:AppColors.white,
+        color: getTheme(context) ? AppColors.dark1 : AppColors.white,
         borderRadius: BorderRadius.circular(15),
-        border: Border.all(width: 4, color:getTheme(context)? AppColors.c_500:AppColors.dark3),
+        border: Border.all(width: 4, color: getTheme(context) ? AppColors.c_500 : AppColors.dark3),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
             width: 6.w,
             height: 6.w,
-            decoration:  BoxDecoration(
+            decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: getTheme(context)? AppColors.c_500:AppColors.dark3,
+              color: getTheme(context) ? AppColors.c_500 : AppColors.dark3,
             ),
           ),
           CarNumberTextField(
@@ -100,8 +103,7 @@ _init(){
             valueChanged: (value) {
               context.read<DriverBloc>().updateDriverField(
                   fieldKey: DriverFieldKeys.carNumber,
-                  value:
-                      "${_firstController.text} ${_secondController.text} $value");
+                  value: "${_firstController.text} ${_secondController.text} $value");
             },
             hintText: "ABC",
             maxLength: 3,
@@ -133,9 +135,9 @@ _init(){
               Container(
                 width: 6.w,
                 height: 6.w,
-                decoration:  BoxDecoration(
+                decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: getTheme(context)? AppColors.c_500:AppColors.dark3,
+                  color: getTheme(context) ? AppColors.c_500 : AppColors.dark3,
                 ),
               ),
               const Text(

@@ -1,4 +1,3 @@
-
 import 'dart:async';
 import 'dart:io';
 import 'package:flutter/material.dart';
@@ -30,7 +29,7 @@ class _AudioControllerState extends State<AudioController> {
   bool showTimerPopup = false;
 
   Timer? timer;
-  Duration recordingDuration = const Duration(seconds: 0);
+  Duration recordingDuration = Duration.zero;
 
   void initAudioPath() async {
     Directory appDocDir = await getApplicationDocumentsDirectory();
@@ -111,7 +110,7 @@ class _AudioControllerState extends State<AudioController> {
             setState(() {
               showTimerPopup = false;
             });
-            recordingDuration = const Duration(seconds: 0);
+            recordingDuration = Duration.zero;
           },
           onTap: () {},
           child: Container(

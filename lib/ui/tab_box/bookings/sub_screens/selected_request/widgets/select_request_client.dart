@@ -35,7 +35,6 @@ class _SelectRequestClientState extends State<SelectRequestClient> {
       child: AnimatedContainer(
         margin: EdgeInsets.symmetric(horizontal: 24.w),
         duration: const Duration(milliseconds: 700),
-        curve: Curves.linear,
         padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 14.h),
         child: Column(
           children: [
@@ -70,7 +69,6 @@ class _SelectRequestClientState extends State<SelectRequestClient> {
               children: [
                 16.ph,
                 Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     _rowMaker(
@@ -87,7 +85,6 @@ class _SelectRequestClientState extends State<SelectRequestClient> {
                 ),
                 16.ph,
                 Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
@@ -118,7 +115,6 @@ class _SelectRequestClientState extends State<SelectRequestClient> {
 
   _rowMaker(BuildContext context, String svg, String title) {
     return Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         SvgPicture.asset(

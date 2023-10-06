@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../utils/colors/app_colors.dart';
+import 'package:taxi_app/utils/colors/app_colors.dart';
 
 class AmountButtons extends StatefulWidget {
   const AmountButtons({super.key, required this.controller});
@@ -17,7 +17,6 @@ class _AmountButtonsState extends State<AmountButtons> {
     return SizedBox(
       height: 230.h,
       child: GridView(
-        shrinkWrap: false,
         physics: const NeverScrollableScrollPhysics(),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 3,
@@ -42,7 +41,8 @@ class _AmountButtonsState extends State<AmountButtons> {
                   border: Border.all(color: AppColors.primary, width: 2.w)),
               child: Center(
                 child: Text("\$${amounts[index]}",
-                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: AppColors.primary)),
+                    style:
+                        Theme.of(context).textTheme.bodyLarge?.copyWith(color: AppColors.primary)),
               ),
             ),
           ),

@@ -36,19 +36,19 @@ class _HomeScreenState extends State<HomeScreen> {
   String address = "";
 
   Future<void> _followMe({required CameraPosition cameraPosition}) async {
-    final GoogleMapController controller = mapController;
-    controller.animateCamera(
-      CameraUpdate.newCameraPosition(cameraPosition),
-    );
+    final GoogleMapController controller = mapController
+      ..animateCamera(
+        CameraUpdate.newCameraPosition(cameraPosition),
+      );
   }
 
   @override
   void initState() {
     _init();
-    initialCameraPosition = CameraPosition(
-        target: BlocProvider.of<LocationBloc>(context).latLong, zoom: 15);
-    currentCameraPosition = CameraPosition(
-        target: BlocProvider.of<LocationBloc>(context).latLong, zoom: 15);
+    initialCameraPosition =
+        CameraPosition(target: BlocProvider.of<LocationBloc>(context).latLong, zoom: 15);
+    currentCameraPosition =
+        CameraPosition(target: BlocProvider.of<LocationBloc>(context).latLong, zoom: 15);
     super.initState();
   }
 
@@ -64,8 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
         builder: (context, state) {
           return AnnotatedRegion(
             value: const SystemUiOverlayStyle(
-                statusBarIconBrightness: Brightness.light,
-                statusBarColor: Colors.transparent),
+                statusBarIconBrightness: Brightness.light, statusBarColor: Colors.transparent),
             child: Stack(
               children: [
                 GoogleMap(
@@ -78,8 +77,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     currentCameraPosition = cameraPosition;
                   },
                   onCameraIdle: () {
-                    context.read<AddressCubit>().getAddressByLatLong(
-                        latLng: currentCameraPosition.target);
+                    context
+                        .read<AddressCubit>()
+                        .getAddressByLatLong(latLng: currentCameraPosition.target);
                     setState(() {
                       onCameraMoveStarted = false;
                     });
@@ -99,8 +99,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 Align(
                   alignment: Alignment.topCenter,
                   child: Padding(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 20.w, vertical: 150.h),
+                    padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 150.h),
                     child: Container(
                       padding: EdgeInsets.all(6.r),
                       decoration: BoxDecoration(
@@ -195,14 +194,9 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Future<void> _applyCustomMapStyle() async {
-    try {
-      String style =
-          await rootBundle.loadString('assets/styles/map_style.json');
-      String darkStyle =
-          await rootBundle.loadString('assets/styles/map_style_dark.json');
-      mapController.setMapStyle(getTheme(context) ? darkStyle : style);
-    } catch (e) {
-      throw ();
-    }
+    String style = await rootBundle.loadString('assets/styles/map_style.json');
+    String darkStyle = await rootBundle.loadString('assets/styles/map_style_dark.json');
+    if (!context.mounted) return;
+    mapController.setMapStyle(getTheme(context) ? darkStyle : style);
   }
 }

@@ -30,8 +30,7 @@ class TopUpGlobalButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(radius),
-          border: Border.all(width: 1, color: borderColor)),
+          borderRadius: BorderRadius.circular(radius), border: Border.all(color: borderColor)),
       child: Material(
         borderRadius: BorderRadius.circular(radius),
         color: color,

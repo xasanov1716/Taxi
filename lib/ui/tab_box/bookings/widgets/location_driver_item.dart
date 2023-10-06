@@ -7,7 +7,7 @@ import 'package:taxi_app/ui/tab_box/bookings/widgets/request_driver_address.dart
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
-import '../../../../utils/icons/app_icons.dart';
+import 'package:taxi_app/utils/icons/app_icons.dart';
 
 class LocationDriverItem extends StatelessWidget {
   const LocationDriverItem({
@@ -27,13 +27,11 @@ class LocationDriverItem extends StatelessWidget {
       children: [
         16.ph,
         Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             _rowMaker(
               context,
-              AppIcons.getSvg(
-                  name: AppIcons.addUser, iconType: IconType.lightOutline),
+              AppIcons.getSvg(name: AppIcons.addUser, iconType: IconType.lightOutline),
               "Bo'sh joy: ${modelDriver!.passengerCount}",
             ),
             _rowMaker(
@@ -45,18 +43,21 @@ class LocationDriverItem extends StatelessWidget {
         ),
         16.ph,
         Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
               "Yo'lga chiqish vaqti",
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: getTheme(context) ? AppColors.c_300 : AppColors.c_700),
+              style: Theme.of(context)
+                  .textTheme
+                  .bodyMedium
+                  ?.copyWith(color: getTheme(context) ? AppColors.c_300 : AppColors.c_700),
             ),
             Text(
               modelDriver!.tripTime,
-              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                  color: getTheme(context) ? AppColors.c_300 : AppColors.c_900),
+              style: Theme.of(context)
+                  .textTheme
+                  .bodyLarge
+                  ?.copyWith(color: getTheme(context) ? AppColors.c_300 : AppColors.c_900),
             )
           ],
         ),
@@ -75,14 +76,12 @@ class LocationDriverItem extends StatelessWidget {
 
   _rowMaker(BuildContext context, String svg, String title) {
     return Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         SvgPicture.asset(
           svg,
           colorFilter: ColorFilter.mode(
-              getTheme(context) ? AppColors.white : AppColors.c_900,
-              BlendMode.srcIn),
+              getTheme(context) ? AppColors.white : AppColors.c_900, BlendMode.srcIn),
         ),
         8.pw,
         Text(

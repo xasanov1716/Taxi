@@ -23,15 +23,12 @@ class MessagesListView extends StatelessWidget {
               children: [
                 14.ph,
                 Row(
-                  mainAxisAlignment: index.isEven
-                      ? MainAxisAlignment.start
-                      : MainAxisAlignment.end,
+                  mainAxisAlignment: index.isEven ? MainAxisAlignment.start : MainAxisAlignment.end,
                   children: [
                     message.image == null && message.message == null
                         ? AudioContainer(audioPath: message.voice ?? '')
                         : message.image == null
                             ? Flexible(
-                                fit: FlexFit.loose,
                                 child: MessageContainer(
                                   index: index,
                                   message: message.message!,

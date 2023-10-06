@@ -61,12 +61,9 @@ class _ChatScreenState extends State<ChatScreen> {
                     : Center(
                         child: Text(
                           'There are no posts here yet',
-                          style:
-                              Theme.of(context).textTheme.bodyMedium!.copyWith(
-                                    color: getTheme(context)
-                                        ? AppColors.white
-                                        : AppColors.black,
-                                  ),
+                          style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                                color: getTheme(context) ? AppColors.white : AppColors.black,
+                              ),
                         ),
                       ),
               ),
@@ -81,13 +78,13 @@ class _ChatScreenState extends State<ChatScreen> {
                 },
                 onSendTap: () {
                   context.read<MessageBloc>().add(
-                        (SendMessage(
+                        SendMessage(
                             messageModel: MessageModel(
                           receiverName: '',
                           senderName: '',
                           dateTime: DateTime.now().toString().substring(10, 16),
                           message: value,
-                        ))),
+                        )),
                       );
                   value = '';
                   controller.clear();

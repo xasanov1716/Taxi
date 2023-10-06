@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:taxi_app/data/models/request_model/request_model.dart';
 import 'package:taxi_app/ui/tab_box/bookings/widgets/request_driver_view.dart';
-import '../../widgets/empty.dart';
+import 'package:taxi_app/ui/tab_box/bookings/widgets/empty.dart';
 
 class CompletedDriverRequest extends StatelessWidget {
   const CompletedDriverRequest({super.key, this.requestDrivers});
@@ -9,11 +9,13 @@ class CompletedDriverRequest extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return (requestDrivers != null && requestDrivers!.isNotEmpty) ? ListView.builder(
-      itemCount: requestDrivers!.length,
-      itemBuilder: (context, index) {
-        return RequestDriverView(modelDriver: requestDrivers![index]);
-      },
-    ) : const EmptyBookings();
+    return (requestDrivers != null && requestDrivers!.isNotEmpty)
+        ? ListView.builder(
+            itemCount: requestDrivers!.length,
+            itemBuilder: (context, index) {
+              return RequestDriverView(modelDriver: requestDrivers![index]);
+            },
+          )
+        : const EmptyBookings();
   }
 }

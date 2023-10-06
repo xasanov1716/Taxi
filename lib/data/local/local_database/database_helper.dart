@@ -20,7 +20,7 @@ class DBHelper {
 
   Future<Database> _initDatabase() async {
     final path = join(await getDatabasesPath(), 'taxi_app.db');
-    return await openDatabase(
+    return openDatabase(
       path,
       version: 1,
       onCreate: _createDatabase,
