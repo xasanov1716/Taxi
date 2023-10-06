@@ -3,7 +3,7 @@ import 'package:taxi_app/data/models/offers/offers_model.dart';
 import 'package:taxi_app/ui/tab_box/home/sub_screens/special_offers/widgets/special_offer_button.dart';
 import 'package:taxi_app/ui/widgets/global_appbar.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
-import 'package:taxi_app/utils/ui_utils/utilitiy_function.dart';
+import 'package:taxi_app/utils/ui_utils/utility_function.dart';
 
 class SpecialOffersScreen extends StatefulWidget {
   const SpecialOffersScreen({super.key});

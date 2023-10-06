@@ -10,7 +10,7 @@ import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
 import 'package:taxi_app/utils/ui_utils/error_message_dialog.dart';
 import 'package:taxi_app/utils/ui_utils/loading_dialog.dart';
-import 'package:taxi_app/utils/ui_utils/utilitiy_function.dart';
+import 'package:taxi_app/utils/ui_utils/utility_function.dart';
 import 'package:taxi_app/utils/util_functions/group_notifications_by_date.dart';
 
 import '../../../../utils/size/screen_size.dart';

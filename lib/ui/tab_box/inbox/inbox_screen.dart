@@ -5,7 +5,7 @@ import 'package:taxi_app/ui/tab_box/inbox/widgets/inbox_call_screen.dart';
 import 'package:taxi_app/ui/tab_box/inbox/widgets/inbox_chats_screen.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
-import 'package:taxi_app/utils/ui_utils/utilitiy_function.dart';
+import 'package:taxi_app/utils/ui_utils/utility_function.dart';
 
 class InboxScreen extends StatelessWidget {
   const InboxScreen({super.key});
