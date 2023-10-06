@@ -34,9 +34,9 @@ class RequestScreen extends StatefulWidget {
 class _RequestScreenState extends State<RequestScreen> {
   List<String> emptyPlaces = ['1', '2', '3', '4', '5', '6', '7'];
   String emptyPlace = "1";
-  String fromRegion = "Tashkent shahri";
+  String fromRegion = "Qayerdan jo'naysiz";
   bool isDriver = StorageRepository.getString(StorageKeys.userRole) == "driver";
-  String toRegion = "Tashkent shahri";
+  String toRegion = "Qayerga borasiz";
   String tripTime = "Choose a departure time";
 
   Future<void> _show() async {
@@ -60,11 +60,16 @@ class _RequestScreenState extends State<RequestScreen> {
         sunset: const TimeOfDay(hour: 18, minute: 0),
         duskSpanInMinutes: 120,
         onChange: (value) {
-          tripTime = "${value.hour}:${value.minute}";
+          int minute = value.minute;
+          String formattedMinute = minute < 10 ? '0$minute' : minute.toString();
+          int hour = value.hour;
+          String formattedHour = hour < 10 ? '0$hour' : hour.toString();
+
+          tripTime = "Jo'nab ketish vaqti: $formattedHour:$formattedMinute da";
           context.read<RequestBloc>().add(
                 UpdateCurrentField(
                   fieldKey: RequestField.tripTime,
-                  value: tripTime,
+                  value: "$formattedHour:$formattedMinute",
                 ),
               );
         },
@@ -255,6 +260,7 @@ class _RequestScreenState extends State<RequestScreen> {
                           state.requestModel.fromId != 0) {
                         if (state.requestModel.tripTime.isNotEmpty) {
                           context.read<RequestBloc>().add(AddRequest());
+                          context.read<RequestBloc>().add(ClearAll());
                         } else {
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
