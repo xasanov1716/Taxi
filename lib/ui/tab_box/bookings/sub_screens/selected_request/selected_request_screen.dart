@@ -6,6 +6,7 @@ import 'package:taxi_app/data/models/request_model/request_model.dart';
 import 'package:taxi_app/data/repositories/request_repo.dart';
 import 'package:taxi_app/ui/tab_box/bookings/sub_screens/selected_request/widgets/select_request_client.dart';
 import 'package:taxi_app/ui/tab_box/bookings/sub_screens/selected_request/widgets/select_request_driver.dart';
+import 'package:taxi_app/ui/tab_box/bookings/widgets/empty.dart';
 import 'package:taxi_app/utils/constants/storage_keys.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
@@ -76,12 +77,10 @@ class _SelectedRequestScreenState extends State<SelectedRequestScreen> {
                 12.ph,
                 ...List.generate(snapshot.data!.length, (index) => SelectRequestDriver(modelDriver: snapshot.data![index],))],
             )
-                : const Center(child: Text("Taksi yo'q"),);
+                : const Center(child: EmptyBookings());
           }
           if (snapshot.hasError) {
-            return Center(
-              child: Text(snapshot.error.toString()),
-            );
+            return const Center(child: EmptyBookings());
           }
           return const Center(child: CircularProgressIndicator());
         },
@@ -112,12 +111,10 @@ class _SelectedRequestScreenState extends State<SelectedRequestScreen> {
                 12.ph,
                 ...List.generate(snapshot.data!.length, (index) => SelectRequestClient(modelClient: snapshot.data![index],))],
             )
-                : const Center(child: Text("Yo'lovchi yo'q"),);
+                : const Center(child: EmptyBookings());
           }
           if (snapshot.hasError) {
-            return Center(
-              child: Text(snapshot.error.toString()),
-            );
+            return const Center(child: EmptyBookings());
           }
           return const Center(child: CircularProgressIndicator());
         },
