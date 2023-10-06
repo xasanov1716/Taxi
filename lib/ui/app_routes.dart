@@ -11,10 +11,11 @@ import 'package:taxi_app/ui/create_order/sub_screens/payment_methods/payment_met
 import 'package:taxi_app/ui/create_order/sub_screens/searching_driver/searching_driver_screen.dart';
 import 'package:taxi_app/ui/create_order/sub_screens/select_transport/select_transport_screen.dart';
 import 'package:taxi_app/ui/enterance/welcome/welcome_screen.dart';
+import 'package:taxi_app/ui/tab_box/bookings/sub_screens/client_detail/client_detail.dart';
+import 'package:taxi_app/ui/tab_box/bookings/sub_screens/driver_detail/driver_detail_screen.dart';
 import 'package:taxi_app/ui/tab_box/home/bottom_sheet/bottom_sheet_screen.dart';
 import 'package:taxi_app/ui/tab_box/home/notification/notification_detail_screen.dart';
 import 'package:taxi_app/ui/tab_box/home/notification/notification_screen.dart';
-import 'package:taxi_app/ui/tab_box/home/notification/screen/send_notification_screen.dart';
 import 'package:taxi_app/ui/tab_box/home/sub_screens/request_screens/request_screen.dart';
 import 'package:taxi_app/ui/tab_box/home/sub_screens/search_location/search_location_screen.dart';
 import 'package:taxi_app/ui/tab_box/profile/profile_screen.dart';
@@ -89,9 +90,11 @@ class RouteNames {
   static const String helpCenterScreen = "/helpCenterScreen";
   static const String askRoleDialog = "/askRoleDialog";
   static const String notificationDetail = "/notificationDetail";
-  static const String sendNotificationScreen = "/sendNotificationScreen";
   static const String addAddressScreen = "/add_address_screen";
   static const String requestScreen = "/request_screen";
+
+  static const String driverDetailInfo = '/driver_detail_screen';
+  static const String clientDetailInfo = '/client_detail_screen';
 }
 
 class AppRoutes {
@@ -228,8 +231,7 @@ class AppRoutes {
           builder: (context) => const DriverArrivingScreen(),
         );
       case RouteNames.selectTransportScreen:
-        return MaterialPageRoute(
-            builder: (context) => const SelectTransportScreen());
+        return MaterialPageRoute(builder: (context) => const SelectTransportScreen());
       case RouteNames.chatWithDriver:
         return MaterialPageRoute(
           builder: (context) => const ChatScreen(),
@@ -266,14 +268,19 @@ class AppRoutes {
         return MaterialPageRoute(
           builder: (context) => const PaymentAddCardScreen(),
         );
-      case RouteNames.sendNotificationScreen:
+      case RouteNames.driverDetailInfo:
         return MaterialPageRoute(
-          builder: (context) => SendNotificationScreen(),
+          builder: (context) => const DriverDetailInfoScreen(),
         );
+      case RouteNames.clientDetailInfo:
+        return MaterialPageRoute(
+          builder: (context) => const ClientDetail(),
+        );
+
       case RouteNames.notificationDetail:
         return MaterialPageRoute(
-          builder: (context) => NotificationDetailScreen(
-              notification: settings.arguments as NotificationModel),
+          builder: (context) =>
+              NotificationDetailScreen(notification: settings.arguments as NotificationModel),
         );
       case RouteNames.editProfileClient:
         return MaterialPageRoute(
