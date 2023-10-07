@@ -101,7 +101,7 @@ class _EditProfileClientScreenState extends State<EditProfileClientScreen> {
             if (widget.navigateFromAuth) {
               Navigator.pushReplacementNamed(context, RouteNames.tabBox);
             } else {
-              Navigator.pop(context);
+             // Navigator.pop(context);
             }
           }
         },
