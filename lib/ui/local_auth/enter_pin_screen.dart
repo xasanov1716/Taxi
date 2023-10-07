@@ -4,12 +4,10 @@ import 'package:local_auth/local_auth.dart';
 import 'package:taxi_app/data/local/storage_repository/storage_repository.dart';
 import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/ui/local_auth/widgets/local_auth_pinput.dart';
-import 'package:taxi_app/ui/widgets/global_alert_dialog.dart';
 import 'package:taxi_app/ui/widgets/global_appbar.dart';
 import 'package:taxi_app/ui/widgets/global_button.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/constants/storage_keys.dart';
-import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/ui_utils/error_message_dialog.dart';
@@ -59,7 +57,6 @@ class _EnterPinScreenState extends State<EnterPinScreen> {
           ),
           (height / 20).ph,
           GlobalButton(
-            color: AppColors.primary,
             title: 'Continue',
             radius: 100,
             textColor: AppColors.black,
@@ -69,36 +66,6 @@ class _EnterPinScreenState extends State<EnterPinScreen> {
           ),
         ],
       ),
-    );
-  }
-
-  void _checkBiometric() async {
-    try {
-      authenticated = await auth.authenticate(
-        localizedReason: 'Tasdiqlash uchun sensorga barmog\'ingizni bosing',
-        options: const AuthenticationOptions(
-          useErrorDialogs: true,
-          stickyAuth: false,
-          biometricOnly: true,
-        ),
-      );
-      debugPrint("AUTHENTICATED THEN:$authenticated");
-    } catch (e) {
-      debugPrint("error using biometric auth: $e");
-    }
-    setState(
-      () {
-        bool isAuth = StorageRepository.getBool("isAuth");
-        if (isAuth && authenticated) {
-          showGlobalAlertDialog(
-              context: context,
-              title: "Top Up Successful!",
-              image: AppIcons.successPassword,
-              text: "You have successfully top upe-wallet for \$120",
-              onTap: () {});
-          Navigator.pushReplacementNamed(context, RouteNames.tabBox);
-        }
-      },
     );
   }
 

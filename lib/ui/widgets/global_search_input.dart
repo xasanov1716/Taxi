@@ -35,31 +35,21 @@ class GlobalSearchTextField extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _GlobalSearchTextField createState() => _GlobalSearchTextField();
+  GlobalSearchTextFieldWidget createState() => GlobalSearchTextFieldWidget();
 }
 
-class _GlobalSearchTextField extends State<GlobalSearchTextField> {
-  final bool _isPasswordVisible = false;
-
+class GlobalSearchTextFieldWidget extends State<GlobalSearchTextField> {
   bool isFocus = false;
   final internalFocusNode = FocusNode();
   final FocusNode _textFieldFocus = FocusNode();
-  Color _color = AppColors.c_50;
-  Color _iconColor = AppColors.c_300;
 
   @override
   void initState() {
     _textFieldFocus.addListener(() {
       if (_textFieldFocus.hasFocus) {
-        setState(() {
-          _color = AppColors.primary;
-          _iconColor = Colors.amber;
-        });
+        setState(() {});
       } else {
-        setState(() {
-          _color = AppColors.c_50;
-          _iconColor = Colors.grey;
-        });
+        setState(() {});
       }
     });
     super.initState();
@@ -75,14 +65,13 @@ class _GlobalSearchTextField extends State<GlobalSearchTextField> {
             padding: const EdgeInsets.only(top: 4.0),
             child: Text(
               widget.caption,
-              style:  TextStyle(
+              style: TextStyle(
                 fontSize: 14.sp,
                 color: Colors.black,
               ),
             ),
           ),
-         SizedBox(
-          height: 5.h),
+        SizedBox(height: 5.h),
         TextField(
           controller: widget.controller ?? widget.controller,
           onChanged: widget.onChanged,
@@ -91,47 +80,55 @@ class _GlobalSearchTextField extends State<GlobalSearchTextField> {
           inputFormatters: widget.maskFormatter != null ? [widget.maskFormatter!] : null,
           decoration: InputDecoration(
             hintText: widget.hintText,
-            suffixIcon: widget.rightImage != null ?  GestureDetector(onTap: widget.onTap,child: Padding(
-              padding:  EdgeInsets.all(20.w),
-              child: SvgPicture.asset(widget.rightImage!,colorFilter: const ColorFilter.mode(AppColors.c_500, BlendMode.srcIn),),
-            )) : null,
-              prefixIcon: widget.leftImage != null ? Padding(
-              padding: const EdgeInsets.all(20),
-              child:  SvgPicture.asset(widget.rightImage!,colorFilter: const ColorFilter.mode(AppColors.c_400, BlendMode.srcIn),)
-            ) : null,
+            suffixIcon: widget.rightImage != null
+                ? GestureDetector(
+                    onTap: widget.onTap,
+                    child: Padding(
+                      padding: EdgeInsets.all(20.w),
+                      child: SvgPicture.asset(
+                        widget.rightImage!,
+                        colorFilter: const ColorFilter.mode(AppColors.c_500, BlendMode.srcIn),
+                      ),
+                    ))
+                : null,
+            prefixIcon: widget.leftImage != null
+                ? Padding(
+                    padding: const EdgeInsets.all(20),
+                    child: SvgPicture.asset(
+                      widget.rightImage!,
+                      colorFilter: const ColorFilter.mode(AppColors.c_400, BlendMode.srcIn),
+                    ))
+                : null,
             enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-                  color:
-                  getTheme(context) ? AppColors.dark3 : const Color(0xFFFAFAFA),
-                  width: 1),
+              borderSide:
+                  BorderSide(color: getTheme(context) ? AppColors.dark3 : const Color(0xFFFAFAFA)),
               borderRadius: BorderRadius.circular(10),
             ),
             focusedBorder: OutlineInputBorder(
-              borderSide: const BorderSide(color: AppColors.primary, width: 1),
+              borderSide: const BorderSide(color: AppColors.primary),
               borderRadius: BorderRadius.circular(10),
             ),
             errorBorder: OutlineInputBorder(
-              borderSide: const BorderSide(color: Colors.red, width: 1),
+              borderSide: const BorderSide(color: Colors.red),
               borderRadius: BorderRadius.circular(10),
             ),
             border: OutlineInputBorder(
-              borderSide: BorderSide(color: getTheme(context)? const Color(0xFFFAFAFA):AppColors.dark2, width: 1),
+              borderSide:
+                  BorderSide(color: getTheme(context) ? const Color(0xFFFAFAFA) : AppColors.dark2),
               borderRadius: BorderRadius.circular(10),
             ),
             fillColor: getTheme(context)
                 ? (widget.focusNode?.hasFocus ?? internalFocusNode.hasFocus)
-                ? AppColors.yellowTransparent
-                : AppColors.dark2
+                    ? AppColors.yellowTransparent
+                    : AppColors.dark2
                 : (widget.focusNode?.hasFocus ?? internalFocusNode.hasFocus)
-                ? const Color(0xFFFFFAED)
-                : const Color(0xFFFAFAFA),
+                    ? const Color(0xFFFFFAED)
+                    : const Color(0xFFFAFAFA),
             filled: true,
           ),
           keyboardType: widget.keyboardType,
           textInputAction: widget.textInputAction,
-          obscureText: widget.keyboardType == TextInputType.visiblePassword
-              ? !_isPasswordVisible
-              : false,
+          obscureText: widget.keyboardType == TextInputType.visiblePassword,
         ),
       ],
     );

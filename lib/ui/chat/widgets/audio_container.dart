@@ -5,8 +5,6 @@ import 'package:taxi_app/ui/widgets/date_formatter.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 
-
-
 class AudioContainer extends StatefulWidget {
   const AudioContainer({super.key, required this.audioPath});
   final String audioPath;
@@ -58,14 +56,12 @@ class _AudioContainerState extends State<AudioContainer> {
     return Container(
       padding: const EdgeInsets.all(3),
       decoration: const BoxDecoration(
-          color: AppColors.primary,
-          borderRadius: BorderRadius.all(Radius.circular(20))),
+          color: AppColors.primary, borderRadius: BorderRadius.all(Radius.circular(20))),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               IconButton(
                 onPressed: () {
@@ -88,7 +84,7 @@ class _AudioContainerState extends State<AudioContainer> {
                 thumbColor: Colors.red, inactiveColor: AppColors.c_200,
                 activeColor: AppColors.green,
                 value: currentDuration.inSeconds.toDouble(),
-                max:  duration.inSeconds.toDouble(),
+                max: duration.inSeconds.toDouble(),
                 divisions: 100,
                 //label: _currentSliderValue.round().toString(),
                 onChanged: (double value) async {
@@ -105,7 +101,6 @@ class _AudioContainerState extends State<AudioContainer> {
             ],
           ),
           4.ph,
-
         ],
       ),
     );

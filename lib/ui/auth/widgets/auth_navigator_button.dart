@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../../../utils/colors/app_colors.dart';
+import 'package:taxi_app/utils/colors/app_colors.dart';
 
 class AuthNavigatorButton extends StatelessWidget {
   const AuthNavigatorButton(
-      {Key? key,
-      required this.title,
-      required this.onTap,
-      required this.onTapTitle})
+      {Key? key, required this.title, required this.onTap, required this.onTapTitle})
       : super(key: key);
 
   final String title;
@@ -29,8 +26,10 @@ class AuthNavigatorButton extends StatelessWidget {
           onPressed: onTap,
           child: Text(
             onTapTitle,
-            style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                color: AppColors.primary, fontWeight: FontWeight.w600),
+            style: Theme.of(context)
+                .textTheme
+                .titleSmall!
+                .copyWith(color: AppColors.primary, fontWeight: FontWeight.w600),
           ),
         ),
       ],

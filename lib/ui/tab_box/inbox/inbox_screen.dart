@@ -13,7 +13,6 @@ class InboxScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      initialIndex: 0,
       length: 2,
       child: Scaffold(
         appBar: AppBar(
@@ -43,9 +42,7 @@ class InboxScreen extends StatelessWidget {
             12.pw,
           ],
           bottom: const TabBar(
-            indicator: null,
             tabAlignment: TabAlignment.fill,
-            isScrollable: false,
             tabs: <Widget>[
               Tab(text: "Chats"),
               Tab(text: "Calls"),

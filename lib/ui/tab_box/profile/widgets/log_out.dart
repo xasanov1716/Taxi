@@ -26,10 +26,7 @@ class LogOutItem extends StatelessWidget {
             12.ph,
             Text(
               "Log Out",
-              style: Theme.of(context)
-                  .textTheme
-                  .headlineMedium!
-                  .copyWith(color: AppColors.error),
+              style: Theme.of(context).textTheme.headlineMedium!.copyWith(color: AppColors.error),
             ),
             24.ph,
             const Divider(),
@@ -43,15 +40,12 @@ class LogOutItem extends StatelessWidget {
               children: [
                 Expanded(
                     child: GlobalButton(
-                  textColor:
-                      getTheme(context) ? AppColors.white : AppColors.dark1,
+                  textColor: getTheme(context) ? AppColors.white : AppColors.dark1,
                   title: "Cancel",
                   onTap: () {
                     Navigator.pop(context);
                   },
-                  color: getTheme(context)
-                      ? AppColors.dark3
-                      : AppColors.orangeBackground,
+                  color: getTheme(context) ? AppColors.dark3 : AppColors.orangeBackground,
                   radius: 100.r,
                 )),
                 12.pw,
@@ -60,8 +54,7 @@ class LogOutItem extends StatelessWidget {
                   title: "Yes, Logout",
                   onTap: () async {
                     context.read<DriverBloc>().clear();
-                    StorageRepository.getString(StorageKeys.userRole) ==
-                            "driver"
+                    StorageRepository.getString(StorageKeys.userRole) == "driver"
                         ? context.read<DriverBloc>().add(UpdateDriverEvent())
                         : context.read<UserBloc>().add(UpdateUserEvent());
 
@@ -76,7 +69,6 @@ class LogOutItem extends StatelessWidget {
                       Navigator.pop(context);
                     }
                   },
-                  color: AppColors.primary,
                   radius: 100.r,
                 )),
               ],

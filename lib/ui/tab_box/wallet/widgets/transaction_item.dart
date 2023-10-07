@@ -4,11 +4,11 @@ import 'package:flutter_svg/svg.dart';
 import 'package:taxi_app/data/models/transaction/transaction_model.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 
-import '../../../../data/models/icon/icon_type.dart';
-import '../../../../utils/colors/app_colors.dart';
-import '../../../../utils/icons/app_icons.dart';
-import '../../../../utils/size/screen_size.dart';
-import '../../../../utils/theme/get_theme.dart';
+import 'package:taxi_app/data/models/icon/icon_type.dart';
+import 'package:taxi_app/utils/colors/app_colors.dart';
+import 'package:taxi_app/utils/icons/app_icons.dart';
+import 'package:taxi_app/utils/size/screen_size.dart';
+import 'package:taxi_app/utils/theme/get_theme.dart';
 
 class TransactionItem extends StatelessWidget {
   const TransactionItem({super.key, required this.onTap, required this.transactionModel});
@@ -35,20 +35,18 @@ class TransactionItem extends StatelessWidget {
                 children: [
                   Text(
                     transactionModel.name,
-                    style:
-                    Theme.of(context).textTheme.titleMedium?.copyWith(
-                      fontSize: 18.sp,
-                      fontWeight: FontWeight.w700,
-                    ),
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                          fontSize: 18.sp,
+                          fontWeight: FontWeight.w700,
+                        ),
                   ),
                   8.ph,
                   Text(
                     transactionModel.date,
-                    style:
-                    Theme.of(context).textTheme.titleMedium?.copyWith(
-                      fontSize: 14.sp,
-                      fontWeight: FontWeight.w400,
-                    ),
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.w400,
+                        ),
                   )
                 ],
               ),
@@ -58,24 +56,20 @@ class TransactionItem extends StatelessWidget {
                 children: [
                   Text(
                     "\$${transactionModel.price}",
-                    style: Theme.of(context)
-                        .textTheme
-                        .titleMedium
-                        ?.copyWith(
-                      fontSize: 18.sp,
-                      fontWeight: FontWeight.w700,
-                    ),
+                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                          fontSize: 18.sp,
+                          fontWeight: FontWeight.w700,
+                        ),
                   ),
                   8.ph,
                   Row(
                     children: [
                       Text(
                         transactionModel.expense,
-                        style:
-                        Theme.of(context).textTheme.titleMedium?.copyWith(
-                          fontSize: 14.sp,
-                          fontWeight: FontWeight.w500,
-                        ),
+                        style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                              fontSize: 14.sp,
+                              fontWeight: FontWeight.w500,
+                            ),
                       ),
                       4.pw,
                       SizedBox(
@@ -83,7 +77,8 @@ class TransactionItem extends StatelessWidget {
                         width: 20.w,
                         child: SvgPicture.asset(
                           AppIcons.getSvg(name: transactionModel.iconName, iconType: IconType.bold),
-                          colorFilter: ColorFilter.mode(transactionModel.iconColor, BlendMode.srcIn),
+                          colorFilter:
+                              ColorFilter.mode(transactionModel.iconColor, BlendMode.srcIn),
                         ),
                       ),
                     ],

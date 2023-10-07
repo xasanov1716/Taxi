@@ -1,13 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:taxi_app/data/local/storage_repository/storage_repository.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:taxi_app/data/repositories/auth_repository.dart';
 import 'package:taxi_app/ui/auth/lets_in/lets_in_screen.dart';
-import 'package:taxi_app/ui/local_auth/enter_pin_screen.dart';
-import 'package:taxi_app/ui/local_auth/set_pin_screen.dart';
 import 'package:taxi_app/ui/tab_box/tab_box.dart';
-import 'package:taxi_app/utils/constants/storage_keys.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -24,10 +20,10 @@ class App extends StatelessWidget {
             return const LetsInScreen();
           } else {
             return
-              // StorageRepository.getString(StorageKeys.pinCode).isNotEmpty
-              //   ?
-              const TabBox();
-                // : const SetPinScreen();
+                // StorageRepository.getString(StorageKeys.pinCode).isNotEmpty
+                //   ?
+                const TabBox();
+            // : const SetPinScreen();
           }
         },
       ),

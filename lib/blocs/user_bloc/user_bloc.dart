@@ -44,17 +44,14 @@ class UserBloc extends Bloc<UserEvent, UsersState> {
     on<UpdateCurrentUserEvent>(updateCurrentUserField);
   }
 
-  Future<void> addUser(
-      AddUserEvent addUserEvent, Emitter<UsersState> emit) async {
+  Future<void> addUser(AddUserEvent addUserEvent, Emitter<UsersState> emit) async {
     emit(state.copyWith(statusText: "loading...", status: FormStatus.loading));
     await userRepo.addUser(userModel: state.userModel);
     debugPrint('added');
-    emit(state.copyWith(
-        status: FormStatus.success, statusText: "User added successfully"));
+    emit(state.copyWith(status: FormStatus.success, statusText: "User added successfully"));
   }
 
-  Future<void> updateUser(
-      UpdateUserEvent updateUserEvent, Emitter<UsersState> emit) async {
+  Future<void> updateUser(UpdateUserEvent updateUserEvent, Emitter<UsersState> emit) async {
     emit(state.copyWith(statusText: "loading...", status: FormStatus.loading));
     await userRepo.updateUser(userModel: state.userModel);
     emit(state.copyWith(
@@ -63,12 +60,10 @@ class UserBloc extends Bloc<UserEvent, UsersState> {
     ));
   }
 
-  Future<void> deleteUser(
-      DeleteUserEvent deleteUserEvent, Emitter<UsersState> emit) async {
+  Future<void> deleteUser(DeleteUserEvent deleteUserEvent, Emitter<UsersState> emit) async {
     emit(state.copyWith(statusText: "loading...", status: FormStatus.loading));
     await userRepo.deleteUser(userId: deleteUserEvent.userId);
-    emit(state.copyWith(
-        status: FormStatus.success, statusText: "User deleted successfully"));
+    emit(state.copyWith(status: FormStatus.success, statusText: "User deleted successfully"));
   }
 
   void clearData(DeleteUserEvent deleteUserEvent, Emitter<UsersState> emit) {
@@ -97,8 +92,8 @@ class UserBloc extends Bloc<UserEvent, UsersState> {
   Future<void> getUserByDocId() async {
     final userId = StorageRepository.getString(StorageKeys.userId);
     final docRef = FirebaseFirestore.instance
-        .collection(FirebaseCollections
-            .users) // Assuming the collection name is "users" for clients
+        .collection(
+            FirebaseCollections.users) // Assuming the collection name is "users" for clients
         .doc(userId);
 
     final data = await docRef.get();
@@ -139,94 +134,79 @@ class UserBloc extends Bloc<UserEvent, UsersState> {
     return state.canRequest();
   }
 
-  updateCurrentUserField(
-      UpdateCurrentUserEvent updateCurrentUserEvent, Emitter<UsersState> emit) {
+  updateCurrentUserField(UpdateCurrentUserEvent updateCurrentUserEvent, Emitter<UsersState> emit) {
     UserModel currentUser = state.userModel;
 
     switch (updateCurrentUserEvent.fieldKey) {
       case UserFieldKeys.fullName:
         {
-          currentUser = currentUser.copyWith(
-              fullName: updateCurrentUserEvent.value as String);
+          currentUser = currentUser.copyWith(fullName: updateCurrentUserEvent.value as String);
           break;
         }
       case UserFieldKeys.image:
         {
-          currentUser = currentUser.copyWith(
-              image: updateCurrentUserEvent.value as String);
+          currentUser = currentUser.copyWith(image: updateCurrentUserEvent.value as String);
           break;
         }
       case UserFieldKeys.gender:
         {
-          currentUser = currentUser.copyWith(
-              gender: updateCurrentUserEvent.value as String);
+          currentUser = currentUser.copyWith(gender: updateCurrentUserEvent.value as String);
           break;
         }
       case UserFieldKeys.phone:
         {
-          currentUser = currentUser.copyWith(
-              phone: updateCurrentUserEvent.value as String);
+          currentUser = currentUser.copyWith(phone: updateCurrentUserEvent.value as String);
           break;
         }
       case UserFieldKeys.emailAddress:
         {
-          currentUser = currentUser.copyWith(
-              emailAddress: updateCurrentUserEvent.value as String);
+          currentUser = currentUser.copyWith(emailAddress: updateCurrentUserEvent.value as String);
           break;
         }
       case UserFieldKeys.birthDate:
         {
-          currentUser = currentUser.copyWith(
-              birthDate: updateCurrentUserEvent.value as String);
+          currentUser = currentUser.copyWith(birthDate: updateCurrentUserEvent.value as String);
           break;
         }
       case UserFieldKeys.addressText:
         {
-          currentUser = currentUser.copyWith(
-              addressText: updateCurrentUserEvent.value as String);
+          currentUser = currentUser.copyWith(addressText: updateCurrentUserEvent.value as String);
           break;
         }
       case UserFieldKeys.fcmToken:
         {
-          currentUser = currentUser.copyWith(
-              fcmToken: updateCurrentUserEvent.value as String);
+          currentUser = currentUser.copyWith(fcmToken: updateCurrentUserEvent.value as String);
           break;
         }
       case UserFieldKeys.userId:
         {
-          currentUser = currentUser.copyWith(
-              userId: updateCurrentUserEvent.value as String);
+          currentUser = currentUser.copyWith(userId: updateCurrentUserEvent.value as String);
           break;
         }
       case UserFieldKeys.createdAt:
         {
-          currentUser = currentUser.copyWith(
-              createdAt: updateCurrentUserEvent.value as String);
+          currentUser = currentUser.copyWith(createdAt: updateCurrentUserEvent.value as String);
           break;
         }
       case UserFieldKeys.nickName:
         {
-          currentUser = currentUser.copyWith(
-              nickName: updateCurrentUserEvent.value as String);
+          currentUser = currentUser.copyWith(nickName: updateCurrentUserEvent.value as String);
           break;
         }
       case UserFieldKeys.role:
         {
-          currentUser = currentUser.copyWith(
-              role: updateCurrentUserEvent.value as String);
+          currentUser = currentUser.copyWith(role: updateCurrentUserEvent.value as String);
           break;
         }
       case UserFieldKeys.password:
         {
-          currentUser = currentUser.copyWith(
-              password: updateCurrentUserEvent.value as String);
+          currentUser = currentUser.copyWith(password: updateCurrentUserEvent.value as String);
           break;
         }
     }
 
-    debugPrint("USER BLOC: ${currentUser.toString()}");
-    currentUser = currentUser.copyWith(
-        role: StorageRepository.getString(StorageKeys.userRole));
+    debugPrint("USER BLOC: $currentUser");
+    currentUser = currentUser.copyWith(role: StorageRepository.getString(StorageKeys.userRole));
     emit(state.copyWith(userModel: currentUser));
   }
 }

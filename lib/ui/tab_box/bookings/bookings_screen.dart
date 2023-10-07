@@ -25,7 +25,6 @@ class _BookingsScreenState extends State<BookingsScreen> {
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 3,
-      initialIndex: 0,
       child: Scaffold(
         appBar: BookingAppBar(
           title: "My bookings",
@@ -35,8 +34,7 @@ class _BookingsScreenState extends State<BookingsScreen> {
         body: StorageRepository.getString(StorageKeys.userRole) != "client"
             ? StreamBuilder<List<RequestModel>>(
                 stream: context.read<RequestRepo>().getDriverRequestId(),
-                builder: (BuildContext context,
-                    AsyncSnapshot<List<RequestModel>> snapshot) {
+                builder: (BuildContext context, AsyncSnapshot<List<RequestModel>> snapshot) {
                   if (snapshot.hasData) {
                     return snapshot.data!.isNotEmpty
                         ? TabBarView(children: <Widget>[
@@ -54,8 +52,7 @@ class _BookingsScreenState extends State<BookingsScreen> {
               )
             : StreamBuilder<List<RequestModel>>(
                 stream: context.read<RequestRepo>().getClientRequestId(),
-                builder: (BuildContext context,
-                    AsyncSnapshot<List<RequestModel>> snapshot) {
+                builder: (BuildContext context, AsyncSnapshot<List<RequestModel>> snapshot) {
                   if (snapshot.hasData) {
                     return snapshot.data!.isNotEmpty
                         ? TabBarView(children: <Widget>[

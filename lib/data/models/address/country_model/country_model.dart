@@ -1,13 +1,13 @@
 import 'package:taxi_app/data/models/address/country_model/postal_code.dart';
 
-import 'capital_info.dart';
-import 'car.dart';
-import 'coat_off_arms.dart';
-import 'currency_model.dart';
-import 'flags.dart';
-import 'idd.dart';
-import 'maps.dart';
-import 'name.dart';
+import 'package:taxi_app/data/models/address/country_model/capital_info.dart';
+import 'package:taxi_app/data/models/address/country_model/car.dart';
+import 'package:taxi_app/data/models/address/country_model/coat_off_arms.dart';
+import 'package:taxi_app/data/models/address/country_model/currency_model.dart';
+import 'package:taxi_app/data/models/address/country_model/flags.dart';
+import 'package:taxi_app/data/models/address/country_model/idd.dart';
+import 'package:taxi_app/data/models/address/country_model/maps.dart';
+import 'package:taxi_app/data/models/address/country_model/name.dart';
 
 class CountryModel {
   String? cca2;
@@ -105,7 +105,7 @@ class CountryModel {
           ? null
           : (json["altSpellings"] as List).map((e) => e as String).toList(),
       latlng:
-      json["latlng"] == null ? null : (json["latlng"] as List).map((e) => e as num).toList(),
+          json["latlng"] == null ? null : (json["latlng"] as List).map((e) => e as num).toList(),
       borders: json["borders"] == null
           ? null
           : (json["borders"] as List?)?.map((e) => e as String).toList() ?? [],
@@ -135,38 +135,38 @@ class CountryModel {
   }
 
   Map<String, dynamic> toJson() => {
-    "cca2": cca2,
-    "ccn3": ccn3,
-    "cca3": cca3,
-    "cioc": cioc,
-    "independent": independent,
-    "status": status,
-    "unMember": unMember,
-    "region": region,
-    "landlocked": landlocked,
-    "area": area,
-    "flag": flag,
-    "population": population,
-    "fifa": fifa,
-    "startOfWeek": startOfWeek,
-    "subregion": subregion,
-    "tld": tld ?? [],
-    "capital": capital ?? [],
-    "altSpellings": altSpellings ?? [],
-    "latlng": latlng ?? [],
-    "borders": borders ?? [],
-    "timezones": timezones ?? [],
-    "continents": continents ?? [],
-    "postalCode": postalCode?.toJson(),
-    "capitalInfo": capitalInfo?.toJson(),
-    "coatOfArms": coatOfArms?.toJson(),
-    "flags": flags?.toJson(),
-    "car": car?.toJson(),
-    "maps": maps?.toJson(),
-    "idd": idd?.toJson(),
-    'languages': languages,
-    'gini': gini,
-    "name": name?.toJson(),
-    "currencies": currencies?.map((key, value) => MapEntry(key, value.toJson())),
-  };
+        "cca2": cca2,
+        "ccn3": ccn3,
+        "cca3": cca3,
+        "cioc": cioc,
+        "independent": independent,
+        "status": status,
+        "unMember": unMember,
+        "region": region,
+        "landlocked": landlocked,
+        "area": area,
+        "flag": flag,
+        "population": population,
+        "fifa": fifa,
+        "startOfWeek": startOfWeek,
+        "subregion": subregion,
+        "tld": tld ?? [],
+        "capital": capital ?? [],
+        "altSpellings": altSpellings ?? [],
+        "latlng": latlng ?? [],
+        "borders": borders ?? [],
+        "timezones": timezones ?? [],
+        "continents": continents ?? [],
+        "postalCode": postalCode?.toJson(),
+        "capitalInfo": capitalInfo?.toJson(),
+        "coatOfArms": coatOfArms?.toJson(),
+        "flags": flags?.toJson(),
+        "car": car?.toJson(),
+        "maps": maps?.toJson(),
+        "idd": idd?.toJson(),
+        'languages': languages,
+        'gini': gini,
+        "name": name?.toJson(),
+        "currencies": currencies?.map((key, value) => MapEntry(key, value.toJson())),
+      };
 }

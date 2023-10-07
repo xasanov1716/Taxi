@@ -62,8 +62,7 @@ class DriverBloc extends Bloc<DriverEvent, DriverState> {
     getDriverByDocId();
   }
 
-  Future<void> addDriver(
-      AddDriverEvent event, Emitter<DriverState> emit) async {
+  Future<void> addDriver(AddDriverEvent event, Emitter<DriverState> emit) async {
     emit(state.copyWith(status: FormStatus.loading));
 
     await driverRepo.addDriver(driverModel: state.driverModel);
@@ -71,8 +70,7 @@ class DriverBloc extends Bloc<DriverEvent, DriverState> {
     emit(state.copyWith(status: FormStatus.success));
   }
 
-  Future<void> updateDriver(
-      UpdateDriverEvent event, Emitter<DriverState> emit) async {
+  Future<void> updateDriver(UpdateDriverEvent event, Emitter<DriverState> emit) async {
     emit(state.copyWith(status: FormStatus.loading));
 
     await driverRepo.updateDriver(driverModel: state.driverModel);
@@ -80,8 +78,7 @@ class DriverBloc extends Bloc<DriverEvent, DriverState> {
     emit(state.copyWith(status: FormStatus.success));
   }
 
-  Future<void> deleteDriver(
-      DeleteDriverEvent event, Emitter<DriverState> emit) async {
+  Future<void> deleteDriver(DeleteDriverEvent event, Emitter<DriverState> emit) async {
     emit(state.copyWith(status: FormStatus.loading));
 
     await driverRepo.deleteDriver(driverId: event.driverId);
@@ -91,15 +88,12 @@ class DriverBloc extends Bloc<DriverEvent, DriverState> {
 
   Future<void> getDriverByDocId() async {
     final userId = StorageRepository.getString(StorageKeys.userId);
-    final docRef = FirebaseFirestore.instance
-        .collection(FirebaseCollections.drivers)
-        .doc(userId);
+    final docRef = FirebaseFirestore.instance.collection(FirebaseCollections.drivers).doc(userId);
 
     final data = await docRef.get();
 
     if (data.exists) {
-      final driverModel =
-          DriverModel.fromJson(data.data() as Map<String, dynamic>);
+      final driverModel = DriverModel.fromJson(data.data() as Map<String, dynamic>);
       // ignore: invalid_use_of_visible_for_testing_member
       emit(state.copyWith(driverModel: driverModel));
       StorageRepository.putString(StorageKeys.userRole, AppConstants.driver);
@@ -159,7 +153,7 @@ class DriverBloc extends Bloc<DriverEvent, DriverState> {
 
   void updateDriverField({
     required DriverFieldKeys fieldKey,
-    required dynamic value,
+    required value,
   }) {
     DriverModel currentDriver = state.driverModel;
 
@@ -221,8 +215,7 @@ class DriverBloc extends Bloc<DriverEvent, DriverState> {
         }
       case DriverFieldKeys.currentLocation:
         {
-          currentDriver =
-              currentDriver.copyWith(currentLocation: value as String);
+          currentDriver = currentDriver.copyWith(currentLocation: value as String);
           break;
         }
       case DriverFieldKeys.fromToText:
@@ -257,8 +250,7 @@ class DriverBloc extends Bloc<DriverEvent, DriverState> {
         }
       case DriverFieldKeys.passengerType:
         {
-          currentDriver =
-              currentDriver.copyWith(passengerType: value as String);
+          currentDriver = currentDriver.copyWith(passengerType: value as String);
           break;
         }
       case DriverFieldKeys.price:
@@ -283,8 +275,7 @@ class DriverBloc extends Bloc<DriverEvent, DriverState> {
         }
       case DriverFieldKeys.lastOnlineTime:
         {
-          currentDriver =
-              currentDriver.copyWith(lastOnlineTime: value as String);
+          currentDriver = currentDriver.copyWith(lastOnlineTime: value as String);
           break;
         }
       case DriverFieldKeys.longitude:
@@ -314,12 +305,10 @@ class DriverBloc extends Bloc<DriverEvent, DriverState> {
         }
     }
 
-    debugPrint("DRIVER: ${currentDriver.toString()}");
-    currentDriver =
-        currentDriver.copyWith(createdAt: DateTime.now().toString());
+    debugPrint("DRIVER: $currentDriver");
+    currentDriver = currentDriver.copyWith(createdAt: DateTime.now().toString());
 
-    currentDriver = currentDriver.copyWith(
-        role: StorageRepository.getString(StorageKeys.userRole));
+    currentDriver = currentDriver.copyWith(role: StorageRepository.getString(StorageKeys.userRole));
     emit(state.copyWith(driverModel: currentDriver));
   }
 }

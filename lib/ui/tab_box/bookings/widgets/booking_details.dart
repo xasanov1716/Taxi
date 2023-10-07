@@ -25,7 +25,6 @@ class _BookingDetailsState extends State<BookingDetails> {
   Widget build(BuildContext context) {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 700),
-      curve: Curves.linear,
       padding: EdgeInsets.all(24.w),
       child: Column(
         children: [
@@ -54,9 +53,7 @@ class _BookingDetailsState extends State<BookingDetails> {
                     style: Theme.of(context).textTheme.labelLarge?.copyWith(
                         fontWeight: FontWeight.w500,
                         letterSpacing: 0.2,
-                        color: getTheme(context)
-                            ? AppColors.c_300
-                            : AppColors.c_700),
+                        color: getTheme(context) ? AppColors.c_300 : AppColors.c_700),
                   )
                 ],
               ),

@@ -13,8 +13,7 @@ import 'package:taxi_app/utils/size/size_extension.dart';
 addressSelectDialog(BuildContext context) {
   showModalBottomSheet<void>(
     isScrollControlled: true,
-    shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(32.r))),
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(32.r))),
     context: context,
     showDragHandle: true,
     backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -56,10 +55,7 @@ addressSelectDialog(BuildContext context) {
                 Row(
                   children: [
                     35.pw,
-                    Container(
-                        height: 30.h,
-                        width: 1.w,
-                        color: Theme.of(context).hintColor),
+                    Container(height: 30.h, width: 1.w, color: Theme.of(context).hintColor),
                     const Spacer(),
                   ],
                 ),
@@ -80,7 +76,6 @@ addressSelectDialog(BuildContext context) {
                 GlobalButton(
                     padding: EdgeInsets.symmetric(horizontal: 24.w),
                     textColor: AppColors.black,
-                    color: AppColors.primary,
                     title: "Keyingisi",
                     onTap: () {
                       Navigator.pop(context);

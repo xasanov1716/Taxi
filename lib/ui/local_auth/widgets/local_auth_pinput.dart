@@ -19,13 +19,11 @@ class LocalAuthPinput extends StatelessWidget {
     return SizedBox(
       height: 50.0,
       child: Pinput(
-        useNativeKeyboard: true,
         showCursor: false,
         inputFormatters: [
           FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
           FilteringTextInputFormatter.digitsOnly
         ],
-        length: 4,
         defaultPinTheme: PinTheme(
           width: 70.w,
           height: 50.w,
@@ -50,7 +48,6 @@ class LocalAuthPinput extends StatelessWidget {
             color: AppColors.primaryTransparent,
             border: Border.all(
               color: AppColors.primary,
-              width: 1,
             ),
             borderRadius: BorderRadius.circular(12.0),
           ),
@@ -67,7 +64,6 @@ class LocalAuthPinput extends StatelessWidget {
             borderRadius: BorderRadius.circular(12.0),
           ),
         ),
-        pinAnimationType: PinAnimationType.scale,
       ),
     );
   }

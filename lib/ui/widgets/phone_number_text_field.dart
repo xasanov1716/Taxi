@@ -4,7 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 
-import '../../utils/theme/get_theme.dart';
+import 'package:taxi_app/utils/theme/get_theme.dart';
 
 class PhoneNumberInput extends StatefulWidget {
   final String hintText;
@@ -32,49 +32,34 @@ class PhoneNumberInput extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _PhoneNumberInput createState() => _PhoneNumberInput();
+  PhoneNumberInputWidget createState() => PhoneNumberInputWidget();
 }
 
-class _PhoneNumberInput extends State<PhoneNumberInput> {
-  final bool _isPasswordVisible = false;
-
+class PhoneNumberInputWidget extends State<PhoneNumberInput> {
   bool isFocus = false;
   bool hasValue = false;
   bool isFocused = false;
   Color backgroundColor = AppColors.white;
-  Color _iconColor = AppColors.c_500;
   final TextEditingController _controller = TextEditingController();
 
   @override
   void initState() {
-
     _controller.addListener(() {
       if (_controller.text.isNotEmpty) {
         if (widget.focusNode.hasFocus) {
-          setState(() {
-            _iconColor = AppColors.primary;
-          });
+          setState(() {});
         } else {
-          if (AdaptiveTheme.of(context).theme ==
-              AdaptiveTheme.of(context).darkTheme) {
-            setState(() {
-              _iconColor = AppColors.white;
-            });
+          if (AdaptiveTheme.of(context).theme == AdaptiveTheme.of(context).darkTheme) {
+            setState(() {});
           } else {
-            setState(() {
-              _iconColor = AppColors.c_900;
-            });
+            setState(() {});
           }
         }
       } else {
         if (widget.focusNode.hasFocus) {
-          setState(() {
-            _iconColor = AppColors.primary;
-          });
+          setState(() {});
         } else {
-          setState(() {
-            _iconColor = AppColors.c_500;
-          });
+          setState(() {});
         }
       }
     });
@@ -82,18 +67,15 @@ class _PhoneNumberInput extends State<PhoneNumberInput> {
       if (widget.focusNode.hasFocus) {
         setState(() {
           backgroundColor = AppColors.orangeTransparent;
-          _iconColor = AppColors.primary;
         });
       } else {
         if (_controller.text.isNotEmpty) {
           setState(() {
             backgroundColor = AppColors.white;
-            _iconColor = AppColors.c_900;
           });
         } else {
           setState(() {
             backgroundColor = AppColors.white;
-            _iconColor = AppColors.c_500;
           });
         }
       }
@@ -128,31 +110,33 @@ class _PhoneNumberInput extends State<PhoneNumberInput> {
           decoration: InputDecoration(
             hintText: widget.hintText,
             prefixIcon: Padding(
-              padding:  const EdgeInsets.all(20),
-              child:                     Text('+998',style: Theme.of(context).textTheme.headlineSmall),
-
-            ),
-            suffixIcon: widget.rightImage != null ? Padding(
               padding: const EdgeInsets.all(20),
-              child: SvgPicture.asset(widget.rightImage!,colorFilter: const ColorFilter.mode(AppColors.c_400, BlendMode.srcIn),)
-            ) : null,
+              child: Text('+998', style: Theme.of(context).textTheme.headlineSmall),
+            ),
+            suffixIcon: widget.rightImage != null
+                ? Padding(
+                    padding: const EdgeInsets.all(20),
+                    child: SvgPicture.asset(
+                      widget.rightImage!,
+                      colorFilter: const ColorFilter.mode(AppColors.c_400, BlendMode.srcIn),
+                    ))
+                : null,
             enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-                  color:
-                  getTheme(context) ? AppColors.dark3 : const Color(0xFFFAFAFA),
-                  width: 1),
+              borderSide:
+                  BorderSide(color: getTheme(context) ? AppColors.dark3 : const Color(0xFFFAFAFA)),
               borderRadius: BorderRadius.circular(10),
             ),
             focusedBorder: OutlineInputBorder(
-              borderSide: const BorderSide(color: AppColors.primary, width: 1),
+              borderSide: const BorderSide(color: AppColors.primary),
               borderRadius: BorderRadius.circular(10),
             ),
             errorBorder: OutlineInputBorder(
-              borderSide: const BorderSide(color: Colors.red, width: 1),
+              borderSide: const BorderSide(color: Colors.red),
               borderRadius: BorderRadius.circular(10),
             ),
             border: OutlineInputBorder(
-              borderSide: BorderSide(color: getTheme(context)? const Color(0xFFFAFAFA):AppColors.dark2, width: 1),
+              borderSide:
+                  BorderSide(color: getTheme(context) ? const Color(0xFFFAFAFA) : AppColors.dark2),
               borderRadius: BorderRadius.circular(10),
             ),
             fillColor: widget.focusNode.hasFocus ? AppColors.orangeTransparent : null,
@@ -160,9 +144,7 @@ class _PhoneNumberInput extends State<PhoneNumberInput> {
           ),
           keyboardType: widget.keyboardType,
           textInputAction: widget.textInputAction,
-          obscureText: widget.keyboardType == TextInputType.visiblePassword
-              ? !_isPasswordVisible
-              : false,
+          obscureText: widget.keyboardType == TextInputType.visiblePassword,
         ),
       ],
     );

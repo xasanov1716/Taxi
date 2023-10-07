@@ -22,7 +22,7 @@ import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
 
 class ClientEditFields extends StatefulWidget {
-  const ClientEditFields({super.key,required this.isFromAuth});
+  const ClientEditFields({super.key, required this.isFromAuth});
   final bool isFromAuth;
 
   @override
@@ -30,13 +30,11 @@ class ClientEditFields extends StatefulWidget {
 }
 
 class _ClientEditFieldsState extends State<ClientEditFields> {
-
   @override
   void initState() {
     initStateToText();
     super.initState();
   }
-
 
   DateTime selectedDate = DateTime.now();
   TextEditingController dateController = TextEditingController();
@@ -44,10 +42,8 @@ class _ClientEditFieldsState extends State<ClientEditFields> {
   ImagePicker picker = ImagePicker();
   String image = "";
 
-  var phoneFormatter = MaskTextInputFormatter(
-      mask: '## ### ## ##',
-      filter: {"#": RegExp(r'[0-9]')},
-      type: MaskAutoCompletionType.lazy);
+  var phoneFormatter =
+      MaskTextInputFormatter(mask: '## ### ## ##', filter: {"#": RegExp(r'[0-9]')});
 
   var genders = ['Male', 'Female'];
 
@@ -68,6 +64,7 @@ class _ClientEditFieldsState extends State<ClientEditFields> {
     phoneController.text = state.userModel.phone;
     gender = state.userModel.gender;
   }
+
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController fullNameController = TextEditingController();
   final TextEditingController nicknameController = TextEditingController();
@@ -96,11 +93,10 @@ class _ClientEditFieldsState extends State<ClientEditFields> {
           focusNode: fullNameFocusNode,
           hintText: 'Full Name',
           controller: fullNameController,
-          keyboardType: TextInputType.text,
-          textInputAction: TextInputAction.next,
           onChanged: (value) async {
-            context.read<UserBloc>().add(UpdateCurrentUserEvent(
-                fieldKey: UserFieldKeys.fullName, value: value));
+            context
+                .read<UserBloc>()
+                .add(UpdateCurrentUserEvent(fieldKey: UserFieldKeys.fullName, value: value));
             context.read<UserBloc>().add(
                   UpdateCurrentUserEvent(
                       fieldKey: UserFieldKeys.fcmToken,
@@ -113,11 +109,10 @@ class _ClientEditFieldsState extends State<ClientEditFields> {
           focusNode: nicknameFocusNode,
           hintText: 'Nickname',
           controller: nicknameController,
-          keyboardType: TextInputType.text,
-          textInputAction: TextInputAction.next,
           onChanged: (value) {
-            context.read<UserBloc>().add(UpdateCurrentUserEvent(
-                fieldKey: UserFieldKeys.nickName, value: value));
+            context
+                .read<UserBloc>()
+                .add(UpdateCurrentUserEvent(fieldKey: UserFieldKeys.nickName, value: value));
           },
         ),
         24.ph,
@@ -136,15 +131,16 @@ class _ClientEditFieldsState extends State<ClientEditFields> {
               rightImage: AppIcons.calendar,
               controller: dateController,
               onChanged: (value) {
-                context.read<UserBloc>().add(UpdateCurrentUserEvent(
-                    fieldKey: UserFieldKeys.birthDate, value: value));
+                context
+                    .read<UserBloc>()
+                    .add(UpdateCurrentUserEvent(fieldKey: UserFieldKeys.birthDate, value: value));
               },
               keyboardType: TextInputType.number,
               textInputAction: TextInputAction.next,
             ),
           ),
         ),
-        if(!widget.isFromAuth) 24.ph,
+        if (!widget.isFromAuth) 24.ph,
         Visibility(
           visible: !widget.isFromAuth,
           child: PhoneNumberInput(
@@ -158,7 +154,8 @@ class _ClientEditFieldsState extends State<ClientEditFields> {
                   fieldKey: UserFieldKeys.phone, value: value.replaceAll(" ", "")));
               if (value.length == 12) {
                 context.read<UserBloc>().add(UpdateCurrentUserEvent(
-                  fieldKey: UserFieldKeys.emailAddress, value: '${value.replaceAll(" ", "")}@gmail.com'));
+                    fieldKey: UserFieldKeys.emailAddress,
+                    value: '${value.replaceAll(" ", "")}@gmail.com'));
                 phoneFocusNode.unfocus();
               }
             },
@@ -177,14 +174,11 @@ class _ClientEditFieldsState extends State<ClientEditFields> {
           child: DropdownButton<String>(
             isExpanded: true,
             underline: const SizedBox(),
-            dropdownColor:
-                getTheme(context) ? AppColors.dark2 : AppColors.greysCale,
+            dropdownColor: getTheme(context) ? AppColors.dark2 : AppColors.greysCale,
             icon: SvgPicture.asset(
-              AppIcons.getSvg(
-                  name: AppIcons.arrowDown2, iconType: IconType.bold),
+              AppIcons.getSvg(name: AppIcons.arrowDown2, iconType: IconType.bold),
               colorFilter: ColorFilter.mode(
-                  getTheme(context) ? AppColors.white : AppColors.c_900,
-                  BlendMode.srcIn),
+                  getTheme(context) ? AppColors.white : AppColors.c_900, BlendMode.srcIn),
             ),
             borderRadius: BorderRadius.circular(12.r),
             items: genders.map((String items) {
@@ -192,10 +186,8 @@ class _ClientEditFieldsState extends State<ClientEditFields> {
                 value: items,
                 child: Text(
                   items,
-                  style: AppTextStyle.bodyMediumSemibold.copyWith(
-                      color: getTheme(context)
-                          ? AppColors.white
-                          : AppColors.c_900),
+                  style: AppTextStyle.bodyMediumSemibold
+                      .copyWith(color: getTheme(context) ? AppColors.white : AppColors.c_900),
                 ),
               );
             }).toList(),
@@ -203,26 +195,25 @@ class _ClientEditFieldsState extends State<ClientEditFields> {
               setState(() {
                 gender = newValue!;
               });
-              context.read<UserBloc>().add(UpdateCurrentUserEvent(
-                  fieldKey: UserFieldKeys.gender, value: newValue));
+              context
+                  .read<UserBloc>()
+                  .add(UpdateCurrentUserEvent(fieldKey: UserFieldKeys.gender, value: newValue));
             },
             hint: Text(gender,
                 style: AppTextStyle.bodyMediumSemibold.copyWith(
-                    color: getTheme(context)
-                        ? AppColors.white
-                        : AppColors.c_900)), // Placeholder text
+                    color:
+                        getTheme(context) ? AppColors.white : AppColors.c_900)), // Placeholder text
           ),
         ),
         24.ph,
         GlobalTextField(
           focusNode: aboutFocusNode,
           hintText: 'Address',
-          keyboardType: TextInputType.text,
           controller: addressController,
-          textInputAction: TextInputAction.next,
           onChanged: (value) {
-            context.read<UserBloc>().add(UpdateCurrentUserEvent(
-                fieldKey: UserFieldKeys.addressText, value: value));
+            context
+                .read<UserBloc>()
+                .add(UpdateCurrentUserEvent(fieldKey: UserFieldKeys.addressText, value: value));
           },
         ),
       ],
@@ -247,13 +238,11 @@ class _ClientEditFieldsState extends State<ClientEditFields> {
             onDateTimeChanged: (DateTime newDate) {
               if (newDate != selectedDate) {
                 setState(() {
-                  dateController.text =
-                      newDate.toLocal().toString().split(' ')[0];
+                  dateController.text = newDate.toLocal().toString().split(' ')[0];
                   selectedDate = newDate;
 
                   context.read<UserBloc>().add(UpdateCurrentUserEvent(
-                      fieldKey: UserFieldKeys.birthDate,
-                      value: dateController.text));
+                      fieldKey: UserFieldKeys.birthDate, value: dateController.text));
                 });
               }
             },

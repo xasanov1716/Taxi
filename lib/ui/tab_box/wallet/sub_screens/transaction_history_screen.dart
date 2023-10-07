@@ -7,7 +7,7 @@ import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/ui_utils/utility_function.dart';
 
-import '../../../../data/models/transaction/transaction_model.dart';
+import 'package:taxi_app/data/models/transaction/transaction_model.dart';
 
 class TransactionHistoryScreen extends StatelessWidget {
   const TransactionHistoryScreen({super.key});
@@ -44,7 +44,6 @@ class TransactionHistoryScreen extends StatelessWidget {
               ),
             ),
           )
-
         ],
       ),
     );

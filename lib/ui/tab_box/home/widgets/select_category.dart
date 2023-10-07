@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:taxi_app/cubits/category_cubit/category_cubit.dart';
 
-import 'category_tile.dart';
+import 'package:taxi_app/ui/tab_box/home/widgets/category_tile.dart';
 
 class CategoryOfAddress extends StatelessWidget {
   const CategoryOfAddress({super.key, required this.latLng});
@@ -21,7 +21,8 @@ class CategoryOfAddress extends StatelessWidget {
             children: [
               ...List.generate(
                 names.length,
-                (index) => CategoryTile(names[index], selectedCategory,kind: kinds[index],latLng:latLng),
+                (index) => CategoryTile(names[index], selectedCategory,
+                    kind: kinds[index], latLng: latLng),
               ),
             ],
           ),

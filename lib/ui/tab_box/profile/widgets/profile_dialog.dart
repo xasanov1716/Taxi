@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:taxi_app/blocs/driver_bloc/driver_bloc.dart';
 import 'package:taxi_app/blocs/user_bloc/user_bloc.dart';
-import 'package:taxi_app/cubits/user/user_cubit.dart';
 import 'package:taxi_app/data/local/storage_repository/storage_repository.dart';
 import 'package:taxi_app/data/models/driver/driver_fields.dart';
 import 'package:taxi_app/data/models/universal_data.dart';
@@ -113,17 +112,19 @@ Future<void> _getFromCamera({
   if (xFile != null && context.mounted) {
     showLoading(context: context);
     UniversalData data = await imageUploader(xFile);
+    if (!context.mounted) return;
     hideLoading(context: context);
 
     if (context.mounted &&
-        StorageRepository.getString(StorageKeys.userRole) ==
-            AppConstants.driver) {
-      context.read<DriverBloc>().updateDriverField(
-          fieldKey: DriverFieldKeys.imageUrl, value: data.data);
+        StorageRepository.getString(StorageKeys.userRole) == AppConstants.driver) {
+      context
+          .read<DriverBloc>()
+          .updateDriverField(fieldKey: DriverFieldKeys.imageUrl, value: data.data);
       context.read<DriverBloc>().add(UpdateDriverEvent());
     } else if (context.mounted) {
-      context.read<UserBloc>().add(UpdateCurrentUserEvent(
-          fieldKey: UserFieldKeys.image, value: data.data));
+      context
+          .read<UserBloc>()
+          .add(UpdateCurrentUserEvent(fieldKey: UserFieldKeys.image, value: data.data));
       context.read<UserBloc>().add(UpdateUserEvent());
     }
 
@@ -143,15 +144,17 @@ Future<void> _getFromGallery(
   if (xFile != null && context.mounted) {
     showLoading(context: context);
     UniversalData data = await imageUploader(xFile);
+    if (!context.mounted) return;
     hideLoading(context: context);
     if (context.mounted &&
-        StorageRepository.getString(StorageKeys.userRole) ==
-            AppConstants.driver) {
-      context.read<DriverBloc>().updateDriverField(
-          fieldKey: DriverFieldKeys.imageUrl, value: data.data);
+        StorageRepository.getString(StorageKeys.userRole) == AppConstants.driver) {
+      context
+          .read<DriverBloc>()
+          .updateDriverField(fieldKey: DriverFieldKeys.imageUrl, value: data.data);
     } else if (context.mounted) {
-      context.read<UserBloc>().add(UpdateCurrentUserEvent(
-          fieldKey: UserFieldKeys.image, value: data.data));
+      context
+          .read<UserBloc>()
+          .add(UpdateCurrentUserEvent(fieldKey: UserFieldKeys.image, value: data.data));
     }
 
     valueChanged(xFile.path);

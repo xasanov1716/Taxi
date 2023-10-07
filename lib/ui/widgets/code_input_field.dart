@@ -11,18 +11,19 @@ class CodeInputField extends StatefulWidget {
   const CodeInputField({super.key});
 
   @override
-  _CodeInputFieldState createState() => _CodeInputFieldState();
+  CodeInputFieldState createState() => CodeInputFieldState();
 }
 
-class _CodeInputFieldState extends State<CodeInputField> {
+class CodeInputFieldState extends State<CodeInputField> {
   late CodeInputCubit codeInputCubit;
 
   @override
   void initState() {
     super.initState();
     codeInputCubit = CodeInputCubit();
-    codeInputCubit.setContext(context);
-    codeInputCubit.startCountdown();
+    codeInputCubit
+      ..setContext(context)
+      ..startCountdown();
   }
 
   @override
@@ -40,37 +41,29 @@ class _CodeInputFieldState extends State<CodeInputField> {
             return SizedBox(
               width: 80.0.w,
               child: TextField(
-                style: Theme.of(context)
-                    .appBarTheme
-                    .titleTextStyle!
-                    .copyWith(fontSize: 22.sp),
+                style: Theme.of(context).appBarTheme.titleTextStyle!.copyWith(fontSize: 22.sp),
                 onTap: () {
                   setState(() {
-                    FocusScope.of(context)
-                        .requestFocus(codeInputCubit.pinFocusNodes[index]);
+                    FocusScope.of(context).requestFocus(codeInputCubit.pinFocusNodes[index]);
                   });
                 },
                 controller: codeInputCubit.pinControllers[index],
                 maxLength: 1,
                 keyboardType: TextInputType.number,
                 inputFormatters: [
-                  FilteringTextInputFormatter
-                      .digitsOnly, // Allow only numeric input
+                  FilteringTextInputFormatter.digitsOnly, // Allow only numeric input
                 ],
                 decoration: InputDecoration(
                   counterText: "",
-                  contentPadding: EdgeInsets.symmetric(
-                      vertical: 16.0.h, horizontal: 32.0.w),
+                  contentPadding: EdgeInsets.symmetric(vertical: 16.0.h, horizontal: 32.0.w),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
                     borderSide: const BorderSide(color: AppColors.primary),
                   ),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
-                    borderSide: BorderSide(
-                        color: getTheme(context)
-                            ? AppColors.c_500
-                            : AppColors.c_300),
+                    borderSide:
+                        BorderSide(color: getTheme(context) ? AppColors.c_500 : AppColors.c_300),
                   ),
                   filled: true,
                   fillColor: getTheme(context)
@@ -108,9 +101,7 @@ class _CodeInputFieldState extends State<CodeInputField> {
                     ),
                     TextSpan(
                       text: remainingTime,
-                      style: const TextStyle(
-                          color: AppColors.primary,
-                          fontWeight: FontWeight.bold),
+                      style: const TextStyle(color: AppColors.primary, fontWeight: FontWeight.bold),
                     ),
                     TextSpan(
                       text: " s",

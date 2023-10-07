@@ -1,9 +1,7 @@
-import 'package:bloc/bloc.dart';
 import 'package:flutter/foundation.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
-import 'package:meta/meta.dart';
-
+import 'package:flutter_bloc/flutter_bloc.dart';
 part 'location_event.dart';
 
 part 'location_state.dart';
@@ -14,11 +12,10 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
     on<UpdateLocationEvent>(updateLatLong);
   }
 
-  LatLng latLong = const LatLng(41.234,69.71);
-  LatLng initialLatLong = const LatLng(41.234,69.71);
+  LatLng latLong = const LatLng(41.234, 69.71);
+  LatLng initialLatLong = const LatLng(41.234, 69.71);
 
-  _getLocation(
-      GetLocationEvent getLocationEvent, Emitter<LocationState> emit) async {
+  _getLocation(GetLocationEvent getLocationEvent, Emitter<LocationState> emit) async {
     Location location = Location();
     bool serviceEnabled;
     PermissionStatus permissionGranted;
@@ -58,7 +55,7 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
       debugPrint("LOCATION ERROR:$er");
     }
 
-    location.enableBackgroundMode(enable: true);
+    location.enableBackgroundMode();
 
     // location.onLocationChanged.listen((LocationData newLocation)
     // {
@@ -68,8 +65,7 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
     // });
   }
 
-  updateLatLong(
-      UpdateLocationEvent updateLocationEvent, Emitter<LocationState> emit) {
+  updateLatLong(UpdateLocationEvent updateLocationEvent, Emitter<LocationState> emit) {
     emit(LocationLoadingState());
     latLong = updateLocationEvent.newLatLng;
     emit(LocationSuccessState());

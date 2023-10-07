@@ -56,9 +56,6 @@ class _RequestScreenState extends State<RequestScreen> {
             DateTime.now().toString().substring(14, 16),
           ),
         ),
-        sunrise: const TimeOfDay(hour: 6, minute: 0),
-        sunset: const TimeOfDay(hour: 18, minute: 0),
-        duskSpanInMinutes: 120,
         onChange: (value) {
           int minute = value.minute;
           String formattedMinute = minute < 10 ? '0$minute' : minute.toString();
@@ -89,8 +86,7 @@ class _RequestScreenState extends State<RequestScreen> {
     BlocProvider.of<RequestBloc>(context).add(
       UpdateCurrentField(
         fieldKey: RequestField.creatorName,
-        value: StorageRepository.getString(StorageKeys.userRole) ==
-                AppConstants.client
+        value: StorageRepository.getString(StorageKeys.userRole) == AppConstants.client
             ? BlocProvider.of<UserBloc>(context).state.userModel.fullName
             : BlocProvider.of<DriverBloc>(context).state.driverModel.fullName,
       ),
@@ -112,8 +108,7 @@ class _RequestScreenState extends State<RequestScreen> {
                     physics: const BouncingScrollPhysics(),
                     children: [
                       Padding(
-                        padding: EdgeInsets.symmetric(
-                            horizontal: 24.w, vertical: 24.h),
+                        padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 24.h),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -127,8 +122,7 @@ class _RequestScreenState extends State<RequestScreen> {
                                 onChanged: (value) {
                                   context.read<RequestBloc>().add(
                                         UpdateCurrentField(
-                                            fieldKey: RequestField.description,
-                                            value: value),
+                                            fieldKey: RequestField.description, value: value),
                                       );
                                 },
                               ),
@@ -137,11 +131,9 @@ class _RequestScreenState extends State<RequestScreen> {
                             RequestTextField(
                               hintText: "Request Price",
                               onChanged: (value) {
-                                context.read<RequestBloc>().add(
-                                    UpdateCurrentField(
-                                        fieldKey: RequestField.requestPrice,
-                                        value: int.parse(
-                                            value.replaceAll(" ", ''))));
+                                context.read<RequestBloc>().add(UpdateCurrentField(
+                                    fieldKey: RequestField.requestPrice,
+                                    value: int.parse(value.replaceAll(" ", ''))));
                               },
                               keyboardType: TextInputType.number,
                               textFormatter: NumberInputFormatter(),
@@ -149,9 +141,7 @@ class _RequestScreenState extends State<RequestScreen> {
                             24.ph,
                             Text(isDriver ? "Empty Places" : "PassengerCount",
                                 style: AppTextStyle.bodyMediumSemibold.copyWith(
-                                    color: getTheme(context)
-                                        ? AppColors.white
-                                        : AppColors.c_900)),
+                                    color: getTheme(context) ? AppColors.white : AppColors.c_900)),
                             24.ph,
                             DropDownForRequest(
                               listFromOutside: emptyPlaces,
@@ -169,28 +159,20 @@ class _RequestScreenState extends State<RequestScreen> {
                             ),
                             24.ph,
                             InkWell(
-                              onTap: () {
-                                _show();
-                              },
+                              onTap: _show,
                               child: Center(
                                 child: Container(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: 40.w, vertical: 20.h),
+                                  padding: EdgeInsets.symmetric(horizontal: 40.w, vertical: 20.h),
                                   decoration: BoxDecoration(
-                                    color: getTheme(context)
-                                        ? AppColors.dark2
-                                        : AppColors.greysCale,
+                                    color:
+                                        getTheme(context) ? AppColors.dark2 : AppColors.greysCale,
                                     borderRadius: BorderRadius.circular(12.r),
                                   ),
                                   child: Text(
                                     tripTime,
                                     style: tripTime.length > 5
-                                        ? Theme.of(context)
-                                            .textTheme
-                                            .titleMedium
-                                        : Theme.of(context)
-                                            .textTheme
-                                            .titleLarge,
+                                        ? Theme.of(context).textTheme.titleMedium
+                                        : Theme.of(context).textTheme.titleLarge,
                                   ),
                                 ),
                               ),
@@ -200,9 +182,7 @@ class _RequestScreenState extends State<RequestScreen> {
                               "From",
                               style: AppTextStyle.bodyMediumSemibold.copyWith(
                                 fontSize: 20.sp,
-                                color: getTheme(context)
-                                    ? AppColors.white
-                                    : AppColors.c_900,
+                                color: getTheme(context) ? AppColors.white : AppColors.c_900,
                               ),
                             ),
                             24.ph,
@@ -214,8 +194,7 @@ class _RequestScreenState extends State<RequestScreen> {
                                   fromRegion = newValue.name;
                                   context.read<RequestBloc>().add(
                                         UpdateCurrentField(
-                                            fieldKey: RequestField.fromId,
-                                            value: newValue.id),
+                                            fieldKey: RequestField.fromId, value: newValue.id),
                                       );
                                 });
                               },
@@ -224,9 +203,7 @@ class _RequestScreenState extends State<RequestScreen> {
                             Text("To",
                                 style: AppTextStyle.bodyMediumSemibold.copyWith(
                                     fontSize: 20.sp,
-                                    color: getTheme(context)
-                                        ? AppColors.white
-                                        : AppColors.c_900)),
+                                    color: getTheme(context) ? AppColors.white : AppColors.c_900)),
                             24.ph,
                             DropDownForFromTo(
                               listFromOutside: state.regionModels,
@@ -236,8 +213,7 @@ class _RequestScreenState extends State<RequestScreen> {
                                   toRegion = newValue.name;
                                   context.read<RequestBloc>().add(
                                         UpdateCurrentField(
-                                            fieldKey: RequestField.toId,
-                                            value: newValue.id),
+                                            fieldKey: RequestField.toId, value: newValue.id),
                                       );
                                 });
                               },
@@ -282,7 +258,6 @@ class _RequestScreenState extends State<RequestScreen> {
                         );
                       }
                     },
-                    color: AppColors.primary,
                     radius: 100.r,
                   ),
                 ),

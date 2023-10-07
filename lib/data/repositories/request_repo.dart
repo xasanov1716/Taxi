@@ -4,44 +4,34 @@ import 'package:taxi_app/data/models/request_model/request_model.dart';
 import 'package:taxi_app/data/models/universal_data.dart';
 import 'package:taxi_app/utils/constants/constants.dart';
 
-import '../../utils/constants/storage_keys.dart';
-import '../local/storage_repository/storage_repository.dart';
+import 'package:taxi_app/utils/constants/storage_keys.dart';
+import 'package:taxi_app/data/local/storage_repository/storage_repository.dart';
 
 class RequestRepo {
   Stream<List<RequestModel>> getClientRequest() =>
-      FirebaseFirestore.instance
-          .collection(FirebaseCollections.requestClient)
-          .snapshots()
-          .map(
-            (event1) => event1.docs
-                .map((doc) => RequestModel.fromJson(doc.data()))
-                .toList(),
+      FirebaseFirestore.instance.collection(FirebaseCollections.requestClient).snapshots().map(
+            (event1) => event1.docs.map((doc) => RequestModel.fromJson(doc.data())).toList(),
           );
 
-  Stream<List<RequestModel>> getClientRequestId() =>
-      FirebaseFirestore.instance
-          .collection(FirebaseCollections.requestClient).where("user_id",
-          isEqualTo: StorageRepository.getString(StorageKeys.userId))
-          .snapshots()
-          .map(
-            (event1) => event1.docs
-            .map((doc) => RequestModel.fromJson(doc.data()))
-            .toList(),
+  Stream<List<RequestModel>> getClientRequestId() => FirebaseFirestore.instance
+      .collection(FirebaseCollections.requestClient)
+      .where("user_id", isEqualTo: StorageRepository.getString(StorageKeys.userId))
+      .snapshots()
+      .map(
+        (event1) => event1.docs.map((doc) => RequestModel.fromJson(doc.data())).toList(),
       );
 
   Stream<List<RequestModel>> getClientFromId({required int fromId, required int toId}) =>
       FirebaseFirestore.instance
-          .collection(FirebaseCollections.requestClient).where("from_id",
-          isEqualTo: fromId).where("to_id", isEqualTo: toId)
+          .collection(FirebaseCollections.requestClient)
+          .where("from_id", isEqualTo: fromId)
+          .where("to_id", isEqualTo: toId)
           .snapshots()
           .map(
-            (event1) => event1.docs
-            .map((doc) => RequestModel.fromJson(doc.data()))
-            .toList(),
-      );
+            (event1) => event1.docs.map((doc) => RequestModel.fromJson(doc.data())).toList(),
+          );
 
-  Future<UniversalData> addRequestClient(
-      {required RequestModel requestModelClient}) async {
+  Future<UniversalData> addRequestClient({required RequestModel requestModelClient}) async {
     try {
       await FirebaseFirestore.instance
           .collection(FirebaseCollections.requestClient)
@@ -54,8 +44,7 @@ class RequestRepo {
     }
   }
 
-  Future<UniversalData> updateRequestClient(
-      {required RequestModel requestModelClient}) async {
+  Future<UniversalData> updateRequestClient({required RequestModel requestModelClient}) async {
     try {
       await FirebaseFirestore.instance
           .collection(FirebaseCollections.requestClient)
@@ -85,38 +74,30 @@ class RequestRepo {
     }
   }
 
-  Stream<List<RequestModel>> getDriverRequest() => FirebaseFirestore.instance
-      .collection(FirebaseCollections.requestDriver)
-      .snapshots()
-      .map(
-        (event1) => event1.docs
-        .map((doc) => RequestModel.fromJson(doc.data()))
-        .toList(),
-  );
+  Stream<List<RequestModel>> getDriverRequest() =>
+      FirebaseFirestore.instance.collection(FirebaseCollections.requestDriver).snapshots().map(
+            (event1) => event1.docs.map((doc) => RequestModel.fromJson(doc.data())).toList(),
+          );
 
   Stream<List<RequestModel>> getDriverRequestId() => FirebaseFirestore.instance
-      .collection(FirebaseCollections.requestDriver).where("user_id",
-      isEqualTo: StorageRepository.getString(StorageKeys.userId))
+      .collection(FirebaseCollections.requestDriver)
+      .where("user_id", isEqualTo: StorageRepository.getString(StorageKeys.userId))
       .snapshots()
       .map(
-        (event1) => event1.docs
-        .map((doc) => RequestModel.fromJson(doc.data()))
-        .toList(),
-  );
+        (event1) => event1.docs.map((doc) => RequestModel.fromJson(doc.data())).toList(),
+      );
 
+  Stream<List<RequestModel>> getDriverFromId({required int fromId, required int toId}) =>
+      FirebaseFirestore.instance
+          .collection(FirebaseCollections.requestDriver)
+          .where("from_id", isEqualTo: fromId)
+          .where("to_id", isEqualTo: toId)
+          .snapshots()
+          .map(
+            (event1) => event1.docs.map((doc) => RequestModel.fromJson(doc.data())).toList(),
+          );
 
-  Stream<List<RequestModel>> getDriverFromId({required int fromId, required int toId}) => FirebaseFirestore.instance
-      .collection(FirebaseCollections.requestDriver).where("from_id",
-      isEqualTo: fromId).where("to_id", isEqualTo: toId)
-      .snapshots()
-      .map(
-        (event1) => event1.docs
-        .map((doc) => RequestModel.fromJson(doc.data()))
-        .toList(),
-  );
-
-  Future<UniversalData> addRequestDriver(
-      {required RequestModel requestModelDriver}) async {
+  Future<UniversalData> addRequestDriver({required RequestModel requestModelDriver}) async {
     try {
       await FirebaseFirestore.instance
           .collection(FirebaseCollections.requestDriver)
@@ -131,8 +112,7 @@ class RequestRepo {
     }
   }
 
-  Future<UniversalData> updateRequestDriver(
-      {required RequestModel requestModelDriver}) async {
+  Future<UniversalData> updateRequestDriver({required RequestModel requestModelDriver}) async {
     try {
       await FirebaseFirestore.instance
           .collection(FirebaseCollections.requestDriver)

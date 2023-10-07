@@ -3,12 +3,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 
-import '../../../../../data/models/icon/icon_type.dart';
-import '../../../../../utils/colors/app_colors.dart';
-import '../../../../../utils/icons/app_icons.dart';
-import '../../../../../utils/size/screen_size.dart';
-import '../../../../../utils/theme/get_theme.dart';
-import 'driver_button.dart';
+import 'package:taxi_app/data/models/icon/icon_type.dart';
+import 'package:taxi_app/utils/colors/app_colors.dart';
+import 'package:taxi_app/utils/icons/app_icons.dart';
+import 'package:taxi_app/utils/size/screen_size.dart';
+import 'package:taxi_app/utils/theme/get_theme.dart';
+import 'package:taxi_app/ui/create_order/sub_screens/driver_arriving/widgets/driver_button.dart';
 
 class DriverItem extends StatelessWidget {
   const DriverItem({
@@ -76,108 +76,97 @@ class DriverItem extends StatelessWidget {
               color: getTheme(context) ? AppColors.dark3 : AppColors.c_200,
             ),
           ),
-        Material(
-          color: getTheme(context) ? AppColors.dark1 : AppColors.white,
-          child: InkWell(
-            onTap: (){ },
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 12.h),
-              child: Row(
-                children: [
-                  SizedBox(
-                      height: 60 * height / figmaHeight,
-                      width: 60 * height / figmaHeight,
-                      child: Image.asset(AppIcons.testAvatar)),
-                  20.pw,
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Text(
-                        "Daniel Austin",
-                        style:
-                        Theme.of(context).textTheme.titleMedium?.copyWith(
-                          fontFamily: "Urbanist",
-                          fontSize: 18.sp,
-                          fontWeight: FontWeight.w700,
+          Material(
+            color: getTheme(context) ? AppColors.dark1 : AppColors.white,
+            child: InkWell(
+              onTap: () {},
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 12.h),
+                child: Row(
+                  children: [
+                    SizedBox(
+                        height: 60 * height / figmaHeight,
+                        width: 60 * height / figmaHeight,
+                        child: Image.asset(AppIcons.testAvatar)),
+                    20.pw,
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Text(
+                          "Daniel Austin",
+                          style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                                fontFamily: "Urbanist",
+                                fontSize: 18.sp,
+                                fontWeight: FontWeight.w700,
+                              ),
                         ),
-                      ),
-                      Text(
-                        "Mercedes-Benz E-Class",
-                        style:
-                        Theme.of(context).textTheme.titleMedium?.copyWith(
-                          fontFamily: "Urbanist",
-                          fontSize: 14.sp,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      )
-                    ],
-                  ),
-                  const Spacer(),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Row(
-                        children: [
-                          SizedBox(
-                            height: 20.w,
-                            width: 20.w,
-                            child: SvgPicture.asset(
-                              AppIcons.star,
-                              colorFilter: const ColorFilter.mode(
-                                  AppColors.orange, BlendMode.srcIn),
+                        Text(
+                          "Mercedes-Benz E-Class",
+                          style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                                fontFamily: "Urbanist",
+                                fontSize: 14.sp,
+                                fontWeight: FontWeight.w400,
+                              ),
+                        )
+                      ],
+                    ),
+                    const Spacer(),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Row(
+                          children: [
+                            SizedBox(
+                              height: 20.w,
+                              width: 20.w,
+                              child: SvgPicture.asset(
+                                AppIcons.star,
+                                colorFilter:
+                                    const ColorFilter.mode(AppColors.orange, BlendMode.srcIn),
+                              ),
                             ),
-                          ),
-                          8.pw,
-                          Text(
-                            "4.8",
-                            style: Theme.of(context)
-                                .textTheme
-                                .titleMedium
-                                ?.copyWith(
-                              fontFamily: "Urbanist",
-                              fontSize: 14.sp,
-                              fontWeight: FontWeight.w500,
+                            8.pw,
+                            Text(
+                              "4.8",
+                              style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                                    fontFamily: "Urbanist",
+                                    fontSize: 14.sp,
+                                    fontWeight: FontWeight.w500,
+                                  ),
                             ),
-                          ),
-                        ],
-                      ),
-                      Text(
-                        "HSW 4736 XK",
-                        style:
-                        Theme.of(context).textTheme.titleMedium?.copyWith(
-                          fontFamily: "Urbanist",
-                          fontSize: 14.sp,
-                          fontWeight: FontWeight.w600,
+                          ],
                         ),
-                      )
-                    ],
-                  )
-                ],
+                        Text(
+                          "HSW 4736 XK",
+                          style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                                fontFamily: "Urbanist",
+                                fontSize: 14.sp,
+                                fontWeight: FontWeight.w600,
+                              ),
+                        )
+                      ],
+                    )
+                  ],
+                ),
               ),
             ),
           ),
-        ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              DriverButton(
-                  color: AppColors.dimYellow,
-                  icon: AppIcons.cancel,
-                  onTap: cancelTap),
+              DriverButton(color: AppColors.dimYellow, icon: AppIcons.cancel, onTap: cancelTap),
               24.pw,
               DriverButton(
                 color: AppColors.primaryBackground,
-                icon: AppIcons.getSvg(
-                    name: AppIcons.chat, iconType: IconType.bold),
+                icon: AppIcons.getSvg(name: AppIcons.chat, iconType: IconType.bold),
                 onTap: chatTap,
               ),
               24.pw,
               DriverButton(
                 color: AppColors.primaryBackground,
-                icon: AppIcons.getSvg(
-                    name: AppIcons.call, iconType: IconType.bulk),
+                icon: AppIcons.getSvg(name: AppIcons.call, iconType: IconType.bulk),
                 onTap: callTap,
               ),
             ],

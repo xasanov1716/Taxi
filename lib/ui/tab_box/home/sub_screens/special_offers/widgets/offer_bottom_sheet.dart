@@ -30,7 +30,7 @@ class OfferBottomSheetItem extends StatelessWidget {
     return Container(
       width: double.infinity,
       height: height - height / 5,
-      color:Theme.of(context).scaffoldBackgroundColor,
+      color: Theme.of(context).scaffoldBackgroundColor,
       padding: EdgeInsets.only(left: 24.w, right: 24.w),
       child: Column(
         children: [
@@ -111,7 +111,6 @@ class OfferBottomSheetItem extends StatelessWidget {
                       )
                     ],
                   ),
-
                 ],
               ),
             ),
@@ -119,8 +118,6 @@ class OfferBottomSheetItem extends StatelessWidget {
           12.ph,
           GlobalButton(
             title: "Use Promo",
-            color: AppColors.primary,
-            textColor: AppColors.dark3,
             radius: 100.r,
             onTap: () {
               Navigator.pop(context);

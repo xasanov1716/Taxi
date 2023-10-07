@@ -31,15 +31,13 @@ class _AddPromoScreenState extends State<AddPromoScreen> {
         onTap: () {
           Navigator.pop(context);
         },
-        action: [
-          getIcon(AppIcons.search, context: context, onTap: (){})
-        ],
+        action: [getIcon(AppIcons.search, context: context, onTap: () {})],
       ),
       body: Column(
         children: [
           Expanded(
               child: ListView.builder(
-                physics: const BouncingScrollPhysics(),
+            physics: const BouncingScrollPhysics(),
             itemCount: promoItems.length,
             itemBuilder: (context, index) {
               return InkWell(
@@ -90,14 +88,11 @@ class _AddPromoScreenState extends State<AddPromoScreen> {
             },
           )),
           GlobalButton(
-            padding:  EdgeInsets.all(24.h),
+            padding: EdgeInsets.all(24.h),
             title: 'Apply Promo',
             radius: 100.r,
-            color: AppColors.primary,
             onTap: () {
-              context
-                  .read<CreateOrderBloc>()
-                  .add(UpdatePromoCodes(promoCode: selectedText));
+              context.read<CreateOrderBloc>().add(UpdatePromoCodes(promoCode: selectedText));
               Navigator.pop(context);
             },
           ),
@@ -107,4 +102,3 @@ class _AddPromoScreenState extends State<AddPromoScreen> {
     );
   }
 }
-

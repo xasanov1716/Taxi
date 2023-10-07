@@ -13,7 +13,8 @@ class AuthTextField extends StatefulWidget {
     required this.prefixIcon,
     this.isPassword = false,
     required this.onChanged,
-    required this.focusNode, this.parolkoz,
+    required this.focusNode,
+    this.parolkoz,
   });
 
   final String hintText;
@@ -32,8 +33,7 @@ class _AuthTextFieldState extends State<AuthTextField> {
   bool _isObscured = false;
   bool isFocused = false;
   Color _iconColor = AppColors.c_500;
-  var maskFormatter = MaskTextInputFormatter(
-      mask: '## ### ## ##', filter: {"#": RegExp(r'[0-9]')});
+  var maskFormatter = MaskTextInputFormatter(mask: '## ### ## ##', filter: {"#": RegExp(r'[0-9]')});
 
   @override
   void initState() {
@@ -44,8 +44,7 @@ class _AuthTextFieldState extends State<AuthTextField> {
             _iconColor = AppColors.primary;
           });
         } else {
-          if (AdaptiveTheme.of(context).theme ==
-              AdaptiveTheme.of(context).darkTheme) {
+          if (AdaptiveTheme.of(context).theme == AdaptiveTheme.of(context).darkTheme) {
             setState(() {
               _iconColor = AppColors.white;
             });
@@ -90,24 +89,21 @@ class _AuthTextFieldState extends State<AuthTextField> {
   @override
   Widget build(BuildContext context) {
     return TextField(
-      keyboardType:
-          widget.isPassword ? TextInputType.text : TextInputType.phone,
-      textInputAction:
-          widget.isPassword ? TextInputAction.done : TextInputAction.go,
+      keyboardType: widget.isPassword ? TextInputType.text : TextInputType.phone,
+      textInputAction: widget.isPassword ? TextInputAction.done : TextInputAction.go,
       focusNode: widget.focusNode,
       controller: _controller,
-      obscureText:widget.parolkoz==null? _isObscured:!_isObscured,
+      obscureText: widget.parolkoz == null ? _isObscured : !_isObscured,
       onChanged: widget.onChanged,
       maxLength: widget.isPassword ? 20 : 12,
       inputFormatters: [if (!widget.isPassword) maskFormatter],
       style: Theme.of(context)
           .textTheme
           .labelLarge
-          ?.copyWith(fontSize:15.sp,fontWeight: FontWeight.w600, letterSpacing: 0.2),
+          ?.copyWith(fontSize: 15.sp, fontWeight: FontWeight.w600, letterSpacing: 0.2),
       decoration: InputDecoration(
           counterText: "",
-          contentPadding:
-              EdgeInsets.only(left: 20.w, right: 20.w, top: 20.h, bottom: 20.h),
+          contentPadding: EdgeInsets.only(left: 20.w, right: 20.w, top: 20.h, bottom: 20.h),
           hintText: widget.hintText,
           hintStyle: Theme.of(context)
               .textTheme
@@ -117,24 +113,20 @@ class _AuthTextFieldState extends State<AuthTextField> {
               ? SizedBox(
                   width: 90.w,
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       IconButton(
                         onPressed: null,
                         icon: SvgPicture.asset(
                           widget.prefixIcon,
-                          colorFilter:
-                              ColorFilter.mode(_iconColor, BlendMode.srcIn),
+                          colorFilter: ColorFilter.mode(_iconColor, BlendMode.srcIn),
                           semanticsLabel: "A grey color mode",
                           width: 24.w,
                         ),
                       ),
                       Text(
                         "+998",
-                        style: Theme.of(context)
-                            .textTheme
-                            .labelLarge
-                            ?.copyWith(fontSize: 15.sp,fontWeight: FontWeight.w400, letterSpacing: 0.2),
+                        style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                            fontSize: 15.sp, fontWeight: FontWeight.w400, letterSpacing: 0.2),
                       )
                     ],
                   ),
@@ -150,7 +142,7 @@ class _AuthTextFieldState extends State<AuthTextField> {
               ? IconButton(
                   onPressed: () {
                     setState(() {
-                      _isObscured  =!_isObscured;
+                      _isObscured = !_isObscured;
                     });
                   },
                   icon: SvgPicture.asset(
@@ -167,8 +159,7 @@ class _AuthTextFieldState extends State<AuthTextField> {
           focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12.r),
               borderSide: BorderSide(width: 1.w, color: AppColors.primary)),
-          fillColor:
-              widget.focusNode.hasFocus ? AppColors.orangeTransparent : null,
+          fillColor: widget.focusNode.hasFocus ? AppColors.orangeTransparent : null,
           filled: true),
     );
   }

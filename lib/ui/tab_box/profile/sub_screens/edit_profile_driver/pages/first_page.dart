@@ -64,14 +64,10 @@ class _FirstPageState extends State<FirstPage> {
   String gender = "Male";
   ImagePicker picker = ImagePicker();
 
-  var phoneFormatter = MaskTextInputFormatter(
-      mask: '## ### ## ##',
-      filter: {"#": RegExp(r'[0-9]')},
-      type: MaskAutoCompletionType.lazy);
+  var phoneFormatter =
+      MaskTextInputFormatter(mask: '## ### ## ##', filter: {"#": RegExp(r'[0-9]')});
   var carNumber = MaskTextInputFormatter(
-      mask: '##*###**',
-      filter: {"#": RegExp(r'[0-9]'), "*": RegExp(r'[A-Z]')},
-      type: MaskAutoCompletionType.lazy);
+      mask: '##*###**', filter: {"#": RegExp(r'[0-9]'), "*": RegExp(r'[A-Z]')});
 
   var genders = ['Male', 'Female'];
   final FocusNode focusNode = FocusNode();
@@ -91,8 +87,7 @@ class _FirstPageState extends State<FirstPage> {
         24.ph,
         UserImage(
           onTap: () {
-            profileDialog(
-                picker: picker, context: context, valueChanged: (v) {});
+            profileDialog(picker: picker, context: context, valueChanged: (v) {});
           },
         ),
         24.ph,
@@ -100,15 +95,13 @@ class _FirstPageState extends State<FirstPage> {
           controller: fullNameController,
           focusNode: fullNameFocusNode,
           hintText: 'Full Name',
-          keyboardType: TextInputType.text,
-          textInputAction: TextInputAction.next,
           onChanged: (value) async {
-            context.read<DriverBloc>().updateDriverField(
-                fieldKey: DriverFieldKeys.fullName, value: value);
+            context
+                .read<DriverBloc>()
+                .updateDriverField(fieldKey: DriverFieldKeys.fullName, value: value);
 
             context.read<DriverBloc>().updateDriverField(
-                fieldKey: DriverFieldKeys.driverId,
-                value: FirebaseAuth.instance.currentUser!.uid);
+                fieldKey: DriverFieldKeys.driverId, value: FirebaseAuth.instance.currentUser!.uid);
 
             context.read<DriverBloc>().updateDriverField(
                 fieldKey: DriverFieldKeys.fcmToken,
@@ -147,8 +140,7 @@ class _FirstPageState extends State<FirstPage> {
             maskFormatter: phoneFormatter,
             onChanged: (value) {
               context.read<DriverBloc>().updateDriverField(
-                  fieldKey: DriverFieldKeys.phoneNumber,
-                  value: value.replaceAll(" ", ""));
+                  fieldKey: DriverFieldKeys.phoneNumber, value: value.replaceAll(" ", ""));
               if (value.length == 12) {
                 phoneFocusNode.unfocus();
               }
@@ -168,14 +160,11 @@ class _FirstPageState extends State<FirstPage> {
           child: DropdownButton<String>(
             isExpanded: true,
             underline: const SizedBox(),
-            dropdownColor:
-                getTheme(context) ? AppColors.dark2 : AppColors.greysCale,
+            dropdownColor: getTheme(context) ? AppColors.dark2 : AppColors.greysCale,
             icon: SvgPicture.asset(
-              AppIcons.getSvg(
-                  name: AppIcons.arrowDown2, iconType: IconType.bold),
+              AppIcons.getSvg(name: AppIcons.arrowDown2, iconType: IconType.bold),
               colorFilter: ColorFilter.mode(
-                  getTheme(context) ? AppColors.white : AppColors.c_900,
-                  BlendMode.srcIn),
+                  getTheme(context) ? AppColors.white : AppColors.c_900, BlendMode.srcIn),
             ),
             borderRadius: BorderRadius.circular(12.r),
             items: genders.map((String items) {
@@ -183,10 +172,8 @@ class _FirstPageState extends State<FirstPage> {
                 value: items,
                 child: Text(
                   items,
-                  style: AppTextStyle.bodyMediumSemibold.copyWith(
-                      color: getTheme(context)
-                          ? AppColors.white
-                          : AppColors.c_900),
+                  style: AppTextStyle.bodyMediumSemibold
+                      .copyWith(color: getTheme(context) ? AppColors.white : AppColors.c_900),
                 ),
               );
             }).toList(),
@@ -194,14 +181,14 @@ class _FirstPageState extends State<FirstPage> {
               setState(() {
                 gender = newValue!;
               });
-              context.read<DriverBloc>().updateDriverField(
-                  fieldKey: DriverFieldKeys.gender, value: newValue);
+              context
+                  .read<DriverBloc>()
+                  .updateDriverField(fieldKey: DriverFieldKeys.gender, value: newValue);
             },
             hint: Text(gender,
                 style: AppTextStyle.bodyMediumSemibold.copyWith(
-                    color: getTheme(context)
-                        ? AppColors.white
-                        : AppColors.c_900)), // Placeholder text
+                    color:
+                        getTheme(context) ? AppColors.white : AppColors.c_900)), // Placeholder text
           ),
         ),
         24.ph,
@@ -211,11 +198,10 @@ class _FirstPageState extends State<FirstPage> {
           hintText: 'About Driver',
           maxLength: 100,
           maxLines: 5,
-          keyboardType: TextInputType.text,
-          textInputAction: TextInputAction.next,
           onChanged: (value) {
-            context.read<DriverBloc>().updateDriverField(
-                fieldKey: DriverFieldKeys.aboutDriver, value: value);
+            context
+                .read<DriverBloc>()
+                .updateDriverField(fieldKey: DriverFieldKeys.aboutDriver, value: value);
           },
         ),
         24.ph,
@@ -250,12 +236,9 @@ class _FirstPageState extends State<FirstPage> {
           controller: telegramLinkController,
           focusNode: telegramFocusNode,
           hintText: 'Telegram username. Example:example_username',
-          keyboardType: TextInputType.text,
-          textInputAction: TextInputAction.next,
           onChanged: (value) {
             context.read<DriverBloc>().updateDriverField(
-                fieldKey: DriverFieldKeys.telegramLink,
-                value: "https//:t.me/$value");
+                fieldKey: DriverFieldKeys.telegramLink, value: "https//:t.me/$value");
           },
         ),
         24.ph
@@ -281,12 +264,10 @@ class _FirstPageState extends State<FirstPage> {
             onDateTimeChanged: (DateTime newDate) {
               if (newDate != selectedDate) {
                 setState(() {
-                  dateController.text =
-                      newDate.toLocal().toString().split(' ')[0];
+                  dateController.text = newDate.toLocal().toString().split(' ')[0];
                   selectedDate = newDate;
                   context.read<DriverBloc>().updateDriverField(
-                      fieldKey: DriverFieldKeys.birthDate,
-                      value: dateController.text);
+                      fieldKey: DriverFieldKeys.birthDate, value: dateController.text);
                   context.read<DriverBloc>().updateDriverField(
                       fieldKey: DriverFieldKeys.email,
                       value: FirebaseAuth.instance.currentUser!.email);

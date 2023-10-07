@@ -147,3 +147,8 @@ linter :
     - use_to_and_as_if_applicable # Encourages using `to` and `as` for type conversions when applicable.
     - valid_regexps # Encourages using valid regular expressions.
     - void_checks # Encourages performing checks for `void` return types in function calls.
+
+analyzer:
+  plugins:
+    - dart_code_metrics
+

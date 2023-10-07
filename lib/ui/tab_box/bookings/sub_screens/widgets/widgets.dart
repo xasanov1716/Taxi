@@ -152,7 +152,7 @@ class IconContainerWidget extends StatelessWidget {
 class NamePlaceholder extends StatelessWidget {
   final String name;
 
-  NamePlaceholder({required this.name});
+  const NamePlaceholder({super.key, required this.name});
 
   // Function to generate a random light color
   Color _generateRandomColor() {
@@ -177,7 +177,7 @@ class NamePlaceholder extends StatelessWidget {
       child: Center(
         child: Text(
           firstLetter,
-          style: TextStyle(
+          style: const TextStyle(
             color: Colors.white,
             fontSize: 20,
             fontWeight: FontWeight.bold,

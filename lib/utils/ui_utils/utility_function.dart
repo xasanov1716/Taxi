@@ -13,9 +13,9 @@ import 'package:taxi_app/ui/widgets/global_input.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 
-import '../colors/app_colors.dart';
-import '../size/screen_size.dart';
-import '../theme/get_theme.dart';
+import 'package:taxi_app/utils/colors/app_colors.dart';
+import 'package:taxi_app/utils/size/screen_size.dart';
+import 'package:taxi_app/utils/theme/get_theme.dart';
 
 void showBottomSheetDialog(
   BuildContext context,
@@ -139,8 +139,7 @@ IconButton getIcon(
         ),
         width: 24.w,
         colorFilter: ColorFilter.mode(
-            color ?? (getTheme(context) ? AppColors.white : AppColors.c_900),
-            BlendMode.srcIn),
+            color ?? (getTheme(context) ? AppColors.white : AppColors.c_900), BlendMode.srcIn),
       ),
     );
 
@@ -156,8 +155,8 @@ void addAddressDialog(
     builder: (BuildContext context) {
       return Container(
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.horizontal(
-                left: Radius.circular(40.r), right: Radius.circular(40.r))),
+            borderRadius:
+                BorderRadius.horizontal(left: Radius.circular(40.r), right: Radius.circular(40.r))),
         child: Padding(
           padding: EdgeInsets.all(24.w),
           child: SingleChildScrollView(
@@ -178,21 +177,19 @@ void addAddressDialog(
                   color: AppColors.c_200,
                 ),
                 24.ph,
-                BlocBuilder<AddressCubit, AddressState>(
-                    builder: (context, state) {
+                BlocBuilder<AddressCubit, AddressState>(builder: (context, state) {
                   if (state is AddressSuccessState) {
                     return Text(
                       state.address,
-                      style: Theme.of(context).textTheme.labelLarge!.copyWith(
-                          fontSize: 18.sp, fontWeight: FontWeight.w700),
+                      style: Theme.of(context)
+                          .textTheme
+                          .labelLarge!
+                          .copyWith(fontSize: 18.sp, fontWeight: FontWeight.w700),
                     );
                   }
                   return Text(
                     'Name Address',
-                    style: Theme.of(context)
-                        .textTheme
-                        .labelLarge!
-                        .copyWith(fontSize: 18),
+                    style: Theme.of(context).textTheme.labelLarge!.copyWith(fontSize: 18),
                   );
                 }),
                 16.ph,
@@ -217,8 +214,7 @@ void addAddressDialog(
                     child: SvgPicture.asset(
                       AppIcons.location,
                       colorFilter: ColorFilter.mode(
-                          getTheme(context) ? AppColors.white : AppColors.c_900,
-                          BlendMode.srcIn),
+                          getTheme(context) ? AppColors.white : AppColors.c_900, BlendMode.srcIn),
                     ),
                   ),
                 ),
@@ -227,7 +223,6 @@ void addAddressDialog(
                   title: 'Add Address',
                   onTap: onTap,
                   radius: 100.r,
-                  color: AppColors.primary,
                 ),
                 24.ph
               ],

@@ -17,8 +17,7 @@ class _BottomSheetScreenState extends State<BottomSheetScreen> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        systemOverlayStyle:
-            const SystemUiOverlayStyle(statusBarColor: Colors.transparent),
+        systemOverlayStyle: const SystemUiOverlayStyle(statusBarColor: Colors.transparent),
         backgroundColor: Colors.white,
         title: const Text(
           "Bottom Sheet",
@@ -30,18 +29,16 @@ class _BottomSheetScreenState extends State<BottomSheetScreen> {
         child: Container(
           width: 100.w,
           height: 100.h,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(100.r),
-              color: AppColors.primary),
+          decoration:
+              BoxDecoration(borderRadius: BorderRadius.circular(100.r), color: AppColors.primary),
           child: InkWell(
             borderRadius: BorderRadius.circular(16.r),
             onTap: () {
               moodSelectionDialog(context);
             },
             child: Container(
-                padding: EdgeInsets.only(
-                    left: 16.w, right: 20.w, top: 16.h, bottom: 16.h),
-                child: const Row(children: [])),
+                padding: EdgeInsets.only(left: 16.w, right: 20.w, top: 16.h, bottom: 16.h),
+                child: const Row()),
           ),
         ),
       ),
