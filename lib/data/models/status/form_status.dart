@@ -5,4 +5,5 @@ enum FormStatus {
   failure,
   unauthenticated,
   authenticated,
+  updated,
 }

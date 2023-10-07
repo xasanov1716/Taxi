@@ -19,7 +19,8 @@ class EditProfileClientScreen extends StatefulWidget {
   final bool navigateFromAuth;
 
   @override
-  State<EditProfileClientScreen> createState() => _EditProfileClientScreenState();
+  State<EditProfileClientScreen> createState() =>
+      _EditProfileClientScreenState();
 }
 
 class _EditProfileClientScreenState extends State<EditProfileClientScreen> {
@@ -50,30 +51,44 @@ class _EditProfileClientScreenState extends State<EditProfileClientScreen> {
                       context.read<UserBloc>().add(
                             UpdateCurrentUserEvent(
                               fieldKey: UserFieldKeys.phone,
-                              value: BlocProvider.of<AuthCubit>(context).state.phoneNumber,
+                              value: BlocProvider.of<AuthCubit>(context)
+                                  .state
+                                  .phoneNumber,
                             ),
                           );
                       context.read<UserBloc>().add(
                             UpdateCurrentUserEvent(
                               fieldKey: UserFieldKeys.password,
-                              value: BlocProvider.of<AuthCubit>(context).state.password,
+                              value: BlocProvider.of<AuthCubit>(context)
+                                  .state
+                                  .password,
                             ),
                           );
                     }
 
                     context.read<UserBloc>().add(UpdateCurrentUserEvent(
-                        fieldKey: UserFieldKeys.createdAt, value: DateTime.now().toString()));
+                        fieldKey: UserFieldKeys.createdAt,
+                        value: DateTime.now().toString()));
 
                     context.read<UserBloc>().add(UpdateCurrentUserEvent(
                         fieldKey: UserFieldKeys.userId,
-                        value: StorageRepository.getString(StorageKeys.userId)));
+                        value:
+                            StorageRepository.getString(StorageKeys.userId)));
 
                     if (context.read<UserBloc>().canRequest().isEmpty) {
-                      context.read<UserBloc>().add(AddUserEvent());
+                      if (StorageRepository.getBool(
+                          StorageKeys.isFromNavigate)) {
+                        context.read<UserBloc>().add(AddUserEvent());
+                      } else {
+                        context.read<UserBloc>().add(UpdateUserEvent());
+
+                        if (context.mounted) Navigator.pop(context);
+                      }
                     } else {
                       showSnackBar(
                           context: context,
-                          text: '${context.read<UserBloc>().canRequest()} is required');
+                          text:
+                              '${context.read<UserBloc>().canRequest()} is required');
                     }
                   },
                   radius: 100.r,
@@ -82,18 +97,24 @@ class _EditProfileClientScreenState extends State<EditProfileClientScreen> {
             ),
           );
         },
-        listener: (context, state) {
-          debugPrint('listener');
+        listener: (context, state) async {
           if (state.status == FormStatus.loading) {
             const Center(child: CircularProgressIndicator());
           }
           if (state.status == FormStatus.success) {
             if (widget.navigateFromAuth) {
-              Navigator.pushReplacementNamed(context, RouteNames.tabBox);
-            } else {
-              Navigator.pop(context);
+              await Navigator.pushReplacementNamed(context, RouteNames.tabBox);
+              StorageRepository.putBool(StorageKeys.isFromNavigate, false);
+              if (context.mounted) {
+                context.read<UserBloc>().clearUserModelState();
+              }
             }
           }
+          // if (!widget.navigateFromAuth) {
+          //   if (state.status == FormStatus.updated) {
+          //     if (context.mounted) Navigator.pop(context);
+          //   }
+          // }
         },
       ),
     );
