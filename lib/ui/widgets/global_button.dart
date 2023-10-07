@@ -42,7 +42,7 @@ class GlobalButton extends StatelessWidget {
                   spreadRadius: -7,
                   offset: const Offset(0, 6))
             ],
-            border: Border.all(width: 1, color: borderColor)),
+            border: Border.all(color: borderColor)),
         child: Material(
           borderRadius: BorderRadius.circular(radius),
           color: color,
@@ -53,9 +53,7 @@ class GlobalButton extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  leftIcon.isEmpty
-                      ? const Text("")
-                      : SvgPicture.asset(leftIcon),
+                  leftIcon.isEmpty ? const Text("") : SvgPicture.asset(leftIcon),
                   SizedBox(width: 16.w),
                   Padding(
                     padding: const EdgeInsets.all(16),
@@ -72,9 +70,7 @@ class GlobalButton extends StatelessWidget {
                     ),
                   ),
                   SizedBox(width: 16.w),
-                  rightIcon.isEmpty
-                      ? const Text("")
-                      : SvgPicture.asset(rightIcon),
+                  rightIcon.isEmpty ? const Text("") : SvgPicture.asset(rightIcon),
                 ],
               ),
             ),

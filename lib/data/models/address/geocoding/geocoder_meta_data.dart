@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'address_details.dart';
+import 'package:taxi_app/data/models/address/geocoding/address_details.dart';
 part 'geocoder_meta_data.g.dart';
 
 @JsonSerializable(explicitToJson: true)
@@ -18,7 +18,6 @@ class GeocoderMetaData {
       required this.text,
       required this.kind,
       required this.addressDetails});
-  factory GeocoderMetaData.fromJson(Map<String, dynamic> json) =>
-      _$GeocoderMetaDataFromJson(json);
+  factory GeocoderMetaData.fromJson(Map<String, dynamic> json) => _$GeocoderMetaDataFromJson(json);
   Map<String, dynamic> toJson() => _$GeocoderMetaDataToJson(this);
 }

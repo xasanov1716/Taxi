@@ -6,8 +6,9 @@ class ServiceLocator {
   static final GetIt _locator = GetIt.instance;
 
   static void setup() {
-    _locator.registerLazySingleton(() => DBHelper.instance);
-    _locator.registerLazySingleton(() => ApiService());
+    _locator
+      ..registerLazySingleton(() => DBHelper.instance)
+      ..registerLazySingleton(ApiService.new);
   }
 
   // static T get<T>() => _locator.get<T>();

@@ -14,7 +14,7 @@ import 'package:taxi_app/ui/tab_box/profile/profile_screen.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 
-import 'wallet/wallet_screen.dart';
+import 'package:taxi_app/ui/tab_box/wallet/wallet_screen.dart';
 
 class TabBox extends StatefulWidget {
   const TabBox({super.key});

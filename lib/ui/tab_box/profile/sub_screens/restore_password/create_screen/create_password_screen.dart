@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:taxi_app/data/models/icon/icon_type.dart';
-import 'package:taxi_app/ui/tab_box/profile/sub_screens/restore_password/create_screen/widgets/restorePasswordSuccess.dart';
+import 'package:taxi_app/ui/tab_box/profile/sub_screens/restore_password/create_screen/widgets/restore_password_success.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/restore_password/widgets/checkbox.dart';
 import 'package:taxi_app/ui/widgets/global_appbar.dart';
 import 'package:taxi_app/ui/widgets/global_button.dart';
@@ -13,7 +13,7 @@ import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
-import 'package:taxi_app/utils/ui_utils/utilitiy_function.dart';
+import 'package:taxi_app/utils/ui_utils/utility_function.dart';
 
 class CreatePasswordScreen extends StatefulWidget {
   const CreatePasswordScreen({super.key});
@@ -43,13 +43,11 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
         title: "Create New Password",
       ),
       body: ListView(
-        padding: EdgeInsets.only(
-            left: width * 24 / figmaWidth, right: width * 24 / figmaWidth),
+        padding: EdgeInsets.only(left: width * 24 / figmaWidth, right: width * 24 / figmaWidth),
         children: [
           70.ph,
           Image.asset(
-            AdaptiveTheme.of(context).theme ==
-                    AdaptiveTheme.of(context).darkTheme
+            AdaptiveTheme.of(context).theme == AdaptiveTheme.of(context).darkTheme
                 ? AppIcons.createNewPasswordDarkImage
                 : AppIcons.successPassword,
             height: height * (250 / figmaHeight),
@@ -62,14 +60,13 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
           24.ph,
           GlobalTextField(
             focusNode: passwordFocusNode,
-            suffixIcon: getIcon(isPressed ? AppIcons.show : AppIcons.hide,
-                context: context, onTap: () {
+            suffixIcon:
+                getIcon(isPressed ? AppIcons.show : AppIcons.hide, context: context, onTap: () {
               isPressed = !isPressed;
             }),
             hintText: 'Password',
             obscureText: !isPressed,
             keyboardType: TextInputType.visiblePassword,
-            textInputAction: TextInputAction.next,
             prefixIcon: Padding(
               padding: EdgeInsets.only(left: 15.w, right: 12.w),
               child: SvgPicture.asset(
@@ -78,20 +75,18 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
                   iconType: IconType.bold,
                 ),
                 colorFilter: ColorFilter.mode(
-                    getTheme(context) ? AppColors.white : AppColors.c_900,
-                    BlendMode.srcIn),
+                    getTheme(context) ? AppColors.white : AppColors.c_900, BlendMode.srcIn),
               ),
             ),
-            caption: '',
             controller: passwordController,
           ),
           24.ph,
           GlobalTextField(
             focusNode: repeatFocusNode,
-            suffixIcon: getIcon(isPressed ? AppIcons.show : AppIcons.hide,
-                context: context, onTap: () {
-                  isPressed = !isPressed;
-                }),
+            suffixIcon:
+                getIcon(isPressed ? AppIcons.show : AppIcons.hide, context: context, onTap: () {
+              isPressed = !isPressed;
+            }),
             hintText: 'Repeat password',
             obscureText: !isPressed2,
             keyboardType: TextInputType.visiblePassword,
@@ -101,11 +96,9 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
               child: SvgPicture.asset(
                 AppIcons.getSvg(name: AppIcons.lock, iconType: IconType.bold),
                 colorFilter: ColorFilter.mode(
-                    getTheme(context) ? AppColors.white : AppColors.c_900,
-                    BlendMode.srcIn),
+                    getTheme(context) ? AppColors.white : AppColors.c_900, BlendMode.srcIn),
               ),
             ),
-            caption: '',
             controller: repeatPasswordController,
           ),
           24.ph,
@@ -113,16 +106,13 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const ForgetPasswordCheckbox(),
-              Text("Remember me",
-                  style: Theme.of(context).textTheme.labelLarge!.copyWith()),
+              Text("Remember me", style: Theme.of(context).textTheme.labelLarge!.copyWith()),
             ],
           ),
           71.ph,
           GlobalButton(
-            color: AppColors.primary,
             title: 'Continue',
             radius: 50.r,
-            textColor: AppColors.dark3,
             onTap: () {
               restorePasswordSuccess(context);
             },

@@ -70,9 +70,7 @@ class _RequestTextFieldState extends State<RequestTextField> {
       maxLength: widget.maxLength,
       textCapitalization: widget.textCapitalization,
       focusNode: widget.focusNode ?? internalFocusNode,
-      inputFormatters:
-          widget.textFormatter != null ? [widget.textFormatter!] : [],
-      obscureText: false,
+      inputFormatters: widget.textFormatter != null ? [widget.textFormatter!] : [],
       decoration: InputDecoration(
         hintStyle: TextStyle(
           fontFamily: "Urbanist",
@@ -84,25 +82,21 @@ class _RequestTextFieldState extends State<RequestTextField> {
         contentPadding: widget.contentPadding,
         hintText: widget.hintText,
         enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(
-              color:
-                  getTheme(context) ? AppColors.dark3 : const Color(0xFFFAFAFA),
-              width: 1),
+          borderSide:
+              BorderSide(color: getTheme(context) ? AppColors.dark3 : const Color(0xFFFAFAFA)),
           borderRadius: BorderRadius.circular(10),
         ),
         focusedBorder: OutlineInputBorder(
-          borderSide: const BorderSide(color: AppColors.primary, width: 1),
+          borderSide: const BorderSide(color: AppColors.primary),
           borderRadius: BorderRadius.circular(10),
         ),
         errorBorder: OutlineInputBorder(
-          borderSide: const BorderSide(color: Colors.red, width: 1),
+          borderSide: const BorderSide(color: Colors.red),
           borderRadius: BorderRadius.circular(10),
         ),
         border: OutlineInputBorder(
-          borderSide: BorderSide(
-              color:
-                  getTheme(context) ? const Color(0xFFFAFAFA) : AppColors.dark2,
-              width: 1),
+          borderSide:
+              BorderSide(color: getTheme(context) ? const Color(0xFFFAFAFA) : AppColors.dark2),
           borderRadius: BorderRadius.circular(10),
         ),
         fillColor: getTheme(context)

@@ -25,7 +25,6 @@ class GlobalNotificationContainer extends StatelessWidget {
           BoxShadow(
             offset: Offset(0, 4),
             blurRadius: 60,
-            spreadRadius: 0,
             color: Color.fromRGBO(4, 6, 15, 0.05),
           ),
         ],

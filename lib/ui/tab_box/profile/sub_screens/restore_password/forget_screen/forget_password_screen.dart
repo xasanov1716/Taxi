@@ -37,16 +37,14 @@ class _ForgotPassWordState extends State<ForgotPassWord> {
                 children: [
                   33.ph,
                   Image.asset(
-                    AdaptiveTheme.of(context).theme ==
-                            AdaptiveTheme.of(context).darkTheme
+                    AdaptiveTheme.of(context).theme == AdaptiveTheme.of(context).darkTheme
                         ? AppIcons.forgotPasswordDarkImage
                         : AppIcons.enterPassword,
                     height: height * 0.285,
                     width: width * 0.64,
                   ),
                   24.ph,
-                  Text(
-                      'Select which contact details should we use to reset your password',
+                  Text('Select which contact details should we use to reset your password',
                       style: Theme.of(context)
                           .textTheme
                           .labelLarge!
@@ -75,18 +73,14 @@ class _ForgotPassWordState extends State<ForgotPassWord> {
                     },
                     pressed: !pressed,
                   ),
-
                 ],
               ),
             ),
             24.ph,
             GlobalButton(
               color: AppColors.disabledButton,
-              leftIcon: "",
-              rightIcon: "",
               title: 'Continue',
               radius: 29.r,
-              textColor: AppColors.dark3,
               onTap: () {
                 Navigator.pushNamed(context, RouteNames.conFirmCodeScreen);
               },

@@ -29,16 +29,15 @@ class _SelectTransportScreenState extends State<SelectTransportScreen> {
         },
         title: "Select Car",
       ),
-
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Expanded(
               child: ListView(
-                physics: const BouncingScrollPhysics(),
-            children:const [
-               FirstHalfOfTransport(),
-               SecondHalfOfTransportScreen(),
+            physics: const BouncingScrollPhysics(),
+            children: const [
+              FirstHalfOfTransport(),
+              SecondHalfOfTransportScreen(),
             ],
           )),
           Container(
@@ -50,7 +49,7 @@ class _SelectTransportScreenState extends State<SelectTransportScreen> {
                 topRight: Radius.circular(24.r),
                 topLeft: Radius.circular(24.r),
               ),
-              border: Border.all(color:getTheme(context)?AppColors.dark3: AppColors.c_200, width: 1),
+              border: Border.all(color: getTheme(context) ? AppColors.dark3 : AppColors.c_200),
             ),
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -59,8 +58,7 @@ class _SelectTransportScreenState extends State<SelectTransportScreen> {
                 Container(
                   padding: EdgeInsets.all(20.r),
                   decoration: BoxDecoration(
-                    color:
-                        getTheme(context) ? AppColors.dark2 : AppColors.c_100,
+                    color: getTheme(context) ? AppColors.dark2 : AppColors.c_100,
                     borderRadius: BorderRadius.circular(20.r),
                   ),
                   child: Row(
@@ -77,7 +75,6 @@ class _SelectTransportScreenState extends State<SelectTransportScreen> {
                   child: GlobalButton(
                     title: 'Continue',
                     radius: 100.r,
-                    color: AppColors.primary,
                     onTap: () {
                       Navigator.pushNamed(context, RouteNames.paymentMethods);
                     },

@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -40,7 +38,6 @@ class _GetLocationScreenState extends State<GetLocationScreen> {
         child: Stack(
           children: [
             GoogleMap(
-              mapType: MapType.normal,
               initialCameraPosition: const CameraPosition(
                 target: LatLng(37.7749, -122.4194),
                 zoom: 12.0,
@@ -61,13 +58,11 @@ class _GetLocationScreenState extends State<GetLocationScreen> {
                 height: 118.h,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(24.r),
-                      topRight: Radius.circular(24.r)),
+                      topLeft: Radius.circular(24.r), topRight: Radius.circular(24.r)),
                   color: Theme.of(context).scaffoldBackgroundColor,
                 ),
                 child: GlobalButton(
                   padding: EdgeInsets.all(width / 16),
-                  color: AppColors.primary,
                   title: 'Continue',
                   radius: 100.r,
                   textColor: AppColors.black,
@@ -84,10 +79,7 @@ class _GetLocationScreenState extends State<GetLocationScreen> {
   }
 
   Future<void> _applyCustomMapStyle() async {
-    try {
-      String style =
-          await rootBundle.loadString('assets/styles/map_style.json');
-      mapController.setMapStyle(style);
-    } catch (e) {}
+    String style = await rootBundle.loadString('assets/styles/map_style.json');
+    mapController.setMapStyle(style);
   }
 }

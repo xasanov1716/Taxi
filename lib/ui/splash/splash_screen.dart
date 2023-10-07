@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 import 'package:taxi_app/blocs/driver_bloc/driver_bloc.dart';
@@ -8,7 +7,7 @@ import 'package:taxi_app/data/models/driver/driver_fields.dart';
 import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 
-import '../../utils/size/screen_size.dart';
+import 'package:taxi_app/utils/size/screen_size.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -26,10 +25,6 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   void initState() {
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: [
-      SystemUiOverlay.top,
-      SystemUiOverlay.bottom,
-    ]);
     _init(context);
     super.initState();
   }
@@ -72,7 +67,7 @@ class _SplashScreenState extends State<SplashScreen> {
             context.read<DriverBloc>().updateDriverField(
                 fieldKey: DriverFieldKeys.currentLocation,
                 value:
-                    "Lat: ${context.read<LocationBloc>().latLong.latitude.toString()}, Long:${context.read<LocationBloc>().latLong.longitude.toString()}");
+                    "Lat: ${context.read<LocationBloc>().latLong.latitude}, Long:${context.read<LocationBloc>().latLong.longitude}");
             context.read<DriverBloc>().updateDriverField(
                 fieldKey: DriverFieldKeys.latitude,
                 value: context.read<LocationBloc>().latLong.latitude);

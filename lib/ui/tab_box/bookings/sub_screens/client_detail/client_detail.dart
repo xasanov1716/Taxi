@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:taxi_app/cubits/get_client_informations_cubit/get_client_info_cubit.dart';
-import 'package:taxi_app/data/models/request_model/request_model.dart';
 import 'package:taxi_app/data/models/user/user_model.dart';
 import 'package:taxi_app/ui/tab_box/bookings/sub_screens/widgets/widgets.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
@@ -13,11 +12,12 @@ import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-class UserCard extends StatelessWidget {
-  final RequestModel requestModel;
-
-  const UserCard({super.key, required this.requestModel});
+class ClientDetail extends StatelessWidget {
+  const ClientDetail({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +54,11 @@ class UserCard extends StatelessWidget {
                     children: [
                       IconContainerWidget(icon: AppIcons.message, onTap: () {}),
                       24.pw,
-                      IconContainerWidget(icon: AppIcons.call, onTap: () {}),
+                      IconContainerWidget(
+                          icon: AppIcons.call,
+                          onTap: () {
+                            launchUrl(Uri(scheme: 'tel', path: state.user.phone));
+                          }),
                     ],
                   ),
                 )

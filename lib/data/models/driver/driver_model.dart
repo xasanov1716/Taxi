@@ -165,7 +165,7 @@ class DriverModel {
         "phone_number": phoneNumber,
         "telegram_link": telegramLink,
         "email": email,
-        "gender": gender,
+        "gender": gender.toLowerCase(),
         "image_url": imageUrl,
         "current_location": currentLocation,
         "from_to_text": fromToText,

@@ -10,16 +10,12 @@ import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/ui/auth/register/ask_role_dialog.dart';
 import 'package:taxi_app/ui/auth/widgets/auth_navigator_button.dart';
 import 'package:taxi_app/ui/auth/widgets/auth_text_field.dart';
-import 'package:taxi_app/ui/auth/widgets/custom_auth_divider.dart';
-import 'package:taxi_app/ui/auth/widgets/social_auth_buttons.dart';
 import 'package:taxi_app/ui/widgets/global_appbar.dart';
 import 'package:taxi_app/ui/widgets/global_button.dart';
-import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/constants/storage_keys.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/ui_utils/error_message_dialog.dart';
-import '../widgets/remember_me.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({Key? key}) : super(key: key);
@@ -47,8 +43,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         builder: (context, state) {
           return Center(
             child: SingleChildScrollView(
-              padding: EdgeInsets.only(
-                  bottom: 48.h, left: 24.w, right: 24.w, top: 24.h),
+              padding: EdgeInsets.only(bottom: 48.h, left: 24.w, right: 24.w, top: 24.h),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
@@ -66,9 +61,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         onChanged: (v) {
                           if (v.length == 12) {
                             phoneFocus.unfocus();
-                            context
-                                .read<AuthCubit>()
-                                .updatePhone(v.replaceAll(" ", ""));
+                            context.read<AuthCubit>().updatePhone(v.replaceAll(" ", ""));
                             FocusScope.of(context).requestFocus(passwordFocus);
                           }
                         },
@@ -81,9 +74,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         prefixIcon: AppIcons.lock,
                         isPassword: true,
                         onChanged: (v) {
-                          context
-                              .read<AuthCubit>()
-                              .updatePassword(v.replaceAll(" ", ""));
+                          context.read<AuthCubit>().updatePassword(v.replaceAll(" ", ""));
                         },
                       ),
                       // 20.ph,
@@ -98,13 +89,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       // ),
                       20.ph,
                       GlobalButton(
-                        color: AppColors.primary,
                         title: tr('sign_up'),
                         radius: 100,
-                        textColor: AppColors.dark3,
                         onTap: () {
-                          String canAuthText =
-                              context.read<AuthCubit>().canAuthenticate();
+                          String canAuthText = context.read<AuthCubit>().canAuthenticate();
                           if (canAuthText.isEmpty) {
                             context.read<AuthCubit>().signUp(context);
                           } else {
@@ -127,7 +115,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   // ),
                   60.ph,
                   AuthNavigatorButton(
-                    title:tr("already_have_an_account?"),
+                    title: "${tr("already_have_an_account")}?",
                     onTapTitle: tr('sign_in'),
                     onTap: () {
                       Navigator.pushReplacementNamed(context, RouteNames.login);

@@ -5,7 +5,7 @@ import 'package:taxi_app/ui/tab_box/inbox/widgets/inbox_call_screen.dart';
 import 'package:taxi_app/ui/tab_box/inbox/widgets/inbox_chats_screen.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
-import 'package:taxi_app/utils/ui_utils/utilitiy_function.dart';
+import 'package:taxi_app/utils/ui_utils/utility_function.dart';
 
 class InboxScreen extends StatelessWidget {
   const InboxScreen({super.key});
@@ -13,7 +13,6 @@ class InboxScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      initialIndex: 0,
       length: 2,
       child: Scaffold(
         appBar: AppBar(
@@ -43,9 +42,7 @@ class InboxScreen extends StatelessWidget {
             12.pw,
           ],
           bottom: const TabBar(
-            indicator: null,
             tabAlignment: TabAlignment.fill,
-            isScrollable: false,
             tabs: <Widget>[
               Tab(text: "Chats"),
               Tab(text: "Calls"),

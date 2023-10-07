@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
-import 'package:taxi_app/utils/ui_utils/utilitiy_function.dart';
+import 'package:taxi_app/utils/ui_utils/utility_function.dart';
 
 class BookingAppBar extends StatelessWidget implements PreferredSize {
   const BookingAppBar({
@@ -16,7 +16,6 @@ class BookingAppBar extends StatelessWidget implements PreferredSize {
   final VoidCallback? moreOnTap;
   final String title;
 
-
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -28,14 +27,13 @@ class BookingAppBar extends StatelessWidget implements PreferredSize {
           height: 32.w,
         ),
       ),
-      title:  Text(title),
+      title: Text(title),
       actions: [
         getIcon(AppIcons.search, context: context, onTap: searchOnTap),
-        getIcon(AppIcons.moreCircle, context: context, onTap:moreOnTap),
+        getIcon(AppIcons.moreCircle, context: context, onTap: moreOnTap),
         24.pw,
       ],
       bottom: const TabBar(
-        indicator: null,
         isScrollable: true,
         tabs: <Widget>[
           Tab(text: "Active Now"),
@@ -50,8 +48,5 @@ class BookingAppBar extends StatelessWidget implements PreferredSize {
   Widget get child => throw UnimplementedError();
 
   @override
-
-  Size get preferredSize => Size(double.infinity,125.h );
-
-
+  Size get preferredSize => Size(double.infinity, 125.h);
 }

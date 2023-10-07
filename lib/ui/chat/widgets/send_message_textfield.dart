@@ -71,7 +71,6 @@ class _SendMessageTextFieldState extends State<SendMessageTextField> {
               keyboardType: TextInputType.multiline,
               textInputAction: TextInputAction.done,
               maxLines: null,
-              minLines: null,
               expands: true,
               focusNode: focusNode,
               onChanged: widget.onChanged,
@@ -91,33 +90,25 @@ class _SendMessageTextFieldState extends State<SendMessageTextField> {
                   icon: SvgPicture.asset(
                     AppIcons.image2,
                     width: 20.w,
-                    colorFilter: const ColorFilter.mode(
-                        AppColors.c_500, BlendMode.srcIn),
+                    colorFilter: const ColorFilter.mode(AppColors.c_500, BlendMode.srcIn),
                   ),
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(
-                      color: getTheme(context)
-                          ? AppColors.dark3
-                          : const Color(0xFFFAFAFA),
-                      width: 1),
+                      color: getTheme(context) ? AppColors.dark3 : const Color(0xFFFAFAFA)),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 focusedBorder: OutlineInputBorder(
-                  borderSide:
-                      const BorderSide(color: AppColors.primary, width: 1),
+                  borderSide: const BorderSide(color: AppColors.primary),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 errorBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(color: Colors.red, width: 1),
+                  borderSide: const BorderSide(color: Colors.red),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 border: OutlineInputBorder(
                   borderSide: BorderSide(
-                      color: getTheme(context)
-                          ? const Color(0xFFFAFAFA)
-                          : AppColors.dark2,
-                      width: 1),
+                      color: getTheme(context) ? const Color(0xFFFAFAFA) : AppColors.dark2),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 fillColor: getTheme(context)
@@ -133,7 +124,7 @@ class _SendMessageTextFieldState extends State<SendMessageTextField> {
           ),
           12.pw,
           widget.value.isEmpty
-              ? AudioController()
+              ? const AudioController()
               : InkWell(
                   borderRadius: BorderRadius.circular(100.r),
                   onTap: widget.onSendTap,
@@ -144,8 +135,7 @@ class _SendMessageTextFieldState extends State<SendMessageTextField> {
                       gradient: AppColors.gradientOrangeYellow,
                     ),
                     child: SvgPicture.asset(
-                      AppIcons.getSvg(
-                          name: AppIcons.send, iconType: IconType.bold),
+                      AppIcons.getSvg(name: AppIcons.send, iconType: IconType.bold),
                     ),
                   ),
                 ),

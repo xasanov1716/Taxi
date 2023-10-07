@@ -25,15 +25,15 @@ class _RequestViewState extends State<RequestView> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: (){
-        Navigator.push(context, MaterialPageRoute(builder: (context){
-          return SelectedRequestScreen(fromId: widget.modelClient!.fromId, toId: widget.modelClient!.toId);
+      onTap: () {
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
+          return SelectedRequestScreen(
+              fromId: widget.modelClient!.fromId, toId: widget.modelClient!.toId);
         }));
       },
       child: AnimatedContainer(
         margin: EdgeInsets.symmetric(horizontal: 24.w),
         duration: const Duration(milliseconds: 700),
-        curve: Curves.linear,
         padding: EdgeInsets.all(24.w),
         child: Column(
           children: [
@@ -53,17 +53,13 @@ class _RequestViewState extends State<RequestView> {
                       style: Theme.of(context).textTheme.labelLarge?.copyWith(
                           fontWeight: FontWeight.w500,
                           letterSpacing: 0.2,
-                          color: getTheme(context)
-                              ? AppColors.c_300
-                              : AppColors.c_700),
+                          color: getTheme(context) ? AppColors.c_300 : AppColors.c_700),
                     )
                   ],
                 ),
                 const Spacer(),
                 const Column(
-                  children: [
-                    BookingStatusButton(status: BookingStatus.active)
-                  ],
+                  children: [BookingStatusButton(status: BookingStatus.active)],
                 )
               ],
             ),
@@ -71,21 +67,21 @@ class _RequestViewState extends State<RequestView> {
             const Divider(),
             isExpanded
                 ? LocationItem(
-              modelClient: widget.modelClient,
-              expandTap: () {
-                setState(() {
-                  isExpanded = false;
-                });
-              },
-              mainButtonTap: () {},
-            )
+                    modelClient: widget.modelClient,
+                    expandTap: () {
+                      setState(() {
+                        isExpanded = false;
+                      });
+                    },
+                    mainButtonTap: () {},
+                  )
                 : BookingExpanderButton(
-                isExpanded: isExpanded,
-                expandTap: () {
-                  setState(() {
-                    isExpanded = true;
-                  });
-                })
+                    isExpanded: isExpanded,
+                    expandTap: () {
+                      setState(() {
+                        isExpanded = true;
+                      });
+                    })
           ],
         ),
       ),

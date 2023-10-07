@@ -6,18 +6,20 @@ import 'package:flutter/material.dart';
 part 'code_input_state.dart';
 
 class CodeInputCubit extends Cubit<CodeInputState> {
-  late Timer _countdownTimer;
   final List<FocusNode> pinFocusNodes = List.generate(4, (_) => FocusNode());
   final List<TextEditingController> pinControllers =
       List.generate(4, (_) => TextEditingController());
-  int remainingTime = 60;
 
-  CodeInputCubit() : super(CodeInputInitial()){
+  int remainingTime = 60;
+  Timer? _countdownTimer;
+  BuildContext? _context;
+
+  CodeInputCubit() : super(CodeInputInitial()) {
     startCountdown();
   }
 
   void startCountdown() {
-    _countdownTimer = Timer.periodic(Duration(seconds: 1), (timer) {
+    _countdownTimer = Timer.periodic(const Duration(seconds: 1), (timer) {
       if (remainingTime > 0) {
         remainingTime--;
         emit(CodeInputCountdown(remainingTime));
@@ -28,7 +30,6 @@ class CodeInputCubit extends Cubit<CodeInputState> {
   }
 
   void resendCode() {
-
     remainingTime = 60;
     emit(CodeInputCountdown(remainingTime));
     startCountdown();
@@ -36,7 +37,8 @@ class CodeInputCubit extends Cubit<CodeInputState> {
 
   @override
   Future<void> close() {
-    _countdownTimer.cancel();
+    _countdownTimer?.cancel();
+    disposeControllersAndFocusNodes();
     return super.close();
   }
 
@@ -50,22 +52,23 @@ class CodeInputCubit extends Cubit<CodeInputState> {
   }
 
   void handleCodeInput(int index, String value) {
-    if (value.isEmpty) {
-      pinControllers[index].clear();
-      if (index > 0) {
-        FocusScope.of(_context!).requestFocus(pinFocusNodes[index - 1]);
-      }
-    } else {
-      if (index == 3) {
-        pinFocusNodes[index].unfocus();
+    if (_context != null) {
+      if (value.isEmpty) {
+        pinControllers[index].clear();
+        if (index > 0) {
+          FocusScope.of(_context!).requestFocus(pinFocusNodes[index - 1]);
+        }
       } else {
-        FocusScope.of(_context!).requestFocus(pinFocusNodes[(index + 1) % 4]);
+        if (index == 3) {
+          pinFocusNodes[index].unfocus();
+        } else {
+          FocusScope.of(_context!).requestFocus(pinFocusNodes[(index + 1) % 4]);
+        }
       }
     }
   }
 
-  BuildContext? _context;
-
+  // Regular setter method for _context
   void setContext(BuildContext context) {
     _context = context;
   }

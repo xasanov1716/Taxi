@@ -9,11 +9,7 @@ import 'package:taxi_app/data/local/storage_repository/storage_repository.dart';
 import 'package:taxi_app/cubits/auth_cubit/auth_cubit.dart';
 import 'package:taxi_app/data/models/status/form_status.dart';
 import 'package:taxi_app/ui/app_routes.dart';
-import 'package:taxi_app/ui/auth/login/widgets/forgot_password_button.dart';
-import 'package:taxi_app/ui/auth/widgets/social_auth_buttons.dart';
 import 'package:taxi_app/ui/auth/widgets/auth_navigator_button.dart';
-import 'package:taxi_app/ui/auth/widgets/custom_auth_divider.dart';
-import 'package:taxi_app/ui/auth/widgets/remember_me.dart';
 import 'package:taxi_app/ui/widgets/global_appbar.dart';
 import 'package:taxi_app/utils/constants/storage_keys.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
@@ -21,9 +17,8 @@ import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/ui_utils/error_message_dialog.dart';
 
-import '../../../utils/colors/app_colors.dart';
-import '../../widgets/global_button.dart';
-import '../widgets/auth_text_field.dart';
+import 'package:taxi_app/ui/widgets/global_button.dart';
+import 'package:taxi_app/ui/auth/widgets/auth_text_field.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -45,7 +40,7 @@ class _LoginScreenState extends State<LoginScreen> {
           onTap: () {
             Navigator.pop(context);
           },
-          title:tr( "login_page"),
+          title: tr("login_page"),
         ),
         body: BlocConsumer<AuthCubit, AuthState>(
           builder: (context, state) {
@@ -70,9 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     onChanged: (v) {
                       if (v.length == 12) {
                         phoneFocus.unfocus();
-                        context
-                            .read<AuthCubit>()
-                            .updatePhone(v.replaceAll(' ', ''));
+                        context.read<AuthCubit>().updatePhone(v.replaceAll(' ', ''));
                         FocusScope.of(context).requestFocus(passwordFocus);
                       }
                     },
@@ -80,14 +73,12 @@ class _LoginScreenState extends State<LoginScreen> {
                   20.ph,
                   AuthTextField(
                     focusNode: passwordFocus,
-                    hintText:tr("password"),
+                    hintText: tr("password"),
                     parolkoz: ' ',
                     prefixIcon: AppIcons.lock,
                     isPassword: true,
                     onChanged: (v) {
-                      context
-                          .read<AuthCubit>()
-                          .updatePassword(v.replaceAll(" ", ""));
+                      context.read<AuthCubit>().updatePassword(v.replaceAll(" ", ""));
                     },
                   ),
                   // 24.ph,
@@ -102,14 +93,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   24.ph,
                   const Spacer(),
                   GlobalButton(
-                      color: AppColors.primary,
                       radius: 100.r,
-                      textColor: AppColors.dark3,
                       title: tr("sign_in"),
                       onTap: () async {
                         if (context.mounted) {
-                          String canAuthText =
-                              context.read<AuthCubit>().canAuthenticate();
+                          String canAuthText = context.read<AuthCubit>().canAuthenticate();
                           if (canAuthText.isEmpty) {
                             context.read<AuthCubit>().logIn(context);
                           } else {
@@ -134,11 +122,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   //  25.ph,
 
                   AuthNavigatorButton(
-                    title: tr("don't_have_an_account?"),
+                    title: "${tr("dont_have_an_account")}?",
                     onTapTitle: tr("create_your_account"),
                     onTap: () {
-                      Navigator.pushReplacementNamed(
-                          context, RouteNames.signUp);
+                      Navigator.pushReplacementNamed(context, RouteNames.signUp);
                     },
                   )
                 ],
@@ -158,13 +145,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 }
 
                 if (context.mounted) {
-                  Navigator.pushNamedAndRemoveUntil(
-                      context, RouteNames.tabBox, (route) => false);
+                  Navigator.pushNamedAndRemoveUntil(context, RouteNames.tabBox, (route) => false);
                 }
               }
               if (state.status == FormStatus.failure && context.mounted) {
-                showErrorMessage(
-                    message: state.statusMessage, context: context);
+                showErrorMessage(message: state.statusMessage, context: context);
               }
             }
           },

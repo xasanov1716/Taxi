@@ -10,6 +10,7 @@ import 'package:taxi_app/ui/tab_box/bookings/requests_view/cancelled_request/can
 import 'package:taxi_app/ui/tab_box/bookings/requests_view/completed_request/completed_driver_request.dart';
 import 'package:taxi_app/ui/tab_box/bookings/requests_view/completed_request/completed_request_view.dart';
 import 'package:taxi_app/ui/tab_box/bookings/widgets/booking_appbar.dart';
+import 'package:taxi_app/ui/tab_box/bookings/widgets/empty.dart';
 import 'package:taxi_app/utils/constants/storage_keys.dart';
 
 class BookingsScreen extends StatefulWidget {
@@ -24,7 +25,6 @@ class _BookingsScreenState extends State<BookingsScreen> {
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 3,
-      initialIndex: 0,
       child: Scaffold(
         appBar: BookingAppBar(
           title: "My bookings",
@@ -34,8 +34,7 @@ class _BookingsScreenState extends State<BookingsScreen> {
         body: StorageRepository.getString(StorageKeys.userRole) != "client"
             ? StreamBuilder<List<RequestModel>>(
                 stream: context.read<RequestRepo>().getDriverRequestId(),
-                builder: (BuildContext context,
-                    AsyncSnapshot<List<RequestModel>> snapshot) {
+                builder: (BuildContext context, AsyncSnapshot<List<RequestModel>> snapshot) {
                   if (snapshot.hasData) {
                     return snapshot.data!.isNotEmpty
                         ? TabBarView(children: <Widget>[
@@ -43,22 +42,17 @@ class _BookingsScreenState extends State<BookingsScreen> {
                             const CompletedDriverRequest(requestDrivers: []),
                             const CancelledDriverRequest(requestDrivers: [])
                           ])
-                        : const Center(
-                            child: Text("Empty"),
-                          );
+                        : const Center(child: EmptyBookings());
                   }
                   if (snapshot.hasError) {
-                    return Center(
-                      child: Text(snapshot.error.toString()),
-                    );
+                    return const Center(child: EmptyBookings());
                   }
                   return const Center(child: CircularProgressIndicator());
                 },
               )
             : StreamBuilder<List<RequestModel>>(
                 stream: context.read<RequestRepo>().getClientRequestId(),
-                builder: (BuildContext context,
-                    AsyncSnapshot<List<RequestModel>> snapshot) {
+                builder: (BuildContext context, AsyncSnapshot<List<RequestModel>> snapshot) {
                   if (snapshot.hasData) {
                     return snapshot.data!.isNotEmpty
                         ? TabBarView(children: <Widget>[
@@ -66,14 +60,10 @@ class _BookingsScreenState extends State<BookingsScreen> {
                             const CompletedRequestView(requestClients: []),
                             const CancelledRequestView(requestClients: [])
                           ])
-                        : const Center(
-                            child: Text("Empty"),
-                          );
+                        : const Center(child: EmptyBookings());
                   }
                   if (snapshot.hasError) {
-                    return Center(
-                      child: Text(snapshot.error.toString()),
-                    );
+                    return const Center(child: EmptyBookings());
                   }
                   return const Center(child: CircularProgressIndicator());
                 },

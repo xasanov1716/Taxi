@@ -13,7 +13,7 @@ import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
-import 'package:taxi_app/utils/ui_utils/utilitiy_function.dart';
+import 'package:taxi_app/utils/ui_utils/utility_function.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key});
@@ -61,12 +61,9 @@ class _ChatScreenState extends State<ChatScreen> {
                     : Center(
                         child: Text(
                           'There are no posts here yet',
-                          style:
-                              Theme.of(context).textTheme.bodyMedium!.copyWith(
-                                    color: getTheme(context)
-                                        ? AppColors.white
-                                        : AppColors.black,
-                                  ),
+                          style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                                color: getTheme(context) ? AppColors.white : AppColors.black,
+                              ),
                         ),
                       ),
               ),
@@ -81,13 +78,13 @@ class _ChatScreenState extends State<ChatScreen> {
                 },
                 onSendTap: () {
                   context.read<MessageBloc>().add(
-                        (SendMessage(
+                        SendMessage(
                             messageModel: MessageModel(
                           receiverName: '',
                           senderName: '',
                           dateTime: DateTime.now().toString().substring(10, 16),
                           message: value,
-                        ))),
+                        )),
                       );
                   value = '';
                   controller.clear();

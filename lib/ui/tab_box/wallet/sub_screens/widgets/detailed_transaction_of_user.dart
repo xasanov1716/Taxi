@@ -7,7 +7,7 @@ import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
 
-import '../../../../../utils/icons/app_icons.dart';
+import 'package:taxi_app/utils/icons/app_icons.dart';
 
 class DetailedTransactionOfUser extends StatelessWidget {
   const DetailedTransactionOfUser({super.key});
@@ -16,11 +16,10 @@ class DetailedTransactionOfUser extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(top: 20.h),
-      padding: EdgeInsets.all(24.w), 
+      padding: EdgeInsets.all(24.w),
       decoration: BoxDecoration(
-        color: getTheme(context)?AppColors.dark2:AppColors.white,
-        borderRadius: BorderRadius.circular(16.r)
-      ),
+          color: getTheme(context) ? AppColors.dark2 : AppColors.white,
+          borderRadius: BorderRadius.circular(16.r)),
       child: Row(
         children: [
           Image.asset(
@@ -51,7 +50,6 @@ class DetailedTransactionOfUser extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   SvgPicture.asset(
@@ -76,8 +74,7 @@ class DetailedTransactionOfUser extends StatelessWidget {
               Text(
                 "HSW 4736 XK",
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                    color:
-                        getTheme(context) ? AppColors.white : AppColors.c_900,
+                    color: getTheme(context) ? AppColors.white : AppColors.c_900,
                     fontWeight: FontWeight.w600),
               )
             ],

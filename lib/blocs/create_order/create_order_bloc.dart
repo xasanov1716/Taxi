@@ -1,6 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:meta/meta.dart';
 import 'package:taxi_app/data/models/status/form_status.dart';
 
 part 'create_order_event.dart';

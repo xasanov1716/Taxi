@@ -13,6 +13,7 @@ import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 Container driverBodyInfoWidget(BuildContext context, DriverModel driver) {
   return Container(
@@ -37,9 +38,7 @@ Container driverBodyInfoWidget(BuildContext context, DriverModel driver) {
         customLabelRow(context, 'Has Roof Top', driver.hasRoofTop.toString()),
         customLabelRow(context, 'Is Online', driver.isOnline.toString()),
         customLabelRow(context, 'Last Online Time', driver.lastOnlineTime),
-        customLabelRow(context, 'Longitude', driver.longitude.toString()),
-        customLabelRow(context, 'Latitude', driver.latitude.toString()),
-        customLabelRow(context, 'Has Filled', driver.hasFilled.toString()),
+        customLabelRow(context, 'Has Fil    led', driver.hasFilled.toString()),
         customLabelRow(context, 'Car Number', driver.carNumber),
       ],
     ),
@@ -54,6 +53,11 @@ Row customLabelRow(BuildContext context, String title, String body) {
       Flexible(
         child: Linkify(
           text: body,
+          onOpen: (link) async {
+            if (await launchUrl(Uri.parse(link.url))) {
+              throw Exception('Could not launch ${link.url}');
+            }
+          },
           style: Theme.of(context).textTheme.titleMedium,
           textAlign: TextAlign.right,
         ),
@@ -148,7 +152,7 @@ class IconContainerWidget extends StatelessWidget {
 class NamePlaceholder extends StatelessWidget {
   final String name;
 
-  NamePlaceholder({required this.name});
+  const NamePlaceholder({super.key, required this.name});
 
   // Function to generate a random light color
   Color _generateRandomColor() {
@@ -173,7 +177,7 @@ class NamePlaceholder extends StatelessWidget {
       child: Center(
         child: Text(
           firstLetter,
-          style: TextStyle(
+          style: const TextStyle(
             color: Colors.white,
             fontSize: 20,
             fontWeight: FontWeight.bold,

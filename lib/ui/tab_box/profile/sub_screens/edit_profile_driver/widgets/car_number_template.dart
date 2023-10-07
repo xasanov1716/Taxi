@@ -12,7 +12,7 @@ class CarNumberContainer extends StatefulWidget {
   @override
   State<CarNumberContainer> createState() => _CarNumberContainerState();
 
-  CarNumberContainer({super.key, required this.isFromAuth});
+  const CarNumberContainer({super.key, required this.isFromAuth});
 
   final bool isFromAuth;
 }
@@ -53,6 +53,7 @@ class _CarNumberContainerState extends State<CarNumberContainer> {
 
   @override
   void initState() {
+    super.initState();
     if (!widget.isFromAuth) _init();
   }
 
@@ -65,7 +66,6 @@ class _CarNumberContainerState extends State<CarNumberContainer> {
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
             width: 6.w,

@@ -7,7 +7,7 @@ import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 
-import 'global_action_button.dart';
+import 'package:taxi_app/ui/tab_box/home/widgets/global_action_button.dart';
 
 class ActionButtons extends StatelessWidget {
   const ActionButtons({super.key});
@@ -19,7 +19,7 @@ class ActionButtons extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-         const TypeOfMap(),
+          const TypeOfMap(),
           8.pw,
           GlobalActionButtons(
             color: AppColors.dimYellow,
@@ -57,7 +57,6 @@ class ActionButtons extends StatelessWidget {
               Navigator.pushNamed(context, RouteNames.specialOffers);
             },
           ),
-
         ],
       ),
     );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:lottie/lottie.dart';
 import 'package:taxi_app/blocs/notification_bloc/notification_bloc.dart';
 import 'package:taxi_app/ui/tab_box/home/notification/widgets/global_notification_container.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
@@ -9,8 +10,10 @@ import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
 import 'package:taxi_app/utils/ui_utils/error_message_dialog.dart';
 import 'package:taxi_app/utils/ui_utils/loading_dialog.dart';
-import 'package:taxi_app/utils/ui_utils/utilitiy_function.dart';
+import 'package:taxi_app/utils/ui_utils/utility_function.dart';
 import 'package:taxi_app/utils/util_functions/group_notifications_by_date.dart';
+
+import 'package:taxi_app/utils/size/screen_size.dart';
 
 class NotificationScreen extends StatelessWidget {
   const NotificationScreen({super.key});
@@ -48,12 +51,7 @@ class NotificationScreen extends StatelessWidget {
             final groupedNotifications = groupNotificationsByDate(state.notifications);
             return groupedNotifications.isEmpty
                 ? Center(
-                    child: Text(
-                    'Notifications is empty',
-                    style: Theme.of(context).dialogTheme.titleTextStyle!.copyWith(
-                        fontSize: 18.sp,
-                        color: getTheme(context) ? AppColors.white : AppColors.c_900),
-                  ))
+                    child: Lottie.asset(AppIcons.emptyLottie, width: 350 * height / figmaHeight))
                 : ListView.separated(
                     padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 24.h),
                     itemCount: groupedNotifications.length,
@@ -80,12 +78,9 @@ class NotificationScreen extends StatelessWidget {
                             itemBuilder: (context, innerIndex) {
                               final notification = notifications[innerIndex];
                               return GlobalNotificationContainer(
-
-
                                 notificationModel: notification,
                               );
                             },
-
                             separatorBuilder: (BuildContext context, int index) => 24.ph,
                           )
                         ],

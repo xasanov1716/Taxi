@@ -8,7 +8,7 @@ import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
 
 class FirstHalfOfTransport extends StatefulWidget {
-   const FirstHalfOfTransport({super.key});
+  const FirstHalfOfTransport({super.key});
 
   @override
   State<FirstHalfOfTransport> createState() => _FirstHalfOfTransportState();
@@ -25,21 +25,20 @@ class _FirstHalfOfTransportState extends State<FirstHalfOfTransport> {
         Text(
           "Select the vehicle category you want to ride.",
           style: Theme.of(context).textTheme.bodySmall!.copyWith(
-            fontSize: 16.sp,
-            fontWeight: FontWeight.w500,
-          ),
+                fontSize: 16.sp,
+                fontWeight: FontWeight.w500,
+              ),
         ),
         24.ph,
         SizedBox(
           height: 400 * height / figmaHeight,
           child: ListView(
-            physics: NeverScrollableScrollPhysics(),
+            physics: const NeverScrollableScrollPhysics(),
             children: [
               ...List.generate(
                 selectedList.length,
-                    (index) => Padding(
-                  padding: EdgeInsets.only(
-                       left: 24.w, right: 24.w),
+                (index) => Padding(
+                  padding: EdgeInsets.only(left: 24.w, right: 24.w),
                   child: InkWell(
                     borderRadius: BorderRadius.circular(16.r),
                     onTap: () {
@@ -67,12 +66,20 @@ class _FirstHalfOfTransportState extends State<FirstHalfOfTransport> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(right: 24.h, left: 24.h, ),
-                child: Divider(color: getTheme(context)?AppColors.dark3: AppColors.c_200,),
+                padding: EdgeInsets.only(
+                  right: 24.h,
+                  left: 24.h,
+                ),
+                child: Divider(
+                  color: getTheme(context) ? AppColors.dark3 : AppColors.c_200,
+                ),
               ),
               Padding(
-                padding: EdgeInsets.only(right: 24.h, left: 24.h,bottom: 24.h),
-                child: Text("Promo Code",style: Theme.of(context).textTheme.titleLarge,),
+                padding: EdgeInsets.only(right: 24.h, left: 24.h, bottom: 24.h),
+                child: Text(
+                  "Promo Code",
+                  style: Theme.of(context).textTheme.titleLarge,
+                ),
               ),
             ],
           ),
@@ -84,11 +91,7 @@ class _FirstHalfOfTransportState extends State<FirstHalfOfTransport> {
 
 List<TransportItem> transportItem = [
   TransportItem(
-      icon: AppIcons.premium,
-      selected: false,
-      type: "Bike",
-      nearby: "9 nearbies",
-      price: '10.00'),
+      icon: AppIcons.premium, selected: false, type: "Bike", nearby: "9 nearbies", price: '10.00'),
   TransportItem(
       icon: AppIcons.standard,
       selected: false,
@@ -112,8 +115,8 @@ class TransportItem {
 
   TransportItem(
       {required this.icon,
-        required this.selected,
-        required this.type,
-        required this.price,
-        required this.nearby});
+      required this.selected,
+      required this.type,
+      required this.price,
+      required this.nearby});
 }

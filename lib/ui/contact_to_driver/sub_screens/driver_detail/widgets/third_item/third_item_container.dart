@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:taxi_app/ui/contact_to_driver/sub_screens/driver_detail/widgets/third_item/third_Item_in_driver_detail.dart';
+import 'package:taxi_app/ui/contact_to_driver/sub_screens/driver_detail/widgets/third_item/third_item_in_driver_detail.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
@@ -20,7 +20,6 @@ class ThirdItemContainer extends StatelessWidget {
         ),
         child: const Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             ThirdItemInDriverDetail(
               startText: "Member Since",
