@@ -1,4 +1,5 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -57,7 +58,7 @@ class _ThemeChangerButtonState extends State<ThemeChangerButton> {
               ),
               16.pw,
               Text(
-                "Dark Mode",
+                tr('dark_mode'),
                 style: AppTextStyle.bodyXlargeSemibold,
               ),
               const Spacer(),

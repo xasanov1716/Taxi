@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taxi_app/data/models/payment/payment_model.dart';
@@ -28,7 +29,7 @@ class _PaymentMethodsScreenState extends State<PaymentMethodsScreen> {
           24.ph,
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 24.w),
-            child: Text("Select the payment method you want to use.", style: Theme.of(context).textTheme.titleMedium?.copyWith(fontFamily: "Urbanist",
+            child: Text(tr('select_payment_method'), style: Theme.of(context).textTheme.titleMedium?.copyWith(fontFamily: "Urbanist",
               fontSize: 16.sp,
               fontWeight: FontWeight.w500,),),
           ),
@@ -54,7 +55,7 @@ class _PaymentMethodsScreenState extends State<PaymentMethodsScreen> {
                   onTap: (){
                     Navigator.pushNamed(context, RouteNames.searchingDriver);
                   },
-                  title: "Continue", color: AppColors.primary,
+                  title: tr('continue'), color: AppColors.primary,
                   radius: 100.r,
               ),
             ),

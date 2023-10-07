@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:share_plus/share_plus.dart';
@@ -47,7 +48,7 @@ class _InviteListViewItemState extends State<InviteListViewItem> {
             ),
             child: InkWell(
               onTap: ()async{
-                final result = await Share.shareWithResult('We invite you to Dastyor Taxi application');
+                final result = await Share.shareWithResult(tr('we_invite_app'));
                 if (result.status == ShareResultStatus.success) {
                   setState(() {
                     isInvited=true;
@@ -58,7 +59,7 @@ class _InviteListViewItemState extends State<InviteListViewItem> {
               child: Container(
                 padding: EdgeInsets.symmetric(horizontal: 16.w,vertical: 6.h),
                 child: Center(
-                  child: Text("Invite",style: AppTextStyle.bodyMediumSemibold.copyWith(color: AppColors.dark3),),
+                  child: Text(tr('invite'),style: AppTextStyle.bodyMediumSemibold.copyWith(color: AppColors.dark3),),
                 ),
               ),
             ),

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -27,7 +28,7 @@ class _AddPromoScreenState extends State<AddPromoScreen> {
     return Scaffold(
       appBar: GlobalAppBar(
         centerTitle: false,
-        title: "Add Promo",
+        title: tr('add_promo'),
         onTap: () {
           Navigator.pop(context);
         },
@@ -91,7 +92,7 @@ class _AddPromoScreenState extends State<AddPromoScreen> {
           )),
           GlobalButton(
             padding:  EdgeInsets.all(24.h),
-            title: 'Apply Promo',
+            title: tr('apply_promo'),
             radius: 100.r,
             color: AppColors.primary,
             onTap: () {

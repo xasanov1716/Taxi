@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -30,7 +31,7 @@ class _SecondPageState extends State<SecondPage> {
     gender = state.driverModel.gender;
     carModel = state.driverModel.carModel;
     emptyPlace = state.driverModel.emptyPlaces.toString();
-    hasRoof = state.driverModel.hasRoofTop ? "Yes" : "No";
+    hasRoof = state.driverModel.hasRoofTop ? tr('yes') : tr('no');
   }
 
 
@@ -40,14 +41,14 @@ class _SecondPageState extends State<SecondPage> {
     super.initState();
   }
 
-  String gender = "Male";
+  String gender = tr('male');
   String carModel = "Damas";
-  String hasRoof = "Yes";
+  String hasRoof = tr('yes');
   String emptyPlace = "1";
-  var genders = ['Male', 'Female', 'Mixed'];
+  var genders = [tr('male'), tr('female'), tr('mixed')];
   var hasRoofs = [
-    'Yes',
-    'No',
+    tr('yes'),
+    tr('no'),
   ];
   var emptyPlaces = ['1', '2', '3', '4', '5', '6', '7'];
   var carModels = [
@@ -73,14 +74,14 @@ class _SecondPageState extends State<SecondPage> {
         24.ph,
         GlobalTextField(
           focusNode: priceFocusNode,
-          hintText: 'Price',
+          hintText: tr('price'),
           keyboardType: TextInputType.number,
           maskFormatter: NumberInputFormatter(),
           maxLength: 10,
           controller: priceController,
           suffixIcon: Padding(
             padding:  EdgeInsets.only(right: 10.w,top: 10.h),
-            child: Text("so'm",style: Theme.of(context).textTheme.titleLarge,),
+            child: Text(tr('som'),style: Theme.of(context).textTheme.titleLarge,),
           ),
           textInputAction: TextInputAction.next,
           onChanged: (value) {
@@ -142,7 +143,7 @@ class _SecondPageState extends State<SecondPage> {
           ),
         ),
         24.ph,
-        Text("Car Model",
+        Text(tr('car_model'),
             style: AppTextStyle.bodyMediumSemibold.copyWith(
                 color: getTheme(context) ? AppColors.white : AppColors.c_900)),
         24.ph,
@@ -194,7 +195,7 @@ class _SecondPageState extends State<SecondPage> {
           ),
         ),
         24.ph,
-        Text("Has Roof",
+        Text('${tr('has_roof')}?',
             style: AppTextStyle.bodyMediumSemibold.copyWith(
                 color: getTheme(context) ? AppColors.white : AppColors.c_900)),
         24.ph,
@@ -237,7 +238,7 @@ class _SecondPageState extends State<SecondPage> {
               });
               context.read<DriverBloc>().updateDriverField(
                   fieldKey: DriverFieldKeys.hasRoofTop,
-                  value: hasRoof == "Yes" ? true : false);
+                  value: hasRoof == tr('yes') ? true : false);
             },
             hint: Text(hasRoof,
                 style: AppTextStyle.bodyMediumSemibold.copyWith(
@@ -247,7 +248,7 @@ class _SecondPageState extends State<SecondPage> {
           ),
         ),
         24.ph,
-        Text("Empty Places",
+        Text(tr('empty_places'),
             style: AppTextStyle.bodyMediumSemibold.copyWith(
                 color: getTheme(context) ? AppColors.white : AppColors.c_900)),
         24.ph,

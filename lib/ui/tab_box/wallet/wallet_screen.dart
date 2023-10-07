@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:taxi_app/data/models/transaction/transaction_model.dart';
@@ -18,7 +19,7 @@ class WalletScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: WalletAppbar(
-        title: "My E-Wallet",
+        title: tr('my_e_wallet'),
         onTap: () {},
         searchTap: () {},
       ),
@@ -73,7 +74,7 @@ class WalletScreen extends StatelessWidget {
                       name: "Daniel Austin",
                       date: "Dec 20, 2024 | 10:00 AM",
                       price: 14,
-                      expense: "Taxi Expense",
+                      expense: tr('taxi_expense'),
                       iconName: AppIcons.arrowUpSquare,
                       iconColor: AppColors.error,
                     ),

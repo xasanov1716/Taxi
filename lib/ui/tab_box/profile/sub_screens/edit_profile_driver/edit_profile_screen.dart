@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -35,7 +36,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: EditAppBar(
-        title: widget.navigateFromAuth ? "Create Profile" : "Edit Profile",
+        title: widget.navigateFromAuth ? tr("create_profile") : tr("edit_profile"),
         onTap: () {
           if (currentPage > 0) {
             setState(() {
@@ -87,7 +88,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 ),
                 12.ph,
                 GlobalButton(
-                  title: "Next",
+                  title: tr('next'),
                   onTap: () {
                     if (widget.navigateFromAuth) {
                       context.read<DriverBloc>().updateDriverField(
@@ -108,7 +109,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     if (currentPage == 0) {
                       if (context.read<DriverBloc>().canRegister1().isEmpty) {
                         debugPrint(
-                            'can register 1 ${context.read<DriverBloc>().state.driverModel.fullName}');
+                            '${tr('can_register')} 1 ${context.read<DriverBloc>().state.driverModel.fullName}');
                         setState(() {
                           currentPage = 1;
                           pageController.animateToPage(
@@ -121,7 +122,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                         showSnackBar(
                             context: context,
                             text:
-                                '${context.read<DriverBloc>().canRegister1()} is required');
+                                '${context.read<DriverBloc>().canRegister1()} ${tr("is_required")}');
                       }
                     } else if (currentPage == 1) {
                       if (context.read<DriverBloc>().canRegister2().isEmpty) {
@@ -137,7 +138,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                         showSnackBar(
                             context: context,
                             text:
-                                '${context.read<DriverBloc>().canRegister2()} is required');
+                                '${context.read<DriverBloc>().canRegister2()} ${tr("is_required")}');
                       }
                     } else if (currentPage == 2) {
                       if (widget.navigateFromAuth) {
@@ -150,7 +151,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                           context.read<DriverBloc>().add(AddDriverEvent());
                         } else {
                           showSnackBar(
-                              context: context, text: 'Addresses are required');
+                              context: context, text: tr('addresses_are_required'));
                         }
                       } else {
                         Navigator.pop(context);

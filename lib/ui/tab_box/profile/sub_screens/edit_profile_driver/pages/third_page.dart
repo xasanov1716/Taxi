@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -21,8 +22,8 @@ class ThirdPage extends StatefulWidget {
 }
 
 class _ThirdPageState extends State<ThirdPage> {
-  String fromRegion = "Qayerdan jo'naysiz";
-  String toRegion = "Qayerga borasiz";
+  String fromRegion = tr('where_are_you_leaving');
+  String toRegion = tr('where_are_you_going');
 
   final FocusNode priceFocusNode = FocusNode();
   @override
@@ -42,7 +43,7 @@ class _ThirdPageState extends State<ThirdPage> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "From",
+                   tr('from'),
                           style: AppTextStyle.bodyMediumSemibold.copyWith(
                             fontSize: 20.sp,
                             color: getTheme(context)
@@ -63,7 +64,7 @@ class _ThirdPageState extends State<ThirdPage> {
                           },
                         ),
                         24.ph,
-                        Text("To",
+                        Text(tr('to'),
                             style: AppTextStyle.bodyMediumSemibold.copyWith(
                                 fontSize: 20.sp,
                                 color: getTheme(context)

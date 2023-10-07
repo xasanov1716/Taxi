@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -25,7 +26,7 @@ class LogOutItem extends StatelessWidget {
           children: [
             12.ph,
             Text(
-              "Log Out",
+             tr('log_out'),
               style: Theme.of(context)
                   .textTheme
                   .headlineMedium!
@@ -35,7 +36,7 @@ class LogOutItem extends StatelessWidget {
             const Divider(),
             24.ph,
             Text(
-              "Are you sure you want to log out?",
+              "${tr('are_you_log_out')}?",
               style: Theme.of(context).textTheme.headlineSmall,
             ),
             24.ph,
@@ -45,7 +46,7 @@ class LogOutItem extends StatelessWidget {
                     child: GlobalButton(
                   textColor:
                       getTheme(context) ? AppColors.white : AppColors.dark1,
-                  title: "Cancel",
+                  title:tr('cancel'),
                   onTap: () {
                     Navigator.pop(context);
                   },
@@ -57,11 +58,11 @@ class LogOutItem extends StatelessWidget {
                 12.pw,
                 Expanded(
                     child: GlobalButton(
-                  title: "Yes, Logout",
+                  title: tr('yes_log_out'),
                   onTap: () async {
                     context.read<DriverBloc>().clear();
                     StorageRepository.getString(StorageKeys.userRole) ==
-                            "driver"
+                            tr('driver')
                         ? context.read<DriverBloc>().add(UpdateDriverEvent())
                         : context.read<UserBloc>().add(UpdateUserEvent());
 

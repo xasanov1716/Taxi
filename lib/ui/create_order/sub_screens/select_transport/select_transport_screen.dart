@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taxi_app/ui/app_routes.dart';
@@ -27,7 +28,7 @@ class _SelectTransportScreenState extends State<SelectTransportScreen> {
         onTap: () {
           Navigator.pop(context);
         },
-        title: "Select Car",
+        title:tr('select_car'),
       ),
 
       body: Column(
@@ -75,7 +76,7 @@ class _SelectTransportScreenState extends State<SelectTransportScreen> {
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 24.h),
                   child: GlobalButton(
-                    title: 'Continue',
+                    title: tr('continue'),
                     radius: 100.r,
                     color: AppColors.primary,
                     onTap: () {

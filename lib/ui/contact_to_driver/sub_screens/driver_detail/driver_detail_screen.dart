@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/ui/contact_to_driver/sub_screens/driver_detail/widgets/dr_details_bottom_nav_bar.dart';
@@ -24,7 +25,7 @@ class _DriverDetailScreenState extends State<DriverDetailScreen> {
           Navigator.pop(context);
         },
         centerTitle: false,
-        title: "Driver Details",
+        title:tr('driver_details'),
         action: [
           getIcon(AppIcons.moreCircle, context: context, onTap: (){}),
           12.pw,

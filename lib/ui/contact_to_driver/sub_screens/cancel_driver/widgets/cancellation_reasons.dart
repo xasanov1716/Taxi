@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:taxi_app/ui/contact_to_driver/sub_screens/cancel_driver/widgets/checkbox_row.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
@@ -11,30 +12,30 @@ class CancellationReasons extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         24.ph,
-        const CancelDriverCheckBoxRow(
-          text: "Waiting for long time",
+         CancelDriverCheckBoxRow(
+          text:tr('waiting_long_time'),
         ),
-        const CancelDriverCheckBoxRow(
-          text: "Unable to contact driver",
+         CancelDriverCheckBoxRow(
+          text:tr('unable_driver'),
         ),
-        const CancelDriverCheckBoxRow(
-          text: "Driver denied to go to destination",
+         CancelDriverCheckBoxRow(
+          text:tr('driver_denied_destination'),
         ),
-        const CancelDriverCheckBoxRow(
-          text: "Driver denied to come to pickup",
+         CancelDriverCheckBoxRow(
+          text: tr('driver_denied_pickup'),
         ),
-        const CancelDriverCheckBoxRow(
-          text: "Wrong address shown",
+         CancelDriverCheckBoxRow(
+          text: tr('wrong_address_shown'),
         ),
-        const CancelDriverCheckBoxRow(
-          text: "The price is not reasonable",
+         CancelDriverCheckBoxRow(
+          text: tr('price_reasonable'),
         ),
-        const CancelDriverCheckBoxRow(
-          text: "The price is not reasonable",
+         CancelDriverCheckBoxRow(
+          text:tr('price_reasonable'),
         ),
         24.ph,
         Text(
-          "Others",
+          tr('Boshqalar'),
           style: Theme.of(context).textTheme.titleLarge,
         ),
         16.ph,

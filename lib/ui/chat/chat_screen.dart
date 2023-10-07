@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
@@ -60,7 +61,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     ? MessagesListView(messages: state.messages)
                     : Center(
                         child: Text(
-                          'There are no posts here yet',
+                          tr('there_are_posts'),
                           style:
                               Theme.of(context).textTheme.bodyMedium!.copyWith(
                                     color: getTheme(context)

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taxi_app/ui/app_routes.dart';
@@ -12,7 +13,7 @@ import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/ui_utils/utilitiy_function.dart';
 
 class HelpCenterScreen extends StatefulWidget {
-  const HelpCenterScreen({super.key});
+   const HelpCenterScreen({super.key});
 
   @override
   State<HelpCenterScreen> createState() => _HelpCenterScreenState();
@@ -27,13 +28,13 @@ class _HelpCenterScreenState extends State<HelpCenterScreen> {
       child: Scaffold(
         appBar: AppBar(
           elevation: 0,
-          bottom: const TabBar(
+          bottom:  TabBar(
             indicator: null,
             tabAlignment: TabAlignment.fill,
             isScrollable: false,
-            tabs: <Widget>[
-              Tab(text: "FAQ"),
-              Tab(text: "Contact us"),
+            tabs: [
+              const Tab(text: "FAQ"),
+              Tab(text:tr('contact_us')),
             ],
           ),
           leading: getIcon(
@@ -44,7 +45,7 @@ class _HelpCenterScreenState extends State<HelpCenterScreen> {
             },
           ),
           title: Text(
-            'Help Center',
+            tr('help_center'),
             style: Theme.of(context).textTheme.headlineMedium,
           ),
           actions: [
@@ -57,7 +58,7 @@ class _HelpCenterScreenState extends State<HelpCenterScreen> {
             12.pw,
           ],
         ),
-        body:const TabBarView(
+        body: const TabBarView(
           children: <Widget>[
             FaQScreen(),
            ContactUsScreen(),

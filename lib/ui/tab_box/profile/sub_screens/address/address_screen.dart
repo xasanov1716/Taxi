@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -26,7 +27,7 @@ class _AddressScreenState extends State<AddressScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: GlobalAppBar(
-        title: 'Address',
+        title: tr('address'),
         onTap: () {
           Navigator.pop(context);
         },
@@ -58,7 +59,7 @@ class _AddressScreenState extends State<AddressScreen> {
                           )),
                       GlobalButton(
                         padding: EdgeInsets.all(24.h),
-                        title: 'Add New Address',
+                        title: tr('add_new_address'),
                         radius: 100.r,
                         color: AppColors.primary,
                         onTap: () {
@@ -73,7 +74,7 @@ class _AddressScreenState extends State<AddressScreen> {
                     Expanded(child: Center(child: Lottie.asset(AppIcons.emptyLottie, width: 350*height/figmaHeight))),
                     GlobalButton(
                       padding: EdgeInsets.all(24.h),
-                      title: 'Add New Address',
+                      title: tr('add_new_address'),
                       radius: 100.r,
                       color: AppColors.primary,
                       onTap: () {

@@ -1,4 +1,5 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taxi_app/ui/app_routes.dart';
@@ -26,7 +27,7 @@ class _ForgotPassWordState extends State<ForgotPassWord> {
           onTap: () {
             Navigator.pop(context);
           },
-          title: 'Forgot Password'),
+          title: tr('forgot_password')),
       body: Padding(
         padding: EdgeInsets.all(24.w),
         child: Column(
@@ -46,14 +47,14 @@ class _ForgotPassWordState extends State<ForgotPassWord> {
                   ),
                   24.ph,
                   Text(
-                      'Select which contact details should we use to reset your password',
+                      tr('select_which_contact_password'),
                       style: Theme.of(context)
                           .textTheme
                           .labelLarge!
                           .copyWith(fontSize: 18.sp, letterSpacing: 0.2.w)),
                   24.ph,
                   ForgotPasswordSelector(
-                    title: 'via SMS:',
+                    title: '${tr('via_sms')}:',
                     subtitle: '\n+1 111 ******99',
                     svg: 'assets/svg/bold/chat.svg',
                     onTap: () {
@@ -65,7 +66,7 @@ class _ForgotPassWordState extends State<ForgotPassWord> {
                   ),
                   24.ph,
                   ForgotPasswordSelector(
-                    title: 'via Email:',
+                    title:'${tr('via_email')}:',
                     subtitle: '\nand***ley@yourdomain.com',
                     svg: 'assets/svg/bold/message.svg',
                     onTap: () {
@@ -84,7 +85,7 @@ class _ForgotPassWordState extends State<ForgotPassWord> {
               color: AppColors.disabledButton,
               leftIcon: "",
               rightIcon: "",
-              title: 'Continue',
+              title: tr('continue'),
               radius: 29.r,
               textColor: AppColors.dark3,
               onTap: () {

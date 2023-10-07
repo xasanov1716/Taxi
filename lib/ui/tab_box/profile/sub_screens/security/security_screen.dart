@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -26,7 +27,7 @@ class _SecurityScreenState extends State<SecurityScreen> {
           onTap: () {
             Navigator.pop(context);
           },
-          title: "Security"),
+          title: tr('security')),
       body: BlocBuilder<SecurityCubit, SecurityState>(
         builder: (context, state) {
           return ListView(
@@ -48,7 +49,7 @@ class _SecurityScreenState extends State<SecurityScreen> {
               ListTile(
                 onTap: () {},
                 contentPadding: EdgeInsets.all(24.w),
-                title: const Text("Google Authenticator"),
+                title:  Text(tr("google_authenticator")),
                 trailing: SvgPicture.asset(
                   AppIcons.arrowRight2,
                   colorFilter: ColorFilter.mode(
@@ -58,7 +59,7 @@ class _SecurityScreenState extends State<SecurityScreen> {
               ),
               // GlobalButton(
               //   padding: const EdgeInsets.all(24),
-              //   title: 'Change PIN',
+              //   title:tr('change_pin,
               //   onTap: () {
               //     Navigator.pushNamed(context, RouteNames.enterPinScreen,
               //         arguments: true);
@@ -68,7 +69,7 @@ class _SecurityScreenState extends State<SecurityScreen> {
               // ),
               GlobalButton(
                 padding: EdgeInsets.symmetric(horizontal: 24.w),
-                title: 'Change Password',
+                title:tr('change_password'),
                 onTap: () {},
                 color: AppColors.primary,
                 radius: 100.r,

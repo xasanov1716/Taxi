@@ -31,8 +31,8 @@ class _SetPinScreenState extends State<SetPinScreen> {
       resizeToAvoidBottomInset: true,
       appBar: GlobalAppBar(
         title: widget.previousPin == null
-            ? "Pinkodni o'rnatish"
-            : "Pinkodni tasdiqlang",
+            ? tr('pin_code_installation')
+            : tr('confirm_pin_code'),
         onTap: widget.previousPin != null
             ? () {
                 Navigator.pop(context);
@@ -50,8 +50,8 @@ class _SetPinScreenState extends State<SetPinScreen> {
           (height/8).ph,
           Text(
             widget.previousPin == null
-                ? "Yangi parolni kiriting"
-                : "Yangi parolni tasdiqlash uchun qayta kiriting!",
+                ? tr('create_new_password')
+                : tr('confirm_new_password'),
             textAlign: TextAlign.center,
             style: Theme.of(context)
                 .textTheme
@@ -66,7 +66,7 @@ class _SetPinScreenState extends State<SetPinScreen> {
           (height/20).ph,
           GlobalButton(
             color: AppColors.primary,
-            title: 'Continue',
+            title: tr('continue'),
             radius: 100,
             textColor: AppColors.black,
             onTap: () {

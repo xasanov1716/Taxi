@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -20,7 +21,7 @@ class ConfirmCodeScreen extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: GlobalAppBar(
-        title: "Forget Password",
+        title: tr('forgot_password'),
         onTap: () {
           Navigator.pop(context);
         },
@@ -40,7 +41,7 @@ class ConfirmCodeScreen extends StatelessWidget {
             const Spacer(),
             GlobalButton(
               color: AppColors.primary,
-              title: "Verify",
+              title: tr('verify'),
               radius: 100.r,
               textColor: AppColors.dark3,
               onTap: () {

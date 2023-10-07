@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taxi_app/ui/create_order/sub_screens/select_transport/widgets/choose_data.dart';
@@ -23,7 +24,7 @@ class _FirstHalfOfTransportState extends State<FirstHalfOfTransport> {
       children: [
         24.ph,
         Text(
-          "Select the vehicle category you want to ride.",
+          tr('select_category_ride'),
           style: Theme.of(context).textTheme.bodySmall!.copyWith(
             fontSize: 16.sp,
             fontWeight: FontWeight.w500,
@@ -72,7 +73,7 @@ class _FirstHalfOfTransportState extends State<FirstHalfOfTransport> {
               ),
               Padding(
                 padding: EdgeInsets.only(right: 24.h, left: 24.h,bottom: 24.h),
-                child: Text("Promo Code",style: Theme.of(context).textTheme.titleLarge,),
+                child: Text(tr('promo_code'),style: Theme.of(context).textTheme.titleLarge,),
               ),
             ],
           ),
@@ -86,20 +87,20 @@ List<TransportItem> transportItem = [
   TransportItem(
       icon: AppIcons.premium,
       selected: false,
-      type: "Bike",
-      nearby: "9 nearbies",
+      type: tr('bike'),
+      nearby: "9 ${tr('nearbies')}",
       price: '10.00'),
   TransportItem(
       icon: AppIcons.standard,
       selected: false,
-      type: "Standard",
-      nearby: "9 nearbies",
+      type: tr('standard'),
+      nearby: "9 ${tr('nearbies')}",
       price: '20.00'),
   TransportItem(
       icon: AppIcons.premium,
       selected: false,
-      type: "Premium",
-      nearby: "4 nearbies",
+      type:tr('premium'),
+      nearby: "4 ${tr('nearbies')}",
       price: '30.00')
 ];
 

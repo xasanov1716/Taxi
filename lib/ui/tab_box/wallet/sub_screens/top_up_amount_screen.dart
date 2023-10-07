@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
@@ -21,7 +22,7 @@ class TopUpAmountScreen extends StatelessWidget {
         onTap: () {
           Navigator.pop(context);
         },
-        title: "Top Up E-Wallet",
+        title: tr('top_up_e_wallet'),
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24.w),
@@ -34,7 +35,7 @@ class TopUpAmountScreen extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 24.h),
                     child: Center(
-                      child: Text("Enter the amount of top up", style: Theme.of(context).textTheme.bodyLarge),
+                      child: Text(tr('enter_the_amount'), style: Theme.of(context).textTheme.bodyLarge),
                     ),
                   ),
                   AmountTextField(
@@ -53,7 +54,7 @@ class TopUpAmountScreen extends StatelessWidget {
             ),
             GlobalButton(
               padding: EdgeInsets.symmetric(vertical: 24.h),
-              title: "Continue",
+              title:tr('continue'),
               color: AppColors.primary,
               textColor: AppColors.dark3,
               radius: 100.r,

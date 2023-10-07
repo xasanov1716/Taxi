@@ -114,7 +114,7 @@ class AppRoutes {
         );
       case RouteNames.helpCenterScreen:
         return MaterialPageRoute(
-          builder: (context) => const HelpCenterScreen(),
+          builder: (context) =>  HelpCenterScreen(),
         );
       case RouteNames.editProfileDriver:
         return MaterialPageRoute(

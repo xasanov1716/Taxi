@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -51,7 +52,7 @@ class DriverItem extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "Driver is Arriving...",
+                  tr('driver_is_arriving'),
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
                         fontFamily: "Urbanist",
                         fontSize: 20.sp,
@@ -59,7 +60,7 @@ class DriverItem extends StatelessWidget {
                       ),
                 ),
                 Text(
-                  "2 mins",
+                  "2 ${tr('mins')}",
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
                         fontFamily: "Urbanist",
                         fontSize: 14.sp,

@@ -57,7 +57,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
         ),
         title: Text(
-          "Profile",
+         tr('profile'),
           style: Theme.of(context).textTheme.headlineMedium,
         ),
         actions: [
@@ -146,7 +146,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             child: const Divider(),
           ),
           ProfileButton(
-            text: "Edit Profile",
+            text: tr('edit_profile'),
             icon: AppIcons.profile,
             onTap: () {
               StorageRepository.getString(StorageKeys.userRole) == AppConstants.driver
@@ -163,31 +163,31 @@ class _ProfileScreenState extends State<ProfileScreen> {
             },
           ),
           ProfileButton(
-              text: "Address",
+              text: tr('address'),
               icon: AppIcons.location,
               onTap: () {
                 Navigator.pushNamed(context, RouteNames.addressScreen);
               }),
           ProfileButton(
-              text: "Notification",
+              text: tr('notification'),
               icon: AppIcons.notification,
               onTap: () {
                 Navigator.pushNamed(context, RouteNames.notificationSwitch);
               }),
           ProfileButton(
-              text: "Payment",
+              text:tr('payment'),
               icon: AppIcons.wallet,
               onTap: () {
                 Navigator.pushNamed(context, RouteNames.payment);
               }),
           ProfileButton(
-              text: "Security",
+              text: tr('security'),
               icon: AppIcons.shieldDone,
               onTap: () {
                 Navigator.pushNamed(context, RouteNames.security);
               }),
           ProfileButton(
-            text: "Language",
+            text: tr('language'),
             icon: AppIcons.moreCircle,
             onTap: () {
               Navigator.pushNamed(context, RouteNames.languageScreen);
@@ -197,25 +197,25 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
           const ThemeChangerButton(),
           ProfileButton(
-              text: "Privacy Policy",
+              text:tr('privacy_policy'),
               icon: AppIcons.lock,
               onTap: () {
                 Navigator.pushNamed(context, RouteNames.privacyPolicy);
               }),
           ProfileButton(
-              text: "Help Center",
+              text: tr('help_center'),
               icon: AppIcons.infoSquare,
               onTap: () {
                 Navigator.pushNamed(context, RouteNames.helpCenterScreen);
               }),
           ProfileButton(
-              text: "Invite Friends",
+              text: tr('invite_friends'),
               icon: AppIcons.user3,
               onTap: () {
                 Navigator.pushNamed(context, RouteNames.inviteFriends);
               }),
           ProfileButton(
-            text: "Log Out",
+            text: tr('log_out'),
             icon: AppIcons.logOut,
             onTap: () {
               showModalBottomSheet(

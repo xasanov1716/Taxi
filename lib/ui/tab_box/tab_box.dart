@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -77,11 +78,11 @@ class _TabBoxState extends State<TabBox> {
                 height: 12 / 10,
               ),
               items: <BottomNavigationBarItem>[
-                _getItem(icon: AppIcons.home, label: "Home"),
-                _getItem(icon: AppIcons.paper, label: "Bookings"),
-                _getItem(icon: AppIcons.chat, label: "Inbox"),
-                _getItem(icon: AppIcons.wallet, label: "Wallet"),
-                _getItem(icon: AppIcons.profile, label: "Profile"),
+                _getItem(icon: AppIcons.home, label: tr('main_menu')),
+                _getItem(icon: AppIcons.paper, label: tr('bookings')),
+                _getItem(icon: AppIcons.chat, label: tr('inbox')),
+                _getItem(icon: AppIcons.wallet, label:tr('wallet')),
+                _getItem(icon: AppIcons.profile, label:tr('profile')),
               ],
               currentIndex: context.watch<TabCubit>().state,
               onTap: context.read<TabCubit>().changeTabIndex,

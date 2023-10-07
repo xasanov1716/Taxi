@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -25,7 +26,7 @@ class _SearchingDriverScreenState extends State<SearchingDriverScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: GlobalAppBar(
-        title: "Searching for Driver",
+        title: tr('searching_for_driver'),
         onTap: () {
           Navigator.pop(context);
         },
@@ -66,7 +67,7 @@ class _SearchingDriverScreenState extends State<SearchingDriverScreen> {
               child: SizedBox(
                   width: width,
                   child: Center(
-                      child: Text("Searching Ride..",
+                      child: Text(tr('searching_ride'),
                           style: Theme.of(context)
                               .textTheme
                               .titleLarge
@@ -79,7 +80,7 @@ class _SearchingDriverScreenState extends State<SearchingDriverScreen> {
               child: SizedBox(
                   width: width,
                   child: Center(
-                      child: Text("This may take a few seconds...",
+                      child: Text(tr('this_may_take'),
                           style: Theme.of(context)
                               .textTheme
                               .titleLarge
@@ -91,7 +92,7 @@ class _SearchingDriverScreenState extends State<SearchingDriverScreen> {
             bottom: 36.h,
               left: (width-230.w)/2,
               child: SideCancelButton(
-                title: ">> Slide to Cancel ",
+                title: ">> ${tr('slide_to_cancel')}",
                 icon: AppIcons.sideCancel,
                 onTap: (){
                 Navigator.pushNamed(context, RouteNames.driverArriving);

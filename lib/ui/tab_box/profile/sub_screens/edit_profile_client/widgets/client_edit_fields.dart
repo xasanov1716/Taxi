@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -40,7 +41,7 @@ class _ClientEditFieldsState extends State<ClientEditFields> {
 
   DateTime selectedDate = DateTime.now();
   TextEditingController dateController = TextEditingController();
-  String gender = "Male";
+  String gender = tr("male");
   ImagePicker picker = ImagePicker();
   String image = "";
 
@@ -49,7 +50,7 @@ class _ClientEditFieldsState extends State<ClientEditFields> {
       filter: {"#": RegExp(r'[0-9]')},
       type: MaskAutoCompletionType.lazy);
 
-  var genders = ['Male', 'Female'];
+  var genders = [tr("male"), tr("female")];
 
   final FocusNode focusNode = FocusNode();
   final FocusNode phoneFocusNode = FocusNode();
@@ -94,7 +95,7 @@ class _ClientEditFieldsState extends State<ClientEditFields> {
         24.ph,
         GlobalTextField(
           focusNode: fullNameFocusNode,
-          hintText: 'Full Name',
+          hintText: tr('full_name'),
           controller: fullNameController,
           keyboardType: TextInputType.text,
           textInputAction: TextInputAction.next,
@@ -111,7 +112,7 @@ class _ClientEditFieldsState extends State<ClientEditFields> {
         24.ph,
         GlobalTextField(
           focusNode: nicknameFocusNode,
-          hintText: 'Nickname',
+          hintText: tr('nickname'),
           controller: nicknameController,
           keyboardType: TextInputType.text,
           textInputAction: TextInputAction.next,
@@ -128,7 +129,7 @@ class _ClientEditFieldsState extends State<ClientEditFields> {
           child: AbsorbPointer(
             child: GlobalSearchTextField(
               readOnly: true,
-              hintText: 'Date of Birth',
+              hintText: tr('date_of_birth'),
               focusNode: focusNode,
               onTap: () {
                 _showDatePicker(context);
@@ -148,7 +149,7 @@ class _ClientEditFieldsState extends State<ClientEditFields> {
         Visibility(
           visible: !widget.isFromAuth,
           child: PhoneNumberInput(
-            hintText: 'Phone Number',
+            hintText:tr('phone_number'),
             keyboardType: TextInputType.phone,
             focusNode: phoneFocusNode,
             maskFormatter: phoneFormatter,
@@ -216,7 +217,7 @@ class _ClientEditFieldsState extends State<ClientEditFields> {
         24.ph,
         GlobalTextField(
           focusNode: aboutFocusNode,
-          hintText: 'Address',
+          hintText: tr('address'),
           keyboardType: TextInputType.text,
           controller: addressController,
           textInputAction: TextInputAction.next,

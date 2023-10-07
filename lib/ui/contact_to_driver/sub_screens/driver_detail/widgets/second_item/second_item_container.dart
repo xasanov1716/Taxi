@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taxi_app/ui/contact_to_driver/sub_screens/driver_detail/widgets/second_item/second_item_in_drivers_detail.dart';
@@ -29,17 +30,17 @@ class SecondItemContainer extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SeconditemDriversDetail(
-                    icon: AppIcons.star, textEnd: "Ratings", textMiddle: "4.8"),
+                    icon: AppIcons.star, textEnd: tr('ratings'), textMiddle: "4.8"),
                 32.pw,
-                const SeconditemDriversDetail(
+                 SeconditemDriversDetail(
                     icon: AppIcons.taxi,
                     isIconAdditional: true,
-                    textEnd: "Trips",
+                    textEnd: tr('trips'),
                     textMiddle: "279"),
                 32.pw,
                 SeconditemDriversDetail(
                     icon: AppIcons.timeCircle,
-                    textEnd: "Years",
+                    textEnd:tr('years'),
                     textMiddle: "5"),
               ],
             ),
