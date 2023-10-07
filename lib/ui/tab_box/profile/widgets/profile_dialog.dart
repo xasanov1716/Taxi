@@ -16,10 +16,11 @@ import 'package:taxi_app/utils/theme/get_theme.dart';
 import 'package:taxi_app/utils/ui_utils/loading_dialog.dart';
 import 'package:taxi_app/utils/ui_utils/upload_image.dart';
 
-void profileDialog(
-    {required ImagePicker picker,
-    required BuildContext context,
-    required ValueChanged<String> valueChanged}) {
+void profileDialog({
+  required ImagePicker picker,
+  required BuildContext context,
+  required ValueChanged<String> valueChanged,
+}) {
   showModalBottomSheet(
     backgroundColor: Colors.transparent,
     context: context,
