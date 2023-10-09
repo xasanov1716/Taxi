@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:taxi_app/data/repositories/auth_repository.dart';
 import 'package:taxi_app/ui/auth/lets_in/lets_in_screen.dart';
 import 'package:taxi_app/ui/tab_box/tab_box.dart';
+import 'package:taxi_app/ui/test/test_polylines_screen.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
