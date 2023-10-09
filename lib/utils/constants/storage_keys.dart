@@ -8,6 +8,7 @@ class StorageKeys {
   static const String userId = "userId";
   static const String userRole = 'userRole';
   static const String carNumberType = 'isCorporative';
+  static const String isFromNavigate = 'isFromNavigate';
 
 
   static const String generalNotifications = "General Notification";

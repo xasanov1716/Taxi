@@ -7,6 +7,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:taxi_app/blocs/user_bloc/user_bloc.dart';
+import 'package:taxi_app/cubits/auth_cubit/auth_cubit.dart';
 import 'package:taxi_app/data/models/icon/icon_type.dart';
 import 'package:taxi_app/data/models/user/user_field_keys.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/edit_profile_client/widgets/user_photo.dart';
@@ -94,6 +95,12 @@ class _ClientEditFieldsState extends State<ClientEditFields> {
           hintText: 'Full Name',
           controller: fullNameController,
           onChanged: (value) async {
+            context.read<UserBloc>().add(
+              UpdateCurrentUserEvent(
+                fieldKey: UserFieldKeys.phone,
+                value: BlocProvider.of<AuthCubit>(context).state.phoneNumber,
+              ),
+            );
             context
                 .read<UserBloc>()
                 .add(UpdateCurrentUserEvent(fieldKey: UserFieldKeys.fullName, value: value));

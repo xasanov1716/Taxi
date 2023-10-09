@@ -43,7 +43,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
         builder: (context, state) {
           return Center(
             child: SingleChildScrollView(
-              padding: EdgeInsets.only(bottom: 48.h, left: 24.w, right: 24.w, top: 24.h),
+              padding: EdgeInsets.only(
+                  bottom: 48.h, left: 24.w, right: 24.w, top: 24.h),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
@@ -61,7 +62,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         onChanged: (v) {
                           if (v.length == 12) {
                             phoneFocus.unfocus();
-                            context.read<AuthCubit>().updatePhone(v.replaceAll(" ", ""));
+                            context
+                                .read<AuthCubit>()
+                                .updatePhone(v.replaceAll(" ", ""));
                             FocusScope.of(context).requestFocus(passwordFocus);
                           }
                         },
@@ -74,7 +77,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         prefixIcon: AppIcons.lock,
                         isPassword: true,
                         onChanged: (v) {
-                          context.read<AuthCubit>().updatePassword(v.replaceAll(" ", ""));
+                          context
+                              .read<AuthCubit>()
+                              .updatePassword(v.replaceAll(" ", ""));
                         },
                       ),
                       // 20.ph,
@@ -92,7 +97,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         title: tr('sign_up'),
                         radius: 100,
                         onTap: () {
-                          String canAuthText = context.read<AuthCubit>().canAuthenticate();
+                          StorageRepository.putBool(
+                              StorageKeys.isFromNavigate, true);
+                          String canAuthText =
+                              context.read<AuthCubit>().canAuthenticate();
                           if (canAuthText.isEmpty) {
                             context.read<AuthCubit>().signUp(context);
                           } else {

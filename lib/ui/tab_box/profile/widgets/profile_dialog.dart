@@ -116,16 +116,19 @@ Future<void> _getFromCamera({
     hideLoading(context: context);
 
     if (context.mounted &&
-        StorageRepository.getString(StorageKeys.userRole) == AppConstants.driver) {
-      context
-          .read<DriverBloc>()
-          .updateDriverField(fieldKey: DriverFieldKeys.imageUrl, value: data.data);
-      context.read<DriverBloc>().add(UpdateDriverEvent());
+        StorageRepository.getString(StorageKeys.userRole) ==
+            AppConstants.driver) {
+      context.read<DriverBloc>().updateDriverField(
+          fieldKey: DriverFieldKeys.imageUrl, value: data.data);
+      if (!StorageRepository.getBool(StorageKeys.isFromNavigate)) {
+        context.read<DriverBloc>().add(UpdateDriverEvent());
+      }
     } else if (context.mounted) {
-      context
-          .read<UserBloc>()
-          .add(UpdateCurrentUserEvent(fieldKey: UserFieldKeys.image, value: data.data));
-      context.read<UserBloc>().add(UpdateUserEvent());
+      context.read<UserBloc>().add(UpdateCurrentUserEvent(
+          fieldKey: UserFieldKeys.image, value: data.data));
+      if (!StorageRepository.getBool(StorageKeys.isFromNavigate)) {
+        context.read<UserBloc>().add(UpdateUserEvent());
+      }
     }
 
     valueChanged(xFile.path);
@@ -147,14 +150,19 @@ Future<void> _getFromGallery(
     if (!context.mounted) return;
     hideLoading(context: context);
     if (context.mounted &&
-        StorageRepository.getString(StorageKeys.userRole) == AppConstants.driver) {
-      context
-          .read<DriverBloc>()
-          .updateDriverField(fieldKey: DriverFieldKeys.imageUrl, value: data.data);
+        StorageRepository.getString(StorageKeys.userRole) ==
+            AppConstants.driver) {
+      context.read<DriverBloc>().updateDriverField(
+          fieldKey: DriverFieldKeys.imageUrl, value: data.data);
+      if (!StorageRepository.getBool(StorageKeys.isFromNavigate)) {
+        context.read<DriverBloc>().add(UpdateDriverEvent());
+      }
     } else if (context.mounted) {
-      context
-          .read<UserBloc>()
-          .add(UpdateCurrentUserEvent(fieldKey: UserFieldKeys.image, value: data.data));
+      context.read<UserBloc>().add(UpdateCurrentUserEvent(
+          fieldKey: UserFieldKeys.image, value: data.data));
+      if (!StorageRepository.getBool(StorageKeys.isFromNavigate)) {
+        context.read<UserBloc>().add(UpdateUserEvent());
+      }
     }
 
     valueChanged(xFile.path);
