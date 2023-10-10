@@ -1,13 +1,12 @@
 part of 'order_bloc.dart';
 
-@immutable
 class OrderState extends Equatable {
   final String statusText;
   final OrderModel orderModel;
   final List<OrderModel> orders;
   final List<OrderModel> orderById;
   final FormStatus status;
- const OrderState(
+  const OrderState(
       {required this.orders,
       required this.statusText,
       required this.orderModel,

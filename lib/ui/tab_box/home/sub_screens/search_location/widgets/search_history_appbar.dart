@@ -1,22 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:taxi_app/blocs/search_location_bloc/places_bloc.dart';
 import 'package:taxi_app/ui/widgets/global_input.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
-import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
-import 'package:taxi_app/utils/ui_utils/utilitiy_function.dart';
-import 'package:translit/translit.dart';
+import 'package:taxi_app/utils/ui_utils/utility_function.dart';
 
 class SearchLocationAppBar extends StatelessWidget implements PreferredSize {
   const SearchLocationAppBar({
     Key? key,
     required this.onChanged,
     required this.searchFocusNode,
-    required this.hintText, required this.filterOnTap,
+    required this.hintText,
+    required this.filterOnTap,
   }) : super(key: key);
 
   final ValueChanged onChanged;
@@ -28,7 +25,6 @@ class SearchLocationAppBar extends StatelessWidget implements PreferredSize {
   Widget build(BuildContext context) {
     return AppBar(
       elevation: 0,
-      automaticallyImplyLeading: true, // Set this to false
       title: GlobalTextField(
         onChanged: onChanged,
         focusNode: searchFocusNode,
@@ -38,8 +34,7 @@ class SearchLocationAppBar extends StatelessWidget implements PreferredSize {
           child: SvgPicture.asset(
             AppIcons.search,
             colorFilter: ColorFilter.mode(
-                getTheme(context) ? AppColors.c_600 : AppColors.c_400,
-                BlendMode.srcIn),
+                getTheme(context) ? AppColors.c_600 : AppColors.c_400, BlendMode.srcIn),
           ),
         ),
         hintText: hintText,

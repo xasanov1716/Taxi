@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
@@ -11,7 +12,7 @@ import 'package:taxi_app/data/repositories/request_repo.dart';
 import 'package:taxi_app/utils/constants/constants.dart';
 import 'package:taxi_app/utils/constants/storage_keys.dart';
 
-import '../../data/models/request_model/request_model.dart';
+import 'package:taxi_app/data/models/request_model/request_model.dart';
 
 part 'request_event.dart';
 
@@ -38,8 +39,7 @@ class RequestBloc extends Bloc<RequestEvent, RequestState> {
     add(InitDBRegions());
   }
 
-  void initializeRegions(
-      InitDBRegions event, Emitter<RequestState> emit) async {
+  void initializeRegions(InitDBRegions event, Emitter<RequestState> emit) async {
     List<RegionModel> regionModels =
         (await PlacesDatabase.instance.getAllRegions()).map((e) => e).toList();
     emit(state.copyWith(regionModels: regionModels));
@@ -75,13 +75,11 @@ class RequestBloc extends Bloc<RequestEvent, RequestState> {
         statusRequest: FormStatus.success,
       ));
     } else {
-      emit(state.copyWith(
-          statusRequest: FormStatus.failure, errorText: "Request not added"));
+      emit(state.copyWith(statusRequest: FormStatus.failure, errorText: tr('request_not_added')));
     }
   }
 
-  Future<void> _updateRequest(
-      UpdateRequest event, Emitter<RequestState> emit) async {
+  Future<void> _updateRequest(UpdateRequest event, Emitter<RequestState> emit) async {
     emit(state.copyWith(statusRequest: FormStatus.loading));
     UniversalData data;
     if (StorageRepository.getString(StorageKeys.userRole) == AppConstants.client) {
@@ -96,13 +94,11 @@ class RequestBloc extends Bloc<RequestEvent, RequestState> {
     if (data.error.isEmpty) {
       emit(state.copyWith(statusRequest: FormStatus.success));
     } else {
-      emit(state.copyWith(
-          statusRequest: FormStatus.failure, errorText: "Request not update"));
+      emit(state.copyWith(statusRequest: FormStatus.failure, errorText:tr('request_not_update')));
     }
   }
 
-  Future<void> _deleteRequest(
-      DeleteRequest event, Emitter<RequestState> emit) async {
+  Future<void> _deleteRequest(DeleteRequest event, Emitter<RequestState> emit) async {
     emit(state.copyWith(statusRequest: FormStatus.loading));
     UniversalData data;
     if (StorageRepository.getString(StorageKeys.userRole) == AppConstants.client) {
@@ -119,13 +115,11 @@ class RequestBloc extends Bloc<RequestEvent, RequestState> {
         statusRequest: FormStatus.success,
       ));
     } else {
-      emit(state.copyWith(
-          statusRequest: FormStatus.failure, errorText: "Request not delete"));
+      emit(state.copyWith(statusRequest: FormStatus.failure, errorText: tr('request_not_delete')));
     }
   }
 
-  void updateRequestField(
-      UpdateCurrentField event, Emitter<RequestState> emit) {
+  void updateRequestField(UpdateCurrentField event, Emitter<RequestState> emit) {
     RequestModel requestModel = state.requestModel;
 
     switch (event.fieldKey) {
@@ -139,15 +133,13 @@ class RequestBloc extends Bloc<RequestEvent, RequestState> {
         requestModel = requestModel.copyWith(toId: event.value as int?);
         break;
       case RequestField.description:
-        requestModel =
-            requestModel.copyWith(description: event.value as String?);
+        requestModel = requestModel.copyWith(description: event.value as String?);
         break;
       case RequestField.requestPrice:
         requestModel = requestModel.copyWith(requestPrice: event.value as int?);
         break;
       case RequestField.emptyPlaces:
-        requestModel =
-            requestModel.copyWith(passengerCount: event.value as int?);
+        requestModel = requestModel.copyWith(passengerCount: event.value as int?);
         break;
       case RequestField.tripTime:
         requestModel = requestModel.copyWith(tripTime: event.value as String?);
@@ -156,14 +148,11 @@ class RequestBloc extends Bloc<RequestEvent, RequestState> {
         requestModel = requestModel.copyWith(createdAt: event.value as String?);
         break;
       case RequestField.creatorName:
-        requestModel =
-            requestModel.copyWith(creatorName: event.value as String?);
+        requestModel = requestModel.copyWith(creatorName: event.value as String?);
         break;
     }
-    requestModel = requestModel.copyWith(
-        createdAt: DateTime.now().toString().substring(0, 16));
-    requestModel = requestModel.copyWith(
-        userId: StorageRepository.getString(StorageKeys.userId));
+    requestModel = requestModel.copyWith(createdAt: DateTime.now().toString().substring(0, 16));
+    requestModel = requestModel.copyWith(userId: StorageRepository.getString(StorageKeys.userId));
 
     debugPrint(requestModel.toString());
     emit(state.copyWith(requestModel: requestModel));

@@ -41,11 +41,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     return Scaffold(
       body: AnnotatedRegion(
         value: const SystemUiOverlayStyle(
-          statusBarIconBrightness:Brightness.light ,
-          statusBarColor: Colors.transparent
-        ),
+            statusBarIconBrightness: Brightness.light, statusBarColor: Colors.transparent),
         child: Stack(
-          fit: StackFit.loose,
           children: [
             SizedBox(
               height: double.infinity,
@@ -64,10 +61,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     gradient: LinearGradient(
                         begin: Alignment.topCenter,
                         end: Alignment.bottomCenter,
-                        colors: [
-                      Colors.transparent,
-                      AppColors.black.withOpacity(0.9)
-                    ])),
+                        colors: [Colors.transparent, AppColors.black.withOpacity(0.9)])),
               ),
             ),
             Positioned(
@@ -78,33 +72,28 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Text(
-                      tr("welcome_to 👋",),
+                      tr(
+                        "welcome_to 👋",
+                      ),
                       style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                          fontSize: 30.sp,
-                          fontWeight: FontWeight.w700,
-                          color: Colors.white),
+                          fontSize: 30.sp, fontWeight: FontWeight.w700, color: Colors.white),
                     ),
                     SizedBox(height: 12.h),
                     ShaderMask(
                       shaderCallback: (Rect bounds) {
-                        return AppColors.gradientOrangeYellow
-                            .createShader(bounds);
+                        return AppColors.gradientOrangeYellow.createShader(bounds);
                       },
                       child: Text(
                         tr("taxio"),
                         style: Theme.of(context).textTheme.displayLarge?.copyWith(
-                            fontSize: 60.sp,
-                            fontWeight: FontWeight.w900,
-                            color: AppColors.orange),
+                            fontSize: 60.sp, fontWeight: FontWeight.w900, color: AppColors.orange),
                       ),
                     ),
                     SizedBox(height: 24 * height / figmaHeight),
                     Text(
                       tr("welcome_screen_subtitle!"),
                       style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                          fontWeight: FontWeight.w600,
-                          color: Colors.white,
-                          fontSize: 16.sp),
+                          fontWeight: FontWeight.w600, color: Colors.white, fontSize: 16.sp),
                     ),
                     SizedBox(height: 48 * height / figmaHeight)
                   ],
@@ -119,8 +108,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
 
   @override
   void dispose() {
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
-        overlays: SystemUiOverlay.values);
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: SystemUiOverlay.values);
     super.dispose();
   }
 }

@@ -1,11 +1,10 @@
 import 'package:dio/dio.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:taxi_app/data/models/notification_model/notification_model.dart';
-import 'package:taxi_app/data/models/result_model.dart';
-import '../data/models/address/geocoding/geocoding.dart';
-import '../data/models/universal_data.dart';
-import '../utils/constants/constants.dart';
+import 'package:taxi_app/data/models/address/geocoding/geocoding.dart';
+import 'package:taxi_app/data/models/universal_data.dart';
+import 'package:taxi_app/utils/constants/constants.dart';
 
 class ApiService {
   // DIO SETTINGS
@@ -15,7 +14,6 @@ class ApiService {
       baseUrl: baseUrl,
       headers: {
         "Content-Type": "application/json",
-
       },
       connectTimeout: const Duration(seconds: 30),
       receiveTimeout: const Duration(seconds: 30),
@@ -48,12 +46,11 @@ class ApiService {
     );
   }
 
-  Future<UniversalData> getAddress({
-    required LatLng latLng,
-    required String kind,
-    required String lang,
-    required String key
-  }) async {
+  Future<UniversalData> getAddress(
+      {required LatLng latLng,
+      required String kind,
+      required String lang,
+      required String key}) async {
     Response response;
     try {
       response = await dio.get(
@@ -70,7 +67,7 @@ class ApiService {
       );
 
       if (response.statusCode == 200) {
-        String text = 'Aniqlanmagan Hudud';
+        String text = tr('no_such_identifed!');
         Geocoding geocoding = Geocoding.fromJson(response.data);
         if (geocoding.response.geoObjectCollection.featureMember.isNotEmpty) {
           text = geocoding.response.geoObjectCollection.featureMember[0].geoObject.metaDataProperty

@@ -1,6 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:taxi_app/data/models/transaction/transaction_model.dart';
 import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/ui/tab_box/wallet/widgets/card_item.dart';
@@ -39,8 +38,7 @@ class WalletScreen extends StatelessWidget {
                   children: [
                     CardItem(
                       onTap: () {
-                        Navigator.pushNamed(
-                            context, RouteNames.topUpAmountScreen);
+                        Navigator.pushNamed(context, RouteNames.topUpAmountScreen);
                       },
                     ),
                   ],
@@ -67,8 +65,7 @@ class WalletScreen extends StatelessWidget {
                   15,
                   (index) => TransactionItem(
                     onTap: () {
-                      Navigator.pushNamed(
-                          context, RouteNames.transactionsDetail);
+                      Navigator.pushNamed(context, RouteNames.transactionsDetail);
                     },
                     transactionModel: TransactionModel(
                       name: "Daniel Austin",

@@ -56,19 +56,19 @@ class _GlobalTextFieldState extends State<AmountTextField> {
         ),
         hintText: widget.hintText,
         enabledBorder: OutlineInputBorder(
-          borderSide: const BorderSide(color: AppColors.primary, width: 1),
+          borderSide: const BorderSide(color: AppColors.primary),
           borderRadius: BorderRadius.circular(24.r),
         ),
         focusedBorder: OutlineInputBorder(
-          borderSide: const BorderSide(color: AppColors.primary, width: 1),
+          borderSide: const BorderSide(color: AppColors.primary),
           borderRadius: BorderRadius.circular(24.r),
         ),
         errorBorder: OutlineInputBorder(
-          borderSide: const BorderSide(color: Colors.red, width: 1),
+          borderSide: const BorderSide(color: Colors.red),
           borderRadius: BorderRadius.circular(24.r),
         ),
         border: OutlineInputBorder(
-          borderSide: const BorderSide(color: AppColors.primary, width: 1),
+          borderSide: const BorderSide(color: AppColors.primary),
           borderRadius: BorderRadius.circular(24.r),
         ),
         fillColor: Colors.transparent,

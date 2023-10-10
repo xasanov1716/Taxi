@@ -1,10 +1,5 @@
 {
-  "language": "Til",
-  "language_type": "O'zbek",
-
-
   "01": "",
-
 
   "welcome_to": "Xush kelibsiz",
   "taxio": "Dastyor Taxi",
@@ -16,16 +11,14 @@
   "get_started": "Boshlash",
   "skip": "O'tkazib yuborish",
 
-
   "02": "",
-
 
   "lets_you_in": "Dastyorga Kirish",
   "continue_with_facebook": "Facebook bilan davom eting",
   "continue_with_google": "Google bilan davom eting",
   "continue_with_apple": "Apple bilan davom eting",
   "sign_in_with_password": "Parol bilan tizimga kiring",
-  "dont_have_an_account": "Hisobingiz yo'qmi",
+  "don't_have_an_account": "Hisobingiz yo'qmi",
   "or": "yoki",
   "sign_up": "Ro'yxatdan o'tish",
   "sign_in": "Kirish",
@@ -45,11 +38,8 @@
   "03": "",
 
 "create_profile":"Profil yaratish",
-  "edit_profile": "Profilni tahrirlash",
   "create_user": "Foydalanuvchi yaratish",
-  "update": "Yangilash",
   "is_required": "majburiy",
-  "address": "Manzil",
   "about_driver": "Haydovchi haqida",
   "legal_entity": "Yuridik shaxs",
   "telegram_username": "Telegram username. Example:example_username",
@@ -64,41 +54,22 @@
   "where_are_you_leaving": "Qayerdan jo'naysiz",
   "where_are_you_going": "Qayerga borasiz",
 "update_address": "Manzilni yangilash",
-"add_new_address": "Yangi manzil qo'shish",
-  "add_address": "Manzil qo'shish",
 "error": "Xato",
-"contact_us": "Biz bilan bog'lanish",
-"help_center": "Yordam markazi",
   "custom_service": "Mijozlarga xizmat ko'rsatish",
   "whatsapp": "Whatsapp",
-  "website": "website",
   "Facebook": "Facebook",
   "twitter": "Twitter",
   "instagram": "Instagram",
-  "invite_friends": "Do'stlarni taklif qiling",
 "we_invite_app": "Sizni Dastyor Taxi ilovasiga taklif qilamiz",
-"invite": "Taklif qiling",
-  "invited": "Taklif qilingan",
-  "connected": "Ulangan",
-  "card_name": "Karta nomi",
   "card_holder_name": "Karta egasining ismi",
-  "expiry_date": "Quyidagi sanagacha foydalanilsin",
-  "card_number": "Karta raqami",
-  "privacy_policy": "Maxfiylik siyosati",
   "select_which_contact_password": "Parolni tiklash uchun qaysi kontakt ma'lumotlaridan foydalanishimiz kerakligini tanlang",
 "repeat_password": "Parolni qayta kiriting",
 "your_account_ready": "Hisobingiz foydalanishga tayyor. Siz bir necha soniyadan so'ng Bosh sahifaga yo'naltirilasiz",
-  "security": "Xavfsizlik",
-  "google_authenticator": "Google Authenticator",
-  "change_pin": "PIN-kodni o'zgartiring",
-  "change_password": "Parolni o'zgartirish",
-  "dark_mode": "Tungi rejim",
   "select_from_camera": "Kameradan tanlang",
   "select_from_gallery": "Galereyadan tanlang",
   "log_out": "Chiqish",
   "are_you_log_out": "Haqiqatan ham tizimdan chiqmoqchimisiz",
   "yes_log_out": "Ha, chiqiman",
-"payment": "To'lov",
 "transaction_history": "O'tkazmalar tarixi",
 "e_receipt": "Elektron kvitansiya",
   "top_up_e_wallet": "Elektron hamyonni to'ldirish",
@@ -128,14 +99,12 @@
   "searching_ride": "Ride qidirilmoqda..",
   "this_may_take": "Bu bir necha soniya vaqt olishi mumkin...",
   "driver_arrive": "Haydovchi keladi",
-
-
   "can_register": "ro'yxatdan o'tish mumkin",
   "addresses_are_required": "manzillari talab qilinadi",
   "fill_your_profile": "Profilingizni to'ldiring",
   "full_name": "To'liq ism sharif",
   "nickname": "Taxallus",
-  "date_of_Birth": "Tug'ilgan kun",
+  "date_of_birth": "Tug'ilgan kun",
   "email": "Elektron pochta",
   "gender": "Jins",
   "continue": "Davom eting",
@@ -148,7 +117,8 @@
   "scanner_to_get_started": "Boshlash uchun barmoq izi skaneriga \n                barmog‘ingizni qo‘ying.",
   "congratulations": "Tabriklaymiz!",
   "dialog_title_auth": "Hisobingiz foydalanishga tayyor. Siz bir necha soniyadan so'ng asosiy sahifaga yo'naltirilasiz.",
-
+  "resend_code_in": "Kodni qayta yuboring",
+  "resend_code_in_s": "60 soniyada kodni qayta yuboring",
 
 
 
@@ -163,8 +133,6 @@
   "create_new_password": "Yangi parol yarating",
   "create_your_new_password": "Yangi parolingizni yarating",
   "confirm_new_password": "Yangi parolni tasdiqlash uchun qayta kiriting!",
-
-
   "pin_code_installation": "Parolni o'rnatish",
   "confirm_pin_code": "Parolni tasdiqlang",
   "error_scaner_fingerprint": "Barmoq izini skanerlash xato!",
@@ -303,5 +271,84 @@
 
   "09": "",
 
-  "": ""
+  "edit_profile": "Profilni tahrirlash",
+  "address": "Manzil",
+  "payment": "To'lov",
+  "security": "Xavfsizlik",
+  "dark_mode": "Tungi rejim",
+  "privacy_policy": "Maxfiylik politikasi",
+  "help_center": "Yordam markazi",
+  "invite_friends": "Do'stlarni taklif qiling",
+  "logout": "Chiqish",
+  "update":"Yangilanish",
+  "add_new_address":"Yangi manzil qo'shish",
+  "add_address":"Manzil qo'shish",
+  "address_details":"Manzil tafsilotlari",
+  "name_address": "Manzil nomi",
+  "general_notification": "Umumiy xabarnoma",
+  "sound": "Ovoz",
+  "vibrate": "Vibratsiya",
+  "promo_discount": "Promo chegirma",
+  "payments": "To'lovlar",
+  "app_updates": "Ilova yangilanishlari",
+  "new_service_available": "Yangi xizmat mavjud",
+  "new_tips_available": "Yangi maslahatlar mavjud",
+  "connected": "Ulangan",
+  "card_name": "Karta nomi",
+  "card_number": "Karta raqami",
+  "expiry_date": "Karta muddati",
+  "face_id": "Face ID",
+  "biometric_id": "Biometrik ID",
+  "google_authenticator": "Google authenticator",
+  "change_pin": "PIN kodni o'zgartirish",
+  "change_password": "Parolni o'zgartirish",
+  "invite": "Taklif qiling",
+  "invited": "Taklif qilingan",
+  "contact_us": "Biz bilan bog'laning",
+  "general": "Umumiy",
+  "account": "Hisob",
+  "service": "Xizmat",
+  "customer_service": "Mijoz xizmati",
+  "website": "Veb-sayt",
+  "logout_title": "Siz tizimdan chiqmoqchimisiz?",
+  "language": "Til",
+  "language_type": "O'zbek",
+
+
+  "bloc_papkalarni_navbati": "folders",
+
+
+  "loading": "Yuklanmoqda...",
+  "user_added_succesfull": "Foydalanuvchi muvaffaqiyatli qo'shildi",
+  "user_deleted_succesfull": "Foydalanuvchi muvaffaqiyatli oʻchirildi",
+  "user_update_succesfull": "Foydalanuvchi muvaffaqiyatli yangilandi",
+
+  "facebook_login_error": "Facebook orqali kirish xato",
+  "apple_login_error": "Apple orqali kirish xato",
+"success_order_add": "Buyurtma muvaffaqiyatli qo'shildi",
+"success_order_update": "Buyurtma muvaffaqiyatli yangilandi",
+"success_order_delete": "Buyurtma muvaffaqiyatli o'chirildi",
+"request_not_added": "So'rov qo'shilmagan",
+"request_not_update": "So'rov yangilanmagan",
+"request_not_delete": "So'rov o'chirilmagan",
+
+
+
+
+  "cubit_papkalarni_navbati": "folders",
+
+
+  "what_is_taxio": "Dastyor Taksi nima?",
+  "how_to_use_taxio": "Dastyor Taksidan qanday foydalanish kerak?",
+"how_do_cancel_taxi": "Qanday qilib taksi buyurtmasini bekor qilishim mumkin?"
+"is_taxi_free": "Dastyor Taksidan foydalanish bepulmi?",
+"how_do_add_promo": "Dastyor Taksiga reklamani qanday qo'shish mumkun?",
+"why_didnot_my_payment": "Nega mening to'lovim ishlamadi?",
+"why_are_service_price_difference": "Nima uchun taksi xizmatlari narxi har xil?",
+"why_cannot_new_payment": "Nima uchun yangi toʻlov usulini qoʻsha olmayman?",
+"why_didnot_after_payment": "Nega men to'lovdan keyin elektron kvitansiyani olmadim?",
+"enter_valid_phone_number": "Yaroqli telefon raqamini kiriting",
+"enter_valid_password": "Yaroqli parol kiriting",
+"no_such_identifed": "Bunday hudud aniqlanmadi!"
+
 }

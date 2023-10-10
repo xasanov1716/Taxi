@@ -23,7 +23,7 @@ import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
 
 class ClientEditFields extends StatefulWidget {
-  const ClientEditFields({super.key,required this.isFromAuth});
+  const ClientEditFields({super.key, required this.isFromAuth});
   final bool isFromAuth;
 
   @override
@@ -45,10 +45,8 @@ class _ClientEditFieldsState extends State<ClientEditFields> {
   ImagePicker picker = ImagePicker();
   String image = "";
 
-  var phoneFormatter = MaskTextInputFormatter(
-      mask: '## ### ## ##',
-      filter: {"#": RegExp(r'[0-9]')},
-      type: MaskAutoCompletionType.lazy);
+  var phoneFormatter =
+      MaskTextInputFormatter(mask: '## ### ## ##', filter: {"#": RegExp(r'[0-9]')});
 
   var genders = [tr("male"), tr("female")];
 
@@ -97,11 +95,10 @@ class _ClientEditFieldsState extends State<ClientEditFields> {
           focusNode: fullNameFocusNode,
           hintText: tr('full_name'),
           controller: fullNameController,
-          keyboardType: TextInputType.text,
-          textInputAction: TextInputAction.next,
           onChanged: (value) async {
-            context.read<UserBloc>().add(UpdateCurrentUserEvent(
-                fieldKey: UserFieldKeys.fullName, value: value));
+            context
+                .read<UserBloc>()
+                .add(UpdateCurrentUserEvent(fieldKey: UserFieldKeys.fullName, value: value));
             context.read<UserBloc>().add(
                   UpdateCurrentUserEvent(
                       fieldKey: UserFieldKeys.fcmToken,
@@ -114,7 +111,6 @@ class _ClientEditFieldsState extends State<ClientEditFields> {
           focusNode: nicknameFocusNode,
           hintText: tr('nickname'),
           controller: nicknameController,
-          keyboardType: TextInputType.text,
           textInputAction: TextInputAction.next,
           onChanged: (value) {
             context.read<UserBloc>().add(UpdateCurrentUserEvent(
@@ -209,21 +205,20 @@ class _ClientEditFieldsState extends State<ClientEditFields> {
             },
             hint: Text(gender,
                 style: AppTextStyle.bodyMediumSemibold.copyWith(
-                    color: getTheme(context)
-                        ? AppColors.white
-                        : AppColors.c_900)), // Placeholder text
+                    color:
+                        getTheme(context) ? AppColors.white : AppColors.c_900)), // Placeholder text
           ),
         ),
         24.ph,
         GlobalTextField(
           focusNode: aboutFocusNode,
           hintText: tr('address'),
-          keyboardType: TextInputType.text,
           controller: addressController,
           textInputAction: TextInputAction.next,
           onChanged: (value) {
-            context.read<UserBloc>().add(UpdateCurrentUserEvent(
-                fieldKey: UserFieldKeys.addressText, value: value));
+            context
+                .read<UserBloc>()
+                .add(UpdateCurrentUserEvent(fieldKey: UserFieldKeys.addressText, value: value));
           },
         ),
       ],
@@ -248,13 +243,11 @@ class _ClientEditFieldsState extends State<ClientEditFields> {
             onDateTimeChanged: (DateTime newDate) {
               if (newDate != selectedDate) {
                 setState(() {
-                  dateController.text =
-                      newDate.toLocal().toString().split(' ')[0];
+                  dateController.text = newDate.toLocal().toString().split(' ')[0];
                   selectedDate = newDate;
 
                   context.read<UserBloc>().add(UpdateCurrentUserEvent(
-                      fieldKey: UserFieldKeys.birthDate,
-                      value: dateController.text));
+                      fieldKey: UserFieldKeys.birthDate, value: dateController.text));
                 });
               }
             },

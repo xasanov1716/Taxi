@@ -28,8 +28,6 @@ class _SetBiometricsScreenState extends State<SetBiometricsScreen> {
       authenticated = await auth.authenticate(
         localizedReason: tr('scanner_to_get_started'),
         options: const AuthenticationOptions(
-          useErrorDialogs: true,
-          stickyAuth: false,
           biometricOnly: true,
         ),
       );
@@ -42,7 +40,7 @@ class _SetBiometricsScreenState extends State<SetBiometricsScreen> {
       }
     }
     setState(() {
-      isAuth = authenticated ? true : false;
+      isAuth = authenticated;
       StorageRepository.putBool("isAuth", isAuth);
     });
   }
@@ -51,7 +49,6 @@ class _SetBiometricsScreenState extends State<SetBiometricsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar:  GlobalAppBar(
-        onTap: null,
         title: tr('set_your_fingerprint'),
       ),
       body: Padding(
@@ -92,7 +89,6 @@ class _SetBiometricsScreenState extends State<SetBiometricsScreen> {
                   },
                   radius: 100,
                   color: AppColors.yellowBackground,
-                  textColor: AppColors.dark3,
                 )),
                 SizedBox(width: 12.w),
                 Expanded(
@@ -101,13 +97,10 @@ class _SetBiometricsScreenState extends State<SetBiometricsScreen> {
                     onTap: () {
                       _checkBiometric();
                       if (StorageRepository.getBool("isAuth")) {
-                        Navigator.pushReplacementNamed(
-                            context, RouteNames.tabBox);
+                        Navigator.pushReplacementNamed(context, RouteNames.tabBox);
                       }
                     },
                     radius: 100,
-                    color: AppColors.primary,
-                    textColor: AppColors.dark3,
                   ),
                 ),
               ],

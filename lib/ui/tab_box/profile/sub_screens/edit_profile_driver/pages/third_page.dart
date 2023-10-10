@@ -6,7 +6,6 @@ import 'package:taxi_app/blocs/driver_bloc/driver_bloc.dart';
 import 'package:taxi_app/blocs/driver_request_bloc/request_bloc.dart';
 import 'package:taxi_app/data/models/driver/driver_fields.dart';
 import 'package:taxi_app/data/models/places/region_model.dart';
-import 'package:taxi_app/data/models/request_model/request_model.dart';
 import 'package:taxi_app/ui/tab_box/home/sub_screens/request_screens/widgets/dropdown_for_request.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/fonts/text_styles.dart';
@@ -37,8 +36,7 @@ class _ThirdPageState extends State<ThirdPage> {
                 physics: const BouncingScrollPhysics(),
                 children: [
                   Padding(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 24.w, vertical: 24.h),
+                    padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 24.h),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -46,9 +44,7 @@ class _ThirdPageState extends State<ThirdPage> {
                    tr('from'),
                           style: AppTextStyle.bodyMediumSemibold.copyWith(
                             fontSize: 20.sp,
-                            color: getTheme(context)
-                                ? AppColors.white
-                                : AppColors.c_900,
+                            color: getTheme(context) ? AppColors.white : AppColors.c_900,
                           ),
                         ),
                         24.ph,
@@ -67,9 +63,7 @@ class _ThirdPageState extends State<ThirdPage> {
                         Text(tr('to'),
                             style: AppTextStyle.bodyMediumSemibold.copyWith(
                                 fontSize: 20.sp,
-                                color: getTheme(context)
-                                    ? AppColors.white
-                                    : AppColors.c_900)),
+                                color: getTheme(context) ? AppColors.white : AppColors.c_900)),
                         24.ph,
                         DropDownForFromTo(
                           listFromOutside: state.regionModels,

@@ -11,7 +11,6 @@ import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/edit_profile_client/widgets/client_edit_fields.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/edit_profile_client/widgets/edit_appbar.dart';
 import 'package:taxi_app/ui/widgets/global_button.dart';
-import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/constants/storage_keys.dart';
 import 'package:taxi_app/utils/ui_utils/show_snackbar.dart';
 
@@ -21,8 +20,7 @@ class EditProfileClientScreen extends StatefulWidget {
   final bool navigateFromAuth;
 
   @override
-  State<EditProfileClientScreen> createState() =>
-      _EditProfileClientScreenState();
+  State<EditProfileClientScreen> createState() => _EditProfileClientScreenState();
 }
 
 class _EditProfileClientScreenState extends State<EditProfileClientScreen> {
@@ -33,6 +31,7 @@ class _EditProfileClientScreenState extends State<EditProfileClientScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: EditAppBar(
+          hideBackButton: widget.navigateFromAuth,
           title: widget.navigateFromAuth ? tr("create_profile") : tr("edit_profile")),
       body: BlocConsumer<UserBloc, UsersState>(
         builder: (context, state) {
@@ -48,33 +47,27 @@ class _EditProfileClientScreenState extends State<EditProfileClientScreen> {
                 GlobalButton(
                   title: widget.navigateFromAuth ? tr("create_user") : tr("update"),
                   onTap: () {
-                    if(widget.navigateFromAuth){
+                    if (widget.navigateFromAuth) {
                       context.read<UserBloc>().add(
-                        UpdateCurrentUserEvent(
-                          fieldKey: UserFieldKeys.phone,
-                          value: BlocProvider.of<AuthCubit>(context)
-                              .state
-                              .phoneNumber,
-                        ),
-                      );
+                            UpdateCurrentUserEvent(
+                              fieldKey: UserFieldKeys.phone,
+                              value: BlocProvider.of<AuthCubit>(context).state.phoneNumber,
+                            ),
+                          );
                       context.read<UserBloc>().add(
-                        UpdateCurrentUserEvent(
-                          fieldKey: UserFieldKeys.password,
-                          value: BlocProvider.of<AuthCubit>(context)
-                              .state
-                              .password,
-                        ),
-                      );
+                            UpdateCurrentUserEvent(
+                              fieldKey: UserFieldKeys.password,
+                              value: BlocProvider.of<AuthCubit>(context).state.password,
+                            ),
+                          );
                     }
 
                     context.read<UserBloc>().add(UpdateCurrentUserEvent(
-                        fieldKey: UserFieldKeys.createdAt,
-                        value: DateTime.now().toString()));
+                        fieldKey: UserFieldKeys.createdAt, value: DateTime.now().toString()));
 
                     context.read<UserBloc>().add(UpdateCurrentUserEvent(
                         fieldKey: UserFieldKeys.userId,
-                        value:
-                            StorageRepository.getString(StorageKeys.userId)));
+                        value: StorageRepository.getString(StorageKeys.userId)));
 
                     if (context.read<UserBloc>().canRequest().isEmpty) {
                       context.read<UserBloc>().add(AddUserEvent());
@@ -86,7 +79,6 @@ class _EditProfileClientScreenState extends State<EditProfileClientScreen> {
                     }
                   },
                   radius: 100.r,
-                  color: AppColors.primary,
                 )
               ],
             ),
@@ -101,7 +93,7 @@ class _EditProfileClientScreenState extends State<EditProfileClientScreen> {
             if (widget.navigateFromAuth) {
               Navigator.pushReplacementNamed(context, RouteNames.tabBox);
             } else {
-              Navigator.pop(context);
+             // Navigator.pop(context);
             }
           }
         },

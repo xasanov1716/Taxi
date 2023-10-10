@@ -17,8 +17,6 @@ import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/ui_utils/show_snackbar.dart';
 
-import 'widgets/rol_dialog.dart';
-
 class EditProfileScreen extends StatefulWidget {
   const EditProfileScreen({super.key, required this.navigateFromAuth});
 
@@ -59,7 +57,6 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
             controller: pageController,
             count: 3,
             effect: const JumpingDotEffect(
-              dotHeight: 16,
               activeDotColor: AppColors.primary,
               dotWidth: 25,
               jumpScale: .7,
@@ -76,7 +73,6 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
               children: [
                 Expanded(
                   child: PageView(
-                    scrollDirection: Axis.horizontal,
                     controller: pageController,
                     physics: const NeverScrollableScrollPhysics(),
                     children: [
@@ -93,16 +89,12 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     if (widget.navigateFromAuth) {
                       context.read<DriverBloc>().updateDriverField(
                             fieldKey: DriverFieldKeys.phoneNumber,
-                            value: BlocProvider.of<AuthCubit>(context)
-                                .state
-                                .phoneNumber,
+                            value: BlocProvider.of<AuthCubit>(context).state.phoneNumber,
                           );
 
                       context.read<DriverBloc>().updateDriverField(
                             fieldKey: DriverFieldKeys.password,
-                            value: BlocProvider.of<AuthCubit>(context)
-                                .state
-                                .password,
+                            value: BlocProvider.of<AuthCubit>(context).state.password,
                           );
                     }
 
@@ -142,8 +134,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       }
                     } else if (currentPage == 2) {
                       if (widget.navigateFromAuth) {
-                        if (context.read<DriverBloc>().state.driverModel.from !=
-                            0) {
+                        if (context.read<DriverBloc>().state.driverModel.from != 0) {
                           Navigator.pushReplacementNamed(
                             context,
                             RouteNames.tabBox,
@@ -160,7 +151,6 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     }
                   },
                   radius: 100.r,
-                  color: AppColors.primary,
                 )
               ],
             ),

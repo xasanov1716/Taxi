@@ -42,8 +42,8 @@ import 'package:taxi_app/ui/tab_box/wallet/sub_screens/top_up_amount_screen.dart
 import 'package:taxi_app/ui/tab_box/wallet/sub_screens/top_up_payment_screen.dart';
 import 'package:taxi_app/ui/tab_box/wallet/sub_screens/transaction_detail_screen.dart';
 import 'package:taxi_app/ui/tab_box/wallet/sub_screens/transaction_history_screen.dart';
-import 'auth/lets_in/lets_in_screen.dart';
-import 'tab_box/home/sub_screens/special_offers/special_offers_screen.dart';
+import 'package:taxi_app/ui/auth/lets_in/lets_in_screen.dart';
+import 'package:taxi_app/ui/tab_box/home/sub_screens/special_offers/special_offers_screen.dart';
 
 class RouteNames {
   static const String splashScreen = "/";
@@ -55,11 +55,11 @@ class RouteNames {
   static const String signUp = "/sign_up_screen";
   static const String login = "/login_screen";
   static const String tabBox = "/tab_box";
-  static const String profileScreen = "/profile_screen";
+
   // static const String setPinCodeScreen = "/set_pin_code_screen";
   // static const String enterPinScreen = "/pin_code_screen";
   // static const String setBiometrics = "/set_biometrics";
-  static const String code = "/code";
+  // static const String code = "/code";
   static const String searchLocationScreen = "/search_location";
   static const String notificationScreen = "/notification_screen";
   static const String specialOffers = "/special_offers";
@@ -67,7 +67,6 @@ class RouteNames {
   static const String searchingDriver = "/searching_driver";
   static const String driverArriving = "/driver_arriving";
   static const String selectTransportScreen = "/select_driver_screen";
-  static const String bottomSheetDialog = "/bottom_sheet_dialog";
   static const String addPromo = "/add_promo";
   static const String cancelDriver = "/cancel_driver";
   static const String chatWithDriver = "/chat_with_driver";
@@ -86,15 +85,24 @@ class RouteNames {
   static const String editProfileDriver = "/edit_profile";
   static const String editProfileClient = "/edit_profile_client";
   static const String inviteFriends = "/invite_friends";
-  static const String welcomeScreen = "/welcome";
   static const String helpCenterScreen = "/helpCenterScreen";
-  static const String askRoleDialog = "/askRoleDialog";
   static const String notificationDetail = "/notificationDetail";
   static const String addAddressScreen = "/add_address_screen";
   static const String requestScreen = "/request_screen";
-
   static const String driverDetailInfo = '/driver_detail_screen';
   static const String clientDetailInfo = '/client_detail_screen';
+
+  // Don't used
+  static const String profileScreen = "/profile_screen";
+
+  // Don't used
+  static const String askRoleDialog = "/askRoleDialog";
+
+  // Don't used
+  static const String welcomeScreen = "/welcome";
+
+  // Don't used
+  static const String bottomSheetDialog = "/bottom_sheet_dialog";
 }
 
 class AppRoutes {
@@ -212,7 +220,7 @@ class AppRoutes {
         );
       case RouteNames.notificationScreen:
         return MaterialPageRoute(
-          builder: (context) => NotificationScreen(),
+          builder: (context) => const NotificationScreen(),
         );
       case RouteNames.paymentMethods:
         return MaterialPageRoute(

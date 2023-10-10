@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taxi_app/ui/widgets/global_button.dart';
@@ -19,8 +20,7 @@ void showGlobalAlertDialog(
       return AlertDialog(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24.r)),
         content: Container(
-          padding:
-              EdgeInsets.only(top: 40.h, left: 32.w, right: 32.w, bottom: 32.h),
+          padding: EdgeInsets.only(top: 40.h, left: 32.w, right: 32.w, bottom: 32.h),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(24.r),
               color: Theme.of(context).scaffoldBackgroundColor),
@@ -35,10 +35,8 @@ void showGlobalAlertDialog(
               32.ph,
               Text(
                 title,
-                style: AppTextStyle.h4Bold.copyWith(
-                    color: getTheme(context)
-                        ? AppColors.primary
-                        : AppColors.c_900),
+                style: AppTextStyle.h4Bold
+                    .copyWith(color: getTheme(context) ? AppColors.primary : AppColors.c_900),
                 textAlign: TextAlign.center,
                 overflow: TextOverflow.ellipsis,
                 maxLines: 3,
@@ -46,20 +44,18 @@ void showGlobalAlertDialog(
               16.ph,
               Text(
                 text,
-                style: AppTextStyle.bodyLargeRegular.copyWith(
-                    color:
-                        getTheme(context) ? AppColors.white : AppColors.c_900),
+                style: AppTextStyle.bodyLargeRegular
+                    .copyWith(color: getTheme(context) ? AppColors.white : AppColors.c_900),
                 textAlign: TextAlign.center,
                 overflow: TextOverflow.ellipsis,
                 maxLines: 3,
               ),
               32.ph,
               GlobalButton(
-                title: "OK",
+                title: tr('ok'),
                 textColor: AppColors.c_900,
                 onTap: onTap,
                 radius: 100.r,
-                color: AppColors.primary,
               )
             ],
           ),

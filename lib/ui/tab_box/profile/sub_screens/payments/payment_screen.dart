@@ -4,15 +4,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:taxi_app/blocs/payment_add/payment_add_bloc.dart';
-import 'package:taxi_app/ui/tab_box/profile/sub_screens/payments/payment_add_card_screen.dart';
+import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/ui/tab_box/profile/sub_screens/payments/widgets/payment_container.dart';
-import 'package:taxi_app/ui/widgets/global_appbar.dart';
 import 'package:taxi_app/ui/widgets/global_button.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
-import 'package:taxi_app/utils/ui_utils/utilitiy_function.dart';
 
 class PaymentsListScreen extends StatefulWidget {
   const PaymentsListScreen({super.key});
@@ -36,20 +34,17 @@ class _PaymentsListScreenState extends State<PaymentsListScreen> {
             icon: SvgPicture.asset(
               AppIcons.arrowLeft,
               colorFilter: ColorFilter.mode(
-                  getTheme(context) ? AppColors.white : AppColors.black,
-                  BlendMode.srcIn),
+                  getTheme(context) ? AppColors.white : AppColors.black, BlendMode.srcIn),
             ),
           ),
-          title: Text("Payment",
-              style: Theme.of(context).appBarTheme.titleTextStyle),
+          title: Text("Payment", style: Theme.of(context).appBarTheme.titleTextStyle),
           actions: [
             IconButton(
               onPressed: () {},
               icon: SvgPicture.asset(
                 AppIcons.moreCircle,
                 colorFilter: ColorFilter.mode(
-                    getTheme(context) ? AppColors.white : AppColors.black,
-                    BlendMode.srcIn),
+                    getTheme(context) ? AppColors.white : AppColors.black, BlendMode.srcIn),
               ),
             ),
           ],
@@ -74,13 +69,9 @@ class _PaymentsListScreenState extends State<PaymentsListScreen> {
                 GlobalButton(
                   padding: EdgeInsets.symmetric(horizontal: 24.w),
                   onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return const PaymentAddCardScreen();
-                    }));
+                    Navigator.pushNamed(context, RouteNames.paymentAddCard);
                   },
                   title: tr('add_new_card'),
-                  color: AppColors.primary,
                   radius: 100,
                 ),
                 48.ph

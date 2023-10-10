@@ -50,9 +50,7 @@ class LogOutItem extends StatelessWidget {
                   onTap: () {
                     Navigator.pop(context);
                   },
-                  color: getTheme(context)
-                      ? AppColors.dark3
-                      : AppColors.orangeBackground,
+                  color: getTheme(context) ? AppColors.dark3 : AppColors.orangeBackground,
                   radius: 100.r,
                 )),
                 12.pw,
@@ -77,7 +75,6 @@ class LogOutItem extends StatelessWidget {
                       Navigator.pop(context);
                     }
                   },
-                  color: AppColors.primary,
                   radius: 100.r,
                 )),
               ],

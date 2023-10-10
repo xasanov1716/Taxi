@@ -5,7 +5,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:taxi_app/blocs/driver_bloc/driver_bloc.dart';
 import 'package:taxi_app/blocs/user_bloc/user_bloc.dart';
-import 'package:taxi_app/cubits/user/user_cubit.dart';
 import 'package:taxi_app/data/local/storage_repository/storage_repository.dart';
 import 'package:taxi_app/data/models/driver/driver_fields.dart';
 import 'package:taxi_app/data/models/universal_data.dart';
@@ -18,10 +17,11 @@ import 'package:taxi_app/utils/theme/get_theme.dart';
 import 'package:taxi_app/utils/ui_utils/loading_dialog.dart';
 import 'package:taxi_app/utils/ui_utils/upload_image.dart';
 
-void profileDialog(
-    {required ImagePicker picker,
-    required BuildContext context,
-    required ValueChanged<String> valueChanged}) {
+void profileDialog({
+  required ImagePicker picker,
+  required BuildContext context,
+  required ValueChanged<String> valueChanged,
+}) {
   showModalBottomSheet(
     backgroundColor: Colors.transparent,
     context: context,
@@ -99,10 +99,11 @@ void profileDialog(
   );
 }
 
-Future<void> _getFromCamera(
-    {required ImagePicker picker,
-    required BuildContext context,
-    required ValueChanged<String> valueChanged}) async {
+Future<void> _getFromCamera({
+  required ImagePicker picker,
+  required BuildContext context,
+  required ValueChanged<String> valueChanged,
+}) async {
   XFile? xFile = await picker.pickImage(
     source: ImageSource.camera,
     maxHeight: 512 * height / figmaHeight,
@@ -112,17 +113,20 @@ Future<void> _getFromCamera(
   if (xFile != null && context.mounted) {
     showLoading(context: context);
     UniversalData data = await imageUploader(xFile);
+    if (!context.mounted) return;
+    hideLoading(context: context);
+
     if (context.mounted &&
         StorageRepository.getString(StorageKeys.userRole) == AppConstants.driver) {
-      context.read<DriverBloc>().updateDriverField(
-          fieldKey: DriverFieldKeys.imageUrl, value: data.data);
+      context
+          .read<DriverBloc>()
+          .updateDriverField(fieldKey: DriverFieldKeys.imageUrl, value: data.data);
       context.read<DriverBloc>().add(UpdateDriverEvent());
-      hideLoading(context: context);
     } else if (context.mounted) {
-      context.read<UserBloc>().add(UpdateCurrentUserEvent(
-          fieldKey: UserFieldKeys.image, value: data.data));
+      context
+          .read<UserBloc>()
+          .add(UpdateCurrentUserEvent(fieldKey: UserFieldKeys.image, value: data.data));
       context.read<UserBloc>().add(UpdateUserEvent());
-      hideLoading(context: context);
     }
 
     valueChanged(xFile.path);
@@ -141,15 +145,17 @@ Future<void> _getFromGallery(
   if (xFile != null && context.mounted) {
     showLoading(context: context);
     UniversalData data = await imageUploader(xFile);
+    if (!context.mounted) return;
+    hideLoading(context: context);
     if (context.mounted &&
         StorageRepository.getString(StorageKeys.userRole) == AppConstants.driver) {
-      context.read<DriverBloc>().updateDriverField(
-          fieldKey: DriverFieldKeys.imageUrl, value: data.data);
-      hideLoading(context: context);
+      context
+          .read<DriverBloc>()
+          .updateDriverField(fieldKey: DriverFieldKeys.imageUrl, value: data.data);
     } else if (context.mounted) {
-      context.read<UserBloc>().add(UpdateCurrentUserEvent(
-          fieldKey: UserFieldKeys.image, value: data.data));
-      hideLoading(context: context);
+      context
+          .read<UserBloc>()
+          .add(UpdateCurrentUserEvent(fieldKey: UserFieldKeys.image, value: data.data));
     }
 
     valueChanged(xFile.path);

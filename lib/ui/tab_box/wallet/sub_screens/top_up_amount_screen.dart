@@ -6,10 +6,9 @@ import 'package:taxi_app/ui/tab_box/wallet/widgets/amount_buttons.dart';
 import 'package:taxi_app/ui/tab_box/wallet/widgets/amount_text_field.dart';
 import 'package:taxi_app/ui/widgets/global_appbar.dart';
 import 'package:taxi_app/ui/widgets/global_button.dart';
-import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 
-import '../../../app_routes.dart';
+import 'package:taxi_app/ui/app_routes.dart';
 
 class TopUpAmountScreen extends StatelessWidget {
   const TopUpAmountScreen({super.key});
@@ -35,7 +34,8 @@ class TopUpAmountScreen extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 24.h),
                     child: Center(
-                      child: Text(tr('enter_the_amount'), style: Theme.of(context).textTheme.bodyLarge),
+                      child: Text(tr('enter_the_amount'),
+                          style: Theme.of(context).textTheme.bodyLarge),
                     ),
                   ),
                   AmountTextField(
@@ -54,9 +54,7 @@ class TopUpAmountScreen extends StatelessWidget {
             ),
             GlobalButton(
               padding: EdgeInsets.symmetric(vertical: 24.h),
-              title:tr('continue'),
-              color: AppColors.primary,
-              textColor: AppColors.dark3,
+              title: tr('continue'),
               radius: 100.r,
               onTap: () {
                 Navigator.pushNamed(context, RouteNames.topUpPaymentScreen);
@@ -68,3 +66,4 @@ class TopUpAmountScreen extends StatelessWidget {
     );
   }
 }
+

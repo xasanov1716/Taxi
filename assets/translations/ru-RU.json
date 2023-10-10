@@ -1,7 +1,4 @@
 {
-  "language": "Язык",
-  "language_type": "Русский",
-
   "01": "",
 
   "welcome_to": "Добро пожаловать",
@@ -14,23 +11,20 @@
   "get_started": "Начать",
   "skip": "Пропустить",
 
-
   "02": "",
 
   "lets_you_in": "Дастёр Войти",
-
   "continue_with_facebook": "Продолжить с Facebook",
   "continue_with_google": "Продолжить с Google",
   "continue_with_apple": "Продолжить с Apple",
   "sign_in_with_password": "Войти с паролем",
-  "dont_have_an_account": "Нет аккаунта",
-
+  "don't_have_an_account": "Нет учетной записи?",
   "or": "или",
   "sign_up": "Зарегистрируйтесь",
   "sign_in": "Войти",
   "login_page": "Страница входа",
   "already_have_an_account": "У вас уже есть учетная запись?",
-  "or_continue_with": "или продолжитьh",
+  "or_continue_with": "или продолжить",
   "remember_me": "Запомни меня",
   "password": "Пароль",
   "phone_number": "Номер телефона",
@@ -39,8 +33,8 @@
   "driver_or_client": "Вы водитель или пассажир",
   "driver": "Водитель",
   "client": "Пассажир",
-
   "forgot_password": "Забыли пароль?",
+
 
   "03": "",
   "create_profile":"Создать профиль",
@@ -143,7 +137,7 @@
   "fill_your_profile": "Заполните свой профиль",
   "full_name": "Полное имя",
   "nickname": "Псевдоним",
-  "date_of_Birth": "День рождения",
+
   "email": "Электронная почта",
   "gender": "Пол",
   "continue": "Продолжить",
@@ -156,6 +150,11 @@
   "scanner_to_get_started": "Поместите палец на сканер отпечатков пальцев, чтобы начать",
   "congratulations": "Поздравляем!",
   "dialog_title_auth": "Ваша учетная запись готова к использованию. Через несколько секунд вы будете перенаправлены на главную страницу",
+  "date_of_birth": "Tug'ilgan kun",
+
+
+
+
 
 
   "04": "",
@@ -168,6 +167,7 @@
   "verify": "Проверить",
   "create_new_password": "Создайте новый пароль",
   "create_your_new_password": "Создайте новый пароль",
+
 
   "05": "",
 
@@ -250,7 +250,14 @@
   "no_thanks": "Нет, спасибо!",
   "pay_tip": "Совет",
 
+
+
+
+
+
   "06": "",
+
+
 
   "my_bookings": "Мои бронирования",
   "active_now": "Активный",
@@ -278,7 +285,7 @@
   "payment_type": "Выберите способ пополнения, который вы хотите использовать.",
   "add_new_card": "Добавить новую карту",
   "top_up_successful": "Пополнение успешно!",
-  "dialog_title_payment": "You have successfully top up\ne-wallet for",
+  "dialog_title_payment": "Вы успешно пополнили баланс\nэлектронный кошелек для",
   "amount": "Количество",
   "total": "Общий",
   "promo": "Промо",
@@ -292,7 +299,79 @@
   "download_e-receipt": "Скачать электронную квитанцию",
   "print": "Распечатать",
 
+
+
+
+
   "09": "",
 
-  "": ""
+  "logout": "Выход",
+  "address_details":"Подробности об адресе",
+  "name_address": "Имя Адрес",
+  "general_notification": "Общее уведомление",
+  "sound": "Звук",
+  "vibrate": "Вибрировать",
+  "promo_discount": "Промо-скидка",
+  "payments": "Платежи",
+  "app_updates": "Обновления приложений",
+  "new_service_available": "Доступна новая услуга",
+  "new_tips_available": "Доступны новые советы",
+  "face_id": "Идентификатор лица",
+  "biometric_id": "Биометрический идентификатор",
+  "general": "Общий",
+  "account": "Аккаунт",
+  "service": "Сервис",
+  "customer_service": "Служба поддержки клиентов",
+  "logout_title": "Вы уверены, что хотите выйти?",
+  "language": "Язык",
+  "language_type": "Русский",
+
+
+
+
+"qolib_ketgan_sozlar": "",
+
+  "status": "Статус",
+  "active": "Активный",
+  "bookings": "Бронирование",
+  "where_are_you_going": "Куда ты идешь",
+  "resend_code_in": "Отправить код повторно",
+  "resend_code_in_s": "Отправить код повторно через 60 секунд",
+  "select_which_contact": "Выберите, какую контактную информацию мы должны использовать для сброса вашего пароля",
+  "confirm_new_password": "Повторно введите новый пароль для подтверждения!",
+
+  "bloc_papkalarni_navbati": "folders",
+
+
+  "loading": "Yuklanmoqda...",
+  "user_added_succesfull": "Пользователь успешно добавлен",
+  "user_deleted_succesfull": "Пользователь успешно удален",
+  "user_update_succesfull": "Пользователь обновлен успешно",
+
+  "facebook_login_error": "Ошибка входа в Facebook",
+  "apple_login_error": "Ошибка входа в Apple",
+  "success_order_add": "Заказ успешно добавлен",
+  "success_order_update": "Заказ успешно обновлен",
+  "success_order_delete": "Заказ успешно удален",
+  "request_not_added": "Запрос не добавлен",
+  "request_not_update": "Запрос не обновлен",
+  "request_not_delete": "Запрос не удален",
+
+
+  "cubit_papkalarni_navbati": "folders",
+
+
+  "what_is_taxio": "Что такое Дастиор Такси?",
+  "how_to_use_taxio": "Как пользоваться такси Дастёр?",
+  "how_do_cancel_taxi": "Как мне отменить заказ такси?",
+  "is_taxi_free": "Можно ли пользоваться такси Дастиор бесплатно?",
+  "how_do_add_promo": "Как добавить рекламу в Дастёр Такси?",
+  "why_didnot_my_payment": "Почему мой платеж не прошел?",
+  "why_are_service_price_difference": "Почему цены на услуги такси разные?",
+  "why_cannot_new_payment": "Почему я не могу добавить новый способ оплаты?",
+  "why_didnot_after_payment": "Почему я не получил электронную квитанцию после оплаты?",
+  "enter_valid_phone_number": "Введите действительный номер телефона",
+  "enter_valid_password": "Введите действительный пароль",
+  "no_such_identifed": "Такой регион не определен!"
+
 }

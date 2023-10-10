@@ -34,24 +34,23 @@ class PlacesDatabase {
 
     final database = await openDatabase(databaseFilePath, version: 1,
         onCreate: (Database db, int version) async {
-          // Read and execute SQL script here
-          final scriptContent = await rootBundle.loadString('assets/places/regions.sql');
-          final statements = scriptContent.split(';');
+      // Read and execute SQL script here
+      final scriptContent = await rootBundle.loadString('assets/places/regions.sql');
+      final statements = scriptContent.split(';');
 
-          for (final statement in statements) {
-            if (statement.trim().isNotEmpty) {
-              await db.execute(statement);
-            }
-          }
-        });
+      for (final statement in statements) {
+        if (statement.trim().isNotEmpty) {
+          await db.execute(statement);
+        }
+      }
+    });
 
     return database; // Return the created database
   }
 
-
   Future<List<Map<String, dynamic>>> executeQuery(String query) async {
     final db = await instance.database;
-    return await db.rawQuery(query);
+    return db.rawQuery(query);
   }
 
   Future<List<RegionModel>> searchRegionsByName(String query) async {
@@ -61,7 +60,7 @@ class PlacesDatabase {
       where: 'name LIKE ?',
       whereArgs: ['%$query%'],
     );
-    return maps.map((e) => RegionModel.fromJson(e)).toList();
+    return maps.map(RegionModel.fromJson).toList();
   }
 
   Future<List<DistrictModel>> searchDistrictsByName(String query) async {
@@ -71,7 +70,7 @@ class PlacesDatabase {
       where: 'name LIKE ?',
       whereArgs: ['%$query%'],
     );
-    return maps.map((e) => DistrictModel.fromJson(e)).toList();
+    return maps.map(DistrictModel.fromJson).toList();
   }
 
   Future<List<QuarterModel>> searchQuartersByName(String query) async {
@@ -81,65 +80,57 @@ class PlacesDatabase {
       where: 'name LIKE ?',
       whereArgs: ['%$query%'],
     );
-    return maps.map((e) => QuarterModel.fromJson(e)).toList();
+    return maps.map(QuarterModel.fromJson).toList();
   }
 
-  Future<List<DistrictModel>> getDistrictById({required int id})async{
-    List<DistrictModel> districtsById = [];
+  Future<List<DistrictModel>> getDistrictById({required int id}) async {
     final db = await instance.database;
-    districtsById = (await db.query('districts',where: 'region_id LIKE ?',whereArgs: ['%$id']))
-        .map((e) => DistrictModel.fromJson(e))
-        .toList();
+    List<DistrictModel> districtsById =
+        (await db.query('districts', where: 'region_id LIKE ?', whereArgs: ['%$id']))
+            .map(DistrictModel.fromJson)
+            .toList();
     return districtsById;
   }
 
   Future<List<QuarterModel>> getQuarterById({required int id}) async {
-    List<QuarterModel> quarterById = [];
     final db = await instance.database;
-    quarterById = (await db.query('quarters',where: 'district_id LIKE ?',whereArgs: ['%$id']))
-        .map((e) => QuarterModel.fromJson(e))
-        .toList();
+    List<QuarterModel> quarterById =
+        (await db.query('quarters', where: 'district_id LIKE ?', whereArgs: ['%$id']))
+            .map(QuarterModel.fromJson)
+            .toList();
 
     return quarterById;
   }
+
   Future<List<RegionModel>> getAllRegions() async {
-    List<RegionModel> allRegions = [];
     final db = await instance.database;
-    allRegions = (await db.query('regions'))
-        .map((e) => RegionModel.fromJson(e))
-        .toList();
+    List<RegionModel> allRegions = (await db.query('regions')).map(RegionModel.fromJson).toList();
 
     return allRegions;
   }
 
-  Future<List<RegionModel>> getRegionById({required int id})async{
-    List<RegionModel> regionsById = [];
+  Future<List<RegionModel>> getRegionById({required int id}) async {
     final db = await instance.database;
-    regionsById = (await db.query('regions',where: 'id LIKE ?',whereArgs: ['%$id']))
-        .map((e) => RegionModel.fromJson(e))
-        .toList();
+    List<RegionModel> regionsById =
+        (await db.query('regions', where: 'id LIKE ?', whereArgs: ['%$id']))
+            .map(RegionModel.fromJson)
+            .toList();
     return regionsById;
   }
 
   Future<List<DistrictModel>> getAllDistricts() async {
-    List<DistrictModel> allDistricts = [];
     final db = await instance.database;
-    allDistricts = (await db.query('districts'))
-        .map((e) => DistrictModel.fromJson(e))
-        .toList();
+    List<DistrictModel> allDistricts =
+        (await db.query('districts')).map(DistrictModel.fromJson).toList();
 
     return allDistricts;
   }
 
   Future<List<QuarterModel>> getAllQuarters() async {
-    List<QuarterModel> allQuarters = [];
     final db = await instance.database;
-    allQuarters = (await db.query('quarters'))
-        .map((e) => QuarterModel.fromJson(e))
-        .toList();
+    List<QuarterModel> allQuarters =
+        (await db.query('quarters')).map(QuarterModel.fromJson).toList();
 
     return allQuarters;
   }
-
-
 }

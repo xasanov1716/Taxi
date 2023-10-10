@@ -15,7 +15,7 @@ import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
 
 class SecondPage extends StatefulWidget {
-  const SecondPage({super.key,required this.isFromAuth});
+  const SecondPage({super.key, required this.isFromAuth});
   final bool isFromAuth;
 
   @override
@@ -34,10 +34,9 @@ class _SecondPageState extends State<SecondPage> {
     hasRoof = state.driverModel.hasRoofTop ? tr('yes') : tr('no');
   }
 
-
   @override
   void initState() {
-    if(!widget.isFromAuth) initStateToText();
+    if (!widget.isFromAuth) initStateToText();
     super.initState();
   }
 
@@ -83,7 +82,6 @@ class _SecondPageState extends State<SecondPage> {
             padding:  EdgeInsets.only(right: 10.w,top: 10.h),
             child: Text(tr('som'),style: Theme.of(context).textTheme.titleLarge,),
           ),
-          textInputAction: TextInputAction.next,
           onChanged: (value) {
             String a = value;
             context.read<DriverBloc>().updateDriverField(
@@ -92,8 +90,8 @@ class _SecondPageState extends State<SecondPage> {
         ),
         24.ph,
         Text("Passenger Type",
-            style: AppTextStyle.bodyMediumSemibold.copyWith(
-                color: getTheme(context) ? AppColors.white : AppColors.c_900)),
+            style: AppTextStyle.bodyMediumSemibold
+                .copyWith(color: getTheme(context) ? AppColors.white : AppColors.c_900)),
         24.ph,
         Container(
           padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 6.h),
@@ -106,14 +104,11 @@ class _SecondPageState extends State<SecondPage> {
           child: DropdownButton<String>(
             isExpanded: true,
             underline: const SizedBox(),
-            dropdownColor:
-                getTheme(context) ? AppColors.dark2 : AppColors.greysCale,
+            dropdownColor: getTheme(context) ? AppColors.dark2 : AppColors.greysCale,
             icon: SvgPicture.asset(
-              AppIcons.getSvg(
-                  name: AppIcons.arrowDown2, iconType: IconType.bold),
+              AppIcons.getSvg(name: AppIcons.arrowDown2, iconType: IconType.bold),
               colorFilter: ColorFilter.mode(
-                  getTheme(context) ? AppColors.white : AppColors.c_900,
-                  BlendMode.srcIn),
+                  getTheme(context) ? AppColors.white : AppColors.c_900, BlendMode.srcIn),
             ),
             borderRadius: BorderRadius.circular(12.r),
             items: genders.map((String items) {
@@ -121,10 +116,8 @@ class _SecondPageState extends State<SecondPage> {
                 value: items,
                 child: Text(
                   items,
-                  style: AppTextStyle.bodyMediumSemibold.copyWith(
-                      color: getTheme(context)
-                          ? AppColors.white
-                          : AppColors.c_900),
+                  style: AppTextStyle.bodyMediumSemibold
+                      .copyWith(color: getTheme(context) ? AppColors.white : AppColors.c_900),
                 ),
               );
             }).toList(),
@@ -132,14 +125,14 @@ class _SecondPageState extends State<SecondPage> {
               setState(() {
                 gender = newValue!;
               });
-              context.read<DriverBloc>().updateDriverField(
-                  fieldKey: DriverFieldKeys.passengerType, value: gender);
+              context
+                  .read<DriverBloc>()
+                  .updateDriverField(fieldKey: DriverFieldKeys.passengerType, value: gender);
             },
             hint: Text(gender,
                 style: AppTextStyle.bodyMediumSemibold.copyWith(
-                    color: getTheme(context)
-                        ? AppColors.white
-                        : AppColors.c_900)), // Placeholder text
+                    color:
+                        getTheme(context) ? AppColors.white : AppColors.c_900)), // Placeholder text
           ),
         ),
         24.ph,
@@ -158,14 +151,11 @@ class _SecondPageState extends State<SecondPage> {
           child: DropdownButton<String>(
             isExpanded: true,
             underline: const SizedBox(),
-            dropdownColor:
-                getTheme(context) ? AppColors.dark2 : AppColors.greysCale,
+            dropdownColor: getTheme(context) ? AppColors.dark2 : AppColors.greysCale,
             icon: SvgPicture.asset(
-              AppIcons.getSvg(
-                  name: AppIcons.arrowDown2, iconType: IconType.bold),
+              AppIcons.getSvg(name: AppIcons.arrowDown2, iconType: IconType.bold),
               colorFilter: ColorFilter.mode(
-                  getTheme(context) ? AppColors.white : AppColors.c_900,
-                  BlendMode.srcIn),
+                  getTheme(context) ? AppColors.white : AppColors.c_900, BlendMode.srcIn),
             ),
             borderRadius: BorderRadius.circular(12.r),
             items: carModels.map((String items) {
@@ -173,10 +163,8 @@ class _SecondPageState extends State<SecondPage> {
                 value: items,
                 child: Text(
                   items,
-                  style: AppTextStyle.bodyMediumSemibold.copyWith(
-                      color: getTheme(context)
-                          ? AppColors.white
-                          : AppColors.c_900),
+                  style: AppTextStyle.bodyMediumSemibold
+                      .copyWith(color: getTheme(context) ? AppColors.white : AppColors.c_900),
                 ),
               );
             }).toList(),
@@ -184,14 +172,14 @@ class _SecondPageState extends State<SecondPage> {
               setState(() {
                 carModel = newValue!;
               });
-              context.read<DriverBloc>().updateDriverField(
-                  fieldKey: DriverFieldKeys.carModel, value: carModel);
+              context
+                  .read<DriverBloc>()
+                  .updateDriverField(fieldKey: DriverFieldKeys.carModel, value: carModel);
             },
             hint: Text(carModel,
                 style: AppTextStyle.bodyMediumSemibold.copyWith(
-                    color: getTheme(context)
-                        ? AppColors.white
-                        : AppColors.c_900)), // Placeholder text
+                    color:
+                        getTheme(context) ? AppColors.white : AppColors.c_900)), // Placeholder text
           ),
         ),
         24.ph,
@@ -210,14 +198,11 @@ class _SecondPageState extends State<SecondPage> {
           child: DropdownButton<String>(
             isExpanded: true,
             underline: const SizedBox(),
-            dropdownColor:
-                getTheme(context) ? AppColors.dark2 : AppColors.greysCale,
+            dropdownColor: getTheme(context) ? AppColors.dark2 : AppColors.greysCale,
             icon: SvgPicture.asset(
-              AppIcons.getSvg(
-                  name: AppIcons.arrowDown2, iconType: IconType.bold),
+              AppIcons.getSvg(name: AppIcons.arrowDown2, iconType: IconType.bold),
               colorFilter: ColorFilter.mode(
-                  getTheme(context) ? AppColors.white : AppColors.c_900,
-                  BlendMode.srcIn),
+                  getTheme(context) ? AppColors.white : AppColors.c_900, BlendMode.srcIn),
             ),
             borderRadius: BorderRadius.circular(12.r),
             items: hasRoofs.map((String items) {
@@ -225,10 +210,8 @@ class _SecondPageState extends State<SecondPage> {
                 value: items,
                 child: Text(
                   items,
-                  style: AppTextStyle.bodyMediumSemibold.copyWith(
-                      color: getTheme(context)
-                          ? AppColors.white
-                          : AppColors.c_900),
+                  style: AppTextStyle.bodyMediumSemibold
+                      .copyWith(color: getTheme(context) ? AppColors.white : AppColors.c_900),
                 ),
               );
             }).toList(),
@@ -242,9 +225,8 @@ class _SecondPageState extends State<SecondPage> {
             },
             hint: Text(hasRoof,
                 style: AppTextStyle.bodyMediumSemibold.copyWith(
-                    color: getTheme(context)
-                        ? AppColors.white
-                        : AppColors.c_900)), // Placeholder text
+                    color:
+                        getTheme(context) ? AppColors.white : AppColors.c_900)), // Placeholder text
           ),
         ),
         24.ph,
@@ -263,14 +245,11 @@ class _SecondPageState extends State<SecondPage> {
           child: DropdownButton<String>(
             isExpanded: true,
             underline: const SizedBox(),
-            dropdownColor:
-                getTheme(context) ? AppColors.dark2 : AppColors.greysCale,
+            dropdownColor: getTheme(context) ? AppColors.dark2 : AppColors.greysCale,
             icon: SvgPicture.asset(
-              AppIcons.getSvg(
-                  name: AppIcons.arrowDown2, iconType: IconType.bold),
+              AppIcons.getSvg(name: AppIcons.arrowDown2, iconType: IconType.bold),
               colorFilter: ColorFilter.mode(
-                  getTheme(context) ? AppColors.white : AppColors.c_900,
-                  BlendMode.srcIn),
+                  getTheme(context) ? AppColors.white : AppColors.c_900, BlendMode.srcIn),
             ),
             borderRadius: BorderRadius.circular(12.r),
             items: emptyPlaces.map((String items) {
@@ -278,10 +257,8 @@ class _SecondPageState extends State<SecondPage> {
                 value: items,
                 child: Text(
                   items,
-                  style: AppTextStyle.bodyMediumSemibold.copyWith(
-                      color: getTheme(context)
-                          ? AppColors.white
-                          : AppColors.c_900),
+                  style: AppTextStyle.bodyMediumSemibold
+                      .copyWith(color: getTheme(context) ? AppColors.white : AppColors.c_900),
                 ),
               );
             }).toList(),
@@ -290,14 +267,12 @@ class _SecondPageState extends State<SecondPage> {
                 emptyPlace = newValue!;
               });
               context.read<DriverBloc>().updateDriverField(
-                  fieldKey: DriverFieldKeys.emptyPlaces,
-                  value: int.parse(emptyPlace));
+                  fieldKey: DriverFieldKeys.emptyPlaces, value: int.parse(emptyPlace));
             },
             hint: Text(emptyPlace,
                 style: AppTextStyle.bodyMediumSemibold.copyWith(
-                    color: getTheme(context)
-                        ? AppColors.white
-                        : AppColors.c_900)), // Placeholder text
+                    color:
+                        getTheme(context) ? AppColors.white : AppColors.c_900)), // Placeholder text
           ),
         ),
         24.ph

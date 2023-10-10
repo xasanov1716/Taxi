@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../../data/models/booking/booking_model.dart';
-import '../../widgets/booking_details.dart';
-import '../../widgets/empty.dart';
+import 'package:taxi_app/data/models/booking/booking_model.dart';
+import 'package:taxi_app/ui/tab_box/bookings/widgets/booking_details.dart';
+import 'package:taxi_app/ui/tab_box/bookings/widgets/empty.dart';
 
 class CancelledView extends StatelessWidget {
   const CancelledView({super.key, this.orders});

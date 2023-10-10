@@ -16,7 +16,7 @@ import 'package:taxi_app/utils/constants/constants.dart';
 import 'package:taxi_app/utils/constants/storage_keys.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
-import 'package:taxi_app/utils/ui_utils/utilitiy_function.dart';
+import 'package:taxi_app/utils/ui_utils/utility_function.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});

@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:taxi_app/data/local/search_location/search_history_db.dart';
 import 'package:taxi_app/data/models/universal_data.dart';
 
@@ -18,11 +19,12 @@ class SearchHistoryRepository {
 
   Future<UniversalData> getRecentSearches(int limit) async {
     try {
-      final recentSearches =
-          await _searchHistoryDatabase.getRecentSearches(limit);
+      final recentSearches = await _searchHistoryDatabase.getRecentSearches(limit);
       return UniversalData(data: recentSearches);
     } catch (e) {
-      print('Failed to get recent searches: $e');
+      if (kDebugMode) {
+        print('Failed to get recent searches: $e');
+      }
       return UniversalData(error: 'Failed to get recent searches: $e');
     }
   }

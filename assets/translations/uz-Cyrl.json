@@ -1,8 +1,10 @@
 {
-  "language": "Тил",
-  "language_type": "Кирилл-Лотин",
+  "01": "",
 
-
+  "welcome_to": "Хуш келибсиз",
+  "taxio": "Дастёр Тахи",
+  "welcome_screen_subtitle": "Кунингизни ажойиб қилиш учун асрнинг енг яхши такси брон қилиш иловаси",
+  "on_boarding_first_text": "Биз сиз учун профессионал такси хизматларини тақдим етамиз",
   "on_boarding_second_text": "Сизнинг мамнунлигингиз бизнинг биринчи рақамли устуворлигимиздир",
   "on_boarding_three_text": "Келинг, ҳозир Дастёр Тахи билан кунингизни ажойиб ўтказайлик",
   "next": "Кейингиси",
@@ -12,13 +14,11 @@
   "02": "",
 
   "lets_you_in": "Дастёрга Кириш",
-  
-  "continue_with_facebook": "Фасебоок билан давом этинг",
-  "continue_with_google": "Google билан давом этинг",
-  "continue_with_apple": "Apple билан давом этинг",
-  "sign_in_with_password": "Пароль билан тизимга киринг",
-  "dont_have_an_account": "Ҳисобингиз йўқми",
-
+  "continue_with_facebook": "Facebook билан давом етинг",
+  "continue_with_google": "Google билан давом етинг",
+  "continue_with_apple": "Apple билан давом етинг",
+  "sign_in_with_password": "Парол билан тизимга киринг",
+  "don't_have_an_account": "Ҳисобингиз йўқми?",
   "or": "ёки",
   "sign_up": "Рўйхатдан ўтиш",
   "sign_in": "Кириш",
@@ -35,14 +35,12 @@
   "client": "Йўловчи",
   "forgot_password": "Паролни унутдингизми?",
 
+
   "03": "",
 
   "create_profile":"Профиль яратиш",
-  "edit_profile": "Профилни таҳрирлаш",
   "create_user": "Фойдаланувчи яратиш",
-  "update": "Янгилаш",
   "is_required": "мажбурий",
-  "address": "Манзил",
   "can_register": "рўйхатдан ўтиш мумкин",
   "addresses_are_required": "манзиллари талаб қилинади",
   "about_driver": "Ҳайдовчи ҳақида",
@@ -59,41 +57,22 @@
   "where_are_you_leaving": "Қаердан жўнайсиз",
   "where are you going": "Қаерга борасиз",
   "update_address": "Манзилни янгилаш",
-  "add_new_address": "Янги манзил қўшиш",
-  "add_address": "Манзил қўшиш",
   "error": "Хато",
-  "contact_us": "Биз билан боғланиш",
-  "help_center": "Ёрдам маркази",
   "custom_service": "Мижозларга хизмат кўрсатиш",
   "whatsapp": "Whatsapp",
-  "website": "website",
   "Facebook": "Facebook",
   "twitter": "Twitter",
   "instagram": "Instagram",
-  "invite_friends": "Дўстларни таклиф қилинг",
   "we_invite_app": "Сизни Дастёр Тахи иловасига таклиф қиламиз",
-  "invite": "Таклиф қилинг",
-  "invited": "Таклиф қилинган",
-  "connected": "Уланган",
-  "card_name": "Карта номи",
   "card_holder_name": "Карта эгасининг исми",
-  "expiry_date": "Қуйидаги санагача фойдаланилсин",
-  "card_number": "Карта рақами",
-  "privacy_policy": "Махфийлик сиёсати",
   "select_which_contact_password": "Паролни тиклаш учун қайси контакт маълумотларидан фойдаланишимиз кераклигини танланг",
   "repeat_password": "Паролни қайта киритинг",
   "your_account_ready": "Ҳисобингиз фойдаланишга тайёр. Сиз бир неча сониядан сўнг Бош саҳифага йўналтириласиз",
-"security": "Хавфсизлик",
-"google_authenticator": "Google  Аутҳентисатор",
-  "change_pin": "ПИН-кодни ўзгартиринг",
-"change_password": "Паролни ўзгартириш",
-  "dark_mode": "Галереядан танланг",
   "select_from_camera": "Галереядан танланг",
   "select_from_gallery": "Галереядан танланг",
   "log_out": "Чиқиш",
   "are_you_log_out": "Ҳа, чиқиман",
   "yes_log_out": "Ҳа, чиқиман",
-  "payment": "Тўлов",
   "transaction_history": "Ўтказмалар тарихи",
   "e_receipt": "Электрон квитанция",
   "top_up_e_wallet": "Электрон ҳамённи тўлдириш",
@@ -134,6 +113,9 @@
   "error_pin_code": "Пароль хато",
 
 
+
+
+
   "fill_your_profile": "Профилингизни тўлдиринг",
   "full_name": "Тўлиқ исм шариф",
   "nickname": "Тахаллус",
@@ -162,6 +144,8 @@
   "verify": "Тасдиклаш",
   "create_new_password": "Янги парол яратинг",
   "create_your_new_password": "Янги паролингизни яратинг",
+  "select_which_contact": "Parolingizni tiklash uchun qaysi kontakt ma'lumotlaridan foydalanishimiz kerakligini tanlang",
+  "confirm_new_password": "Йанги паролни тасдиклаш учун кайта киритинг!",
 
   "05": "",
 
@@ -255,6 +239,7 @@
   "empty_booking": "Сизда фаол такси бандлови йўқ",
   "empty_booking_subtitle": "Aйни пайтда сизда фаол такси бандлови йўқ.",
 
+
   "07": "",
 
   "chats": "Suhbatlar",
@@ -263,6 +248,7 @@
   "outgoing": "Chiquvchi",
 
   "08": "",
+
 
   "my_e_wallet": "Менинг електрон ҳамёним",
   "see_all": "Ҳаммасини кўринг",
@@ -288,5 +274,82 @@
 
   "09": "",
 
-  "": ""
+  "edit_profile": "Профилни таҳрирлаш",
+  "address": "Манзил",
+  "payment": "Тўлов",
+  "security": "Хавфсизлик",
+  "dark_mode": "Тунги режим",
+  "privacy_policy": "Махфийлик политикаси",
+  "help_center": "Ёрдам маркази",
+  "invite_friends": "Дўстларни таклиф қилинг",
+  "logout": "Чиқиш",
+  "update":"Янгиланиш",
+  "add_new_address":"Янги манзил қўшиш",
+  "add_address":"Манзил қўшиш",
+  "address_details":"Манзил тафсилотлари",
+  "name_address": "Манзил номи",
+  "general_notification": "Умумий хабарнома",
+  "sound": "Овоз",
+  "vibrate": "Вибрация",
+  "promo_discount": "Промо чегирма",
+  "payments": "Тўловлар",
+  "app_updates": "Илова янгиланишлари",
+  "new_service_available": "Янги хизмат мавжуд",
+  "new_tips_available": "Янги маслаҳатлар мавжуд",
+  "connected": "Уланган",
+  "card_name": "Карта номи",
+  "card_number": "Карта рақами",
+  "expiry_date": "Карта муддати",
+  "face_id": "Фаcе ID",
+  "biometric_id": "Биометрик ID",
+  "google_authenticator": "Google аутҳентиcатор",
+  "change_pin": "ПИН кодни ўзгартириш",
+  "change_password": "Паролни ўзгартириш",
+  "invite": "Таклиф қилинг",
+  "invited": "Таклиф қилинган",
+  "contact_us": "Биз билан боғланинг",
+  "general": "Умумий",
+  "account": "Ҳисоб",
+  "service": "Хизмат",
+  "customer_service": "Мижоз хизмати",
+  "website": "Веб-сайт",
+  "logout_title": "Сиз тизимдан чиқмоқчимисиз?",
+  "language": "Тил",
+  "language_type": "Кирилл-Лотин",
+
+  "bloc_papkalarni_navbati": "folders",
+
+
+  "loading": "Юкланмоқда...",
+  "user_added_succesfull": "Фойдаланувчи муваффақиятли қўшилди",
+  "user_deleted_succesfull": "Фойдаланувчи муваффақиятли ўчирилди",
+  "user_update_succesfull": "Фойдаланувчи муваффақиятли янгиланди",
+
+  "facebook_login_error": "Facebook  орқали кириш хато",
+  "apple_login_error": "Apple орқали кириш хато",
+  "success_order_add": "Буюртма муваффақиятли қўшилди",
+  "success_order_update": "Буюртма муваффақиятли янгиланди",
+  "success_order_delete": "Буюртма муваффақиятли ўчирилди",
+  "request_not_added": "Сўров қўшилмаган",
+  "request_not_update": "Сўров янгиланмаган",
+  "request_not_delete": "Сўров ўчирилмаган",
+
+
+
+
+  "cubit_papkalarni_navbati": "folders",
+
+
+  "what_is_taxio": "Дастёр Такси нима?",
+  "how_to_use_taxio": "Қандай қилиб такси буюртмасини бекор қилишим мумкин?",
+  "how_do_cancel_taxi": "Қандай қилиб такси буюртмасини бекор қилишим мумкин?",
+  "is_taxi_free": "Дастёр Таксидан фойдаланиш бепулми?",
+  "how_do_add_promo": "Дастёр Таксига рекламани қандай қўшиш мумкун?",
+  "why_didnot_my_payment": "Нега менинг тўловим ишламади?",
+  "why_are_service_price_difference": "Нима учун такси хизматлари нархи ҳар хил?",
+  "why_cannot_new_payment": "Нима учун янги тўлов усулини қўша олмайман?",
+  "why_didnot_after_payment": "Нега мен тўловдан кейин электрон квитанцияни олмадим?",
+  "enter_valid_phone_number": "Яроқли телефон рақамини киритинг",
+  "enter_valid_password": "Яроқли пароль киритинг",
+  "no_such_identifed": "Бундай ҳудуд аниқланмади!!"
 }

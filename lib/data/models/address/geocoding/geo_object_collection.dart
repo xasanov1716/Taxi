@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'feature_member.dart';
+import 'package:taxi_app/data/models/address/geocoding/feature_member.dart';
 part 'geo_object_collection.g.dart';
 
 @JsonSerializable(explicitToJson: true)

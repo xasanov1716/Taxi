@@ -27,7 +27,7 @@ class _AddressScreenState extends State<AddressScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: GlobalAppBar(
-        title: tr('address'),
+        title: 'Address',
         onTap: () {
           Navigator.pop(context);
         },
@@ -59,7 +59,7 @@ class _AddressScreenState extends State<AddressScreen> {
                           )),
                       GlobalButton(
                         padding: EdgeInsets.all(24.h),
-                        title: tr('add_new_address'),
+                        title: 'Add New Address',
                         radius: 100.r,
                         color: AppColors.primary,
                         onTap: () {
@@ -71,12 +71,14 @@ class _AddressScreenState extends State<AddressScreen> {
                   )
                 : Column(
                   children: [
-                    Expanded(child: Center(child: Lottie.asset(AppIcons.emptyLottie, width: 350*height/figmaHeight))),
+                    Expanded(
+                        child: Center(
+                            child: Lottie.asset(AppIcons.emptyLottie,
+                                width: 350*height/figmaHeight))),
                     GlobalButton(
                       padding: EdgeInsets.all(24.h),
                       title: tr('add_new_address'),
                       radius: 100.r,
-                      color: AppColors.primary,
                       onTap: () {
                         Navigator.pushNamed(context, RouteNames.addAddressScreen);
                       },

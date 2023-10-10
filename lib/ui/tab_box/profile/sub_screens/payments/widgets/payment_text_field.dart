@@ -6,7 +6,7 @@ import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
 
 class PaymentTextField extends StatelessWidget {
-  PaymentTextField(
+  const PaymentTextField(
       {super.key,
       required this.text,
       required this.hintText,
@@ -18,7 +18,7 @@ class PaymentTextField extends StatelessWidget {
   final String text;
   final String hintText;
   final ValueChanged onChanged;
-  MaskTextInputFormatter? maskFormatter;
+  final MaskTextInputFormatter? maskFormatter;
   final TextInputType textInputType;
   final TextInputAction textInputAction;
 
@@ -63,38 +63,23 @@ class PaymentTextField extends StatelessWidget {
               disabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(16.r),
                   borderSide: BorderSide(
-                      width: 1.w,
-                      color: getTheme(context)
-                          ? AppColors.dark2
-                          : AppColors.white)),
+                      width: 1.w, color: getTheme(context) ? AppColors.dark2 : AppColors.white)),
               enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(16.r),
                   borderSide: BorderSide(
-                      width: 1.w,
-                      color: getTheme(context)
-                          ? AppColors.dark2
-                          : AppColors.white)),
+                      width: 1.w, color: getTheme(context) ? AppColors.dark2 : AppColors.white)),
               errorBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(16.r),
                   borderSide: BorderSide(
-                      width: 1.w,
-                      color: getTheme(context)
-                          ? AppColors.dark2
-                          : AppColors.white)),
+                      width: 1.w, color: getTheme(context) ? AppColors.dark2 : AppColors.white)),
               focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(16.r),
                   borderSide: BorderSide(
-                      width: 1.w,
-                      color: getTheme(context)
-                          ? AppColors.dark2
-                          : AppColors.white)),
+                      width: 1.w, color: getTheme(context) ? AppColors.dark2 : AppColors.white)),
               focusedErrorBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(16.r),
                   borderSide: BorderSide(
-                      width: 1.w,
-                      color: getTheme(context)
-                          ? AppColors.dark2
-                          : AppColors.white))),
+                      width: 1.w, color: getTheme(context) ? AppColors.dark2 : AppColors.white))),
         ),
       ],
     );

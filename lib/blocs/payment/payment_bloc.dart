@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
@@ -8,8 +7,7 @@ part 'payment_event.dart';
 part 'payment_state.dart';
 
 class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
-  PaymentBloc()
-      : super(const PaymentState(cardNumber: "", cardName: "", expireDate: "")) {
+  PaymentBloc() : super(const PaymentState(cardNumber: "", cardName: "", expireDate: "")) {
     on<CardNumber>(updateCardNumber);
     on<CardName>(updateCardName);
     on<ExpireDate>(updateExpireDate);
@@ -29,7 +27,7 @@ class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
 }
 
 bool isUzCardOrHumoCard(String cardNumber) {
-  cardNumber = cardNumber.replaceAll(RegExp(r'[ -]'), '');
+  cardNumber.replaceAll(RegExp(r'[ -]'), '');
 
   if (cardNumber.length != 16) {
     return false; // Card number must have 16 digits

@@ -7,12 +7,11 @@ import 'package:taxi_app/ui/widgets/global_alert_dialog.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 
-import '../../../../data/models/payment/payment_model.dart';
-import '../../../../utils/colors/app_colors.dart';
-import '../../../../utils/theme/get_theme.dart';
-import '../../../app_routes.dart';
-import '../../../create_order/sub_screens/payment_methods/widgets/payment_item.dart';
-import '../../../widgets/global_button.dart';
+import 'package:taxi_app/data/models/payment/payment_model.dart';
+import 'package:taxi_app/utils/colors/app_colors.dart';
+import 'package:taxi_app/utils/theme/get_theme.dart';
+import 'package:taxi_app/ui/create_order/sub_screens/payment_methods/widgets/payment_item.dart';
+import 'package:taxi_app/ui/widgets/global_button.dart';
 
 class TopUpPaymentScreen extends StatefulWidget {
   const TopUpPaymentScreen({super.key});
@@ -27,7 +26,7 @@ class _TopUpPaymentScreenState extends State<TopUpPaymentScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:  TopUpPaymentAppbar(title: tr('top_up_e_wallet')),
+      appBar: const TopUpPaymentAppbar(title: "Top Up E-Wallet"),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -39,18 +38,24 @@ class _TopUpPaymentScreenState extends State<TopUpPaymentScreen> {
               fontWeight: FontWeight.w500,),),
           ),
           13.ph,
-          Expanded(child: ListView(
+          Expanded(
+              child: ListView(
             children: [
-              ...List.generate(payments.length-1, (index) => PaymentItem(paymentModel: payments[index+1], isSelected: index == selected, onTap: (){
-                setState(() {
-                  selected = index;
-                });
-              })),
+              ...List.generate(
+                  payments.length - 1,
+                  (index) => PaymentItem(
+                      paymentModel: payments[index + 1],
+                      isSelected: index == selected,
+                      onTap: () {
+                        setState(() {
+                          selected = index;
+                        });
+                      })),
               12.ph,
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 24.w),
                 child: TopUpGlobalButton(
-                  onTap: (){
+                  onTap: () {
                     // Navigator.pushNamed(context, RouteNames.enterPinScreen);
                   },title:tr('add_new_card'), color: getTheme(context) ? AppColors.dark3 : const Color(0xFFFFF8E8) ,radius: 40.r, textColor: getTheme(context) ? AppColors.white : AppColors.dark3,),
               ),
@@ -61,11 +66,12 @@ class _TopUpPaymentScreenState extends State<TopUpPaymentScreen> {
               padding: EdgeInsets.only(left: 24.w, right: 24.w, top: 24.h, bottom: 36.h),
               decoration: BoxDecoration(
                 color: getTheme(context) ? AppColors.dark1 : AppColors.white,
-                border: Border.all(width: 1, color: getTheme(context) ? AppColors.dark3 : AppColors.c_100),
-                borderRadius: BorderRadius.only(topLeft: Radius.circular(24.r), topRight: Radius.circular(24.r)),
+                border: Border.all(color: getTheme(context) ? AppColors.dark3 : AppColors.c_100),
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(24.r), topRight: Radius.circular(24.r)),
               ),
               child: GlobalButton(
-                  onTap: (){
+                  onTap: () {
                     showGlobalAlertDialog(
                         context: context,
                         title: "${tr('top_up_successful')}!",

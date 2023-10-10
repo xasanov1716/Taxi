@@ -3,17 +3,17 @@ import 'package:flutter/material.dart';
 class GlobalAlertDialog extends StatefulWidget {
   const GlobalAlertDialog(
       {super.key,
-        required this.TextTitle,
-        required this.model,
-        required this.hight,
-        required this.ImageLogo,
-        required this.onTap,
-        required this.buttonText});
+      required this.textTitle,
+      required this.model,
+      required this.hight,
+      required this.imageLogo,
+      required this.onTap,
+      required this.buttonText});
 
-  final String TextTitle;
+  final String textTitle;
   final String model;
   final double hight;
-  final String ImageLogo;
+  final String imageLogo;
   final String buttonText;
 
   final ValueChanged onTap;
@@ -30,15 +30,14 @@ class _GlobalAlertDialogState extends State<GlobalAlertDialog> {
         context: context,
         builder: (BuildContext context) => AlertDialog(
           actionsOverflowButtonSpacing: 20,
-          title: Image.asset(widget.ImageLogo),
+          title: Image.asset(widget.imageLogo),
           content: SizedBox(
             height: widget.hight,
             child: Column(
               children: [
                 Text(
-                  widget.TextTitle,
-                  style: const TextStyle(
-                      fontSize: 24, fontWeight: FontWeight.w700),
+                  widget.textTitle,
+                  style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w700),
                 ),
                 Text(widget.model),
               ],

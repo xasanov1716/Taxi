@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:taxi_app/cubits/get_client_informations_cubit/get_client_info_cubit.dart';
-import 'package:taxi_app/data/models/request_model/request_model.dart';
 import 'package:taxi_app/data/models/user/user_model.dart';
 import 'package:taxi_app/ui/tab_box/bookings/sub_screens/widgets/widgets.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
@@ -58,7 +57,7 @@ class ClientDetail extends StatelessWidget {
                       IconContainerWidget(
                           icon: AppIcons.call,
                           onTap: () {
-                            launch("tel:${state.user.phone}");
+                            launchUrl(Uri(scheme: 'tel', path: state.user.phone));
                           }),
                     ],
                   ),

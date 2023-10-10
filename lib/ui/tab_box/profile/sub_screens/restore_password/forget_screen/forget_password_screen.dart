@@ -38,8 +38,7 @@ class _ForgotPassWordState extends State<ForgotPassWord> {
                 children: [
                   33.ph,
                   Image.asset(
-                    AdaptiveTheme.of(context).theme ==
-                            AdaptiveTheme.of(context).darkTheme
+                    AdaptiveTheme.of(context).theme == AdaptiveTheme.of(context).darkTheme
                         ? AppIcons.forgotPasswordDarkImage
                         : AppIcons.enterPassword,
                     height: height * 0.285,
@@ -76,18 +75,14 @@ class _ForgotPassWordState extends State<ForgotPassWord> {
                     },
                     pressed: !pressed,
                   ),
-
                 ],
               ),
             ),
             24.ph,
             GlobalButton(
               color: AppColors.disabledButton,
-              leftIcon: "",
-              rightIcon: "",
               title: tr('continue'),
               radius: 29.r,
-              textColor: AppColors.dark3,
               onTap: () {
                 Navigator.pushNamed(context, RouteNames.conFirmCodeScreen);
               },

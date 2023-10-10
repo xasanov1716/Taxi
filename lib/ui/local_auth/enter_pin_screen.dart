@@ -5,12 +5,10 @@ import 'package:local_auth/local_auth.dart';
 import 'package:taxi_app/data/local/storage_repository/storage_repository.dart';
 import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/ui/local_auth/widgets/local_auth_pinput.dart';
-import 'package:taxi_app/ui/widgets/global_alert_dialog.dart';
 import 'package:taxi_app/ui/widgets/global_appbar.dart';
 import 'package:taxi_app/ui/widgets/global_button.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
 import 'package:taxi_app/utils/constants/storage_keys.dart';
-import 'package:taxi_app/utils/icons/app_icons.dart';
 import 'package:taxi_app/utils/size/screen_size.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/ui_utils/error_message_dialog.dart';
@@ -59,7 +57,6 @@ class _EnterPinScreenState extends State<EnterPinScreen> {
           ),
           (height / 20).ph,
           GlobalButton(
-            color: AppColors.primary,
             title: tr('continue'),
             radius: 100,
             textColor: AppColors.black,
@@ -69,36 +66,6 @@ class _EnterPinScreenState extends State<EnterPinScreen> {
           ),
         ],
       ),
-    );
-  }
-
-  void _checkBiometric() async {
-    try {
-      authenticated = await auth.authenticate(
-        localizedReason: tr('tap_your_finger_sensor'),
-        options: const AuthenticationOptions(
-          useErrorDialogs: true,
-          stickyAuth: false,
-          biometricOnly: true,
-        ),
-      );
-      debugPrint("AUTHENTICATED THEN:$authenticated");
-    } catch (e) {
-      debugPrint("error using biometric auth: $e");
-    }
-    setState(
-      () {
-        bool isAuth = StorageRepository.getBool("isAuth");
-        if (isAuth && authenticated) {
-          showGlobalAlertDialog(
-              context: context,
-              title: tr('top_up_successful'),
-              image: AppIcons.successPassword,
-              text: "${tr('you_have_upe_wallet')} \$120",
-              onTap: () {});
-          Navigator.pushReplacementNamed(context, RouteNames.tabBox);
-        }
-      },
     );
   }
 

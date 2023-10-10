@@ -1,29 +1,29 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SearchCubit extends Cubit<List<String>> {
   List<String> list = [
-    'What is Taxio?',
-    'How to use Taxio?',
-    'How do I cancel a taxi booking?',
-    'Is Taxio free to use?',
-    'How to add promo on Taxio?',
-    'Why did my payment did’nt working?',
-    'Why are the taxi service prices different?',
-    'Why I can\'t add a new payment method?',
-    'Why didn\'t I get the e-receipt after payment?',
+    tr('what_is_taxio'),
+    tr('how_to_use_taxio'),
+    tr('how_do_cancel_taxi'),
+    tr('is_taxi_free'),
+    tr('how_do_add_promo'),
+    tr('why_didnot_my_payment'),
+    tr('why_are_service_price_difference'),
+    tr('why_didnot_after_payment'),
   ];
 
   SearchCubit()
       : super([
-          'What is Taxio?',
-          'How to use Taxio?',
-          'How do I cancel a taxi booking?',
-          'Is Taxio free to use?',
-          'How to add promo on Taxio?',
-          'Why did my payment did’nt working?',
-          'Why are the taxi service prices different?',
-          'Why I can\'t add a new payment method?',
-          'Why didn\'t I get the e-receipt after payment?',
+          tr('what_is_taxio'),
+          tr('how_to_use_taxio'),
+          tr('how_do_cancel_taxi'),
+          tr('is_taxi_free'),
+          tr('how_do_add_promo'),
+          tr('why_didnot_my_payment'),
+          tr('why_are_service_price_difference'),
+          tr('why_cannot_new_payment'),
+          tr('why_didnot_after_payment'),
         ]);
 
   void search(String query) {

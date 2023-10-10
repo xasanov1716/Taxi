@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:taxi_app/utils/icons/app_icons.dart';
-import 'package:taxi_app/utils/ui_utils/utilitiy_function.dart';
+import 'package:taxi_app/utils/ui_utils/utility_function.dart';
 
 class GlobalAppBar extends StatelessWidget implements PreferredSize {
   const GlobalAppBar({
@@ -23,12 +23,9 @@ class GlobalAppBar extends StatelessWidget implements PreferredSize {
       actions: action,
       elevation: 0,
       centerTitle: centerTitle,
-      leading: onTap != null
-          ? getIcon(AppIcons.arrowLeft, context: context, onTap: onTap!)
-          : null,
-      title: title.isNotEmpty
-          ? Text(title, style: Theme.of(context).textTheme.headlineMedium)
-          : null,
+      leading: onTap != null ? getIcon(AppIcons.arrowLeft, context: context, onTap: onTap) : null,
+      title:
+          title.isNotEmpty ? Text(title, style: Theme.of(context).textTheme.headlineMedium) : null,
     );
   }
 
@@ -36,5 +33,5 @@ class GlobalAppBar extends StatelessWidget implements PreferredSize {
   Widget get child => throw UnimplementedError();
 
   @override
-  Size get preferredSize => Size(double.infinity, 56);
+  Size get preferredSize => const Size(double.infinity, 56);
 }

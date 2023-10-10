@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
-import '../../../../../utils/colors/app_colors.dart';
-import '../../../../../utils/icons/app_icons.dart';
-import '../../../../../utils/theme/get_theme.dart';
+import 'package:taxi_app/utils/colors/app_colors.dart';
+import 'package:taxi_app/utils/icons/app_icons.dart';
+import 'package:taxi_app/utils/theme/get_theme.dart';
 
 class GlobalBottomSheetStart extends StatelessWidget {
   const GlobalBottomSheetStart(
@@ -32,18 +32,14 @@ class GlobalBottomSheetStart extends StatelessWidget {
         Text(
           centerText,
           style: Theme.of(context).dialogTheme.titleTextStyle?.copyWith(
-              fontSize: 24.sp,
-              color: getTheme(context) ? AppColors.white : AppColors.c_900),
+              fontSize: 24.sp, color: getTheme(context) ? AppColors.white : AppColors.c_900),
         ),
         24.ph,
         const Divider(),
         24.ph,
         Row(
           children: [
-            SizedBox(
-                height: 60.h,
-                width: 60.w,
-                child: Image.asset(AppIcons.testAvatar)),
+            SizedBox(height: 60.h, width: 60.w, child: Image.asset(AppIcons.testAvatar)),
             20.pw,
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -80,8 +76,7 @@ class GlobalBottomSheetStart extends StatelessWidget {
                       width: 20.w,
                       child: SvgPicture.asset(
                         AppIcons.rateStarUser,
-                        colorFilter: const ColorFilter.mode(
-                            AppColors.orange, BlendMode.srcIn),
+                        colorFilter: const ColorFilter.mode(AppColors.orange, BlendMode.srcIn),
                       ),
                     ),
                     8.pw,

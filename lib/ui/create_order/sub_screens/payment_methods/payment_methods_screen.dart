@@ -8,7 +8,7 @@ import 'package:taxi_app/ui/create_order/sub_screens/payment_methods/widgets/pay
 import 'package:taxi_app/ui/widgets/global_button.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
 import 'package:taxi_app/utils/theme/get_theme.dart';
-import '../../../../utils/colors/app_colors.dart';
+import 'package:taxi_app/utils/colors/app_colors.dart';
 
 class PaymentMethodsScreen extends StatefulWidget {
   const PaymentMethodsScreen({super.key});
@@ -23,7 +23,7 @@ class _PaymentMethodsScreenState extends State<PaymentMethodsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:  PaymentAppbar(onTap: (){}),
+      appBar: PaymentAppbar(onTap: () {}),
       body: Column(
         children: [
           24.ph,
@@ -34,13 +34,19 @@ class _PaymentMethodsScreenState extends State<PaymentMethodsScreen> {
               fontWeight: FontWeight.w500,),),
           ),
           13.ph,
-          Expanded(child: ListView(
+          Expanded(
+              child: ListView(
             children: [
-              ...List.generate(payments.length, (index) => PaymentItem(paymentModel: payments[index], isSelected: index == selected, onTap: (){
-                setState(() {
-                  selected = index;
-                });
-              }))
+              ...List.generate(
+                  payments.length,
+                  (index) => PaymentItem(
+                      paymentModel: payments[index],
+                      isSelected: index == selected,
+                      onTap: () {
+                        setState(() {
+                          selected = index;
+                        });
+                      }))
             ],
           )),
           ClipRRect(
@@ -48,14 +54,15 @@ class _PaymentMethodsScreenState extends State<PaymentMethodsScreen> {
               padding: EdgeInsets.only(left: 24.w, right: 24.w, top: 24.h, bottom: 36.h),
               decoration: BoxDecoration(
                 color: getTheme(context) ? AppColors.dark1 : AppColors.white,
-                border: Border(top: BorderSide(style: BorderStyle.solid,width: 1, color: getTheme(context) ? AppColors.dark3 : AppColors.c_100)),
+                border: Border(
+                    top: BorderSide(color: getTheme(context) ? AppColors.dark3 : AppColors.c_100)),
                 // borderRadius: BorderRadius.only(topLeft: Radius.circular(24.r), topRight: Radius.circular(24.r)),
               ),
               child: GlobalButton(
                   onTap: (){
                     Navigator.pushNamed(context, RouteNames.searchingDriver);
                   },
-                  title: tr('continue'), color: AppColors.primary,
+                  title: tr('continue'),
                   radius: 100.r,
               ),
             ),

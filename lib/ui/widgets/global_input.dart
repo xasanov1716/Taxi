@@ -25,12 +25,12 @@ class GlobalTextField extends StatefulWidget {
   const GlobalTextField({
     Key? key,
     required this.hintText,
-    this.textCapitalization=TextCapitalization.none,
+    this.textCapitalization = TextCapitalization.none,
     this.keyboardType = TextInputType.text,
     this.textInputAction = TextInputAction.next,
     this.prefixIcon,
     this.maxLength,
-    this.maxLines=1,
+    this.maxLines = 1,
     this.caption = "",
     this.suffixIcon,
     this.readOnly = false,
@@ -81,7 +81,7 @@ class _GlobalTextFieldState extends State<GlobalTextField> {
       maxLength: widget.maxLength,
       textCapitalization: widget.textCapitalization,
       focusNode: widget.focusNode ?? internalFocusNode,
-      inputFormatters:widget.maskFormatter !=null ? [widget.maskFormatter!] : [],
+      inputFormatters: widget.maskFormatter != null ? [widget.maskFormatter!] : [],
       obscureText: widget.obscureText ?? false,
       decoration: InputDecoration(
         counterText: '',
@@ -92,27 +92,26 @@ class _GlobalTextFieldState extends State<GlobalTextField> {
           color: const Color(0xff9e9e9e),
           height: 20 / 14,
         ),
-        contentPadding:widget.contentPadding,
+        contentPadding: widget.contentPadding,
         hintText: widget.hintText,
         prefixIcon: widget.prefixIcon,
         suffixIcon: widget.suffixIcon,
         enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(
-              color:
-                  getTheme(context) ? AppColors.dark3 : const Color(0xFFFAFAFA),
-              width: 1),
+          borderSide:
+              BorderSide(color: getTheme(context) ? AppColors.dark3 : const Color(0xFFFAFAFA)),
           borderRadius: BorderRadius.circular(10),
         ),
         focusedBorder: OutlineInputBorder(
-          borderSide: const BorderSide(color: AppColors.primary, width: 1),
+          borderSide: const BorderSide(color: AppColors.primary),
           borderRadius: BorderRadius.circular(10),
         ),
         errorBorder: OutlineInputBorder(
-          borderSide: const BorderSide(color: Colors.red, width: 1),
+          borderSide: const BorderSide(color: Colors.red),
           borderRadius: BorderRadius.circular(10),
         ),
         border: OutlineInputBorder(
-          borderSide: BorderSide(color: getTheme(context)? const Color(0xFFFAFAFA):AppColors.dark2, width: 1),
+          borderSide:
+              BorderSide(color: getTheme(context) ? const Color(0xFFFAFAFA) : AppColors.dark2),
           borderRadius: BorderRadius.circular(10),
         ),
         fillColor: getTheme(context)
