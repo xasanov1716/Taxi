@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:taxi_app/ui/contact_to_driver/sub_screens/driver_detail/widgets/third_item/third_item_in_driver_detail.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
@@ -18,19 +19,19 @@ class ThirdItemContainer extends StatelessWidget {
         padding: EdgeInsets.all(
           24 * width / figmaWidth,
         ),
-        child: const Column(
+        child:  Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ThirdItemInDriverDetail(
-              startText: "Member Since",
+              startText: tr('member_since'),
               endText: "July 15, 2019",
             ),
             ThirdItemInDriverDetail(
-              startText: "Car Model",
+              startText: tr('car_model'),
               endText: "July 15, 2019",
             ),
             ThirdItemInDriverDetail(
-              startText: "Plate Number",
+              startText: tr('plate_number'),
               endText: "HSW 4736 XK",
             ),
           ],

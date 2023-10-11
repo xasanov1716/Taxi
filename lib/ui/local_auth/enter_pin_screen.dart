@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:local_auth/local_auth.dart';
@@ -38,13 +39,12 @@ class _EnterPinScreenState extends State<EnterPinScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: const GlobalAppBar(title: "Pin codeni kiriting!"),
+      appBar:  GlobalAppBar(title: tr('enter_pin_code')),
       body: ListView(
         padding: EdgeInsets.all(width / 16),
         children: [
           (height / 8).ph,
-          Text(
-            "Parolni kiriting!",
+          Text(tr('enter_code'),
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.labelLarge!.copyWith(
                   fontSize: 20.sp,
@@ -57,7 +57,7 @@ class _EnterPinScreenState extends State<EnterPinScreen> {
           ),
           (height / 20).ph,
           GlobalButton(
-            title: 'Continue',
+            title: tr('continue'),
             radius: 100,
             textColor: AppColors.black,
             onTap: () {
@@ -74,7 +74,7 @@ class _EnterPinScreenState extends State<EnterPinScreen> {
       Navigator.pushReplacementNamed(context, RouteNames.tabBox);
     } else {
       showErrorMessage(
-        message: "Pin kod xato",
+        message: tr('error_pin_code'),
         context: context,
       );
     }

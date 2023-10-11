@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
@@ -81,10 +82,10 @@ class AuthCubit extends Cubit<AuthState> {
 
   String canAuthenticate() {
     if (state.phoneNumber.length < 9) {
-      return "Enter valid phone number";
+      return tr('enter_valid_phone_number');
     }
     if (state.password.length < 6) {
-      return "Enter valid password";
+      return tr('enter_valid_password');
     }
     return "";
   }

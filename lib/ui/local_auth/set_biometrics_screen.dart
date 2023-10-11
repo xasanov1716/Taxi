@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:local_auth/local_auth.dart';
@@ -25,7 +26,7 @@ class _SetBiometricsScreenState extends State<SetBiometricsScreen> {
     bool authenticated = false;
     try {
       authenticated = await auth.authenticate(
-        localizedReason: 'Tasdiqlash uchun sensorga barmog\'ingizni bosing',
+        localizedReason: tr('scanner_to_get_started'),
         options: const AuthenticationOptions(
           biometricOnly: true,
         ),
@@ -34,7 +35,8 @@ class _SetBiometricsScreenState extends State<SetBiometricsScreen> {
     } catch (e) {
       debugPrint("error using biometric auth: $e");
       if (context.mounted) {
-        showErrorMessage(message: "Barmoq izini skanerlash xato!", context: context);
+        showErrorMessage(
+            message: tr('error_scaner_fingerprint'), context: context);
       }
     }
     setState(() {
@@ -46,8 +48,8 @@ class _SetBiometricsScreenState extends State<SetBiometricsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const GlobalAppBar(
-        title: "Barmoq izingizni oʻrnating",
+      appBar:  GlobalAppBar(
+        title: tr('set_your_fingerprint'),
       ),
       body: Padding(
         padding: const EdgeInsets.only(left: 24, right: 24, bottom: 48),
@@ -58,7 +60,8 @@ class _SetBiometricsScreenState extends State<SetBiometricsScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text('Hisobingizni yaratish uchun barmoq \n                    izini qo\'shing.',
+                Text(
+                    tr('add_a_fingerprint'),
                     style: Theme.of(context).textTheme.titleMedium),
               ],
             ),
@@ -70,7 +73,7 @@ class _SetBiometricsScreenState extends State<SetBiometricsScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'Boshlash uchun barmoq izi skaneriga \n                barmog‘ingizni qo‘ying.',
+                 tr('scanner_to_get_started'),
                   style: TextStyle(fontSize: 18.sp),
                 ),
               ],
@@ -80,7 +83,7 @@ class _SetBiometricsScreenState extends State<SetBiometricsScreen> {
               children: [
                 Expanded(
                     child: GlobalButton(
-                  title: "O'tkazib yubor",
+                  title: tr('skip'),
                   onTap: () {
                     Navigator.pushReplacementNamed(context, RouteNames.tabBox);
                   },
@@ -90,7 +93,7 @@ class _SetBiometricsScreenState extends State<SetBiometricsScreen> {
                 SizedBox(width: 12.w),
                 Expanded(
                   child: GlobalButton(
-                    title: "Keyingi",
+                    title: tr('next'),
                     onTap: () {
                       _checkBiometric();
                       if (StorageRepository.getBool("isAuth")) {

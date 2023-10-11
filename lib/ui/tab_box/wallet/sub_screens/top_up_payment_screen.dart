@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taxi_app/ui/tab_box/wallet/sub_screens/widgets/top_up_button.dart';
@@ -32,14 +33,9 @@ class _TopUpPaymentScreenState extends State<TopUpPaymentScreen> {
           24.ph,
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 24.w),
-            child: Text(
-              "Select the payment method you want to use.",
-              style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                    fontFamily: "Urbanist",
-                    fontSize: 16.sp,
-                    fontWeight: FontWeight.w500,
-                  ),
-            ),
+            child: Text("${tr('select_the_payment')}.", style: Theme.of(context).textTheme.titleMedium?.copyWith(fontFamily: "Urbanist",
+              fontSize: 16.sp,
+              fontWeight: FontWeight.w500,),),
           ),
           13.ph,
           Expanded(
@@ -61,12 +57,7 @@ class _TopUpPaymentScreenState extends State<TopUpPaymentScreen> {
                 child: TopUpGlobalButton(
                   onTap: () {
                     // Navigator.pushNamed(context, RouteNames.enterPinScreen);
-                  },
-                  title: "Add New Card",
-                  color: getTheme(context) ? AppColors.dark3 : const Color(0xFFFFF8E8),
-                  radius: 40.r,
-                  textColor: getTheme(context) ? AppColors.white : AppColors.dark3,
-                ),
+                  },title:tr('add_new_card'), color: getTheme(context) ? AppColors.dark3 : const Color(0xFFFFF8E8) ,radius: 40.r, textColor: getTheme(context) ? AppColors.white : AppColors.dark3,),
               ),
             ],
           )),
@@ -83,14 +74,12 @@ class _TopUpPaymentScreenState extends State<TopUpPaymentScreen> {
                   onTap: () {
                     showGlobalAlertDialog(
                         context: context,
-                        title: "Top Up Successful!",
+                        title: "${tr('top_up_successful')}!",
                         image: AppIcons.successPassword,
-                        text: "You have successfully top upe-wallet for \$120",
+                        text: "${tr('you_have_successfully')} \$120",
                         onTap: () {});
-                    // Navigator.pushNamed(context, RouteNames.enterPinScreen);
-                  },
-                  title: "Continue",
-                  radius: 40.r),
+                // Navigator.pushNamed(context, RouteNames.enterPinScreen);
+              },title: tr('continue'), color: AppColors.primary,radius: 40.r),
             ),
           )
         ],

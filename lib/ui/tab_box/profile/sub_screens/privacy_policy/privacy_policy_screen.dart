@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:taxi_app/ui/widgets/global_appbar.dart';
 import 'package:taxi_app/utils/constants/privacy_policy.dart';
@@ -14,7 +15,7 @@ class PrivacyPolicyScreen extends StatelessWidget {
         onTap: () {
           Navigator.pop(context);
         },
-        title: 'Privacy Policy',
+        title: tr('privacy_policy'),
       ),
       body: SingleChildScrollView(
         child: Padding(

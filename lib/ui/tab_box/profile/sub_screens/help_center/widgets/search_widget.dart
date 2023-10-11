@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:taxi_app/cubits/search/search_cubit.dart';
@@ -27,7 +28,7 @@ class _SearchScreenState extends State<SearchScreen> {
             Focus(
               onFocusChange: widget.onChanged,
               child: GlobalTextField(
-                hintText: 'Search',
+                hintText: tr('search'),
                 controller: _searchController,
                 onChanged: (value) {
                   context.read<SearchCubit>().search(value);

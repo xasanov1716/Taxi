@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -44,33 +45,27 @@ class UserBloc extends Bloc<UserEvent, UsersState> {
     on<UpdateCurrentUserEvent>(updateCurrentUserField);
   }
 
-  Future<void> addUser(
-      AddUserEvent addUserEvent, Emitter<UsersState> emit) async {
-    emit(state.copyWith(statusText: "loading...", status: FormStatus.loading));
+  Future<void> addUser(AddUserEvent addUserEvent, Emitter<UsersState> emit) async {
+    emit(state.copyWith(statusText:tr('loading'), status: FormStatus.loading));
     await userRepo.addUser(userModel: state.userModel);
     debugPrint('added');
-    emit(state.copyWith(
-        status: FormStatus.success, statusText: "User added successfully"));
-    emit(state.copyWith(status: FormStatus.pure));
+    emit(state.copyWith(status: FormStatus.success, statusText: tr('user_added_succesfull')));
   }
 
-  Future<void> updateUser(
-      UpdateUserEvent updateUserEvent, Emitter<UsersState> emit) async {
-    emit(state.copyWith(statusText: "loading...", status: FormStatus.loading));
+  Future<void> updateUser(UpdateUserEvent updateUserEvent, Emitter<UsersState> emit) async {
+    emit(state.copyWith(statusText: tr('loading'), status: FormStatus.loading));
     await userRepo.updateUser(userModel: state.userModel);
     emit(state.copyWith(
-      status: FormStatus.updated,
-      statusText: "User updated successfully",
+      status: FormStatus.success,
+      statusText:tr('user_update_succesfull'),
     ));
     emit(state.copyWith(status: FormStatus.pure));
   }
 
-  Future<void> deleteUser(
-      DeleteUserEvent deleteUserEvent, Emitter<UsersState> emit) async {
-    emit(state.copyWith(statusText: "loading...", status: FormStatus.loading));
+  Future<void> deleteUser(DeleteUserEvent deleteUserEvent, Emitter<UsersState> emit) async {
+    emit(state.copyWith(statusText:tr('loading'), status: FormStatus.loading));
     await userRepo.deleteUser(userId: deleteUserEvent.userId);
-    emit(state.copyWith(
-        status: FormStatus.success, statusText: "User deleted successfully"));
+    emit(state.copyWith(status: FormStatus.success, statusText:tr('user_deleted_succesfull')));
   }
 
   void clearData(DeleteUserEvent deleteUserEvent, Emitter<UsersState> emit) {

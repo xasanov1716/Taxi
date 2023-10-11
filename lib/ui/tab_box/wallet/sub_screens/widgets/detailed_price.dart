@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taxi_app/utils/size/size_extension.dart';
@@ -23,7 +24,7 @@ class DetailedTransactionPrice extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "Amount",
+              tr('amount'),
                 overflow: TextOverflow.ellipsis,
                 style: Theme.of(context)
                     .textTheme
@@ -44,7 +45,7 @@ class DetailedTransactionPrice extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "Promo",
+               tr('promo'),
                 overflow: TextOverflow.ellipsis,
                 style: Theme.of(context)
                     .textTheme
@@ -68,7 +69,7 @@ class DetailedTransactionPrice extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "Total",
+                tr('total'),
                 overflow: TextOverflow.ellipsis,
                 style: Theme.of(context)
                     .textTheme

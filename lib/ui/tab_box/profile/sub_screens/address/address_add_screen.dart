@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -67,7 +68,7 @@ class _AddressAddDetailScreenState extends State<AddressAddDetailScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: GlobalAppBar(
-        title: widget.addressModel != null ? 'Update Address' : 'Add New Address',
+        title:  widget.addressModel != null ? tr('update_address'): tr('add_new_address'),
         onTap: () {
           Navigator.pop(context);
         },
@@ -150,7 +151,7 @@ class _AddressAddDetailScreenState extends State<AddressAddDetailScreen> {
                   child: SizedBox(
                     height: 70.h,
                     child: GlobalButton(
-                      title: widget.addressModel != null ? 'Update Address' : 'Add Address',
+                      title: widget.addressModel != null ? tr('update_address') : tr('add_address'),
                       onTap: () {
                         if (widget.addressModel == null) {
                           addAddressDialog(context, apartmentController, orientationController,
@@ -203,8 +204,8 @@ class _AddressAddDetailScreenState extends State<AddressAddDetailScreen> {
             debugPrint("Success");
             Navigator.pop(context);
           }
-          if (state.status == FormStatus.failure) {
-            showErrorMessage(message: "Error", context: context);
+          if(state.status == FormStatus.failure){
+            showErrorMessage(message: tr('error'), context: context);
           }
         },
       ),

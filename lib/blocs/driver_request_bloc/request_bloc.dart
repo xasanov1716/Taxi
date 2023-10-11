@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
@@ -74,7 +75,7 @@ class RequestBloc extends Bloc<RequestEvent, RequestState> {
         statusRequest: FormStatus.success,
       ));
     } else {
-      emit(state.copyWith(statusRequest: FormStatus.failure, errorText: "Request not added"));
+      emit(state.copyWith(statusRequest: FormStatus.failure, errorText: tr('request_not_added')));
     }
   }
 
@@ -93,7 +94,7 @@ class RequestBloc extends Bloc<RequestEvent, RequestState> {
     if (data.error.isEmpty) {
       emit(state.copyWith(statusRequest: FormStatus.success));
     } else {
-      emit(state.copyWith(statusRequest: FormStatus.failure, errorText: "Request not update"));
+      emit(state.copyWith(statusRequest: FormStatus.failure, errorText:tr('request_not_update')));
     }
   }
 
@@ -114,7 +115,7 @@ class RequestBloc extends Bloc<RequestEvent, RequestState> {
         statusRequest: FormStatus.success,
       ));
     } else {
-      emit(state.copyWith(statusRequest: FormStatus.failure, errorText: "Request not delete"));
+      emit(state.copyWith(statusRequest: FormStatus.failure, errorText: tr('request_not_delete')));
     }
   }
 

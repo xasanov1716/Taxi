@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -34,7 +35,8 @@ class PaymentAddCardScreen extends StatelessWidget {
                 getTheme(context) ? AppColors.white : AppColors.black, BlendMode.srcIn),
           ),
         ),
-        title: Text("Add New Card", style: Theme.of(context).appBarTheme.titleTextStyle),
+        title: Text(tr('add_new_card'),
+            style: Theme.of(context).appBarTheme.titleTextStyle),
         actions: [
           IconButton(
             onPressed: () {},
@@ -73,7 +75,7 @@ class PaymentAddCardScreen extends StatelessWidget {
                                     children: [
                                       state.cardName.isEmpty
                                           ? Text(
-                                              "Card Name",
+                                              tr('card_name'),
                                               style: Theme.of(context)
                                                   .textTheme
                                                   .titleSmall
@@ -99,12 +101,15 @@ class PaymentAddCardScreen extends StatelessWidget {
                                             ? "UzCard"
                                             : state.cardNumber.startsWith('9860')
                                                 ? "Humo"
-                                                : 'Card Name',
-                                        style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.w700,
-                                            fontSize: 16.sp,
-                                            fontFamily: "Urbanist"),
+                                                : tr('card_name'),
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .titleSmall
+                                            ?.copyWith(
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.w700,
+                                                fontSize: 16.sp,
+                                                fontFamily: "Urbanist"),
                                       ),
                                     ],
                                   ),
@@ -134,12 +139,15 @@ class PaymentAddCardScreen extends StatelessWidget {
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            "Card Holder name",
-                                            style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                                                color: Colors.white,
-                                                fontWeight: FontWeight.w500,
-                                                fontSize: 10.sp,
-                                                fontFamily: "Urbanist"),
+                                            tr('card_holder_name'),
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .titleSmall
+                                                ?.copyWith(
+                                                    color: Colors.white,
+                                                    fontWeight: FontWeight.w500,
+                                                    fontSize: 10.sp,
+                                                    fontFamily: "Urbanist"),
                                           ),
                                           4.ph,
                                           SizedBox(
@@ -164,12 +172,15 @@ class PaymentAddCardScreen extends StatelessWidget {
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            "Expiry date",
-                                            style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                                                color: Colors.white,
-                                                fontWeight: FontWeight.w500,
-                                                fontSize: 10.sp,
-                                                fontFamily: "Urbanist"),
+                                            tr('expiry_date'),
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .titleSmall
+                                                ?.copyWith(
+                                                    color: Colors.white,
+                                                    fontWeight: FontWeight.w500,
+                                                    fontSize: 10.sp,
+                                                    fontFamily: "Urbanist"),
                                           ),
                                           4.ph,
                                           state.expireDate.isEmpty
@@ -220,8 +231,8 @@ class PaymentAddCardScreen extends StatelessWidget {
                             mask: '################',
                             filter: {"#": RegExp(r'[a-zA-z]')},
                           ),
-                          text: "Card Name",
-                          hintText: "Card Name",
+                          text:tr('card_name'),
+                          hintText: tr('card_name'),
                           onChanged: (value) {
                             context.read<PaymentBloc>().add(CardName(cardName: value));
                           }),
@@ -233,7 +244,7 @@ class PaymentAddCardScreen extends StatelessWidget {
                           mask: '#### #### #### ####',
                           filter: {"#": RegExp(r'[0-9]')},
                         ),
-                        text: "Card Number",
+                        text: tr('card_number'),
                         hintText: "1234 5678 1234 5678",
                         onChanged: (value) {
                           context.read<PaymentBloc>().add(CardNumber(cardNumber: value));
@@ -247,7 +258,7 @@ class PaymentAddCardScreen extends StatelessWidget {
                           mask: "##/##",
                           filter: {"#": RegExp(r'[0-9]')},
                         ),
-                        text: "Expiry Date",
+                        text: tr('expiry_date'),
                         hintText: "01/01",
                         onChanged: (value) {
                           context.read<PaymentBloc>().add(ExpireDate(expireDate: value));
@@ -271,7 +282,7 @@ class PaymentAddCardScreen extends StatelessWidget {
                 return const PaymentsListScreen();
               }));
             },
-            title: 'Add New Card',
+            title: tr('add_new_card'),
             radius: 100,
           ),
           48.ph

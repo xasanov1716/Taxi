@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -39,9 +40,9 @@ void chatDialog(BuildContext context,{required ImagePicker picker}) {
                     Icons.camera_alt,
                     color: AppColors.white,
                   ),
-                  title: const Text(
-                    "Select from Camera",
-                    style: TextStyle(color: AppColors.white, fontSize: 20),
+                  title:  Text(
+                    tr('select_from_camera'),
+                    style:const TextStyle(color: AppColors.white, fontSize: 20),
                   ),
                 ),
               ),
@@ -60,9 +61,9 @@ void chatDialog(BuildContext context,{required ImagePicker picker}) {
                     Icons.photo,
                     color: AppColors.white,
                   ),
-                  title: const Text(
-                    "Select from Gallery",
-                    style: TextStyle(color: AppColors.white, fontSize: 20),
+                  title:  Text(
+                    tr('select_from_gallery'),
+                    style:const TextStyle(color: AppColors.white, fontSize: 20),
                   ),
                 ),
               ),

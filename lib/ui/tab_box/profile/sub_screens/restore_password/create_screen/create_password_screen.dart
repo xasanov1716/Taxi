@@ -1,4 +1,5 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -40,7 +41,7 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
         onTap: () {
           Navigator.pop(context);
         },
-        title: "Create New Password",
+        title: tr('create_new_password'),
       ),
       body: ListView(
         padding: EdgeInsets.only(left: width * 24 / figmaWidth, right: width * 24 / figmaWidth),
@@ -54,7 +55,7 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
             width: width * (329 / figmaWidth),
           ),
           Text(
-            "Create Your New Password",
+            tr('create_your_new_password'),
             style: Theme.of(context).textTheme.bodyMedium!.copyWith(),
           ),
           24.ph,
@@ -64,7 +65,7 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
                 getIcon(isPressed ? AppIcons.show : AppIcons.hide, context: context, onTap: () {
               isPressed = !isPressed;
             }),
-            hintText: 'Password',
+            hintText: tr('password'),
             obscureText: !isPressed,
             keyboardType: TextInputType.visiblePassword,
             prefixIcon: Padding(
@@ -83,11 +84,11 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
           24.ph,
           GlobalTextField(
             focusNode: repeatFocusNode,
-            suffixIcon:
-                getIcon(isPressed ? AppIcons.show : AppIcons.hide, context: context, onTap: () {
-              isPressed = !isPressed;
-            }),
-            hintText: 'Repeat password',
+            suffixIcon: getIcon(isPressed ? AppIcons.show : AppIcons.hide,
+                context: context, onTap: () {
+                  isPressed = !isPressed;
+                }),
+            hintText: tr('repeat_password'),
             obscureText: !isPressed2,
             keyboardType: TextInputType.visiblePassword,
             textInputAction: TextInputAction.done,
@@ -106,12 +107,13 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const ForgetPasswordCheckbox(),
-              Text("Remember me", style: Theme.of(context).textTheme.labelLarge!.copyWith()),
+              Text(tr('remember_me'),
+                  style: Theme.of(context).textTheme.labelLarge!.copyWith()),
             ],
           ),
           71.ph,
           GlobalButton(
-            title: 'Continue',
+            title: tr('continue'),
             radius: 50.r,
             onTap: () {
               restorePasswordSuccess(context);

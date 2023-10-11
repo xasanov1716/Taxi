@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taxi_app/ui/widgets/global_button.dart';
@@ -51,7 +52,7 @@ void showGlobalAlertDialog(
               ),
               32.ph,
               GlobalButton(
-                title: "OK",
+                title: tr('ok'),
                 textColor: AppColors.c_900,
                 onTap: onTap,
                 radius: 100.r,

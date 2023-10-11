@@ -35,12 +35,91 @@
   "client": "Йўловчи",
   "forgot_password": "Паролни унутдингизми?",
 
+
   "03": "",
+
+  "create_profile":"Профиль яратиш",
+  "create_user": "Фойдаланувчи яратиш",
+  "is_required": "мажбурий",
+  "can_register": "рўйхатдан ўтиш мумкин",
+  "addresses_are_required": "манзиллари талаб қилинади",
+  "about_driver": "Ҳайдовчи ҳақида",
+  "legal_entity": "Юридик шахс",
+  "telegram_username": "Телеграм усернаме. Эхампле:эхампле_усернаме",
+  "yes": "Xа",
+  "no": "Йўқ",
+  "mixed": "Ikkalasi ham",
+  "price": "Йўл ҳаққи",
+  "som": "сўм",
+  "passenger_type": "Пассенгер Тйпе",
+  "has_roof": "Томида багаж борми ",
+  "empty_places": "Бўш жойлар",
+  "where_are_you_leaving": "Қаердан жўнайсиз",
+  "where are you going": "Қаерга борасиз",
+  "update_address": "Манзилни янгилаш",
+  "error": "Хато",
+  "custom_service": "Мижозларга хизмат кўрсатиш",
+  "whatsapp": "Whatsapp",
+  "Facebook": "Facebook",
+  "twitter": "Twitter",
+  "instagram": "Instagram",
+  "we_invite_app": "Сизни Дастёр Тахи иловасига таклиф қиламиз",
+  "card_holder_name": "Карта эгасининг исми",
+  "select_which_contact_password": "Паролни тиклаш учун қайси контакт маълумотларидан фойдаланишимиз кераклигини танланг",
+  "repeat_password": "Паролни қайта киритинг",
+  "your_account_ready": "Ҳисобингиз фойдаланишга тайёр. Сиз бир неча сониядан сўнг Бош саҳифага йўналтириласиз",
+  "select_from_camera": "Галереядан танланг",
+  "select_from_gallery": "Галереядан танланг",
+  "log_out": "Чиқиш",
+  "are_you_log_out": "Ҳа, чиқиман",
+  "yes_log_out": "Ҳа, чиқиман",
+  "transaction_history": "Ўтказмалар тарихи",
+  "e_receipt": "Электрон квитанция",
+  "top_up_e_wallet": "Электрон ҳамённи тўлдириш",
+  "select_the_payment": "Фойдаланмоқчи бўлган тўлов усулини танланг",
+  "you_have_successfully": "Сиз ҳамённи муваффақиятли тўлдирдингиз",
+  "enter_the_amount": "Тўлдириш миқдорини киритинг",
+  "expense": "Харажат",
+  "payments_methods": "История транзакций",
+  "there_are_posts": "Бу ерда ҳали ҳеч қандай пост йўқ",
+  "plate_number": "Пластинка рақами",
+  "cancel_taxi": "Таксини бекор қилиш",
+  "please_select_cancellation": "Илтимос, бекор қилиш сабабини танланг",
+  "others_reason": "Бошқа Сабаблар",
+  "were_so_dad_cancellation": "Бекор қилганингиздан жуда хафамиз",
+  "wi_will_continue": "Биз хизматимизни яхшилашда давом этамиз ва кейинги сафарда сизни қониқтирамиз",
+  "others": "Бошқалар",
+  "price_reasonable": "Нотўғри манзил кўрсатилган",
+  "wrong_address_shown": "Нотўғри манзил кўрсатилган",
+  "driver_denied_pickup": "Ҳайдовчи олиб кетишдан бош тортди",
+  "driver_denied_destination": "Ҳайдовчи белгиланган жойга боришдан бош тортди ",
+  "unable_driver": "Ҳайдовчи билан боғланиб бўлмади",
+  "waiting_long_time": "Узоқ вақт кутиш",
+  "select_category_ride": "Ўзингиз минмоқчи бўлган автомобиль тоифасини танланг.",
+  "bike": "Велосипед",
+  "standard": "Стандарт ",
+  "premium": "Премиум",
+  "searching_ride": "Бу бир неча сония вақт олиши мумкин...",
+  "this_may_take": "Бу бир неча сония вақт олиши мумкин...",
+  "driver_arrive": "Ҳайдовчи келади",
+  "mins": "Минут",
+  "pin_code_installation": "Паролни ўрнатиш",
+  "confirm_pin_code": "Паролни тасдиқланг",
+  "error_scaner_fingerprint": "Бармоқ изини сканерлаш хато!",
+  "enter_pin_code": "Паролни киритинг",
+  "enter_code": "Паролни киритинг!",
+  "tap_your_finger_sensor": "Тасдиқлаш учун сенсорга бармоғингизни босинг",
+  "you_have_upe_wallet": "Сиз ҳамённи муваффақиятли тўлдирдингиз",
+  "error_pin_code": "Пароль хато",
+
+
+
+
 
   "fill_your_profile": "Профилингизни тўлдиринг",
   "full_name": "Тўлиқ исм шариф",
   "nickname": "Тахаллус",
-  "date_of_Birth": "Туғилган кун",
+  "date_of_birth": "Туғилган кун",
   "email": "Електрон почта",
   "gender": "Жинс",
   "continue": "Давом етинг",
@@ -65,6 +144,8 @@
   "verify": "Тасдиклаш",
   "create_new_password": "Янги парол яратинг",
   "create_your_new_password": "Янги паролингизни яратинг",
+  "select_which_contact": "Parolingizni tiklash uchun qaysi kontakt ma'lumotlaridan foydalanishimiz kerakligini tanlang",
+  "confirm_new_password": "Йанги паролни тасдиклаш учун кайта киритинг!",
 
   "05": "",
 
@@ -158,6 +239,7 @@
   "empty_booking": "Сизда фаол такси бандлови йўқ",
   "empty_booking_subtitle": "Aйни пайтда сизда фаол такси бандлови йўқ.",
 
+
   "07": "",
 
   "chats": "Suhbatlar",
@@ -167,8 +249,8 @@
 
   "08": "",
 
+
   "my_e_wallet": "Менинг електрон ҳамёним",
-  "transaction_history": "Транзаксия тарихи",
   "see_all": "Ҳаммасини кўринг",
   "your_balance": "Сизнинг балансингиз",
   "top_up": "Ҳисобни тўлдириш",
@@ -233,5 +315,41 @@
   "website": "Веб-сайт",
   "logout_title": "Сиз тизимдан чиқмоқчимисиз?",
   "language": "Тил",
-  "language_type": "Кирилл-Лотин"
+  "language_type": "Кирилл-Лотин",
+
+  "bloc_papkalarni_navbati": "folders",
+
+
+  "loading": "Юкланмоқда...",
+  "user_added_succesfull": "Фойдаланувчи муваффақиятли қўшилди",
+  "user_deleted_succesfull": "Фойдаланувчи муваффақиятли ўчирилди",
+  "user_update_succesfull": "Фойдаланувчи муваффақиятли янгиланди",
+
+  "facebook_login_error": "Facebook  орқали кириш хато",
+  "apple_login_error": "Apple орқали кириш хато",
+  "success_order_add": "Буюртма муваффақиятли қўшилди",
+  "success_order_update": "Буюртма муваффақиятли янгиланди",
+  "success_order_delete": "Буюртма муваффақиятли ўчирилди",
+  "request_not_added": "Сўров қўшилмаган",
+  "request_not_update": "Сўров янгиланмаган",
+  "request_not_delete": "Сўров ўчирилмаган",
+
+
+
+
+  "cubit_papkalarni_navbati": "folders",
+
+
+  "what_is_taxio": "Дастёр Такси нима?",
+  "how_to_use_taxio": "Қандай қилиб такси буюртмасини бекор қилишим мумкин?",
+  "how_do_cancel_taxi": "Қандай қилиб такси буюртмасини бекор қилишим мумкин?",
+  "is_taxi_free": "Дастёр Таксидан фойдаланиш бепулми?",
+  "how_do_add_promo": "Дастёр Таксига рекламани қандай қўшиш мумкун?",
+  "why_didnot_my_payment": "Нега менинг тўловим ишламади?",
+  "why_are_service_price_difference": "Нима учун такси хизматлари нархи ҳар хил?",
+  "why_cannot_new_payment": "Нима учун янги тўлов усулини қўша олмайман?",
+  "why_didnot_after_payment": "Нега мен тўловдан кейин электрон квитанцияни олмадим?",
+  "enter_valid_phone_number": "Яроқли телефон рақамини киритинг",
+  "enter_valid_password": "Яроқли пароль киритинг",
+  "no_such_identifed": "Бундай ҳудуд аниқланмади!!"
 }

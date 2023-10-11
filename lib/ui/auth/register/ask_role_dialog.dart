@@ -16,7 +16,7 @@ void showRoleDialog(BuildContext context) {
         data: getTheme(context) ? ThemeData.dark() : ThemeData.light(),
         child: CupertinoAlertDialog(
           content: Text(
-            tr("driver_or_client?"),
+            "${tr("driver_or_client")}?",
             style: Theme.of(context).textTheme.titleLarge,
           ),
           title: Image.asset(AppIcons.taxiLogotip),

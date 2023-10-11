@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -58,7 +59,7 @@ void profileDialog({
                     color: AppColors.white,
                   ),
                   title: Text(
-                    "Select from Camera",
+                    tr('select_from_camera'),
                     style: TextStyle(color: AppColors.white, fontSize: 20.sp),
                   ),
                 ),
@@ -85,7 +86,7 @@ void profileDialog({
                     color: AppColors.white,
                   ),
                   title: Text(
-                    "Select from Gallery",
+                    tr('select_from_gallery'),
                     style: TextStyle(color: AppColors.white, fontSize: 20.sp),
                   ),
                 ),

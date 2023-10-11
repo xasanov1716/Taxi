@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -72,7 +73,7 @@ class AddressCubit extends Cubit<AddressState> {
     if (universalData.error.isEmpty) {
       emit(AddressSuccessState(address: universalData.data as String));
     } else {
-      emit(AddressErrorState(errorText: "Bunday hudud aniqlanmadi!"));
+      emit(AddressErrorState(errorText: tr('no_such_identifed')));
     }
   }
 

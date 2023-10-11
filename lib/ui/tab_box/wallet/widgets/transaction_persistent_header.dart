@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taxi_app/utils/colors/app_colors.dart';
@@ -22,19 +23,25 @@ class TransactionPersistentHeader extends SliverPersistentHeaderDelegate {
       child: Row(
         children: [
           Text(
-            "Transaction History",
-            style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                  fontSize: 20.sp,
-                  fontWeight: FontWeight.w700,
-                ),
+            tr('transaction_history'),
+            style:
+            Theme.of(context).textTheme.titleMedium?.copyWith(
+              fontSize: 20.sp,
+              fontWeight: FontWeight.w700,
+            ),
           ),
           const Spacer(),
           TextButton(
             onPressed: onTap,
             child: Text(
-              "See All",
-              style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                  fontSize: 16.sp, fontWeight: FontWeight.w700, color: AppColors.primary),
+             tr('see_all'),
+              style: Theme.of(context)
+                  .textTheme
+                  .titleMedium
+                  ?.copyWith(
+                  fontSize: 16.sp,
+                  fontWeight: FontWeight.w700,
+                  color: AppColors.primary),
             ),
           ),
         ],

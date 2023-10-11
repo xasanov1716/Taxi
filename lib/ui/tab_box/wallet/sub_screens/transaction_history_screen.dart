@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:taxi_app/ui/app_routes.dart';
 import 'package:taxi_app/ui/tab_box/wallet/widgets/transaction_item.dart';
@@ -16,7 +17,7 @@ class TransactionHistoryScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: GlobalAppBar(
-        title: 'Transaction History',
+        title: tr('transaction_history'),
         action: [
           getIcon(
             AppIcons.search,
@@ -38,7 +39,7 @@ class TransactionHistoryScreen extends StatelessWidget {
                 name: "Daniel Austin",
                 date: "Dec 20, 2024 | 10:00 AM",
                 price: 14,
-                expense: "Taxi Expense",
+                expense: tr('taxi_expense'),
                 iconName: AppIcons.arrowUpSquare,
                 iconColor: AppColors.error,
               ),

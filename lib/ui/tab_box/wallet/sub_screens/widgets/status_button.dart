@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -14,7 +15,7 @@ class TransactionStatusButton extends StatelessWidget {
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(6.r), color: AppColors.primary),
       child: Center(
         child: Text(
-          "Paid",
+         tr('paid'),
           style: Theme.of(context).textTheme.labelSmall,
         ),
       ),

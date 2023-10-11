@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -96,7 +97,7 @@ class CodeInputFieldState extends State<CodeInputField> {
                 text: TextSpan(
                   children: [
                     TextSpan(
-                      text: "Resend code in ",
+                      text: tr('resend_code_in'),
                       style: defaultTextStyle,
                     ),
                     TextSpan(
@@ -112,7 +113,7 @@ class CodeInputFieldState extends State<CodeInputField> {
               );
             } else {
               return Text(
-                "Resend code in 60 s",
+                tr('resend_code_in_s'),
                 style: defaultTextStyle,
               );
             }

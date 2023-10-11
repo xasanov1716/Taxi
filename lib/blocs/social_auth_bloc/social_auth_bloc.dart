@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:taxi_app/data/repositories/auth_repository.dart';
@@ -38,7 +39,7 @@ class SocialAuthBloc extends Bloc<SocialAuthEvent, SocialAuthState> {
     if (response == true) {
       emit(AuthSuccess(productsEvent.successText));
     } else if (response == false) {
-      emit(const AuthError(errorText: "Facebook orqali kirish xato"));
+      emit( AuthError(errorText: tr('facebook_login_error')));
     }
   }
 
@@ -60,7 +61,7 @@ class SocialAuthBloc extends Bloc<SocialAuthEvent, SocialAuthState> {
       Future.delayed(const Duration(seconds: 3));
       emit(AuthSuccess(productsEvent.successText));
     } else if (response == false) {
-      emit(const AuthError(errorText: "Apple orqali kirish xato"));
+      emit( AuthError(errorText: tr('apple_login_error')));
     }
   }
 }

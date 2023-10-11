@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:taxi_app/ui/contact_to_driver/sub_screens/cancel_driver/widgets/cancellation_reasons.dart';
@@ -23,7 +24,7 @@ class _CancelDriverScreenState extends State<CancelDriverScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: GlobalAppBar(
-        title: "Cancel Taxi",
+        title: tr('cancel_taxi'),
         onTap: () {
           Navigator.pop(context);
         },
@@ -40,15 +41,19 @@ class _CancelDriverScreenState extends State<CancelDriverScreen> {
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 24.w),
                       child: Text(
-                        "Please select the reason for cancellation:",
-                        style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 16.sp),
+                        "${tr('please_select_cancellation')}:",
+                        style: Theme.of(context)
+                            .textTheme
+                            .titleMedium!
+                            .copyWith(fontSize: 16.sp),
                       ),
                     ),
                     const CancellationReasons(),
                     GlobalTextField(
-                      hintText: "Others Reason",
+                      hintText: tr('others_reason'),
                       textInputAction: TextInputAction.done,
                       controller: controller,
+
                     ),
                     24.ph
                   ],
@@ -57,12 +62,13 @@ class _CancelDriverScreenState extends State<CancelDriverScreen> {
             ),
             GlobalButton(
               padding: EdgeInsets.symmetric(horizontal: 24.w),
-              title: "Submit",
+              title:tr('submit'),
               onTap: () {
                 showGlobalAlertDialog(
                     context: context,
-                    title: "We’re so sad about your cancellation",
-                    text: "We will continue to improve our service & satisfy you on the next trip.",
+                    title: tr('were_so_dad_cancellation'),
+                    text:
+                        "${tr('wi_will_continue')}.",
                     image: AppIcons.smileUnhappy,
                     onTap: () {
                       Navigator.pop(context);
@@ -70,6 +76,7 @@ class _CancelDriverScreenState extends State<CancelDriverScreen> {
               },
               textColor: AppColors.c_900,
               radius: 100.r,
+              color: AppColors.primary,
             )
           ],
         ),

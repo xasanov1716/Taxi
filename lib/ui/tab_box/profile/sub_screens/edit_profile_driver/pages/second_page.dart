@@ -31,7 +31,7 @@ class _SecondPageState extends State<SecondPage> {
     gender = state.driverModel.gender;
     carModel = state.driverModel.carModel;
     emptyPlace = state.driverModel.emptyPlaces.toString();
-    hasRoof = state.driverModel.hasRoofTop ? "Yes" : "No";
+    hasRoof = state.driverModel.hasRoofTop ? tr('yes') : tr('no');
   }
 
   @override
@@ -40,14 +40,14 @@ class _SecondPageState extends State<SecondPage> {
     super.initState();
   }
 
-  String gender = "Male";
+  String gender = tr('male');
   String carModel = "Damas";
-  String hasRoof = "Yes";
+  String hasRoof = tr('yes');
   String emptyPlace = "1";
-  var genders = ['Male', 'Female', 'Mixed'];
+  var genders = [tr('male'), tr('female'), tr('mixed')];
   var hasRoofs = [
-    'Yes',
-    'No',
+    tr('yes'),
+    tr('no'),
   ];
   var emptyPlaces = ['1', '2', '3', '4', '5', '6', '7'];
   var carModels = [
@@ -73,17 +73,14 @@ class _SecondPageState extends State<SecondPage> {
         24.ph,
         GlobalTextField(
           focusNode: priceFocusNode,
-          hintText: 'Price',
+          hintText: tr('price'),
           keyboardType: TextInputType.number,
           maskFormatter: NumberInputFormatter(),
           maxLength: 10,
           controller: priceController,
           suffixIcon: Padding(
-            padding: EdgeInsets.only(right: 10.w, top: 10.h),
-            child: Text(
-              "so'm",
-              style: Theme.of(context).textTheme.titleLarge,
-            ),
+            padding:  EdgeInsets.only(right: 10.w,top: 10.h),
+            child: Text(tr('som'),style: Theme.of(context).textTheme.titleLarge,),
           ),
           onChanged: (value) {
             String a = value;
@@ -139,9 +136,9 @@ class _SecondPageState extends State<SecondPage> {
           ),
         ),
         24.ph,
-        Text("Car Model",
-            style: AppTextStyle.bodyMediumSemibold
-                .copyWith(color: getTheme(context) ? AppColors.white : AppColors.c_900)),
+        Text(tr('car_model'),
+            style: AppTextStyle.bodyMediumSemibold.copyWith(
+                color: getTheme(context) ? AppColors.white : AppColors.c_900)),
         24.ph,
         Container(
           padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 6.h),
@@ -186,9 +183,9 @@ class _SecondPageState extends State<SecondPage> {
           ),
         ),
         24.ph,
-        Text("Has Roof",
-            style: AppTextStyle.bodyMediumSemibold
-                .copyWith(color: getTheme(context) ? AppColors.white : AppColors.c_900)),
+        Text('${tr('has_roof')}?',
+            style: AppTextStyle.bodyMediumSemibold.copyWith(
+                color: getTheme(context) ? AppColors.white : AppColors.c_900)),
         24.ph,
         Container(
           padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 6.h),
@@ -223,7 +220,8 @@ class _SecondPageState extends State<SecondPage> {
                 hasRoof = newValue!;
               });
               context.read<DriverBloc>().updateDriverField(
-                  fieldKey: DriverFieldKeys.hasRoofTop, value: hasRoof == tr("yes"));
+                  fieldKey: DriverFieldKeys.hasRoofTop,
+                  value: hasRoof == tr('yes') ? true : false);
             },
             hint: Text(hasRoof,
                 style: AppTextStyle.bodyMediumSemibold.copyWith(
@@ -232,9 +230,9 @@ class _SecondPageState extends State<SecondPage> {
           ),
         ),
         24.ph,
-        Text("Empty Places",
-            style: AppTextStyle.bodyMediumSemibold
-                .copyWith(color: getTheme(context) ? AppColors.white : AppColors.c_900)),
+        Text(tr('empty_places'),
+            style: AppTextStyle.bodyMediumSemibold.copyWith(
+                color: getTheme(context) ? AppColors.white : AppColors.c_900)),
         24.ph,
         Container(
           padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 6.h),

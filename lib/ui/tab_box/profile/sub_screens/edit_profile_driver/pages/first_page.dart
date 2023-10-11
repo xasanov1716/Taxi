@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
@@ -61,7 +62,7 @@ class _FirstPageState extends State<FirstPage> {
     super.initState();
   }
 
-  String gender = "Male";
+  String gender =  tr("male");
   ImagePicker picker = ImagePicker();
 
   var phoneFormatter =
@@ -69,7 +70,7 @@ class _FirstPageState extends State<FirstPage> {
   var carNumber = MaskTextInputFormatter(
       mask: '##*###**', filter: {"#": RegExp(r'[0-9]'), "*": RegExp(r'[A-Z]')});
 
-  var genders = ['Male', 'Female'];
+  var genders = [tr("male"), tr("female")];
   final FocusNode focusNode = FocusNode();
   final FocusNode phoneFocusNode = FocusNode();
   final FocusNode fullNameFocusNode = FocusNode();
@@ -94,7 +95,7 @@ class _FirstPageState extends State<FirstPage> {
         GlobalTextField(
           controller: fullNameController,
           focusNode: fullNameFocusNode,
-          hintText: 'Full Name',
+          hintText: tr('full_name'),
           onChanged: (value) async {
             context
                 .read<DriverBloc>()
@@ -116,7 +117,7 @@ class _FirstPageState extends State<FirstPage> {
           child: AbsorbPointer(
             child: GlobalSearchTextField(
               readOnly: true,
-              hintText: 'Date of Birth',
+              hintText: tr('date_of_birth'),
               focusNode: focusNode,
               onTap: () {
                 _showDatePicker(context);
@@ -134,7 +135,7 @@ class _FirstPageState extends State<FirstPage> {
           visible: !widget.isFromAuth,
           child: PhoneNumberInput(
             controller: phoneNumberController,
-            hintText: 'Phone Number',
+            hintText: tr('phone_number'),
             keyboardType: TextInputType.phone,
             focusNode: phoneFocusNode,
             maskFormatter: phoneFormatter,
@@ -195,7 +196,7 @@ class _FirstPageState extends State<FirstPage> {
         GlobalTextField(
           controller: aboutDriverController,
           focusNode: aboutFocusNode,
-          hintText: 'About Driver',
+          hintText: tr('about_driver'),
           maxLength: 100,
           maxLines: 5,
           onChanged: (value) {
@@ -210,7 +211,7 @@ class _FirstPageState extends State<FirstPage> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'Yuridik shaxs?',
+                '${tr('legal_entity')}?',
                 style: Theme.of(context).textTheme.titleLarge,
               ),
               CupertinoSwitch(
@@ -235,7 +236,7 @@ class _FirstPageState extends State<FirstPage> {
         GlobalTextField(
           controller: telegramLinkController,
           focusNode: telegramFocusNode,
-          hintText: 'Telegram username. Example:example_username',
+          hintText: tr('telegram_username'),
           onChanged: (value) {
             context.read<DriverBloc>().updateDriverField(
                 fieldKey: DriverFieldKeys.telegramLink, value: "https//:t.me/$value");

@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:taxi_app/data/models/address/geocoding/geocoding.dart';
@@ -66,7 +67,7 @@ class ApiService {
       );
 
       if (response.statusCode == 200) {
-        String text = 'Aniqlanmagan Hudud';
+        String text = tr('no_such_identifed!');
         Geocoding geocoding = Geocoding.fromJson(response.data);
         if (geocoding.response.geoObjectCollection.featureMember.isNotEmpty) {
           text = geocoding.response.geoObjectCollection.featureMember[0].geoObject.metaDataProperty

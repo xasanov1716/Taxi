@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -32,7 +33,7 @@ class _EditProfileClientScreenState extends State<EditProfileClientScreen> {
     return Scaffold(
       appBar: EditAppBar(
           hideBackButton: widget.navigateFromAuth,
-          title: widget.navigateFromAuth ? "Create Profile" : "Edit Profile"),
+          title: widget.navigateFromAuth ? tr("create_profile") : tr("edit_profile")),
       body: BlocConsumer<UserBloc, UsersState>(
         builder: (context, state) {
           return Padding(
@@ -45,7 +46,7 @@ class _EditProfileClientScreenState extends State<EditProfileClientScreen> {
                   ),
                 ),
                 GlobalButton(
-                  title: widget.navigateFromAuth ? "Create User" : "Update",
+                  title: widget.navigateFromAuth ? tr("create_user") : tr("update"),
                   onTap: () {
                     if (widget.navigateFromAuth) {
                       context.read<UserBloc>().add(UpdateCurrentUserEvent(
@@ -78,6 +79,10 @@ class _EditProfileClientScreenState extends State<EditProfileClientScreen> {
                                 '${context.read<UserBloc>().canRequest()} is required');
                       }
                     } else {
+                      showSnackBar(
+                          context: context,
+                          text:
+                              '${context.read<UserBloc>().canRequest()} ${tr("is_required")}');
                       context.read<UserBloc>().add(UpdateUserEvent());
                     }
                   },

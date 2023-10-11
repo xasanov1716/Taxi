@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
@@ -13,22 +14,26 @@ restorePasswordSuccess(BuildContext context) {
     builder: (BuildContext context) {
       return StatefulBuilder(builder: (context, setState) {
         return AlertDialog(
-          backgroundColor: getTheme(context) ? AppColors.dark2 : AppColors.white,
-          shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(16))),
+          backgroundColor:
+              getTheme(context) ? AppColors.dark2 : AppColors.white,
+          shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(16))),
           content: Column(
             mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Image.asset(
                 AppIcons.createNewPasswordDialog,
                 width: 180.w,
               ),
               30.ph,
-              Text('Congratulations!', style: Theme.of(context).dialogTheme.titleTextStyle),
+              Text('${tr('congratulations')}!',
+                  style: Theme.of(context).dialogTheme.titleTextStyle),
               16.ph,
               Center(
                 child: Text(
-                  'Your account is ready to use. You will be redirected to the Home page in a few seconds..!',
-                  style: Theme.of(context).textTheme.titleMedium,
+                  '${tr('your_account_ready')}..!',
+                  style: Theme.of(context).textTheme.titleMedium!,
                   textAlign: TextAlign.center,
                 ),
               ),

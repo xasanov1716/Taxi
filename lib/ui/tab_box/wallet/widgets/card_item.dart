@@ -1,3 +1,5 @@
+import 'package:easy_localization/easy_localization.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -60,10 +62,8 @@ class CardItem extends StatelessWidget {
             ],
           ),
           24.ph,
-          Text(
-            "Your balance",
-            style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                fontFamily: "Urbanist",
+          Text(tr('your_balance'),
+            style: Theme.of(context).textTheme.titleMedium?.copyWith(fontFamily: "Urbanist",
                 fontSize: 14.sp,
                 fontWeight: FontWeight.w600,
                 color: AppColors.white),
@@ -97,14 +97,11 @@ class CardItem extends StatelessWidget {
                         )),
                       ),
                       8.pw,
-                      Text(
-                        "Top Up",
-                        style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                            fontFamily: "Urbanist",
-                            fontSize: 16.sp,
-                            fontWeight: FontWeight.w600,
-                            color: AppColors.dark1),
-                      )
+                      Text(tr('top_up'), style: Theme.of(context).textTheme.titleMedium?.copyWith(fontFamily: "Urbanist",
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.w600,
+                          color: AppColors.dark1
+                      ),)
                     ],
                   ),
                 ),

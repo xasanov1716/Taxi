@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -16,10 +17,10 @@ class TransactionCategory extends StatefulWidget {
 }
 
 class _TransactionCategoryState extends State<TransactionCategory> {
-  String selected = "Taxi Expense";
+  String selected =tr('taxi_expense');
   List<String> priceTypes = [
-    "Taxi Expense",
-    "Expense",
+    tr('taxi_expense'),
+    tr('expense'),
   ];
 
   @override
@@ -35,7 +36,7 @@ class _TransactionCategoryState extends State<TransactionCategory> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            "Category",
+           tr('category'),
             overflow: TextOverflow.ellipsis,
             style: Theme.of(context)
                 .textTheme
@@ -46,7 +47,7 @@ class _TransactionCategoryState extends State<TransactionCategory> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "Taxi Expense",
+                tr('taxi_expense'),
                 overflow: TextOverflow.ellipsis,
                 style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                     color: getTheme(context) ? AppColors.c_100 : AppColors.c_800,
