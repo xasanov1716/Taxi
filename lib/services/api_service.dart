@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:taxi_app/data/models/address/geocoding/geocoding.dart';
 import 'package:taxi_app/data/models/universal_data.dart';
+import 'package:taxi_app/services/fcm.dart';
 import 'package:taxi_app/utils/constants/constants.dart';
 
 class ApiService {
@@ -11,7 +12,7 @@ class ApiService {
 
   final dio = Dio(
     BaseOptions(
-      baseUrl: baseUrl,
+      baseUrl: remoteConfig.getString(baseUrl),
       headers: {
         "Content-Type": "application/json",
       },
