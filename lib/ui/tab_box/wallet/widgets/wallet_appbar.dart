@@ -35,28 +35,28 @@ class WalletAppbar extends StatelessWidget implements PreferredSize {
       ),
       title: Text(title),
       actions: [
-        IconButton(
-          onPressed: searchTap,
-          icon: SvgPicture.asset(
-            AppIcons.getSvg(
-              name: AppIcons.search,
-              iconType: IconType.lightOutline,
-            ),
-            colorFilter: ColorFilter.mode(
-                getTheme(context) ? AppColors.white : AppColors.c_900, BlendMode.srcIn),
-          ),
-        ),
-        IconButton(
-          onPressed: onTap,
-          icon: SvgPicture.asset(
-            AppIcons.getSvg(
-              name: AppIcons.moreCircle,
-              iconType: IconType.lightOutline,
-            ),
-            colorFilter: ColorFilter.mode(
-                getTheme(context) ? AppColors.white : AppColors.c_900, BlendMode.srcIn),
-          ),
-        ),
+        // IconButton(
+        //   onPressed: searchTap,
+        //   icon: SvgPicture.asset(
+        //     AppIcons.getSvg(
+        //       name: AppIcons.search,
+        //       iconType: IconType.lightOutline,
+        //     ),
+        //     colorFilter: ColorFilter.mode(
+        //         getTheme(context) ? AppColors.white : AppColors.c_900, BlendMode.srcIn),
+        //   ),
+        // ),
+        // IconButton(
+        //   onPressed: onTap,
+        //   icon: SvgPicture.asset(
+        //     AppIcons.getSvg(
+        //       name: AppIcons.moreCircle,
+        //       iconType: IconType.lightOutline,
+        //     ),
+        //     colorFilter: ColorFilter.mode(
+        //         getTheme(context) ? AppColors.white : AppColors.c_900, BlendMode.srcIn),
+        //   ),
+        //  ),
         12.pw,
       ],
     );

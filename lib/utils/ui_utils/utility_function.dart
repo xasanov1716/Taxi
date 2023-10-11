@@ -139,94 +139,98 @@ IconButton getIcon(
         ),
         width: 24.w,
         colorFilter: ColorFilter.mode(
-            color ?? (getTheme(context) ? AppColors.white : AppColors.c_900), BlendMode.srcIn),
+            color ?? (getTheme(context) ? AppColors.white : AppColors.c_900),
+            BlendMode.srcIn),
       ),
     );
 
 void addAddressDialog(
-    BuildContext context,
-    TextEditingController apartmentController,
-    TextEditingController orientationController,
-    CameraPosition currentCameraPosition,
-    VoidCallback onTap) {
+  BuildContext context,
+  TextEditingController apartmentController,
+  TextEditingController orientationController,
+  CameraPosition currentCameraPosition,
+  VoidCallback onTap,
+) {
   showModalBottomSheet(
+    isScrollControlled: true,
     backgroundColor: getTheme(context) ? AppColors.dark1 : AppColors.c_100,
     context: context,
     builder: (BuildContext context) {
       return Container(
         decoration: BoxDecoration(
-            borderRadius:
-                BorderRadius.horizontal(left: Radius.circular(40.r), right: Radius.circular(40.r))),
+            borderRadius: BorderRadius.horizontal(
+                left: Radius.circular(40.r), right: Radius.circular(40.r))),
         child: Padding(
           padding: EdgeInsets.all(24.w),
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Center(
-                    child: Text(
-                  'Address Details',
-                  style: Theme.of(context)
-                      .textTheme
-                      .labelLarge!
-                      .copyWith(fontSize: 24.sp, fontWeight: FontWeight.w700),
-                )),
-                24.ph,
-                const Divider(
-                  color: AppColors.c_200,
-                ),
-                24.ph,
-                BlocBuilder<AddressCubit, AddressState>(builder: (context, state) {
-                  if (state is AddressSuccessState) {
-                    return Text(
-                      state.address,
-                      style: Theme.of(context)
-                          .textTheme
-                          .labelLarge!
-                          .copyWith(fontSize: 18.sp, fontWeight: FontWeight.w700),
-                    );
-                  }
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Center(
+                  child: Text(
+                'Address Details',
+                style: Theme.of(context)
+                    .textTheme
+                    .labelLarge!
+                    .copyWith(fontSize: 24.sp, fontWeight: FontWeight.w700),
+              )),
+              24.ph,
+              const Divider(
+                color: AppColors.c_200,
+              ),
+              24.ph,
+              BlocBuilder<AddressCubit, AddressState>(
+                  builder: (context, state) {
+                if (state is AddressSuccessState) {
                   return Text(
-                    'Name Address',
-                    style: Theme.of(context).textTheme.labelLarge!.copyWith(fontSize: 18),
+                    state.address,
+                    style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                        fontSize: 18.sp, fontWeight: FontWeight.w700),
                   );
-                }),
-                16.ph,
-                GlobalTextField(
-                  hintText: 'Apartment',
-                  controller: apartmentController,
-                ),
-                24.ph,
-                Text(
-                  'Address Details',
+                }
+                return Text(
+                  'Name Address',
                   style: Theme.of(context)
                       .textTheme
                       .labelLarge!
-                      .copyWith(fontSize: 18.sp, fontWeight: FontWeight.w700),
-                ),
-                16.ph,
-                GlobalTextField(
-                  controller: orientationController,
-                  hintText: '931 Indian Summer Drive Taylor, MI 48180kg',
-                  suffixIcon: Padding(
-                    padding: const EdgeInsets.all(10),
-                    child: SvgPicture.asset(
-                      AppIcons.location,
-                      colorFilter: ColorFilter.mode(
-                          getTheme(context) ? AppColors.white : AppColors.c_900, BlendMode.srcIn),
-                    ),
+                      .copyWith(fontSize: 18),
+                );
+              }),
+              16.ph,
+              GlobalTextField(
+                hintText: 'Apartment',
+                controller: apartmentController,
+              ),
+              24.ph,
+              Text(
+                'Address Details',
+                style: Theme.of(context)
+                    .textTheme
+                    .labelLarge!
+                    .copyWith(fontSize: 18.sp, fontWeight: FontWeight.w700),
+              ),
+              16.ph,
+              GlobalTextField(
+                controller: orientationController,
+                hintText: '931 Indian Summer Drive Taylor, MI 48180kg',
+                suffixIcon: Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: SvgPicture.asset(
+                    AppIcons.location,
+                    colorFilter: ColorFilter.mode(
+                        getTheme(context) ? AppColors.white : AppColors.c_900,
+                        BlendMode.srcIn),
                   ),
                 ),
-                24.ph,
-                GlobalButton(
-                  title: 'Add Address',
-                  onTap: onTap,
-                  radius: 100.r,
-                ),
-                24.ph
-              ],
-            ),
+              ),
+              24.ph,
+              GlobalButton(
+                title: 'Add Address',
+                onTap: onTap,
+                radius: 100.r,
+              ),
+              24.ph
+            ],
           ),
         ),
       );

@@ -11,6 +11,7 @@ import 'package:taxi_app/utils/icons/app_icons.dart';
 
 class CardItem extends StatelessWidget {
   const CardItem({super.key, required this.onTap});
+
   final VoidCallback onTap;
 
   @override
@@ -18,8 +19,9 @@ class CardItem extends StatelessWidget {
     return Container(
       margin: EdgeInsets.all(24.sp),
       padding: EdgeInsets.all(32.sp),
-      decoration:
-          BoxDecoration(color: const Color(0xFFF79E1B), borderRadius: BorderRadius.circular(32.r)),
+      decoration: BoxDecoration(
+          color: const Color(0xFFF79E1B),
+          borderRadius: BorderRadius.circular(32.r)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -62,8 +64,10 @@ class CardItem extends StatelessWidget {
             ],
           ),
           24.ph,
-          Text(tr('your_balance'),
-            style: Theme.of(context).textTheme.titleMedium?.copyWith(fontFamily: "Urbanist",
+          Text(
+            tr('your_balance'),
+            style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                fontFamily: "Urbanist",
                 fontSize: 14.sp,
                 fontWeight: FontWeight.w600,
                 color: AppColors.white),
@@ -79,30 +83,42 @@ class CardItem extends StatelessWidget {
                     fontWeight: FontWeight.w700,
                     color: AppColors.white),
               ),
-              const Spacer(),
-              InkWell(
-                onTap: onTap,
-                child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 8.h),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(40.r), color: AppColors.white),
-                  child: Row(
-                    children: [
-                      SizedBox(
-                        height: 16.w,
-                        width: 16.w,
-                        child: SvgPicture.asset(AppIcons.getSvg(
-                          name: AppIcons.download,
-                          iconType: IconType.bold,
-                        )),
-                      ),
-                      8.pw,
-                      Text(tr('top_up'), style: Theme.of(context).textTheme.titleMedium?.copyWith(fontFamily: "Urbanist",
-                          fontSize: 16.sp,
-                          fontWeight: FontWeight.w600,
-                          color: AppColors.dark1
-                      ),)
-                    ],
+              Expanded(
+                child: InkWell(
+                  onTap: onTap,
+                  child: Container(
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 20.w, vertical: 8.h),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(40.r),
+                        color: AppColors.white),
+                    child: Row(
+                      children: [
+                        SizedBox(
+                          height: 16.w,
+                          width: 16.w,
+                          child: SvgPicture.asset(AppIcons.getSvg(
+                            name: AppIcons.download,
+                            iconType: IconType.bold,
+                          )),
+                        ),
+                        8.pw,
+                        Expanded(
+                          child: Text(
+                            tr('top_up'),
+                            overflow: TextOverflow.ellipsis,
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleMedium
+                                ?.copyWith(
+                                    fontFamily: "Urbanist",
+                                    fontSize: 16.sp,
+                                    fontWeight: FontWeight.w600,
+                                    color: AppColors.dark1),
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                 ),
               )

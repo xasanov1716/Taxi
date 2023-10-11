@@ -61,11 +61,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
           style: Theme.of(context).textTheme.headlineMedium,
         ),
         actions: [
-          getIcon(
-            AppIcons.moreCircle,
-            context: context,
-            onTap: () {},
-          ),
+          // getIcon(
+          //   AppIcons.moreCircle,
+          //   context: context,
+          //   onTap: () {},
+          // ),
           12.pw
         ],
       ),

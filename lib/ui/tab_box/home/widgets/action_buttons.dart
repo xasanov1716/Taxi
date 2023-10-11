@@ -20,19 +20,19 @@ class ActionButtons extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           const TypeOfMap(),
-          8.pw,
-          GlobalActionButtons(
-            color: AppColors.dimYellow,
-            icon: SvgPicture.asset(AppIcons.search),
-            height: 52.h,
-            width: 52.h,
-            onTap: () {
-              Navigator.pushNamed(
-                context,
-                RouteNames.searchLocationScreen,
-              );
-            },
-          ),
+          // 8.pw,
+          // GlobalActionButtons(
+          //   color: AppColors.dimYellow,
+          //   icon: SvgPicture.asset(AppIcons.search),
+          //   height: 52.h,
+          //   width: 52.h,
+          //   onTap: () {
+          //     Navigator.pushNamed(
+          //       context,
+          //       RouteNames.searchLocationScreen,
+          //     );
+          //   },
+          // ),
           16.pw,
           GlobalActionButtons(
             color: AppColors.dimYellow,

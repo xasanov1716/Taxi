@@ -52,13 +52,13 @@ class _TopUpPaymentScreenState extends State<TopUpPaymentScreen> {
                         });
                       })),
               12.ph,
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 24.w),
-                child: TopUpGlobalButton(
-                  onTap: () {
-                    // Navigator.pushNamed(context, RouteNames.enterPinScreen);
-                  },title:tr('add_new_card'), color: getTheme(context) ? AppColors.dark3 : const Color(0xFFFFF8E8) ,radius: 40.r, textColor: getTheme(context) ? AppColors.white : AppColors.dark3,),
-              ),
+              // Padding(
+              //   padding: EdgeInsets.symmetric(horizontal: 24.w),
+              //   child: TopUpGlobalButton(
+              //     onTap: () {
+              //       // Navigator.pushNamed(context, RouteNames.enterPinScreen);
+              //     },title:tr('add_new_card'), color: getTheme(context) ? AppColors.dark3 : const Color(0xFFFFF8E8) ,radius: 40.r, textColor: getTheme(context) ? AppColors.white : AppColors.dark3,),
+              // ),
             ],
           )),
           ClipRRect(
@@ -77,7 +77,9 @@ class _TopUpPaymentScreenState extends State<TopUpPaymentScreen> {
                         title: "${tr('top_up_successful')}!",
                         image: AppIcons.successPassword,
                         text: "${tr('you_have_successfully')} \$120",
-                        onTap: () {});
+                        onTap: () {
+                          Navigator.pop(context);
+                        });
                 // Navigator.pushNamed(context, RouteNames.enterPinScreen);
               },title: tr('continue'), color: AppColors.primary,radius: 40.r),
             ),

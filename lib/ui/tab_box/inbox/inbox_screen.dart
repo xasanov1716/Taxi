@@ -29,16 +29,16 @@ class InboxScreen extends StatelessWidget {
             style: Theme.of(context).textTheme.headlineMedium,
           ),
           actions: [
-            getIcon(
-              AppIcons.search,
-              context: context,
-              onTap: () {},
-            ),
-            getIcon(
-              AppIcons.moreCircle,
-              context: context,
-              onTap: () {},
-            ),
+            // getIcon(
+            //   AppIcons.search,
+            //   context: context,
+            //   onTap: () {},
+            // ),
+            // getIcon(
+            //   AppIcons.moreCircle,
+            //   context: context,
+            //   onTap: () {},
+            // ),
             12.pw,
           ],
           bottom: const TabBar(

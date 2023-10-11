@@ -29,9 +29,9 @@ class BookingAppBar extends StatelessWidget implements PreferredSize {
       ),
       title: Text(title),
       actions: [
-        getIcon(AppIcons.search, context: context, onTap: searchOnTap),
-        getIcon(AppIcons.moreCircle, context: context, onTap: moreOnTap),
-        24.pw,
+        // getIcon(AppIcons.search, context: context, onTap: searchOnTap),
+        // getIcon(AppIcons.moreCircle, context: context, onTap: moreOnTap),
+        // 24.pw,
       ],
       bottom: const TabBar(
         isScrollable: true,
