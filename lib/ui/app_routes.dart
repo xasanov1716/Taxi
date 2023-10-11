@@ -92,17 +92,7 @@ class RouteNames {
   static const String driverDetailInfo = '/driver_detail_screen';
   static const String clientDetailInfo = '/client_detail_screen';
 
-  // Don't used
-  static const String profileScreen = "/profile_screen";
 
-  // Don't used
-  static const String askRoleDialog = "/askRoleDialog";
-
-  // Don't used
-  static const String welcomeScreen = "/welcome";
-
-  // Don't used
-  static const String bottomSheetDialog = "/bottom_sheet_dialog";
 }
 
 class AppRoutes {
@@ -115,10 +105,6 @@ class AppRoutes {
       case RouteNames.requestScreen:
         return MaterialPageRoute(
           builder: (context) => const RequestScreen(),
-        );
-      case RouteNames.welcomeScreen:
-        return MaterialPageRoute(
-          builder: (context) => const WelcomeScreen(),
         );
       case RouteNames.helpCenterScreen:
         return MaterialPageRoute(
@@ -169,10 +155,6 @@ class AppRoutes {
       case RouteNames.tabBox:
         return MaterialPageRoute(
           builder: (context) => const TabBox(),
-        );
-      case RouteNames.profileScreen:
-        return MaterialPageRoute(
-          builder: (context) => const ProfileScreen(),
         );
       // case RouteNames.setPinCodeScreen:
       //   return MaterialPageRoute(
@@ -243,10 +225,6 @@ class AppRoutes {
       case RouteNames.chatWithDriver:
         return MaterialPageRoute(
           builder: (context) => const ChatScreen(),
-        );
-      case RouteNames.bottomSheetDialog:
-        return MaterialPageRoute(
-          builder: (context) => const BottomSheetScreen(),
         );
       case RouteNames.notificationSwitch:
         return MaterialPageRoute(

@@ -20,7 +20,8 @@ class EditProfileClientScreen extends StatefulWidget {
   final bool navigateFromAuth;
 
   @override
-  State<EditProfileClientScreen> createState() => _EditProfileClientScreenState();
+  State<EditProfileClientScreen> createState() =>
+      _EditProfileClientScreenState();
 }
 
 class _EditProfileClientScreenState extends State<EditProfileClientScreen> {
@@ -48,34 +49,41 @@ class _EditProfileClientScreenState extends State<EditProfileClientScreen> {
                   title: widget.navigateFromAuth ? tr("create_user") : tr("update"),
                   onTap: () {
                     if (widget.navigateFromAuth) {
-                      context.read<UserBloc>().add(
-                            UpdateCurrentUserEvent(
-                              fieldKey: UserFieldKeys.phone,
-                              value: BlocProvider.of<AuthCubit>(context).state.phoneNumber,
-                            ),
-                          );
-                      context.read<UserBloc>().add(
-                            UpdateCurrentUserEvent(
-                              fieldKey: UserFieldKeys.password,
-                              value: BlocProvider.of<AuthCubit>(context).state.password,
-                            ),
-                          );
-                    }
+                      context.read<UserBloc>().add(UpdateCurrentUserEvent(
+                          fieldKey: UserFieldKeys.createdAt,
+                          value: DateTime.now().toString()));
 
-                    context.read<UserBloc>().add(UpdateCurrentUserEvent(
-                        fieldKey: UserFieldKeys.createdAt, value: DateTime.now().toString()));
-
-                    context.read<UserBloc>().add(UpdateCurrentUserEvent(
-                        fieldKey: UserFieldKeys.userId,
-                        value: StorageRepository.getString(StorageKeys.userId)));
-
-                    if (context.read<UserBloc>().canRequest().isEmpty) {
-                      context.read<UserBloc>().add(AddUserEvent());
+                      context.read<UserBloc>().add(UpdateCurrentUserEvent(
+                          fieldKey: UserFieldKeys.userId,
+                          value: StorageRepository.getString(
+                            StorageKeys.userId,
+                          )));
+                      context.read<UserBloc>().add(UpdateCurrentUserEvent(
+                            fieldKey: UserFieldKeys.phone,
+                            value: BlocProvider.of<AuthCubit>(context)
+                                .state
+                                .phoneNumber,
+                          ));
+                      context.read<UserBloc>().add(UpdateCurrentUserEvent(
+                            fieldKey: UserFieldKeys.password,
+                            value: BlocProvider.of<AuthCubit>(context)
+                                .state
+                                .password,
+                          ));
+                      if (context.read<UserBloc>().canRequest().isEmpty) {
+                        context.read<UserBloc>().add(AddUserEvent());
+                      } else {
+                        showSnackBar(
+                            context: context,
+                            text:
+                                '${context.read<UserBloc>().canRequest()} is required');
+                      }
                     } else {
                       showSnackBar(
                           context: context,
                           text:
                               '${context.read<UserBloc>().canRequest()} ${tr("is_required")}');
+                      context.read<UserBloc>().add(UpdateUserEvent());
                     }
                   },
                   radius: 100.r,
@@ -92,9 +100,10 @@ class _EditProfileClientScreenState extends State<EditProfileClientScreen> {
           if (state.status == FormStatus.success) {
             if (widget.navigateFromAuth) {
               Navigator.pushReplacementNamed(context, RouteNames.tabBox);
-            } else {
-             // Navigator.pop(context);
             }
+          }
+          if (state.status == FormStatus.updated) {
+            Navigator.pop(context);
           }
         },
       ),
