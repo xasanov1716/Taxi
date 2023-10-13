@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 //import 'package:package_info_plus/package_info_plus.dart';
 import 'package:taxi_app/blocs/address_bloc/address_bloc.dart';
 import 'package:taxi_app/blocs/create_order/create_order_bloc.dart';
@@ -38,6 +39,7 @@ import 'package:taxi_app/data/repositories/request_repo.dart';
 import 'package:taxi_app/data/repositories/search_history_db.dart';
 import 'package:taxi_app/data/repositories/user_repository.dart';
 import 'package:taxi_app/services/api_service.dart';
+import 'package:taxi_app/services/bloc_observer.dart';
 import 'package:taxi_app/services/fcm.dart';
 import 'package:taxi_app/services/locator_service.dart';
 import 'package:taxi_app/ui/app_routes.dart';
@@ -57,6 +59,8 @@ Future<void> main() async {
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
+
+  Bloc.observer = MyCustomObserver();
 
   await initFirebase(notificationsBloc..add(UpdateNotifications()));
   // PackageInfo packageInfo = await PackageInfo.fromPlatform();
@@ -94,28 +98,34 @@ class App extends StatelessWidget {
         RepositoryProvider(
           create: (context) => PlacesDatabaseRepository(PlacesDatabase()),
         ),
-        RepositoryProvider(create: (context) => AddressApiRepository(apiService: apiService)),
+        RepositoryProvider(
+            create: (context) => AddressApiRepository(apiService: apiService)),
         RepositoryProvider(create: (context) => UserRepo()),
         RepositoryProvider(create: (context) => DriverRepo()),
-        RepositoryProvider(create: (context) => AddressApiRepository(apiService: apiService))
+        RepositoryProvider(
+            create: (context) => AddressApiRepository(apiService: apiService))
       ],
       child: MultiBlocProvider(
         providers: [
           // Don't used
           BlocProvider(create: (context) => CodeInputCubit()),
           BlocProvider(
-            create: (context) =>
-                AddressCubit(addressApiRepository: context.read<AddressApiRepository>()),
+            create: (context) => AddressCubit(
+                addressApiRepository: context.read<AddressApiRepository>()),
           ),
-          BlocProvider(create: (context) => AuthCubit(context.read<AuthRepository>())),
+          BlocProvider(
+              create: (context) => AuthCubit(context.read<AuthRepository>())),
           BlocProvider(
             create: (context) => SearchLocationBloc(
               searchHistoryRepository: context.read<SearchHistoryRepository>(),
-              placesDatabaseRepository: context.read<PlacesDatabaseRepository>(),
+              placesDatabaseRepository:
+                  context.read<PlacesDatabaseRepository>(),
             ),
           ),
           BlocProvider(create: (context) => TabCubit()),
-          BlocProvider(create: (context) => DriverBloc(driverRepo: context.read<DriverRepo>())),
+          BlocProvider(
+              create: (context) =>
+                  DriverBloc(driverRepo: context.read<DriverRepo>())),
           BlocProvider(create: (context) => NotificationCubit()),
           BlocProvider(create: (context) => SecurityCubit()),
           BlocProvider(create: (context) => SocialAuthBloc(AuthRepository())),
@@ -124,19 +134,28 @@ class App extends StatelessWidget {
           BlocProvider(create: (context) => CreateOrderBloc()),
           BlocProvider(create: (context) => PaymentBloc()),
           BlocProvider(create: (context) => PaymentAddBloc()),
-          BlocProvider(create: (context) => UserBloc(userRepo: context.read<UserRepo>())),
           BlocProvider(
-              create: (context) => RequestBloc(requestDriverRepo: context.read<RequestRepo>())),
+              create: (context) =>
+                  UserBloc(userRepo: context.read<UserRepo>())),
+          BlocProvider(
+              create: (context) =>
+                  RequestBloc(requestDriverRepo: context.read<RequestRepo>())),
           BlocProvider(create: (context) => CategoryCubit()),
           BlocProvider(create: (context) => MessageBloc()),
           BlocProvider(create: (context) => SearchCubit()),
-          BlocProvider(create: (context) => GetClientInfoCubit(context.read<UserRepo>())),
-          BlocProvider(create: (context) => GetDriverInformationsCubit(context.read<DriverRepo>())),
+          BlocProvider(
+              create: (context) =>
+                  GetClientInfoCubit(context.read<UserRepo>())),
+          BlocProvider(
+              create: (context) =>
+                  GetDriverInformationsCubit(context.read<DriverRepo>())),
           // Don't used
           BlocProvider(create: (context) => OrderCubit()),
           BlocProvider(create: (context) => HelpCenterCategoryCubit()),
           BlocProvider(create: (context) => LocationBloc()),
-          BlocProvider(create: (context) => AddressBloc(addressRepo: context.read<AddressRepo>()))
+          BlocProvider(
+              create: (context) =>
+                  AddressBloc(addressRepo: context.read<AddressRepo>()))
         ],
         child: EasyLocalization(
             supportedLocales: const [
