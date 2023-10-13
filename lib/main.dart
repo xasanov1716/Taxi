@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+//import 'package:package_info_plus/package_info_plus.dart';
 import 'package:taxi_app/blocs/address_bloc/address_bloc.dart';
 import 'package:taxi_app/blocs/create_order/create_order_bloc.dart';
 import 'package:taxi_app/blocs/driver_bloc/driver_bloc.dart';
@@ -58,6 +59,18 @@ Future<void> main() async {
   ]);
 
   await initFirebase(notificationsBloc..add(UpdateNotifications()));
+  // PackageInfo packageInfo = await PackageInfo.fromPlatform();
+  //
+  // String appName = packageInfo.appName;
+  // String packageName = packageInfo.packageName;
+  // String version = packageInfo.version;
+  // String buildNumber = packageInfo.buildNumber;
+  //
+  // debugPrint("APP NAME:$appName");
+  // debugPrint("PACKAGE NAME:$packageName");
+  // debugPrint("CURRENT VERSION :$version");
+  // debugPrint("BUILD NUMBER :$buildNumber");
+
   runApp(App(apiService: ApiService()));
 }
 

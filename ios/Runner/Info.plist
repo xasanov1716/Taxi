@@ -49,5 +49,14 @@
 	</array>
 	<key>NSMicrophoneUsageDescription</key>
     <string>Your microphone is used to share voice recordings with driver</string>
+    <key>CFBundleLocalizations</key>
+    <array>
+    	<string>ru</string>
+    	<string>uz</string>
+    </array>
+       <key>NSLocationAlwaysUsageDescription</key>
+       <string>Your location is required for identifying where you are for reaching near taxi</string>
+       <key>NSLocationWhenInUseUsageDescription</key>
+       <string>Your location is required for identifying where you are for reaching near taxi</string>
 </dict>
 </plist>

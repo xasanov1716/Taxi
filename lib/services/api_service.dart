@@ -68,7 +68,7 @@ class ApiService {
       );
 
       if (response.statusCode == 200) {
-        String text = tr('no_such_identifed!');
+        String text = tr('no_such_identifed');
         Geocoding geocoding = Geocoding.fromJson(response.data);
         if (geocoding.response.geoObjectCollection.featureMember.isNotEmpty) {
           text = geocoding.response.geoObjectCollection.featureMember[0].geoObject.metaDataProperty

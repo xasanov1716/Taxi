@@ -1,6 +1,5 @@
 {
   "01": "",
-
   "welcome_to": "Хуш келибсиз",
   "taxio": "Дастёр Тахи",
   "welcome_screen_subtitle": "Кунингизни ажойиб қилиш учун асрнинг енг яхши такси брон қилиш иловаси",
@@ -10,9 +9,7 @@
   "next": "Кейингиси",
   "get_started": "Бошлаш",
   "skip": "Ўтказиб юбориш",
-
   "02": "",
-
   "lets_you_in": "Дастёрга Кириш",
   "continue_with_facebook": "Facebook билан давом етинг",
   "continue_with_google": "Google билан давом етинг",
@@ -34,11 +31,8 @@
   "driver": "Ҳайдовчи",
   "client": "Йўловчи",
   "forgot_password": "Паролни унутдингизми?",
-
-
   "03": "",
-
-  "create_profile":"Профиль яратиш",
+  "create_profile": "Профиль яратиш",
   "create_user": "Фойдаланувчи яратиш",
   "is_required": "мажбурий",
   "can_register": "рўйхатдан ўтиш мумкин",
@@ -111,11 +105,6 @@
   "tap_your_finger_sensor": "Тасдиқлаш учун сенсорга бармоғингизни босинг",
   "you_have_upe_wallet": "Сиз ҳамённи муваффақиятли тўлдирдингиз",
   "error_pin_code": "Пароль хато",
-
-
-
-
-
   "fill_your_profile": "Профилингизни тўлдиринг",
   "full_name": "Тўлиқ исм шариф",
   "nickname": "Тахаллус",
@@ -132,10 +121,7 @@
   "scanner_to_get_started": "Бошлаш учун бармоқ изи сканерига бармоғингизни қўйинг",
   "congratulations": "Табриклаймиз!",
   "dialog_title_auth": "Ҳисобингиз фойдаланишга тайёр. Сиз бир неча сониядан сўнг асосий саҳифага йўналтириласиз",
-
-
   "04": "",
-
   "select_that_contact": "Паролингизни тиклаш учун кайси контакт ма'лумотларидан фойдаланишимиз кераклигини танланг",
   "via_sms": "СМС орқали:",
   "via_email": "Электрон почта орқали:",
@@ -146,9 +132,7 @@
   "create_your_new_password": "Янги паролингизни яратинг",
   "select_which_contact": "Parolingizni tiklash uchun qaysi kontakt ma'lumotlaridan foydalanishimiz kerakligini tanlang",
   "confirm_new_password": "Йанги паролни тасдиклаш учун кайта киритинг!",
-
   "05": "",
-
   "enable_location": "Жойлашувни ёқиш",
   "dialog_title_location": "Ушбу хизматдан фойдаланишимиз учун жойлашувингизга киришимиз керак.",
   "not_now": "Ҳозир ема",
@@ -193,14 +177,14 @@
   "promo_code": "Промо код",
   "enter_promo_code": "Промо кодини киритинг",
   "add_promo": "Промо код қўшиш",
-  "apply_promo" : "Промо кодни ишлатиш",
+  "apply_promo": "Промо кодни ишлатиш",
   "payment_methods": "Тўлов усуллари",
   "select_payment_method": "Фойдаланмоқчи бўлган тўлов усулини танланг.",
   "my_wallet": "Менинг ҳамёним",
   "searching_for_driver": "Ҳайдовчи қидирилмоқда...",
   "searching": "Қидирилмоқда..",
   "a_few_moment": "Бу бир неча сония вақт олиши мумкин...",
-  "slide_to_cancel " : "Бекор қилиш суринг",
+  "slide_to_cancel ": "Бекор қилиш суринг",
   "driver_is_arriving": "Ҳайдовчи келмоқда...",
   "driver_details": "Ҳайдовчи тафсилотлари",
   "ratings": "Рейтинглар",
@@ -211,9 +195,9 @@
   "Plate_number": "Пластинка рақами",
   "message": "Хабар..",
   "trip_to_destination": "Белгиланган жойга саёҳат",
-  "your_destination":"Сиз йетиб келдингиз\nсизнинг манзилингиз!",
+  "your_destination": "Сиз йетиб келдингиз\nсизнинг манзилингиз!",
   "see_you_on": "Кейинги саёҳатда кўришгунча :)",
-  "ok" : "Келишдик",
+  "ok": "Келишдик",
   "your_mood": "Сизнинг кайфиятингиз",
   "what's_your_mood": "Кайфиятингиз қандай",
   "about_this_trip": "бу саёҳат ҳақида?",
@@ -227,9 +211,7 @@
   "add_additional": "Ҳайдовчи учун қўшимча маслаҳат қўшмоқчимисиз?",
   "no_thanks": "Йўқ раҳмат!",
   "pay_tip": "Маслаҳат бериш",
-
   "06": "",
-
   "my_bookings": "Менинг бандловларим",
   "active_now": "Ҳозир фаол",
   "completed": "Якунланди",
@@ -238,18 +220,12 @@
   "date_time": "Сана & Bақт",
   "empty_booking": "Сизда фаол такси бандлови йўқ",
   "empty_booking_subtitle": "Aйни пайтда сизда фаол такси бандлови йўқ.",
-
-
   "07": "",
-
   "chats": "Suhbatlar",
   "calls": "Qo'ng'iroqlar",
   "incoming": "Kiruvchi",
   "outgoing": "Chiquvchi",
-
   "08": "",
-
-
   "my_e_wallet": "Менинг електрон ҳамёним",
   "see_all": "Ҳаммасини кўринг",
   "your_balance": "Сизнинг балансингиз",
@@ -271,9 +247,7 @@
   "share_e-receipt": "Електрон почта квитансиясини улшиш",
   "download_e-receipt": "Електрон квитансия юклаб олиш",
   "print": "Чоп етиш",
-
   "09": "",
-
   "edit_profile": "Профилни таҳрирлаш",
   "address": "Манзил",
   "payment": "Тўлов",
@@ -283,10 +257,10 @@
   "help_center": "Ёрдам маркази",
   "invite_friends": "Дўстларни таклиф қилинг",
   "logout": "Чиқиш",
-  "update":"Янгиланиш",
-  "add_new_address":"Янги манзил қўшиш",
-  "add_address":"Манзил қўшиш",
-  "address_details":"Манзил тафсилотлари",
+  "update": "Янгиланиш",
+  "add_new_address": "Янги манзил қўшиш",
+  "add_address": "Манзил қўшиш",
+  "address_details": "Манзил тафсилотлари",
   "name_address": "Манзил номи",
   "general_notification": "Умумий хабарнома",
   "sound": "Овоз",
@@ -316,15 +290,11 @@
   "logout_title": "Сиз тизимдан чиқмоқчимисиз?",
   "language": "Тил",
   "language_type": "Кирилл-Лотин",
-
   "bloc_papkalarni_navbati": "folders",
-
-
   "loading": "Юкланмоқда...",
   "user_added_succesfull": "Фойдаланувчи муваффақиятли қўшилди",
   "user_deleted_succesfull": "Фойдаланувчи муваффақиятли ўчирилди",
   "user_update_succesfull": "Фойдаланувчи муваффақиятли янгиланди",
-
   "facebook_login_error": "Facebook  орқали кириш хато",
   "apple_login_error": "Apple орқали кириш хато",
   "success_order_add": "Буюртма муваффақиятли қўшилди",
@@ -333,13 +303,7 @@
   "request_not_added": "Сўров қўшилмаган",
   "request_not_update": "Сўров янгиланмаган",
   "request_not_delete": "Сўров ўчирилмаган",
-
-
-
-
   "cubit_papkalarni_navbati": "folders",
-
-
   "what_is_taxio": "Дастёр Такси нима?",
   "how_to_use_taxio": "Қандай қилиб такси буюртмасини бекор қилишим мумкин?",
   "how_do_cancel_taxi": "Қандай қилиб такси буюртмасини бекор қилишим мумкин?",

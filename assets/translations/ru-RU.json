@@ -1,6 +1,5 @@
 {
   "01": "",
-
   "welcome_to": "Добро пожаловать",
   "taxio": "Дастёр Такси",
   "welcome_screen_subtitle": "Лучшее приложение века для заказа такси, которое сделает ваш день незабываемым",
@@ -10,9 +9,7 @@
   "next": "Далее",
   "get_started": "Начать",
   "skip": "Пропустить",
-
   "02": "",
-
   "lets_you_in": "Дастёр Войти",
   "continue_with_facebook": "Продолжить с Facebook",
   "continue_with_google": "Продолжить с Google",
@@ -34,10 +31,8 @@
   "driver": "Водитель",
   "client": "Пассажир",
   "forgot_password": "Забыли пароль?",
-
-
   "03": "",
-  "create_profile":"Создать профиль",
+  "create_profile": "Создать профиль",
   "edit_profile": "Создать профиль",
   "create_user": "Создать пользователя",
   "update": "Обновить",
@@ -119,7 +114,7 @@
   "select_category_ride": "Выберите категорию поездки, на которой вы хотите покататься.",
   "bike": "Велосипед",
   "standard": "Стандарт",
-  "premium":"Премиум",
+  "premium": "Премиум",
   "searching_ride": "Ищу поездку..",
   "this_may_take": "Это может занять несколько секунд...",
   "driver_arrive": "Водитель прибывает",
@@ -132,12 +127,9 @@
   "tap_your_finger_sensor": "Нажмите пальцем на датчик, чтобы подтвердить",
   "you_have_upe_wallet": "Вы успешно пополнили свой кошелек",
   "error_pin_code": "Ошибка пароля",
-
-
   "fill_your_profile": "Заполните свой профиль",
   "full_name": "Полное имя",
   "nickname": "Псевдоним",
-
   "email": "Электронная почта",
   "gender": "Пол",
   "continue": "Продолжить",
@@ -151,14 +143,7 @@
   "congratulations": "Поздравляем!",
   "dialog_title_auth": "Ваша учетная запись готова к использованию. Через несколько секунд вы будете перенаправлены на главную страницу",
   "date_of_birth": "Tug'ilgan kun",
-
-
-
-
-
-
   "04": "",
-
   "select_that_contact": "Выберите, какую контактную информацию мы должны использовать для сброса вашего пароля",
   "via_sms": "по SMS:",
   "via_email": "по электронной почте:",
@@ -167,10 +152,7 @@
   "verify": "Проверить",
   "create_new_password": "Создайте новый пароль",
   "create_your_new_password": "Создайте новый пароль",
-
-
   "05": "",
-
   "enable_location": "Включить местоположение",
   "dialog_title_location": "Чтобы выйти из этой службы, нам нужен доступ к вашему местоположению.",
   "not_now": "Не сейчас",
@@ -215,14 +197,14 @@
   "promo_code": "Промокод",
   "enter_promo_code": "Введите промокод",
   "add_promo": "Добавить промокод",
-  "apply_promo" : "Применить промокод",
+  "apply_promo": "Применить промокод",
   "payment_methods": "Способы оплаты",
   "select_payment_method": "Выберите способ оплаты, который вы хотите использовать.",
   "my_wallet": "Мой кошелек",
   "searching_for_driver": "Поиск драйвера...",
   "searching": "Ищет...",
   "a_few_moment": "Это может занять несколько секунд...",
-  "slide_to_cancel " : "Слайд для отмены",
+  "slide_to_cancel ": "Слайд для отмены",
   "driver_is_arriving": "Водитель прибывает...",
   "driver_details": "Сведения о драйвере",
   "ratings": "Рейтинги",
@@ -233,9 +215,9 @@
   "Plate_number": "Номер номера",
   "message": "Сообщение...",
   "trip_to_destination": "Поездка к месту назначения",
-  "your_destination":"Вы прибыли\nваш пункт назначения!",
+  "your_destination": "Вы прибыли\nваш пункт назначения!",
   "see_you_on": "Увидимся в следующей поездке :),",
-  "ok" : "Поехали",
+  "ok": "Поехали",
   "your_mood": "Ваше настроение",
   "what's_your_mood": "Какое у тебя настроение",
   "about_this_trip": "об этой поездке?",
@@ -249,16 +231,7 @@
   "add_additional": "Хотите добавить дополнительную подсказку для водителя?",
   "no_thanks": "Нет, спасибо!",
   "pay_tip": "Совет",
-
-
-
-
-
-
   "06": "",
-
-
-
   "my_bookings": "Мои бронирования",
   "active_now": "Активный",
   "completed": "Завершенный",
@@ -267,16 +240,12 @@
   "date_time": "Дата & Время",
   "empty_booking": "У вас нет активного заказа такси.",
   "empty_booking_subtitle": "В настоящее время у вас нет активного заказа такси.",
-
   "07": "",
-
   "chats": "Чаты",
   "calls": "Звонки",
   "incoming": "Bходящий",
   "outgoing": "Исходящий",
-
   "08": "",
-
   "my_e_wallet": "Мой электронный кошелек",
   "see_all": "Увидеть все",
   "your_balance": "Ваш баланс",
@@ -298,15 +267,9 @@
   "share_e-receipt": "Поделиться электронной квитанцией",
   "download_e-receipt": "Скачать электронную квитанцию",
   "print": "Распечатать",
-
-
-
-
-
   "09": "",
-
   "logout": "Выход",
-  "address_details":"Подробности об адресе",
+  "address_details": "Подробности об адресе",
   "name_address": "Имя Адрес",
   "general_notification": "Общее уведомление",
   "sound": "Звук",
@@ -325,12 +288,7 @@
   "logout_title": "Вы уверены, что хотите выйти?",
   "language": "Язык",
   "language_type": "Русский",
-
-
-
-
-"qolib_ketgan_sozlar": "",
-
+  "qolib_ketgan_sozlar": "",
   "status": "Статус",
   "active": "Активный",
   "bookings": "Бронирование",
@@ -339,15 +297,11 @@
   "resend_code_in_s": "Отправить код повторно через 60 секунд",
   "select_which_contact": "Выберите, какую контактную информацию мы должны использовать для сброса вашего пароля",
   "confirm_new_password": "Повторно введите новый пароль для подтверждения!",
-
   "bloc_papkalarni_navbati": "folders",
-
-
   "loading": "Yuklanmoqda...",
   "user_added_succesfull": "Пользователь успешно добавлен",
   "user_deleted_succesfull": "Пользователь успешно удален",
   "user_update_succesfull": "Пользователь обновлен успешно",
-
   "facebook_login_error": "Ошибка входа в Facebook",
   "apple_login_error": "Ошибка входа в Apple",
   "success_order_add": "Заказ успешно добавлен",
@@ -356,11 +310,7 @@
   "request_not_added": "Запрос не добавлен",
   "request_not_update": "Запрос не обновлен",
   "request_not_delete": "Запрос не удален",
-
-
   "cubit_papkalarni_navbati": "folders",
-
-
   "what_is_taxio": "Что такое Дастиор Такси?",
   "how_to_use_taxio": "Как пользоваться такси Дастёр?",
   "how_do_cancel_taxi": "Как мне отменить заказ такси?",
@@ -373,5 +323,4 @@
   "enter_valid_phone_number": "Введите действительный номер телефона",
   "enter_valid_password": "Введите действительный пароль",
   "no_such_identifed": "Такой регион не определен!"
-
 }
